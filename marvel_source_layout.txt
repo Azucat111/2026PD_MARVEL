@@ -1,0 +1,447 @@
+                                                MARVEL: Multi-Agent Reinforcement Learning for constrained
+                                               field-of-View multi-robot Exploration in Large-scale environments
+                                                        Jimmy Chiun1 , Shizhe Zhang1 , Yizhuo Wang1 , Yuhong Cao1 , Guillaume Sartoretti1†
+
+
+                                             Abstract— In multi-robot exploration, a team of mobile robot
+                                         is tasked with efficiently mapping an unknown environments.
+                                         While most exploration planners assume omnidirectional sen-
+                                         sors like LiDAR, this is impractical for small robots such
+                                         as drones, where lightweight, directional sensors like cameras
+arXiv:2502.20217v1 [cs.RO] 27 Feb 2025
+
+
+
+
+                                         may be the only option due to payload constraints. These
+                                         sensors have a constrained field-of-view (FoV), which adds
+                                         complexity to the exploration problem, requiring not only
+                                         optimal robot positioning but also sensor orientation during
+                                         movement. In this work, we propose MARVEL, a neural frame-
+                                         work that leverages graph attention networks, together with
+                                         novel frontiers and orientation features fusion technique, to
+                                         develop a collaborative, decentralized policy using multi-agent
+                                         reinforcement learning (MARL) for robots with constrained
+                                         FoV. To handle the large action space of viewpoints planning,
+                                         we further introduce a novel information-driven action pruning          Fig. 1: Illustration of multi-robot exploration. 3 drones are
+                                         strategy. MARVEL improves multi-robot coordination and                  collaboratively exploring an indoor environment (blue region). The
+                                         decision-making in challenging large-scale indoor environments,         start region is indicated by the yellow star.
+                                         while adapting to various team sizes and sensor configurations
+                                         (i.e., FoV and sensor range) without additional training. Our              The goal of multi-robot exploration is to plan the short-
+                                         extensive evaluation shows that MARVEL’s learned policies               est trajectory to fully map/cover an unknown environment
+                                         exhibit effective coordinated behaviors, outperforming state-of-        through efficient robot coordination. Challenges include non-
+                                         the-art exploration planners across multiple metrics. We experi-
+                                         mentally demonstrate MARVEL’s generalizability in large-scale           myopic decision-making, i.e., the need to optimize long-
+                                         environments, of up to 90m by 90m, and validate its practical           term information gain rather than immediate rewards, as well
+                                         applicability through successful deployment on a team of real           as adapting to dynamic environments that require ongoing
+                                         drone hardware.                                                         coordination to effectively cover new areas. Frontier-based
+                                                                                                                 approaches are widely used for both single- and multi-
+                                                              I. INTRODUCTION                                    agent robotic exploration [6], [7], utilizing heuristics to guide
+                                            Robotic exploration is crucial for autonomous systems to             robots toward frontiers—the boundaries between known and
+                                         navigate and map unknown environments, with applications                unknown areas (see Fig. 1). These methods aim to balance
+                                         ranging from search and rescue [1], [2] to scene reconstruc-            utility (observable frontiers) and cost (path length) [8],
+                                         tion [3]. Robots rely on on-board sensors for data collection,          but fall short in optimizing long-term exploration, often
+                                         obstacle avoidance, and real-time decision-making to achieve            resulting in sub-optimal trajectories and inefficiencies due
+                                         efficient coverage. Multi-robot exploration, or multi-agent             to the revisiting of previously explored regions. This occurs
+                                         active SLAM [4], leverages multiple robots to enhance                   because robots are always oriented towards their goal, which
+                                         efficiency, scalability, and robustness compared to single-             can fragment frontiers into smaller parts, increasing the
+                                         agent systems [5]. While most existing approaches use heavy             likelihood of revisitation. Despite their adaptability and lack
+                                         omnidirectional sensors like LiDAR, smaller robots, such as             of training requirements, frontier-based methods frequently
+                                         drones, may only be able to carry lightweight, directional              demand extensive, complex hyperparameter tuning, which
+                                         sensors (constrained field-of-view (FoV)) like cameras. This            limits their generalization to different environments.
+                                         paper introduces a framework for multi-robot exploration                   An alternative to frontier-based methods is using rein-
+                                         with constrained FoV sensors, which integrates deep multi-              forcement learning (RL), where agents learn an exploration
+                                         agent reinforcement learning with graph-based attention                 policy through deep neural networks that process raw sensory
+                                         mechanisms. This framework enhances coordinated decision-               data. Once trained, these policies enable robots to perform
+                                         making and exploration in complex indoor environments                   complex, real-time coordinated actions. However, RL-based
+                                         while accommodating diverse sensor configurations.                      exploration faces several challenges: (1) Constrained FoV
+                                                                                                                 sensors further complicate viewpoint planning, as restricted
+                                           † Corresponding author, to whom correspondence should be addressed.   visibility amplifies the already vast action space, making
+                                           1 Authors are with the Department of Mechanical Engineering,
+                                                                                                                 decision-making more challenging. (2) Sparse rewards, typi-
+                                         College of Design and Engineering, National University of Singapore.
+                                         {jimmy.chiun, ShizheZhang, wy98}@u.nus.edu,                             cally granted when new areas are uncovered or specific goals
+                                         {caoyuhong, mpegas}@nus.edu.sg                                          are achieved, heighten the learning difficulties, as sensor
+constraints limit how often frontiers are detected. Without            Learning-based approaches Learning-based approaches
+reward shaping or intrinsic motivation, robots face ineffi-         mainly involve reinforcement learning (RL) as they offer
+cient learning. (3) Reward assignment is also challenging,          training flexibility and strong expressivity of the environ-
+requiring careful attribution of reward to the viewpoints of        ment. Niroui et al.[17] proposed combining frontier-based
+individual robots within the team, complicating coordination        methods with deep reinforcement learning, and adaptively
+learning and effective exploration. (4) Addressing both spa-        tuning gain function parameters for frontier selection to
+tial and temporal short-sightedness: robots with constrained        enhance exploration performance. Studies by [18], [19]
+FoV must balance exploiting their current viewpoint with            utilized convolutional neural networks (CNNs) in their deep
+exploring unknown regions, while factoring in the long-             reinforcement learning frameworks. There are also studies
+term consequences of their actions on the overall exploration       that explore incorporating spatial map memory into the
+process.                                                            network by utilizing a differentiable spatial memory [20],
+   In this work, we present MARVEL to address multi-robot           [21]. A notable work for single-agent visual exploration is
+exploration challenges with constrained FoV. MARVEL uses            Active Neural Slam (ANS), where it combines a RL-based
+an attention-based neural network, with intelligent fusion of       global planner with a planning-based local planner [22]. ANS
+frontiers and orientation features, for enhanced environmen-        has also been extended with a multi-agent planning module,
+tal understanding, as well as ability to handle different spatial   leveraging a transformer-based architecture. This approach
+scale. Our approach includes an attentive privileged critic         employs hierarchical self-attention mechanisms to capture
+network to enhance action estimation and credit assignment.         spatial relationships and interactions between agents [23].
+We also introduce an novel information-driven action pruning        However, all these studies have typically been limited in
+strategy to manage the large action space by focusing on            scope, i.e., they are usually confined to small-scale environ-
+informative waypoint-heading pairs. Our environment model           ments, which lacks complex topologies.
+is a collision-free graph, where nodes represent accessible            Multi-agent reinforcement learning Multi-agent rein-
+locations and potential actions guide viewpoint selection.          forcement learning (MARL) has shown significant promise
+MARVEL, evaluated in large 2D indoor environments, out-             in complex cooperative tasks [24], with advancements such
+performs existing exploration planners and is validated with a      as value decomposition [25] aiding in credit assignment
+team of drones, showing adaptability to real robot hardware.        and intrinsic rewards [26], [27] addressing sparse rewards.
+                                                                    Curriculum learning has also been utilized to progressively
+                    II. R ELATED WORKS                              increase task complexity [28], [29]. However, optimizing
+   Conventional Approaches The field of robotic explo-              multiple policies in MARL remains challenging compared to
+ration has progressed significantly since Yamauchi’s early          single-agent approaches, often requiring domain simplifica-
+work on frontier-based methods, which directed robots to-           tions like grid worlds or particle simulations [30]. To address
+ward the nearest unexplored areas by orienting them toward          these challenges, our work employs the centralized training
+the closest frontiers [6]. This approach was later extended to      with decentralized execution (CTDE) paradigm and intro-
+multi-robot systems using shared global maps [9]. More ad-          duces a multi-agent attentive critic algorithm, inspired by
+vanced frontier-based techniques now incorporate gain func-         [31]. This approach enhances credit assignment by evaluating
+tions to balance utility and cost when selecting viewpoints         each agent’s contribution, thereby improving collaborative
+for exploration [10], [11]. However, with constrained field-        policy development for multi-robot visual exploration.
+of-view (FoV) sensors, these methods struggle to efficiently
+evaluate large numbers of frontiers due to limited visibility.                     III. P ROBLEM F ORMULATION
+   In response, sampling-based methods have been proposed,             We consider the multi-agent indoor active SLAM problem,
+leveraging algorithms such as Rapidly-exploring Random              where a team of n agents must collaboratively explore
+Trees (RRT) [8], [12], Rapidly-exploring Random Graphs              an unknown indoor environment in the shortest time. The
+[13], and Probabilistic Random Maps (PRM) [14]. These               environment is modeled as a bounded occupancy grid map E
+techniques reduce computational overhead by evaluating              of size x×y, divided into free areas Ef and occupied areas Eo ,
+only sampled paths through stochastic processes rather than         such that Ef ∪Eo = E and Ef ∩Eo = ∅. Each agent i maintains
+exhaustively considering all possible viewpoints. However,          its own belief of the environment B i , while their combined
+they perform poorly when informative paths are difficult            belief is denoted as B, consisting of free areas Bf , occupied
+to sample, especially with constrained FoV. Additionally,           areas Bo , and unknown areas Bu , where Bf ∪ Bo ∪ Bu = B.
+methods like Artificial Potential Fields (APF) have been            The known areas are represented by Bk = Bf ∪ Bo .
+applied to multi-robot exploration by guiding robots toward            Every agent is equipped with a sensor that has a con-
+frontiers based on the occupancy grid and a resistance force        strained FoV, capturing observations within its line-of-sight
+for each agent [15]. APF tends to make robots face nearby           range. These sensors update the belief state B i of agent
+frontiers, which can lead to inefficient local exploration          i with information from its visible environment, assuming
+in constrained FoV scenarios. Voronoi-based methods [16]            they are effective within a fixed sensing range and FoV. At
+assign exploration partitions to each robot to minimize             time t, the sensor observation ζ i (t) updates the belief states
+redundancy but focus on short-term planning, limiting their         Bo , Bf , and Bu . For deriving these belief states, we use a
+ability to handle complex multi-agent interactions.                 2D sector footprint to approximate the sensor’s constrained
+Fig. 2: MARVEL’s policy and critic network architecture. We proposed a policy and critic network that leverage on graph-based
+attention. In the graphs, blue circles indicates the nodes that are connected by edges, indicates as tan lines. We also extract the frontiers
+(red dots) distribution of each nodes to provide more context to our neural networks.
+
+FoV, similar to [5]. We also assume perfect communication               A. Multi-robot exploration as a RL problem
+between agents, allowing them to exchange information and
+maintain a shared map throughout the task.                                 Sequential Decision-Making: Multi-robot visual explo-
+                                                                        ration involves a sequential decision-making process where
+A. Problem Statement                                                    agents make decisions to maximize collective information
+   We task n agents to coordinate their trajectories Ψ =                gain and minimize redundant exploration. At each time step,
+{ψ1 , ..., ψn } to complete exploration of the unknown envi-            agents choose actions based on partial observations to plan
+ronment in the shortest trajectory. ψ i represent the trajectory        paths that cover unknown areas efficiently. Each robot’s path
+of agent i, where ψ i (t) represents the agent trajectory at            is a sequence of viewpoints, denoted as ψ i = (v1i , . . . , vti ),
+timestep t. The rate of exploration ρ in an environment                 where vti ∈ Ef represents the robot’s viewpoint at step t.
+is defined as the proportion of Bf to Ef . In practice,                    We start by uniformly sampling potential viewpoints Vt =
+we considered the environment to be fully explored, when                (v0 , v1 , . . . ), with vt = (xt , yt ) ∈ Bf , and connect them with
+ρ reaches a certain threshold, i.e. 0.99. While executing               collision-free edges Et = {(vi , vi+1 ) | i = 1, . . . , t − 1},
+ψ, each individual robot updates its belief B i concerning              forming a graph Gt = (Vt , Et ). At each timestep, agents
+the environment using measurements ζ i (t) collected by its             select and execute actions, appending new nodes to Gt when
+onboard constrained FoV sensor. The problem at hand is                  new areas are discovered. This graph models the environ-
+to determine the optimal set of trajectories, denoted as Ψ∗ ,           ment’s connectivity and navigability. During training, agents
+where the objective is to minimize the cost C(ψ) (e.g., the             build their trajectories ψ i (t) = (v1i , . . . , vti ) as they reach
+trajectory length L(ψ) or makespan T (ψ)) of the exploration            selected viewpoints, and during execution, new viewpoints
+path, i.e., find                                                        are computed at their planning frequency.
+                                                                           Observation: The observation ot = (G′t , Ψt , Ft ) includes
+                               X
+                  Ψ∗ = arg min     max C(ψ)                  (1)
+                            Ψ      t
+                                        i
+                                                                        the informative graph G′t and the current positions of all
+   Note that we optimize the total maximum distance traveled            agents Ψt , which together represent environmental structure
+per step and assume synchronized decision-making during                 and agent distribution. We introduce Ft , a set of frontier
+training, meaning all agents must reach their viewpoints                distributions around each node in Vt . This distribution is
+simultaneously. This represents a worst-case scenario in                captured by sampling 36 uniformly spaced FoVs around
+terms of coordination complexity. However, our method nat-              each node and recording the normalized value of observable
+urally handles real-world asynchronous execution, ensuring              frontiers within each FoV. We derive G′t = (Vt′ , Et ) from
+flexibility and efficiency in practical applications.                   Gt to enrich the neural network’s input. Each node vk′ ∈ V ′
+                                                                        has the following properties (∆xik , ∆yik , uk , ok , gk , hk ): (1)
+                         IV. M ETHOD                                    Relative position (∆xik , ∆yik ), the node’s position relative
+   In this section, we formulate multi-robot exploration with           to agent k. (2) Utility uk , the number of visible frontiers at
+constrained FoV as a RL problem and present our proposed                node vk , defined by observable frontiers within sensor range
+attention-based policy and critic neural networks, along with           ds and an unobstructed line of sight. (3) Agent occupancy
+the specifics of our training approach.                                 ok , a ternary signal indicating if vk is occupied by the current
+                                                                        Encoder: Our encoder leverages a sequence of masked
+                                                                     self-attention layers to enhance the feature representations of
+                                                                     each node by integrating information from other nodes within
+                                                                     the graph. We begin by applying a feed-forward layer to
+                                                                     transform the node properties in Vt′ into d-dimensional node
+                                                                     features hn1 . We apply 1D convolutions to Ft that encodes the
+Fig. 3: Train/Test environments. Green box: the starting region,     frontier distribution for each node individually to get frontier
+which is kept constant for all evaluations conducted.                features hn2 . This vector captures the node-specific frontier
+                                                                     data, and extract local patterns and relationships within the
+agent, another robot, or no robot. (4) Guidepost signal gk , a       node’s frontier distribution. The resulting node features hn1
+binary signal indicating if vk is on the A* path to the nearest      and frontier features hn2 are concatenated, then projected
+frontier. This signal has been demonstrated to significantly         back to d-dimensional space via a linear layer, to obtain
+improve the agent’s navigation ability, particularly when the        node features hn . These features are then processed through
+nearest frontier is distant [32]. (5) Informative heading hk ,       N stacked self-attention layers (with N =6 in our implemen-
+the orientation which maximizes the observable frontiers             tation), where each layer’s input is the output of the previous
+within the agent’s FoV. We normalize these node features             one (i.e., hq = hk,v = hn ). We apply a graph’s mask
+before inputting them into the policy network, to improve            Mt , computed from the adjacency matrix of Et , to ensures
+learning dynamics.                                                   that each node only attends to features of its neighboring
+   Action space: The agent’s action space includes neighbor-         nodes (i.e., attention weigh,t wij = 0, ∀(vi , vj ) ∈   / Et ).
+ing nodes (vj , ψi (t)) ∈ Et , with the next state ψi (t+1) = vj .   While attention is restricted to neighboring nodes at each
+To manage the large action space, we use an action pruning           layer, nodes still gather non-neighboring node information
+strategy based on information gain. For each neighboring             by progressively aggregating features across the stacked
+node, we identify x best headings a based on the number              self-attention layers. Unlike unmasked self-attention, our
+of observable frontiers, forming joint action pairs (vj , aq ) |     structured approach enhances path-finding performance by
+aq ∈ a1 , a2 , . . . , ax . We set x to 3. When no frontiers are     iteratively refining features through local connections. This
+observable, we use the A* path from guidepost gk to sample           enables the encoder to transform hn into h̃n , where node rep-
+headings, aligning with the path if vj is on it, or pointing         resentations capture broader graph dependencies influenced
+to the nearest A* node otherwise. Once agents reach their            by Mt and the attention depth N .
+viewpoints Ψt , our graph attention networks, parameterized
+by θ, generate stochastic policies πθ (ai,t |oi,t ). Agents then        Policy decoder: The decoder determines the final policy
+move to their viewpoints, update their maps, and if multiple         using the enhanced node features h̃n . From these features,
+agents select the same viewpoint, a coordination mechanism           we select the node at the robot’s current position as the
+reroutes them to the nearest nodes. During training, a motion        query: hq = hc = h̃nψi (t) . The current node features hc ,
+model ensures smooth rotation and adjusts heading goals if           along with neighboring node features from h̃ne , are input
+actions become dynamically unfeasible. Agents move at a              into an attention layer. This process refines the output h̃c
+constant velocity of 1m/s with a maximum yaw rate of 35◦ /s.         by incorporating information from neighboring nodes. To
+   Reward structure: We designed a reward function to                improve the decoder’s awareness of the local environment,
+optimize the objective in (1), defined as ri = ro + a ·              we compute two orientation-specific features for each vj : We
+rh + rt + rf . This function incorporates: ro , the reward           first discretize the heading space into 36 uniform bins, where
+based on the number of observable frontiers from the new             each bin represents a distinct heading. Then we compute
+viewpoint; rh , the heading reward, calculated as the cosine         a binary feature vector based on the heading space for
+of the angle deviation from the A* path towards the nearest          each aq of vj , indicating whether the heading falls within
+frontier, scaled by a factor aa (set to 0.3); rt , a team-shared     the FoV centered on aq . The second is another 36-bin
+reward for the total number of frontiers observed by the team,       vector that tracks the previously explored headings of vj .
+where ro and rt are normalized by the maximum observable             This data is then processed through feed-forward layers to
+frontiers within the field of view; and rf , a reward of +10         produce the corresponding embedding, hha and hhe . Since h̃n
+for task completion when the cumulative utility of nodes             pertains solely to waypoints and does not include heading
+reaches 0. This reward structure encourages agents to explore        information, we replicate each neighboring node feature x
+new areas effectively and prioritize task completion while           times, to generate joint action pairs. Then, we concatenate
+ensuring smooth trajectory planning.                                 the expanded h̃n with hha and hhe and then projected back
+                                                                     to d-dimensional space via a feed-forward layer to get
+B. Network Architecture                                              heading enhanced neighboring features h̃ne . We then apply
+   Our policy network (Fig. 2) utilizes an encoder-decoder           a single-head attention mechanism with h̃c and its enhanced
+architecture with stacked masked attention. The encoder              neighboring features h̃ne , using the resulting attention scores
+refines node features in G′t , which, combined with the robot’s      directly as the final output policy πθ = (ai,t | oi,t ) = wi,j .
+current location features, are fed to the decoder to generate        This policy guides the agent in selecting the next viewpoint
+waypoint-heading policies.                                           (vj , aq ). Its design removes the constraint of a fixed policy
+TABLE I: Comparison with baseline multi-robot planners. We report the average and standard deviation of the trajectory length to
+complete exploration, to complete 90% exploration of the environment as well as the overlap ratio and sucess rate. All tests are conducted
+with 120◦ FoV and sensor range ds = 10m. The downward arrow indicates that lower values are better.
+  Agents            Metrics               Nearest              MMPF                 NBVP             Learnt-Greedy         MARVEL
+              Trajectory Length. ↓   637.84(±103.85)      597.91(±123.12)      533.94(±91.63)      665.36(±134.11)      505.25(±89.03)
+     2         90% Coverage ↓         529.49(±96.97)      536.73(±115.03)      440.95(±88.20)      447.32(±106.44)      416.44(±84.62)
+                Overlap Ratio ↓       0.684(±0.097)        0.023(±0.101)       0.113(±0.212)        0.081(±0.183)        0.048(±0.137)
+                 Success rate ↑             98                   45                  82                   73                  100
+              Trajectory Length. ↓    417.92(±89.76)       427.30(±86.46)      416.50(±80.35)       433.03(±96.89)       357.5(±67.07)
+     4         90% Coverage ↓         346.50(±80.11)       358.56(±83.64)      329.75(±81.73)       318.46(±95.15)      294.21(±62.45)
+                Overlap Ratio ↓       0.693(±0.096)        0.075(±0.143)       0.246(±0.214)         0.191(±0.187)       0.170(±0.169)
+                 Success rate ↑             99                   95                  100                   92                 100
+              Trajectory Length. ↓    319.57(±73.66)       311.21(±74.89)      318.99(±59.40)      333.73(±109.30)      279.35(±50.63)
+     8         90% Coverage ↓         266.04(±69.99)       279.76(±65.51)      252.08(±56.19)      256.40(±67.84)       231.54(±46.40)
+                Overlap Ratio ↓       0.671(±0.109)        0.172(±0.198)       0.401(±0.199)        0.306(±0.177)        0.316(±0.174)
+                 Success rate ↑             99                   100                 98                   98                  100
+
+         TABLE II: Adaptability to different sensor’s FoV. All tests are conducted with 4 agents and sensor range ds = 10m.
+   FoV             Metrics                Nearest              MMPF                NBVP             Learnt-Greedy          MARVEL
+             Trajectory Length. ↓    414.64(±82.28)       472.92(±87.65)      455.28(±82.03)       511.77(±103.13)      378.99(±57.61)
+   90◦        90% Coverage ↓         347.46(±84.07)       388.45(±80.47)      362.53(±85.70)       366.97(±102.75)      313.67(±54.57)
+               Overlap Ratio ↓       0.594(±0.125)        0.059(±0.130)        0.203(±0.199)        0.180(±0.181)       0.147(±0.155)
+                Success rate ↑             97                   90                   98                   94                  100
+             Trajectory Length. ↓    422.80(±108.04)      389.08(±89.53)      380.55(±84.31)       424.74(±105.14)      328.36(±61.31)
+  180◦        90% Coverage ↓          348.05(±95.57)      320.36(±70.86)      320.88(±83.17)        315.65(±83.23)      273.18(±59.95)
+               Overlap Ratio ↓        0.807(±0.124)       0.098(±0.175)        0.321(±0.228)        0.216(±0.189)       0.207(±0.183)
+                Success rate ↑              99                  96                   99                   97                  100
+
+size, allowing dynamic adaptation to varying numbers of               policy and critic networks. The target critic network updates
+neighboring nodes.                                                    every 256 steps. Complete code and model are available at
+                                                                      https://github.com/marmotlab/MARVEL.
+   Critic decoder: We developed our critic network, based
+on [32], to selectively extract pertinent information for each                                 V. E XPERIMENTS
+agent by incorporating other agents’ actions. The critic              A. Comparison Analysis
+network Qϕ , parameterized by ϕ, utilizes the same encoder
+structure as the policy network πθ but features a distinct               Many prior studies evaluate exploration planners in a
+decoder. During training, the critic receives full ground-            limited number of scenarios, often fewer than 10. However,
+truth information, such as the entire map or graph (see               we observed that performance can vary significantly across
+Fig. 2), enhancing training stability through privileged learn-       different scenarios, necessitating evaluation across a broad
+ing. Using the enhanced node features h̃n from the encoder,           range of environments. Therefore, we test our model and
+we retrieve the features of other agents, h̃nψ−i (t) , and their      baselines in 100 unseen environments. We compare MAR-
+                                                                      VEL with the following baselines: Nearest [9], which selects
+corresponding features at the next timestep, h̃nψ−i (t+1) , based
+                                                                      the nearest frontier as the global goal using a merged map
+on their current actions at . These key-value pairs augment
+                                                                      of all agents; MMPF [15], which computes a potential field
+the current node feature hc with other agents’ actions, aiding
+                                                                      based on the explored map and agent positions, guiding
+credit assignment.. The enhanced current node features h̃c
+                                                                      agents to frontiers via steepest descent, with a resistance
+are combined with enhanced neighboring features h̃ne , com-
+                                                                      force to prevent redundancy. To decrease the computation
+puted in the same manner as in the policy decoder. Finally,
+                                                                      complexity, frontiers will be gathered into multiple clusters.
+these concatenated features are mapped to state-action values
+                                                                      In each iteration, agents will select the smallest potential
+Qϕ (st , at ) using a feed-forward layer. The networks are
+                                                                      cluster as their target; NBVP [8], which samples and eval-
+trained using soft actor-critic (SAC) algorithm [33].
+                                                                      uates trajectories based on information gain, executing the
+   Training details: We use a training dataset of 5,663               most optimal one; and Learnt-Greedy [34], which employs
+randomly generated large-scale maps (see Fig. 3) and an               deep reinforcement learning with graph-based attention to
+additional 100 unseen maps for testing. Each environment              select the next sampling location, adapted for multi-agent
+measures 90m by 90m with 4 agents, a sensor range of                  systems with greedy headings based on observable frontiers.
+ds = 10m, and a 120◦ FoV. Training parameters include                    We present the average and variance of trajectory length
+a maximum episode length of 128 steps, a discount factor              of complete exploration (99% coverage), 90% coverage,
+of γ = 1, a batch size of 256, and an episode buffer size of          overlap ratio and success rate in Table I. The overlap ratio
+10,000. Training starts after accumulating over 2,000 steps in        quantifies the shared sensing area among agents per timestep,
+the buffer. We set the target entropy to 0.01 · log(k), perform       indicating collaborative efficiency. 90% coverage refers to
+one iteration per training step after each episode, and use           the maximum distance required for agents to explore 90%
+the Adam optimizer with a learning rate of 10−5 for both              of the environment, with lower values indicating higher
+TABLE III: Adaptability to different sensor ranges. All tests are
+conducted with 4 agents and 120◦ FoV.
+         Metrics                12m                 15m
+   Trajectory Length ↓    299.57(±60.33)       258.35(±54.96)
+    90% Coverage ↓         247.93(±58.7)       212.85(±49.5)
+     Overlap Ratio ↓       0.223(±0.188)       0.208(±0.190)
+
+efficiency. Success rate measures the percentage of tests
+where agents achieve 99% coverage within 128 timesteps.
+Our results show that MARVEL outperforms all baselines
+in average trajectory length, surpassing the best baseline,
+NBVP, by 14.2% with four agents. Additionally, MARVEL
+achieved the highest success rate across all test scenarios,
+                                                                    Fig. 4: Experimental validation on four nano drones. The grey
+attaining a perfect 100% success rate in all tests, which           mat demarcates the 4m by 4m flying arena.
+highlights its robustness. MARVEL also demonstrates supe-
+                                                                    conditions. Additionally, we tested the model with different
+rior stability with the lowest variance in trajectory metrics,
+                                                                    sensor ranges, as shown in Table III. Originally trained
+highlighting its strong generalization. Computation times
+                                                                    with ds = 10m, the model successfully utilized extended
+are not included as the baselines were not optimized for
+                                                                    ranges of ds = 12m and 15m, achieving notable performance
+efficiency, focusing instead on their core implementations.
+                                                                    gains, and maintaining a 100% success rate. This adaptability
+   In terms of overlap ratio, MARVEL ranks second in
+                                                                    without retraining highlights the model’s resilience to sensor
+most tests, with MMPF emerging as the top performer.
+                                                                    changes and its ability to effectively use additional sensory
+This is expected, as MMPF’s design naturally disperses
+                                                                    data, making it suitable for diverse environments.
+agents using strong repulsive forces when agents are in
+close proximity, encouraging them to explore independently.         C. Experimental Validation
+Despite this, MARVEL demonstrates superior multi-agent                 To assess MARVEL’s potential for real-world deployment,
+coordination, excelling in trajectory metrics. In contrast, the     we conducted experiments with Crazyflie 2.1 drones in a 4m
+Nearest method perform poorly, likely due to their short-           by 4m arena (see Fig. 4). Using the swarm manager from
+sighted strategies, which is more prominent in our large-scale      [35], we simulated sensor coverage based on the drones’
+environments. Also, MMPF’s focus on local exploration               real-time positions, enabling live virtual mapping tests to
+further hinders effective agent coordination. NBVP faces            be conducted. These experiments confirmed that MARVEL
+challenges in larger environments due to its sampling-based         can be successfully implemented on physical hardware and
+approach, and while increasing its sampling rate could im-          adapts well to the motion dynamics of the drones.
+prove performance, it comes with high computational costs.
+In comparison, MARVEL achieves consistent computation                                    VI. C ONCLUSION
+times under 0.2s per decision across all scenarios.                    In this work, we introduce a neural framework tailored
+   Upon closer inspection, we noticed that learnt-greedy            for multi-robot exploration with constrained field-of-view
+methods delivers faster coverage of 90% of the environment          (FoV) sensors in large-scale environments. Our approach
+than nearest and MMPF, indicating the strong performance of         employs a graph attention network, with intelligent fusion
+graph-based attention networks in learning spatial relation-        of frontier and orientation features, to enhance environmen-
+ship for exploration tasks. However, this method struggles          tal understanding and allow agents to produce non-myopic
+with small scattered frontiers, produced due to suboptimal          decisions. In particular, MARVEL handles the extensive
+viewpoint orientations, leading to repeated revisits and longer     action space of viewpoint planning using an information-
+trajectories for task completion. As a result, learnt-greedy        driven action pruning method. Our evaluations show that
+do not perform well when comparing the trajectory length            MARVEL outperforms existing state-of-the-art multi-agent
+for task completion. In contrast, MARVEL’s attention-based          exploration planners, adapts well to different team sizes
+neural network, with intelligent fusion of frontiers and orien-     and sensor configurations (i.e., FoV and sensor range), and
+tation information, enhances the environmental understand-          performs reliably across diverse environments. Additionally,
+ing and provides efficient reasoning about large partial maps,      MARVEL has been successfully validated on real drones,
+enabling non-myopic viewpoints planning.                            demonstrating its potential for deployment on actual robots.
+                                                                       While MARVEL excels in 2D indoor settings, we ac-
+B. Adaptability to different sensor configurations                  knowledge the added complexity of 3D environments with
+   We extensively evaluated our models across various FoV           intricate obstacles. To address this, we plan to extend
+configurations, as detailed in Table II, to understand the          MARVEL to handle full 3D action spaces by integrating
+impact of sensor parameters on performance. By avoiding re-         height information and associated FoV changes, thereby
+training with different FoV settings, we isolated performance       enhancing its application on platforms such as drones for
+variations to sensor differences. Our method consistently out-      indoor mapping. There, to ensure efficient 3D exploration,
+performed all baselines in trajectory metrics, demonstrating        we plan to employ a sparse graph representation to manage
+robust and efficient exploration planning under varying FoV         computational demands effectively.
+                            R EFERENCES                                            environments,” in 2018 IEEE international conference on robotics and
+                                                                                   automation (ICRA). IEEE, 2018, pp. 7548–7555.
+ [1] P. Petracek, V. Kratky, M. Petrlik, T. Baca, R. Kratochvil,              [19] H. Li, Q. Zhang, and D. Zhao, “Deep reinforcement learning-based
+     and M. Saska, “Large-scale exploration of cave environments by                automatic exploration for navigation in unknown environment,” IEEE
+     unmanned aerial vehicles,” vol. 6, no. 4, pp. 7596–7603, 2021.                transactions on neural networks and learning systems, vol. 31, no. 6,
+     [Online]. Available: https://ieeexplore.ieee.org/document/9492802/            pp. 2064–2076, 2019.
+ [2] A. Kleiner, J. Prediger, and B. Nebel, “RFID technology-                 [20] A. Mousavian, A. Toshev, M. Fišer, J. Košecká, A. Wahid, and
+     based exploration and SLAM for search and rescue,” in 2006                    J. Davidson, “Visual representations for semantic target driven naviga-
+     IEEE/RSJ International Conference on Intelligent Robots and                   tion,” in 2019 International Conference on Robotics and Automation
+     Systems. IEEE, 2006, pp. 4054–4059. [Online]. Available: http:                (ICRA), 2019, pp. 8846–8852.
+     //ieeexplore.ieee.org/document/4059043/                                  [21] J. F. Henriques and A. Vedaldi, “Mapnet: An allocentric spatial
+ [3] S. Isler, R. Sabzevari, J. Delmerico, and D. Scaramuzza, “An                  memory for mapping environments,” in 2018 IEEE/CVF Conference
+     information gain formulation for active volumetric 3d reconstruction,”        on Computer Vision and Pattern Recognition, 2018, pp. 8476–8484.
+     in 2016 IEEE International Conference on Robotics and Automation         [22] D. S. Chaplot, D. Gandhi, S. Gupta, A. Gupta, and R. Salakhutdinov,
+     (ICRA). IEEE, 2016, pp. 3477–3484. [Online]. Available: http:                 “Learning to explore using active neural slam,” in International
+     //ieeexplore.ieee.org/document/7487527/                                       Conference on Learning Representations (ICLR), 2020.
+ [4] J. A. Placed, J. Strader, H. Carrillo, N. Atanasov, V. Indelman,         [23] C. Yu, X. Yang, J. Gao, H. Yang, Y. Wang, and Y. Wu, “Learning
+     L. Carlone, and J. A. Castellanos, “A survey on active simultaneous           efficient multi-agent cooperative visual exploration,” in Computer
+     localization and mapping: State of the art and new frontiers,” IEEE           Vision – ECCV 2022. Cham: Springer Nature Switzerland, 2022,
+     Transactions on Robotics, vol. 39, no. 3, pp. 1686–1705, 2023.                pp. 497–515.
+ [5] B. Zhou, H. Xu, and S. Shen, “Racer: Rapid collaborative explo-          [24] S. Gronauer and K. Diepold, “Multi-agent deep reinforcement
+     ration with a decentralized multi-uav system,” IEEE Transactions on           learning: a survey,” vol. 55, no. 2, pp. 895–943, 2022. [Online].
+     Robotics, vol. 39, no. 3, pp. 1816–1835, 2023.                                Available: https://link.springer.com/10.1007/s10462-021-09996-w
+ [6] B. Yamauchi, “A frontier-based approach for autonomous exploration,”     [25] P. Sunehag, G. Lever, A. Gruslys, W. M. Czarnecki, V. Zambaldi,
+     in Proceedings 1997 IEEE International Symposium on Computational             M. Jaderberg, M. Lanctot, N. Sonnerat, J. Z. Leibo, K. Tuyls, and
+     Intelligence in Robotics and Automation CIRA’97. ’Towards New                 T. Graepel, “Value-decomposition networks for cooperative multi-
+     Computational Principles for Robotics and Automation’, 1997, pp.              agent learning based on team reward,” in Proceedings of the 17th
+     146–151.                                                                      International Conference on Autonomous Agents and MultiAgent Sys-
+ [7] W. Burgard, M. Moors, D. Fox, R. Simmons, and S. Thrun, “Collabo-             tems, ser. AAMAS ’18. Richland, SC: International Foundation for
+     rative multi-robot exploration,” in Proceedings 2000 ICRA. Millennium         Autonomous Agents and Multiagent Systems, 2018, p. 2085–2087.
+     Conference. IEEE International Conference on Robotics and Automa-        [26] I.-J. Liu, U. Jain, R. A. Yeh, and A. Schwing, “Cooperative exploration
+     tion. Symposia Proceedings (Cat. No.00CH37065), vol. 1, 2000, pp.             for multi-agent deep reinforcement learning,” in Proceedings of the
+     476–481 vol.1.                                                                38th International Conference on Machine Learning, ser. Proceedings
+ [8] A. Bircher, M. Kamel, K. Alexis, H. Oleynikova, and R. Siegwart,              of Machine Learning Research, M. Meila and T. Zhang, Eds., vol.
+     “Receding horizon ”next-best-view” planner for 3d exploration,” in            139. PMLR, 18–24 Jul 2021, pp. 6826–6836. [Online]. Available:
+     2016 IEEE International Conference on Robotics and Automation                 https://proceedings.mlr.press/v139/liu21j.html
+     (ICRA), 2016, pp. 1462–1468.                                             [27] S. Iqbal and F. Sha, “Coordinated exploration via intrinsic rewards
+ [9] B. Yamauchi, “Frontier-based exploration using multiple robots,” in           for multi-agent reinforcement learning,” 2021. [Online]. Available:
+     Proceedings of the Second International Conference on Autonomous              https://arxiv.org/abs/1905.12127
+     Agents, ser. AGENTS ’98. New York, NY, USA: Association                  [28] Q. Long, Z. Zhou, A. Gupta, F. Fang, Y. Wu, and X. Wang, “Evo-
+     for Computing Machinery, 1998, p. 47–53. [Online]. Available:                 lutionary population curriculum for scaling multi-agent reinforcement
+     https://doi.org/10.1145/280765.280773                                         learning,” in International Conference on Learning Representations,
+[10] M. Juliá, A. Gil, and O. Reinoso, “A comparison of path planning             2020.
+     strategies for autonomous exploration and mapping of unknown             [29] W. Wang, T. Yang, Y. Liu, J. Hao, X. Hao, Y. Hu, Y. Chen, C. Fan,
+     environments,” vol. 33, no. 4, pp. 427–444, 2012. [Online]. Available:        and Y. Gao, “From few to more: Large-scale dynamic multiagent
+     http://link.springer.com/10.1007/s10514-012-9298-8                            curriculum learning,” vol. 34, no. 5, pp. 7293–7300, 2020. [Online].
+[11] M. Kulich, J. Faigl, and L. Přeučil, “On distance utility in the            Available: https://ojs.aaai.org/index.php/AAAI/article/view/6221
+     exploration task,” in 2011 IEEE International Conference on Robotics     [30] C. Wakilpoor, P. J. Martin, C. Rebhuhn, and A. Vu, “Heterogeneous
+     and Automation. IEEE, 2011, pp. 4455–4460.                                    multi-agent reinforcement learning for unknown environment
+                                                                                   mapping,” 2020. [Online]. Available: https://arxiv.org/abs/2010.02663
+[12] A. N. Nazif, A. Davoodi, and P. Pasquier, Multi-Agent Area Coverage
+                                                                              [31] S. Iqbal and F. Sha, “Actor-attention-critic for multi-agent
+     Using a Single Query Roadmap: A Swarm Intelligence Approach,
+                                                                                   reinforcement learning,” in Proceedings of the 36th International
+     2011, pp. 95–112.
+                                                                                   Conference on Machine Learning, ser. Proceedings of Machine
+[13] T. Dang, M. Tranzatto, S. Khattak, F. Mascarich, K. Alexis, and
+                                                                                   Learning Research, vol. 97. PMLR, 09–15 Jun 2019, pp. 2961–2970.
+     M. Hutter, “Graph-based subterranean exploration path planning using
+                                                                                   [Online]. Available: https://proceedings.mlr.press/v97/iqbal19a.html
+     aerial and legged robots,” Journal of Field Robotics, vol. 37, no. 8,
+                                                                              [32] Y. Wang, Y. Cao, J. Chiun, S. Koley, M. Pham, and G. A. Sartoretti,
+     pp. 1363–1388, 2020.
+                                                                                   “Viper: Visibility-based pursuit-evasion via reinforcement learning,”
+[14] Z. Xu, D. Deng, and K. Shimada, “Autonomous uav exploration
+                                                                                   in 8th Annual Conference on Robot Learning, 2024.
+     of dynamic environments via incremental sampling and probabilistic
+                                                                              [33] P. Christodoulou, “Soft actor-critic for discrete action settings,” 2019.
+     roadmap,” IEEE Robotics and Automation Letters, vol. 6, no. 2, pp.
+                                                                                   [Online]. Available: https://arxiv.org/abs/1910.07207
+     2729–2736, 2021.
+                                                                              [34] Y. Cao, R. Zhao, Y. Wang, B. Xiang, and G. Sartoretti, “Deep
+[15] J. Yu, J. Tong, Y. Xu, Z. Xu, H. Dong, T. Yang, and Y. Wang,                  reinforcement learning-based large-scale robot exploration,” IEEE
+     “Smmr-explore: Submap-based multi-robot exploration system with               Robotics and Automation Letters, vol. 9, no. 5, pp. 4631–4638, 2024.
+     multi-robot multi-target potential field exploration method,” in 2021    [35] J. Chiun, Y. R. Tan, Y. Cao, J. Tan, and G. Sartoretti, “Star: Swarm
+     IEEE International Conference on Robotics and Automation (ICRA),              technology for aerial robotics research,” in 2024 24th International
+     2021, pp. 8779–8785.                                                          Conference on Control, Automation and Systems (ICCAS), 2024, pp.
+[16] J. Hu, H. Niu, J. Carrasco, B. Lennox, and F. Arvin, “Voronoi-                141–146.
+     based multi-robot autonomous exploration in unknown environments
+     via deep reinforcement learning,” IEEE Transactions on Vehicular
+     Technology, vol. 69, no. 12, pp. 14 413–14 423, 2020.
+[17] F. Niroui, K. Zhang, Z. Kashino, and G. Nejat, “Deep reinforcement
+     learning robot for search and rescue applications: Exploration in
+     unknown cluttered environments,” IEEE Robotics and Automation
+     Letters, vol. 4, no. 2, pp. 610–617, 2019.
+[18] D. Zhu, T. Li, D. Ho, C. Wang, and M. Q.-H. Meng, “Deep
+     reinforcement learning supervised autonomous exploration in office
+

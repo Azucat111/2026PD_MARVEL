@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MARVEL：用于大规模环境中受限视场多机器人探索的多智能体强化学习</title>
+  <style>
+    :root {
+      --paper: #f4efe3;
+      --panel: rgba(255, 252, 245, 0.88);
+      --panel-strong: #fffdf8;
+      --ink: #1f1b18;
+      --muted: #6b6258;
+      --accent: #8f3d28;
+      --accent-soft: rgba(143, 61, 40, 0.12);
+      --line: rgba(31, 27, 24, 0.12);
+      --shadow: 0 18px 40px rgba(40, 28, 20, 0.14);
+      --tooltip-shadow: 0 18px 42px rgba(20, 16, 12, 0.18);
+      --content-width: min(980px, calc(100vw - 32px));
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(143, 61, 40, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(114, 86, 52, 0.12), transparent 22%),
+        linear-gradient(180deg, #efe4cd 0%, var(--paper) 100%);
+      font-family: "Source Han Serif SC", "Noto Serif SC", "Songti SC", serif;
+      line-height: 1.9;
+    }
+    .shell { width: var(--content-width); margin: 0 auto; padding: 40px 0 72px; }
+    .masthead {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(255, 253, 248, 0.92), rgba(247, 240, 227, 0.86));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(2.1rem, 4vw, 3.4rem); line-height: 1.12; }
+    .subtitle { margin: 16px 0 0; max-width: 54rem; color: var(--muted); font-size: 1.05rem; }
+    .meta {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .meta span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(31, 27, 24, 0.08);
+    }
+    main {
+      margin-top: 26px;
+      padding: 34px clamp(18px, 3vw, 42px) 44px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    article { font-size: 1.04rem; }
+    section + section { margin-top: 34px; padding-top: 26px; border-top: 1px solid rgba(31, 27, 24, 0.08); }
+    h2, h3 { margin: 0 0 16px; line-height: 1.3; }
+    h2 { font-size: 1.55rem; }
+    h3 {
+      font-size: 1.05rem;
+      color: var(--accent);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    p { margin: 0 0 18px; }
+    .sentence {
+      position: relative;
+      border-radius: 0.35em;
+      padding: 0 0.08em;
+      transition: background-color 160ms ease, color 160ms ease;
+      cursor: help;
+      outline: none;
+    }
+    .sentence:hover, .sentence:focus-visible { background: var(--accent-soft); }
+    .sentence:focus-visible { box-shadow: 0 0 0 2px rgba(143, 61, 40, 0.28); }
+    figure {
+      margin: 28px 0;
+      padding: 18px;
+      border-radius: 20px;
+      background: var(--panel-strong);
+      border: 1px solid rgba(31, 27, 24, 0.08);
+    }
+    .figure-placeholder {
+      min-height: 140px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      border: 1px dashed rgba(31, 27, 24, 0.18);
+      background: linear-gradient(135deg, rgba(143, 61, 40, 0.06), rgba(114, 86, 52, 0.04));
+      color: var(--muted);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      text-align: center;
+      padding: 18px;
+    }
+    figcaption, caption { margin-top: 12px; color: var(--muted); font-size: 0.95rem; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--panel-strong);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid rgba(31, 27, 24, 0.08);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-weight: 600;
+      background: rgba(143, 61, 40, 0.08);
+    }
+    .tooltip {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      max-width: min(38rem, calc(100vw - 24px));
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 27, 24, 0.08);
+      background: rgba(28, 24, 20, 0.94);
+      color: #f9f5ed;
+      box-shadow: var(--tooltip-shadow);
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.55;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 140ms ease, transform 140ms ease;
+    }
+    .tooltip.is-visible { opacity: 1; transform: translateY(0); }
+    .tooltip-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #f2c8bc;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .note {
+      margin-top: 28px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(255, 255, 255, 0.52);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .ref { font-size: 0.96rem; }
+    .small { color: var(--muted); font-size: 0.96rem; }
+    @media (max-width: 720px) {
+      .shell { padding: 20px 0 42px; }
+      .masthead, main { border-radius: 20px; }
+      .meta { gap: 8px; }
+      article { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <p class="eyebrow">Chinese Reading Edition</p>
+      <h1>MARVEL：用于大规模环境中受限视场多机器人探索的多智能体强化学习</h1>
+      <p class="subtitle">原论文：MARVEL: Multi-Agent Reinforcement Learning for constrained field-of-View multi-robot Exploration in Large-scale environments</p>
+      <div class="meta">
+        <span>7 页论文</span>
+        <span>中文句对句阅读版</span>
+        <span>悬停查看英文原句</span>
+      </div>
+    </header>
+
+    <main>
+      <article>
+        <section>
+          <h2>摘要</h2>
+          <p><span class="sentence" tabindex="0" data-source="In multi-robot exploration, a team of mobile robot is tasked with efficiently mapping an unknown environments.">在多机器人探索中，一个移动机器人团队需要高效地对未知环境进行建图。</span><span class="sentence" tabindex="0" data-source="While most exploration planners assume omnidirectional sensors like LiDAR, this is impractical for small robots such as drones, where lightweight, directional sensors like cameras may be the only option due to payload constraints.">尽管大多数探索规划器都默认使用 LiDAR 这类全向传感器，但对于无人机等小型机器人而言，这种设定并不现实，因为受载荷限制，它们可用的往往只有相机等轻量级定向传感器。</span><span class="sentence" tabindex="0" data-source="These sensors have a constrained field-of-view (FoV), which adds complexity to the exploration problem, requiring not only optimal robot positioning but also sensor orientation during movement.">这类传感器具有受限视场（FoV），从而显著增加了探索问题的复杂性，因为系统不仅要优化机器人的位置，还要在移动过程中同时优化传感器朝向。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="In this work, we propose MARVEL, a neural framework that leverages graph attention networks, together with novel frontiers and orientation features fusion technique, to develop a collaborative, decentralized policy using multi-agent reinforcement learning (MARL) for robots with constrained FoV.">本文提出 MARVEL，这是一个神经网络框架，它结合图注意力网络以及新颖的前沿信息与朝向特征融合技术，利用多智能体强化学习（MARL）为受限视场机器人学习协同、去中心化策略。</span><span class="sentence" tabindex="0" data-source="To handle the large action space of viewpoints planning, we further introduce a novel information-driven action pruning strategy.">为应对视点规划中的大动作空间，我们进一步提出了一种基于信息驱动的动作裁剪策略。</span><span class="sentence" tabindex="0" data-source="MARVEL improves multi-robot coordination and decision-making in challenging large-scale indoor environments, while adapting to various team sizes and sensor configurations (i.e., FoV and sensor range) without additional training.">MARVEL 能在复杂的大规模室内环境中提升多机器人协同与决策能力，并且无需额外训练即可适配不同的团队规模和传感器配置（即 FoV 和传感器量程）。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Our extensive evaluation shows that MARVEL’s learned policies exhibit effective coordinated behaviors, outperforming state-of-the-art exploration planners across multiple metrics.">大量评估表明，MARVEL 学到的策略表现出有效的协同行为，并在多项指标上优于最先进的探索规划器。</span><span class="sentence" tabindex="0" data-source="We experimentally demonstrate MARVEL’s generalizability in large-scale environments, of up to 90m by 90m, and validate its practical applicability through successful deployment on a team of real drone hardware.">我们还在最大可达 90 米乘 90 米的大规模环境中实证展示了 MARVEL 的泛化能力，并通过成功部署到真实无人机集群上验证了其实际可用性。</span></p>
+          <figure>
+            <div class="figure-placeholder">图 1 占位：多机器人探索示意图<br/>原图展示 3 架无人机在室内环境中的协同探索过程</div>
+            <figcaption><span class="sentence" tabindex="0" data-source="Fig. 1: Illustration of multi-robot exploration. 3 drones are collaboratively exploring an indoor environment (blue region). The start region is indicated by the yellow star.">图 1：多机器人探索示意图。3 架无人机正在协同探索一个室内环境（蓝色区域），起始区域用黄色星标出。</span></figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>一、引言</h2>
+          <p><span class="sentence" tabindex="0" data-source="Robotic exploration is crucial for autonomous systems to navigate and map unknown environments, with applications ranging from search and rescue [1], [2] to scene reconstruction [3].">机器人探索对于自主系统在未知环境中导航与建图至关重要，其应用范围从搜救[1]、[2]到场景重建[3]不等。</span><span class="sentence" tabindex="0" data-source="Robots rely on on-board sensors for data collection, obstacle avoidance, and real-time decision-making to achieve efficient coverage.">机器人依赖机载传感器来完成数据采集、避障和实时决策，从而实现高效覆盖。</span><span class="sentence" tabindex="0" data-source="Multi-robot exploration, or multi-agent active SLAM [4], leverages multiple robots to enhance efficiency, scalability, and robustness compared to single-agent systems [5].">多机器人探索，也就是多智能体主动 SLAM[4]，相较单智能体系统[5]，能够借助多个机器人提升效率、可扩展性与鲁棒性。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="While most existing approaches use heavy omnidirectional sensors like LiDAR, smaller robots, such as drones, may only be able to carry lightweight, directional sensors (constrained field-of-view (FoV)) like cameras.">现有多数方法都使用 LiDAR 这类笨重的全向传感器，而无人机等小型机器人可能只能搭载相机这类轻量级、定向的受限视场传感器。</span><span class="sentence" tabindex="0" data-source="This paper introduces a framework for multi-robot exploration with constrained FoV sensors, which integrates deep multi-agent reinforcement learning with graph-based attention mechanisms.">本文提出了一个面向受限视场传感器的多机器人探索框架，将深度多智能体强化学习与基于图的注意力机制结合起来。</span><span class="sentence" tabindex="0" data-source="This framework enhances coordinated decision-making and exploration in complex indoor environments while accommodating diverse sensor configurations.">该框架能够在复杂室内环境中增强协同决策与探索能力，同时兼容多样化的传感器配置。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="The goal of multi-robot exploration is to plan the shortest trajectory to fully map/cover an unknown environment through efficient robot coordination.">多机器人探索的目标，是通过高效协同规划出最短轨迹，从而完整建图并覆盖未知环境。</span><span class="sentence" tabindex="0" data-source="Challenges include non-myopic decision-making, i.e., the need to optimize long-term information gain rather than immediate rewards, as well as adapting to dynamic environments that require ongoing coordination to effectively cover new areas.">其难点包括非短视决策，即需要优化长期信息增益而不是即时奖励；还包括对动态环境的适应，因为系统必须持续协同才能有效覆盖新区域。</span><span class="sentence" tabindex="0" data-source="Frontier-based approaches are widely used for both single- and multi-agent robotic exploration [6], [7], utilizing heuristics to guide robots toward frontiers—the boundaries between known and unknown areas (see Fig. 1).">基于前沿的策略被广泛用于单机器人和多机器人探索[6]、[7]，它们通过启发式方法引导机器人朝向前沿，也就是已知区域与未知区域之间的边界（见图 1）。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="These methods aim to balance utility (observable frontiers) and cost (path length) [8], but fall short in optimizing long-term exploration, often resulting in sub-optimal trajectories and inefficiencies due to the revisiting of previously explored regions.">这类方法试图在效用（可观测前沿）与代价（路径长度）之间取得平衡[8]，但它们难以优化长期探索，常因重复访问已探索区域而产生次优轨迹和效率损失。</span><span class="sentence" tabindex="0" data-source="This occurs because robots are always oriented towards their goal, which can fragment frontiers into smaller parts, increasing the likelihood of revisitation.">其原因在于机器人始终朝向目标，这会把前沿切分成更小的片段，从而提高重复访问的可能性。</span><span class="sentence" tabindex="0" data-source="Despite their adaptability and lack of training requirements, frontier-based methods frequently demand extensive, complex hyperparameter tuning, which limits their generalization to different environments.">尽管这类方法具有适应性强、无需训练等优点，但往往需要大量而复杂的超参数调节，这限制了它们在不同环境中的泛化能力。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="An alternative to frontier-based methods is using reinforcement learning (RL), where agents learn an exploration policy through deep neural networks that process raw sensory data.">与前沿方法相对的另一类方案是强化学习（RL），智能体通过处理原始传感数据的深度神经网络来学习探索策略。</span><span class="sentence" tabindex="0" data-source="Once trained, these policies enable robots to perform complex, real-time coordinated actions.">训练完成后，这些策略可以让机器人执行复杂的实时协同行动。</span><span class="sentence" tabindex="0" data-source="However, RL-based exploration faces several challenges: (1) Constrained FoV sensors further complicate viewpoint planning, as restricted visibility amplifies the already vast action space, making decision-making more challenging.">然而，基于 RL 的探索面临若干挑战：（1）受限视场传感器进一步复杂化了视点规划，因为受限可视性放大了本已巨大的动作空间，使决策更为困难。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="(2) Sparse rewards, typically granted when new areas are uncovered or specific goals are achieved, heighten the learning difficulties, as sensor constraints limit how often frontiers are detected.">（2）稀疏奖励通常只在发现新区域或达成特定目标时给出；由于传感器约束会限制前沿被检测到的频率，这进一步加大了学习难度。</span><span class="sentence" tabindex="0" data-source="(3) Reward assignment is also challenging, requiring careful attribution of reward to the viewpoints of individual robots within the team, complicating coordination learning and effective exploration.">（3）奖励分配同样困难，需要将奖励谨慎归因到团队中各个机器人的具体视点，这使协同学习和有效探索更加复杂。</span><span class="sentence" tabindex="0" data-source="(4) Addressing both spatial and temporal short-sightedness: robots with constrained FoV must balance exploiting their current viewpoint with exploring unknown regions, while factoring in the long-term consequences of their actions on the overall exploration process.">（4）系统还必须同时处理空间和时间上的短视问题：受限视场机器人既要利用当前视点，又要探索未知区域，同时还要考虑动作对整体探索过程的长期影响。</span></p>
+        </section>
+
+        <section>
+          <h2>二、相关工作</h2>
+          <p><span class="sentence" tabindex="0" data-source="Conventional Approaches The field of robotic exploration has progressed significantly since Yamauchi’s early work on frontier-based methods, which directed robots toward the nearest unexplored areas by orienting them toward the closest frontiers [6].">传统方法：机器人探索领域自 Yamauchi 的前沿方法早期工作以来取得了显著进展，该方法通过让机器人朝向最近前沿，把它们引导至最近的未探索区域[6]。</span><span class="sentence" tabindex="0" data-source="This approach was later extended to multi-robot systems using shared global maps [9].">这一思路后来被扩展到多机器人系统中，并使用共享全局地图[9]。</span><span class="sentence" tabindex="0" data-source="More advanced frontier-based techniques now incorporate gain functions to balance utility and cost when selecting viewpoints for exploration [10], [11].">更先进的前沿方法开始引入收益函数，在选择探索视点时平衡效用与代价[10]、[11]。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="However, with constrained field-of-view (FoV) sensors, these methods struggle to efficiently evaluate large numbers of frontiers due to limited visibility.">不过，在受限视场（FoV）传感器条件下，由于可视范围受限，这类方法难以高效评估大量前沿。</span><span class="sentence" tabindex="0" data-source="In response, sampling-based methods have been proposed, leveraging algorithms such as Rapidly-exploring Random Trees (RRT) [8], [12], Rapidly-exploring Random Graphs [13], and Probabilistic Random Maps (PRM) [14].">为此，研究者提出了基于采样的方法，利用快速扩展随机树（RRT）[8]、[12]、快速扩展随机图[13]以及概率路图（PRM）[14]等算法。</span><span class="sentence" tabindex="0" data-source="These techniques reduce computational overhead by evaluating only sampled paths through stochastic processes rather than exhaustively considering all possible viewpoints.">这些技术通过只评估随机采样路径而不是穷举所有可能视点，从而降低了计算开销。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="However, they perform poorly when informative paths are difficult to sample, especially with constrained FoV.">然而，当信息量充足的路径难以采样时，尤其是在受限视场条件下，它们表现不佳。</span><span class="sentence" tabindex="0" data-source="Additionally, methods like Artificial Potential Fields (APF) have been applied to multi-robot exploration by guiding robots toward frontiers based on the occupancy grid and a resistance force for each agent [15].">此外，人工势场（APF）方法也被用于多机器人探索，它根据占据栅格和每个智能体的阻力场把机器人引向前沿[15]。</span><span class="sentence" tabindex="0" data-source="APF tends to make robots face nearby frontiers, which can lead to inefficient local exploration in constrained FoV scenarios.">APF 往往让机器人面向附近前沿，这在受限视场场景下会导致低效的局部探索。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Voronoi-based methods [16] assign exploration partitions to each robot to minimize redundancy but focus on short-term planning, limiting their ability to handle complex multi-agent interactions.">基于 Voronoi 的方法[16]会给每个机器人分配探索分区以减少冗余，但它们侧重短期规划，处理复杂多智能体交互的能力有限。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Learning-based approaches mainly involve reinforcement learning (RL) as they offer training flexibility and strong expressivity of the environment.">基于学习的方法主要指强化学习（RL），因为它们具有训练灵活、环境表达能力强等优点。</span><span class="sentence" tabindex="0" data-source="Niroui et al. [17] proposed combining frontier-based methods with deep reinforcement learning, and adaptively tuning gain function parameters for frontier selection to enhance exploration performance.">Niroui 等人[17]提出将前沿方法与深度强化学习结合，并自适应调整前沿选择的收益函数参数，以提升探索性能。</span><span class="sentence" tabindex="0" data-source="Studies by [18], [19] utilized convolutional neural networks (CNNs) in their deep reinforcement learning frameworks.">文献[18]、[19]在其深度强化学习框架中采用了卷积神经网络（CNN）。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="There are also studies that explore incorporating spatial map memory into the network by utilizing a differentiable spatial memory [20], [21].">也有研究尝试通过可微空间记忆[20]、[21]将空间地图记忆融入网络。</span><span class="sentence" tabindex="0" data-source="A notable work for single-agent visual exploration is Active Neural Slam (ANS), where it combines a RL-based global planner with a planning-based local planner [22].">单智能体视觉探索中的一个代表性工作是 Active Neural SLAM（ANS），它将基于 RL 的全局规划器与基于规划的局部规划器结合起来[22]。</span><span class="sentence" tabindex="0" data-source="ANS has also been extended with a multi-agent planning module, leveraging a transformer-based architecture.">ANS 之后还被扩展出一个多智能体规划模块，并采用了基于 Transformer 的架构。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="This approach employs hierarchical self-attention mechanisms to capture spatial relationships and interactions between agents [23].">该方法使用层次化自注意力机制来捕捉智能体之间的空间关系和交互[23]。</span><span class="sentence" tabindex="0" data-source="However, all these studies have typically been limited in scope, i.e., they are usually confined to small-scale environments, which lacks complex topologies.">然而，这些研究通常都存在规模受限的问题，也就是大多局限于缺乏复杂拓扑结构的小规模环境。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Multi-agent reinforcement learning (MARL) has shown significant promise in complex cooperative tasks [24], with advancements such as value decomposition [25] aiding in credit assignment and intrinsic rewards [26], [27] addressing sparse rewards.">多智能体强化学习（MARL）在复杂协作任务中展现出巨大潜力[24]，其中值分解[25]有助于信用分配，内在奖励[26]、[27]则缓解了稀疏奖励问题。</span><span class="sentence" tabindex="0" data-source="Curriculum learning has also been utilized to progressively increase task complexity [28], [29].">课程学习也被用于逐步增加任务复杂度[28]、[29]。</span><span class="sentence" tabindex="0" data-source="However, optimizing multiple policies in MARL remains challenging compared to single-agent approaches, often requiring domain simplifications like grid worlds or particle simulations [30].">不过，与单智能体方法相比，MARL 中同时优化多个策略仍然具有挑战性，通常还需要网格世界或粒子仿真等领域简化[30]。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="To address these challenges, our work employs the centralized training with decentralized execution (CTDE) paradigm and introduces a multi-agent attentive critic algorithm, inspired by [31].">为应对这些挑战，本文采用集中训练、分散执行（CTDE）范式，并借鉴[31]提出了一种多智能体注意力评论家算法。</span><span class="sentence" tabindex="0" data-source="This approach enhances credit assignment by evaluating each agent’s contribution, thereby improving collaborative policy development for multi-robot visual exploration.">这种方法通过评估每个智能体的贡献来增强信用分配，从而改进多机器人视觉探索中的协同策略学习。</span></p>
+        </section>
+
+        <section>
+          <h2>三、问题定义</h2>
+          <p><span class="sentence" tabindex="0" data-source="We consider the multi-agent indoor active SLAM problem, where a team of nagents must collaboratively explore an unknown indoor environment in the shortest time.">我们考虑多智能体室内主动 SLAM 问题，其中一组 n 个智能体必须在最短时间内协同探索一个未知室内环境。</span><span class="sentence" tabindex="0" data-source="The environment is modeled as a bounded occupancy grid map E of size x×y, divided into free areas Efand occupied areas Eo, such that Ef∪Eo=EandEf∩Eo=∅.">环境被建模为一个大小为 x×y 的有界占据栅格地图 E，它被划分为自由区域 E_f 和占据区域 E_o，满足 E_f∪E_o=E 且 E_f∩E_o=∅。</span><span class="sentence" tabindex="0" data-source="Each agent i maintains its own belief of the environment Bi, while their combined belief is denoted as B, consisting of free areas Bf, occupied areasBo, and unknown areas Bu, where Bf∪ Bo∪ Bu=B.">每个智能体 i 都维护自己对环境的信念 B_i；所有智能体的联合信念记为 B，由自由区域 B_f、占据区域 B_o 和未知区域 B_u 构成，且 B_f∪B_o∪B_u=B。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="The known areas are represented by Bk=Bf∪ Bo.">已知区域记为 B_k=B_f∪B_o。</span><span class="sentence" tabindex="0" data-source="Every agent is equipped with a sensor that has a constrained FoV, capturing observations within its line-of-sight range.">每个智能体都配备一个具有受限 FoV 的传感器，可在视线范围内采集观测。</span><span class="sentence" tabindex="0" data-source="These sensors update the belief state Biof agent iwith information from its visible environment, assuming they are effective within a fixed sensing range and FoV.">在固定感知范围和 FoV 内，这些传感器会利用可见环境信息更新智能体 i 的信念状态 B_i。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="At timet, the sensor observation ζi(t)updates the belief states Bo,Bf, andBu.">在时刻 t，传感器观测 ζ_i(t) 会更新信念状态 B_o、B_f 和 B_u。</span><span class="sentence" tabindex="0" data-source="For deriving these belief states, we use a 2D sector footprint to approximate the sensor’s constrained FoV, similar to [5].">为推导这些信念状态，我们采用二维扇形覆盖区域来近似传感器的受限 FoV，方法类似于[5]。</span><span class="sentence" tabindex="0" data-source="We also assume perfect communication between agents, allowing them to exchange information and maintain a shared map throughout the task.">我们还假设智能体之间可以完美通信，从而在任务过程中交换信息并维护共享地图。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We task nagents to coordinate their trajectories Ψ = {ψ1, ..., ψ n}to complete exploration of the unknown environment in the shortest trajectory.">我们的任务是让 n 个智能体协调其轨迹 Ψ={ψ_1,…,ψ_n}，以最短轨迹完成对未知环境的探索。</span><span class="sentence" tabindex="0" data-source="ψirepresent the trajectory of agent i, where ψi(t)represents the agent trajectory at timestep t.">ψ_i 表示第 i 个智能体的轨迹，其中 ψ_i(t) 表示该智能体在时刻 t 的轨迹状态。</span><span class="sentence" tabindex="0" data-source="The rate of exploration ρin an environment is defined as the proportion of BftoEf.">环境中的探索率 ρ 被定义为 B_f 相对于 E_f 的比例。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="In practice, we considered the environment to be fully explored, when ρreaches a certain threshold, i.e. 0.99.">在实践中，当 ρ 达到某个阈值时，我们就认为环境已被完全探索，即 0.99。</span><span class="sentence" tabindex="0" data-source="While executing ψ, each individual robot updates its belief Biconcerning the environment using measurements ζi(t)collected by its onboard constrained FoV sensor.">在执行 Ψ 的过程中，每个机器人都会使用其机载受限 FoV 传感器采集的测量 ζ_i(t) 来更新自己对环境的信念 B_i。</span><span class="sentence" tabindex="0" data-source="The problem at hand is to determine the optimal set of trajectories, denoted as Ψ∗, where the objective is to minimize the costC(ψ)(e.g., the trajectory length L(ψ)or makespan T(ψ)) of the exploration path, i.e., find">当前问题是求出最优轨迹集合 Ψ*，其目标是最小化探索路径的代价 C(ψ)（例如轨迹长度 L(ψ) 或完工时间 T(ψ)），即求解</span><span class="sentence" tabindex="0" data-source="Ψ∗= arg minΨX tmax iC(ψ) (1)">Ψ* = arg min_Ψ Σ_{t}^{max_i} C(ψ)（式 1）。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Note that we optimize the total maximum distance traveled per step and assume synchronized decision-making during training, meaning all agents must reach their viewpoints simultaneously.">需要注意的是，我们优化的是每一步中所有智能体的最大总移动距离，并在训练时假设同步决策，也就是说所有智能体必须同时到达各自视点。</span><span class="sentence" tabindex="0" data-source="This represents a worst-case scenario in terms of coordination complexity.">从协同复杂度角度看，这相当于最坏情况。</span><span class="sentence" tabindex="0" data-source="However, our method naturally handles real-world asynchronous execution, ensuring flexibility and efficiency in practical applications.">不过，我们的方法能够自然处理现实中的异步执行，从而保证实际应用中的灵活性与效率。</span></p>
+        </section>
+
+        <section>
+          <h2>四、方法</h2>
+          <p><span class="sentence" tabindex="0" data-source="In this section, we formulate multi-robot exploration with constrained FoV as a RL problem and present our proposed attention-based policy and critic neural networks, along with the specifics of our training approach.">本节将受限 FoV 下的多机器人探索表述为强化学习问题，并介绍我们提出的基于注意力的策略网络与评论家网络，以及训练方法的具体细节。</span></p>
+          <h3>4.1 将多机器人探索建模为 RL 问题</h3>
+          <p><span class="sentence" tabindex="0" data-source="Sequential Decision-Making: Multi-robot visual exploration involves a sequential decision-making process where agents make decisions to maximize collective information gain and minimize redundant exploration.">顺序决策：多机器人视觉探索本质上是一个顺序决策过程，智能体需要在其中最大化集体信息增益并最小化冗余探索。</span><span class="sentence" tabindex="0" data-source="At each time step, agents choose actions based on partial observations to plan paths that cover unknown areas efficiently.">在每个时间步，智能体基于部分观测选择动作，以规划出能高效覆盖未知区域的路径。</span><span class="sentence" tabindex="0" data-source="Each robot’s path is a sequence of viewpoints, denoted as ψi= (vi1, . . . , vit), where vit∈ Efrepresents the robot’s viewpoint at step t.">每个机器人的路径都是一系列视点，记为 ψ_i=(v_i^1,…,v_i^t)，其中 v_i^t∈E_f 表示机器人在第 t 步的视点。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We start by uniformly sampling potential viewpoints Vt= (v0, v1, . . .), with vt= (xt, yt)∈ Bf, and connect them with collision-free edges Et={(vi, vi+1)|i= 1, . . . , t −1}, forming a graph Gt= (Vt, Et).">我们首先均匀采样潜在视点 V_t=(v_0,v_1,...)，其中 v_t=(x_t,y_t)∈B_f，然后用无碰撞边 E_t={(v_i,v_{i+1})|i=1,…,t-1} 将它们连接起来，形成图 G_t=(V_t,E_t)。</span><span class="sentence" tabindex="0" data-source="At each timestep, agents select and execute actions, appending new nodes to Gtwhen new areas are discovered.">在每个时间步，智能体选择并执行动作；当发现新区域时，新的节点会被追加到 G_t 中。</span><span class="sentence" tabindex="0" data-source="This graph models the environment’s connectivity and navigability.">该图刻画了环境的连通性和可导航性。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="During training, agents build their trajectories ψi(t) = ( vi1, . . . , vit)as they reach selected viewpoints, and during execution, new viewpoints are computed at their planning frequency.">训练期间，智能体在到达所选视点时逐步构建其轨迹 ψ_i(t)=(v_i^1,…,v_i^t)；在执行阶段，新视点则按照规划频率被计算出来。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Observation: The observation ot= (G′t,Ψt, Ft)includes the informative graph G′tand the current positions of all agents Ψt, which together represent environmental structure and agent distribution.">观测：观测 o_t=(G'_t,Ψ_t,F_t) 包含信息增强图 G'_t 以及所有智能体的当前位置 Ψ_t，它们共同表征环境结构和智能体分布。</span><span class="sentence" tabindex="0" data-source="We introduce Ft, a set of frontier distributions around each node in Vt.">我们引入 F_t，它表示 V_t 中每个节点周围的前沿分布集合。</span><span class="sentence" tabindex="0" data-source="This distribution is captured by sampling 36 uniformly spaced FoVs around each node and recording the normalized value of observable frontiers within each FoV.">该分布通过在每个节点周围采样 36 个均匀分布的 FoV，并记录每个 FoV 中可见前沿的归一化值来获得。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We derive G′t= (V′t, Et)from Gtto enrich the neural network’s input.">我们从 G_t 构造 G′_t=(V′_t,E_t)，以丰富神经网络输入。</span><span class="sentence" tabindex="0" data-source="Each node v′k∈V′has the following properties (∆xik,∆yik, uk, ok, gk, hk):">每个节点 v′_k∈V′ 都具有如下属性：(Δx_ik,Δy_ik,u_k,o_k,g_k,h_k)：</span><span class="sentence" tabindex="0" data-source="(1) Relative position (∆xik,∆yik), the node’s position relative to agent k.">（1）相对位置 (Δx_ik,Δy_ik)，即节点相对于智能体 k 的位置。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="(2) Utility uk, the number of visible frontiers at node vk, defined by observable frontiers within sensor range dsand an unobstructed line of sight.">（2）效用 u_k，表示节点 v_k 处可见前沿的数量，其定义为传感器量程 d_s 内且视线无遮挡的可观测前沿数。</span><span class="sentence" tabindex="0" data-source="(3) Agent occupancy ok, a ternary signal indicating if vkis occupied by the current agent, another robot, or no robot.">（3）智能体占用 o_k，一个三值信号，用于表示 v_k 是否被当前智能体、另一台机器人或无人占用。</span><span class="sentence" tabindex="0" data-source="(4) Guidepost signal gk, a binary signal indicating if vkis on the A* path to the nearest frontier.">（4）引导点信号 g_k，一个二值信号，表示 v_k 是否位于通往最近前沿的 A* 路径上。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="This signal has been demonstrated to significantly improve the agent’s navigation ability, particularly when the nearest frontier is distant [32].">已有研究表明，这一信号能显著提升智能体的导航能力，尤其是在最近前沿距离较远时[32]。</span><span class="sentence" tabindex="0" data-source="(5) Informative heading hk, the orientation which maximizes the observable frontiers within the agent’s FoV.">（5）信息性朝向 h_k，即在该节点处使智能体 FoV 内可观测前沿最大化的朝向。</span><span class="sentence" tabindex="0" data-source="We normalize these node features before inputting them into the policy network, to improve learning dynamics.">在送入策略网络之前，我们先对这些节点特征进行归一化，以改善学习过程。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Action space: The agent’s action space includes neighboring nodes (vj, ψi(t))∈Et, with the next state ψi(t+1) = vj.">动作空间：智能体的动作空间包含邻接节点 (v_j, ψ_i(t))∈E_t，对应下一状态 ψ_i(t+1)=v_j。</span><span class="sentence" tabindex="0" data-source="To manage the large action space, we use an action pruning strategy based on information gain.">为管理庞大的动作空间，我们采用基于信息增益的动作裁剪策略。</span><span class="sentence" tabindex="0" data-source="For each neighboring node, we identify xbest headings a based on the number of observable frontiers, forming joint action pairs (vj, aq)|aq∈a1, a2, . . . , a x.">对于每个邻接节点，我们根据可观测前沿的数量筛选出 x 个最佳朝向 a，并形成联合动作对 (v_j,a_q)，其中 a_q∈{a_1,a_2,…,a_x}。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We set xto 3.">我们将 x 设为 3。</span><span class="sentence" tabindex="0" data-source="When no frontiers are observable, we use the A* path from guidepost gkto sample headings, aligning with the path if vjis on it, or pointing to the nearest A* node otherwise.">当没有可观测前沿时，我们使用由引导点 g_k 生成的 A* 路径来采样朝向；如果 v_j 位于该路径上，则朝向与路径对齐，否则指向最近的 A* 节点。</span><span class="sentence" tabindex="0" data-source="Once agents reach their viewpoints Ψt, our graph attention networks, parameterized byθ, generate stochastic policies πθ(ai,t|oi,t).">一旦智能体到达其视点 Ψ_t，我们的图注意力网络（参数为 θ）就会生成随机策略 π_θ(a_{i,t}|o_{i,t})。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Agents then move to their viewpoints, update their maps, and if multiple agents select the same viewpoint, a coordination mechanism reroutes them to the nearest nodes.">随后，智能体移动到各自视点并更新地图；如果多个智能体选择了同一视点，则协调机制会将它们重路由到最近节点。</span><span class="sentence" tabindex="0" data-source="During training, a motion model ensures smooth rotation and adjusts heading goals if actions become dynamically unfeasible.">训练过程中，运动模型会保证平滑转向，并在动作因动态约束而不可行时调整朝向目标。</span><span class="sentence" tabindex="0" data-source="Agents move at a constant velocity of 1m/s with a maximum yaw rate of 35◦/s.">智能体以 1 m/s 的恒定速度移动，最大偏航角速度为 35°/s。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Reward structure: We designed a reward function to optimize the objective in (1), defined as ri=ro+a·rh+rt+rf.">奖励结构：我们设计了一个奖励函数来优化式（1）中的目标，定义为 r_i=r_o+a·r_h+r_t+r_f。</span><span class="sentence" tabindex="0" data-source="This function incorporates: ro, the reward based on the number of observable frontiers from the new viewpoint; rh, the heading reward, calculated as the cosine of the angle deviation from the A* path towards the nearest frontier, scaled by a factor aa (set to 0.3); rt, a team-shared reward for the total number of frontiers observed by the team, where roandrtare normalized by the maximum observable frontiers within the field of view; and rf, a reward of +10 for task completion when the cumulative utility of nodes reaches 0.">该函数包括：r_o，为新视点可观测前沿数量对应的奖励；r_h，为朝向奖励，按与通往最近前沿的 A* 路径之间角度偏差的余弦计算，并乘以系数 a（设为 0.3）；r_t，为团队共享奖励，表示团队观测到的前沿总数，其中 r_o 和 r_t 都按视场内最大可观测前沿数归一化；r_f，则是在节点累计效用降为 0 时给予的任务完成奖励 +10。</span><span class="sentence" tabindex="0" data-source="This reward structure encourages agents to explore new areas effectively and prioritize task completion while ensuring smooth trajectory planning.">这一奖励结构鼓励智能体有效探索新区域，并在保证轨迹平滑规划的同时优先完成任务。</span></p>
+          <h3>4.2 网络结构</h3>
+          <p><span class="sentence" tabindex="0" data-source="Our policy network (Fig. 2) utilizes an encoder-decoder architecture with stacked masked attention.">我们的策略网络（图 2）采用带堆叠掩码注意力的编码器-解码器架构。</span><span class="sentence" tabindex="0" data-source="The encoder refines node features in G′t, which, combined with the robot’s current location features, are fed to the decoder to generate waypoint-heading policies.">编码器先细化 G′_t 中的节点特征，再与机器人当前位置特征结合后送入解码器，生成视点-朝向策略。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Encoder: Our encoder leverages a sequence of masked self-attention layers to enhance the feature representations of each node by integrating information from other nodes within the graph.">编码器：我们的编码器使用一系列带掩码的自注意力层，通过整合图中其他节点的信息来增强每个节点的特征表示。</span><span class="sentence" tabindex="0" data-source="We begin by applying a feed-forward layer to transform the node properties in V′tinto d-dimensional node features hn1.">首先通过前馈层将 V′_t 中的节点属性变换为 d 维节点特征 h_n^1。</span><span class="sentence" tabindex="0" data-source="We apply 1D convolutions to Ftthat encodes the frontier distribution for each node individually to get frontier features hn2.">随后对编码每个节点前沿分布的 F_t 使用一维卷积，得到前沿特征 h_n^2。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="This vector captures the node-specific frontier data, and extract local patterns and relationships within the node’s frontier distribution.">该向量捕获了节点特定的前沿数据，并提取出节点前沿分布中的局部模式与关系。</span><span class="sentence" tabindex="0" data-source="The resulting node features hn1and frontier features hn2are concatenated, then projected back to d-dimensional space via a linear layer, to obtain node features hn.">最终将节点特征 h_n^1 与前沿特征 h_n^2 连接后，再通过线性层投影回 d 维空间，得到节点特征 h_n。</span><span class="sentence" tabindex="0" data-source="These features are then processed through Nstacked self-attention layers (with N=6 in our implementation), where each layer’s input is the output of the previous one (i.e., hq=hk,v=hn).">这些特征随后经过 N 层堆叠的自注意力层处理（在我们的实现中 N=6），其中每层输入都是前一层的输出（即 h_q=h_k=h_v=h_n）。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We apply a graph’s mask Mt, computed from the adjacency matrix of Et, to ensures that e...">我们使用从 E_t 邻接矩阵计算出的图掩码 M_t，以确保注意力仅在合法连边上计算。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Fig. 2: MARVEL’s policy and critic network architecture. We proposed a policy and critic network that leverage on graph-based attention. In the graphs, blue circles indicates the nodes that are connected by edges, indicates as tan lines. We also extract the frontiers (red dots) distribution of each nodes to provide more context to our neural networks.">图 2：MARVEL 的策略网络和评论家网络结构。我们提出的策略与评论家网络都利用了基于图的注意力机制。图中蓝色圆点表示通过棕色连线相互连接的节点；我们还提取了每个节点的前沿（红点）分布，为神经网络提供更多上下文。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Critic decoder: We developed our critic network, based on [32], to selectively extract pertinent information for each agent by incorporating other agents’ actions.">评论家解码器：我们基于[32]设计了评论家网络，通过纳入其他智能体的动作来选择性提取与每个智能体相关的信息。</span><span class="sentence" tabindex="0" data-source="The critic network Qϕ, parameterized by ϕ, utilizes the same encoder structure as the policy network πθbut features a distinct decoder.">评论家网络 Q_φ 由参数 φ 表示，其编码器结构与策略网络 π_θ 相同，但解码器不同。</span><span class="sentence" tabindex="0" data-source="During training, the critic receives full ground-truth information, such as the entire map or graph (see Fig. 2), enhancing training stability through privileged learning.">训练期间，评论家可接收完整真值信息，例如整张地图或整张图（见图 2），并通过特权学习提升训练稳定性。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Using the enhanced node features ˜hnfrom the encoder, we retrieve the features of other agents, ˜hnψ−i(t), and their corresponding features at the next timestep, ˜hnψ−i(t+1), based on their current actions at.">利用编码器输出的增强节点特征 ẑh_n，我们根据当前动作 a_t 检索其他智能体的特征 ẑh_{n,ψ−i(t)} 及其下一时刻对应特征 ẑh_{n,ψ−i(t+1)}。</span><span class="sentence" tabindex="0" data-source="These key-value pairs augment the current node feature hcwith other agents’ actions, aiding credit assignment.">这些键值对把其他智能体的动作信息增补到当前节点特征 h_c 中，从而帮助信用分配。</span><span class="sentence" tabindex="0" data-source="The enhanced current node features ˜hc are combined with enhanced neighboring features ˜hne, computed in the same manner as in the policy decoder.">增强后的当前节点特征 ẑh_c 与增强后的邻居特征 ẑh_e 进行组合，后者的计算方式与策略解码器相同。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Finally, these concatenated features are mapped to state-action values Qϕ(st, at)using a feed-forward layer.">最后，这些拼接后的特征通过前馈层映射为状态-动作值 Q_φ(s_t,a_t)。</span><span class="sentence" tabindex="0" data-source="The networks are trained using soft actor-critic (SAC) algorithm [33].">网络使用 soft actor-critic（SAC）算法[33]进行训练。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Training details: We use a training dataset of 5,663 randomly generated large-scale maps (see Fig. 3) and an additional 100 unseen maps for testing.">训练细节：我们使用 5,663 张随机生成的大规模地图作为训练集（见图 3），并额外使用 100 张未见地图作为测试集。</span><span class="sentence" tabindex="0" data-source="Each environment measures 90m by 90m with 4 agents, a sensor range of ds= 10 m, and a 120◦FoV.">每个环境大小为 90 米乘 90 米，包含 4 个智能体，传感器量程 d_s=10 米，FoV 为 120°。</span><span class="sentence" tabindex="0" data-source="Training parameters include a maximum episode length of 128 steps, a discount factor ofγ= 1, a batch size of 256, and an episode buffer size of 10,000.">训练参数包括：最大回合长度 128 步、折扣因子 γ=1、批大小 256，以及 10,000 的回合缓冲区大小。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Training starts after accumulating over 2,000 steps in the buffer.">训练在缓冲区累计超过 2,000 步后开始。</span><span class="sentence" tabindex="0" data-source="We set the target entropy to 0.01 ·log(k), perform one iteration per training step after each episode, and use the Adam optimizer with a learning rate of 10−5for both policy and critic networks.">我们将目标熵设为 0.01·log(k)，在每个回合结束后对每个训练步执行一次迭代，并对策略网络和评论家网络都使用学习率为 10^-5 的 Adam 优化器。</span><span class="sentence" tabindex="0" data-source="The target critic network updates every 256 steps.">目标评论家网络每 256 步更新一次。</span><span class="sentence" tabindex="0" data-source="Complete code and model are available at https://github.com/marmotlab/MARVEL.">完整代码和模型见 https://github.com/marmotlab/MARVEL 。</span></p>
+          <figure>
+            <div class="figure-placeholder">图 3 占位：训练 / 测试环境示意图<br/>绿色框标识固定起始区域</div>
+            <figcaption><span class="sentence" tabindex="0" data-source="Fig. 3: Train/Test environments. Green box: the starting region, which is kept constant for all evaluations conducted.">图 3：训练 / 测试环境。绿色框表示起始区域，并在所有评估中保持不变。</span></figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>五、实验</h2>
+          <h3>5.1 对比分析</h3>
+          <p><span class="sentence" tabindex="0" data-source="Many prior studies evaluate exploration planners in a limited number of scenarios, often fewer than 10.">许多先前研究只在有限数量的场景中评估探索规划器，往往少于 10 个场景。</span><span class="sentence" tabindex="0" data-source="However, we observed that performance can vary significantly across different scenarios, necessitating evaluation across a broad range of environments.">然而，我们观察到性能会在不同场景之间显著变化，因此需要在更广泛的环境中进行评估。</span><span class="sentence" tabindex="0" data-source="Therefore, we test our model and baselines in 100 unseen environments.">因此，我们在 100 个未见环境中测试了模型及各基线方法。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We compare MARVEL with the following baselines: Nearest [9], which selects the nearest frontier as the global goal using a merged map of all agents; MMPF [15], which computes a potential field based on the explored map and agent positions, guiding agents to frontiers via steepest descent, with a resistance force to prevent redundancy.">我们将 MARVEL 与以下基线方法比较：Nearest[9]，它使用所有智能体融合后的地图，把最近前沿作为全局目标；MMPF[15]，它基于已探索地图和智能体位置计算势场，并借助最速下降引导智能体前往前沿，同时用阻力场避免冗余。</span><span class="sentence" tabindex="0" data-source="To decrease the computation complexity, frontiers will be gathered into multiple clusters.">为降低计算复杂度，前沿会被聚成多个簇。</span><span class="sentence" tabindex="0" data-source="In each iteration, agents will select the smallest potential cluster as their target; NBVP [8], which samples and evaluates trajectories based on information gain, executing the most optimal one; and Learnt-Greedy [34], which employs deep reinforcement learning with graph-based attention to select the next sampling location, adapted for multi-agent systems with greedy headings based on observable frontiers.">在每次迭代中，智能体会选择势场最小的簇作为目标；NBVP[8]，它基于信息增益对轨迹进行采样和评估，并执行最优轨迹；以及 Learnt-Greedy[34]，它使用基于图注意力的深度强化学习来选择下一个采样位置，并为多智能体系统适配了基于可观测前沿的贪心朝向。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="We present the average and variance of trajectory length of complete exploration (99 %coverage), 90%coverage , overlap ratio andsuccess rate in Table I.">表 I 给出了完整探索（99% 覆盖）、90% 覆盖、重叠率和成功率的轨迹长度平均值与方差。</span><span class="sentence" tabindex="0" data-source="The overlap ratio quantifies the shared sensing area among agents per timestep, indicating collaborative efficiency.">重叠率用于量化每个时间步中智能体之间共享的感知区域，反映协同效率。</span><span class="sentence" tabindex="0" data-source="90%coverage refers to the maximum distance required for agents to explore 90 %of the environment, with lower values indicating higher efficiency.">90% 覆盖指智能体探索环境 90% 所需的最大距离，数值越低表示效率越高。</span></p>
+          <table>
+            <caption><span class="sentence" tabindex="0" data-source="TABLE I: Comparison with baseline multi-robot planners. We report the average and standard deviation of the trajectory length to complete exploration, to complete 90 %exploration of the environment as well as the overlap ratio and sucess rate. All tests are conducted with 120◦FoV and sensor range ds= 10 m. The downward arrow indicates that lower values are better.">表 I：与基线多机器人规划器的比较。我们报告完整探索轨迹长度、完成 90% 环境探索所需轨迹长度、重叠率和成功率的平均值及标准差。所有测试均在 120° FoV、传感器量程 d_s=10 米下进行，向下箭头表示数值越低越好。</span></caption>
+            <thead>
+              <tr><th>智能体数</th><th>指标</th><th>Nearest</th><th>MMPF</th><th>NBVP</th><th>Learnt-Greedy</th><th>MARVEL</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>2</td><td>轨迹长度 ↓</td><td>637.84(±103.85)</td><td>597.91(±123.12)</td><td>533.94(±91.63)</td><td>665.36(±134.11)</td><td>505.25(±89.03)</td></tr>
+              <tr><td>2</td><td>90% 覆盖 ↓</td><td>529.49(±96.97)</td><td>536.73(±115.03)</td><td>440.95(±88.20)</td><td>447.32(±106.44)</td><td>416.44(±84.62)</td></tr>
+              <tr><td>2</td><td>重叠率 ↓</td><td>0.684(±0.097)</td><td>0.023(±0.101)</td><td>0.113(±0.212)</td><td>0.081(±0.183)</td><td>0.048(±0.137)</td></tr>
+              <tr><td>2</td><td>成功率 ↑</td><td>98</td><td>45</td><td>82</td><td>73</td><td>100</td></tr>
+              <tr><td>4</td><td>轨迹长度 ↓</td><td>417.92(±89.76)</td><td>427.30(±86.46)</td><td>416.50(±80.35)</td><td>433.03(±96.89)</td><td>357.50(±67.07)</td></tr>
+              <tr><td>4</td><td>90% 覆盖 ↓</td><td>346.50(±80.11)</td><td>358.56(±83.64)</td><td>329.75(±81.73)</td><td>318.46(±95.15)</td><td>294.21(±62.45)</td></tr>
+              <tr><td>4</td><td>重叠率 ↓</td><td>0.693(±0.096)</td><td>0.075(±0.143)</td><td>0.246(±0.214)</td><td>0.191(±0.187)</td><td>0.170(±0.169)</td></tr>
+              <tr><td>4</td><td>成功率 ↑</td><td>99</td><td>95</td><td>100</td><td>92</td><td>100</td></tr>
+              <tr><td>8</td><td>轨迹长度 ↓</td><td>319.57(±73.66)</td><td>311.21(±74.89)</td><td>318.99(±59.40)</td><td>333.73(±109.30)</td><td>279.35(±50.63)</td></tr>
+              <tr><td>8</td><td>90% 覆盖 ↓</td><td>266.04(±69.99)</td><td>279.76(±65.51)</td><td>252.08(±56.19)</td><td>256.40(±67.84)</td><td>231.54(±46.40)</td></tr>
+              <tr><td>8</td><td>重叠率 ↓</td><td>0.671(±0.109)</td><td>0.172(±0.198)</td><td>0.401(±0.199)</td><td>0.306(±0.177)</td><td>0.316(±0.174)</td></tr>
+              <tr><td>8</td><td>成功率 ↑</td><td>99</td><td>100</td><td>98</td><td>98</td><td>100</td></tr>
+            </tbody>
+          </table>
+          <p><span class="sentence" tabindex="0" data-source="Our results show that MARVEL outperforms all baselines in average trajectory length, surpassing the best baseline, NBVP, by 14.2 %with four agents.">结果显示，MARVEL 在平均轨迹长度上优于所有基线方法，在 4 个智能体时比最优基线 NBVP 还短 14.2%。</span><span class="sentence" tabindex="0" data-source="Additionally, MARVEL achieved the highest success rate across all test scenarios, attaining a perfect 100 %success rate in all tests, which highlights its robustness.">此外，MARVEL 在所有测试场景中都取得了最高成功率，并且全部测试都达到了 100% 的成功率，这凸显了其鲁棒性。</span><span class="sentence" tabindex="0" data-source="MARVEL also demonstrates superior stability with the lowest variance in trajectory metrics, highlighting its strong generalization.">MARVEL 的轨迹指标方差也最低，说明它具有更强的稳定性和泛化能力。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Computation times are not included as the baselines were not optimized for efficiency, focusing instead on their core implementations.">由于基线方法并未针对效率进行优化，而是更强调其核心实现，因此本文没有纳入计算时间。</span><span class="sentence" tabindex="0" data-source="In terms of overlap ratio, MARVEL ranks second in most tests, with MMPF emerging as the top performer.">在重叠率方面，MARVEL 在大多数测试中位列第二，MMPF 则是表现最好的方法。</span><span class="sentence" tabindex="0" data-source="This is expected, as MMPF’s design naturally disperses agents using strong repulsive forces when agents are in close proximity, encouraging them to explore independently.">这一结果符合预期，因为 MMPF 在智能体彼此接近时会利用强排斥力自然分散它们，从而鼓励各自独立探索。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Despite this, MARVEL demonstrates superior multi-agent coordination, excelling in trajectory metrics.">尽管如此，MARVEL 仍展现出更强的多智能体协同能力，并在轨迹指标上表现突出。</span><span class="sentence" tabindex="0" data-source="In contrast, the Nearest method perform poorly, likely due to their short-sighted strategies, which is more prominent in our large-scale environments.">相比之下，Nearest 方法表现较差，原因很可能是其短视策略，而这一问题在我们的大规模环境中尤为明显。</span><span class="sentence" tabindex="0" data-source="Also, MMPF’s focus on local exploration further hinders effective agent coordination.">另外，MMPF 过度关注局部探索，也进一步妨碍了有效的智能体协同。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="NBVP faces challenges in larger environments due to its sampling-based approach, and while increasing its sampling rate could improve performance, it comes with high computational costs.">NBVP 在更大环境中会因其采样式方法而遇到挑战，虽然提高采样率可以改善性能，但计算代价也会很高。</span><span class="sentence" tabindex="0" data-source="In comparison, MARVEL achieves consistent computation times under 0.2s per decision across all scenarios.">相比之下，MARVEL 在所有场景下都能保持每次决策低于 0.2 秒的一致计算时间。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Upon closer inspection, we noticed that learnt-greedy methods delivers faster coverage of 90 %of the environment than nearest and MMPF, indicating the strong performance of graph-based attention networks in learning spatial relationship for exploration tasks.">进一步观察可以发现，Learnt-Greedy 比 Nearest 和 MMPF 更快覆盖环境的 90%，这说明基于图注意力的网络在学习探索任务中的空间关系方面表现很强。</span><span class="sentence" tabindex="0" data-source="However, this method struggles with small scattered frontiers, produced due to suboptimal viewpoint orientations, leading to repeated revisits and longer trajectories for task completion.">然而，该方法在处理由视点朝向不佳所产生的、零散而细小的前沿时表现吃力，导致反复回访并拉长完成任务所需的轨迹。</span><span class="sentence" tabindex="0" data-source="As a result, learnt-greedy do not perform well when comparing the trajectory length for task completion.">因此，在比较完成任务所需的轨迹长度时，Learnt-Greedy 的表现并不好。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="In contrast, MARVEL’s attention-based neural network, with intelligent fusion of frontiers and orientation information, enhances the environmental understanding and provides efficient reasoning about large partial maps, enabling non-myopic viewpoints planning.">相比之下，MARVEL 的注意力神经网络通过对前沿信息与朝向信息的智能融合，增强了环境理解能力，并能对大规模局部地图进行高效推理，从而实现非短视的视点规划。</span></p>
+          <h3>5.2 对不同传感器配置的适应性</h3>
+          <p><span class="sentence" tabindex="0" data-source="We extensively evaluated our models across various FoV configurations, as detailed in Table II, to understand the impact of sensor parameters on performance.">我们在多种 FoV 配置下对模型进行了广泛评估，细节见表 II，以了解传感器参数对性能的影响。</span><span class="sentence" tabindex="0" data-source="By avoiding re-training with different FoV settings, we isolated performance variations to sensor differences.">通过不针对不同 FoV 重新训练，我们将性能差异归因于传感器本身的变化。</span><span class="sentence" tabindex="0" data-source="Our method consistently outperformed all baselines in trajectory metrics, demonstrating robust and efficient exploration planning under varying FoV conditions.">我们的方法在轨迹指标上始终优于所有基线，说明其在不同 FoV 条件下都能实现稳健而高效的探索规划。</span></p>
+          <table>
+            <caption><span class="sentence" tabindex="0" data-source="TABLE II: Adaptability to different sensor’s FoV. All tests are conducted with 4 agents and sensor range ds= 10 m.">表 II：对不同传感器 FoV 的适应性。所有测试均在 4 个智能体、传感器量程 d_s=10 米下进行。</span></caption>
+            <thead>
+              <tr><th>FoV</th><th>指标</th><th>Nearest</th><th>MMPF</th><th>NBVP</th><th>Learnt-Greedy</th><th>MARVEL</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>90°</td><td>轨迹长度 ↓</td><td>414.64(±82.28)</td><td>472.92(±87.65)</td><td>455.28(±82.03)</td><td>511.77(±103.13)</td><td>378.99(±57.61)</td></tr>
+              <tr><td>90°</td><td>90% 覆盖 ↓</td><td>347.46(±84.07)</td><td>388.45(±80.47)</td><td>362.53(±85.70)</td><td>366.97(±102.75)</td><td>313.67(±54.57)</td></tr>
+              <tr><td>90°</td><td>重叠率 ↓</td><td>0.594(±0.125)</td><td>0.059(±0.130)</td><td>0.203(±0.199)</td><td>0.180(±0.181)</td><td>0.147(±0.155)</td></tr>
+              <tr><td>90°</td><td>成功率 ↑</td><td>97</td><td>90</td><td>98</td><td>94</td><td>100</td></tr>
+              <tr><td>180°</td><td>轨迹长度 ↓</td><td>422.80(±108.04)</td><td>389.08(±89.53)</td><td>380.55(±84.31)</td><td>424.74(±105.14)</td><td>328.36(±61.31)</td></tr>
+              <tr><td>180°</td><td>90% 覆盖 ↓</td><td>348.05(±95.57)</td><td>320.36(±70.86)</td><td>320.88(±83.17)</td><td>315.65(±83.23)</td><td>273.18(±59.95)</td></tr>
+              <tr><td>180°</td><td>重叠率 ↓</td><td>0.807(±0.124)</td><td>0.098(±0.175)</td><td>0.321(±0.228)</td><td>0.216(±0.189)</td><td>0.207(±0.183)</td></tr>
+              <tr><td>180°</td><td>成功率 ↑</td><td>99</td><td>96</td><td>99</td><td>97</td><td>100</td></tr>
+            </tbody>
+          </table>
+          <table>
+            <caption><span class="sentence" tabindex="0" data-source="TABLE III: Adaptability to different sensor ranges. All tests are conducted with 4 agents and 120◦FoV.">表 III：对不同传感器量程的适应性。所有测试均在 4 个智能体和 120° FoV 下进行。</span></caption>
+            <thead>
+              <tr><th>指标</th><th>12m</th><th>15m</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>轨迹长度 ↓</td><td>299.57(±60.33)</td><td>258.35(±54.96)</td></tr>
+              <tr><td>90% 覆盖 ↓</td><td>247.93(±58.7)</td><td>212.85(±49.5)</td></tr>
+              <tr><td>重叠率 ↓</td><td>0.223(±0.188)</td><td>0.208(±0.190)</td></tr>
+            </tbody>
+          </table>
+          <p><span class="sentence" tabindex="0" data-source="Efficiency. Success rate measures the percentage of tests where agents achieve 99 %coverage within 128 timesteps.">效率指标中，成功率表示智能体在 128 个时间步内达到 99% 覆盖的测试比例。</span><span class="sentence" tabindex="0" data-source="Additionally, we tested the model with different sensor ranges, as shown in Table III.">此外，我们还在不同传感器量程下测试了模型，结果见表 III。</span><span class="sentence" tabindex="0" data-source="Originally trained with ds= 10 m, the model successfully utilized extended ranges of ds= 12 m and 15m, achieving notable performance gains, and maintaining a 100 %success rate.">模型最初在 d_s=10 米下训练，但成功利用了 d_s=12 米和 15 米的更大量程，取得了明显的性能提升，并保持 100% 的成功率。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="This adaptability without retraining highlights the model’s resilience to sensor changes and its ability to effectively use additional sensory data, making it suitable for diverse environments.">这种无需重新训练的适应性体现了模型对传感器变化的韧性，以及有效利用额外感知数据的能力，使其适用于多种环境。</span></p>
+          <h3>5.3 实验验证</h3>
+          <p><span class="sentence" tabindex="0" data-source="To assess MARVEL’s potential for real-world deployment, we conducted experiments with Crazyflie 2.1 drones in a 4m by4m arena (see Fig. 4).">为评估 MARVEL 的真实部署潜力，我们在一个 4 米乘 4 米的场地中使用 Crazyflie 2.1 无人机开展了实验（见图 4）。</span><span class="sentence" tabindex="0" data-source="Using the swarm manager from [35], we simulated sensor coverage based on the drones’ real-time positions, enabling live virtual mapping tests to be conducted.">我们借助[35]中的 swarm manager，根据无人机的实时位置模拟传感器覆盖，从而进行实时虚拟建图测试。</span><span class="sentence" tabindex="0" data-source="These experiments confirmed that MARVEL can be successfully implemented on physical hardware and adapts well to the motion dynamics of the drones.">这些实验验证了 MARVEL 可以成功部署到物理硬件上，并且能够很好地适应无人机的运动动力学。</span></p>
+          <figure>
+            <div class="figure-placeholder">图 4 占位：四架 nano drone 的实验验证<br/>灰色地垫标示 4m × 4m 飞行区域</div>
+            <figcaption><span class="sentence" tabindex="0" data-source="Fig. 4: Experimental validation on four nano drones. The grey mat demarcates the 4m by 4m flying arena.">图 4：四架 nano drone 的实验验证。灰色地垫标出了 4 米乘 4 米的飞行区域。</span></figcaption>
+          </figure>
+        </section>
+
+        <section>
+          <h2>六、结论</h2>
+          <p><span class="sentence" tabindex="0" data-source="In this work, we introduce a neural framework tailored for multi-robot exploration with constrained field-of-view (FoV) sensors in large-scale environments.">本文提出了一种面向大规模环境中受限视场（FoV）传感器多机器人探索的神经网络框架。</span><span class="sentence" tabindex="0" data-source="Our approach employs a graph attention network, with intelligent fusion of frontier and orientation features, to enhance environmental understanding and allow agents to produce non-myopic decisions.">该方法采用图注意力网络，并智能融合前沿与朝向特征，以增强环境理解能力并使智能体能够做出非短视决策。</span><span class="sentence" tabindex="0" data-source="In particular, MARVEL handles the extensive action space of viewpoint planning using an information-driven action pruning method.">尤其是，MARVEL 通过信息驱动的动作裁剪方法处理了视点规划中的庞大动作空间。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="Our evaluations show that MARVEL outperforms existing state-of-the-art multi-agent exploration planners, adapts well to different team sizes and sensor configurations (i.e., FoV and sensor range), and performs reliably across diverse environments.">评估结果表明，MARVEL 优于现有最先进的多智能体探索规划器，能够很好地适应不同的团队规模和传感器配置（即 FoV 和传感器量程），并在多样化环境中稳定可靠地运行。</span><span class="sentence" tabindex="0" data-source="Additionally, MARVEL has been successfully validated on real drones, demonstrating its potential for deployment on actual robots.">此外，MARVEL 已在真实无人机上成功验证，展示了其部署到实体机器人的潜力。</span></p>
+          <p><span class="sentence" tabindex="0" data-source="While MARVEL excels in 2D indoor settings, we acknowledge the added complexity of 3D environments with intricate obstacles.">虽然 MARVEL 在二维室内场景中表现出色，但我们也承认，带有复杂障碍物的三维环境会更为复杂。</span><span class="sentence" tabindex="0" data-source="To address this, we plan to extend MARVEL to handle full 3D action spaces by integrating height information and associated FoV changes, thereby enhancing its application on platforms such as drones for indoor mapping.">为此，我们计划通过融入高度信息及其对应的 FoV 变化，把 MARVEL 扩展到完整的三维动作空间，从而增强其在无人机等平台上的室内建图应用。</span><span class="sentence" tabindex="0" data-source="There, to ensure efficient 3D exploration, we plan to employ a sparse graph representation to manage computational demands effectively.">同时，为了确保高效的三维探索，我们还计划采用稀疏图表示来有效管理计算需求。</span></p>
+        </section>
+
+        <section>
+          <h2>参考文献</h2>
+          <p class="small">为保持书目信息准确，以下保留原始英文条目格式；如需，我可以继续把参考文献逐条翻成中文注释版。</p>
+          <p class="ref"><span class="sentence" tabindex="0" data-source="[1] P. Petracek, V. Kratky, M. Petrlik, T. Baca, R. Kratochvil, and M. Saska, “Large-scale exploration of cave environments by unmanned aerial vehicles,” vol. 6, no. 4, pp. 7596–7603, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/9492802/">[1] P. Petracek, V. Kratky, M. Petrlik, T. Baca, R. Kratochvil, and M. Saska, “Large-scale exploration of cave environments by unmanned aerial vehicles,” vol. 6, no. 4, pp. 7596–7603, 2021. [Online]. Available: https://ieeexplore.ieee.org/document/9492802/</span></p>
+          <p class="ref"><span class="sentence" tabindex="0" data-source="[2] A. Kleiner, J. Prediger, and B. Nebel, “RFID technology-based exploration and SLAM for search and rescue,” in 2006 IEEE/RSJ International Conference on Intelligent Robots and Systems. IEEE, 2006, pp. 4054–4059. [Online]. Available: http://ieeexplore.ieee.org/document/4059043/">[2] A. Kleiner, J. Prediger, and B. Nebel, “RFID technology-based exploration and SLAM for search and rescue,” in 2006 IEEE/RSJ International Conference on Intelligent Robots and Systems. IEEE, 2006, pp. 4054–4059. [Online]. Available: http://ieeexplore.ieee.org/document/4059043/</span></p>
+          <p class="ref"><span class="sentence" tabindex="0" data-source="[3] S. Isler, R. Sabzevari, J. Delmerico, and D. Scaramuzza, “An information gain formulation for active volumetric 3d reconstruction,” in 2016 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2016, pp. 3477–3484. [Online]. Available: http://ieeexplore.ieee.org/document/7487527/">[3] S. Isler, R. Sabzevari, J. Delmerico, and D. Scaramuzza, “An information gain formulation for active volumetric 3d reconstruction,” in 2016 IEEE International Conference on Robotics and Automation (ICRA). IEEE, 2016, pp. 3477–3484. [Online]. Available: http://ieeexplore.ieee.org/document/7487527/</span></p>
+          <p class="small">……其余参考文献与原文一致，可按同样方式继续展开。</p>
+        </section>
+      </article>
+
+      <aside class="note">每个中文句子都绑定了对应英文原句，鼠标悬停或键盘聚焦即可查看源文，不会打断阅读流。</aside>
+    </main>
+  </div>
+
+  <div class="tooltip" id="sentence-tooltip" aria-hidden="true">
+    <span class="tooltip-label">English source</span>
+    <div id="sentence-tooltip-text"></div>
+  </div>
+
+  <script>
+    const tooltip = document.getElementById("sentence-tooltip");
+    const tooltipText = document.getElementById("sentence-tooltip-text");
+    let activeSentence = null;
+    function setTooltipPosition(target) {
+      const rect = target.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      const top = Math.max(12, rect.top - tooltipRect.height - 12);
+      const left = Math.min(window.innerWidth - tooltipRect.width - 12, Math.max(12, rect.left + rect.width / 2 - tooltipRect.width / 2));
+      tooltip.style.top = `${top}px`;
+      tooltip.style.left = `${left}px`;
+    }
+    function showTooltip(target) {
+      const source = target.getAttribute("data-source");
+      if (!source) return;
+      activeSentence = target;
+      tooltipText.textContent = source;
+      tooltip.setAttribute("aria-hidden", "false");
+      tooltip.classList.add("is-visible");
+      setTooltipPosition(target);
+    }
+    function hideTooltip() {
+      activeSentence = null;
+      tooltip.classList.remove("is-visible");
+      tooltip.setAttribute("aria-hidden", "true");
+    }
+    document.addEventListener("pointerover", (event) => {
+      const sentence = event.target.closest(".sentence[data-source]");
+      if (sentence) showTooltip(sentence);
+    });
+    document.addEventListener("focusin", (event) => {
+      const sentence = event.target.closest(".sentence[data-source]");
+      if (sentence) showTooltip(sentence);
+    });
+    document.addEventListener("pointerout", (event) => {
+      const leavingSentence = event.target.closest(".sentence[data-source]");
+      if (leavingSentence && leavingSentence === activeSentence) hideTooltip();
+    });
+    document.addEventListener("focusout", (event) => {
+      const leavingSentence = event.target.closest(".sentence[data-source]");
+      if (leavingSentence && leavingSentence === activeSentence) hideTooltip();
+    });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape") hideTooltip(); });
+    window.addEventListener("resize", () => { if (activeSentence) setTooltipPosition(activeSentence); });
+    window.addEventListener("scroll", () => { if (activeSentence) setTooltipPosition(activeSentence); }, { passive: true });
+  </script>
+</body>
+</html>
