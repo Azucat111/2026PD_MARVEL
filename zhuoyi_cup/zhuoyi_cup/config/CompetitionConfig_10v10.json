@@ -1,0 +1,189 @@
+{
+  "SafetyZoneCopterID": 100,
+  "CollisionEnableHeight": 2.0,
+  "ScorePerHit": 1,
+  "HitSpecialEffectsPath": "Game/Realistic_Starter_VFX_Pack_Vol2/Particles/Explosion/P_Explosion_Big_A",
+  "LandSpecialEffectsPath": "Game/Realistic_Starter_VFX_Pack_Vol2/Particles/Fire/P_Fire_Big",
+  "Copters": [
+    {
+      "CopterID": 1,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 2,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 3,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 4,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 5,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 6,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 7,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 8,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 9,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 10,
+      "TeamID": 1,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.0,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 11,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 12,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 13,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 14,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 15,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 16,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 17,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 18,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 19,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    },
+    {
+      "CopterID": 20,
+      "TeamID": 2,
+      "MotionMode": 2,
+      "CollisionMode": 2,
+      "CollisionScale": 1.5,
+      "CollisionResponse": 2,
+      "DeleteMode": 2
+    }
+  ]
+}

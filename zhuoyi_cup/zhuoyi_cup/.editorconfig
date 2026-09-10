@@ -1,0 +1,13 @@
+# 保证 shell 脚本始终用 LF 换行 —— 否则在云端 Linux 上会报 bad interpreter。
+root = true
+
+[*]
+charset = utf-8
+
+[*.sh]
+end_of_line = lf
+
+[*.py]
+end_of_line = lf
+indent_style = space
+indent_size = 4

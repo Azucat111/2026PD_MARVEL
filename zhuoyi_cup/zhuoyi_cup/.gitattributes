@@ -1,0 +1,4 @@
+# 强制 LF,避免 Windows 编辑导致云端 Linux 脚本失效
+*.sh   text eol=lf
+*.py   text eol=lf
+*.so   binary

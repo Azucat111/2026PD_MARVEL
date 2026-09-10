@@ -1,0 +1,27 @@
+# RosTrans v1.0.3 比赛黑名单。
+# 只用 false 规则: 未匹配的话题/服务默认保持开启。
+#
+# 按"省略即保留"对参赛者暴露的话题(不要在下面关掉它们):
+#   /mavros{i}/local_position/odom
+#   /mavros{i}/state
+#   /mavros{i}/setpoint_raw/local
+#   /rflysim/sensor{n}/img_cine
+#   /rflysim/sensor{n}/gimbal_ctrl
+#   /rflysim/sensor{n}/gimbal_status
+#
+# 用 * 通配覆盖所有飞机命名空间(/mavros 与 /mavros2../mavros10; * 可匹配空串)。
+# 每条规则只命中指定的话题后缀, 不会误伤上面"保留"的话题(后缀不同)。
+
+/mavros*/global_position/global=false
+/mavros*/local_position/pose=false
+/mavros*/local_position/velocity_local=false
+/mavros*/out2sim=false
+/mavros*/setpoint_attitude/cmd_vel=false
+/mavros*/setpoint_position/local=false
+/mavros*/setpoint_raw/attitude=false
+/mavros*/setpoint_velocity/cmd_vel=false
+/mavros*/setpoint_velocity/cmd_vel_unstamped=false
+
+# RflySim 原始/不需要的话题。
+/rflysim/sensor*/camera_data=false
+/rflysim/sensor*/pod/vision_sensor_req=false

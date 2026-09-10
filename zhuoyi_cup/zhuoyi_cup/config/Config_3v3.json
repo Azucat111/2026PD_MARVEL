@@ -1,0 +1,52 @@
+{
+  "VisionSensors": [
+    {
+      "SeqID": 1,
+      "TypeID": 9,
+      "TargetCopter": 1,
+      "TargetMountType": 0,
+      "DataWidth": 1280,
+      "DataHeight": 720,
+      "DataCheckFreq": 30,
+      "SendProtocol": [0, 127, 0, 0, 1, 9996, 0, 0],
+      "CameraFOV": 12,
+      "EularOrQuat": 0,
+      "SensorPosXYZ": [0.2, 0, 0.3],
+      "SensorAngQuat": [0, 0, 0, 0],
+      "SensorAngEular": [0, 0, 0],
+      "otherParams": [-90, 20, 120, 120, 4, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "SeqID": 2,
+      "TypeID": 9,
+      "TargetCopter": 2,
+      "TargetMountType": 0,
+      "DataWidth": 1280,
+      "DataHeight": 720,
+      "DataCheckFreq": 30,
+      "SendProtocol": [0, 127, 0, 0, 1, 9997, 0, 0],
+      "CameraFOV": 12,
+      "EularOrQuat": 0,
+      "SensorPosXYZ": [0.2, 0, 0.3],
+      "SensorAngQuat": [0, 0, 0, 0],
+      "SensorAngEular": [0, 0, 0],
+      "otherParams": [-90, 20, 120, 120, 4, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    },
+    {
+      "SeqID": 3,
+      "TypeID": 9,
+      "TargetCopter": 3,
+      "TargetMountType": 0,
+      "DataWidth": 1280,
+      "DataHeight": 720,
+      "DataCheckFreq": 30,
+      "SendProtocol": [0, 127, 0, 0, 1, 9998, 0, 0],
+      "CameraFOV": 12,
+      "EularOrQuat": 0,
+      "SensorPosXYZ": [0.2, 0, 0.3],
+      "SensorAngQuat": [0, 0, 0, 0],
+      "SensorAngEular": [0, 0, 0],
+      "otherParams": [-90, 20, 120, 120, 4, 200, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
+  ]
+}

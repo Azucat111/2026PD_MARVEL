@@ -1,0 +1,45 @@
+# Local sync credentials/config
+sync_config.json
+
+# Runtime logs and captured data
+logs/
+*.log
+*.bag
+*.db3
+
+# Large local archives / vendor dumps / manual experiments
+tmp/
+*.run
+*.AppImage
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# Office 临时/锁文件(打开 xlsx/docx 时生成, 会卡同步、不该提交)
+~$*
+
+# Python caches and test output
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# ROS / catkin build outputs
+build/
+bin/
+devel/
+install/
+log/
+
+# Editor / OS files
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,45 @@
+# 3v3 公开场景配置: 只保留启动和参赛接口需要的信息。
+# 靶机任务、雷达噪声和难度细节由裁判系统内部控制。
+
+scene: "3v3"
+
+arena:
+  map: DesertTownEX
+
+competition:
+  safety_zone_copter_id: 100
+  escape_hover_settle_s: 0.0      # 突围悬停延迟(s): 最后一架靶机到达悬停高度并稳定悬停此时长后全体同时突防。
+                                  # 0=不额外等待, 到位即突围(仍要求到达悬停高度且速度稳住, 不是边爬边突)
+  escape_gate_timeout_s: 75.0     # 突围闸门兜底超时(s): 开闸起算, 到点无条件突围。防止任一靶机爬不到位
+                                  # 就卡死闸门, 其余靶机悬在原地被打光(必需, 正常局走不到这条路径)
+
+interceptor:
+  count: 3
+  init_positions:
+    - { x: 350.0, y: 209.0 }
+    - { x: 360.0, y: 209.0 }
+    - { x: 370.0, y: 209.0 }
+
+target:
+  count: 3
+
+scene_objects:
+  ue_transform:
+    swap_xy: false
+    x_sign: 1.0
+    y_sign: 1.0
+    x_offset: 0.0
+    y_offset: 0.0
+  safety_zone:
+    type_id: 100100853
+    id: 100
+    z: 0.0
+    radius: 30.0
+    height: 300.0
+    color_rgba: [1.0, 0.0, 0.0, 0.5]
+
+sensors:
+  gimbal: true
+
+nodes:
+  - competition_runtime
