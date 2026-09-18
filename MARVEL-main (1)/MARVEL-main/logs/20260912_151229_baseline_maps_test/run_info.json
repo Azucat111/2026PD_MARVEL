@@ -1,0 +1,5 @@
+{
+  "scenario": "baseline_maps_test",
+  "seed": 42,
+  "episodes": 1
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "metrics": {
+      "exploration_rate": {
+        "value": 0.07666666666666666,
+        "target": 0.8,
+        "weight": 0.7,
+        "score": 0.09583333333333333,
+        "weighted_score": 0.06708333333333333
+      },
+      "collision_count": {
+        "value": 4,
+        "target": 0,
+        "weight": 0.3,
+        "score": 0.0,
+        "weighted_score": 0.0
+      }
+    },
+    "total_score": 0.06708333333333333,
+    "steps": 128,
+    "timestamp": "2026-09-17T04:19:54.925143+00:00",
+    "episode": 0,
+    "task_summary": {
+      "T1_exploration": {
+        "type": "exploration",
+        "status": "active",
+        "progress": 0.07666666666666666,
+        "found_targets": []
+      }
+    }
+  }
+]

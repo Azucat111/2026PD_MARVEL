@@ -1,0 +1,5 @@
+model_type: kinematic_2d
+params:
+  velocity: 1.0
+  yaw_rate: 35.0
+  num_sim_steps: 6

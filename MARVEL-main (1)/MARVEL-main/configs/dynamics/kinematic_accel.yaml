@@ -1,0 +1,8 @@
+model_type: kinematic_accel
+params:
+  v_min: 0.3
+  v_max: 2.5
+  a_max: 1.2
+  omega_max: 45.0
+  alpha_max: 30.0
+  min_turn_radius: 0.8

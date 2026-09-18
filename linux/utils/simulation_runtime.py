@@ -1,0 +1,212 @@
+"""Unified headless simulation runtime for multi-task UAV scenarios."""
+
+from __future__ import annotations
+
+import time
+from dataclasses import dataclass
+from typing import Any, Dict, List, Tuple
+
+import numpy as np
+
+from .communication_model import CommunicationModel
+from .dynamics_models import create_dynamics_model
+from .obstacle_manager import ObstacleManager
+from .safety_shield import SafetyShield
+from .sensor_models import create_sensor_model
+from .task_manager import TaskManager
+
+
+@dataclass
+class RobotState:
+    robot_id: int
+    robot_type: str
+    position: np.ndarray
+    velocity: float
+    heading: float
+    angular_velocity: float = 0.0
+    travel_distance: float = 0.0
+
+
+class SimulationRuntime:
+    def __init__(self, scenario_config: Dict[str, Any]):
+        self.config = scenario_config
+        scenario = scenario_config["scenario"]
+        self.max_steps = int(scenario["duration"]["max_steps"])
+        self.dt = float(scenario["duration"].get("step_dt", 0.1))
+        self.current_step = 0
+        self.dynamics = create_dynamics_model(scenario_config["dynamics"]["params"])
+        self.sensor = create_sensor_model(scenario_config["sensor"]["params"])
+        self.dynamics_by_type = {}
+        self.sensor_by_type = {}
+        self.comm = CommunicationModel(scenario_config["communication"])
+        self.obstacles = ObstacleManager(scenario_config["environment"], scenario_config.get("dynamic_obstacles", []))
+        map_file = scenario_config["environment"].get("map_file")
+        if map_file:
+            self.obstacles.load_from_file(map_file)
+        self.tasks = TaskManager(scenario_config["tasks"])
+        self.shield = SafetyShield(self.obstacles)
+        self.robots: List[RobotState] = []
+        self.events: list[Dict[str, Any]] = []
+        self.explored_cells: set[tuple[int, int]] = set()
+        self.free_cell_count = max(1, int(self.obstacles.width * self.obstacles.height))
+
+    def reset(self) -> Dict[int, Dict[str, Any]]:
+        self.current_step = 0
+        self.events = []
+        self.explored_cells = set()
+        self.obstacles.reset()
+        self.tasks.reset()
+        self.robots = []
+        for group in self.config["robots"]:
+            start, end = group["id_range"]
+            positions = self._generate_initial_positions(end - start + 1, group.get("config", {}).get("initial_positions", "random_safe"))
+            for offset, robot_id in enumerate(range(start, end + 1)):
+                cfg = group.get("config", {})
+                robot_type = group.get("type", "uav")
+                self.dynamics_by_type[robot_type] = create_dynamics_model(
+                    {**self.config["dynamics"]["params"], "params": {
+                        **self.config["dynamics"]["params"].get("params", {}),
+                        **{key: cfg[key] for key in ("velocity", "yaw_rate") if key in cfg},
+                    }})
+                self.sensor_by_type[robot_type] = create_sensor_model(
+                    {**self.config["sensor"]["params"],
+                     "fov": cfg.get("fov", self.config["sensor"]["params"].get("fov", 120.0)),
+                     "range": cfg.get("sensor_range", self.config["sensor"]["params"].get("range", 10.0))})
+                self.robots.append(RobotState(
+                    robot_id=robot_id,
+                    robot_type=robot_type,
+                    position=positions[offset],
+                    velocity=float(cfg.get("velocity", 0.0)),
+                    heading=float(np.random.uniform(0.0, 360.0)),
+                ))
+        self._log_event("simulation_reset", {"num_robots": len(self.robots)})
+        observations = self._get_observations()
+        self._update_explored_cells(observations)
+        return observations
+
+    def step(self, actions: List[Tuple[np.ndarray, float]]) -> tuple[Dict[int, Dict[str, Any]], Dict[str, Any]]:
+        if len(actions) != len(self.robots):
+            raise ValueError(f"Expected {len(self.robots)} actions, got {len(actions)}")
+        self.obstacles.step(self.current_step, self.dt)
+        # Apply safety shield before passing actions to dynamics.
+        actions = self.shield.filter_actions(self.robots, actions, self.current_step)
+        for shield_event in self.shield.pop_events():
+            self._log_event("safety_shield", shield_event)
+        info = {
+            "collisions": [],
+            "comm_topology": None,
+            "task_events": [],
+            "feasibility": [],
+            "terminated": False,
+            "truncated": False,
+        }
+        for robot, (target_position, target_heading) in zip(self.robots, actions):
+            old_position = robot.position.copy()
+            dynamics = self.dynamics_by_type.get(robot.robot_type, self.dynamics)
+            new_state, feasibility = dynamics.step(
+                current_position=robot.position,
+                final_position=np.asarray(target_position, dtype=float),
+                theta_current=robot.heading,
+                theta_desired=float(target_heading),
+                v_current=robot.velocity,
+                dt=self.dt,
+            )
+            info["feasibility"].append({"robot_id": robot.robot_id, **feasibility})
+            collision, collision_type = self.obstacles.check_collision(new_state["position"], radius=0.2)
+            if collision:
+                event = {"robot_id": robot.robot_id, "type": collision_type, "step": self.current_step,
+                         "position": np.asarray(new_state["position"]).round(3).tolist()}
+                info["collisions"].append(event)
+                self._log_event("collision", event)
+                continue
+            robot.position = np.asarray(new_state["position"], dtype=float)
+            robot.velocity = float(new_state["velocity"])
+            robot.heading = float(new_state["heading"])
+            robot.angular_velocity = float(new_state.get("angular_velocity", 0.0))
+            robot.travel_distance += float(np.linalg.norm(robot.position - old_position))
+
+        # Detect UAV-UAV overlap after all proposed states have been applied.
+        for index, first in enumerate(self.robots):
+            for second in self.robots[index + 1:]:
+                if np.linalg.norm(first.position - second.position) < 0.4:
+                    event = {"robot_ids": [first.robot_id, second.robot_id],
+                             "type": "uav_uav", "step": self.current_step}
+                    info["collisions"].append(event)
+                    self._log_event("collision", event)
+
+        observations = self._get_observations()
+        self._update_explored_cells(observations)
+        topology = self.comm.get_topology([robot.position for robot in self.robots])
+        info["comm_topology"] = topology
+        connected, components = self.comm.check_connectivity(topology)
+        if not connected:
+            self._log_event("disconnection", {"step": self.current_step, "components": components})
+        task_events = self.tasks.update(
+            self.current_step, self.robots, observations,
+            exploration_rate=self.exploration_rate,
+            comm_connected=connected,
+        )
+        info["task_events"] = task_events
+        for event in task_events:
+            self._log_event(event["type"], event)
+        self.current_step += 1
+        info["terminated"] = self.tasks.all_complete()
+        info["truncated"] = self.current_step >= self.max_steps and not info["terminated"]
+        return observations, info
+
+    @property
+    def exploration_rate(self) -> float:
+        return min(1.0, len(self.explored_cells) / self.free_cell_count)
+
+    def get_event_log(self) -> list[Dict[str, Any]]:
+        return list(self.events)
+
+    def default_actions(self) -> List[Tuple[np.ndarray, float]]:
+        center = np.array([self.obstacles.width / 2.0, self.obstacles.height / 2.0])
+        actions = []
+        for idx, robot in enumerate(self.robots):
+            angle = 2.0 * np.pi * idx / max(len(self.robots), 1)
+            waypoint = robot.position + np.array([np.cos(angle), np.sin(angle)]) * 3.0
+            waypoint = np.clip(waypoint, [0.0, 0.0], [self.obstacles.width, self.obstacles.height])
+            heading = np.degrees(np.arctan2(center[1] - robot.position[1], center[0] - robot.position[0])) % 360.0
+            actions.append((waypoint, heading))
+        return actions
+
+    def _get_observations(self) -> Dict[int, Dict[str, Any]]:
+        grid = self.obstacles.get_occupancy_grid()
+        positions = [(robot.robot_id, robot.position) for robot in self.robots]
+        return {
+            robot.robot_id: self.sensor_by_type.get(robot.robot_type, self.sensor).sense(
+                robot, grid, positions)
+            for robot in self.robots
+        }
+
+    def _update_explored_cells(self, observations: Dict[int, Dict[str, Any]]) -> None:
+        for observation in observations.values():
+            for x, y in observation.get("visible_cells", []):
+                self.explored_cells.add((int(x), int(y)))
+
+    def _generate_initial_positions(self, count: int, mode) -> List[np.ndarray]:
+        if isinstance(mode, list):
+            return [np.asarray(item, dtype=float) for item in mode]
+        if mode == "grid":
+            cols = int(np.ceil(np.sqrt(count)))
+            return [np.array([8.0 + (idx % cols) * 4.0, 8.0 + (idx // cols) * 4.0]) for idx in range(count)]
+        positions = []
+        attempts = 0
+        while len(positions) < count and attempts < count * 500:
+            attempts += 1
+            point = np.array([
+                np.random.uniform(5.0, max(6.0, self.obstacles.width - 5.0)),
+                np.random.uniform(5.0, max(6.0, self.obstacles.height - 5.0)),
+            ])
+            collides, _ = self.obstacles.check_collision(point, radius=0.5)
+            if collides or any(np.linalg.norm(point - existing) < 1.5 for existing in positions):
+                continue
+            positions.append(point)
+        if len(positions) != count:
+            raise RuntimeError(f"Failed to generate {count} safe start positions")
+        return positions
+
+    def _log_event(self, event_type: str, data: Dict[str, Any]) -> None:
+        self.events.append({"step": self.current_step, "timestamp": time.time(), "type": event_type, "data": data})

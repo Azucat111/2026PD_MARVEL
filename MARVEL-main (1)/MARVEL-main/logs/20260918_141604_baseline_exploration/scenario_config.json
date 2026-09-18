@@ -1,0 +1,93 @@
+{
+  "scenario": {
+    "name": "baseline_exploration",
+    "description": "MARVEL-compatible lightweight exploration baseline",
+    "version": "1.0",
+    "duration": {
+      "max_steps": 128,
+      "step_dt": 0.1
+    },
+    "random_seed": 47
+  },
+  "environment": {
+    "map_size": [
+      90,
+      90
+    ],
+    "map_resolution": 1.0,
+    "circular_obstacles": []
+  },
+  "robots": [
+    {
+      "id_range": [
+        0,
+        3
+      ],
+      "type": "explorer",
+      "team_id": 1,
+      "config": {
+        "fov": 120,
+        "sensor_range": 10,
+        "velocity": 1.0,
+        "yaw_rate": 35,
+        "initial_positions": "grid"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "T1_exploration",
+      "type": "exploration",
+      "priority": 3,
+      "assigned_robot_types": [
+        "explorer"
+      ],
+      "params": {
+        "target_coverage": 0.8
+      }
+    }
+  ],
+  "dynamics": {
+    "config_file": "E:\\2026PD_MARVEL\\MARVEL-main (1)\\MARVEL-main\\configs\\dynamics\\kinematic_simple.yaml",
+    "params": {
+      "model_type": "kinematic_2d",
+      "params": {
+        "velocity": 1.0,
+        "yaw_rate": 35.0,
+        "num_sim_steps": 6
+      }
+    }
+  },
+  "sensor": {
+    "config_file": "E:\\2026PD_MARVEL\\MARVEL-main (1)\\MARVEL-main\\configs\\sensors\\ideal.yaml",
+    "params": {
+      "sensor_type": "ideal",
+      "fov": 120.0,
+      "range": 10.0
+    }
+  },
+  "communication": {
+    "config_file": "E:\\2026PD_MARVEL\\MARVEL-main (1)\\MARVEL-main\\configs\\communication\\ideal.yaml",
+    "params": {
+      "comm_range": 1000.0,
+      "delay_steps": 0,
+      "packet_loss": 0.0
+    }
+  },
+  "evaluation": {
+    "metrics": [
+      {
+        "name": "exploration_rate",
+        "weight": 0.7,
+        "target": 0.8
+      },
+      {
+        "name": "collision_count",
+        "weight": 0.3,
+        "target": 0,
+        "penalty_per_collision": -1
+      }
+    ]
+  },
+  "_source_file": "E:\\2026PD_MARVEL\\MARVEL-main (1)\\MARVEL-main\\configs\\scenarios\\baseline_exploration.yaml"
+}

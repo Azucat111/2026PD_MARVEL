@@ -1,0 +1,524 @@
+{"step": 0, "timestamp": 1789029405.7247138, "type": "simulation_reset", "data": {"num_robots": 30}}
+{"step": 0, "timestamp": 1789029405.7903385, "type": "disconnection", "data": {"step": 0, "components": 15}}
+{"step": 0, "timestamp": 1789029405.7903543, "type": "task_activated", "data": {"type": "task_activated", "task_id": "T1_exploration", "step": 0}}
+{"step": 0, "timestamp": 1789029405.790355, "type": "task_activated", "data": {"type": "task_activated", "task_id": "T3_relay", "step": 0}}
+{"step": 1, "timestamp": 1789029405.8241158, "type": "disconnection", "data": {"step": 1, "components": 14}}
+{"step": 2, "timestamp": 1789029405.8567176, "type": "disconnection", "data": {"step": 2, "components": 14}}
+{"step": 3, "timestamp": 1789029405.8900695, "type": "disconnection", "data": {"step": 3, "components": 14}}
+{"step": 4, "timestamp": 1789029405.922531, "type": "disconnection", "data": {"step": 4, "components": 14}}
+{"step": 5, "timestamp": 1789029405.9559703, "type": "disconnection", "data": {"step": 5, "components": 14}}
+{"step": 6, "timestamp": 1789029405.991422, "type": "disconnection", "data": {"step": 6, "components": 14}}
+{"step": 7, "timestamp": 1789029406.0249224, "type": "disconnection", "data": {"step": 7, "components": 14}}
+{"step": 8, "timestamp": 1789029406.0588486, "type": "disconnection", "data": {"step": 8, "components": 15}}
+{"step": 9, "timestamp": 1789029406.091346, "type": "disconnection", "data": {"step": 9, "components": 15}}
+{"step": 10, "timestamp": 1789029406.1251202, "type": "disconnection", "data": {"step": 10, "components": 15}}
+{"step": 11, "timestamp": 1789029406.1582139, "type": "disconnection", "data": {"step": 11, "components": 15}}
+{"step": 12, "timestamp": 1789029406.1916132, "type": "disconnection", "data": {"step": 12, "components": 15}}
+{"step": 13, "timestamp": 1789029406.2258003, "type": "disconnection", "data": {"step": 13, "components": 15}}
+{"step": 14, "timestamp": 1789029406.2587478, "type": "disconnection", "data": {"step": 14, "components": 15}}
+{"step": 15, "timestamp": 1789029406.2933853, "type": "disconnection", "data": {"step": 15, "components": 15}}
+{"step": 16, "timestamp": 1789029406.3260357, "type": "disconnection", "data": {"step": 16, "components": 15}}
+{"step": 17, "timestamp": 1789029406.3604188, "type": "disconnection", "data": {"step": 17, "components": 15}}
+{"step": 18, "timestamp": 1789029406.394188, "type": "disconnection", "data": {"step": 18, "components": 15}}
+{"step": 19, "timestamp": 1789029406.4276428, "type": "disconnection", "data": {"step": 19, "components": 15}}
+{"step": 20, "timestamp": 1789029406.460175, "type": "disconnection", "data": {"step": 20, "components": 15}}
+{"step": 21, "timestamp": 1789029406.495375, "type": "disconnection", "data": {"step": 21, "components": 14}}
+{"step": 22, "timestamp": 1789029406.5292604, "type": "disconnection", "data": {"step": 22, "components": 14}}
+{"step": 23, "timestamp": 1789029406.5628793, "type": "disconnection", "data": {"step": 23, "components": 14}}
+{"step": 24, "timestamp": 1789029406.5969665, "type": "disconnection", "data": {"step": 24, "components": 14}}
+{"step": 25, "timestamp": 1789029406.6307068, "type": "disconnection", "data": {"step": 25, "components": 14}}
+{"step": 26, "timestamp": 1789029406.663182, "type": "disconnection", "data": {"step": 26, "components": 13}}
+{"step": 27, "timestamp": 1789029406.69674, "type": "disconnection", "data": {"step": 27, "components": 13}}
+{"step": 28, "timestamp": 1789029406.7299786, "type": "disconnection", "data": {"step": 28, "components": 13}}
+{"step": 29, "timestamp": 1789029406.763611, "type": "disconnection", "data": {"step": 29, "components": 12}}
+{"step": 30, "timestamp": 1789029406.7980158, "type": "disconnection", "data": {"step": 30, "components": 12}}
+{"step": 31, "timestamp": 1789029406.8330178, "type": "disconnection", "data": {"step": 31, "components": 12}}
+{"step": 32, "timestamp": 1789029406.8678777, "type": "disconnection", "data": {"step": 32, "components": 12}}
+{"step": 33, "timestamp": 1789029406.9023063, "type": "disconnection", "data": {"step": 33, "components": 12}}
+{"step": 34, "timestamp": 1789029406.9366581, "type": "disconnection", "data": {"step": 34, "components": 12}}
+{"step": 35, "timestamp": 1789029406.970486, "type": "disconnection", "data": {"step": 35, "components": 12}}
+{"step": 36, "timestamp": 1789029407.0041142, "type": "disconnection", "data": {"step": 36, "components": 12}}
+{"step": 37, "timestamp": 1789029407.038493, "type": "disconnection", "data": {"step": 37, "components": 12}}
+{"step": 38, "timestamp": 1789029407.0725555, "type": "disconnection", "data": {"step": 38, "components": 12}}
+{"step": 39, "timestamp": 1789029407.1059232, "type": "disconnection", "data": {"step": 39, "components": 12}}
+{"step": 40, "timestamp": 1789029407.1399024, "type": "disconnection", "data": {"step": 40, "components": 11}}
+{"step": 41, "timestamp": 1789029407.1732452, "type": "disconnection", "data": {"step": 41, "components": 11}}
+{"step": 42, "timestamp": 1789029407.2066107, "type": "disconnection", "data": {"step": 42, "components": 11}}
+{"step": 43, "timestamp": 1789029407.241289, "type": "disconnection", "data": {"step": 43, "components": 11}}
+{"step": 44, "timestamp": 1789029407.2743306, "type": "disconnection", "data": {"step": 44, "components": 11}}
+{"step": 45, "timestamp": 1789029407.3078, "type": "disconnection", "data": {"step": 45, "components": 11}}
+{"step": 46, "timestamp": 1789029407.340173, "type": "disconnection", "data": {"step": 46, "components": 11}}
+{"step": 47, "timestamp": 1789029407.3731863, "type": "disconnection", "data": {"step": 47, "components": 11}}
+{"step": 48, "timestamp": 1789029407.406727, "type": "disconnection", "data": {"step": 48, "components": 11}}
+{"step": 49, "timestamp": 1789029407.4400423, "type": "disconnection", "data": {"step": 49, "components": 11}}
+{"step": 50, "timestamp": 1789029407.4739745, "type": "disconnection", "data": {"step": 50, "components": 11}}
+{"step": 51, "timestamp": 1789029407.507938, "type": "disconnection", "data": {"step": 51, "components": 11}}
+{"step": 52, "timestamp": 1789029407.5411959, "type": "disconnection", "data": {"step": 52, "components": 11}}
+{"step": 53, "timestamp": 1789029407.5758212, "type": "disconnection", "data": {"step": 53, "components": 11}}
+{"step": 54, "timestamp": 1789029407.609945, "type": "disconnection", "data": {"step": 54, "components": 10}}
+{"step": 55, "timestamp": 1789029407.6438887, "type": "disconnection", "data": {"step": 55, "components": 10}}
+{"step": 56, "timestamp": 1789029407.676853, "type": "disconnection", "data": {"step": 56, "components": 10}}
+{"step": 57, "timestamp": 1789029407.7115903, "type": "disconnection", "data": {"step": 57, "components": 10}}
+{"step": 58, "timestamp": 1789029407.747125, "type": "disconnection", "data": {"step": 58, "components": 10}}
+{"step": 59, "timestamp": 1789029407.780639, "type": "disconnection", "data": {"step": 59, "components": 10}}
+{"step": 60, "timestamp": 1789029407.8155746, "type": "disconnection", "data": {"step": 60, "components": 10}}
+{"step": 61, "timestamp": 1789029407.8496234, "type": "disconnection", "data": {"step": 61, "components": 10}}
+{"step": 62, "timestamp": 1789029407.8839808, "type": "disconnection", "data": {"step": 62, "components": 10}}
+{"step": 63, "timestamp": 1789029407.9175155, "type": "disconnection", "data": {"step": 63, "components": 10}}
+{"step": 64, "timestamp": 1789029407.951069, "type": "disconnection", "data": {"step": 64, "components": 10}}
+{"step": 65, "timestamp": 1789029407.9850569, "type": "disconnection", "data": {"step": 65, "components": 10}}
+{"step": 66, "timestamp": 1789029408.0189543, "type": "disconnection", "data": {"step": 66, "components": 10}}
+{"step": 67, "timestamp": 1789029408.0525615, "type": "disconnection", "data": {"step": 67, "components": 10}}
+{"step": 68, "timestamp": 1789029408.0865366, "type": "disconnection", "data": {"step": 68, "components": 10}}
+{"step": 69, "timestamp": 1789029408.1206667, "type": "disconnection", "data": {"step": 69, "components": 10}}
+{"step": 70, "timestamp": 1789029408.1551263, "type": "disconnection", "data": {"step": 70, "components": 10}}
+{"step": 71, "timestamp": 1789029408.1889737, "type": "disconnection", "data": {"step": 71, "components": 9}}
+{"step": 72, "timestamp": 1789029408.2226055, "type": "disconnection", "data": {"step": 72, "components": 9}}
+{"step": 73, "timestamp": 1789029408.2560334, "type": "disconnection", "data": {"step": 73, "components": 9}}
+{"step": 74, "timestamp": 1789029408.2900798, "type": "disconnection", "data": {"step": 74, "components": 9}}
+{"step": 75, "timestamp": 1789029408.323063, "type": "disconnection", "data": {"step": 75, "components": 9}}
+{"step": 76, "timestamp": 1789029408.3568661, "type": "disconnection", "data": {"step": 76, "components": 9}}
+{"step": 77, "timestamp": 1789029408.3897078, "type": "disconnection", "data": {"step": 77, "components": 9}}
+{"step": 78, "timestamp": 1789029408.4237823, "type": "disconnection", "data": {"step": 78, "components": 9}}
+{"step": 79, "timestamp": 1789029408.4581578, "type": "disconnection", "data": {"step": 79, "components": 9}}
+{"step": 80, "timestamp": 1789029408.4925923, "type": "disconnection", "data": {"step": 80, "components": 9}}
+{"step": 81, "timestamp": 1789029408.5265367, "type": "disconnection", "data": {"step": 81, "components": 9}}
+{"step": 82, "timestamp": 1789029408.560566, "type": "disconnection", "data": {"step": 82, "components": 9}}
+{"step": 83, "timestamp": 1789029408.593894, "type": "disconnection", "data": {"step": 83, "components": 9}}
+{"step": 84, "timestamp": 1789029408.6275973, "type": "disconnection", "data": {"step": 84, "components": 9}}
+{"step": 85, "timestamp": 1789029408.6611538, "type": "disconnection", "data": {"step": 85, "components": 10}}
+{"step": 86, "timestamp": 1789029408.6944737, "type": "disconnection", "data": {"step": 86, "components": 11}}
+{"step": 87, "timestamp": 1789029408.727485, "type": "disconnection", "data": {"step": 87, "components": 11}}
+{"step": 88, "timestamp": 1789029408.7609959, "type": "disconnection", "data": {"step": 88, "components": 11}}
+{"step": 89, "timestamp": 1789029408.794146, "type": "disconnection", "data": {"step": 89, "components": 11}}
+{"step": 90, "timestamp": 1789029408.8281355, "type": "disconnection", "data": {"step": 90, "components": 11}}
+{"step": 91, "timestamp": 1789029408.8619852, "type": "disconnection", "data": {"step": 91, "components": 11}}
+{"step": 92, "timestamp": 1789029408.8951511, "type": "disconnection", "data": {"step": 92, "components": 10}}
+{"step": 93, "timestamp": 1789029408.9278662, "type": "disconnection", "data": {"step": 93, "components": 10}}
+{"step": 94, "timestamp": 1789029408.9609087, "type": "disconnection", "data": {"step": 94, "components": 10}}
+{"step": 95, "timestamp": 1789029408.995132, "type": "disconnection", "data": {"step": 95, "components": 10}}
+{"step": 96, "timestamp": 1789029409.0283895, "type": "disconnection", "data": {"step": 96, "components": 10}}
+{"step": 97, "timestamp": 1789029409.065577, "type": "disconnection", "data": {"step": 97, "components": 10}}
+{"step": 98, "timestamp": 1789029409.0988877, "type": "disconnection", "data": {"step": 98, "components": 10}}
+{"step": 99, "timestamp": 1789029409.1327193, "type": "disconnection", "data": {"step": 99, "components": 10}}
+{"step": 100, "timestamp": 1789029409.1656923, "type": "disconnection", "data": {"step": 100, "components": 10}}
+{"step": 100, "timestamp": 1789029409.165886, "type": "task_activated", "data": {"type": "task_activated", "task_id": "T2_target_search", "step": 100}}
+{"step": 101, "timestamp": 1789029409.199463, "type": "disconnection", "data": {"step": 101, "components": 10}}
+{"step": 102, "timestamp": 1789029409.2330697, "type": "disconnection", "data": {"step": 102, "components": 10}}
+{"step": 103, "timestamp": 1789029409.266187, "type": "disconnection", "data": {"step": 103, "components": 10}}
+{"step": 104, "timestamp": 1789029409.2996209, "type": "disconnection", "data": {"step": 104, "components": 10}}
+{"step": 105, "timestamp": 1789029409.3323288, "type": "disconnection", "data": {"step": 105, "components": 10}}
+{"step": 106, "timestamp": 1789029409.3667104, "type": "disconnection", "data": {"step": 106, "components": 10}}
+{"step": 107, "timestamp": 1789029409.4006412, "type": "disconnection", "data": {"step": 107, "components": 10}}
+{"step": 108, "timestamp": 1789029409.4351506, "type": "disconnection", "data": {"step": 108, "components": 10}}
+{"step": 109, "timestamp": 1789029409.4688568, "type": "disconnection", "data": {"step": 109, "components": 10}}
+{"step": 110, "timestamp": 1789029409.5030653, "type": "disconnection", "data": {"step": 110, "components": 10}}
+{"step": 111, "timestamp": 1789029409.5370889, "type": "disconnection", "data": {"step": 111, "components": 11}}
+{"step": 112, "timestamp": 1789029409.571056, "type": "disconnection", "data": {"step": 112, "components": 11}}
+{"step": 113, "timestamp": 1789029409.605087, "type": "disconnection", "data": {"step": 113, "components": 10}}
+{"step": 114, "timestamp": 1789029409.6388528, "type": "disconnection", "data": {"step": 114, "components": 10}}
+{"step": 115, "timestamp": 1789029409.672904, "type": "disconnection", "data": {"step": 115, "components": 10}}
+{"step": 116, "timestamp": 1789029409.705913, "type": "disconnection", "data": {"step": 116, "components": 10}}
+{"step": 117, "timestamp": 1789029409.7391796, "type": "disconnection", "data": {"step": 117, "components": 10}}
+{"step": 118, "timestamp": 1789029409.7724938, "type": "disconnection", "data": {"step": 118, "components": 11}}
+{"step": 119, "timestamp": 1789029409.8057458, "type": "disconnection", "data": {"step": 119, "components": 11}}
+{"step": 120, "timestamp": 1789029409.8384688, "type": "disconnection", "data": {"step": 120, "components": 11}}
+{"step": 121, "timestamp": 1789029409.8722136, "type": "disconnection", "data": {"step": 121, "components": 11}}
+{"step": 122, "timestamp": 1789029409.9048884, "type": "disconnection", "data": {"step": 122, "components": 11}}
+{"step": 123, "timestamp": 1789029409.9408987, "type": "disconnection", "data": {"step": 123, "components": 11}}
+{"step": 124, "timestamp": 1789029409.9770715, "type": "disconnection", "data": {"step": 124, "components": 11}}
+{"step": 125, "timestamp": 1789029410.014592, "type": "disconnection", "data": {"step": 125, "components": 11}}
+{"step": 126, "timestamp": 1789029410.0492618, "type": "disconnection", "data": {"step": 126, "components": 11}}
+{"step": 127, "timestamp": 1789029410.0824864, "type": "disconnection", "data": {"step": 127, "components": 11}}
+{"step": 128, "timestamp": 1789029410.116967, "type": "disconnection", "data": {"step": 128, "components": 11}}
+{"step": 129, "timestamp": 1789029410.1505032, "type": "disconnection", "data": {"step": 129, "components": 11}}
+{"step": 130, "timestamp": 1789029410.1835952, "type": "disconnection", "data": {"step": 130, "components": 11}}
+{"step": 131, "timestamp": 1789029410.2161782, "type": "disconnection", "data": {"step": 131, "components": 11}}
+{"step": 132, "timestamp": 1789029410.2509255, "type": "disconnection", "data": {"step": 132, "components": 12}}
+{"step": 133, "timestamp": 1789029410.2857487, "type": "disconnection", "data": {"step": 133, "components": 12}}
+{"step": 134, "timestamp": 1789029410.3222985, "type": "disconnection", "data": {"step": 134, "components": 13}}
+{"step": 135, "timestamp": 1789029410.356388, "type": "disconnection", "data": {"step": 135, "components": 13}}
+{"step": 136, "timestamp": 1789029410.3903985, "type": "disconnection", "data": {"step": 136, "components": 13}}
+{"step": 137, "timestamp": 1789029410.4256883, "type": "disconnection", "data": {"step": 137, "components": 13}}
+{"step": 138, "timestamp": 1789029410.459317, "type": "disconnection", "data": {"step": 138, "components": 13}}
+{"step": 139, "timestamp": 1789029410.491625, "type": "disconnection", "data": {"step": 139, "components": 12}}
+{"step": 140, "timestamp": 1789029410.525455, "type": "disconnection", "data": {"step": 140, "components": 12}}
+{"step": 141, "timestamp": 1789029410.5579925, "type": "disconnection", "data": {"step": 141, "components": 12}}
+{"step": 142, "timestamp": 1789029410.5919905, "type": "disconnection", "data": {"step": 142, "components": 13}}
+{"step": 143, "timestamp": 1789029410.6272042, "type": "disconnection", "data": {"step": 143, "components": 13}}
+{"step": 144, "timestamp": 1789029410.6608155, "type": "disconnection", "data": {"step": 144, "components": 13}}
+{"step": 145, "timestamp": 1789029410.694394, "type": "disconnection", "data": {"step": 145, "components": 13}}
+{"step": 146, "timestamp": 1789029410.7279775, "type": "disconnection", "data": {"step": 146, "components": 12}}
+{"step": 147, "timestamp": 1789029410.7610521, "type": "disconnection", "data": {"step": 147, "components": 12}}
+{"step": 148, "timestamp": 1789029410.7943575, "type": "disconnection", "data": {"step": 148, "components": 12}}
+{"step": 149, "timestamp": 1789029410.8272982, "type": "disconnection", "data": {"step": 149, "components": 12}}
+{"step": 150, "timestamp": 1789029410.861201, "type": "disconnection", "data": {"step": 150, "components": 12}}
+{"step": 151, "timestamp": 1789029410.8940547, "type": "disconnection", "data": {"step": 151, "components": 12}}
+{"step": 152, "timestamp": 1789029410.9283142, "type": "disconnection", "data": {"step": 152, "components": 12}}
+{"step": 153, "timestamp": 1789029410.9622166, "type": "disconnection", "data": {"step": 153, "components": 12}}
+{"step": 154, "timestamp": 1789029410.9963646, "type": "disconnection", "data": {"step": 154, "components": 12}}
+{"step": 155, "timestamp": 1789029411.0301235, "type": "disconnection", "data": {"step": 155, "components": 11}}
+{"step": 156, "timestamp": 1789029411.0657494, "type": "disconnection", "data": {"step": 156, "components": 11}}
+{"step": 157, "timestamp": 1789029411.0992305, "type": "disconnection", "data": {"step": 157, "components": 11}}
+{"step": 158, "timestamp": 1789029411.1322465, "type": "disconnection", "data": {"step": 158, "components": 11}}
+{"step": 159, "timestamp": 1789029411.164907, "type": "disconnection", "data": {"step": 159, "components": 11}}
+{"step": 160, "timestamp": 1789029411.1980433, "type": "disconnection", "data": {"step": 160, "components": 11}}
+{"step": 161, "timestamp": 1789029411.2313871, "type": "disconnection", "data": {"step": 161, "components": 11}}
+{"step": 162, "timestamp": 1789029411.2654912, "type": "disconnection", "data": {"step": 162, "components": 11}}
+{"step": 163, "timestamp": 1789029411.29988, "type": "disconnection", "data": {"step": 163, "components": 11}}
+{"step": 164, "timestamp": 1789029411.334875, "type": "disconnection", "data": {"step": 164, "components": 12}}
+{"step": 165, "timestamp": 1789029411.3684733, "type": "disconnection", "data": {"step": 165, "components": 12}}
+{"step": 166, "timestamp": 1789029411.4036803, "type": "disconnection", "data": {"step": 166, "components": 11}}
+{"step": 167, "timestamp": 1789029411.4382386, "type": "disconnection", "data": {"step": 167, "components": 11}}
+{"step": 168, "timestamp": 1789029411.4726496, "type": "disconnection", "data": {"step": 168, "components": 11}}
+{"step": 169, "timestamp": 1789029411.5083215, "type": "disconnection", "data": {"step": 169, "components": 10}}
+{"step": 170, "timestamp": 1789029411.5434384, "type": "disconnection", "data": {"step": 170, "components": 10}}
+{"step": 171, "timestamp": 1789029411.5780246, "type": "disconnection", "data": {"step": 171, "components": 10}}
+{"step": 172, "timestamp": 1789029411.6136122, "type": "disconnection", "data": {"step": 172, "components": 10}}
+{"step": 173, "timestamp": 1789029411.6503282, "type": "disconnection", "data": {"step": 173, "components": 10}}
+{"step": 174, "timestamp": 1789029411.6856945, "type": "disconnection", "data": {"step": 174, "components": 10}}
+{"step": 175, "timestamp": 1789029411.7190516, "type": "disconnection", "data": {"step": 175, "components": 10}}
+{"step": 176, "timestamp": 1789029411.7525141, "type": "disconnection", "data": {"step": 176, "components": 10}}
+{"step": 177, "timestamp": 1789029411.7530258, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 177, "position": [127.042, 51.656]}}
+{"step": 177, "timestamp": 1789029411.7858357, "type": "disconnection", "data": {"step": 177, "components": 10}}
+{"step": 178, "timestamp": 1789029411.7864532, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 178, "position": [127.042, 51.656]}}
+{"step": 178, "timestamp": 1789029411.8225648, "type": "disconnection", "data": {"step": 178, "components": 10}}
+{"step": 179, "timestamp": 1789029411.8231034, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 179, "position": [127.042, 51.656]}}
+{"step": 179, "timestamp": 1789029411.858617, "type": "disconnection", "data": {"step": 179, "components": 10}}
+{"step": 180, "timestamp": 1789029411.8592389, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 180, "position": [127.042, 51.656]}}
+{"step": 180, "timestamp": 1789029411.8929126, "type": "disconnection", "data": {"step": 180, "components": 10}}
+{"step": 181, "timestamp": 1789029411.893509, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 181, "position": [127.042, 51.656]}}
+{"step": 181, "timestamp": 1789029411.9269052, "type": "disconnection", "data": {"step": 181, "components": 10}}
+{"step": 182, "timestamp": 1789029411.9274242, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 182, "position": [127.042, 51.656]}}
+{"step": 182, "timestamp": 1789029411.9609938, "type": "disconnection", "data": {"step": 182, "components": 10}}
+{"step": 183, "timestamp": 1789029411.961452, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 183, "position": [127.042, 51.656]}}
+{"step": 183, "timestamp": 1789029411.9971883, "type": "disconnection", "data": {"step": 183, "components": 10}}
+{"step": 184, "timestamp": 1789029411.9978034, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 184, "position": [127.042, 51.656]}}
+{"step": 184, "timestamp": 1789029412.0312898, "type": "disconnection", "data": {"step": 184, "components": 10}}
+{"step": 185, "timestamp": 1789029412.0318356, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 185, "position": [127.042, 51.656]}}
+{"step": 185, "timestamp": 1789029412.0657203, "type": "disconnection", "data": {"step": 185, "components": 10}}
+{"step": 186, "timestamp": 1789029412.0662236, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 186, "position": [127.042, 51.656]}}
+{"step": 186, "timestamp": 1789029412.0995302, "type": "disconnection", "data": {"step": 186, "components": 10}}
+{"step": 187, "timestamp": 1789029412.1000166, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 187, "position": [127.042, 51.656]}}
+{"step": 187, "timestamp": 1789029412.132364, "type": "disconnection", "data": {"step": 187, "components": 10}}
+{"step": 188, "timestamp": 1789029412.1328251, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 188, "position": [127.042, 51.656]}}
+{"step": 188, "timestamp": 1789029412.1668823, "type": "disconnection", "data": {"step": 188, "components": 10}}
+{"step": 189, "timestamp": 1789029412.1673424, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 189, "position": [127.042, 51.656]}}
+{"step": 189, "timestamp": 1789029412.2000134, "type": "disconnection", "data": {"step": 189, "components": 10}}
+{"step": 190, "timestamp": 1789029412.2004828, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 190, "position": [127.042, 51.656]}}
+{"step": 190, "timestamp": 1789029412.2334363, "type": "disconnection", "data": {"step": 190, "components": 10}}
+{"step": 191, "timestamp": 1789029412.2339208, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 191, "position": [127.042, 51.656]}}
+{"step": 191, "timestamp": 1789029412.26595, "type": "disconnection", "data": {"step": 191, "components": 10}}
+{"step": 192, "timestamp": 1789029412.2664142, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 192, "position": [127.042, 51.656]}}
+{"step": 192, "timestamp": 1789029412.298917, "type": "disconnection", "data": {"step": 192, "components": 10}}
+{"step": 193, "timestamp": 1789029412.299409, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 193, "position": [127.042, 51.656]}}
+{"step": 193, "timestamp": 1789029412.3320708, "type": "disconnection", "data": {"step": 193, "components": 10}}
+{"step": 193, "timestamp": 1789029412.3322508, "type": "target_found", "data": {"type": "target_found", "task_id": "T2_target_search", "target_index": 3, "step": 193}}
+{"step": 194, "timestamp": 1789029412.3326335, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 194, "position": [127.042, 51.656]}}
+{"step": 194, "timestamp": 1789029412.3652823, "type": "disconnection", "data": {"step": 194, "components": 10}}
+{"step": 195, "timestamp": 1789029412.3658416, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 195, "position": [127.042, 51.656]}}
+{"step": 195, "timestamp": 1789029412.3981776, "type": "disconnection", "data": {"step": 195, "components": 10}}
+{"step": 196, "timestamp": 1789029412.3986304, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 196, "position": [127.042, 51.656]}}
+{"step": 196, "timestamp": 1789029412.4317555, "type": "disconnection", "data": {"step": 196, "components": 9}}
+{"step": 197, "timestamp": 1789029412.4322302, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 197, "position": [127.042, 51.656]}}
+{"step": 197, "timestamp": 1789029412.4648411, "type": "disconnection", "data": {"step": 197, "components": 9}}
+{"step": 198, "timestamp": 1789029412.4652882, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 198, "position": [127.042, 51.656]}}
+{"step": 198, "timestamp": 1789029412.4984677, "type": "disconnection", "data": {"step": 198, "components": 9}}
+{"step": 199, "timestamp": 1789029412.4988973, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 199, "position": [127.042, 51.656]}}
+{"step": 199, "timestamp": 1789029412.5306194, "type": "disconnection", "data": {"step": 199, "components": 9}}
+{"step": 200, "timestamp": 1789029412.5314252, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 200, "position": [127.042, 51.656]}}
+{"step": 200, "timestamp": 1789029412.5636647, "type": "disconnection", "data": {"step": 200, "components": 9}}
+{"step": 201, "timestamp": 1789029412.5646436, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 201, "position": [127.042, 51.656]}}
+{"step": 201, "timestamp": 1789029412.59852, "type": "disconnection", "data": {"step": 201, "components": 9}}
+{"step": 202, "timestamp": 1789029412.5989535, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 202, "position": [127.042, 51.656]}}
+{"step": 202, "timestamp": 1789029412.631083, "type": "disconnection", "data": {"step": 202, "components": 9}}
+{"step": 203, "timestamp": 1789029412.6315475, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 203, "position": [127.042, 51.656]}}
+{"step": 203, "timestamp": 1789029412.66293, "type": "disconnection", "data": {"step": 203, "components": 9}}
+{"step": 204, "timestamp": 1789029412.6633458, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 204, "position": [127.042, 51.656]}}
+{"step": 204, "timestamp": 1789029412.6955848, "type": "disconnection", "data": {"step": 204, "components": 9}}
+{"step": 205, "timestamp": 1789029412.696007, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 205, "position": [127.042, 51.656]}}
+{"step": 205, "timestamp": 1789029412.6963136, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 205, "position": [111.081, 42.947]}}
+{"step": 205, "timestamp": 1789029412.7281613, "type": "disconnection", "data": {"step": 205, "components": 9}}
+{"step": 206, "timestamp": 1789029412.728632, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 206, "position": [127.042, 51.656]}}
+{"step": 206, "timestamp": 1789029412.728961, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 206, "position": [111.081, 42.947]}}
+{"step": 206, "timestamp": 1789029412.7613685, "type": "disconnection", "data": {"step": 206, "components": 9}}
+{"step": 207, "timestamp": 1789029412.7617855, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 207, "position": [127.042, 51.656]}}
+{"step": 207, "timestamp": 1789029412.7621362, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 207, "position": [111.081, 42.947]}}
+{"step": 207, "timestamp": 1789029412.794761, "type": "disconnection", "data": {"step": 207, "components": 9}}
+{"step": 208, "timestamp": 1789029412.7952018, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 208, "position": [127.042, 51.656]}}
+{"step": 208, "timestamp": 1789029412.7955105, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 208, "position": [111.081, 42.947]}}
+{"step": 208, "timestamp": 1789029412.827583, "type": "disconnection", "data": {"step": 208, "components": 9}}
+{"step": 209, "timestamp": 1789029412.8280032, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 209, "position": [127.042, 51.656]}}
+{"step": 209, "timestamp": 1789029412.82831, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 209, "position": [111.081, 42.947]}}
+{"step": 209, "timestamp": 1789029412.8608801, "type": "disconnection", "data": {"step": 209, "components": 9}}
+{"step": 210, "timestamp": 1789029412.8613138, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 210, "position": [127.042, 51.656]}}
+{"step": 210, "timestamp": 1789029412.8616123, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 210, "position": [111.081, 42.947]}}
+{"step": 210, "timestamp": 1789029412.893507, "type": "disconnection", "data": {"step": 210, "components": 9}}
+{"step": 211, "timestamp": 1789029412.8939712, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 211, "position": [127.042, 51.656]}}
+{"step": 211, "timestamp": 1789029412.8942678, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 211, "position": [111.081, 42.947]}}
+{"step": 211, "timestamp": 1789029412.9276862, "type": "disconnection", "data": {"step": 211, "components": 9}}
+{"step": 212, "timestamp": 1789029412.928113, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 212, "position": [127.042, 51.656]}}
+{"step": 212, "timestamp": 1789029412.9284182, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 212, "position": [111.081, 42.947]}}
+{"step": 212, "timestamp": 1789029412.9621167, "type": "disconnection", "data": {"step": 212, "components": 9}}
+{"step": 213, "timestamp": 1789029412.9625685, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 213, "position": [127.042, 51.656]}}
+{"step": 213, "timestamp": 1789029412.962873, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 213, "position": [111.081, 42.947]}}
+{"step": 213, "timestamp": 1789029412.994917, "type": "disconnection", "data": {"step": 213, "components": 9}}
+{"step": 214, "timestamp": 1789029412.9953554, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 214, "position": [127.042, 51.656]}}
+{"step": 214, "timestamp": 1789029412.9956713, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 214, "position": [111.081, 42.947]}}
+{"step": 214, "timestamp": 1789029413.0286796, "type": "disconnection", "data": {"step": 214, "components": 9}}
+{"step": 215, "timestamp": 1789029413.0291297, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 215, "position": [127.042, 51.656]}}
+{"step": 215, "timestamp": 1789029413.0294375, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 215, "position": [111.081, 42.947]}}
+{"step": 215, "timestamp": 1789029413.0618665, "type": "disconnection", "data": {"step": 215, "components": 8}}
+{"step": 216, "timestamp": 1789029413.0623412, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 216, "position": [127.042, 51.656]}}
+{"step": 216, "timestamp": 1789029413.0626516, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 216, "position": [111.081, 42.947]}}
+{"step": 216, "timestamp": 1789029413.0951698, "type": "disconnection", "data": {"step": 216, "components": 7}}
+{"step": 217, "timestamp": 1789029413.0956392, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 217, "position": [127.042, 51.656]}}
+{"step": 217, "timestamp": 1789029413.0959451, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 217, "position": [111.081, 42.947]}}
+{"step": 217, "timestamp": 1789029413.1289077, "type": "disconnection", "data": {"step": 217, "components": 7}}
+{"step": 218, "timestamp": 1789029413.1293347, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 218, "position": [127.042, 51.656]}}
+{"step": 218, "timestamp": 1789029413.129643, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 218, "position": [111.081, 42.947]}}
+{"step": 218, "timestamp": 1789029413.161619, "type": "disconnection", "data": {"step": 218, "components": 7}}
+{"step": 219, "timestamp": 1789029413.1620612, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 219, "position": [127.042, 51.656]}}
+{"step": 219, "timestamp": 1789029413.1623633, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 219, "position": [111.081, 42.947]}}
+{"step": 219, "timestamp": 1789029413.1944985, "type": "disconnection", "data": {"step": 219, "components": 7}}
+{"step": 220, "timestamp": 1789029413.194957, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 220, "position": [127.042, 51.656]}}
+{"step": 220, "timestamp": 1789029413.1952589, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 220, "position": [111.081, 42.947]}}
+{"step": 220, "timestamp": 1789029413.2288394, "type": "disconnection", "data": {"step": 220, "components": 7}}
+{"step": 221, "timestamp": 1789029413.229266, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 221, "position": [127.042, 51.656]}}
+{"step": 221, "timestamp": 1789029413.2295735, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 221, "position": [111.081, 42.947]}}
+{"step": 221, "timestamp": 1789029413.2613482, "type": "disconnection", "data": {"step": 221, "components": 7}}
+{"step": 222, "timestamp": 1789029413.261776, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 222, "position": [127.042, 51.656]}}
+{"step": 222, "timestamp": 1789029413.262083, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 222, "position": [111.081, 42.947]}}
+{"step": 222, "timestamp": 1789029413.2939835, "type": "disconnection", "data": {"step": 222, "components": 7}}
+{"step": 223, "timestamp": 1789029413.2944047, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 223, "position": [127.042, 51.656]}}
+{"step": 223, "timestamp": 1789029413.2947128, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 223, "position": [111.081, 42.947]}}
+{"step": 223, "timestamp": 1789029413.3263822, "type": "disconnection", "data": {"step": 223, "components": 7}}
+{"step": 224, "timestamp": 1789029413.3268564, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 224, "position": [127.042, 51.656]}}
+{"step": 224, "timestamp": 1789029413.3272293, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 224, "position": [111.081, 42.947]}}
+{"step": 224, "timestamp": 1789029413.3593647, "type": "disconnection", "data": {"step": 224, "components": 7}}
+{"step": 225, "timestamp": 1789029413.3597896, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 225, "position": [127.042, 51.656]}}
+{"step": 225, "timestamp": 1789029413.3601, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 225, "position": [111.081, 42.947]}}
+{"step": 225, "timestamp": 1789029413.393151, "type": "disconnection", "data": {"step": 225, "components": 8}}
+{"step": 226, "timestamp": 1789029413.3938048, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 226, "position": [127.042, 51.656]}}
+{"step": 226, "timestamp": 1789029413.3941216, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 226, "position": [111.081, 42.947]}}
+{"step": 226, "timestamp": 1789029413.4254408, "type": "disconnection", "data": {"step": 226, "components": 8}}
+{"step": 227, "timestamp": 1789029413.4259846, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 227, "position": [127.042, 51.656]}}
+{"step": 227, "timestamp": 1789029413.4263012, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 227, "position": [111.081, 42.947]}}
+{"step": 227, "timestamp": 1789029413.4580677, "type": "disconnection", "data": {"step": 227, "components": 8}}
+{"step": 228, "timestamp": 1789029413.459001, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 228, "position": [127.042, 51.656]}}
+{"step": 228, "timestamp": 1789029413.4593132, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 228, "position": [111.081, 42.947]}}
+{"step": 228, "timestamp": 1789029413.4912114, "type": "disconnection", "data": {"step": 228, "components": 8}}
+{"step": 229, "timestamp": 1789029413.491769, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 229, "position": [127.042, 51.656]}}
+{"step": 229, "timestamp": 1789029413.4921129, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 229, "position": [111.081, 42.947]}}
+{"step": 229, "timestamp": 1789029413.5244322, "type": "disconnection", "data": {"step": 229, "components": 8}}
+{"step": 230, "timestamp": 1789029413.5250845, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 230, "position": [127.042, 51.656]}}
+{"step": 230, "timestamp": 1789029413.5256383, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 230, "position": [111.081, 42.947]}}
+{"step": 230, "timestamp": 1789029413.5573428, "type": "disconnection", "data": {"step": 230, "components": 8}}
+{"step": 231, "timestamp": 1789029413.557765, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 231, "position": [127.042, 51.656]}}
+{"step": 231, "timestamp": 1789029413.5580683, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 231, "position": [111.081, 42.947]}}
+{"step": 231, "timestamp": 1789029413.5903156, "type": "disconnection", "data": {"step": 231, "components": 8}}
+{"step": 232, "timestamp": 1789029413.590768, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 232, "position": [127.042, 51.656]}}
+{"step": 232, "timestamp": 1789029413.591179, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 232, "position": [111.081, 42.947]}}
+{"step": 232, "timestamp": 1789029413.622887, "type": "disconnection", "data": {"step": 232, "components": 9}}
+{"step": 233, "timestamp": 1789029413.6233351, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 233, "position": [127.042, 51.656]}}
+{"step": 233, "timestamp": 1789029413.6236482, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 233, "position": [111.081, 42.947]}}
+{"step": 233, "timestamp": 1789029413.6558924, "type": "disconnection", "data": {"step": 233, "components": 9}}
+{"step": 234, "timestamp": 1789029413.656322, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 234, "position": [127.042, 51.656]}}
+{"step": 234, "timestamp": 1789029413.656632, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 234, "position": [111.081, 42.947]}}
+{"step": 234, "timestamp": 1789029413.688131, "type": "disconnection", "data": {"step": 234, "components": 9}}
+{"step": 235, "timestamp": 1789029413.6885746, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 235, "position": [127.042, 51.656]}}
+{"step": 235, "timestamp": 1789029413.6888833, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 235, "position": [111.081, 42.947]}}
+{"step": 235, "timestamp": 1789029413.7204204, "type": "disconnection", "data": {"step": 235, "components": 9}}
+{"step": 236, "timestamp": 1789029413.7208824, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 236, "position": [127.042, 51.656]}}
+{"step": 236, "timestamp": 1789029413.7212012, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 236, "position": [111.081, 42.947]}}
+{"step": 236, "timestamp": 1789029413.7524972, "type": "disconnection", "data": {"step": 236, "components": 9}}
+{"step": 237, "timestamp": 1789029413.7532742, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 237, "position": [127.042, 51.656]}}
+{"step": 237, "timestamp": 1789029413.7536147, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 237, "position": [111.081, 42.947]}}
+{"step": 237, "timestamp": 1789029413.7855287, "type": "disconnection", "data": {"step": 237, "components": 8}}
+{"step": 238, "timestamp": 1789029413.786453, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 238, "position": [127.042, 51.656]}}
+{"step": 238, "timestamp": 1789029413.7867904, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 238, "position": [111.081, 42.947]}}
+{"step": 238, "timestamp": 1789029413.8192086, "type": "disconnection", "data": {"step": 238, "components": 8}}
+{"step": 239, "timestamp": 1789029413.819901, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 239, "position": [127.042, 51.656]}}
+{"step": 239, "timestamp": 1789029413.820255, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 239, "position": [111.081, 42.947]}}
+{"step": 239, "timestamp": 1789029413.852959, "type": "disconnection", "data": {"step": 239, "components": 8}}
+{"step": 240, "timestamp": 1789029413.8536074, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 240, "position": [127.042, 51.656]}}
+{"step": 240, "timestamp": 1789029413.8540602, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 240, "position": [111.081, 42.947]}}
+{"step": 240, "timestamp": 1789029413.8865192, "type": "disconnection", "data": {"step": 240, "components": 9}}
+{"step": 241, "timestamp": 1789029413.8869815, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 241, "position": [127.042, 51.656]}}
+{"step": 241, "timestamp": 1789029413.8873363, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 241, "position": [111.081, 42.947]}}
+{"step": 241, "timestamp": 1789029413.9185374, "type": "disconnection", "data": {"step": 241, "components": 10}}
+{"step": 242, "timestamp": 1789029413.9189942, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 242, "position": [127.042, 51.656]}}
+{"step": 242, "timestamp": 1789029413.9193037, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 242, "position": [111.081, 42.947]}}
+{"step": 242, "timestamp": 1789029413.9522827, "type": "disconnection", "data": {"step": 242, "components": 9}}
+{"step": 243, "timestamp": 1789029413.9527252, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 243, "position": [127.042, 51.656]}}
+{"step": 243, "timestamp": 1789029413.9533494, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 243, "position": [111.081, 42.947]}}
+{"step": 243, "timestamp": 1789029413.9862163, "type": "disconnection", "data": {"step": 243, "components": 9}}
+{"step": 244, "timestamp": 1789029413.9867184, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 244, "position": [127.042, 51.656]}}
+{"step": 244, "timestamp": 1789029413.9871552, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 244, "position": [111.081, 42.947]}}
+{"step": 244, "timestamp": 1789029414.0192158, "type": "disconnection", "data": {"step": 244, "components": 9}}
+{"step": 245, "timestamp": 1789029414.0197148, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 245, "position": [127.042, 51.656]}}
+{"step": 245, "timestamp": 1789029414.020042, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 245, "position": [111.081, 42.947]}}
+{"step": 245, "timestamp": 1789029414.0531685, "type": "disconnection", "data": {"step": 245, "components": 9}}
+{"step": 246, "timestamp": 1789029414.0538392, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 246, "position": [127.042, 51.656]}}
+{"step": 246, "timestamp": 1789029414.0541463, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 246, "position": [111.081, 42.947]}}
+{"step": 246, "timestamp": 1789029414.0862021, "type": "disconnection", "data": {"step": 246, "components": 9}}
+{"step": 247, "timestamp": 1789029414.0867476, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 247, "position": [127.042, 51.656]}}
+{"step": 247, "timestamp": 1789029414.087099, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 247, "position": [111.081, 42.947]}}
+{"step": 247, "timestamp": 1789029414.1195283, "type": "disconnection", "data": {"step": 247, "components": 9}}
+{"step": 248, "timestamp": 1789029414.1202066, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 248, "position": [127.042, 51.656]}}
+{"step": 248, "timestamp": 1789029414.1205149, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 248, "position": [111.081, 42.947]}}
+{"step": 248, "timestamp": 1789029414.152055, "type": "disconnection", "data": {"step": 248, "components": 10}}
+{"step": 249, "timestamp": 1789029414.1524668, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 249, "position": [127.042, 51.656]}}
+{"step": 249, "timestamp": 1789029414.1527896, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 249, "position": [111.081, 42.947]}}
+{"step": 249, "timestamp": 1789029414.184598, "type": "disconnection", "data": {"step": 249, "components": 10}}
+{"step": 250, "timestamp": 1789029414.185026, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 250, "position": [127.042, 51.656]}}
+{"step": 250, "timestamp": 1789029414.1853182, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 250, "position": [111.081, 42.947]}}
+{"step": 250, "timestamp": 1789029414.218084, "type": "disconnection", "data": {"step": 250, "components": 10}}
+{"step": 251, "timestamp": 1789029414.2185254, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 251, "position": [127.042, 51.656]}}
+{"step": 251, "timestamp": 1789029414.2188263, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 251, "position": [111.081, 42.947]}}
+{"step": 251, "timestamp": 1789029414.252057, "type": "disconnection", "data": {"step": 251, "components": 10}}
+{"step": 252, "timestamp": 1789029414.2524834, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 252, "position": [127.042, 51.656]}}
+{"step": 252, "timestamp": 1789029414.252974, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 252, "position": [111.081, 42.947]}}
+{"step": 252, "timestamp": 1789029414.285803, "type": "disconnection", "data": {"step": 252, "components": 10}}
+{"step": 253, "timestamp": 1789029414.2865982, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 253, "position": [127.042, 51.656]}}
+{"step": 253, "timestamp": 1789029414.2869308, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 253, "position": [111.081, 42.947]}}
+{"step": 253, "timestamp": 1789029414.3187997, "type": "disconnection", "data": {"step": 253, "components": 11}}
+{"step": 254, "timestamp": 1789029414.319402, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 254, "position": [127.042, 51.656]}}
+{"step": 254, "timestamp": 1789029414.3197446, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 254, "position": [111.081, 42.947]}}
+{"step": 254, "timestamp": 1789029414.3520346, "type": "disconnection", "data": {"step": 254, "components": 11}}
+{"step": 255, "timestamp": 1789029414.35248, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 255, "position": [127.042, 51.656]}}
+{"step": 255, "timestamp": 1789029414.3530955, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 255, "position": [111.081, 42.947]}}
+{"step": 255, "timestamp": 1789029414.3852434, "type": "disconnection", "data": {"step": 255, "components": 11}}
+{"step": 256, "timestamp": 1789029414.3856735, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 256, "position": [127.042, 51.656]}}
+{"step": 256, "timestamp": 1789029414.386212, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 256, "position": [111.081, 42.947]}}
+{"step": 256, "timestamp": 1789029414.4190683, "type": "disconnection", "data": {"step": 256, "components": 11}}
+{"step": 257, "timestamp": 1789029414.4195712, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 257, "position": [127.042, 51.656]}}
+{"step": 257, "timestamp": 1789029414.4200199, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 257, "position": [111.081, 42.947]}}
+{"step": 257, "timestamp": 1789029414.4528153, "type": "disconnection", "data": {"step": 257, "components": 11}}
+{"step": 258, "timestamp": 1789029414.4533496, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 258, "position": [127.042, 51.656]}}
+{"step": 258, "timestamp": 1789029414.453776, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 258, "position": [111.081, 42.947]}}
+{"step": 258, "timestamp": 1789029414.4880993, "type": "disconnection", "data": {"step": 258, "components": 11}}
+{"step": 259, "timestamp": 1789029414.488551, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 259, "position": [127.042, 51.656]}}
+{"step": 259, "timestamp": 1789029414.488859, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 259, "position": [111.081, 42.947]}}
+{"step": 259, "timestamp": 1789029414.5210204, "type": "disconnection", "data": {"step": 259, "components": 11}}
+{"step": 260, "timestamp": 1789029414.5215666, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 260, "position": [127.042, 51.656]}}
+{"step": 260, "timestamp": 1789029414.5218787, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 260, "position": [111.081, 42.947]}}
+{"step": 260, "timestamp": 1789029414.5552156, "type": "disconnection", "data": {"step": 260, "components": 11}}
+{"step": 261, "timestamp": 1789029414.555654, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 261, "position": [127.042, 51.656]}}
+{"step": 261, "timestamp": 1789029414.5559556, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 261, "position": [111.081, 42.947]}}
+{"step": 261, "timestamp": 1789029414.5884843, "type": "disconnection", "data": {"step": 261, "components": 11}}
+{"step": 262, "timestamp": 1789029414.5889268, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 262, "position": [127.042, 51.656]}}
+{"step": 262, "timestamp": 1789029414.5892332, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 262, "position": [111.081, 42.947]}}
+{"step": 262, "timestamp": 1789029414.6226792, "type": "disconnection", "data": {"step": 262, "components": 11}}
+{"step": 263, "timestamp": 1789029414.6231222, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 263, "position": [127.042, 51.656]}}
+{"step": 263, "timestamp": 1789029414.6234272, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 263, "position": [111.081, 42.947]}}
+{"step": 263, "timestamp": 1789029414.6559546, "type": "disconnection", "data": {"step": 263, "components": 11}}
+{"step": 264, "timestamp": 1789029414.656391, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 264, "position": [127.042, 51.656]}}
+{"step": 264, "timestamp": 1789029414.6566918, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 264, "position": [111.081, 42.947]}}
+{"step": 264, "timestamp": 1789029414.6894925, "type": "disconnection", "data": {"step": 264, "components": 11}}
+{"step": 265, "timestamp": 1789029414.6899323, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 265, "position": [127.042, 51.656]}}
+{"step": 265, "timestamp": 1789029414.6902342, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 265, "position": [111.081, 42.947]}}
+{"step": 265, "timestamp": 1789029414.7236269, "type": "disconnection", "data": {"step": 265, "components": 11}}
+{"step": 266, "timestamp": 1789029414.7242794, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 266, "position": [127.042, 51.656]}}
+{"step": 266, "timestamp": 1789029414.7246, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 266, "position": [111.081, 42.947]}}
+{"step": 266, "timestamp": 1789029414.7580554, "type": "disconnection", "data": {"step": 266, "components": 11}}
+{"step": 267, "timestamp": 1789029414.7588618, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 267, "position": [127.042, 51.656]}}
+{"step": 267, "timestamp": 1789029414.7592342, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 267, "position": [111.081, 42.947]}}
+{"step": 267, "timestamp": 1789029414.7912998, "type": "disconnection", "data": {"step": 267, "components": 11}}
+{"step": 268, "timestamp": 1789029414.7917569, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 268, "position": [127.042, 51.656]}}
+{"step": 268, "timestamp": 1789029414.7921643, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 268, "position": [111.081, 42.947]}}
+{"step": 268, "timestamp": 1789029414.825118, "type": "disconnection", "data": {"step": 268, "components": 11}}
+{"step": 269, "timestamp": 1789029414.8256865, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 269, "position": [127.042, 51.656]}}
+{"step": 269, "timestamp": 1789029414.8260353, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 269, "position": [111.081, 42.947]}}
+{"step": 269, "timestamp": 1789029414.8584898, "type": "disconnection", "data": {"step": 269, "components": 11}}
+{"step": 270, "timestamp": 1789029414.8589826, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 270, "position": [127.042, 51.656]}}
+{"step": 270, "timestamp": 1789029414.8593724, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 270, "position": [111.081, 42.947]}}
+{"step": 270, "timestamp": 1789029414.8913834, "type": "disconnection", "data": {"step": 270, "components": 11}}
+{"step": 271, "timestamp": 1789029414.8921325, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 271, "position": [127.042, 51.656]}}
+{"step": 271, "timestamp": 1789029414.8925433, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 271, "position": [111.081, 42.947]}}
+{"step": 271, "timestamp": 1789029414.9244125, "type": "disconnection", "data": {"step": 271, "components": 11}}
+{"step": 272, "timestamp": 1789029414.924953, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 272, "position": [127.042, 51.656]}}
+{"step": 272, "timestamp": 1789029414.9253466, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 272, "position": [111.081, 42.947]}}
+{"step": 272, "timestamp": 1789029414.9590867, "type": "disconnection", "data": {"step": 272, "components": 11}}
+{"step": 273, "timestamp": 1789029414.9596426, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 273, "position": [127.042, 51.656]}}
+{"step": 273, "timestamp": 1789029414.9599972, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 273, "position": [111.081, 42.947]}}
+{"step": 273, "timestamp": 1789029414.9923291, "type": "disconnection", "data": {"step": 273, "components": 11}}
+{"step": 274, "timestamp": 1789029414.9929276, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 274, "position": [127.042, 51.656]}}
+{"step": 274, "timestamp": 1789029414.9932854, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 274, "position": [111.081, 42.947]}}
+{"step": 274, "timestamp": 1789029415.0258985, "type": "disconnection", "data": {"step": 274, "components": 11}}
+{"step": 275, "timestamp": 1789029415.0263243, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 275, "position": [127.042, 51.656]}}
+{"step": 275, "timestamp": 1789029415.02664, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 275, "position": [111.081, 42.947]}}
+{"step": 275, "timestamp": 1789029415.0593958, "type": "disconnection", "data": {"step": 275, "components": 11}}
+{"step": 276, "timestamp": 1789029415.0598688, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 276, "position": [127.042, 51.656]}}
+{"step": 276, "timestamp": 1789029415.0602639, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 276, "position": [111.081, 42.947]}}
+{"step": 276, "timestamp": 1789029415.0936098, "type": "disconnection", "data": {"step": 276, "components": 12}}
+{"step": 277, "timestamp": 1789029415.0940285, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 277, "position": [127.042, 51.656]}}
+{"step": 277, "timestamp": 1789029415.0943255, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 277, "position": [111.081, 42.947]}}
+{"step": 277, "timestamp": 1789029415.1270475, "type": "disconnection", "data": {"step": 277, "components": 12}}
+{"step": 278, "timestamp": 1789029415.1274843, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 278, "position": [127.042, 51.656]}}
+{"step": 278, "timestamp": 1789029415.12779, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 278, "position": [111.081, 42.947]}}
+{"step": 278, "timestamp": 1789029415.1600742, "type": "disconnection", "data": {"step": 278, "components": 12}}
+{"step": 279, "timestamp": 1789029415.160534, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 279, "position": [127.042, 51.656]}}
+{"step": 279, "timestamp": 1789029415.16084, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 279, "position": [111.081, 42.947]}}
+{"step": 279, "timestamp": 1789029415.1937687, "type": "disconnection", "data": {"step": 279, "components": 12}}
+{"step": 280, "timestamp": 1789029415.194211, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 280, "position": [127.042, 51.656]}}
+{"step": 280, "timestamp": 1789029415.1945238, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 280, "position": [111.081, 42.947]}}
+{"step": 280, "timestamp": 1789029415.2270005, "type": "disconnection", "data": {"step": 280, "components": 12}}
+{"step": 281, "timestamp": 1789029415.2274525, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 281, "position": [127.042, 51.656]}}
+{"step": 281, "timestamp": 1789029415.2277498, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 281, "position": [111.081, 42.947]}}
+{"step": 281, "timestamp": 1789029415.2605457, "type": "disconnection", "data": {"step": 281, "components": 12}}
+{"step": 282, "timestamp": 1789029415.2609835, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 282, "position": [127.042, 51.656]}}
+{"step": 282, "timestamp": 1789029415.2612865, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 282, "position": [111.081, 42.947]}}
+{"step": 282, "timestamp": 1789029415.295321, "type": "disconnection", "data": {"step": 282, "components": 12}}
+{"step": 283, "timestamp": 1789029415.2957535, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 283, "position": [127.042, 51.656]}}
+{"step": 283, "timestamp": 1789029415.2960615, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 283, "position": [111.081, 42.947]}}
+{"step": 283, "timestamp": 1789029415.3289616, "type": "disconnection", "data": {"step": 283, "components": 12}}
+{"step": 284, "timestamp": 1789029415.3293989, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 284, "position": [127.042, 51.656]}}
+{"step": 284, "timestamp": 1789029415.3297, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 284, "position": [111.081, 42.947]}}
+{"step": 284, "timestamp": 1789029415.362454, "type": "disconnection", "data": {"step": 284, "components": 12}}
+{"step": 285, "timestamp": 1789029415.3628926, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 285, "position": [127.042, 51.656]}}
+{"step": 285, "timestamp": 1789029415.3631947, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 285, "position": [111.081, 42.947]}}
+{"step": 285, "timestamp": 1789029415.3959186, "type": "disconnection", "data": {"step": 285, "components": 12}}
+{"step": 286, "timestamp": 1789029415.3963711, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 286, "position": [127.042, 51.656]}}
+{"step": 286, "timestamp": 1789029415.3966725, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 286, "position": [111.081, 42.947]}}
+{"step": 286, "timestamp": 1789029415.4286077, "type": "disconnection", "data": {"step": 286, "components": 12}}
+{"step": 287, "timestamp": 1789029415.429044, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 287, "position": [127.042, 51.656]}}
+{"step": 287, "timestamp": 1789029415.4293447, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 287, "position": [111.081, 42.947]}}
+{"step": 287, "timestamp": 1789029415.4617114, "type": "disconnection", "data": {"step": 287, "components": 12}}
+{"step": 288, "timestamp": 1789029415.4621363, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 288, "position": [127.042, 51.656]}}
+{"step": 288, "timestamp": 1789029415.4624403, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 288, "position": [111.081, 42.947]}}
+{"step": 288, "timestamp": 1789029415.4960966, "type": "disconnection", "data": {"step": 288, "components": 13}}
+{"step": 289, "timestamp": 1789029415.4965174, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 289, "position": [127.042, 51.656]}}
+{"step": 289, "timestamp": 1789029415.4968176, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 289, "position": [111.081, 42.947]}}
+{"step": 289, "timestamp": 1789029415.5299804, "type": "disconnection", "data": {"step": 289, "components": 13}}
+{"step": 290, "timestamp": 1789029415.5306108, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 290, "position": [127.042, 51.656]}}
+{"step": 290, "timestamp": 1789029415.531131, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 290, "position": [111.081, 42.947]}}
+{"step": 290, "timestamp": 1789029415.5637372, "type": "disconnection", "data": {"step": 290, "components": 14}}
+{"step": 291, "timestamp": 1789029415.5645373, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 291, "position": [127.042, 51.656]}}
+{"step": 291, "timestamp": 1789029415.565087, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 291, "position": [111.081, 42.947]}}
+{"step": 291, "timestamp": 1789029415.5989969, "type": "disconnection", "data": {"step": 291, "components": 14}}
+{"step": 292, "timestamp": 1789029415.5994682, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 292, "position": [127.042, 51.656]}}
+{"step": 292, "timestamp": 1789029415.5998695, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 292, "position": [111.081, 42.947]}}
+{"step": 292, "timestamp": 1789029415.6322684, "type": "disconnection", "data": {"step": 292, "components": 14}}
+{"step": 293, "timestamp": 1789029415.6327085, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 293, "position": [127.042, 51.656]}}
+{"step": 293, "timestamp": 1789029415.6330106, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 293, "position": [111.081, 42.947]}}
+{"step": 293, "timestamp": 1789029415.6648922, "type": "disconnection", "data": {"step": 293, "components": 14}}
+{"step": 294, "timestamp": 1789029415.6653693, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 294, "position": [127.042, 51.656]}}
+{"step": 294, "timestamp": 1789029415.665696, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 294, "position": [111.081, 42.947]}}
+{"step": 294, "timestamp": 1789029415.6989083, "type": "disconnection", "data": {"step": 294, "components": 14}}
+{"step": 295, "timestamp": 1789029415.6993537, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 295, "position": [127.042, 51.656]}}
+{"step": 295, "timestamp": 1789029415.6996567, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 295, "position": [111.081, 42.947]}}
+{"step": 295, "timestamp": 1789029415.7321043, "type": "disconnection", "data": {"step": 295, "components": 14}}
+{"step": 295, "timestamp": 1789029415.7323008, "type": "target_found", "data": {"type": "target_found", "task_id": "T2_target_search", "target_index": 4, "step": 295}}
+{"step": 296, "timestamp": 1789029415.7325861, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 296, "position": [127.042, 51.656]}}
+{"step": 296, "timestamp": 1789029415.7328873, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 296, "position": [111.081, 42.947]}}
+{"step": 296, "timestamp": 1789029415.7657828, "type": "disconnection", "data": {"step": 296, "components": 14}}
+{"step": 297, "timestamp": 1789029415.7662034, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 297, "position": [127.042, 51.656]}}
+{"step": 297, "timestamp": 1789029415.7665088, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 297, "position": [111.081, 42.947]}}
+{"step": 297, "timestamp": 1789029415.7978237, "type": "disconnection", "data": {"step": 297, "components": 14}}
+{"step": 298, "timestamp": 1789029415.7983286, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 298, "position": [127.042, 51.656]}}
+{"step": 298, "timestamp": 1789029415.7987251, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 298, "position": [111.081, 42.947]}}
+{"step": 298, "timestamp": 1789029415.8303106, "type": "disconnection", "data": {"step": 298, "components": 14}}
+{"step": 299, "timestamp": 1789029415.8308673, "type": "collision", "data": {"robot_id": 7, "type": "dynamic_fire_B", "step": 299, "position": [127.042, 51.656]}}
+{"step": 299, "timestamp": 1789029415.8314023, "type": "collision", "data": {"robot_id": 29, "type": "dynamic_fire_B", "step": 299, "position": [111.081, 42.947]}}
+{"step": 299, "timestamp": 1789029415.8639374, "type": "disconnection", "data": {"step": 299, "components": 14}}

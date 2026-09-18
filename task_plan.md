@@ -15,7 +15,7 @@
 | 阶段 | 状态 | 交付物 | 验收重点 |
 |---|---|---|---|
 | 1. 需求与基线固化 | complete | 需求矩阵、代码/论文映射、基准运行说明 | 明确指标、数据结构和复现实验 |
-| 2. 可扩展仿真平台 | planned | 动态/静态障碍、30–60 机、通信/故障注入、统一接口 | 仿真稳定、规模可运行、场景可复现 |
+| 2. 可扩展仿真平台 | in_progress | 配置驱动运行时、动态/静态障碍、30–60 机、通信/统一接口 | 4/30/60 机可运行，场景可复现；MARVEL 策略适配尚待完成 |
 | 3. 多任务决策与协同算法 | planned | 任务状态机/任务分配、层级策略、CTDE critic、在线重规划 | 任务切换、协同冲突处理、约束满足 |
 | 4. 训练工程与性能优化 | planned | curriculum、并行采样、经验回放/评估、模型版本管理 | 训练可复现、吞吐和实时性达标 |
 | 5. 验证评测与演示 | planned | 指标脚本、对比/消融、演示系统、数据集 | 效率提升≥15%目标、报告可审计 |
@@ -47,3 +47,12 @@
 |---|---|---|
 | PowerShell 禁止运行 `codegraph.ps1` | 直接执行 `codegraph explore` | 改用 `cmd.exe /c codegraph explore`，成功获得符号与调用关系 |
 | 根目录未找到旧计划文件 | `Get-ChildItem` 与 `Get-Content` 结果不一致 | 以当前工作区实际状态为准，在根目录重新创建计划文件 |
+
+## 2026-09-10 落地记录
+
+- 阶段 2 已进入 `in_progress`：新增配置驱动 headless 仿真骨架，未修改原 MARVEL 训练和探索代码。
+- 新增 `configs/`、`scripts/`、`platform_tests/`，以及动力学、传感器、通信、障碍物、任务、运行时和评测模块。
+- 提供 4 机 `baseline_exploration.yaml` 与 30 机 `urban_rescue_simple.yaml`。
+- 已通过 3 个平台测试，完成 30 机 300 步运行并生成配置快照、运行信息、事件日志和评测 JSON。
+- 下一步：接入 MARVEL policy adapter、安全动作屏蔽、真实地图加载和 30→60 机压力测试。
+- 本轮尚未实现：MARVEL Policy Adapter、原始 `sensor_work_heading` 射线兼容、真实地图文件加载、NoisySensor、SAFETY 任务、角加速度约束和 60 机完整 300 步基准归档。

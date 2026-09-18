@@ -1,0 +1,5 @@
+{
+  "scenario": "urban_rescue_simple",
+  "seed": 42,
+  "episodes": 1
+}

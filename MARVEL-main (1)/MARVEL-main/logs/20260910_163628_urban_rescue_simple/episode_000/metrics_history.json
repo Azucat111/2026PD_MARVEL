@@ -1,0 +1,26 @@
+[
+  {
+    "step": 0,
+    "exploration_rate": 0.19382222222222223,
+    "targets_found": 0,
+    "connectivity_ratio": 0.0,
+    "collision_count": 0,
+    "total_distance": 2.9999999999999907
+  },
+  {
+    "step": 1,
+    "exploration_rate": 0.2072,
+    "targets_found": 0,
+    "connectivity_ratio": 0.0,
+    "collision_count": 0,
+    "total_distance": 5.999999999999981
+  },
+  {
+    "step": 2,
+    "exploration_rate": 0.20826666666666666,
+    "targets_found": 0,
+    "connectivity_ratio": 0.0,
+    "collision_count": 0,
+    "total_distance": 8.999999999999973
+  }
+]

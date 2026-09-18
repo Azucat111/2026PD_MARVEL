@@ -1,0 +1,20 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1789712294.5355127,
+    "type": "simulation_reset",
+    "data": {
+      "num_robots": 4
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789712294.642932,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T1_exploration",
+      "step": 0
+    }
+  }
+]

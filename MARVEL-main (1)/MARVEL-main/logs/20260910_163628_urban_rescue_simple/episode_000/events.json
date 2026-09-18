@@ -1,0 +1,57 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1789029388.0416732,
+    "type": "simulation_reset",
+    "data": {
+      "num_robots": 30
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789029388.1131241,
+    "type": "disconnection",
+    "data": {
+      "step": 0,
+      "components": 15
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789029388.11314,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T1_exploration",
+      "step": 0
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789029388.1131408,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T3_relay",
+      "step": 0
+    }
+  },
+  {
+    "step": 1,
+    "timestamp": 1789029388.1476705,
+    "type": "disconnection",
+    "data": {
+      "step": 1,
+      "components": 14
+    }
+  },
+  {
+    "step": 2,
+    "timestamp": 1789029388.184204,
+    "type": "disconnection",
+    "data": {
+      "step": 2,
+      "components": 14
+    }
+  }
+]

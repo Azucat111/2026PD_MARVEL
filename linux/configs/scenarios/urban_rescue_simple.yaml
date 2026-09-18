@@ -1,0 +1,74 @@
+scenario:
+  name: urban_rescue_simple
+  description: 30-UAV urban rescue scenario with dynamic fire obstacles
+  version: "1.0"
+  duration:
+    max_steps: 300
+    step_dt: 0.1
+environment:
+  map_size: [150, 150]
+  map_resolution: 1.0
+  circular_obstacles:
+    - {position: [70, 70], radius: 4}
+    - {position: [100, 90], radius: 3}
+robots:
+  - id_range: [1, 20]
+    type: explorer
+    team_id: 1
+    config: {fov: 120, sensor_range: 10, velocity: 1.0, yaw_rate: 35, initial_positions: random_safe}
+  - id_range: [21, 25]
+    type: relay
+    team_id: 1
+    config: {fov: 90, sensor_range: 12, velocity: 1.5, yaw_rate: 30, initial_positions: random_safe}
+  - id_range: [26, 30]
+    type: rescue
+    team_id: 1
+    config: {fov: 90, sensor_range: 8, velocity: 2.5, yaw_rate: 45, initial_positions: random_safe}
+tasks:
+  - task_id: T1_exploration
+    type: exploration
+    priority: 3
+    assigned_robot_types: [explorer]
+    params: {target_coverage: 0.8, deadline: 300}
+  - task_id: T2_target_search
+    type: target_search
+    priority: 5
+    assigned_robot_types: [rescue, explorer]
+    activation:
+      condition: exploration_rate >= 0.3
+      step: 100
+    params:
+      targets:
+        - {x: 30, y: 30, radius: 5}
+        - {x: 80, y: 120, radius: 5}
+        - {x: 140, y: 60, radius: 5}
+        - {x: 50, y: 100, radius: 5}
+        - {x: 110, y: 110, radius: 5}
+  - task_id: T3_relay
+    type: relay
+    priority: 2
+    assigned_robot_types: [relay]
+    params: {min_connectivity: 0.9, comm_range: 20.0}
+dynamic_obstacles:
+  - id: fire_A
+    type: expanding_circle
+    spawn_step: 50
+    params: {position: [80, 80], initial_radius: 5, expansion_rate: 0.1, max_radius: 20}
+  - id: fire_B
+    type: expanding_circle
+    spawn_step: 150
+    params: {position: [120, 50], initial_radius: 3, expansion_rate: 0.15, max_radius: 15}
+dynamics:
+  config_file: ../dynamics/kinematic_simple.yaml
+sensor:
+  config_file: ../sensors/ideal.yaml
+communication:
+  config_file: ../communication/realistic.yaml
+evaluation:
+  metrics:
+    - {name: exploration_rate, weight: 0.25, target: 0.8}
+    - {name: targets_found, weight: 0.30, target: 3, score_per_target: 20}
+    - {name: makespan, weight: 0.15, target: 300}
+    - {name: connectivity_ratio, weight: 0.10, target: 0.9}
+    - {name: collision_count, weight: 0.15, target: 0, penalty_per_collision: -1}
+    - {name: total_distance, weight: 0.05, target: 500}

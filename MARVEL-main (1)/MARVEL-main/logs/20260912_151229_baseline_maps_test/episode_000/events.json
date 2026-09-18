@@ -1,0 +1,1230 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1789197149.2907476,
+    "type": "simulation_reset",
+    "data": {
+      "num_robots": 4
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789197149.3269808,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T1_exploration",
+      "step": 0
+    }
+  },
+  {
+    "step": 53,
+    "timestamp": 1789197150.6346285,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 53,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 54,
+    "timestamp": 1789197150.6596859,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 54,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 55,
+    "timestamp": 1789197150.6858478,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 55,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 56,
+    "timestamp": 1789197150.7128036,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 56,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 57,
+    "timestamp": 1789197150.7388885,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 57,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 58,
+    "timestamp": 1789197150.7659235,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 58,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 59,
+    "timestamp": 1789197150.7918694,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 59,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 60,
+    "timestamp": 1789197150.817295,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 60,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 61,
+    "timestamp": 1789197150.84305,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 61,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 62,
+    "timestamp": 1789197150.8676322,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 62,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 63,
+    "timestamp": 1789197150.893114,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 63,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 64,
+    "timestamp": 1789197150.919274,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 64,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 65,
+    "timestamp": 1789197150.9462316,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 65,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 66,
+    "timestamp": 1789197150.9714448,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 66,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 67,
+    "timestamp": 1789197150.9970644,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 67,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 68,
+    "timestamp": 1789197151.0222316,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 68,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 69,
+    "timestamp": 1789197151.0472684,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 69,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 70,
+    "timestamp": 1789197151.074025,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 70,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 71,
+    "timestamp": 1789197151.0994775,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 71,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 72,
+    "timestamp": 1789197151.1256227,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 72,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 73,
+    "timestamp": 1789197151.1507993,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 73,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 74,
+    "timestamp": 1789197151.177807,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 74,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 75,
+    "timestamp": 1789197151.2019668,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 75,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 76,
+    "timestamp": 1789197151.2275267,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 76,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 77,
+    "timestamp": 1789197151.2525313,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 77,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 78,
+    "timestamp": 1789197151.2769837,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 78,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 79,
+    "timestamp": 1789197151.3027396,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 79,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 80,
+    "timestamp": 1789197151.3297548,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 80,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 81,
+    "timestamp": 1789197151.3561263,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 81,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 82,
+    "timestamp": 1789197151.3819137,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 82,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 82,
+    "timestamp": 1789197151.381915,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 82,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 83,
+    "timestamp": 1789197151.4071696,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 83,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 83,
+    "timestamp": 1789197151.407171,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 83,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 84,
+    "timestamp": 1789197151.43327,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 84,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 84,
+    "timestamp": 1789197151.4332716,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 84,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 85,
+    "timestamp": 1789197151.4581974,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 85,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 85,
+    "timestamp": 1789197151.4581988,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 85,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 86,
+    "timestamp": 1789197151.4844904,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 86,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 86,
+    "timestamp": 1789197151.484492,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 86,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 87,
+    "timestamp": 1789197151.5104403,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 87,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 87,
+    "timestamp": 1789197151.5104423,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 87,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 88,
+    "timestamp": 1789197151.536063,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 88,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 88,
+    "timestamp": 1789197151.536064,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 88,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 89,
+    "timestamp": 1789197151.5636604,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 89,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 89,
+    "timestamp": 1789197151.5636618,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 89,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 90,
+    "timestamp": 1789197151.591413,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 90,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 90,
+    "timestamp": 1789197151.591415,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 90,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 91,
+    "timestamp": 1789197151.6162732,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 91,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 91,
+    "timestamp": 1789197151.6163187,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 91,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 92,
+    "timestamp": 1789197151.6424165,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 92,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 92,
+    "timestamp": 1789197151.6424174,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 92,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 93,
+    "timestamp": 1789197151.6678195,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 93,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 93,
+    "timestamp": 1789197151.6678212,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 93,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 94,
+    "timestamp": 1789197151.6929212,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 94,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 94,
+    "timestamp": 1789197151.6929228,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 94,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 95,
+    "timestamp": 1789197151.718556,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 95,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 95,
+    "timestamp": 1789197151.7185578,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 95,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 96,
+    "timestamp": 1789197151.743097,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 96,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 96,
+    "timestamp": 1789197151.7430987,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 96,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 97,
+    "timestamp": 1789197151.7673807,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 97,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 97,
+    "timestamp": 1789197151.767382,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 97,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 98,
+    "timestamp": 1789197151.7914104,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 98,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 98,
+    "timestamp": 1789197151.791412,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 98,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 99,
+    "timestamp": 1789197151.8155556,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 99,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 99,
+    "timestamp": 1789197151.8155575,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 99,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 100,
+    "timestamp": 1789197151.8410249,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 100,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 100,
+    "timestamp": 1789197151.8410263,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 100,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 101,
+    "timestamp": 1789197151.8660514,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 101,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 101,
+    "timestamp": 1789197151.866053,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 101,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 102,
+    "timestamp": 1789197151.891258,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 102,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 102,
+    "timestamp": 1789197151.8912594,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 102,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 103,
+    "timestamp": 1789197151.916384,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 103,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 103,
+    "timestamp": 1789197151.9163861,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 103,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 104,
+    "timestamp": 1789197151.9420342,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 104,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 104,
+    "timestamp": 1789197151.9420352,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 104,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 105,
+    "timestamp": 1789197151.967791,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 105,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 105,
+    "timestamp": 1789197151.967793,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 105,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 106,
+    "timestamp": 1789197151.9932082,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 106,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 106,
+    "timestamp": 1789197151.9932098,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 106,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 107,
+    "timestamp": 1789197152.0178423,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 107,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 107,
+    "timestamp": 1789197152.0178435,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 107,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 108,
+    "timestamp": 1789197152.04202,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 108,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 108,
+    "timestamp": 1789197152.0420215,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 108,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 109,
+    "timestamp": 1789197152.0667853,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 109,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 109,
+    "timestamp": 1789197152.0667865,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 109,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 110,
+    "timestamp": 1789197152.091697,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 110,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 110,
+    "timestamp": 1789197152.0916984,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 110,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 111,
+    "timestamp": 1789197152.1164932,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 111,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 111,
+    "timestamp": 1789197152.1164947,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 111,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 112,
+    "timestamp": 1789197152.1433268,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 112,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 112,
+    "timestamp": 1789197152.1433284,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 112,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 113,
+    "timestamp": 1789197152.1702063,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 113,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 113,
+    "timestamp": 1789197152.170208,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 113,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 114,
+    "timestamp": 1789197152.1954708,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 114,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 114,
+    "timestamp": 1789197152.1954725,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 114,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 115,
+    "timestamp": 1789197152.220438,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 115,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 115,
+    "timestamp": 1789197152.22044,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 115,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 116,
+    "timestamp": 1789197152.2455285,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 116,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 116,
+    "timestamp": 1789197152.2455306,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 116,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 117,
+    "timestamp": 1789197152.2700388,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 117,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 117,
+    "timestamp": 1789197152.27004,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 117,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 118,
+    "timestamp": 1789197152.2955744,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 118,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 118,
+    "timestamp": 1789197152.2955759,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 118,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 119,
+    "timestamp": 1789197152.3201017,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 119,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 119,
+    "timestamp": 1789197152.3201034,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 119,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 120,
+    "timestamp": 1789197152.3467193,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 120,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 120,
+    "timestamp": 1789197152.3467212,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 120,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 121,
+    "timestamp": 1789197152.3730001,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 121,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 121,
+    "timestamp": 1789197152.3730009,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 121,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 122,
+    "timestamp": 1789197152.3995118,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 122,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 122,
+    "timestamp": 1789197152.3995135,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 122,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 123,
+    "timestamp": 1789197152.4246302,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 123,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 123,
+    "timestamp": 1789197152.4246328,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 123,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 124,
+    "timestamp": 1789197152.45103,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 124,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 124,
+    "timestamp": 1789197152.4510314,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 124,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 125,
+    "timestamp": 1789197152.4762537,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 125,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 125,
+    "timestamp": 1789197152.4762554,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 125,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 126,
+    "timestamp": 1789197152.5007277,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 126,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 126,
+    "timestamp": 1789197152.500729,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 126,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 127,
+    "timestamp": 1789197152.5258474,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 0,
+      "step": 127,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  },
+  {
+    "step": 127,
+    "timestamp": 1789197152.5258489,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 2,
+      "step": 127,
+      "reason": "static_obstacle:grid_obstacle"
+    }
+  }
+]
