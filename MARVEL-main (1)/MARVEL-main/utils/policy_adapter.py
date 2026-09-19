@@ -174,16 +174,28 @@ class MARVELPolicyAdapter:
         map_info = self._build_map_info()
         all_positions = [robot.position for robot in self.runtime.robots]
 
-        # 2. Update each agent's graph (adds nodes around current position).
+        # 2. Update each agent's global map (they slice their updating_map from it).
+        for agent in self.agents:
+            agent.map_info = map_info
+
+        # 3. Update each agent's graph (adds nodes around current position).
         for agent, robot in zip(self.agents, self.runtime.robots):
             agent.update_heading(float(robot.heading) % 360.0)
             try:
+                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph at pos={robot.position.round(2)}")
                 agent.update_graph(map_info, robot.position.copy())
+                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph completed, nodes={len(self._node_manager.nodes_dict)}")
             except Exception as exc:
+                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph FAILED: {exc}")
+                import traceback
+                traceback.print_exc()
                 logger.debug("update_graph failed for robot %d: %s", robot.robot_id, exc)
 
         # 3. Update planning state (needs all robot locations snapped to graph nodes).
-        if self._node_manager.nodes_dict.__len__() == 0:
+        num_nodes = self._node_manager.nodes_dict.__len__()
+        print(f"[PolicyAdapter] Step 3: num_nodes={num_nodes}")
+        if num_nodes == 0:
+            print(f"[PolicyAdapter] No nodes in graph, returning default actions")
             return self.runtime.default_actions()
 
         snapped = np.array([self._snap_to_nearest_node(p) for p in all_positions])
@@ -196,6 +208,7 @@ class MARVELPolicyAdapter:
         # 4. Get observations and select waypoints.
         actions: List[Tuple[np.ndarray, float]] = []
         default = self.runtime.default_actions()
+        print(f"[PolicyAdapter] Generating actions for {len(self.agents)} agents")
         for idx, (agent, robot) in enumerate(zip(self.agents, self.runtime.robots)):
             try:
                 obs = agent.get_observation()
@@ -210,6 +223,8 @@ class MARVELPolicyAdapter:
                 actions.append((waypoint, heading_deg))
             except Exception as exc:
                 print(f"[PolicyAdapter] Robot {robot.robot_id}: action selection FAILED: {exc}")
+                import traceback
+                traceback.print_exc()
                 logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
                 actions.append(default[idx])
 

@@ -1,0 +1,14 @@
+{"step": 0, "timestamp": 1789713124.3025172, "type": "simulation_reset", "data": {"num_robots": 4}}
+{"step": 0, "timestamp": 1789713124.4752092, "type": "task_activated", "data": {"type": "task_activated", "task_id": "T1_exploration", "step": 0}}
+{"step": 7, "timestamp": 1789713124.5691862, "type": "safety_shield", "data": {"robot_id": 0, "step": 7, "reason": "uav_proximity:robot_3"}}
+{"step": 8, "timestamp": 1789713124.576746, "type": "safety_shield", "data": {"robot_id": 0, "step": 8, "reason": "uav_proximity:robot_3"}}
+{"step": 9, "timestamp": 1789713124.5861154, "type": "safety_shield", "data": {"robot_id": 0, "step": 9, "reason": "uav_proximity:robot_3"}}
+{"step": 10, "timestamp": 1789713124.592631, "type": "safety_shield", "data": {"robot_id": 0, "step": 10, "reason": "uav_proximity:robot_3"}}
+{"step": 11, "timestamp": 1789713124.603225, "type": "safety_shield", "data": {"robot_id": 0, "step": 11, "reason": "uav_proximity:robot_3"}}
+{"step": 12, "timestamp": 1789713124.6199024, "type": "safety_shield", "data": {"robot_id": 0, "step": 12, "reason": "uav_proximity:robot_3"}}
+{"step": 13, "timestamp": 1789713124.6364546, "type": "safety_shield", "data": {"robot_id": 0, "step": 13, "reason": "uav_proximity:robot_3"}}
+{"step": 14, "timestamp": 1789713124.6525517, "type": "safety_shield", "data": {"robot_id": 0, "step": 14, "reason": "uav_proximity:robot_3"}}
+{"step": 18, "timestamp": 1789713124.672816, "type": "collision", "data": {"robot_ids": [1, 3], "type": "uav_uav", "step": 18}}
+{"step": 19, "timestamp": 1789713124.6775594, "type": "collision", "data": {"robot_ids": [1, 3], "type": "uav_uav", "step": 19}}
+{"step": 20, "timestamp": 1789713124.6833696, "type": "collision", "data": {"robot_ids": [1, 3], "type": "uav_uav", "step": 20}}
+{"step": 21, "timestamp": 1789713124.6882946, "type": "collision", "data": {"robot_ids": [1, 3], "type": "uav_uav", "step": 21}}

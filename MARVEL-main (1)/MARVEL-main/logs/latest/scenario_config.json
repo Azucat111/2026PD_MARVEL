@@ -7,7 +7,7 @@
       "max_steps": 128,
       "step_dt": 0.1
     },
-    "random_seed": 48
+    "random_seed": 42
   },
   "environment": {
     "map_size": [

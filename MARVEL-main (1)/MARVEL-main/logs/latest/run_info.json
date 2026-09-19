@@ -1,5 +1,5 @@
 {
   "scenario": "baseline_exploration",
-  "seed": 48,
+  "seed": 42,
   "episodes": 1
 }
