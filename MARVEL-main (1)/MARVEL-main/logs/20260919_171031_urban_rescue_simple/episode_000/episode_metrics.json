@@ -1,0 +1,49 @@
+{
+  "metrics": {
+    "exploration_rate": {
+      "value": 0.23444444444444446,
+      "target": 0.8,
+      "weight": 0.25,
+      "score": 0.29305555555555557,
+      "weighted_score": 0.07326388888888889
+    },
+    "targets_found": {
+      "value": 0,
+      "target": 3,
+      "weight": 0.3,
+      "score": 0.0,
+      "weighted_score": 0.0
+    },
+    "makespan": {
+      "value": 10,
+      "target": 300,
+      "weight": 0.15,
+      "score": 30.0,
+      "weighted_score": 4.5
+    },
+    "connectivity_ratio": {
+      "value": 0.0,
+      "target": 0.9,
+      "weight": 0.1,
+      "score": 0.0,
+      "weighted_score": 0.0
+    },
+    "collision_count": {
+      "value": 0,
+      "target": 0,
+      "weight": 0.15,
+      "score": 1.0,
+      "weighted_score": 0.15
+    },
+    "total_distance": {
+      "value": 38.84999999999997,
+      "target": 500,
+      "weight": 0.05,
+      "score": 12.870012870012879,
+      "weighted_score": 0.643500643500644
+    }
+  },
+  "total_score": 5.366764532389533,
+  "steps": 10,
+  "timestamp": "2026-09-19T09:11:14.271425+00:00"
+}

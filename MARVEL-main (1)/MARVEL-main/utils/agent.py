@@ -103,12 +103,11 @@ class Agent:
 
         self.location = location
 
-        node = self.node_manager.nodes_dict.find(location.tolist())
-        if self.node_manager.nodes_dict.__len__() == 0:
-            pass
-        else:
-            node.data.set_visited(self.heading)
-            
+        if self.node_manager.nodes_dict.__len__() > 0:
+            node = self.node_manager.nodes_dict.find(location.tolist())
+            if node is not None:
+                node.data.set_visited(self.heading)
+
         if self.plot:
             self.trajectory_x.append(location[0])
             self.trajectory_y.append(location[1])
@@ -192,7 +191,36 @@ class Agent:
         current_edge = self.neighbor_indices
         n_node = node_coords.shape[0]
 
-        current_node_coords = node_coords[self.current_index]
+        # The MARVEL policy was trained with a fixed 360-node input.  In
+        # larger platform scenarios the shared graph can contain many more
+        # nodes; keep a local window around the current node and remap graph
+        # indices before applying the original padding logic.
+        if n_node > NODE_PADDING_SIZE:
+            distances = np.linalg.norm(node_coords - node_coords[current_index], axis=1)
+            keep = np.argsort(distances)[:NODE_PADDING_SIZE]
+            if current_index not in keep:
+                keep[-1] = current_index
+            keep = np.unique(keep)
+            old_to_new = {int(old): int(new) for new, old in enumerate(keep)}
+            node_coords = node_coords[keep]
+            node_utility = node_utility[keep]
+            node_guidepost = node_guidepost[keep]
+            node_occupancy = node_occupancy[keep]
+            node_highest_utility_angles = node_highest_utility_angles[keep]
+            node_frontier_distribution = node_frontier_distribution[keep]
+            node_heading_visited = node_heading_visited[keep]
+            edge_mask = edge_mask[np.ix_(keep, keep)]
+            current_index = old_to_new[int(current_index)]
+            remapped_edges = [
+                old_to_new[int(index)] for index in np.asarray(current_edge).reshape(-1)
+                if int(index) in old_to_new
+            ]
+            current_edge = np.asarray(remapped_edges, dtype=int)
+            if current_edge.size == 0:
+                current_edge = np.asarray([current_index], dtype=int)
+            n_node = node_coords.shape[0]
+
+        current_node_coords = node_coords[current_index]
         all_node_coords = np.concatenate((node_coords[:, 0].reshape(-1, 1) - current_node_coords[0],
                                              node_coords[:, 1].reshape(-1, 1) - current_node_coords[1]),
                                            axis=-1) / UPDATING_MAP_SIZE / 2
@@ -225,7 +253,8 @@ class Agent:
                 (0, NODE_PADDING_SIZE - n_node, 0, NODE_PADDING_SIZE - n_node), 1)
             edge_mask = padding(edge_mask)
 
-        current_in_edge = np.argwhere(current_edge == self.current_index)[0][0]
+        current_in_edge_matches = np.argwhere(current_edge == current_index)
+        current_in_edge = int(current_in_edge_matches[0][0]) if current_in_edge_matches.size else 0
         current_edge = torch.tensor(current_edge).unsqueeze(0)
         k_size = current_edge.size()[-1]
         if pad:
@@ -474,4 +503,3 @@ class Agent:
 
     def save_all_indices(self, all_agent_indices):
         self.episode_buffer[35] += torch.tensor(all_agent_indices).reshape(1, -1, 1).to(self.device)
-

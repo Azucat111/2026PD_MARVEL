@@ -1,0 +1,72 @@
+[
+  {
+    "metrics": {
+      "exploration_rate": {
+        "value": 0.2003111111111111,
+        "target": 0.8,
+        "weight": 0.25,
+        "score": 0.2503888888888889,
+        "weighted_score": 0.06259722222222222
+      },
+      "targets_found": {
+        "value": 0,
+        "target": 3,
+        "weight": 0.3,
+        "score": 0.0,
+        "weighted_score": 0.0
+      },
+      "makespan": {
+        "value": 2,
+        "target": 300,
+        "weight": 0.15,
+        "score": 150.0,
+        "weighted_score": 22.5
+      },
+      "connectivity_ratio": {
+        "value": 0.0,
+        "target": 0.9,
+        "weight": 0.1,
+        "score": 0.0,
+        "weighted_score": 0.0
+      },
+      "collision_count": {
+        "value": 0,
+        "target": 0,
+        "weight": 0.15,
+        "score": 1.0,
+        "weighted_score": 0.15
+      },
+      "total_distance": {
+        "value": 7.699999999999999,
+        "target": 500,
+        "weight": 0.05,
+        "score": 64.93506493506494,
+        "weighted_score": 3.246753246753247
+      }
+    },
+    "total_score": 25.95935046897547,
+    "steps": 2,
+    "timestamp": "2026-09-19T09:08:47.098325+00:00",
+    "episode": 0,
+    "task_summary": {
+      "T1_exploration": {
+        "type": "exploration",
+        "status": "active",
+        "progress": 0.2003111111111111,
+        "found_targets": []
+      },
+      "T2_target_search": {
+        "type": "target_search",
+        "status": "pending",
+        "progress": 0.0,
+        "found_targets": []
+      },
+      "T3_relay": {
+        "type": "relay",
+        "status": "active",
+        "progress": 0.0,
+        "found_targets": []
+      }
+    }
+  }
+]

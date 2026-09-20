@@ -1,0 +1,230 @@
+[
+  {
+    "step": 0,
+    "timestamp": 1789809031.694746,
+    "type": "simulation_reset",
+    "data": {
+      "num_robots": 30
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789809035.4395525,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 11,
+      "step": 0,
+      "reason": "uav_proximity:robot_18"
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789809035.4395537,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 12,
+      "step": 0,
+      "reason": "uav_proximity:robot_29"
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789809035.5405896,
+    "type": "disconnection",
+    "data": {
+      "step": 0,
+      "components": 16
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789809035.5406208,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T1_exploration",
+      "step": 0
+    }
+  },
+  {
+    "step": 0,
+    "timestamp": 1789809035.540622,
+    "type": "task_activated",
+    "data": {
+      "type": "task_activated",
+      "task_id": "T3_relay",
+      "step": 0
+    }
+  },
+  {
+    "step": 1,
+    "timestamp": 1789809039.1476207,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 6,
+      "step": 1,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 1,
+    "timestamp": 1789809039.215956,
+    "type": "disconnection",
+    "data": {
+      "step": 1,
+      "components": 16
+    }
+  },
+  {
+    "step": 2,
+    "timestamp": 1789809043.0432405,
+    "type": "disconnection",
+    "data": {
+      "step": 2,
+      "components": 16
+    }
+  },
+  {
+    "step": 3,
+    "timestamp": 1789809047.1386983,
+    "type": "disconnection",
+    "data": {
+      "step": 3,
+      "components": 16
+    }
+  },
+  {
+    "step": 4,
+    "timestamp": 1789809051.5408022,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 22,
+      "step": 4,
+      "reason": "uav_proximity:robot_29"
+    }
+  },
+  {
+    "step": 4,
+    "timestamp": 1789809051.624795,
+    "type": "disconnection",
+    "data": {
+      "step": 4,
+      "components": 16
+    }
+  },
+  {
+    "step": 5,
+    "timestamp": 1789809056.0568163,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 17,
+      "step": 5,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 5,
+    "timestamp": 1789809056.1517866,
+    "type": "disconnection",
+    "data": {
+      "step": 5,
+      "components": 16
+    }
+  },
+  {
+    "step": 6,
+    "timestamp": 1789809060.450278,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 17,
+      "step": 6,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 6,
+    "timestamp": 1789809060.5506785,
+    "type": "disconnection",
+    "data": {
+      "step": 6,
+      "components": 16
+    }
+  },
+  {
+    "step": 7,
+    "timestamp": 1789809064.8971767,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 17,
+      "step": 7,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 7,
+    "timestamp": 1789809064.9566827,
+    "type": "disconnection",
+    "data": {
+      "step": 7,
+      "components": 16
+    }
+  },
+  {
+    "step": 8,
+    "timestamp": 1789809069.4623375,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 7,
+      "step": 8,
+      "reason": "uav_proximity:robot_26"
+    }
+  },
+  {
+    "step": 8,
+    "timestamp": 1789809069.462339,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 17,
+      "step": 8,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 8,
+    "timestamp": 1789809069.578674,
+    "type": "disconnection",
+    "data": {
+      "step": 8,
+      "components": 16
+    }
+  },
+  {
+    "step": 9,
+    "timestamp": 1789809074.210052,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 13,
+      "step": 9,
+      "reason": "uav_proximity:robot_29"
+    }
+  },
+  {
+    "step": 9,
+    "timestamp": 1789809074.2100532,
+    "type": "safety_shield",
+    "data": {
+      "robot_id": 17,
+      "step": 9,
+      "reason": "uav_proximity:robot_25"
+    }
+  },
+  {
+    "step": 9,
+    "timestamp": 1789809074.2713146,
+    "type": "disconnection",
+    "data": {
+      "step": 9,
+      "components": 16
+    }
+  }
+]

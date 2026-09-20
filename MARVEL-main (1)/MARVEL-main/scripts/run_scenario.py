@@ -52,6 +52,8 @@ def main() -> int:
                         help="仅校验并归档场景，不执行 episode")
     parser.add_argument("--use-marvel-policy", action="store_true",
                         help="使用 MARVEL PolicyNet 替代 default_actions()")
+    parser.add_argument("--policy-interval", type=int, default=1,
+                        help="MARVEL policy inference interval")
     args = parser.parse_args()
 
     scenario_path = Path(args.scenario)
@@ -91,9 +93,12 @@ def main() -> int:
 
         evaluator = Evaluator(config, log_dir / f"episode_{episode:03d}")
         max_steps = args.max_steps or runtime.max_steps
+        last_actions = runtime.default_actions()
         for step in range(max_steps):
             if policy_adapter is not None:
-                actions = policy_adapter.get_actions(observations)
+                if step % max(1, args.policy_interval) == 0:
+                    last_actions = policy_adapter.get_actions(observations)
+                actions = last_actions
             else:
                 actions = runtime.default_actions()
             observations, info = runtime.step(actions)

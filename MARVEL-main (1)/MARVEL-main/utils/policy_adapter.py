@@ -24,6 +24,7 @@ from utils.model import PolicyNet
 from utils.node_manager import NodeManager
 from utils.agent import Agent
 from utils.utils import MapInfo
+from utils.task_scheduler import TaskScheduler
 
 logger = logging.getLogger(__name__)
 
@@ -41,6 +42,7 @@ class MARVELPolicyAdapter:
     def __init__(self, runtime, device: str = "cpu") -> None:
         self.runtime = runtime
         self.device = torch.device(device)
+        self.verbose = bool(runtime.config.get("debug_policy", False))
         self._using_policy = False
 
         # Shared belief map at MARVEL's CELL_SIZE resolution.
@@ -58,6 +60,7 @@ class MARVELPolicyAdapter:
         # Agents — populated in setup()
         self.agents: List[Agent] = []
         self._node_manager: Optional[NodeManager] = None
+        self.scheduler = TaskScheduler(runtime)
 
     # ------------------------------------------------------------------
     # Public API
@@ -97,14 +100,17 @@ class MARVELPolicyAdapter:
     def get_actions(self, observations: Dict[int, Dict[str, Any]]) -> List[Tuple[np.ndarray, float]]:
         """Convert SimulationRuntime observations to a list of (waypoint, heading) actions."""
         if not self._using_policy or not self.agents:
-            print(f"[PolicyAdapter] Fallback: _using_policy={self._using_policy}, agents={len(self.agents) if self.agents else 0}")
+            if self.verbose:
+                print(f"[PolicyAdapter] Fallback: _using_policy={self._using_policy}, agents={len(self.agents) if self.agents else 0}")
             return self.runtime.default_actions()
         try:
             actions = self._policy_actions(observations)
-            print(f"[PolicyAdapter] Policy actions generated: {len(actions)} robots")
+            if self.verbose:
+                print(f"[PolicyAdapter] Policy actions generated: {len(actions)} robots")
             return actions
         except Exception as exc:
-            print(f"[PolicyAdapter] Policy inference error: {exc}")
+            if self.verbose:
+                print(f"[PolicyAdapter] Policy inference error: {exc}")
             logger.warning("Policy inference error (%s); falling back to default_actions.", exc)
             return self.runtime.default_actions()
 
@@ -115,7 +121,6 @@ class MARVELPolicyAdapter:
     def _load_checkpoint(self) -> None:
         checkpoint_path = _MARVEL_ROOT / load_path / "checkpoint.pth"
         if not checkpoint_path.exists():
-            print(f"[PolicyAdapter] WARNING: Checkpoint not found at {checkpoint_path}")
             logger.warning("Checkpoint not found at %s; will use default_actions.", checkpoint_path)
             return
         try:
@@ -127,10 +132,8 @@ class MARVELPolicyAdapter:
             self.policy_net.eval()
             self._using_policy = True
             episode = ckpt.get("episode", "?") if isinstance(ckpt, dict) else "?"
-            print(f"[PolicyAdapter] SUCCESS: Loaded checkpoint from {checkpoint_path} (episode {episode})")
             logger.info("Loaded MARVEL policy from %s (episode %s)", checkpoint_path, episode)
         except Exception as exc:
-            print(f"[PolicyAdapter] ERROR: Failed to load checkpoint: {exc}")
             logger.warning("Failed to load checkpoint (%s); will use default_actions.", exc)
 
     def _update_belief(self, visible_cells: np.ndarray) -> None:
@@ -151,7 +154,7 @@ class MARVELPolicyAdapter:
             self.belief_map[ly : hy + 1, lx : hx + 1] = FREE
             total_marked += (hy - ly + 1) * (hx - lx + 1)
 
-        if total_marked > 0:
+        if total_marked > 0 and self.verbose:
             print(f"[PolicyAdapter] Updated belief: {len(visible_cells)} cells -> {total_marked} belief cells marked FREE")
 
     def _build_map_info(self) -> MapInfo:
@@ -182,20 +185,25 @@ class MARVELPolicyAdapter:
         for agent, robot in zip(self.agents, self.runtime.robots):
             agent.update_heading(float(robot.heading) % 360.0)
             try:
-                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph at pos={robot.position.round(2)}")
+                if self.verbose:
+                    print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph at pos={robot.position.round(2)}")
                 agent.update_graph(map_info, robot.position.copy())
-                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph completed, nodes={len(self._node_manager.nodes_dict)}")
+                if self.verbose:
+                    print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph completed, nodes={len(self._node_manager.nodes_dict)}")
             except Exception as exc:
-                print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph FAILED: {exc}")
+                if self.verbose:
+                    print(f"[PolicyAdapter] Robot {robot.robot_id}: update_graph FAILED: {exc}")
                 import traceback
                 traceback.print_exc()
                 logger.debug("update_graph failed for robot %d: %s", robot.robot_id, exc)
 
         # 3. Update planning state (needs all robot locations snapped to graph nodes).
         num_nodes = self._node_manager.nodes_dict.__len__()
-        print(f"[PolicyAdapter] Step 3: num_nodes={num_nodes}")
+        if self.verbose:
+            print(f"[PolicyAdapter] Step 3: num_nodes={num_nodes}")
         if num_nodes == 0:
-            print(f"[PolicyAdapter] No nodes in graph, returning default actions")
+            if self.verbose:
+                print(f"[PolicyAdapter] No nodes in graph, returning default actions")
             return self.runtime.default_actions()
 
         snapped = np.array([self._snap_to_nearest_node(p) for p in all_positions])
@@ -208,7 +216,8 @@ class MARVELPolicyAdapter:
         # 4. Get observations and select waypoints.
         actions: List[Tuple[np.ndarray, float]] = []
         default = self.runtime.default_actions()
-        print(f"[PolicyAdapter] Generating actions for {len(self.agents)} agents")
+        if self.verbose:
+            print(f"[PolicyAdapter] Generating actions for {len(self.agents)} agents")
         for idx, (agent, robot) in enumerate(zip(self.agents, self.runtime.robots)):
             try:
                 obs = agent.get_observation()
@@ -218,14 +227,16 @@ class MARVELPolicyAdapter:
 
                 # 调试：检查waypoint是否合理
                 dist = np.linalg.norm(waypoint - robot.position)
-                print(f"[PolicyAdapter] Robot {robot.robot_id}: pos={robot.position.round(2)}, waypoint={waypoint.round(2)}, dist={dist:.2f}, heading={heading_deg:.1f}")
+                if self.verbose:
+                    print(f"[PolicyAdapter] Robot {robot.robot_id}: pos={robot.position.round(2)}, waypoint={waypoint.round(2)}, dist={dist:.2f}, heading={heading_deg:.1f}")
 
                 actions.append((waypoint, heading_deg))
             except Exception as exc:
-                print(f"[PolicyAdapter] Robot {robot.robot_id}: action selection FAILED: {exc}")
+                if self.verbose:
+                    print(f"[PolicyAdapter] Robot {robot.robot_id}: action selection FAILED: {exc}")
                 import traceback
                 traceback.print_exc()
                 logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
                 actions.append(default[idx])
 
-        return actions
+        return self.scheduler.apply(actions)

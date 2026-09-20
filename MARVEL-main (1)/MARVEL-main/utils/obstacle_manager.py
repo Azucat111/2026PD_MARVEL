@@ -97,9 +97,21 @@ class ObstacleManager:
         for obstacle in self.dynamic_obstacles:
             obstacle.reset()
 
-    def step(self, current_step: int, dt: float) -> None:
+    def step(self, current_step: int, dt: float) -> list[Dict[str, Any]]:
+        events: list[Dict[str, Any]] = []
         for obstacle in self.dynamic_obstacles:
+            was_active = obstacle.active
+            previous_radius = obstacle.radius
             obstacle.step(current_step, dt)
+            if obstacle.active and not was_active:
+                events.append({"type": "dynamic_obstacle_spawned",
+                               "obstacle_id": obstacle.obstacle_id,
+                               "radius": obstacle.radius})
+            elif obstacle.active and obstacle.radius != previous_radius:
+                events.append({"type": "dynamic_obstacle_updated",
+                               "obstacle_id": obstacle.obstacle_id,
+                               "radius": obstacle.radius})
+        return events
 
     def check_collision(self, position: np.ndarray, radius: float = 0.2) -> tuple[bool, str | None]:
         point = np.asarray(position, dtype=float)

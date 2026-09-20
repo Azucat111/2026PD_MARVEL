@@ -19,6 +19,7 @@ class Task:
     status: str = "pending"
     progress: float = 0.0
     found_targets: set[int] = field(default_factory=set)
+    relay_ok: bool = False
 
 
 class TaskManager:
@@ -41,14 +42,17 @@ class TaskManager:
             self.tasks[task.task_id] = task
 
     def update(self, current_step: int, robot_states, observations,
-               exploration_rate: float = 0.0, comm_connected: bool = True) -> list[Dict[str, Any]]:
+               exploration_rate: float = 0.0, comm_connected: bool = True,
+               connectivity_ratio: float | None = None) -> list[Dict[str, Any]]:
         events = []
         for task in self.tasks.values():
             if task.status == "pending" and self._should_activate(task, current_step, exploration_rate):
                 task.status = "active"
                 events.append({"type": "task_activated", "task_id": task.task_id, "step": current_step})
             if task.status == "active":
-                events.extend(self._update_active_task(task, current_step, robot_states, exploration_rate, comm_connected))
+                events.extend(self._update_active_task(
+                    task, current_step, robot_states, exploration_rate,
+                    comm_connected, connectivity_ratio))
         return events
 
     def _should_activate(self, task: Task, current_step: int, exploration_rate: float) -> bool:
@@ -64,7 +68,8 @@ class TaskManager:
         return True
 
     def _update_active_task(self, task: Task, current_step: int, robot_states,
-                            exploration_rate: float, comm_connected: bool) -> list[Dict[str, Any]]:
+                            exploration_rate: float, comm_connected: bool,
+                            connectivity_ratio: float | None = None) -> list[Dict[str, Any]]:
         events = []
         allowed_types = set(task.assigned_robot_types)
         if not allowed_types:
@@ -92,7 +97,17 @@ class TaskManager:
                 task.status = "complete"
                 events.append({"type": "task_completed", "task_id": task.task_id, "step": current_step})
         elif task.task_type == "relay":
-            task.progress = 1.0 if comm_connected else 0.0
+            ratio = float(connectivity_ratio if connectivity_ratio is not None else comm_connected)
+            task.progress = ratio
+            target = float(task.params.get("min_connectivity", 0.9))
+            relay_ok = task.progress >= target
+            if relay_ok and not task.relay_ok:
+                events.append({"type": "relay_connectivity_ok", "task_id": task.task_id,
+                               "step": current_step, "connectivity_ratio": ratio})
+            elif not relay_ok and task.relay_ok:
+                events.append({"type": "relay_connectivity_lost", "task_id": task.task_id,
+                               "step": current_step, "connectivity_ratio": ratio})
+            task.relay_ok = relay_ok
         return events
 
     def summary(self) -> Dict[str, Any]:

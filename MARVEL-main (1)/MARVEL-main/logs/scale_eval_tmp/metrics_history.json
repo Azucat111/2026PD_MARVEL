@@ -1,0 +1,2402 @@
+[
+  {
+    "step": 0,
+    "exploration_rate": 0.31404444444444446,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 6.95000000000002
+  },
+  {
+    "step": 1,
+    "exploration_rate": 0.3164444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 13.90000000000004
+  },
+  {
+    "step": 2,
+    "exploration_rate": 0.3184,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 20.85000000000006
+  },
+  {
+    "step": 3,
+    "exploration_rate": 0.3198666666666667,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 27.795027721007646
+  },
+  {
+    "step": 4,
+    "exploration_rate": 0.3216888888888889,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 34.59502772100767
+  },
+  {
+    "step": 5,
+    "exploration_rate": 0.3236888888888889,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 41.395027721007686
+  },
+  {
+    "step": 6,
+    "exploration_rate": 0.32564444444444446,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 48.19502772100772
+  },
+  {
+    "step": 7,
+    "exploration_rate": 0.3274222222222222,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 54.995027721007745
+  },
+  {
+    "step": 8,
+    "exploration_rate": 0.32893333333333336,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 61.79502772100778
+  },
+  {
+    "step": 9,
+    "exploration_rate": 0.3312,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 68.5950277210078
+  },
+  {
+    "step": 10,
+    "exploration_rate": 0.33284444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 75.34853141914733
+  },
+  {
+    "step": 11,
+    "exploration_rate": 0.33453333333333335,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 82.04853141914732
+  },
+  {
+    "step": 12,
+    "exploration_rate": 0.336,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 88.74853141914734
+  },
+  {
+    "step": 13,
+    "exploration_rate": 0.3377777777777778,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 95.44853141914734
+  },
+  {
+    "step": 14,
+    "exploration_rate": 0.33884444444444445,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 102.14853141914737
+  },
+  {
+    "step": 15,
+    "exploration_rate": 0.3409333333333333,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 108.84853141914736
+  },
+  {
+    "step": 16,
+    "exploration_rate": 0.34253333333333336,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 115.54853141914738
+  },
+  {
+    "step": 17,
+    "exploration_rate": 0.34444444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 122.24853141914738
+  },
+  {
+    "step": 18,
+    "exploration_rate": 0.3459111111111111,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 128.9485314191474
+  },
+  {
+    "step": 19,
+    "exploration_rate": 0.34724444444444447,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 135.6485314191474
+  },
+  {
+    "step": 20,
+    "exploration_rate": 0.34844444444444445,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 142.3485314191474
+  },
+  {
+    "step": 21,
+    "exploration_rate": 0.34986666666666666,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 149.0485314191474
+  },
+  {
+    "step": 22,
+    "exploration_rate": 0.35204444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 155.7485314191474
+  },
+  {
+    "step": 23,
+    "exploration_rate": 0.35346666666666665,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 162.4485314191474
+  },
+  {
+    "step": 24,
+    "exploration_rate": 0.35484444444444446,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 169.14853141914742
+  },
+  {
+    "step": 25,
+    "exploration_rate": 0.3562666666666667,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 175.8485314191474
+  },
+  {
+    "step": 26,
+    "exploration_rate": 0.35777777777777775,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 182.5485314191474
+  },
+  {
+    "step": 27,
+    "exploration_rate": 0.3595111111111111,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 189.24853141914738
+  },
+  {
+    "step": 28,
+    "exploration_rate": 0.36088888888888887,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 195.94853141914737
+  },
+  {
+    "step": 29,
+    "exploration_rate": 0.36262222222222223,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 202.64853141914736
+  },
+  {
+    "step": 30,
+    "exploration_rate": 0.36417777777777777,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 209.32876923945835
+  },
+  {
+    "step": 31,
+    "exploration_rate": 0.3656888888888889,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 215.92876923945835
+  },
+  {
+    "step": 32,
+    "exploration_rate": 0.3668444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 222.52876923945834
+  },
+  {
+    "step": 33,
+    "exploration_rate": 0.36795555555555554,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 229.12876923945834
+  },
+  {
+    "step": 34,
+    "exploration_rate": 0.36915555555555557,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 235.72876923945836
+  },
+  {
+    "step": 35,
+    "exploration_rate": 0.37075555555555556,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 242.32876923945835
+  },
+  {
+    "step": 36,
+    "exploration_rate": 0.3724,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 248.92876923945835
+  },
+  {
+    "step": 37,
+    "exploration_rate": 0.3740888888888889,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 255.52876923945837
+  },
+  {
+    "step": 38,
+    "exploration_rate": 0.3751111111111111,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 262.0508534099951
+  },
+  {
+    "step": 39,
+    "exploration_rate": 0.3764,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 268.5508534099951
+  },
+  {
+    "step": 40,
+    "exploration_rate": 0.37804444444444446,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 275.0508534099951
+  },
+  {
+    "step": 41,
+    "exploration_rate": 0.3797333333333333,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 281.5508534099951
+  },
+  {
+    "step": 42,
+    "exploration_rate": 0.3809777777777778,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 288.0508534099951
+  },
+  {
+    "step": 43,
+    "exploration_rate": 0.3824,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 0,
+    "total_distance": 294.5508534099951
+  },
+  {
+    "step": 44,
+    "exploration_rate": 0.3836888888888889,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 1,
+    "total_distance": 301.0508534099951
+  },
+  {
+    "step": 45,
+    "exploration_rate": 0.38524444444444444,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 2,
+    "total_distance": 307.55085340999517
+  },
+  {
+    "step": 46,
+    "exploration_rate": 0.38608888888888887,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 314.05085340999517
+  },
+  {
+    "step": 47,
+    "exploration_rate": 0.3877777777777778,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 320.55085340999517
+  },
+  {
+    "step": 48,
+    "exploration_rate": 0.38893333333333335,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 327.05085340999517
+  },
+  {
+    "step": 49,
+    "exploration_rate": 0.39004444444444447,
+    "targets_found": 0,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 333.55085340999517
+  },
+  {
+    "step": 50,
+    "exploration_rate": 0.3916,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 340.0508534099951
+  },
+  {
+    "step": 51,
+    "exploration_rate": 0.3932,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 346.5508534099951
+  },
+  {
+    "step": 52,
+    "exploration_rate": 0.3944888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 3,
+    "total_distance": 353.0508534099951
+  },
+  {
+    "step": 53,
+    "exploration_rate": 0.39582222222222224,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 4,
+    "total_distance": 359.55085340999506
+  },
+  {
+    "step": 54,
+    "exploration_rate": 0.3968888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 5,
+    "total_distance": 366.05085340999506
+  },
+  {
+    "step": 55,
+    "exploration_rate": 0.39813333333333334,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 372.55085340999506
+  },
+  {
+    "step": 56,
+    "exploration_rate": 0.3992,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 379.050853409995
+  },
+  {
+    "step": 57,
+    "exploration_rate": 0.4003555555555556,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 385.550853409995
+  },
+  {
+    "step": 58,
+    "exploration_rate": 0.40182222222222225,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 392.050853409995
+  },
+  {
+    "step": 59,
+    "exploration_rate": 0.40342222222222224,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 398.550853409995
+  },
+  {
+    "step": 60,
+    "exploration_rate": 0.4048,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 405.05085340999494
+  },
+  {
+    "step": 61,
+    "exploration_rate": 0.4059111111111111,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 411.55085340999494
+  },
+  {
+    "step": 62,
+    "exploration_rate": 0.40746666666666664,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 418.0508534099949
+  },
+  {
+    "step": 63,
+    "exploration_rate": 0.40871111111111114,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 424.5508534099949
+  },
+  {
+    "step": 64,
+    "exploration_rate": 0.41017777777777775,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 431.05085340999483
+  },
+  {
+    "step": 65,
+    "exploration_rate": 0.41133333333333333,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 437.55085340999483
+  },
+  {
+    "step": 66,
+    "exploration_rate": 0.41235555555555553,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 444.05085340999483
+  },
+  {
+    "step": 67,
+    "exploration_rate": 0.41386666666666666,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 450.5508534099948
+  },
+  {
+    "step": 68,
+    "exploration_rate": 0.4152888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 6,
+    "total_distance": 457.0508534099947
+  },
+  {
+    "step": 69,
+    "exploration_rate": 0.41657777777777777,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 463.5508534099947
+  },
+  {
+    "step": 70,
+    "exploration_rate": 0.4180888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 470.05085340999466
+  },
+  {
+    "step": 71,
+    "exploration_rate": 0.4191111111111111,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 476.55085340999466
+  },
+  {
+    "step": 72,
+    "exploration_rate": 0.42035555555555554,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 483.0508534099946
+  },
+  {
+    "step": 73,
+    "exploration_rate": 0.4216,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 489.5508534099946
+  },
+  {
+    "step": 74,
+    "exploration_rate": 0.4228,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 7,
+    "total_distance": 496.05085340999455
+  },
+  {
+    "step": 75,
+    "exploration_rate": 0.42395555555555553,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 8,
+    "total_distance": 502.55085340999455
+  },
+  {
+    "step": 76,
+    "exploration_rate": 0.42533333333333334,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 9,
+    "total_distance": 509.0508534099945
+  },
+  {
+    "step": 77,
+    "exploration_rate": 0.4266666666666667,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 10,
+    "total_distance": 515.5508534099945
+  },
+  {
+    "step": 78,
+    "exploration_rate": 0.4278666666666667,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 11,
+    "total_distance": 522.0508534099945
+  },
+  {
+    "step": 79,
+    "exploration_rate": 0.4292888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 528.5508534099944
+  },
+  {
+    "step": 80,
+    "exploration_rate": 0.43022222222222223,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 535.0508534099944
+  },
+  {
+    "step": 81,
+    "exploration_rate": 0.43164444444444444,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 541.5508534099944
+  },
+  {
+    "step": 82,
+    "exploration_rate": 0.43324444444444443,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 548.0508534099944
+  },
+  {
+    "step": 83,
+    "exploration_rate": 0.4345777777777778,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 554.5508534099944
+  },
+  {
+    "step": 84,
+    "exploration_rate": 0.4360888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 561.0508534099943
+  },
+  {
+    "step": 85,
+    "exploration_rate": 0.43751111111111113,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 567.5508534099943
+  },
+  {
+    "step": 86,
+    "exploration_rate": 0.4388888888888889,
+    "targets_found": 1,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 574.0508534099943
+  },
+  {
+    "step": 87,
+    "exploration_rate": 0.44022222222222224,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 580.5508534099943
+  },
+  {
+    "step": 88,
+    "exploration_rate": 0.44124444444444444,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 587.0508534099943
+  },
+  {
+    "step": 89,
+    "exploration_rate": 0.44253333333333333,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 593.5508534099943
+  },
+  {
+    "step": 90,
+    "exploration_rate": 0.4438666666666667,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 12,
+    "total_distance": 600.0508534099943
+  },
+  {
+    "step": 91,
+    "exploration_rate": 0.4450222222222222,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 13,
+    "total_distance": 606.4508534099942
+  },
+  {
+    "step": 92,
+    "exploration_rate": 0.4461333333333333,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 14,
+    "total_distance": 612.8508534099942
+  },
+  {
+    "step": 93,
+    "exploration_rate": 0.4474222222222222,
+    "targets_found": 2,
+    "connectivity_ratio": 1.0,
+    "collision_count": 15,
+    "total_distance": 619.2508534099942
+  },
+  {
+    "step": 94,
+    "exploration_rate": 0.4488,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 16,
+    "total_distance": 625.6508534099942
+  },
+  {
+    "step": 95,
+    "exploration_rate": 0.45004444444444447,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 17,
+    "total_distance": 632.0508534099943
+  },
+  {
+    "step": 96,
+    "exploration_rate": 0.45195555555555555,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 18,
+    "total_distance": 638.4508534099942
+  },
+  {
+    "step": 97,
+    "exploration_rate": 0.4527111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 19,
+    "total_distance": 644.8508534099942
+  },
+  {
+    "step": 98,
+    "exploration_rate": 0.45386666666666664,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 20,
+    "total_distance": 651.2508534099942
+  },
+  {
+    "step": 99,
+    "exploration_rate": 0.45515555555555554,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 657.6508534099942
+  },
+  {
+    "step": 100,
+    "exploration_rate": 0.46871111111111113,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 659.6508534099942
+  },
+  {
+    "step": 101,
+    "exploration_rate": 0.46897777777777777,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 661.6508534099942
+  },
+  {
+    "step": 102,
+    "exploration_rate": 0.46924444444444446,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 663.6508534099943
+  },
+  {
+    "step": 103,
+    "exploration_rate": 0.46946666666666664,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 665.6508534099943
+  },
+  {
+    "step": 104,
+    "exploration_rate": 0.46986666666666665,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 667.6508534099943
+  },
+  {
+    "step": 105,
+    "exploration_rate": 0.47017777777777775,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 669.6508534099943
+  },
+  {
+    "step": 106,
+    "exploration_rate": 0.4703555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 671.6508534099944
+  },
+  {
+    "step": 107,
+    "exploration_rate": 0.47071111111111114,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 21,
+    "total_distance": 673.6508534099944
+  },
+  {
+    "step": 108,
+    "exploration_rate": 0.4710666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 22,
+    "total_distance": 675.6508534099944
+  },
+  {
+    "step": 109,
+    "exploration_rate": 0.4713777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 23,
+    "total_distance": 677.6508534099945
+  },
+  {
+    "step": 110,
+    "exploration_rate": 0.4716888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 24,
+    "total_distance": 679.6508534099945
+  },
+  {
+    "step": 111,
+    "exploration_rate": 0.47186666666666666,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 25,
+    "total_distance": 681.6508534099945
+  },
+  {
+    "step": 112,
+    "exploration_rate": 0.4720888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 26,
+    "total_distance": 683.6508534099945
+  },
+  {
+    "step": 113,
+    "exploration_rate": 0.47253333333333336,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 27,
+    "total_distance": 685.6508534099946
+  },
+  {
+    "step": 114,
+    "exploration_rate": 0.47284444444444446,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 28,
+    "total_distance": 687.6508534099946
+  },
+  {
+    "step": 115,
+    "exploration_rate": 0.47315555555555555,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 29,
+    "total_distance": 689.6508534099946
+  },
+  {
+    "step": 116,
+    "exploration_rate": 0.4733777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 31,
+    "total_distance": 691.6508534099947
+  },
+  {
+    "step": 117,
+    "exploration_rate": 0.47373333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 33,
+    "total_distance": 693.5008534099948
+  },
+  {
+    "step": 118,
+    "exploration_rate": 0.4739555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 35,
+    "total_distance": 695.3508534099948
+  },
+  {
+    "step": 119,
+    "exploration_rate": 0.47413333333333335,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 38,
+    "total_distance": 697.2008534099948
+  },
+  {
+    "step": 120,
+    "exploration_rate": 0.4744888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 41,
+    "total_distance": 699.0508534099948
+  },
+  {
+    "step": 121,
+    "exploration_rate": 0.4748888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 44,
+    "total_distance": 700.9008534099949
+  },
+  {
+    "step": 122,
+    "exploration_rate": 0.4749777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 47,
+    "total_distance": 702.7508534099949
+  },
+  {
+    "step": 123,
+    "exploration_rate": 0.47542222222222225,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 50,
+    "total_distance": 704.600853409995
+  },
+  {
+    "step": 124,
+    "exploration_rate": 0.4757777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 53,
+    "total_distance": 706.450853409995
+  },
+  {
+    "step": 125,
+    "exploration_rate": 0.476,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 56,
+    "total_distance": 708.300853409995
+  },
+  {
+    "step": 126,
+    "exploration_rate": 0.47626666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 59,
+    "total_distance": 710.1508534099951
+  },
+  {
+    "step": 127,
+    "exploration_rate": 0.4765333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 62,
+    "total_distance": 712.0008534099951
+  },
+  {
+    "step": 128,
+    "exploration_rate": 0.47675555555555554,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 65,
+    "total_distance": 713.8508534099951
+  },
+  {
+    "step": 129,
+    "exploration_rate": 0.4769777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 68,
+    "total_distance": 715.7008534099953
+  },
+  {
+    "step": 130,
+    "exploration_rate": 0.47724444444444447,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 71,
+    "total_distance": 717.5508534099953
+  },
+  {
+    "step": 131,
+    "exploration_rate": 0.4773777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 74,
+    "total_distance": 719.4008534099953
+  },
+  {
+    "step": 132,
+    "exploration_rate": 0.4777777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 77,
+    "total_distance": 721.2508534099953
+  },
+  {
+    "step": 133,
+    "exploration_rate": 0.47813333333333335,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 80,
+    "total_distance": 723.1008534099955
+  },
+  {
+    "step": 134,
+    "exploration_rate": 0.47835555555555553,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 83,
+    "total_distance": 724.9508534099955
+  },
+  {
+    "step": 135,
+    "exploration_rate": 0.4784888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 86,
+    "total_distance": 726.8008534099955
+  },
+  {
+    "step": 136,
+    "exploration_rate": 0.4786222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 89,
+    "total_distance": 728.6508534099955
+  },
+  {
+    "step": 137,
+    "exploration_rate": 0.4789777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 92,
+    "total_distance": 730.5008534099956
+  },
+  {
+    "step": 138,
+    "exploration_rate": 0.47915555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 95,
+    "total_distance": 732.3508534099957
+  },
+  {
+    "step": 139,
+    "exploration_rate": 0.4792,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 99,
+    "total_distance": 734.0508534099957
+  },
+  {
+    "step": 140,
+    "exploration_rate": 0.4793777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 103,
+    "total_distance": 735.7508534099958
+  },
+  {
+    "step": 141,
+    "exploration_rate": 0.47942222222222225,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 107,
+    "total_distance": 737.4508534099957
+  },
+  {
+    "step": 142,
+    "exploration_rate": 0.47964444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 111,
+    "total_distance": 739.1508534099958
+  },
+  {
+    "step": 143,
+    "exploration_rate": 0.47973333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 115,
+    "total_distance": 740.8508534099958
+  },
+  {
+    "step": 144,
+    "exploration_rate": 0.4797777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 119,
+    "total_distance": 742.5508534099959
+  },
+  {
+    "step": 145,
+    "exploration_rate": 0.4799555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 123,
+    "total_distance": 744.2508534099959
+  },
+  {
+    "step": 146,
+    "exploration_rate": 0.4800888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 127,
+    "total_distance": 745.950853409996
+  },
+  {
+    "step": 147,
+    "exploration_rate": 0.48017777777777776,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 131,
+    "total_distance": 747.650853409996
+  },
+  {
+    "step": 148,
+    "exploration_rate": 0.48031111111111113,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 135,
+    "total_distance": 749.2008534099961
+  },
+  {
+    "step": 149,
+    "exploration_rate": 0.4804888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 139,
+    "total_distance": 750.7508534099961
+  },
+  {
+    "step": 150,
+    "exploration_rate": 0.48075555555555555,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 143,
+    "total_distance": 752.3008534099961
+  },
+  {
+    "step": 151,
+    "exploration_rate": 0.48088888888888887,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 147,
+    "total_distance": 753.8508534099961
+  },
+  {
+    "step": 152,
+    "exploration_rate": 0.48106666666666664,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 151,
+    "total_distance": 755.4008534099962
+  },
+  {
+    "step": 153,
+    "exploration_rate": 0.48133333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 155,
+    "total_distance": 756.9508534099962
+  },
+  {
+    "step": 154,
+    "exploration_rate": 0.4815111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 159,
+    "total_distance": 758.5008534099962
+  },
+  {
+    "step": 155,
+    "exploration_rate": 0.4816888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 163,
+    "total_distance": 760.0508534099963
+  },
+  {
+    "step": 156,
+    "exploration_rate": 0.4818222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 167,
+    "total_distance": 761.6008534099964
+  },
+  {
+    "step": 157,
+    "exploration_rate": 0.48204444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 171,
+    "total_distance": 763.1508534099963
+  },
+  {
+    "step": 158,
+    "exploration_rate": 0.4822222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 175,
+    "total_distance": 764.7008534099964
+  },
+  {
+    "step": 159,
+    "exploration_rate": 0.48262222222222223,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 179,
+    "total_distance": 766.2508534099965
+  },
+  {
+    "step": 160,
+    "exploration_rate": 0.48284444444444446,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 183,
+    "total_distance": 767.8008534099964
+  },
+  {
+    "step": 161,
+    "exploration_rate": 0.4829777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 187,
+    "total_distance": 769.3508534099965
+  },
+  {
+    "step": 162,
+    "exploration_rate": 0.4831111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 191,
+    "total_distance": 770.9008534099966
+  },
+  {
+    "step": 163,
+    "exploration_rate": 0.48333333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 195,
+    "total_distance": 772.4508534099965
+  },
+  {
+    "step": 164,
+    "exploration_rate": 0.48364444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 199,
+    "total_distance": 774.0008534099966
+  },
+  {
+    "step": 165,
+    "exploration_rate": 0.48386666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 203,
+    "total_distance": 775.5508534099966
+  },
+  {
+    "step": 166,
+    "exploration_rate": 0.48404444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 207,
+    "total_distance": 777.1008534099966
+  },
+  {
+    "step": 167,
+    "exploration_rate": 0.48435555555555554,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 211,
+    "total_distance": 778.6508534099967
+  },
+  {
+    "step": 168,
+    "exploration_rate": 0.4846666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 215,
+    "total_distance": 780.2008534099967
+  },
+  {
+    "step": 169,
+    "exploration_rate": 0.48484444444444447,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 219,
+    "total_distance": 781.7508534099967
+  },
+  {
+    "step": 170,
+    "exploration_rate": 0.48502222222222224,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 223,
+    "total_distance": 783.3008534099968
+  },
+  {
+    "step": 171,
+    "exploration_rate": 0.4852,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 227,
+    "total_distance": 784.8508534099968
+  },
+  {
+    "step": 172,
+    "exploration_rate": 0.48533333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 231,
+    "total_distance": 786.4008534099968
+  },
+  {
+    "step": 173,
+    "exploration_rate": 0.48564444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 235,
+    "total_distance": 787.9508534099969
+  },
+  {
+    "step": 174,
+    "exploration_rate": 0.4859111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 239,
+    "total_distance": 789.5008534099969
+  },
+  {
+    "step": 175,
+    "exploration_rate": 0.48617777777777776,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 243,
+    "total_distance": 791.0508534099969
+  },
+  {
+    "step": 176,
+    "exploration_rate": 0.48644444444444446,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 247,
+    "total_distance": 792.600853409997
+  },
+  {
+    "step": 177,
+    "exploration_rate": 0.4864888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 251,
+    "total_distance": 794.150853409997
+  },
+  {
+    "step": 178,
+    "exploration_rate": 0.4867111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 255,
+    "total_distance": 795.700853409997
+  },
+  {
+    "step": 179,
+    "exploration_rate": 0.48702222222222225,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 259,
+    "total_distance": 797.250853409997
+  },
+  {
+    "step": 180,
+    "exploration_rate": 0.4872,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 263,
+    "total_distance": 798.800853409997
+  },
+  {
+    "step": 181,
+    "exploration_rate": 0.4874222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 267,
+    "total_distance": 800.3508534099971
+  },
+  {
+    "step": 182,
+    "exploration_rate": 0.4876,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 271,
+    "total_distance": 801.9008534099971
+  },
+  {
+    "step": 183,
+    "exploration_rate": 0.48791111111111113,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 275,
+    "total_distance": 803.4508534099971
+  },
+  {
+    "step": 184,
+    "exploration_rate": 0.48817777777777777,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 279,
+    "total_distance": 805.0008534099971
+  },
+  {
+    "step": 185,
+    "exploration_rate": 0.4882666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 283,
+    "total_distance": 806.5508534099972
+  },
+  {
+    "step": 186,
+    "exploration_rate": 0.4884,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 287,
+    "total_distance": 808.1008534099972
+  },
+  {
+    "step": 187,
+    "exploration_rate": 0.4887111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 291,
+    "total_distance": 809.6508534099972
+  },
+  {
+    "step": 188,
+    "exploration_rate": 0.48893333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 295,
+    "total_distance": 811.2008534099973
+  },
+  {
+    "step": 189,
+    "exploration_rate": 0.48915555555555557,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 299,
+    "total_distance": 812.7508534099973
+  },
+  {
+    "step": 190,
+    "exploration_rate": 0.48946666666666666,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 303,
+    "total_distance": 814.3008534099973
+  },
+  {
+    "step": 191,
+    "exploration_rate": 0.48973333333333335,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 307,
+    "total_distance": 815.8508534099974
+  },
+  {
+    "step": 192,
+    "exploration_rate": 0.48991111111111113,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 311,
+    "total_distance": 817.4008534099974
+  },
+  {
+    "step": 193,
+    "exploration_rate": 0.49017777777777777,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 315,
+    "total_distance": 818.9508534099974
+  },
+  {
+    "step": 194,
+    "exploration_rate": 0.4903111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 320,
+    "total_distance": 820.5008534099975
+  },
+  {
+    "step": 195,
+    "exploration_rate": 0.4905777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 325,
+    "total_distance": 822.0508534099974
+  },
+  {
+    "step": 196,
+    "exploration_rate": 0.4908888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 330,
+    "total_distance": 823.6008534099975
+  },
+  {
+    "step": 197,
+    "exploration_rate": 0.49124444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 335,
+    "total_distance": 825.1508534099976
+  },
+  {
+    "step": 198,
+    "exploration_rate": 0.4915555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 340,
+    "total_distance": 826.7008534099975
+  },
+  {
+    "step": 199,
+    "exploration_rate": 0.4916888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 345,
+    "total_distance": 828.2508534099976
+  },
+  {
+    "step": 200,
+    "exploration_rate": 0.49204444444444445,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 350,
+    "total_distance": 829.5008534099976
+  },
+  {
+    "step": 201,
+    "exploration_rate": 0.49248888888888886,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 355,
+    "total_distance": 830.7508534099976
+  },
+  {
+    "step": 202,
+    "exploration_rate": 0.49262222222222224,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 360,
+    "total_distance": 832.0008534099976
+  },
+  {
+    "step": 203,
+    "exploration_rate": 0.4929777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 365,
+    "total_distance": 833.2508534099977
+  },
+  {
+    "step": 204,
+    "exploration_rate": 0.49324444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 370,
+    "total_distance": 834.5008534099977
+  },
+  {
+    "step": 205,
+    "exploration_rate": 0.4935111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 375,
+    "total_distance": 835.7508534099977
+  },
+  {
+    "step": 206,
+    "exploration_rate": 0.4936,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 380,
+    "total_distance": 837.0008534099977
+  },
+  {
+    "step": 207,
+    "exploration_rate": 0.49391111111111113,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 386,
+    "total_distance": 838.0008534099977
+  },
+  {
+    "step": 208,
+    "exploration_rate": 0.4940888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 392,
+    "total_distance": 839.0008534099977
+  },
+  {
+    "step": 209,
+    "exploration_rate": 0.49448888888888887,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 398,
+    "total_distance": 840.0008534099977
+  },
+  {
+    "step": 210,
+    "exploration_rate": 0.4947111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 404,
+    "total_distance": 841.0008534099977
+  },
+  {
+    "step": 211,
+    "exploration_rate": 0.4948888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 410,
+    "total_distance": 842.0008534099977
+  },
+  {
+    "step": 212,
+    "exploration_rate": 0.49515555555555557,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 417,
+    "total_distance": 843.0008534099977
+  },
+  {
+    "step": 213,
+    "exploration_rate": 0.49537777777777775,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 424,
+    "total_distance": 844.0008534099978
+  },
+  {
+    "step": 214,
+    "exploration_rate": 0.49546666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 431,
+    "total_distance": 845.0008534099978
+  },
+  {
+    "step": 215,
+    "exploration_rate": 0.4956888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 438,
+    "total_distance": 846.0008534099978
+  },
+  {
+    "step": 216,
+    "exploration_rate": 0.49595555555555554,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 445,
+    "total_distance": 847.0008534099978
+  },
+  {
+    "step": 217,
+    "exploration_rate": 0.4961777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 452,
+    "total_distance": 848.0008534099978
+  },
+  {
+    "step": 218,
+    "exploration_rate": 0.4964,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 459,
+    "total_distance": 849.0008534099978
+  },
+  {
+    "step": 219,
+    "exploration_rate": 0.49666666666666665,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 466,
+    "total_distance": 850.0008534099978
+  },
+  {
+    "step": 220,
+    "exploration_rate": 0.49693333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 473,
+    "total_distance": 851.0008534099978
+  },
+  {
+    "step": 221,
+    "exploration_rate": 0.4971111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 481,
+    "total_distance": 852.0008534099978
+  },
+  {
+    "step": 222,
+    "exploration_rate": 0.49724444444444443,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 489,
+    "total_distance": 853.000853409998
+  },
+  {
+    "step": 223,
+    "exploration_rate": 0.49755555555555553,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 497,
+    "total_distance": 854.000853409998
+  },
+  {
+    "step": 224,
+    "exploration_rate": 0.49777777777777776,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 505,
+    "total_distance": 855.000853409998
+  },
+  {
+    "step": 225,
+    "exploration_rate": 0.498,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 513,
+    "total_distance": 856.000853409998
+  },
+  {
+    "step": 226,
+    "exploration_rate": 0.4982666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 521,
+    "total_distance": 857.000853409998
+  },
+  {
+    "step": 227,
+    "exploration_rate": 0.49853333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 529,
+    "total_distance": 858.000853409998
+  },
+  {
+    "step": 228,
+    "exploration_rate": 0.4988888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 537,
+    "total_distance": 859.000853409998
+  },
+  {
+    "step": 229,
+    "exploration_rate": 0.49906666666666666,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 545,
+    "total_distance": 860.000853409998
+  },
+  {
+    "step": 230,
+    "exploration_rate": 0.49924444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 553,
+    "total_distance": 861.000853409998
+  },
+  {
+    "step": 231,
+    "exploration_rate": 0.49955555555555553,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 561,
+    "total_distance": 862.000853409998
+  },
+  {
+    "step": 232,
+    "exploration_rate": 0.49977777777777777,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 569,
+    "total_distance": 863.0008534099981
+  },
+  {
+    "step": 233,
+    "exploration_rate": 0.4998222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 577,
+    "total_distance": 864.0008534099981
+  },
+  {
+    "step": 234,
+    "exploration_rate": 0.5002222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 585,
+    "total_distance": 865.0008534099981
+  },
+  {
+    "step": 235,
+    "exploration_rate": 0.5005333333333334,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 593,
+    "total_distance": 866.0008534099981
+  },
+  {
+    "step": 236,
+    "exploration_rate": 0.5008444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 601,
+    "total_distance": 867.0008534099981
+  },
+  {
+    "step": 237,
+    "exploration_rate": 0.5010666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 609,
+    "total_distance": 868.0008534099981
+  },
+  {
+    "step": 238,
+    "exploration_rate": 0.5013333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 617,
+    "total_distance": 869.0008534099981
+  },
+  {
+    "step": 239,
+    "exploration_rate": 0.5015111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 625,
+    "total_distance": 870.0008534099981
+  },
+  {
+    "step": 240,
+    "exploration_rate": 0.5018222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 633,
+    "total_distance": 871.0008534099981
+  },
+  {
+    "step": 241,
+    "exploration_rate": 0.5018666666666667,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 641,
+    "total_distance": 872.0008534099981
+  },
+  {
+    "step": 242,
+    "exploration_rate": 0.5020888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 649,
+    "total_distance": 873.0008534099981
+  },
+  {
+    "step": 243,
+    "exploration_rate": 0.5023555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 657,
+    "total_distance": 874.0008534099982
+  },
+  {
+    "step": 244,
+    "exploration_rate": 0.5028888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 665,
+    "total_distance": 875.0008534099982
+  },
+  {
+    "step": 245,
+    "exploration_rate": 0.5029777777777777,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 673,
+    "total_distance": 876.0008534099982
+  },
+  {
+    "step": 246,
+    "exploration_rate": 0.5032444444444445,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 681,
+    "total_distance": 877.0008534099982
+  },
+  {
+    "step": 247,
+    "exploration_rate": 0.5035111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 689,
+    "total_distance": 878.0008534099982
+  },
+  {
+    "step": 248,
+    "exploration_rate": 0.5037777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 697,
+    "total_distance": 879.0008534099982
+  },
+  {
+    "step": 249,
+    "exploration_rate": 0.5039555555555556,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 705,
+    "total_distance": 880.0008534099982
+  },
+  {
+    "step": 250,
+    "exploration_rate": 0.5040888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 713,
+    "total_distance": 881.0008534099982
+  },
+  {
+    "step": 251,
+    "exploration_rate": 0.5044888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 721,
+    "total_distance": 882.0008534099982
+  },
+  {
+    "step": 252,
+    "exploration_rate": 0.5049333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 729,
+    "total_distance": 883.0008534099982
+  },
+  {
+    "step": 253,
+    "exploration_rate": 0.5051111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 737,
+    "total_distance": 884.0008534099982
+  },
+  {
+    "step": 254,
+    "exploration_rate": 0.5053333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 745,
+    "total_distance": 885.0008534099982
+  },
+  {
+    "step": 255,
+    "exploration_rate": 0.5055555555555555,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 753,
+    "total_distance": 886.0008534099983
+  },
+  {
+    "step": 256,
+    "exploration_rate": 0.5057777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 761,
+    "total_distance": 887.0008534099983
+  },
+  {
+    "step": 257,
+    "exploration_rate": 0.5060444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 769,
+    "total_distance": 888.0008534099983
+  },
+  {
+    "step": 258,
+    "exploration_rate": 0.5062222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 777,
+    "total_distance": 889.0008534099983
+  },
+  {
+    "step": 259,
+    "exploration_rate": 0.5066222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 785,
+    "total_distance": 890.0008534099983
+  },
+  {
+    "step": 260,
+    "exploration_rate": 0.5069333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 793,
+    "total_distance": 891.0008534099983
+  },
+  {
+    "step": 261,
+    "exploration_rate": 0.5072444444444445,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 801,
+    "total_distance": 892.0008534099983
+  },
+  {
+    "step": 262,
+    "exploration_rate": 0.5074222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 809,
+    "total_distance": 893.0008534099983
+  },
+  {
+    "step": 263,
+    "exploration_rate": 0.5076,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 817,
+    "total_distance": 894.0008534099983
+  },
+  {
+    "step": 264,
+    "exploration_rate": 0.5078222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 825,
+    "total_distance": 895.0008534099983
+  },
+  {
+    "step": 265,
+    "exploration_rate": 0.5080888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 833,
+    "total_distance": 896.0008534099984
+  },
+  {
+    "step": 266,
+    "exploration_rate": 0.5083111111111112,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 841,
+    "total_distance": 897.0008534099984
+  },
+  {
+    "step": 267,
+    "exploration_rate": 0.5085333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 849,
+    "total_distance": 898.0008534099984
+  },
+  {
+    "step": 268,
+    "exploration_rate": 0.5089777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 857,
+    "total_distance": 899.0008534099984
+  },
+  {
+    "step": 269,
+    "exploration_rate": 0.5092888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 865,
+    "total_distance": 900.0008534099984
+  },
+  {
+    "step": 270,
+    "exploration_rate": 0.5095111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 873,
+    "total_distance": 901.0008534099984
+  },
+  {
+    "step": 271,
+    "exploration_rate": 0.5096444444444445,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 881,
+    "total_distance": 902.0008534099984
+  },
+  {
+    "step": 272,
+    "exploration_rate": 0.5099111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 889,
+    "total_distance": 903.0008534099984
+  },
+  {
+    "step": 273,
+    "exploration_rate": 0.5102222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 898,
+    "total_distance": 903.8508534099984
+  },
+  {
+    "step": 274,
+    "exploration_rate": 0.5103111111111112,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 907,
+    "total_distance": 904.7008534099984
+  },
+  {
+    "step": 275,
+    "exploration_rate": 0.5105333333333333,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 916,
+    "total_distance": 905.5508534099985
+  },
+  {
+    "step": 276,
+    "exploration_rate": 0.5107555555555555,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 925,
+    "total_distance": 906.4008534099985
+  },
+  {
+    "step": 277,
+    "exploration_rate": 0.5109777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 935,
+    "total_distance": 907.1008534099985
+  },
+  {
+    "step": 278,
+    "exploration_rate": 0.5111111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 945,
+    "total_distance": 907.8008534099985
+  },
+  {
+    "step": 279,
+    "exploration_rate": 0.5112444444444444,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 955,
+    "total_distance": 908.5008534099985
+  },
+  {
+    "step": 280,
+    "exploration_rate": 0.5114666666666666,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 965,
+    "total_distance": 909.2008534099986
+  },
+  {
+    "step": 281,
+    "exploration_rate": 0.5118222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 975,
+    "total_distance": 909.9008534099985
+  },
+  {
+    "step": 282,
+    "exploration_rate": 0.5119111111111111,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 985,
+    "total_distance": 910.6008534099985
+  },
+  {
+    "step": 283,
+    "exploration_rate": 0.5120888888888889,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 995,
+    "total_distance": 911.3008534099986
+  },
+  {
+    "step": 284,
+    "exploration_rate": 0.5122666666666666,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 1005,
+    "total_distance": 912.0008534099985
+  },
+  {
+    "step": 285,
+    "exploration_rate": 0.5125777777777778,
+    "targets_found": 3,
+    "connectivity_ratio": 1.0,
+    "collision_count": 1015,
+    "total_distance": 912.7008534099986
+  },
+  {
+    "step": 286,
+    "exploration_rate": 0.5126222222222222,
+    "targets_found": 3,
+    "connectivity_ratio": 0.9999419279907086,
+    "collision_count": 1025,
+    "total_distance": 913.4008534099986
+  },
+  {
+    "step": 287,
+    "exploration_rate": 0.5128,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9998842592592594,
+    "collision_count": 1035,
+    "total_distance": 914.1008534099985
+  },
+  {
+    "step": 288,
+    "exploration_rate": 0.5130666666666667,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9998269896193773,
+    "collision_count": 1045,
+    "total_distance": 914.8008534099986
+  },
+  {
+    "step": 289,
+    "exploration_rate": 0.5131555555555556,
+    "targets_found": 4,
+    "connectivity_ratio": 0.999770114942529,
+    "collision_count": 1055,
+    "total_distance": 915.5008534099985
+  },
+  {
+    "step": 290,
+    "exploration_rate": 0.5132888888888889,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9997136311569303,
+    "collision_count": 1065,
+    "total_distance": 916.2008534099986
+  },
+  {
+    "step": 291,
+    "exploration_rate": 0.5135111111111111,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9996575342465757,
+    "collision_count": 1075,
+    "total_distance": 916.9008534099986
+  },
+  {
+    "step": 292,
+    "exploration_rate": 0.5137333333333334,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9996018202502848,
+    "collision_count": 1085,
+    "total_distance": 917.6008534099985
+  },
+  {
+    "step": 293,
+    "exploration_rate": 0.5139555555555556,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9995464852607714,
+    "collision_count": 1095,
+    "total_distance": 918.3008534099986
+  },
+  {
+    "step": 294,
+    "exploration_rate": 0.5140888888888889,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9994915254237293,
+    "collision_count": 1105,
+    "total_distance": 919.0008534099986
+  },
+  {
+    "step": 295,
+    "exploration_rate": 0.5143111111111112,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9994369369369375,
+    "collision_count": 1115,
+    "total_distance": 919.7008534099986
+  },
+  {
+    "step": 296,
+    "exploration_rate": 0.5145333333333333,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9993827160493832,
+    "collision_count": 1125,
+    "total_distance": 920.4008534099986
+  },
+  {
+    "step": 297,
+    "exploration_rate": 0.5146222222222222,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9993288590604033,
+    "collision_count": 1135,
+    "total_distance": 921.1008534099986
+  },
+  {
+    "step": 298,
+    "exploration_rate": 0.5148444444444444,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9992753623188413,
+    "collision_count": 1145,
+    "total_distance": 921.8008534099986
+  },
+  {
+    "step": 299,
+    "exploration_rate": 0.5149777777777778,
+    "targets_found": 4,
+    "connectivity_ratio": 0.9992222222222229,
+    "collision_count": 1155,
+    "total_distance": 922.5008534099986
+  }
+]

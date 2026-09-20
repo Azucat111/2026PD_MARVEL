@@ -42,6 +42,31 @@ class CommunicationModel:
                         stack.append(int(neighbor))
         return components <= 1, components
 
+    def connectivity_ratio(self, topology: np.ndarray) -> float:
+        """Return the fraction of robots in the largest communication component."""
+        n = int(len(topology))
+        if n <= 1:
+            return 1.0
+        seen: set[int] = set()
+        largest = 0
+        for start in range(n):
+            if start in seen:
+                continue
+            component = {start}
+            stack = [start]
+            seen.add(start)
+            while stack:
+                node = stack.pop()
+                neighbors = np.flatnonzero(topology[node] | topology[:, node])
+                for neighbor in neighbors:
+                    neighbor = int(neighbor)
+                    if neighbor not in seen:
+                        seen.add(neighbor)
+                        component.add(neighbor)
+                        stack.append(neighbor)
+            largest = max(largest, len(component))
+        return float(largest) / float(n)
+
     def broadcast(self, sender: int, payload: Any, step: int,
                   recipients: Iterable[int] | None = None) -> None:
         for recipient in recipients or []:

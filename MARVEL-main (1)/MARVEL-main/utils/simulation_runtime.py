@@ -57,9 +57,17 @@ class SimulationRuntime:
         self.obstacles.reset()
         self.tasks.reset()
         self.robots = []
+        ensure_connected = bool(self.config.get("communication", {}).get(
+            "ensure_initial_connectivity", False))
+        all_positions: list[np.ndarray] = []
         for group in self.config["robots"]:
             start, end = group["id_range"]
-            positions = self._generate_initial_positions(end - start + 1, group.get("config", {}).get("initial_positions", "random_safe"))
+            positions = self._generate_initial_positions(
+                end - start + 1,
+                group.get("config", {}).get("initial_positions", "random_safe"),
+                anchors=all_positions if ensure_connected else None,
+            )
+            all_positions.extend(positions)
             for offset, robot_id in enumerate(range(start, end + 1)):
                 cfg = group.get("config", {})
                 robot_type = group.get("type", "uav")
@@ -87,7 +95,9 @@ class SimulationRuntime:
     def step(self, actions: List[Tuple[np.ndarray, float]]) -> tuple[Dict[int, Dict[str, Any]], Dict[str, Any]]:
         if len(actions) != len(self.robots):
             raise ValueError(f"Expected {len(self.robots)} actions, got {len(actions)}")
-        self.obstacles.step(self.current_step, self.dt)
+        for obstacle_event in self.obstacles.step(self.current_step, self.dt):
+            event_type = obstacle_event.pop("type")
+            self._log_event(event_type, obstacle_event)
         # Apply safety shield before passing actions to dynamics.
         actions = self.shield.filter_actions(self.robots, actions, self.current_step)
         for shield_event in self.shield.pop_events():
@@ -95,6 +105,7 @@ class SimulationRuntime:
         info = {
             "collisions": [],
             "comm_topology": None,
+            "connectivity_ratio": 0.0,
             "task_events": [],
             "feasibility": [],
             "terminated": False,
@@ -139,12 +150,19 @@ class SimulationRuntime:
         topology = self.comm.get_topology([robot.position for robot in self.robots])
         info["comm_topology"] = topology
         connected, components = self.comm.check_connectivity(topology)
+        connectivity_ratio = self.comm.connectivity_ratio(topology)
+        info["connectivity_ratio"] = connectivity_ratio
         if not connected:
-            self._log_event("disconnection", {"step": self.current_step, "components": components})
+            self._log_event("disconnection", {
+                "step": self.current_step,
+                "components": components,
+                "connectivity_ratio": connectivity_ratio,
+            })
         task_events = self.tasks.update(
             self.current_step, self.robots, observations,
             exploration_rate=self.exploration_rate,
             comm_connected=connected,
+            connectivity_ratio=connectivity_ratio,
         )
         info["task_events"] = task_events
         for event in task_events:
@@ -186,7 +204,8 @@ class SimulationRuntime:
             for x, y in observation.get("visible_cells", []):
                 self.explored_cells.add((int(x), int(y)))
 
-    def _generate_initial_positions(self, count: int, mode) -> List[np.ndarray]:
+    def _generate_initial_positions(self, count: int, mode,
+                                    anchors: list[np.ndarray] | None = None) -> List[np.ndarray]:
         if isinstance(mode, list):
             return [np.asarray(item, dtype=float) for item in mode]
         if mode == "grid":
@@ -201,9 +220,36 @@ class SimulationRuntime:
                 np.random.uniform(5.0, max(6.0, self.obstacles.height - 5.0)),
             ])
             collides, _ = self.obstacles.check_collision(point, radius=0.5)
-            if collides or any(np.linalg.norm(point - existing) < 1.5 for existing in positions):
+            if collides or any(np.linalg.norm(point - existing) < 1.5
+                               for existing in positions):
+                continue
+            if anchors is not None and (anchors or positions) and not any(
+                    np.linalg.norm(point - existing) <= self.comm.comm_range
+                    for existing in [*anchors, *positions]):
                 continue
             positions.append(point)
+        if anchors is not None and len(positions) != count:
+            # Fill a connected chain deterministically if rejection sampling
+            # cannot place the requested group within the bounded map.
+            while len(positions) < count:
+                base = np.asarray((anchors or positions)[-1], dtype=float)
+                step = min(self.comm.comm_range * 0.6, 5.0)
+                candidates = [
+                    base + np.array([step, 0.0]),
+                    base + np.array([0.0, step]),
+                    base + np.array([-step, 0.0]),
+                    base + np.array([0.0, -step]),
+                ]
+                candidate = next(
+                    (np.clip(item, [1.0, 1.0],
+                             [self.obstacles.width - 1.0, self.obstacles.height - 1.0])
+                     for item in candidates
+                     if not any(np.linalg.norm(item - existing) < 1.5
+                                for existing in [*anchors, *positions])),
+                    np.clip(base + np.array([step, step]), [1.0, 1.0],
+                            [self.obstacles.width - 1.0, self.obstacles.height - 1.0]),
+                )
+                positions.append(candidate)
         if len(positions) != count:
             raise RuntimeError(f"Failed to generate {count} safe start positions")
         return positions

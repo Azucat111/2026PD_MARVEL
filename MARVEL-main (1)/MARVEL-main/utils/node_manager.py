@@ -100,10 +100,22 @@ class NodeManager:
         highest_utility_angle = np.array(highest_utility_angle)
         heading_visited = np.array(heading_visited)
 
+        # Robot positions normally lie exactly on the node lattice.  In
+        # practice map filtering and floating-point coordinate conversion can
+        # leave a valid robot position between/just outside graph nodes.  The
+        # planner must still be able to produce an observation, so use the
+        # nearest graph node as the canonical planning start in that case.
+        if n_nodes == 0:
+            raise RuntimeError("Cannot build graph observation: node manager is empty")
+        robot_in_graph = self.nodes_dict.nearest_neighbors(
+            np.asarray(robot_location, dtype=float).tolist(), 1
+        )[0].data.coords
+        planning_start = np.asarray(robot_in_graph, dtype=float)
+
         indices = np.argwhere(utility > 0).reshape(-1)
         utility_node_coords = all_node_coords[indices]
-        dist_dict, prev_dict = self.Dijkstra(robot_location)
-        nearest_utility_coords = robot_location
+        dist_dict, prev_dict = self.Dijkstra(planning_start)
+        nearest_utility_coords = planning_start
         nearest_dist = 1e8
         for coords in utility_node_coords:
             dist = dist_dict[(coords[0], coords[1])]
@@ -111,19 +123,20 @@ class NodeManager:
                 nearest_dist = dist
                 nearest_utility_coords = coords
 
-        path_coords, dist = self.a_star(robot_location, nearest_utility_coords)
+        path_coords, dist = self.a_star(planning_start, nearest_utility_coords)
         guidepost = np.zeros_like(utility)
         for coords in path_coords:
             index = np.argwhere(all_node_coords[:, 0] + all_node_coords[:, 1] * 1j == coords[0] + coords[1] * 1j)[0]
             guidepost[index] = 1
 
-        robot_in_graph = self.nodes_dict.nearest_neighbors(robot_location.tolist(), 1)[0].data.coords
         current_index = np.argwhere(node_coords_to_check == robot_in_graph[0] + robot_in_graph[1] * 1j)[0][0]
         neighbor_indices = np.argwhere(adjacent_matrix[current_index] == 0).reshape(-1)
 
         occupancy = np.zeros((n_nodes, 1))
         for location in robot_locations:
-            location_in_graph = self.nodes_dict.find((location[0], location[1])).data.coords
+            location_in_graph = self.nodes_dict.nearest_neighbors(
+                np.asarray(location, dtype=float).tolist(), 1
+            )[0].data.coords
             index = np.argwhere(node_coords_to_check == location_in_graph[0] + location_in_graph[1] * 1j)[0][0]
             if index == current_index:
                 occupancy[index] = -1

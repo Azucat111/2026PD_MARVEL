@@ -33,8 +33,9 @@ class Evaluator:
         connectivity = 1.0
         if topology is not None:
             connectivity, _ = _connectivity(topology)
+            connectivity = float(info.get("connectivity_ratio", connectivity))
             self.connectivity_steps += 1
-            self.connected_steps += int(connectivity)
+            self.connected_steps += connectivity
             connectivity = self.connected_steps / self.connectivity_steps
         self.metrics_history.append({
             "step": step,
