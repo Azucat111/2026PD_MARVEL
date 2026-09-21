@@ -1,3 +1,4 @@
+from .scheduler import GPPOTaskScheduler
 from .event_sources import (
     ObservedRelayDemandBuilder,
     PublicHeatPoint,
@@ -21,6 +22,7 @@ from .runtime_graph import RuntimeGraphBuilder, RuntimeTaskGraph
 from .task_graph import Subtask, TaskGraph, TaskType, UAVState
 
 __all__ = [
+    "GPPOTaskScheduler",
     "SearchSlotBuilder",
     "RelayDemandResult",
     "RelayDemand",

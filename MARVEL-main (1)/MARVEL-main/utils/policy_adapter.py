@@ -60,7 +60,41 @@ class MARVELPolicyAdapter:
         # Agents — populated in setup()
         self.agents: List[Agent] = []
         self._node_manager: Optional[NodeManager] = None
-        self.scheduler = TaskScheduler(runtime)
+        scheduler_cfg = runtime.config.get(
+            "task_scheduler", {}
+        )
+        scheduler_mode = str(
+            scheduler_cfg.get("mode", "heuristic")
+        ).lower()
+
+        if scheduler_mode == "heuristic":
+            self.scheduler = TaskScheduler(runtime)
+
+        elif scheduler_mode == "gppo":
+            from integrations.gppo import GPPOTaskScheduler
+
+            checkpoint = scheduler_cfg.get(
+                "checkpoint"
+            )
+
+            if not checkpoint:
+                raise ValueError(
+                    "task_scheduler.checkpoint is required "
+                    "when mode='gppo'"
+                )
+
+            self.scheduler = GPPOTaskScheduler(
+                runtime,
+                checkpoint_path=str(checkpoint),
+                device=str(self.device),
+                scheduler_config=scheduler_cfg,
+            )
+
+        else:
+            raise ValueError(
+                f"Unknown task scheduler mode: "
+                f"{scheduler_mode}"
+            )
 
     # ------------------------------------------------------------------
     # Public API
@@ -101,18 +135,45 @@ class MARVELPolicyAdapter:
         """Convert SimulationRuntime observations to a list of (waypoint, heading) actions."""
         if not self._using_policy or not self.agents:
             if self.verbose:
-                print(f"[PolicyAdapter] Fallback: _using_policy={self._using_policy}, agents={len(self.agents) if self.agents else 0}")
-            return self.runtime.default_actions()
-        try:
-            actions = self._policy_actions(observations)
-            if self.verbose:
-                print(f"[PolicyAdapter] Policy actions generated: {len(actions)} robots")
-            return actions
-        except Exception as exc:
-            if self.verbose:
-                print(f"[PolicyAdapter] Policy inference error: {exc}")
-            logger.warning("Policy inference error (%s); falling back to default_actions.", exc)
-            return self.runtime.default_actions()
+                print(
+                    f"[PolicyAdapter] Fallback: "
+                    f"_using_policy={self._using_policy}, "
+                    f"agents={len(self.agents) if self.agents else 0}"
+                )
+            base_actions = self.runtime.default_actions()
+
+        else:
+            try:
+                base_actions = self._policy_actions(
+                    observations
+                )
+
+                if self.verbose:
+                    print(
+                        "[PolicyAdapter] Policy actions "
+                        f"generated: {len(base_actions)} robots"
+                    )
+
+            except Exception as exc:
+                if self.verbose:
+                    print(
+                        "[PolicyAdapter] Policy inference "
+                        f"error: {exc}"
+                    )
+
+                logger.warning(
+                    "Policy inference error (%s); "
+                    "falling back to default_actions.",
+                    exc,
+                )
+
+                base_actions = (
+                    self.runtime.default_actions()
+                )
+
+        return self.scheduler.apply(
+            base_actions
+        )
 
     # ------------------------------------------------------------------
     # Private helpers
@@ -239,4 +300,4 @@ class MARVELPolicyAdapter:
                 logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
                 actions.append(default[idx])
 
-        return self.scheduler.apply(actions)
+        return actions
