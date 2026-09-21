@@ -10,21 +10,21 @@ from .task_graph import Subtask, TaskGraph, TaskType
 
 @dataclass(frozen=True)
 class GPPOEventSlot:
-    """One allocatable high-level event subtask.
-
-    Search:
-        one slot ~= one public heat-point search assignment
-
-    Relay:
-        one slot ~= one feasible relay demand
-    """
-
     slot_id: int
     task_type: TaskType
     priority: float
+
     position: tuple[float, float] | None = None
     processing_time: float = 0.0
+
     source_task_id: str | None = None
+
+    # Search: heat_id
+    # Relay: target UAV id
+    source_entity_id: int | None = None
+
+    # Relay uses this to forbid target UAV -> own relay helper.
+    forbidden_uav_ids: tuple[int, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -32,18 +32,16 @@ class GPPOEventAssignment:
     slot_id: int
     task_type: TaskType
     uav_id: int
+
     source_task_id: str | None
+    source_entity_id: int | None
+
     flat_action: int
     value: float
 
 
 class GPPOEventAllocator:
-    """Sequential event allocator matching frozen Phase14 semantics.
-
-    Each selected subtask becomes assigned and each selected UAV becomes
-    unavailable before the next GPPO decision. The graph is rebuilt after
-    every assignment.
-    """
+    """Sequential frozen-GPPO event allocation."""
 
     def __init__(
         self,
@@ -62,6 +60,7 @@ class GPPOEventAllocator:
         slots: Iterable[GPPOEventSlot],
         *,
         deterministic: bool = True,
+        position_overrides=None,
     ) -> list[GPPOEventAssignment]:
 
         slots = list(slots)
@@ -69,16 +68,22 @@ class GPPOEventAllocator:
         if not slots:
             return []
 
-        ids = [slot.slot_id for slot in slots]
+        ids = [int(slot.slot_id) for slot in slots]
+
         if len(ids) != len(set(ids)):
-            raise ValueError("GPPOEventSlot.slot_id values must be unique")
+            raise ValueError(
+                "GPPOEventSlot.slot_id values must be unique"
+            )
 
-        # Reuse the already-tested runtime -> UAVState bridge.
-        base_graph = RuntimeGraphBuilder(self.runtime).build().graph
+        base_graph = RuntimeGraphBuilder(
+            self.runtime,
+            position_overrides=position_overrides,
+        ).build().graph
 
-        # Work on local copies. Shadow/planning allocation must not mutate
-        # SimulationRuntime yet.
-        uavs = [replace(uav) for uav in base_graph.uav_states]
+        uavs = [
+            replace(uav)
+            for uav in base_graph.uav_states
+        ]
 
         subtasks = [
             Subtask(
@@ -104,15 +109,24 @@ class GPPOEventAllocator:
             self.runtime.current_step * self.runtime.dt
         )
 
-        # Frozen Search/Relay coordinators make at most one assignment for
-        # each active subtask in the event.
         for _ in range(len(subtasks)):
-
             graph = TaskGraph(
                 uav_states=uavs,
                 subtasks=subtasks,
                 current_time=current_time,
             )
+
+            # Event-specific hard masks.
+            for ti, task in enumerate(graph.subtasks):
+                slot = slot_by_id[int(task.subtask_id)]
+
+                for forbidden_uid in slot.forbidden_uav_ids:
+                    ui = graph.uav_id_to_index.get(
+                        int(forbidden_uid)
+                    )
+
+                    if ui is not None:
+                        graph.action_mask[ti, ui] = True
 
             decision = self.adapter.assign(
                 graph,
@@ -125,27 +139,35 @@ class GPPOEventAllocator:
             subtask = subtasks[decision.task_index]
             uav = uavs[decision.uav_index]
 
-            slot = slot_by_id[int(subtask.subtask_id)]
+            slot = slot_by_id[
+                int(subtask.subtask_id)
+            ]
 
             assignments.append(
                 GPPOEventAssignment(
                     slot_id=int(subtask.subtask_id),
-                    task_type=TaskType(subtask.task_type),
+                    task_type=TaskType(
+                        subtask.task_type
+                    ),
                     uav_id=int(uav.uav_id),
                     source_task_id=slot.source_task_id,
-                    flat_action=int(decision.flat_action),
+                    source_entity_id=slot.source_entity_id,
+                    flat_action=int(
+                        decision.flat_action
+                    ),
                     value=float(decision.value),
                 )
             )
 
-            # Match frozen TaskManager.apply_assignment semantics locally:
-            #
-            # 1. this subtask cannot be selected again
-            # 2. this UAV cannot be selected again during the same event
-            subtask.assigned_uav_id = int(uav.uav_id)
+            # Frozen TaskManager.apply_assignment semantics.
+            subtask.assigned_uav_id = int(
+                uav.uav_id
+            )
 
             uav.available = False
             uav.assigned_task_num += 1
-            uav.current_task = TaskType(subtask.task_type)
+            uav.current_task = TaskType(
+                subtask.task_type
+            )
 
         return assignments

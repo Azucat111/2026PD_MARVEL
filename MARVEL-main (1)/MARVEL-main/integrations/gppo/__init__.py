@@ -1,3 +1,10 @@
+from .event_sources import (
+    ObservedRelayDemandBuilder,
+    PublicHeatPoint,
+    RelayDemand,
+    RelayDemandResult,
+    SearchSlotBuilder,
+)
 from .config_profile import prepare_gppo_config
 from .stale_state import StalePositionTracker
 from .protocol_profile import GPPOControlClock, GPPORuntimeProfile, apply_gppo_runtime_profile, build_gppo_runtime_profile
@@ -14,6 +21,11 @@ from .runtime_graph import RuntimeGraphBuilder, RuntimeTaskGraph
 from .task_graph import Subtask, TaskGraph, TaskType, UAVState
 
 __all__ = [
+    "SearchSlotBuilder",
+    "RelayDemandResult",
+    "RelayDemand",
+    "PublicHeatPoint",
+    "ObservedRelayDemandBuilder",
     "StalePositionTracker",
     "prepare_gppo_config",
     "build_gppo_runtime_profile",
