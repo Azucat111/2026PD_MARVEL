@@ -27,8 +27,13 @@ class RuntimeGraphBuilder:
     come from public heat points.
     """
 
-    def __init__(self, runtime):
+    def __init__(
+        self,
+        runtime,
+        position_overrides=None,
+    ):
         self.runtime = runtime
+        self.position_overrides = position_overrides or {}
 
     def build(self) -> RuntimeTaskGraph:
         uavs = self._build_uavs()
@@ -119,8 +124,18 @@ class RuntimeGraphBuilder:
                         default_if_missing=True,
                     ),
                     position=(
-                        float(robot.position[0]),
-                        float(robot.position[1]),
+                        float(
+                            self.position_overrides.get(
+                                int(robot.robot_id),
+                                robot.position,
+                            )[0]
+                        ),
+                        float(
+                            self.position_overrides.get(
+                                int(robot.robot_id),
+                                robot.position,
+                            )[1]
+                        ),
                     ),
                     velocity=max(float(robot.velocity), 1e-6),
                     current_task=TaskType.EXPLORATION,

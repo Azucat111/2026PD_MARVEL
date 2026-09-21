@@ -1,3 +1,5 @@
+from .config_profile import prepare_gppo_config
+from .stale_state import StalePositionTracker
 from .protocol_profile import GPPOControlClock, GPPORuntimeProfile, apply_gppo_runtime_profile, build_gppo_runtime_profile
 from .adapter import GPPOAssignment, GPPOInferenceAdapter
 from .checkpoint import load_frozen_gppo
@@ -12,6 +14,8 @@ from .runtime_graph import RuntimeGraphBuilder, RuntimeTaskGraph
 from .task_graph import Subtask, TaskGraph, TaskType, UAVState
 
 __all__ = [
+    "StalePositionTracker",
+    "prepare_gppo_config",
     "build_gppo_runtime_profile",
     "apply_gppo_runtime_profile",
     "GPPORuntimeProfile",
