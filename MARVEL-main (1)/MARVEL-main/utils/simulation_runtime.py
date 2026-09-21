@@ -14,6 +14,7 @@ from .obstacle_manager import ObstacleManager
 from .safety_shield import SafetyShield
 from .sensor_models import create_sensor_model
 from .task_manager import TaskManager
+from .target_detector import TargetDetector
 
 
 @dataclass
@@ -44,6 +45,30 @@ class SimulationRuntime:
         if map_file:
             self.obstacles.load_from_file(map_file)
         self.tasks = TaskManager(scenario_config["tasks"])
+
+        hidden_targets = scenario_config.get(
+            "_gppo_hidden_targets"
+        )
+
+        # Backward-compatible truth extraction for ordinary configs.
+        if hidden_targets is None:
+            hidden_targets = {
+                str(task["task_id"]):
+                    list(
+                        task.get(
+                            "params", {}
+                        ).get("targets", [])
+                    )
+                for task in scenario_config.get(
+                    "tasks", []
+                )
+                if task.get("type") == "target_search"
+            }
+
+        self.target_detector = TargetDetector(
+            hidden_targets
+        )
+
         self.shield = SafetyShield(self.obstacles)
         self.robots: List[RobotState] = []
         self.events: list[Dict[str, Any]] = []
@@ -158,11 +183,18 @@ class SimulationRuntime:
                 "components": components,
                 "connectivity_ratio": connectivity_ratio,
             })
+        target_detections = self._get_target_detections(
+            observations
+        )
+
         task_events = self.tasks.update(
-            self.current_step, self.robots, observations,
+            self.current_step,
+            self.robots,
+            observations,
             exploration_rate=self.exploration_rate,
             comm_connected=connected,
             connectivity_ratio=connectivity_ratio,
+            target_detections=target_detections,
         )
         info["task_events"] = task_events
         for event in task_events:
@@ -198,6 +230,40 @@ class SimulationRuntime:
                 robot, grid, positions)
             for robot in self.robots
         }
+
+    def _get_target_detections(
+        self,
+        observations: Dict[int, Dict[str, Any]],
+    ) -> dict[str, dict[int, int]]:
+        detections = {}
+
+        for task in self.tasks.tasks.values():
+            if task.task_type != "target_search":
+                continue
+
+            allowed_types = set(
+                task.assigned_robot_types
+            )
+
+            eligible_ids = [
+                int(robot.robot_id)
+                for robot in self.robots
+                if (
+                    not allowed_types
+                    or robot.robot_type
+                    in allowed_types
+                )
+            ]
+
+            detections[task.task_id] = (
+                self.target_detector.detect(
+                    task.task_id,
+                    observations,
+                    eligible_ids,
+                )
+            )
+
+        return detections
 
     def _update_explored_cells(self, observations: Dict[int, Dict[str, Any]]) -> None:
         for observation in observations.values():

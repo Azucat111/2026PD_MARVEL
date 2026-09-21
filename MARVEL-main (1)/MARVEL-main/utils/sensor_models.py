@@ -21,6 +21,7 @@ class IdealSensor(SensorModel):
         params = params or {}
         self.fov = float(params.get("fov", 120.0))
         self.sensor_range = float(params.get("range", params.get("sensor_range", 10.0)))
+        self.los_occlusion = bool(params.get("los_occlusion", False))
 
     def sense(self, robot_state, occupancy_grid: np.ndarray, all_robot_positions) -> Dict[str, Any]:
         position = np.asarray(robot_state.position, dtype=float)
@@ -48,8 +49,68 @@ class IdealSensor(SensorModel):
                     continue
                 angle = (np.degrees(np.arctan2(delta[1], delta[0])) - heading + 180.0) % 360.0 - 180.0
                 if abs(angle) <= self.fov / 2:
+                    if (
+                        self.los_occlusion
+                        and not self._has_line_of_sight(
+                            position,
+                            (x, y),
+                            occupancy_grid,
+                        )
+                    ):
+                        continue
                     cells.append((x, y))
         return np.asarray(cells, dtype=int)
+
+    @staticmethod
+    def _has_line_of_sight(
+        position: np.ndarray,
+        target_cell,
+        occupancy_grid: np.ndarray,
+    ) -> bool:
+        """Return False when an occupied cell blocks the sight line."""
+
+        x0 = float(position[0])
+        y0 = float(position[1])
+
+        x1 = int(target_cell[0])
+        y1 = int(target_cell[1])
+
+        dx = float(x1) - x0
+        dy = float(y1) - y0
+
+        # Half-cell sampling prevents thin occupied cells being skipped.
+        samples = max(
+            1,
+            int(
+                np.ceil(
+                    2.0 * max(abs(dx), abs(dy))
+                )
+            ),
+        )
+
+        height, width = occupancy_grid.shape
+
+        for i in range(1, samples):
+            alpha = i / samples
+
+            x = int(round(x0 + alpha * dx))
+            y = int(round(y0 + alpha * dy))
+
+            if not (
+                0 <= x < width
+                and 0 <= y < height
+            ):
+                return False
+
+            # The target cell itself remains visible; an obstacle
+            # strictly before it blocks the ray.
+            if (x, y) == (x1, y1):
+                break
+
+            if int(occupancy_grid[y, x]) == 1:
+                return False
+
+        return True
 
     def _nearby_robots(self, position: np.ndarray, all_robot_positions) -> list[int]:
         nearby = []

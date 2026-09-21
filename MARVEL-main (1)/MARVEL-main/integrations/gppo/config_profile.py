@@ -44,6 +44,9 @@ def prepare_gppo_config(
         frozen["comm_range"]
     )
 
+    # Hidden target truth is segregated from the public task layer.
+    hidden_targets = {}
+
     # Scale task gates expressed in mission-step units.
     for task in cfg.get("tasks", []):
         activation = task.get("activation", {})
@@ -53,6 +56,15 @@ def prepare_gppo_config(
             )
 
         params = task.get("params", {})
+
+        if task.get("type") == "target_search":
+            truth = list(params.pop("targets", []))
+
+            hidden_targets[
+                str(task["task_id"])
+            ] = truth
+
+            params["target_count"] = len(truth)
 
         # Keep any task deadline in the same physical mission time.
         if "deadline" in params:
@@ -87,6 +99,12 @@ def prepare_gppo_config(
                 float(params["expansion_rate"])
                 / interval
             )
+
+    cfg["_gppo_hidden_targets"] = hidden_targets
+
+    cfg.setdefault("sensor", {})
+    cfg["sensor"].setdefault("params", {})
+    cfg["sensor"]["params"]["los_occlusion"] = True
 
     cfg.setdefault("_gppo_profile", {})
     cfg["_gppo_profile"].update({

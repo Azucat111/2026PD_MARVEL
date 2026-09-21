@@ -43,7 +43,8 @@ class TaskManager:
 
     def update(self, current_step: int, robot_states, observations,
                exploration_rate: float = 0.0, comm_connected: bool = True,
-               connectivity_ratio: float | None = None) -> list[Dict[str, Any]]:
+               connectivity_ratio: float | None = None,
+               target_detections=None) -> list[Dict[str, Any]]:
         events = []
         for task in self.tasks.values():
             if task.status == "pending" and self._should_activate(task, current_step, exploration_rate):
@@ -52,7 +53,8 @@ class TaskManager:
             if task.status == "active":
                 events.extend(self._update_active_task(
                     task, current_step, robot_states, exploration_rate,
-                    comm_connected, connectivity_ratio))
+                    comm_connected, connectivity_ratio,
+                    target_detections))
         return events
 
     def _should_activate(self, task: Task, current_step: int, exploration_rate: float) -> bool:
@@ -69,7 +71,8 @@ class TaskManager:
 
     def _update_active_task(self, task: Task, current_step: int, robot_states,
                             exploration_rate: float, comm_connected: bool,
-                            connectivity_ratio: float | None = None) -> list[Dict[str, Any]]:
+                            connectivity_ratio: float | None = None,
+                            target_detections=None) -> list[Dict[str, Any]]:
         events = []
         allowed_types = set(task.assigned_robot_types)
         if not allowed_types:
@@ -82,20 +85,91 @@ class TaskManager:
                 task.status = "complete"
                 events.append({"type": "task_completed", "task_id": task.task_id, "step": current_step})
         elif task.task_type == "target_search":
-            targets = task.params.get("targets", [])
-            for idx, target in enumerate(targets):
-                if idx in task.found_targets:
-                    continue
-                target_pos = np.array([target["x"], target["y"]], dtype=float)
-                radius = float(target.get("radius", 5.0))
-                if any(np.linalg.norm(robot.position - target_pos) <= radius for robot in eligible_robots):
+            if target_detections is not None:
+                detected = target_detections.get(
+                    task.task_id,
+                    {},
+                )
+
+                for idx, robot_id in sorted(
+                    detected.items()
+                ):
+                    idx = int(idx)
+
+                    if idx in task.found_targets:
+                        continue
+
                     task.found_targets.add(idx)
-                    events.append({"type": "target_found", "task_id": task.task_id,
-                                   "target_index": idx, "step": current_step})
-            task.progress = len(task.found_targets) / max(len(targets), 1)
+
+                    events.append({
+                        "type": "target_found",
+                        "task_id": task.task_id,
+                        "target_index": idx,
+                        "robot_id": int(robot_id),
+                        "step": current_step,
+                        "detection_mode": "sensor_visible_cell",
+                    })
+
+                target_count = int(
+                    task.params.get(
+                        "target_count",
+                        len(
+                            task.params.get(
+                                "targets", []
+                            )
+                        ),
+                    )
+                )
+
+            else:
+                # Legacy compatibility path for callers that do not
+                # provide sensor-derived detections.
+                targets = task.params.get("targets", [])
+
+                for idx, target in enumerate(targets):
+                    if idx in task.found_targets:
+                        continue
+
+                    target_pos = np.array(
+                        [target["x"], target["y"]],
+                        dtype=float,
+                    )
+
+                    radius = float(
+                        target.get("radius", 5.0)
+                    )
+
+                    if any(
+                        np.linalg.norm(
+                            robot.position - target_pos
+                        ) <= radius
+                        for robot in eligible_robots
+                    ):
+                        task.found_targets.add(idx)
+
+                        events.append({
+                            "type": "target_found",
+                            "task_id": task.task_id,
+                            "target_index": idx,
+                            "step": current_step,
+                            "detection_mode": "legacy_radius",
+                        })
+
+                target_count = len(targets)
+
+            task.progress = (
+                len(task.found_targets)
+                / max(target_count, 1)
+            )
+
             if task.progress >= 1.0:
                 task.status = "complete"
-                events.append({"type": "task_completed", "task_id": task.task_id, "step": current_step})
+
+                events.append({
+                    "type": "task_completed",
+                    "task_id": task.task_id,
+                    "step": current_step,
+                })
         elif task.task_type == "relay":
             ratio = float(connectivity_ratio if connectivity_ratio is not None else comm_connected)
             task.progress = ratio
