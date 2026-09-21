@@ -106,6 +106,57 @@ class GPPOTaskScheduler:
             for point in self.heat_points
         }
 
+        self.target_to_heat_id: dict[int, int] = {}
+
+        for point in self.heat_points:
+            if point.target_index is None:
+                continue
+
+            target_index = int(point.target_index)
+
+            if target_index in self.target_to_heat_id:
+                raise ValueError(
+                    "Duplicate public heat mapping for "
+                    f"target_index={target_index}"
+                )
+
+            self.target_to_heat_id[target_index] = int(
+                point.heat_id
+            )
+
+        search_tasks = [
+            task
+            for task in self.runtime.tasks.tasks.values()
+            if task.task_type == "target_search"
+        ]
+
+        if len(search_tasks) > 1:
+            raise RuntimeError(
+                "Current GPPO integration expects one "
+                "target_search task."
+            )
+
+        if search_tasks:
+            target_count = int(
+                search_tasks[0].params.get(
+                    "target_count",
+                    0,
+                )
+            )
+
+            expected = set(range(target_count))
+            mapped = set(self.target_to_heat_id)
+
+            missing = sorted(expected - mapped)
+            extra = sorted(mapped - expected)
+
+            if missing or extra:
+                raise ValueError(
+                    "Public heat-point mapping does not "
+                    "match hidden target cardinality: "
+                    f"missing={missing}, extra={extra}"
+                )
+
         base = self.config.get("base_position")
 
         if base is None and self._has_task("relay"):
@@ -162,6 +213,11 @@ class GPPOTaskScheduler:
                         float(position[0]),
                         float(position[1]),
                     ),
+                    target_index=(
+                        None
+                        if item.get("target_index") is None
+                        else int(item["target_index"])
+                    ),
                     priority=float(
                         item.get("priority", 5.0)
                     ),
@@ -217,6 +273,36 @@ class GPPOTaskScheduler:
         )
 
         self._last_observed_step = step
+
+    def _sync_search_completions(self) -> None:
+        """Translate sensor-detected target IDs into serviced heat points.
+
+        Target coordinates never enter this scheduler.
+        """
+
+        search_tasks = [
+            task
+            for task in self.runtime.tasks.tasks.values()
+            if task.task_type == "target_search"
+        ]
+
+        for task in search_tasks:
+            for target_index in task.found_targets:
+                target_index = int(target_index)
+
+                heat_id = self.target_to_heat_id.get(
+                    target_index
+                )
+
+                if heat_id is None:
+                    raise RuntimeError(
+                        "Detected target has no public heat "
+                        f"mapping: target_index={target_index}"
+                    )
+
+                self.mark_heat_serviced(
+                    heat_id
+                )
 
     def _refresh_search(
         self,
@@ -388,6 +474,10 @@ class GPPOTaskScheduler:
         )
 
         self.last_event_assignments = []
+
+        # Sensor detection from the preceding physics ticks is
+        # consumed at this GPPO decision boundary.
+        self._sync_search_completions()
 
         self._refresh_search(stale)
         self._refresh_relay(stale)

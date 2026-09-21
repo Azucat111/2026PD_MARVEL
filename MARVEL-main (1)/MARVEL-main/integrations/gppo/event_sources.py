@@ -19,6 +19,11 @@ from .task_graph import TaskType
 class PublicHeatPoint:
     heat_id: int
     position: tuple[float, float]
+
+    # Public identifier -> hidden target index correspondence.
+    # This exposes no hidden coordinate to GPPO.
+    target_index: int | None = None
+
     priority: float = 5.0
     serviced: bool = False
 
