@@ -180,7 +180,20 @@ class MARVELPolicyAdapter:
     # ------------------------------------------------------------------
 
     def _load_checkpoint(self) -> None:
-        checkpoint_path = _MARVEL_ROOT / load_path / "checkpoint.pth"
+        external_checkpoint = self.runtime.config.get(
+            "marvel_checkpoint"
+        )
+
+        if external_checkpoint:
+            checkpoint_path = Path(
+                external_checkpoint
+            ).expanduser().resolve()
+        else:
+            checkpoint_path = (
+                _MARVEL_ROOT
+                / load_path
+                / "checkpoint.pth"
+            )
         if not checkpoint_path.exists():
             logger.warning("Checkpoint not found at %s; will use default_actions.", checkpoint_path)
             return
