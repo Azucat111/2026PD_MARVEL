@@ -199,6 +199,37 @@ class SimulationRuntime:
         info["task_events"] = task_events
         for event in task_events:
             self._log_event(event["type"], event)
+        scheduler = getattr(
+            self,
+            "high_level_scheduler",
+            None,
+        )
+
+        if (
+            scheduler is not None
+            and hasattr(
+                scheduler,
+                "post_physics_step",
+            )
+        ):
+            scheduler_events = (
+                scheduler.post_physics_step()
+                or []
+            )
+
+            info[
+                "scheduler_events"
+            ] = scheduler_events
+
+            for event in scheduler_events:
+                self._log_event(
+                    event.get(
+                        "type",
+                        "scheduler_event",
+                    ),
+                    event,
+                )
+
         self.current_step += 1
         info["terminated"] = self.tasks.all_complete()
         info["truncated"] = self.current_step >= self.max_steps and not info["terminated"]

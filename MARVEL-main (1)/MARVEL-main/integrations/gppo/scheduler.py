@@ -15,6 +15,7 @@ from .protocol_profile import (
     build_gppo_runtime_profile,
 )
 from .stale_state import StalePositionTracker
+from .safety_layer import FrozenSafetyLayer
 from .relay_release import FrozenRelayReleaseGate
 
 
@@ -203,6 +204,111 @@ class GPPOTaskScheduler:
 
         self.last_event_assignments = []
 
+        self.safety = FrozenSafetyLayer(
+            runtime,
+            warning_margin=float(
+                self.config.get(
+                    "safety_warning_margin",
+                    5.0,
+                )
+            ),
+            safe_margin=float(
+                self.config.get(
+                    "safety_safe_margin",
+                    8.0,
+                )
+            ),
+            stable_release_steps=int(
+                self.config.get(
+                    "safety_stable_release_steps",
+                    2,
+                )
+            ),
+        )
+
+        # Optional hook used by SimulationRuntime after dynamics.
+        runtime.high_level_scheduler = self
+
+    def bind_marvel_agents(self, agents):
+        self.safety.bind_marvel_agents(
+            agents
+        )
+
+    def assignment_for_uav(
+        self,
+        uav_id: int,
+    ):
+        uid = int(uav_id)
+
+        for heat_id, assigned_uid in (
+            self.search_assignments.items()
+        ):
+            if int(assigned_uid) == uid:
+                return (
+                    "target_search",
+                    int(heat_id),
+                )
+
+        for target_uid, (
+            helper_uid,
+            _anchor,
+        ) in self.relay_assignments.items():
+            if int(helper_uid) == uid:
+                return (
+                    "relay",
+                    int(target_uid),
+                )
+
+        return None
+
+    def preempt_uav(
+        self,
+        uav_id: int,
+    ):
+        uid = int(uav_id)
+
+        previous = self.assignment_for_uav(
+            uid
+        )
+
+        for heat_id in list(
+            self.search_assignments
+        ):
+            if (
+                int(
+                    self.search_assignments[
+                        heat_id
+                    ]
+                )
+                == uid
+            ):
+                self.search_assignments.pop(
+                    heat_id
+                )
+
+        relay_removed = False
+
+        for target_uid in list(
+            self.relay_assignments
+        ):
+            helper_uid, _anchor = (
+                self.relay_assignments[
+                    target_uid
+                ]
+            )
+
+            if int(helper_uid) == uid:
+                self.relay_assignments.pop(
+                    target_uid
+                )
+
+                relay_removed = True
+
+        if relay_removed:
+            self.relay_release_gate.reset_stability()
+
+        return previous
+
     def _parse_heat_points(self, items):
         points = []
 
@@ -369,11 +475,16 @@ class GPPOTaskScheduler:
 
         slots = slots[:free_slots]
 
-        already_used = tuple(
-            self.search_assignments.values()
+        blocked_uavs = (
+            set(
+                self.search_assignments.values()
+            )
+            | set(
+                self.safety.active_uav_ids
+            )
         )
 
-        if already_used:
+        if blocked_uavs:
             slots = [
                 replace(
                     slot,
@@ -382,7 +493,7 @@ class GPPOTaskScheduler:
                             set(
                                 slot.forbidden_uav_ids
                             )
-                            | set(already_used)
+                            | blocked_uavs
                         )
                     ),
                 )
@@ -485,6 +596,9 @@ class GPPOTaskScheduler:
             forbidden = (
                 set(slot.forbidden_uav_ids)
                 | reserved
+                | set(
+                    self.safety.active_uav_ids
+                )
             )
 
             slots.append(
@@ -574,6 +688,39 @@ class GPPOTaskScheduler:
             % 360.0
         )
 
+    def post_physics_step(self):
+        """Called by SimulationRuntime after one physical 0.1 s step."""
+
+        completed_physics_step = (
+            int(self.runtime.current_step)
+            + 1
+        )
+
+        # Frozen Safety post-motion semantics occur once
+        # per 1-second mission step.
+        if (
+            completed_physics_step
+            % self.profile.high_level_interval_steps
+            != 0
+        ):
+            return []
+
+        escaped = self.safety.post_motion_update(
+            self,
+            int(self.runtime.current_step),
+        )
+
+        return [
+            {
+                "type": "gppo_safety_escape",
+                "robot_id": int(uid),
+                "step": int(
+                    self.runtime.current_step
+                ),
+            }
+            for uid in escaped
+        ]
+
     def apply(self, actions):
         actions = list(actions)
 
@@ -582,6 +729,14 @@ class GPPOTaskScheduler:
         if self.clock.should_update(
             self.runtime.current_step
         ):
+            # Highest-priority frozen Safety override.
+            # Preemption happens before Search/Relay allocation,
+            # so orphaned tasks can be reassigned immediately.
+            self.safety.pre_motion_update(
+                self,
+                int(self.runtime.current_step),
+            )
+
             self._high_level_update()
 
         robot_index = {
@@ -673,6 +828,35 @@ class GPPOTaskScheduler:
             ] = (
                 "relay",
                 int(target_uid),
+            )
+
+        # Highest-priority final override.
+        for uid in sorted(
+            self.safety.active_uav_ids
+        ):
+            index = robot_index.get(
+                int(uid)
+            )
+
+            if index is None:
+                continue
+
+            robot = self.runtime.robots[
+                index
+            ]
+
+            actions[index] = (
+                self.safety.select_action(
+                    robot,
+                    step=int(
+                        self.runtime.current_step
+                    ),
+                )
+            )
+
+            self.assignments[int(uid)] = (
+                "safety",
+                None,
             )
 
         return actions

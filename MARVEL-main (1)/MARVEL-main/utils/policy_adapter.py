@@ -131,6 +131,14 @@ class MARVELPolicyAdapter:
             )
             self.agents.append(agent)
 
+        if hasattr(
+            self.scheduler,
+            "bind_marvel_agents",
+        ):
+            self.scheduler.bind_marvel_agents(
+                self.agents
+            )
+
     def get_actions(self, observations: Dict[int, Dict[str, Any]]) -> List[Tuple[np.ndarray, float]]:
         """Convert SimulationRuntime observations to a list of (waypoint, heading) actions."""
         if not self._using_policy or not self.agents:
