@@ -15,6 +15,7 @@ from .protocol_profile import (
     build_gppo_runtime_profile,
 )
 from .stale_state import StalePositionTracker
+from .relay_release import FrozenRelayReleaseGate
 
 
 class GPPOTaskScheduler:
@@ -92,6 +93,18 @@ class GPPOTaskScheduler:
                 mixed["comm_max_hops"]
             ),
             max_demands=self.max_relay_uavs,
+        )
+
+        self.relay_trigger_threshold = float(
+            mixed["connectivity_threshold"]
+        )
+
+        self.relay_release_gate = FrozenRelayReleaseGate(
+            release_threshold=float(
+                mixed["relay_release_threshold"]
+            ),
+            # Frozen RelayCoordinator default.
+            stable_release_steps=3,
         )
 
         self.heat_points = self._parse_heat_points(
@@ -405,16 +418,63 @@ class GPPOTaskScheduler:
             or self.base_position is None
         ):
             self.relay_assignments.clear()
+            self.relay_release_gate.reset_stability()
+            return
+
+        # --------------------------------------------------
+        # Frozen semantics:
+        #
+        # Existing Relay event persists. Do not re-run GPPO
+        # every second. First evaluate release counterfactually
+        # with all helper UAVs removed.
+        # --------------------------------------------------
+        if self.relay_assignments:
+            should_release = (
+                self.relay_release_gate.observe(
+                    assignments=self.relay_assignments,
+                    positions=stale_positions,
+                    relay_builder=self.relay_builder,
+                    base_position=self.base_position,
+                )
+            )
+
+            if should_release:
+                self.relay_assignments.clear()
+
+            # Frozen maybe_trigger() always returns here,
+            # even on the step that release_all() fires.
+            return
+
+        # --------------------------------------------------
+        # No active Relay event.
+        # --------------------------------------------------
+        self.relay_release_gate.reset_stability()
+
+        snapshot = self.relay_builder.snapshot(
+            stale_positions,
+            base_position=self.base_position,
+        )
+
+        self.relay_release_gate.last_counterfactual_connectivity = (
+            float(snapshot.connectivity_ratio)
+        )
+
+        # Frozen CommunicationManager.needs_relay().
+        if (
+            snapshot.connectivity_ratio
+            >= self.relay_trigger_threshold
+        ):
             return
 
         result = self.relay_builder.build(
             stale_positions,
             base_position=self.base_position,
             source_task_id=task.task_id,
+            snapshot=snapshot,
         )
 
-        # Search reservations remain unavailable to Relay in case
-        # future scenarios allow overlapping robot capabilities.
+        # Search reservations remain unavailable to Relay if a
+        # future scenario gives a UAV overlapping capabilities.
         reserved = set(
             self.search_assignments.values()
         )
@@ -435,6 +495,9 @@ class GPPOTaskScheduler:
                     ),
                 )
             )
+
+        if not slots:
+            return
 
         decisions = self.allocator.allocate(
             slots,
@@ -467,6 +530,10 @@ class GPPOTaskScheduler:
                 int(decision.uav_id),
                 anchor_by_target[target_uid],
             )
+
+        # A newly triggered Relay event starts with a fresh
+        # counterfactual stability window.
+        self.relay_release_gate.reset_stability()
 
     def _high_level_update(self) -> None:
         stale = self.tracker.positions(
