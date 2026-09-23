@@ -12,9 +12,14 @@ class StalePositionTracker:
     age_fraction = 1:
         previous physics-tick position
 
+    Frozen Phase14 history is sampled once per 1 s control step.
+
     For Phase14:
-        50 ms / 100 ms = 0.5
-        => midpoint between previous and current position.
+        50 ms / 1000 ms = 0.05
+
+        delayed =
+            0.95 * newer_control_snapshot
+            + 0.05 * older_control_snapshot
     """
 
     def __init__(self):

@@ -72,18 +72,24 @@ def build_gppo_runtime_profile(
     if required_physics_steps <= 0:
         raise ValueError("Invalid required physics horizon")
 
-    # Phase14 represents the 50 ms weak-communication age as
-    # a sub-step stale-state interpolation.
+    # Frozen Phase14 CommunicationManager stores one position
+    # snapshot per high-level control step.  Its interpolation
+    # therefore uses:
+    #
+    #   delay_ratio = comm_delay_ms / control_step_ms
+    #
+    # For 50 ms / 1000 ms this is 0.05:
+    # 95% newer control snapshot + 5% older snapshot.
     stale_age_fraction = (
-        comm_delay_ms / physics_step_ms
+        comm_delay_ms / control_step_ms
     )
 
     warnings: list[str] = []
 
     if stale_age_fraction > 1.0:
         warnings.append(
-            "Communication state age exceeds one physics step; "
-            "a multi-step history buffer is required."
+            "Communication state age exceeds one control step; "
+            "a multi-step control-history buffer is required."
         )
 
     if runtime.max_steps != required_physics_steps:

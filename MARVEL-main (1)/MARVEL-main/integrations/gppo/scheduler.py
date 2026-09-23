@@ -870,11 +870,19 @@ class GPPOTaskScheduler:
     def apply(self, actions):
         actions = list(actions)
 
-        self._observe_runtime()
-
         if self.clock.should_update(
             self.runtime.current_step
         ):
+            # Frozen CommunicationManager stores its position
+            # history once per 1-second control step, not once
+            # per 0.1-second physics tick.
+            self.tracker.observe(
+                self.runtime
+            )
+            self._last_observed_step = int(
+                self.runtime.current_step
+            )
+
             # Highest-priority frozen Safety override.
             # Preemption happens before Search/Relay allocation,
             # so orphaned tasks can be reassigned immediately.

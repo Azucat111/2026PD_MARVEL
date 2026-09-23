@@ -118,7 +118,7 @@ def prepare_gppo_config(
         "comm_delay_ms": float(frozen["comm_delay_ms"]),
         "stale_age_fraction": (
             float(frozen["comm_delay_ms"])
-            / physics_step_ms
+            / control_step_ms
         ),
     })
 
