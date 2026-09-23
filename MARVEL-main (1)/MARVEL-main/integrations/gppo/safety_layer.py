@@ -140,6 +140,103 @@ class SharedHazardAdapter:
         )
 
 
+    def segment_intersects_no_fly(
+        self,
+        start,
+        end,
+        *,
+        margin: float = 0.0,
+        step: int | None = None,
+    ) -> bool:
+        """Frozen v9 segment-vs-circular-hazard test."""
+
+        if step is None:
+            step = int(self.runtime.current_step)
+
+        a = np.asarray(
+            start,
+            dtype=float,
+        ).reshape(-1)[:2]
+
+        b = np.asarray(
+            end,
+            dtype=float,
+        ).reshape(-1)[:2]
+
+        ab = b - a
+
+        denom = float(
+            np.dot(ab, ab)
+        )
+
+        for obstacle in (
+            self.runtime.obstacles.dynamic_obstacles
+        ):
+            radius = self._radius_at(
+                obstacle,
+                int(step),
+            )
+
+            if radius is None:
+                continue
+
+            center = np.asarray(
+                obstacle.position,
+                dtype=float,
+            )
+
+            expanded_radius = (
+                float(radius)
+                + float(margin)
+            )
+
+            if denom <= 1e-12:
+                closest = a
+
+            else:
+                t = float(
+                    np.clip(
+                        np.dot(
+                            center - a,
+                            ab,
+                        )
+                        / denom,
+                        0.0,
+                        1.0,
+                    )
+                )
+
+                closest = a + t * ab
+
+            if (
+                float(
+                    np.linalg.norm(
+                        closest - center
+                    )
+                )
+                <= expanded_radius + 1e-9
+            ):
+                return True
+
+        return False
+
+    def segment_intersects_warning_buffer(
+        self,
+        start,
+        end,
+        *,
+        step: int | None = None,
+    ) -> bool:
+        """Ordinary motion must stay outside radius + warning_margin."""
+
+        return self.segment_intersects_no_fly(
+            start,
+            end,
+            margin=self.warning_margin,
+            step=step,
+        )
+
+
 class FrozenSafetyLayer:
     """Frozen Phase-11/14 Safety state machine on shared runtime."""
 
@@ -205,6 +302,16 @@ class FrozenSafetyLayer:
             int(agent.id): agent
             for agent in agents
         }
+
+
+    def marvel_agent(
+        self,
+        uav_id: int,
+    ):
+        return self._marvel_agents.get(
+            int(uav_id)
+        )
+
 
     def pre_motion_update(
         self,

@@ -688,6 +688,152 @@ class GPPOTaskScheduler:
             % 360.0
         )
 
+    def _apply_hazard_traversability(
+        self,
+        actions,
+        robot_index,
+    ):
+        """Frozen v9 ordinary-motion hazard guard.
+
+        Explore/Search/Relay cannot enter the same warning
+        buffer that triggers SAFETY. SAFETY escape motion is
+        deliberately exempt.
+        """
+
+        guarded = list(actions)
+
+        step = int(
+            self.runtime.current_step
+        )
+
+        for robot in self.runtime.robots:
+            uid = int(robot.robot_id)
+
+            # SAFETY controller must remain free to escape.
+            if uid in self.safety.active_uav_ids:
+                continue
+
+            index = robot_index.get(uid)
+
+            if index is None:
+                continue
+
+            desired, desired_heading = (
+                guarded[index]
+            )
+
+            start = np.asarray(
+                robot.position,
+                dtype=float,
+            )[:2]
+
+            desired = np.asarray(
+                desired,
+                dtype=float,
+            )[:2]
+
+            if not (
+                self.safety.hazards
+                .segment_intersects_warning_buffer(
+                    start,
+                    desired,
+                    step=step,
+                )
+            ):
+                continue
+
+            alternatives = []
+
+            agent = self.safety.marvel_agent(
+                uid
+            )
+
+            if (
+                agent is not None
+                and agent.neighbor_indices is not None
+                and agent.node_coords is not None
+            ):
+                node_coords = np.asarray(
+                    agent.node_coords,
+                    dtype=float,
+                )
+
+                for raw in np.asarray(
+                    agent.neighbor_indices
+                ).reshape(-1):
+
+                    node_idx = int(raw)
+
+                    if (
+                        node_idx < 0
+                        or node_idx
+                        >= len(node_coords)
+                    ):
+                        continue
+
+                    candidate = np.asarray(
+                        node_coords[node_idx],
+                        dtype=float,
+                    )[:2]
+
+                    if (
+                        self.safety.hazards
+                        .segment_intersects_warning_buffer(
+                            start,
+                            candidate,
+                            step=step,
+                        )
+                    ):
+                        continue
+
+                    risk = (
+                        self.safety.hazards
+                        .risk_at(
+                            candidate,
+                            step=step,
+                        )
+                    )
+
+                    if (
+                        risk is not None
+                        and risk.clearance
+                        <=
+                        self.safety.hazards.warning_margin
+                    ):
+                        continue
+
+                    alternatives.append(
+                        candidate
+                    )
+
+            if alternatives:
+                final = min(
+                    alternatives,
+                    key=lambda candidate:
+                        float(
+                            np.linalg.norm(
+                                candidate
+                                - desired
+                            )
+                        ),
+                )
+            else:
+                # Exact frozen fallback.
+                final = start.copy()
+
+            guarded[index] = (
+                np.asarray(
+                    final,
+                    dtype=float,
+                ),
+                self._heading(
+                    robot,
+                    final,
+                ),
+            )
+
+        return guarded
+
     def post_physics_step(self):
         """Called by SimulationRuntime after one physical 0.1 s step."""
 
@@ -829,6 +975,13 @@ class GPPOTaskScheduler:
                 "relay",
                 int(target_uid),
             )
+
+        # Frozen v9 ordinary-motion traversability guard.
+        # Search/Relay overrides are already present here.
+        actions = self._apply_hazard_traversability(
+            actions,
+            robot_index,
+        )
 
         # Highest-priority final override.
         for uid in sorted(
