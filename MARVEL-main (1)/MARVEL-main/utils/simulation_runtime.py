@@ -11,6 +11,11 @@ import numpy as np
 from .communication_model import CommunicationModel
 from .dynamics_models import create_dynamics_model
 from .geometry import GEOMETRY_MODE_NATIVE, resolve_geometry_mode
+from .marvel_motion import (
+    FROZEN_YAW_RATE,
+    compute_allowable_heading,
+    interpolated_sensing_track,
+)
 from .marvel_sensing import FROZEN_NUM_SIM_STEPS, MarvelNativeBelief
 from .obstacle_manager import ObstacleManager
 from .safety_shield import SafetyShield
@@ -44,6 +49,9 @@ class RobotState:
     utilization: float = 0.0
     assigned_task_num: int = 0
     current_task: str = "exploration"
+
+    # Frozen Agent.yaw_rate, used by compute_allowable_heading.
+    yaw_rate: float = FROZEN_YAW_RATE
 
 
 class SimulationRuntime:
@@ -215,7 +223,8 @@ class SimulationRuntime:
                     robot_type=robot_type,
                     position=positions[offset],
                     velocity=float(cfg.get("velocity", 0.0)),
-                    heading=float(np.random.uniform(0.0, 360.0)),
+                    heading=self._initial_heading(cfg),
+                    yaw_rate=float(cfg.get("yaw_rate", FROZEN_YAW_RATE)),
                 ))
         self._log_event("simulation_reset", {"num_robots": len(self.robots)})
 
@@ -228,6 +237,54 @@ class SimulationRuntime:
         observations = self._get_observations()
         self._update_explored_cells(observations)
         return observations
+
+    def _initial_heading(self, robot_config: Dict[str, Any]) -> float:
+        """Initial heading.
+
+        Frozen ``ScenarioEnv`` uses ``np.full(n_agents, 270.0)`` unless
+        ``randomize_headings`` is set, so native mode reproduces that
+        exactly.  The extended environment keeps its random heading, which
+        is also what keeps its RNG stream unchanged.
+        """
+
+        if self.geometry_mode != GEOMETRY_MODE_NATIVE:
+            return float(np.random.uniform(0.0, 360.0))
+
+        environment = self.config.get("environment", {}) or {}
+
+        headings = environment.get("initial_headings")
+
+        if headings is None:
+            return 270.0
+
+        return float(headings) % 360.0
+
+    def _apply_native_motion(self, actions) -> None:
+        """Frozen MARVEL motion: teleport to the commanded waypoint.
+
+        ``Env.final_sim_step`` assigns the waypoint directly, so there is no
+        kinematic integration.  The heading is the only modelled quantity,
+        produced by ``compute_allowable_heading``.
+        """
+
+        for robot, (waypoint, heading) in zip(self.robots, actions):
+            start = np.asarray(robot.position, dtype=float)
+            end = np.asarray(waypoint, dtype=float)
+
+            final_heading = compute_allowable_heading(
+                start,
+                end,
+                float(robot.heading),
+                float(heading),
+                max(float(robot.velocity), 1e-6),
+                max(float(robot.yaw_rate), 1e-6),
+            )
+
+            robot.heading = float(final_heading)
+            robot.position = end.copy()
+            robot.travel_distance += float(
+                np.linalg.norm(end - start)
+            )
 
     def _capture_mission_start(self) -> None:
         """Record positions/headings at the start of a mission step."""
@@ -246,10 +303,17 @@ class SimulationRuntime:
         for obstacle_event in self.obstacles.step(self.current_step, self.dt):
             event_type = obstacle_event.pop("type")
             self._log_event(event_type, obstacle_event)
-        # Apply safety shield before passing actions to dynamics.
-        actions = self.shield.filter_actions(self.robots, actions, self.current_step)
-        for shield_event in self.shield.pop_events():
-            self._log_event("safety_shield", shield_event)
+        native_motion = self.geometry_mode == GEOMETRY_MODE_NATIVE
+
+        if not native_motion:
+            # Apply safety shield before passing actions to dynamics.
+            actions = self.shield.filter_actions(self.robots, actions, self.current_step)
+            for shield_event in self.shield.pop_events():
+                self._log_event("safety_shield", shield_event)
+        else:
+            # Frozen MARVEL has no shield step in its motion path; the
+            # GPPO layer applies the equivalent hazard guard instead.
+            self.shield.pop_events()
         info = {
             "collisions": [],
             "comm_topology": None,
@@ -259,30 +323,39 @@ class SimulationRuntime:
             "terminated": False,
             "truncated": False,
         }
-        for robot, (target_position, target_heading) in zip(self.robots, actions):
-            old_position = robot.position.copy()
-            dynamics = self.dynamics_by_type.get(robot.robot_type, self.dynamics)
-            new_state, feasibility = dynamics.step(
-                current_position=robot.position,
-                final_position=np.asarray(target_position, dtype=float),
-                theta_current=robot.heading,
-                theta_desired=float(target_heading),
-                v_current=robot.velocity,
-                dt=self.dt,
-            )
-            info["feasibility"].append({"robot_id": robot.robot_id, **feasibility})
-            collision, collision_type = self.obstacles.check_collision(new_state["position"], radius=0.2)
-            if collision:
-                event = {"robot_id": robot.robot_id, "type": collision_type, "step": self.current_step,
-                         "position": np.asarray(new_state["position"]).round(3).tolist()}
-                info["collisions"].append(event)
-                self._log_event("collision", event)
-                continue
-            robot.position = np.asarray(new_state["position"], dtype=float)
-            robot.velocity = float(new_state["velocity"])
-            robot.heading = float(new_state["heading"])
-            robot.angular_velocity = float(new_state.get("angular_velocity", 0.0))
-            robot.travel_distance += float(np.linalg.norm(robot.position - old_position))
+        if native_motion:
+            # Frozen MARVEL motion runs once per mission step: the robot is
+            # assigned the commanded waypoint outright, and the heading is
+            # the only modelled quantity.
+            if (
+                self.current_step + 1
+            ) % self._mission_step_interval() == 0:
+                self._apply_native_motion(actions)
+        else:
+            for robot, (target_position, target_heading) in zip(self.robots, actions):
+                old_position = robot.position.copy()
+                dynamics = self.dynamics_by_type.get(robot.robot_type, self.dynamics)
+                new_state, feasibility = dynamics.step(
+                    current_position=robot.position,
+                    final_position=np.asarray(target_position, dtype=float),
+                    theta_current=robot.heading,
+                    theta_desired=float(target_heading),
+                    v_current=robot.velocity,
+                    dt=self.dt,
+                )
+                info["feasibility"].append({"robot_id": robot.robot_id, **feasibility})
+                collision, collision_type = self.obstacles.check_collision(new_state["position"], radius=0.2)
+                if collision:
+                    event = {"robot_id": robot.robot_id, "type": collision_type, "step": self.current_step,
+                             "position": np.asarray(new_state["position"]).round(3).tolist()}
+                    info["collisions"].append(event)
+                    self._log_event("collision", event)
+                    continue
+                robot.position = np.asarray(new_state["position"], dtype=float)
+                robot.velocity = float(new_state["velocity"])
+                robot.heading = float(new_state["heading"])
+                robot.angular_velocity = float(new_state.get("angular_velocity", 0.0))
+                robot.travel_distance += float(np.linalg.norm(robot.position - old_position))
 
         # Detect UAV-UAV overlap after all proposed states have been applied.
         for index, first in enumerate(self.robots):
@@ -493,28 +566,15 @@ class SimulationRuntime:
         per_robot_headings = []
 
         for index, robot in enumerate(self.robots):
-            start_cell = np.asarray(
-                frame.world_to_cell(starts[index]), dtype=float
+            cells, headings = interpolated_sensing_track(
+                starts[index],
+                robot.position,
+                start_headings[index],
+                robot.heading,
+                cell_size=frame.cell_size,
+                origin=frame.origin,
+                sim_steps=steps,
             )
-            end_cell = np.asarray(
-                frame.world_to_cell(robot.position), dtype=float
-            )
-
-            cells = np.round(
-                np.linspace(start_cell, end_cell, steps + 1)[1:]
-            ).astype(int)
-
-            previous = float(start_headings[index]) % 360.0
-            final = float(robot.heading) % 360.0
-            diff = final - previous
-
-            if abs(diff) > 180:
-                diff = diff - 360 if diff > 0 else diff + 360
-
-            headings = [
-                (previous + (j + 1) * diff / steps) % 360.0
-                for j in range(steps)
-            ]
 
             per_robot_cells.append(cells)
             per_robot_headings.append(headings)
