@@ -5,6 +5,7 @@ from typing import Iterable
 
 from .adapter import GPPOInferenceAdapter
 from .runtime_graph import RuntimeGraphBuilder
+from .observed_graph import observed_travel_time_matrix
 from .task_graph import Subtask, TaskGraph, TaskType
 
 
@@ -54,6 +55,17 @@ class GPPOEventAllocator:
             checkpoint_path,
             device=device,
         )
+
+        self._marvel_agents = {}
+
+    def bind_marvel_agents(
+        self,
+        agents,
+    ):
+        self._marvel_agents = {
+            int(agent.id): agent
+            for agent in agents
+        }
 
     def allocate(
         self,
@@ -109,11 +121,20 @@ class GPPOEventAllocator:
             self.runtime.current_step * self.runtime.dt
         )
 
+        travel_time_matrix = (
+            observed_travel_time_matrix(
+                uavs,
+                subtasks,
+                self._marvel_agents,
+            )
+        )
+
         for _ in range(len(subtasks)):
             graph = TaskGraph(
                 uav_states=uavs,
                 subtasks=subtasks,
                 current_time=current_time,
+                travel_time_matrix=travel_time_matrix,
             )
 
             # Event-specific hard masks.

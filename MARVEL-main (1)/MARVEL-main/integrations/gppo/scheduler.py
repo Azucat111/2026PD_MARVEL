@@ -15,6 +15,7 @@ from .protocol_profile import (
     build_gppo_runtime_profile,
 )
 from .stale_state import StalePositionTracker
+from .observed_graph import observed_next_hop
 from .safety_layer import FrozenSafetyLayer
 from .relay_release import FrozenRelayReleaseGate
 
@@ -204,6 +205,8 @@ class GPPOTaskScheduler:
 
         self.last_event_assignments = []
 
+        self._marvel_agents = {}
+
         self.safety = FrozenSafetyLayer(
             runtime,
             warning_margin=float(
@@ -230,7 +233,16 @@ class GPPOTaskScheduler:
         runtime.high_level_scheduler = self
 
     def bind_marvel_agents(self, agents):
+        self._marvel_agents = {
+            int(agent.id): agent
+            for agent in agents
+        }
+
         self.safety.bind_marvel_agents(
+            agents
+        )
+
+        self.allocator.bind_marvel_agents(
             agents
         )
 
@@ -926,18 +938,30 @@ class GPPOTaskScheduler:
 
             robot = self.runtime.robots[index]
 
-            goal = np.asarray(
-                point.position,
-                dtype=float,
+            # Frozen v9 Search routing:
+            # one hop on the currently observed MARVEL graph.
+            # If the best observed destination is the current
+            # node, retain the original MARVEL exploration
+            # action so the graph can expand.
+            agent = self._marvel_agents.get(
+                int(uav_id)
             )
 
-            actions[index] = (
-                goal,
-                self._heading(
-                    robot,
-                    goal,
-                ),
+            route = observed_next_hop(
+                agent,
+                point.position,
             )
+
+            if route is not None:
+                goal, _node_index = route
+
+                actions[index] = (
+                    goal,
+                    self._heading(
+                        robot,
+                        goal,
+                    ),
+                )
 
             used_uavs.add(int(uav_id))
 
@@ -967,13 +991,28 @@ class GPPOTaskScheduler:
 
             robot = self.runtime.robots[index]
 
-            actions[index] = (
-                anchor.copy(),
-                self._heading(
-                    robot,
-                    anchor,
-                ),
+            # Frozen v9 Relay routing uses the same observed
+            # MARVEL graph principle.  No known progress =>
+            # retain MARVEL exploration action.
+            agent = self._marvel_agents.get(
+                int(helper_uid)
             )
+
+            route = observed_next_hop(
+                agent,
+                anchor,
+            )
+
+            if route is not None:
+                goal, _node_index = route
+
+                actions[index] = (
+                    goal,
+                    self._heading(
+                        robot,
+                        goal,
+                    ),
+                )
 
             used_uavs.add(int(helper_uid))
 
