@@ -67,6 +67,30 @@ def load_and_validate_scenario(scenario_file: str | Path) -> Dict[str, Any]:
             raise FileNotFoundError(f"map_file not found: {map_path}")
         env["map_file"] = str(map_path)
 
+    # Resolve optional map_dir (MARVEL-native geometry mode) the same way.
+    map_dir = env.get("map_dir")
+    if map_dir:
+        map_root = Path(map_dir)
+        if not map_root.is_absolute():
+            map_root = (path.parent / map_dir).resolve()
+        if not map_root.is_dir():
+            raise FileNotFoundError(f"map_dir not found: {map_root}")
+        env["map_dir"] = str(map_root)
+
+    # geometry_mode is explicit; never inferred from the presence of a map.
+    mode = str(env.get("geometry_mode", "extended")).strip().lower()
+    if mode not in ("extended", "marvel_native"):
+        raise ScenarioConfigError(
+            "environment.geometry_mode must be 'extended' or "
+            f"'marvel_native', got {mode!r}"
+        )
+    env["geometry_mode"] = mode
+
+    if mode == "marvel_native" and not env.get("map_dir"):
+        raise ScenarioConfigError(
+            "geometry_mode 'marvel_native' requires environment.map_dir"
+        )
+
     config["_source_file"] = str(path)
     return config
 

@@ -174,6 +174,7 @@ class FrozenSearchScenarioGenerator:
         seed: int,
         survivor_count: int = FROZEN_SURVIVOR_COUNT,
         radii: FrozenSearchRadii | None = None,
+        origin: tuple[float, float] = (0.0, 0.0),
     ):
         grid = np.asarray(occupancy_grid)
 
@@ -207,6 +208,13 @@ class FrozenSearchScenarioGenerator:
         self.radii = radii or FrozenSearchRadii.derive(
             cell_size=1.0
         )
+        # World origin of the occupancy lattice.  The extended runtime uses
+        # (0, 0); original MARVEL geometry uses a belief origin that is
+        # generally non-zero.
+        self.origin = (
+            float(origin[0]),
+            float(origin[1]),
+        )
 
     # ------------------------------------------------------------------
     # Cell <-> world helpers
@@ -223,8 +231,18 @@ class FrozenSearchScenarioGenerator:
 
         point = np.asarray(position, dtype=float)
 
-        col = int(round(float(point[0]) / self.cell_size))
-        row = int(round(float(point[1]) / self.cell_size))
+        col = int(
+            round(
+                (float(point[0]) - self.origin[0])
+                / self.cell_size
+            )
+        )
+        row = int(
+            round(
+                (float(point[1]) - self.origin[1])
+                / self.cell_size
+            )
+        )
 
         return col, row
 
@@ -234,8 +252,8 @@ class FrozenSearchScenarioGenerator:
         row: int,
     ) -> tuple[float, float]:
         return (
-            float(col) * self.cell_size,
-            float(row) * self.cell_size,
+            self.origin[0] + float(col) * self.cell_size,
+            self.origin[1] + float(row) * self.cell_size,
         )
 
     def is_free_cell(
@@ -322,8 +340,8 @@ class FrozenSearchScenarioGenerator:
 
         return np.stack(
             [
-                cols * self.cell_size,
-                rows * self.cell_size,
+                self.origin[0] + cols * self.cell_size,
+                self.origin[1] + rows * self.cell_size,
             ],
             axis=1,
         )
@@ -553,9 +571,11 @@ class SearchScenarioTruth:
         heat_points: Iterable[PublicHeatPoint],
         survivors: Iterable[HiddenSurvivor],
         radii: FrozenSearchRadii,
+        origin: tuple[float, float] = (0.0, 0.0),
     ):
         self.task_id = str(task_id)
         self.radii = radii
+        self.origin = (float(origin[0]), float(origin[1]))
 
         self._heat_points = tuple(heat_points)
         self._survivors = tuple(survivors)
@@ -603,13 +623,19 @@ class SearchScenarioTruth:
             {
                 "x": int(
                     round(
-                        float(survivor.position[0])
+                        (
+                            float(survivor.position[0])
+                            - self.origin[0]
+                        )
                         / self.radii.cell_size
                     )
                 ),
                 "y": int(
                     round(
-                        float(survivor.position[1])
+                        (
+                            float(survivor.position[1])
+                            - self.origin[1]
+                        )
                         / self.radii.cell_size
                     )
                 ),
@@ -763,12 +789,16 @@ def initialize_search_scenario(
         runtime.obstacles.get_occupancy_grid()
     )
 
-    # The team runtime occupancy grid is metres-per-cell; the MARVEL
-    # planning CELL_SIZE (0.4 m) is a different lattice and is deliberately
-    # not used here.
+    # The runtime occupancy grid is authoritative for geometry: the
+    # extended environment is a 1 m lattice at origin (0, 0), the
+    # MARVEL-native environment a 0.4 m lattice at the belief origin.
+    frame = runtime.obstacles.frame
+
+    origin = frame.origin
+
     radii = FrozenSearchRadii.derive(
         sensor_range=profile["sensor_range"],
-        cell_size=profile["cell_size"],
+        cell_size=frame.cell_size,
         search_service_steps=profile["search_service_steps"],
     )
 
@@ -781,6 +811,7 @@ def initialize_search_scenario(
         seed=int(seed),
         survivor_count=int(survivor_count),
         radii=radii,
+        origin=origin,
     )
 
     truth = SearchScenarioTruth(
@@ -788,6 +819,7 @@ def initialize_search_scenario(
         heat_points=heat_points,
         survivors=survivors,
         radii=radii,
+        origin=origin,
     )
 
     runtime.install_search_scenario(truth)
@@ -807,6 +839,7 @@ def build_search_scenario(
     seed: int,
     survivor_count: int = FROZEN_SURVIVOR_COUNT,
     radii: FrozenSearchRadii | None = None,
+    origin: tuple[float, float] = (0.0, 0.0),
 ) -> tuple[list[PublicHeatPoint], list[HiddenSurvivor], FrozenSearchRadii]:
     """Generate a frozen Phase14-v9 Search scenario.
 
@@ -823,6 +856,7 @@ def build_search_scenario(
         seed=int(seed),
         survivor_count=int(survivor_count),
         radii=resolved,
+        origin=origin,
     )
 
     heat_positions, targets = generator.generate()

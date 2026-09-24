@@ -8,6 +8,17 @@ from typing import Any, Dict, Iterable, Optional
 
 import numpy as np
 
+from .geometry import (
+    GEOMETRY_MODE_NATIVE,
+    MARVEL_CELL_SIZE,
+    GeometryFrame,
+    resolve_geometry_mode,
+)
+from .marvel_maps import (
+    load_marvel_native_map,
+    resolve_marvel_map,
+)
+
 
 @dataclass
 class ExpandingCircleObstacle:
@@ -35,6 +46,13 @@ class ObstacleManager:
     def __init__(self, environment: Dict[str, Any] | None = None,
                  dynamic_obstacles: Iterable[Dict[str, Any]] | None = None):
         environment = environment or {}
+        self.geometry_mode = resolve_geometry_mode(environment)
+        self.cell_size = (
+            MARVEL_CELL_SIZE
+            if self.geometry_mode == GEOMETRY_MODE_NATIVE
+            else 1.0
+        )
+        self._origin = (0.0, 0.0)
         self.width, self.height = self._map_size(environment)
         self.static_obstacles = [
             {"position": np.asarray(item["position"], dtype=float),
@@ -85,8 +103,82 @@ class ObstacleManager:
 
         # grid is H×W; width=cols, height=rows
         self._file_grid = grid
-        self.height = float(grid.shape[0])
-        self.width = float(grid.shape[1])
+        self.height = float(grid.shape[0]) * self.cell_size
+        self.width = float(grid.shape[1]) * self.cell_size
+        self._origin = (0.0, 0.0)
+
+    def load_marvel_native(self, map_dir: str, episode_index: int = 0) -> None:
+        """Load original MARVEL geometry: 0.4 m lattice, belief origin.
+
+        The raw image is downsampled and thresholded exactly as upstream
+        MARVEL does; ``width``/``height`` become the physical extent in
+        metres (``cells * CELL_SIZE``), and the grid keeps the 0.4 m
+        lattice with its non-zero belief origin.
+        """
+
+        map_path = resolve_marvel_map(
+            map_dir, int(episode_index)
+        )
+
+        grid, origin, _ground_truth = load_marvel_native_map(
+            map_path, cell_size=self.cell_size
+        )
+
+        self._file_grid = grid
+        self._origin = (float(origin[0]), float(origin[1]))
+        self.height = float(grid.shape[0]) * self.cell_size
+        self.width = float(grid.shape[1]) * self.cell_size
+        self.map_name = map_path.name
+
+    @property
+    def frame(self) -> GeometryFrame:
+        """The world <-> grid transform for this environment."""
+
+        rows, cols = self._grid_shape()
+
+        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
+            return GeometryFrame.marvel_native(
+                width_cells=cols,
+                height_cells=rows,
+                origin_x=self._origin[0],
+                origin_y=self._origin[1],
+                cell_size=self.cell_size,
+                extent_x=self.width,
+                extent_y=self.height,
+            )
+
+        return GeometryFrame.extended(
+            width_cells=cols,
+            height_cells=rows,
+            cell_size=self.cell_size,
+            extent_x=self.width,
+            extent_y=self.height,
+        )
+
+    @property
+    def has_occupancy_map(self) -> bool:
+        """True when a real map file backs the grid (vs. synthetic circles)."""
+
+        return self._file_grid is not None
+
+    @property
+    def cell_count(self) -> int:
+        """Total cells in the occupancy lattice."""
+
+        rows, cols = self._grid_shape()
+
+        return int(rows) * int(cols)
+
+    def _grid_shape(self) -> tuple[int, int]:
+        """``(rows, cols)`` of the occupancy grid, without building it."""
+
+        if self._file_grid is not None:
+            return self._file_grid.shape
+
+        rows = int(self.height / self.cell_size) + 1
+        cols = int(self.width / self.cell_size) + 1
+
+        return (rows, cols)
 
     @staticmethod
     def _map_size(environment: Dict[str, Any]) -> tuple[float, float]:
@@ -115,13 +207,18 @@ class ObstacleManager:
 
     def check_collision(self, position: np.ndarray, radius: float = 0.2) -> tuple[bool, str | None]:
         point = np.asarray(position, dtype=float)
-        if np.any(point < 0) or point[0] > self.width or point[1] > self.height:
+        frame = self.frame
+        # Physical bounds, expressed in the active frame so a non-zero
+        # MARVEL belief origin is handled without ad-hoc shifts.
+        if np.any(point < frame.bounds_min) or np.any(point > frame.bounds_max):
             return True, "boundary"
         if self._file_grid is not None:
             # Sample the grid at the agent's footprint (centre + radius offsets)
             for dx, dy in [(0, 0), (radius, 0), (-radius, 0), (0, radius), (0, -radius)]:
-                col = int(np.clip(point[0] + dx, 0, self.width - 1))
-                row = int(np.clip(point[1] + dy, 0, self.height - 1))
+                col, row = frame.world_to_cell_floor(
+                    (point[0] + dx, point[1] + dy)
+                )
+                col, row = frame.clip_cell(col, row)
                 if self._file_grid[row, col] == 1:
                     return True, "grid_obstacle"
         for obstacle in self.static_obstacles:
@@ -132,11 +229,13 @@ class ObstacleManager:
                 return True, f"dynamic_{obstacle.obstacle_id}"
         return False, None
 
-    def get_occupancy_grid(self, resolution: float = 1.0) -> np.ndarray:
+    def get_occupancy_grid(self, resolution: float | None = None) -> np.ndarray:
         if self._file_grid is not None:
             return self._file_grid.copy()
-        grid = np.zeros((int(self.height / resolution) + 1,
-                        int(self.width / resolution) + 1), dtype=np.uint8)
+        if resolution is None:
+            resolution = self.cell_size
+        frame = self.frame
+        grid = np.zeros(frame.shape, dtype=np.uint8)
         yy, xx = np.indices(grid.shape)
         points = np.stack((xx * resolution, yy * resolution), axis=-1)
         for obstacle in self.static_obstacles + [

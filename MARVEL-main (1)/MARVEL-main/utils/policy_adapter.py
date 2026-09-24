@@ -46,10 +46,20 @@ class MARVELPolicyAdapter:
         self._using_policy = False
 
         # Shared belief map at MARVEL's CELL_SIZE resolution.
+        self._frame = runtime.obstacles.frame
         width = float(runtime.obstacles.width)
         height = float(runtime.obstacles.height)
-        self._map_w = int(np.ceil(width / CELL_SIZE)) + 1
-        self._map_h = int(np.ceil(height / CELL_SIZE)) + 1
+        if self._frame.is_native:
+            # The parity runtime already sits on MARVEL's own lattice: one
+            # belief cell per occupancy cell, anchored at the belief origin.
+            # No artificial world-scale expansion.
+            self._map_w = int(self._frame.width_cells)
+            self._map_h = int(self._frame.height_cells)
+            self._belief_origin = self._frame.origin
+        else:
+            self._map_w = int(np.ceil(width / CELL_SIZE)) + 1
+            self._map_h = int(np.ceil(height / CELL_SIZE)) + 1
+            self._belief_origin = (0.0, 0.0)
         self.belief_map: np.ndarray = np.ones((self._map_h, self._map_w), dtype=np.int32) * UNKNOWN
 
         # PolicyNet - 需要3个参数：node_dim, embedding_dim, num_angles_bin
@@ -307,13 +317,18 @@ class MARVELPolicyAdapter:
         if len(visible_cells) == 0:
             return
         cells = np.asarray(visible_cells, dtype=float)
-        # Convert SimulationRuntime 1 m grid → MARVEL belief map at CELL_SIZE resolution.
-        # Each 1 m cell covers ~(1/CELL_SIZE) belief-map cells in each axis.
+        # Convert the runtime lattice cell → world metres → MARVEL belief
+        # cell at CELL_SIZE resolution.  On the extended lattice (1 m cells,
+        # origin 0) this reduces to the historical `cell * (1/CELL_SIZE)`.
+        # On the native lattice the two resolutions coincide, so a runtime
+        # cell maps to exactly one belief cell.
         scale = 1.0 / CELL_SIZE  # ≈ 2.5 for CELL_SIZE=0.4
-        bx_lo = np.clip((cells[:, 0] * scale).astype(int), 0, self._map_w - 1)
-        by_lo = np.clip((cells[:, 1] * scale).astype(int), 0, self._map_h - 1)
-        bx_hi = np.clip(((cells[:, 0] + 1.0) * scale).astype(int), 0, self._map_w - 1)
-        by_hi = np.clip(((cells[:, 1] + 1.0) * scale).astype(int), 0, self._map_h - 1)
+        world_lo = self._frame.cells_to_world(cells)
+        world_hi = self._frame.cells_to_world(cells + 1.0)
+        bx_lo = np.clip(((world_lo[:, 0] - self._belief_origin[0]) * scale).astype(int), 0, self._map_w - 1)
+        by_lo = np.clip(((world_lo[:, 1] - self._belief_origin[1]) * scale).astype(int), 0, self._map_h - 1)
+        bx_hi = np.clip(((world_hi[:, 0] - self._belief_origin[0]) * scale).astype(int), 0, self._map_w - 1)
+        by_hi = np.clip(((world_hi[:, 1] - self._belief_origin[1]) * scale).astype(int), 0, self._map_h - 1)
 
         total_marked = 0
         for lx, ly, hx, hy in zip(bx_lo, by_lo, bx_hi, by_hi):
@@ -324,7 +339,12 @@ class MARVELPolicyAdapter:
             print(f"[PolicyAdapter] Updated belief: {len(visible_cells)} cells -> {total_marked} belief cells marked FREE")
 
     def _build_map_info(self) -> MapInfo:
-        return MapInfo(self.belief_map.copy(), 0.0, 0.0, CELL_SIZE)
+        return MapInfo(
+            self.belief_map.copy(),
+            float(self._belief_origin[0]),
+            float(self._belief_origin[1]),
+            CELL_SIZE,
+        )
 
     def _snap_to_nearest_node(self, position: np.ndarray) -> np.ndarray:
         """Return the graph-node coordinate closest to *position*."""

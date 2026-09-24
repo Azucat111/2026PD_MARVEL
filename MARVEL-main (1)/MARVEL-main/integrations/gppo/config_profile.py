@@ -3,6 +3,8 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any
 
+from utils.geometry import GEOMETRY_MODE_NATIVE, MARVEL_CELL_SIZE
+
 from .search_scenario import search_radii_profile
 
 
@@ -122,6 +124,20 @@ def prepare_gppo_config(
     cfg["sensor"].setdefault("params", {})
     cfg["sensor"]["params"]["los_occlusion"] = True
 
+    environment = cfg.get("environment", {}) or {}
+
+    geometry_mode = str(
+        environment.get("geometry_mode", "extended")
+    ).strip().lower()
+
+    # The Search scenario generator runs on the runtime occupancy lattice,
+    # so the frozen radii must be derived at that resolution.
+    search_cell_size = (
+        MARVEL_CELL_SIZE
+        if geometry_mode == GEOMETRY_MODE_NATIVE
+        else 1.0
+    )
+
     cfg.setdefault("_gppo_profile", {})
     cfg["_gppo_profile"].update({
         "physics_step_ms": physics_step_ms,
@@ -141,15 +157,17 @@ def prepare_gppo_config(
         ),
         # Exact frozen Search defaults.  The frozen Phase14-v9 worker runs
         # with test_parameter.SENSOR_RANGE = 10 m and CELL_SIZE = 0.4 m.
+        "geometry_mode": geometry_mode,
         "search_service_steps": 6,
         "search_sensor_range": 10.0,
-        # Resolution of the team runtime occupancy grid, which is the
-        # lattice the generated Search scenario lives on.
-        "search_cell_size": 1.0,
+        # Resolution of the runtime occupancy grid, which is the lattice
+        # the generated Search scenario lives on: 1.0 m in the extended
+        # team environment, 0.4 m in original MARVEL geometry.
+        "search_cell_size": search_cell_size,
         "search_survivor_count": 4,
         **search_radii_profile(
             sensor_range=10.0,
-            cell_size=1.0,
+            cell_size=search_cell_size,
         ),
     })
 

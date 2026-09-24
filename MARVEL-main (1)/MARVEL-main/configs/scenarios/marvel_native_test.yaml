@@ -1,0 +1,55 @@
+scenario:
+  name: marvel_native_test
+  description: >-
+    MARVEL-native parity scenario. Original MARVEL physical geometry:
+    0.4 m occupancy lattice produced by block_reduce(..., 2, np.min) over a
+    maps_test image, belief origin at -round(initial_cell * CELL_SIZE, 1),
+    SENSOR_RANGE 10 m, FOV 120, VELOCITY 1. This is the geometry the
+    official MARVEL checkpoint and frozen GPPO ckpt80 were trained in.
+  version: "1.0"
+  duration:
+    max_steps: 128
+    step_dt: 0.1
+environment:
+  # Explicit. Never inferred. 'extended' is the 500 m / 1 m scalability
+  # environment; 'marvel_native' is the frozen parity geometry.
+  geometry_mode: marvel_native
+  # Directory of original MARVEL maps; the file is selected by episode_index.
+  map_dir: ../../maps_test
+  episode_index: 0
+  map_resolution: 0.4
+robots:
+  - id_range: [0, 3]
+    type: explorer
+    team_id: 1
+    config:
+      fov: 120
+      sensor_range: 10
+      velocity: 1.0
+      yaw_rate: 35
+      initial_positions: random_safe
+tasks:
+  - task_id: T1_exploration
+    type: exploration
+    priority: 3
+    assigned_robot_types: [explorer]
+    params:
+      target_coverage: 0.8
+  - task_id: T2_target_search
+    type: target_search
+    priority: 5
+    assigned_robot_types: [explorer]
+    # Frozen maybe_activate() has no independent time gate.
+    activation:
+      condition: exploration_rate >= 0.3
+    params: {}
+dynamics:
+  config_file: ../dynamics/kinematic_simple.yaml
+sensor:
+  config_file: ../sensors/ideal.yaml
+communication:
+  config_file: ../communication/ideal.yaml
+evaluation:
+  metrics:
+    - {name: exploration_rate, weight: 0.7, target: 0.8}
+    - {name: collision_count, weight: 0.3, target: 0, penalty_per_collision: -1}

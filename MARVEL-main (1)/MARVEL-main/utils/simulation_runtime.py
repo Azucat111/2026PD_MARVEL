@@ -10,6 +10,7 @@ import numpy as np
 
 from .communication_model import CommunicationModel
 from .dynamics_models import create_dynamics_model
+from .geometry import GEOMETRY_MODE_NATIVE, resolve_geometry_mode
 from .obstacle_manager import ObstacleManager
 from .safety_shield import SafetyShield
 from .sensor_models import create_sensor_model
@@ -40,10 +41,10 @@ class SimulationRuntime:
         self.dynamics_by_type = {}
         self.sensor_by_type = {}
         self.comm = CommunicationModel(scenario_config["communication"])
-        self.obstacles = ObstacleManager(scenario_config["environment"], scenario_config.get("dynamic_obstacles", []))
-        map_file = scenario_config["environment"].get("map_file")
-        if map_file:
-            self.obstacles.load_from_file(map_file)
+        environment = scenario_config["environment"]
+        self.geometry_mode = resolve_geometry_mode(environment)
+        self.obstacles = ObstacleManager(environment, scenario_config.get("dynamic_obstacles", []))
+        self._load_environment_map(environment)
         self.tasks = TaskManager(scenario_config["tasks"])
 
         hidden_targets = scenario_config.get(
@@ -84,11 +85,52 @@ class SimulationRuntime:
         # and cleared on every reset so no episode leaks into the next.
         self.search_scenario = None
 
+        # The default sensor shares the environment frame.
+        self.sensor.frame = self.obstacles.frame
+
         self.shield = SafetyShield(self.obstacles)
         self.robots: List[RobotState] = []
         self.events: list[Dict[str, Any]] = []
         self.explored_cells: set[tuple[int, int]] = set()
-        self.free_cell_count = max(1, int(self.obstacles.width * self.obstacles.height))
+        self.free_cell_count = max(1, self._exploration_denominator())
+
+    def _load_environment_map(self, environment: Dict[str, Any]) -> None:
+        """Load the occupancy map in the configured geometry mode."""
+
+        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
+            map_dir = environment.get("map_dir")
+
+            if not map_dir:
+                raise ValueError(
+                    "environment.map_dir is required when "
+                    "geometry_mode='marvel_native'"
+                )
+
+            self.obstacles.load_marvel_native(
+                map_dir,
+                int(environment.get("episode_index", 0)),
+            )
+            return
+
+        map_file = environment.get("map_file")
+
+        if map_file:
+            self.obstacles.load_from_file(map_file)
+
+    def _exploration_denominator(self) -> int:
+        """Cell count for the exploration rate.
+
+        Cell-based whenever a real map backs the grid.  The synthetic
+        obstacle path keeps its historical metres-squared denominator so
+        existing scenarios are unchanged.
+        """
+
+        if self.obstacles.has_occupancy_map:
+            return self.obstacles.cell_count
+
+        return int(
+            self.obstacles.width * self.obstacles.height
+        )
 
     def reset(self) -> Dict[int, Dict[str, Any]]:
         self.current_step = 0
@@ -129,7 +171,8 @@ class SimulationRuntime:
                 self.sensor_by_type[robot_type] = create_sensor_model(
                     {**self.config["sensor"]["params"],
                      "fov": cfg.get("fov", self.config["sensor"]["params"].get("fov", 120.0)),
-                     "range": cfg.get("sensor_range", self.config["sensor"]["params"].get("range", 10.0))})
+                     "range": cfg.get("sensor_range", self.config["sensor"]["params"].get("range", 10.0))},
+                    frame=self.obstacles.frame)
                 self.robots.append(RobotState(
                     robot_id=robot_id,
                     robot_type=robot_type,
@@ -268,12 +311,15 @@ class SimulationRuntime:
         return list(self.events)
 
     def default_actions(self) -> List[Tuple[np.ndarray, float]]:
-        center = np.array([self.obstacles.width / 2.0, self.obstacles.height / 2.0])
+        frame = self.obstacles.frame
+        lower = frame.bounds_min
+        upper = frame.bounds_max
+        center = (lower + upper) / 2.0
         actions = []
         for idx, robot in enumerate(self.robots):
             angle = 2.0 * np.pi * idx / max(len(self.robots), 1)
             waypoint = robot.position + np.array([np.cos(angle), np.sin(angle)]) * 3.0
-            waypoint = np.clip(waypoint, [0.0, 0.0], [self.obstacles.width, self.obstacles.height])
+            waypoint = np.clip(waypoint, lower, upper)
             heading = np.degrees(np.arctan2(center[1] - robot.position[1], center[0] - robot.position[0])) % 360.0
             actions.append((waypoint, heading))
         return actions
@@ -372,18 +418,22 @@ class SimulationRuntime:
 
     def _generate_initial_positions(self, count: int, mode,
                                     anchors: list[np.ndarray] | None = None) -> List[np.ndarray]:
+        frame = self.obstacles.frame
+        lower = frame.bounds_min
+        upper = frame.bounds_max
         if isinstance(mode, list):
             return [np.asarray(item, dtype=float) for item in mode]
         if mode == "grid":
             cols = int(np.ceil(np.sqrt(count)))
-            return [np.array([8.0 + (idx % cols) * 4.0, 8.0 + (idx // cols) * 4.0]) for idx in range(count)]
+            return [np.array([lower[0] + 8.0 + (idx % cols) * 4.0,
+                              lower[1] + 8.0 + (idx // cols) * 4.0]) for idx in range(count)]
         positions = []
         attempts = 0
         while len(positions) < count and attempts < count * 500:
             attempts += 1
             point = np.array([
-                np.random.uniform(5.0, max(6.0, self.obstacles.width - 5.0)),
-                np.random.uniform(5.0, max(6.0, self.obstacles.height - 5.0)),
+                np.random.uniform(lower[0] + 5.0, max(lower[0] + 6.0, upper[0] - 5.0)),
+                np.random.uniform(lower[1] + 5.0, max(lower[1] + 6.0, upper[1] - 5.0)),
             ])
             collides, _ = self.obstacles.check_collision(point, radius=0.5)
             if collides or any(np.linalg.norm(point - existing) < 1.5
@@ -407,13 +457,11 @@ class SimulationRuntime:
                     base + np.array([0.0, -step]),
                 ]
                 candidate = next(
-                    (np.clip(item, [1.0, 1.0],
-                             [self.obstacles.width - 1.0, self.obstacles.height - 1.0])
+                    (np.clip(item, lower + 1.0, upper - 1.0)
                      for item in candidates
                      if not any(np.linalg.norm(item - existing) < 1.5
                                 for existing in [*anchors, *positions])),
-                    np.clip(base + np.array([step, step]), [1.0, 1.0],
-                            [self.obstacles.width - 1.0, self.obstacles.height - 1.0]),
+                    np.clip(base + np.array([step, step]), lower + 1.0, upper - 1.0),
                 )
                 positions.append(candidate)
         if len(positions) != count:
