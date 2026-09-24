@@ -11,6 +11,7 @@ import numpy as np
 from .communication_model import CommunicationModel
 from .dynamics_models import create_dynamics_model
 from .geometry import GEOMETRY_MODE_NATIVE, resolve_geometry_mode
+from .marvel_sensing import FROZEN_NUM_SIM_STEPS, MarvelNativeBelief
 from .obstacle_manager import ObstacleManager
 from .safety_shield import SafetyShield
 from .sensor_models import create_sensor_model
@@ -118,6 +119,12 @@ class SimulationRuntime:
         self._free_mask_cache: np.ndarray | None = None
         self._free_cell_total = 0
 
+        # Authoritative exploration state for marvel_native: the frozen
+        # MARVEL robot_belief array.  None in extended mode.
+        self.native_belief = None
+        self._mission_start_positions: list[np.ndarray] = []
+        self._mission_start_headings: list[float] = []
+
     def _load_environment_map(self, environment: Dict[str, Any]) -> None:
         """Load the occupancy map in the configured geometry mode."""
 
@@ -169,6 +176,9 @@ class SimulationRuntime:
         self.active_search_uav_ids = set()
         self._free_mask_cache = None
         self._free_cell_total = 0
+        self.native_belief = None
+        self._mission_start_positions = []
+        self._mission_start_headings = []
         self.target_detector.hidden_targets = {
             str(task_id): list(entries)
             for task_id, entries in (
@@ -208,9 +218,27 @@ class SimulationRuntime:
                     heading=float(np.random.uniform(0.0, 360.0)),
                 ))
         self._log_event("simulation_reset", {"num_robots": len(self.robots)})
+
+        # Native mode: frozen belief map + initial sensing sweep.
+        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
+            self._initialize_native_belief()
+
+        self._capture_mission_start()
+
         observations = self._get_observations()
         self._update_explored_cells(observations)
         return observations
+
+    def _capture_mission_start(self) -> None:
+        """Record positions/headings at the start of a mission step."""
+
+        self._mission_start_positions = [
+            np.asarray(robot.position, dtype=float).copy()
+            for robot in self.robots
+        ]
+        self._mission_start_headings = [
+            float(robot.heading) for robot in self.robots
+        ]
 
     def step(self, actions: List[Tuple[np.ndarray, float]]) -> tuple[Dict[int, Dict[str, Any]], Dict[str, Any]]:
         if len(actions) != len(self.robots):
@@ -264,6 +292,14 @@ class SimulationRuntime:
                              "type": "uav_uav", "step": self.current_step}
                     info["collisions"].append(event)
                     self._log_event("collision", event)
+
+        # Frozen sensing runs once per mission step, not per physics tick.
+        if (
+            self.geometry_mode == GEOMETRY_MODE_NATIVE
+            and (self.current_step + 1) % self._mission_step_interval() == 0
+        ):
+            self._update_native_belief()
+            self._capture_mission_start()
 
         observations = self._get_observations()
         self._update_explored_cells(observations)
@@ -332,45 +368,25 @@ class SimulationRuntime:
 
     @property
     def exploration_rate(self) -> float:
-        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
-            return self._native_exploration_rate()
+        """Exploration coverage.
 
-        return min(1.0, len(self.explored_cells) / self.free_cell_count)
+        ``marvel_native`` uses the frozen MARVEL belief state, which is the
+        authoritative exploration state in that mode:
 
-    def _native_exploration_rate(self) -> float:
-        """Original MARVEL ``Env.evaluate_exploration_rate``.
+            explored_rate = sum(robot_belief == 255)
+                            / sum(ground_truth == 255)
 
-        Frozen source:
-
-            self.explored_rate = (np.sum(self.robot_belief == 255)
-                                  / np.sum(self.ground_truth == 255))
-
-        ``sensor.collision_check`` writes the *ground-truth* value of every
-        cell along each sensor ray into the belief map, so the numerator
-        counts observed cells that are genuinely free and the denominator
-        counts all free cells.  The team runtime's ``explored_cells`` holds
-        every visible cell regardless of occupancy, so the free mask has to
-        be applied to the numerator.
+        ``extended`` keeps the team runtime's own visible-cell count, which
+        is a different sensing model by design.
         """
 
-        free = self._free_mask()
+        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
+            if self.native_belief is None:
+                return 0.0
 
-        total = int(free.sum())
+            return float(self.native_belief.explored_rate)
 
-        if total == 0:
-            return 0.0
-
-        observed = 0
-
-        for x, y in self.explored_cells:
-            if (
-                0 <= y < free.shape[0]
-                and 0 <= x < free.shape[1]
-                and free[y, x]
-            ):
-                observed += 1
-
-        return min(1.0, observed / float(total))
+        return min(1.0, len(self.explored_cells) / self.free_cell_count)
 
     def _free_mask(self) -> np.ndarray:
         """Cached free-cell mask of the occupancy lattice."""
@@ -384,6 +400,131 @@ class SimulationRuntime:
             )
 
         return self._free_mask_cache
+
+    # ------------------------------------------------------------------
+    # Frozen MARVEL sensing (marvel_native only)
+    # ------------------------------------------------------------------
+    def _mission_step_interval(self) -> int:
+        """Physics ticks per high-level mission step."""
+
+        profile = self.config.get("_gppo_profile", {}) or {}
+
+        return max(
+            1,
+            int(profile.get("high_level_interval_steps", 1)),
+        )
+
+    def _sensor_params(self) -> tuple[float, float]:
+        params = self.config.get("sensor", {}).get("params", {}) or {}
+
+        fov = float(params.get("fov", 120.0))
+        sensor_range = float(
+            params.get("range", params.get("sensor_range", 10.0))
+        )
+
+        robots_cfg = self.config.get("robots", [])
+
+        if robots_cfg:
+            first = robots_cfg[0].get("config", {})
+            fov = float(first.get("fov", fov))
+            sensor_range = float(
+                first.get("sensor_range", sensor_range)
+            )
+
+        return fov, sensor_range
+
+    def _initialize_native_belief(self) -> None:
+        """Create the frozen belief map and run the initial sensing sweep.
+
+        Frozen ``ScenarioEnv.__init__`` senses once per robot from its
+        initial cell and heading before the first mission step.
+        """
+
+        ground_truth = getattr(
+            self.obstacles, "marvel_ground_truth", None
+        )
+
+        if ground_truth is None:
+            raise ValueError(
+                "marvel_native exploration sensing requires the original "
+                "MARVEL 255/1 ground truth"
+            )
+
+        fov, sensor_range = self._sensor_params()
+
+        self.native_belief = MarvelNativeBelief(
+            ground_truth=ground_truth,
+            cell_size=self.obstacles.frame.cell_size,
+            sensor_range=sensor_range,
+            fov=fov,
+        )
+
+        frame = self.obstacles.frame
+
+        for robot in self.robots:
+            self.native_belief.observe(
+                frame.world_to_cell(robot.position),
+                float(robot.heading) % 360.0,
+            )
+
+    def _update_native_belief(self) -> None:
+        """Frozen 6-substep sensing sweep across one mission step.
+
+        The frozen worker interpolates each robot's cell and heading across
+        ``NUM_SIM_STEPS = 6`` sub-steps and calls
+        ``Env.update_robot_belief`` for every robot at every sub-step.
+        """
+
+        if self.native_belief is None:
+            return
+
+        frame = self.obstacles.frame
+        steps = max(1, int(FROZEN_NUM_SIM_STEPS))
+
+        starts = self._mission_start_positions
+        start_headings = self._mission_start_headings
+
+        if len(starts) != len(self.robots):
+            return
+
+        # Per-substep cells and headings for every robot, matching the
+        # frozen linspace/heading interpolation order.
+        per_robot_cells = []
+        per_robot_headings = []
+
+        for index, robot in enumerate(self.robots):
+            start_cell = np.asarray(
+                frame.world_to_cell(starts[index]), dtype=float
+            )
+            end_cell = np.asarray(
+                frame.world_to_cell(robot.position), dtype=float
+            )
+
+            cells = np.round(
+                np.linspace(start_cell, end_cell, steps + 1)[1:]
+            ).astype(int)
+
+            previous = float(start_headings[index]) % 360.0
+            final = float(robot.heading) % 360.0
+            diff = final - previous
+
+            if abs(diff) > 180:
+                diff = diff - 360 if diff > 0 else diff + 360
+
+            headings = [
+                (previous + (j + 1) * diff / steps) % 360.0
+                for j in range(steps)
+            ]
+
+            per_robot_cells.append(cells)
+            per_robot_headings.append(headings)
+
+        for sim_step in range(steps):
+            for index in range(len(self.robots)):
+                self.native_belief.observe(
+                    per_robot_cells[index][sim_step],
+                    per_robot_headings[index][sim_step],
+                )
 
     def get_event_log(self) -> list[Dict[str, Any]]:
         return list(self.events)

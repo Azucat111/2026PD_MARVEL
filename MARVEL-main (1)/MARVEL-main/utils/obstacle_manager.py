@@ -70,6 +70,8 @@ class ObstacleManager:
                     float(params.get("max_radius", params.get("initial_radius", 1.0))),
                     int(item.get("spawn_step", 0))))
         self._file_grid: Optional[np.ndarray] = None  # H×W uint8, 1=occupied 0=free
+        # Original MARVEL 255/1 map, populated only in marvel_native mode.
+        self.marvel_ground_truth: Optional[np.ndarray] = None
         self.reset()
 
     def load_from_file(self, path: str) -> None:
@@ -120,7 +122,7 @@ class ObstacleManager:
             map_dir, int(episode_index)
         )
 
-        grid, origin, _ground_truth = load_marvel_native_map(
+        grid, origin, ground_truth = load_marvel_native_map(
             map_path, cell_size=self.cell_size
         )
 
@@ -129,6 +131,10 @@ class ObstacleManager:
         self.height = float(grid.shape[0]) * self.cell_size
         self.width = float(grid.shape[1]) * self.cell_size
         self.map_name = map_path.name
+
+        # Original 255/1 encoding, needed by the frozen sensing/belief
+        # path, which writes ground-truth values into the belief map.
+        self.marvel_ground_truth = ground_truth
 
     @property
     def frame(self) -> GeometryFrame:

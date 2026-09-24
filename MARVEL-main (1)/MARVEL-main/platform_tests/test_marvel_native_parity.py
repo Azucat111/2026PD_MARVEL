@@ -604,6 +604,30 @@ def test_native_scenario_survivors_are_sensor_reachable(frozen_probe):
 # 6. MARVEL low-level smoke (native geometry)
 # ======================================================================
 
+def force_native_coverage(runtime, fraction: float) -> float:
+    """Drive the frozen native belief map to a target exploration coverage.
+
+    Native exploration state is the frozen ``robot_belief`` array, not the
+    runtime's ``explored_cells`` set.
+    """
+
+    from utils.marvel_sensing import FREE, UNKNOWN
+
+    # Clear the initial sensing sweep so the requested fraction is exact.
+    runtime.native_belief.belief[:] = UNKNOWN
+
+    belief = runtime.native_belief.belief
+    free = runtime.native_belief.free_mask()
+
+    rows, cols = np.nonzero(free)
+
+    take = int(fraction * len(rows))
+
+    belief[rows[:take], cols[:take]] = FREE
+
+    return float(runtime.native_belief.explored_rate)
+
+
 def _native_gppo_config(seed: int = 7):
     from integrations.gppo.config_profile import prepare_gppo_config
 
@@ -738,10 +762,8 @@ def test_native_gppo_smoke():
 
     # Activate at the frozen threshold.
     runtime.tasks.tasks["T2_target_search"].status = "active"
-    runtime.explored_cells = {
-        (index % 250, index // 250)
-        for index in range(int(0.35 * runtime.free_cell_count))
-    }
+
+    assert force_native_coverage(runtime, 0.35) >= 0.30
 
     assert scheduler._maybe_activate_search()
     assert scheduler.search_activated
@@ -789,10 +811,8 @@ def test_native_observed_graph_routing_uses_native_frame():
     assert len(scheduler.heat_points) == 4
 
     runtime.tasks.tasks["T2_target_search"].status = "active"
-    runtime.explored_cells = {
-        (index % 250, index // 250)
-        for index in range(int(0.35 * runtime.free_cell_count))
-    }
+
+    force_native_coverage(runtime, 0.35)
 
     base_actions = adapter.get_actions(observations)
 

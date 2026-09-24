@@ -87,6 +87,29 @@ def _gppo_native_runtime(seed=7):
     return runtime, scheduler
 
 
+def force_native_coverage(runtime, fraction: float) -> float:
+    """Drive the frozen native belief map to a target exploration coverage.
+
+    Native exploration state is the frozen ``robot_belief`` array; the
+    runtime's ``explored_cells`` set is an extended-mode concept.
+    """
+
+    from utils.marvel_sensing import FREE, UNKNOWN
+
+    # Clear the initial sensing sweep so the requested fraction is exact.
+    runtime.native_belief.belief[:] = UNKNOWN
+
+    belief = runtime.native_belief.belief
+    free = runtime.native_belief.free_mask()
+
+    rows, cols = np.nonzero(free)
+    take = int(fraction * len(rows))
+
+    belief[rows[:take], cols[:take]] = FREE
+
+    return float(runtime.native_belief.explored_rate)
+
+
 def _activate(runtime, scheduler):
     from integrations.gppo.search_scenario import (
         initialize_search_scenario,
@@ -97,13 +120,7 @@ def _activate(runtime, scheduler):
 
     runtime.tasks.tasks["T2_target_search"].status = "active"
 
-    free = runtime._free_mask()
-    rows, cols = np.nonzero(free)
-    take = int(0.35 * len(rows))
-
-    runtime.explored_cells = {
-        (int(cols[i]), int(rows[i])) for i in range(take)
-    }
+    assert force_native_coverage(runtime, 0.35) >= 0.30
 
     assert scheduler._maybe_activate_search()
 
@@ -481,51 +498,72 @@ def test_relay_slots_carry_frozen_processing_time():
 # ======================================================================
 
 def test_native_exploration_rate_matches_frozen_formula():
-    """|observed free| / |all free|, not |observed| / |all cells|."""
+    """sum(belief == 255) / sum(ground_truth == 255)."""
+
+    from utils.marvel_sensing import FREE, UNKNOWN
 
     runtime = _runtime(NATIVE_SCENARIO)
 
-    free = runtime._free_mask()
-    total_free = int(free.sum())
+    belief = runtime.native_belief
+
+    assert belief is not None
 
     # Frozen ground truth free count for maps_test/1.png.
-    assert total_free == 22402
+    assert belief.free_cell_total == 22402
     assert runtime.free_cell_count == 250 * 250
 
-    rows, cols = np.nonzero(free)
-    take = 5000
-    runtime.explored_cells = {
-        (int(cols[i]), int(rows[i])) for i in range(take)
-    }
-
-    assert runtime.exploration_rate == pytest.approx(
-        take / total_free
+    # A fresh native belief starts fully UNKNOWN plus the initial sweep.
+    assert np.all(
+        (belief.belief == UNKNOWN)
+        | (belief.belief == FREE)
+        | (belief.belief == 1)
     )
 
-    # The legacy denominator would have given a different answer.
-    legacy = take / runtime.free_cell_count
+    initial = belief.explored_rate
 
-    assert runtime.exploration_rate != pytest.approx(legacy)
+    assert runtime.exploration_rate == pytest.approx(initial)
+
+    rate = force_native_coverage(runtime, 0.25)
+
+    # The rate is exactly observed-free / total-free (integer cell count,
+    # so 0.25 * 22402 truncates).
+    observed = belief.explored_free_count
+
+    assert observed == int(0.25 * belief.free_cell_total)
+    assert rate == pytest.approx(
+        observed / belief.free_cell_total
+    )
+    assert runtime.exploration_rate == pytest.approx(rate)
+
+    # The legacy all-cells denominator would give a far smaller number.
+    legacy = observed / runtime.free_cell_count
+
     assert runtime.exploration_rate > legacy
 
 
-def test_native_rate_ignores_observed_occupied_cells():
-    """Obstacle cells are visible but must not count as explored."""
+def test_native_rate_counts_only_free_belief_cells():
+    """Occupied cells are written as 1 and must not count as explored."""
+
+    from utils.marvel_sensing import FREE, OCCUPIED, UNKNOWN
 
     runtime = _runtime(NATIVE_SCENARIO)
 
-    grid = runtime.obstacles.get_occupancy_grid()
-    occupied = np.argwhere(grid == 1)
+    belief = runtime.native_belief
+    belief.belief[:] = UNKNOWN
 
-    assert len(occupied) > 1000
-
-    sample = occupied[:2000]
-    runtime.explored_cells = {
-        (int(c), int(r)) for r, c in sample
-    }
+    # Force every occupied cell to be "observed" as occupied.
+    occupied = belief.ground_truth == OCCUPIED
+    belief.belief[occupied] = OCCUPIED
 
     # Nothing free was observed.
-    assert runtime.exploration_rate == 0.0
+    assert belief.explored_free_count == 0
+    assert runtime.exploration_rate == pytest.approx(0.0)
+
+    belief.belief[occupied] = FREE  # even a wrong write of FREE is counted
+
+    assert runtime.exploration_rate == pytest.approx(
+        float(occupied.sum()) / belief.free_cell_total
+    )
 
 
 def test_native_free_coverage_differs_from_total_coverage():
@@ -533,21 +571,15 @@ def test_native_free_coverage_differs_from_total_coverage():
 
     runtime = _runtime(NATIVE_SCENARIO)
 
-    free = runtime._free_mask()
-    total_free = int(free.sum())
+    belief = runtime.native_belief
+
+    total_free = belief.free_cell_total
     total_cells = runtime.free_cell_count
 
     assert total_free < total_cells
     assert total_free / total_cells < 0.5
 
-    rows, cols = np.nonzero(free)
-    runtime.explored_cells = {
-        (int(cols[i]), int(rows[i]))
-        for i in range(len(rows))
-    }
-
-    # Observing every free cell saturates the rate.
-    assert runtime.exploration_rate == pytest.approx(1.0)
+    assert force_native_coverage(runtime, 1.0) == pytest.approx(1.0)
 
 
 def test_extended_exploration_rate_is_unchanged():
