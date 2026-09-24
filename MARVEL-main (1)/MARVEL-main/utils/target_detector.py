@@ -18,6 +18,20 @@ class TargetDetector:
     ):
         self.hidden_targets = hidden_targets or {}
 
+    def set_hidden_targets(
+        self,
+        task_id: str,
+        targets,
+    ) -> None:
+        """Install sensor truth for one task.
+
+        Called by the environment-side scenario adapter after
+        ``SimulationRuntime.reset()``, because the generated survivors
+        depend on the initial UAV positions.
+        """
+
+        self.hidden_targets[str(task_id)] = list(targets)
+
     def detect(
         self,
         task_id: str,

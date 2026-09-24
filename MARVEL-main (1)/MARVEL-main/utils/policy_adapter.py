@@ -139,6 +139,36 @@ class MARVELPolicyAdapter:
                 self.agents
             )
 
+        self._initialize_search_scenario()
+
+    def _initialize_search_scenario(self) -> None:
+        """Install the frozen Search scenario once initial UAVs exist.
+
+        Ordering is fixed by the frozen generator: it seeds its flood fill
+        from the initial UAV positions, so it can only run after
+        ``runtime.reset()``.  Only the PUBLIC heat-point projection reaches
+        the scheduler; the hidden survivors and the target-to-heat
+        association stay in the environment layer.
+        """
+
+        if not hasattr(
+            self.scheduler,
+            "install_search_scenario",
+        ):
+            return
+
+        from integrations.gppo.search_scenario import (
+            initialize_search_scenario,
+        )
+
+        truth = initialize_search_scenario(
+            self.runtime
+        )
+
+        self.scheduler.install_search_scenario(
+            truth.public_heat_points()
+        )
+
     def get_actions(self, observations: Dict[int, Dict[str, Any]]) -> List[Tuple[np.ndarray, float]]:
         """Convert SimulationRuntime observations to a list of (waypoint, heading) actions."""
         if not self._using_policy or not self.agents:
@@ -187,23 +217,77 @@ class MARVELPolicyAdapter:
     # Private helpers
     # ------------------------------------------------------------------
 
-    def _load_checkpoint(self) -> None:
+    @staticmethod
+    def _case_insensitive_child(parent: Path, name: str) -> Optional[Path]:
+        """Return the child of *parent* matching *name* ignoring case."""
+
+        if not parent.is_dir():
+            return None
+
+        wanted = name.lower()
+
+        for entry in sorted(parent.iterdir()):
+            if entry.name.lower() == wanted:
+                return entry
+
+        return None
+
+    def _resolve_checkpoint_path(self) -> Optional[Path]:
+        """Locate the MARVEL PolicyNet checkpoint.
+
+        ``parameter.load_path`` is inherited verbatim from the frozen repo
+        and spells the folder ``load_model/marvel``, while the shipped
+        directory is ``load_model/MARVEL``.  That resolves on Windows but
+        not on a case-sensitive filesystem.  Fall back to a
+        case-insensitive lookup rather than editing the frozen-derived
+        parameter file.
+        """
+
         external_checkpoint = self.runtime.config.get(
             "marvel_checkpoint"
         )
 
         if external_checkpoint:
-            checkpoint_path = Path(
+            return Path(
                 external_checkpoint
             ).expanduser().resolve()
-        else:
-            checkpoint_path = (
-                _MARVEL_ROOT
-                / load_path
-                / "checkpoint.pth"
+
+        expected = (
+            _MARVEL_ROOT
+            / load_path
+            / "checkpoint.pth"
+        )
+
+        if expected.exists():
+            return expected
+
+        # Resolve "load_model/marvel" segment by segment, case-insensitively.
+        resolved = _MARVEL_ROOT
+
+        for segment in Path(load_path).parts:
+            child = self._case_insensitive_child(
+                resolved, segment
             )
-        if not checkpoint_path.exists():
-            logger.warning("Checkpoint not found at %s; will use default_actions.", checkpoint_path)
+
+            if child is None:
+                return expected
+
+            resolved = child
+
+        checkpoint = self._case_insensitive_child(
+            resolved, "checkpoint.pth"
+        )
+
+        return checkpoint if checkpoint is not None else expected
+
+    def _load_checkpoint(self) -> None:
+        checkpoint_path = self._resolve_checkpoint_path()
+
+        if checkpoint_path is None or not checkpoint_path.exists():
+            logger.warning(
+                "Checkpoint not found at %s; will use default_actions.",
+                checkpoint_path,
+            )
             return
         try:
             ckpt = torch.load(str(checkpoint_path), map_location=self.device)

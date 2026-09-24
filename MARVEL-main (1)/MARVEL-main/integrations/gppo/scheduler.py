@@ -135,43 +135,17 @@ class GPPOTaskScheduler:
             stable_release_steps=3,
         )
 
-        self.heat_points = self._parse_heat_points(
-            self.config.get(
-                "public_heat_points",
-                [],
-            )
-        )
+        # Public Search prior. Populated by install_search_scenario() after
+        # SimulationRuntime.reset(), because the frozen generator needs the
+        # initial UAV positions.  Empty until then, which fails closed.
+        self.heat_points: list[PublicHeatPoint] = []
 
-        self.heat_by_id = {
-            point.heat_id: point
-            for point in self.heat_points
-        }
+        self.heat_by_id: dict[int, PublicHeatPoint] = {}
 
         # Frozen coordinator stores dwell per Search subtask.
         # In this integration one heat point corresponds to one
         # persistent Search slot, so heat_id is the equivalent key.
-        self.search_dwell_by_heat = {
-            int(point.heat_id): 0
-            for point in self.heat_points
-        }
-
-        self.target_to_heat_id: dict[int, int] = {}
-
-        for point in self.heat_points:
-            if point.target_index is None:
-                continue
-
-            target_index = int(point.target_index)
-
-            if target_index in self.target_to_heat_id:
-                raise ValueError(
-                    "Duplicate public heat mapping for "
-                    f"target_index={target_index}"
-                )
-
-            self.target_to_heat_id[target_index] = int(
-                point.heat_id
-            )
+        self.search_dwell_by_heat: dict[int, int] = {}
 
         search_tasks = [
             task
@@ -184,27 +158,6 @@ class GPPOTaskScheduler:
                 "Current GPPO integration expects one "
                 "target_search task."
             )
-
-        if search_tasks:
-            target_count = int(
-                search_tasks[0].params.get(
-                    "target_count",
-                    0,
-                )
-            )
-
-            expected = set(range(target_count))
-            mapped = set(self.target_to_heat_id)
-
-            missing = sorted(expected - mapped)
-            extra = sorted(mapped - expected)
-
-            if missing or extra:
-                raise ValueError(
-                    "Public heat-point mapping does not "
-                    "match hidden target cardinality: "
-                    f"missing={missing}, extra={extra}"
-                )
 
         base = self.config.get("base_position")
 
@@ -355,42 +308,44 @@ class GPPOTaskScheduler:
 
         return previous
 
-    def _parse_heat_points(self, items):
-        points = []
+    def install_search_scenario(
+        self,
+        heat_points,
+    ) -> None:
+        """Install the PUBLIC projection of the frozen Search scenario.
 
-        for index, item in enumerate(items):
-            heat_id = int(
-                item.get("heat_id", index)
+        Must be called after ``SimulationRuntime.reset()`` and before any
+        Search activation.  Only public heat points cross this boundary; the
+        hidden survivors and the ``target_index -> heat_id`` association stay
+        in the environment layer.
+        """
+
+        points = list(heat_points)
+
+        self.heat_points = points
+
+        self.heat_by_id = {
+            int(point.heat_id): point
+            for point in points
+        }
+
+        if len(self.heat_by_id) != len(points):
+            raise ValueError(
+                "Duplicate heat_id in Search scenario"
             )
 
-            if "position" in item:
-                position = item["position"]
-            else:
-                position = [
-                    item["x"],
-                    item["y"],
-                ]
+        self.search_dwell_by_heat = {
+            int(point.heat_id): 0
+            for point in points
+        }
 
-            points.append(
-                PublicHeatPoint(
-                    heat_id=heat_id,
-                    position=(
-                        float(position[0]),
-                        float(position[1]),
-                    ),
-                    target_index=(
-                        None
-                        if item.get("target_index") is None
-                        else int(item["target_index"])
-                    ),
-                    priority=float(
-                        item.get("priority", 5.0)
-                    ),
-                    serviced=False,
-                )
-            )
+        # A fresh scenario invalidates every previous Search assignment.
+        self.search_assignments.clear()
 
-        return points
+        self.serviced_heat_ids.clear()
+
+        self.search_activated = False
+        self.search_activation_step = None
 
     def _has_task(self, task_type: str) -> bool:
         return any(
@@ -450,6 +405,11 @@ class GPPOTaskScheduler:
         ):
             return False
 
+        # Fail closed: the frozen generator has not run, so there is no
+        # public prior to allocate against.
+        if not self.heat_points:
+            return False
+
         if (
             float(self.runtime.exploration_rate)
             <
@@ -468,43 +428,34 @@ class GPPOTaskScheduler:
         return True
 
     def _sync_search_completions(self) -> list[int]:
-        """Translate sensor detections into completed Search slots.
+        """Consume the abstract Search completion notification.
 
-        Hidden coordinates never enter the scheduler.
+        The environment layer resolves "which hidden survivor was detected"
+        into "which public heat point is complete" and hands back only heat
+        ids.  Neither hidden coordinates nor the target-to-heat association
+        enter this class.
         """
+
+        resolver = getattr(
+            self.runtime,
+            "completed_search_heat_ids",
+            None,
+        )
+
+        if resolver is None:
+            return []
 
         newly_serviced = []
 
-        search_tasks = [
-            task
-            for task in self.runtime.tasks.tasks.values()
-            if task.task_type == "target_search"
-        ]
+        for heat_id in sorted(
+            int(value) for value in resolver()
+        ):
+            if heat_id in self.serviced_heat_ids:
+                continue
 
-        for task in search_tasks:
-            for target_index in task.found_targets:
-                target_index = int(target_index)
+            self.mark_heat_serviced(heat_id)
 
-                heat_id = self.target_to_heat_id.get(
-                    target_index
-                )
-
-                if heat_id is None:
-                    raise RuntimeError(
-                        "Detected target has no public heat "
-                        f"mapping: target_index={target_index}"
-                    )
-
-                if heat_id in self.serviced_heat_ids:
-                    continue
-
-                self.mark_heat_serviced(
-                    heat_id
-                )
-
-                newly_serviced.append(
-                    int(heat_id)
-                )
+            newly_serviced.append(int(heat_id))
 
         return newly_serviced
 
@@ -665,10 +616,21 @@ class GPPOTaskScheduler:
 
         slots = slots[:free_slots]
 
+        # Frozen semantics: an assigned UAV is globally unavailable.
+        # Active Relay helpers are already executing a task and must not be
+        # re-allocated to Search, otherwise apply() would raise the
+        # "received both Search and Relay assignments" conflict.
+        relay_helper_uavs = {
+            int(helper_uid)
+            for helper_uid, _anchor
+            in self.relay_assignments.values()
+        }
+
         blocked_uavs = (
             set(
                 self.search_assignments.values()
             )
+            | relay_helper_uavs
             | set(
                 self.safety.active_uav_ids
             )

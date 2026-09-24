@@ -3,6 +3,8 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any
 
+from .search_scenario import search_radii_profile
+
 
 def prepare_gppo_config(
     config: dict[str, Any],
@@ -137,20 +139,17 @@ def prepare_gppo_config(
         "activation_threshold": float(
             frozen["activation_threshold"]
         ),
-        # Exact frozen Search defaults.
+        # Exact frozen Search defaults.  The frozen Phase14-v9 worker runs
+        # with test_parameter.SENSOR_RANGE = 10 m and CELL_SIZE = 0.4 m.
         "search_service_steps": 6,
         "search_sensor_range": 10.0,
-        "search_reach_radius": max(
-            10.0 * 0.35,
-            float(
-                cfg.get(
-                    "environment",
-                    {},
-                ).get(
-                    "map_resolution",
-                    1.0,
-                )
-            ),
+        # Resolution of the team runtime occupancy grid, which is the
+        # lattice the generated Search scenario lives on.
+        "search_cell_size": 1.0,
+        "search_survivor_count": 4,
+        **search_radii_profile(
+            sensor_range=10.0,
+            cell_size=1.0,
         ),
     })
 

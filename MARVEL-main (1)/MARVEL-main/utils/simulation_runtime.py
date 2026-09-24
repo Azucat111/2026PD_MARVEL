@@ -69,6 +69,21 @@ class SimulationRuntime:
             hidden_targets
         )
 
+        # Per-episode baseline for the detector, so reset() can drop any
+        # generator-installed truth without losing config-declared targets.
+        self._baseline_hidden_targets = {
+            str(task_id): list(entries)
+            for task_id, entries in (
+                self.target_detector.hidden_targets.items()
+            )
+        }
+
+        # PRIVATE Search scenario truth (hidden survivor coordinates plus
+        # the target_index -> heat_id association), installed by the
+        # environment-side scenario adapter after reset().  None until then,
+        # and cleared on every reset so no episode leaks into the next.
+        self.search_scenario = None
+
         self.shield = SafetyShield(self.obstacles)
         self.robots: List[RobotState] = []
         self.events: list[Dict[str, Any]] = []
@@ -81,6 +96,16 @@ class SimulationRuntime:
         self.explored_cells = set()
         self.obstacles.reset()
         self.tasks.reset()
+        # Drop the previous episode's hidden truth. The scenario adapter
+        # reinstalls it once the new initial UAV positions exist, and until
+        # then no detection may resolve against the old episode.
+        self.search_scenario = None
+        self.target_detector.hidden_targets = {
+            str(task_id): list(entries)
+            for task_id, entries in (
+                self._baseline_hidden_targets.items()
+            )
+        }
         self.robots = []
         ensure_connected = bool(self.config.get("communication", {}).get(
             "ensure_initial_connectivity", False))
@@ -295,6 +320,50 @@ class SimulationRuntime:
             )
 
         return detections
+
+    def completed_search_heat_ids(self) -> set[int]:
+        """Abstract Search completion notification for the high-level layer.
+
+        Private environment adapter: the sensor layer reports *detected
+        target indices*; this resolves them through the private
+        ``target_index -> heat_id`` association and returns only the
+        completed public heat ids.
+
+        GPPO and the scheduler consume this and never learn where a
+        survivor was, or which target index maps to which heat point.
+        """
+
+        scenario = self.search_scenario
+
+        if scenario is None:
+            return set()
+
+        task = self.tasks.tasks.get(scenario.task_id)
+
+        if task is None:
+            return set()
+
+        return scenario.completed_heat_ids(
+            task.found_targets
+        )
+
+    def install_search_scenario(
+        self,
+        scenario,
+    ) -> None:
+        """Install PRIVATE Search scenario truth and publish it to the sensor.
+
+        Hidden survivor coordinates reach the detector here and nowhere
+        else; the public heat-point projection is returned to the caller so
+        the high-level layer can be fed separately.
+        """
+
+        self.search_scenario = scenario
+
+        self.target_detector.set_hidden_targets(
+            scenario.task_id,
+            scenario.detector_targets(),
+        )
 
     def _update_explored_cells(self, observations: Dict[int, Dict[str, Any]]) -> None:
         for observation in observations.values():

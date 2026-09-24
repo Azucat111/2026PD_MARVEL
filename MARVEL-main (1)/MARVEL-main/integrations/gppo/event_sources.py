@@ -16,12 +16,17 @@ from .task_graph import TaskType
 
 @dataclass(frozen=True)
 class PublicHeatPoint:
+    """Public Search prior.
+
+    Structurally free of hidden truth: there is no field that could carry a
+    ``target_index`` or a survivor coordinate into GPPO, the task graph or
+    Search routing.  The ``target_index -> heat_id`` association lives in
+    the private environment layer (see ``search_scenario.py``).
+    """
+
     heat_id: int
     position: tuple[float, float]
-
-    # Public identifier only. Hidden target coordinates never enter GPPO.
-    target_index: int | None = None
-
+    confidence: float = 1.0
     priority: float = 5.0
     serviced: bool = False
 
