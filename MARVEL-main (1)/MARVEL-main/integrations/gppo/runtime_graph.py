@@ -92,13 +92,19 @@ class RuntimeGraphBuilder:
         states: list[UAVState] = []
 
         for robot in self.runtime.robots:
+            # Persistent high-level state, exactly as the frozen
+            # TaskManager._make_uav_state() reads it off the MARVEL Agent.
+            # Rebuilding this per graph would present every assigned UAV to
+            # the GPPO model as an idle Exploration UAV.
             states.append(
                 UAVState(
                     uav_id=int(robot.robot_id),
-                    available=True,
-                    busy_until=0.0,
-                    utilization=0.0,
-                    assigned_task_num=0,
+                    available=bool(getattr(robot, "available", True)),
+                    busy_until=float(getattr(robot, "busy_until", 0.0)),
+                    utilization=float(getattr(robot, "utilization", 0.0)),
+                    assigned_task_num=int(
+                        getattr(robot, "assigned_task_num", 0)
+                    ),
                     alive=True,
                     can_explore=self._is_capable(
                         robot.robot_type,
@@ -138,7 +144,10 @@ class RuntimeGraphBuilder:
                         ),
                     ),
                     velocity=max(float(robot.velocity), 1e-6),
-                    current_task=TaskType.EXPLORATION,
+                    current_task=RUNTIME_TASK_TYPE.get(
+                        str(getattr(robot, "current_task", "exploration")),
+                        TaskType.EXPLORATION,
+                    ),
                 )
             )
 

@@ -31,10 +31,18 @@ class PublicHeatPoint:
     serviced: bool = False
 
 
+# Frozen ExploreSearchCoordinator.add_subtask processing_time.
+FROZEN_SEARCH_PROCESSING_TIME = 6.0
+
+# Frozen RelayCoordinator.add_subtask processing_time.
+FROZEN_RELAY_PROCESSING_TIME = 1.0
+
+
 class SearchSlotBuilder:
     def __init__(
         self,
         max_search_uavs: int = 2,
+        search_service_steps: float = FROZEN_SEARCH_PROCESSING_TIME,
     ):
         self.max_search_uavs = int(max_search_uavs)
 
@@ -42,6 +50,13 @@ class SearchSlotBuilder:
             raise ValueError(
                 "max_search_uavs must be positive"
             )
+
+        # Frozen registers the Search subtask with
+        # processing_time=float(search_service_steps), which reaches the
+        # model through task_features[4] and edge_features[:, :, 1:3].
+        self.search_service_steps = max(
+            1.0, float(search_service_steps)
+        )
 
     def build(
         self,
@@ -82,6 +97,9 @@ class SearchSlotBuilder:
                 position=(
                     float(point.position[0]),
                     float(point.position[1]),
+                ),
+                processing_time=float(
+                    self.search_service_steps
                 ),
                 source_task_id=source_task_id,
                 source_entity_id=int(point.heat_id),
@@ -457,6 +475,10 @@ class ObservedRelayDemandBuilder:
                 task_type=TaskType.RELAY,
                 priority=2.0,
                 position=demand.anchor_position,
+                # Frozen RelayCoordinator registers processing_time=1.0.
+                processing_time=(
+                    FROZEN_RELAY_PROCESSING_TIME
+                ),
                 source_task_id=source_task_id,
                 source_entity_id=int(
                     demand.target_uav_id

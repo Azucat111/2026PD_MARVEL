@@ -28,6 +28,22 @@ class RobotState:
     angular_velocity: float = 0.0
     travel_distance: float = 0.0
 
+    # High-level task state, mirroring the frozen MARVEL Agent attributes
+    # (utils/agent.py:79-90) that the frozen TaskManager exposes to GPPO via
+    # UAVState.  These persist across high-level decisions; they are NOT
+    # rebuilt per graph.
+    #
+    #   available         False while the UAV holds a high-level assignment
+    #   busy_until        current_time + travel + processing at assignment
+    #   utilization       never updated by the frozen source; stays 0.0
+    #   assigned_task_num incremented by every apply_assignment
+    #   current_task      EXPLORATION between assignments
+    available: bool = True
+    busy_until: float = 0.0
+    utilization: float = 0.0
+    assigned_task_num: int = 0
+    current_task: str = "exploration"
+
 
 class SimulationRuntime:
     def __init__(self, scenario_config: Dict[str, Any]):
@@ -85,6 +101,12 @@ class SimulationRuntime:
         # and cleared on every reset so no episode leaks into the next.
         self.search_scenario = None
 
+        # UAVs currently holding a Search assignment.  The frozen worker
+        # gates detection on ``robot.current_task == TARGET_SEARCH``, so
+        # this is the equivalent robot-level state published by the
+        # high-level scheduler.  Empty when no GPPO scheduler is attached.
+        self.active_search_uav_ids: set[int] = set()
+
         # The default sensor shares the environment frame.
         self.sensor.frame = self.obstacles.frame
 
@@ -93,6 +115,8 @@ class SimulationRuntime:
         self.events: list[Dict[str, Any]] = []
         self.explored_cells: set[tuple[int, int]] = set()
         self.free_cell_count = max(1, self._exploration_denominator())
+        self._free_mask_cache: np.ndarray | None = None
+        self._free_cell_total = 0
 
     def _load_environment_map(self, environment: Dict[str, Any]) -> None:
         """Load the occupancy map in the configured geometry mode."""
@@ -142,6 +166,9 @@ class SimulationRuntime:
         # reinstalls it once the new initial UAV positions exist, and until
         # then no detection may resolve against the old episode.
         self.search_scenario = None
+        self.active_search_uav_ids = set()
+        self._free_mask_cache = None
+        self._free_cell_total = 0
         self.target_detector.hidden_targets = {
             str(task_id): list(entries)
             for task_id, entries in (
@@ -305,7 +332,58 @@ class SimulationRuntime:
 
     @property
     def exploration_rate(self) -> float:
+        if self.geometry_mode == GEOMETRY_MODE_NATIVE:
+            return self._native_exploration_rate()
+
         return min(1.0, len(self.explored_cells) / self.free_cell_count)
+
+    def _native_exploration_rate(self) -> float:
+        """Original MARVEL ``Env.evaluate_exploration_rate``.
+
+        Frozen source:
+
+            self.explored_rate = (np.sum(self.robot_belief == 255)
+                                  / np.sum(self.ground_truth == 255))
+
+        ``sensor.collision_check`` writes the *ground-truth* value of every
+        cell along each sensor ray into the belief map, so the numerator
+        counts observed cells that are genuinely free and the denominator
+        counts all free cells.  The team runtime's ``explored_cells`` holds
+        every visible cell regardless of occupancy, so the free mask has to
+        be applied to the numerator.
+        """
+
+        free = self._free_mask()
+
+        total = int(free.sum())
+
+        if total == 0:
+            return 0.0
+
+        observed = 0
+
+        for x, y in self.explored_cells:
+            if (
+                0 <= y < free.shape[0]
+                and 0 <= x < free.shape[1]
+                and free[y, x]
+            ):
+                observed += 1
+
+        return min(1.0, observed / float(total))
+
+    def _free_mask(self) -> np.ndarray:
+        """Cached free-cell mask of the occupancy lattice."""
+
+        if self._free_mask_cache is None:
+            self._free_mask_cache = (
+                self.obstacles.get_occupancy_grid() == 0
+            )
+            self._free_cell_total = int(
+                self._free_mask_cache.sum()
+            )
+
+        return self._free_mask_cache
 
     def get_event_log(self) -> list[Dict[str, Any]]:
         return list(self.events)
@@ -343,19 +421,17 @@ class SimulationRuntime:
             if task.task_type != "target_search":
                 continue
 
-            allowed_types = set(
-                task.assigned_robot_types
+            # Frozen worker rule: only UAVs whose current high-level task
+            # is TARGET_SEARCH run detection.  Being capable of Search is
+            # not sufficient, and an idle UAV never detects.
+            eligible_ids = sorted(
+                int(uid)
+                for uid in self.active_search_uav_ids
+                if uid in {
+                    int(robot.robot_id)
+                    for robot in self.robots
+                }
             )
-
-            eligible_ids = [
-                int(robot.robot_id)
-                for robot in self.robots
-                if (
-                    not allowed_types
-                    or robot.robot_type
-                    in allowed_types
-                )
-            ]
 
             detections[task.task_id] = (
                 self.target_detector.detect(

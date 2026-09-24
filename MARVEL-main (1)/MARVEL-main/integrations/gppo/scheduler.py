@@ -111,6 +111,9 @@ class GPPOTaskScheduler:
 
         self.search_builder = SearchSlotBuilder(
             max_search_uavs=self.max_search_uavs,
+            # Frozen Search subtasks are registered with
+            # processing_time=float(search_service_steps).
+            search_service_steps=float(self.search_service_steps),
         )
 
         self.relay_builder = ObservedRelayDemandBuilder(
@@ -347,6 +350,110 @@ class GPPOTaskScheduler:
         self.search_activated = False
         self.search_activation_step = None
 
+    # ------------------------------------------------------------------
+    # Persistent UAV high-level state (frozen TaskManager bridge)
+    # ------------------------------------------------------------------
+    def _robot_by_id(self, uav_id: int):
+        for robot in self.runtime.robots:
+            if int(robot.robot_id) == int(uav_id):
+                return robot
+
+        return None
+
+    def _apply_uav_state(
+        self,
+        uav_id: int,
+        task_type: str,
+        total_time: float,
+    ) -> None:
+        """Frozen ``TaskManager.apply_assignment`` robot-side effects.
+
+        ``robot.busy_until = current_time + travel + processing`` and
+        ``available = False`` until the assignment is released.
+        """
+
+        robot = self._robot_by_id(uav_id)
+
+        if robot is None:
+            return
+
+        robot.available = False
+        robot.busy_until = (
+            float(self.runtime.current_step * self.runtime.dt)
+            + float(total_time)
+        )
+        robot.assigned_task_num = int(
+            getattr(robot, "assigned_task_num", 0)
+        ) + 1
+        robot.current_task = str(task_type)
+
+    def _release_uav_state(self, uav_id: int) -> None:
+        """Frozen ``TaskManager._release_robot`` robot-side effects."""
+
+        robot = self._robot_by_id(uav_id)
+
+        if robot is None:
+            return
+
+        robot.available = True
+        robot.busy_until = float(
+            self.runtime.current_step * self.runtime.dt
+        )
+        robot.current_task = "exploration"
+
+    def _reconcile_uav_state(self) -> None:
+        """Release UAVs that no longer hold any high-level assignment.
+
+        Frozen releases on completion, cancellation and Safety preemption,
+        which all end in ``_release_robot``.  Anything not currently owned
+        by Search, Relay or Safety is an idle Exploration UAV.
+        """
+
+        owned: set[int] = set()
+
+        for heat_id, uid in self.search_assignments.items():
+            if int(heat_id) not in self.serviced_heat_ids:
+                owned.add(int(uid))
+
+        for helper_uid, _anchor in self.relay_assignments.values():
+            owned.add(int(helper_uid))
+
+        for robot in self.runtime.robots:
+            uid = int(robot.robot_id)
+
+            if uid in self.safety.active_uav_ids:
+                # Frozen SafetyCoordinator: current_task=SAFETY,
+                # available=False, busy_until=current_time.
+                robot.current_task = "safety"
+                robot.available = False
+                robot.busy_until = float(
+                    self.runtime.current_step * self.runtime.dt
+                )
+                continue
+
+            if uid in owned:
+                continue
+
+            if not bool(getattr(robot, "available", True)):
+                self._release_uav_state(uid)
+
+            robot.current_task = "exploration"
+
+        self._publish_search_uavs()
+
+    def _publish_search_uavs(self) -> None:
+        """Publish the frozen "currently assigned Search UAV" set.
+
+        This is ``robot.current_task == TARGET_SEARCH`` in the frozen
+        worker, and it is what gates sensor detection.
+        """
+
+        self.runtime.active_search_uav_ids = {
+            int(uid)
+            for heat_id, uid in self.search_assignments.items()
+            if int(heat_id) not in self.serviced_heat_ids
+        }
+
     def _has_task(self, task_type: str) -> bool:
         return any(
             task.task_type == task_type
@@ -381,6 +488,8 @@ class GPPOTaskScheduler:
             heat_id,
             None,
         )
+
+        self._publish_search_uavs()
 
     def _observe_runtime(self) -> None:
         step = int(self.runtime.current_step)
@@ -566,6 +675,7 @@ class GPPOTaskScheduler:
     ) -> None:
         if not self.search_activated:
             self.search_assignments.clear()
+            self._publish_search_uavs()
             return
 
         task = self._active_task(
@@ -574,6 +684,7 @@ class GPPOTaskScheduler:
 
         if task is None:
             self.search_assignments.clear()
+            self._publish_search_uavs()
             return
 
         # Remove externally serviced heat points.
@@ -669,6 +780,14 @@ class GPPOTaskScheduler:
             self.search_assignments[
                 heat_id
             ] = int(decision.uav_id)
+
+            self._apply_uav_state(
+                decision.uav_id,
+                "target_search",
+                decision.total_time,
+            )
+
+        self._publish_search_uavs()
 
     def _refresh_relay(
         self,
@@ -797,6 +916,12 @@ class GPPOTaskScheduler:
                 anchor_by_target[target_uid],
             )
 
+            self._apply_uav_state(
+                decision.uav_id,
+                "relay",
+                decision.total_time,
+            )
+
         # A newly triggered Relay event starts with a fresh
         # counterfactual stability window.
         self.relay_release_gate.reset_stability()
@@ -816,8 +941,17 @@ class GPPOTaskScheduler:
         # consumed at this GPPO decision boundary.
         self._sync_search_completions()
 
+        # Release anything that no longer holds an assignment, and publish
+        # the currently assigned Search UAV set, before the allocation
+        # graphs are built.
+        self._reconcile_uav_state()
+
         self._refresh_search(stale)
         self._refresh_relay(stale)
+
+        # Newly created assignments change UAV availability for the next
+        # graph build.
+        self._reconcile_uav_state()
 
     @staticmethod
     def _heading(
@@ -1047,6 +1181,10 @@ class GPPOTaskScheduler:
             }
             for uid in escaped
         ]
+
+        # Completion releases the UAV in the frozen coordinator, so the
+        # published Search set must shrink before the next detection.
+        self._reconcile_uav_state()
 
         return (
             search_events

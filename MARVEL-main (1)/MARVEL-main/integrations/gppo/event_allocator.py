@@ -40,6 +40,10 @@ class GPPOEventAssignment:
     flat_action: int
     value: float
 
+    # Frozen TaskManager.apply_assignment quantities.
+    processing_time: float = 0.0
+    total_time: float = 0.0
+
 
 class GPPOEventAllocator:
     """Sequential frozen-GPPO event allocation."""
@@ -164,6 +168,14 @@ class GPPOEventAllocator:
                 int(subtask.subtask_id)
             ]
 
+            total_time = float(
+                graph.edge_features[
+                    decision.task_index,
+                    decision.uav_index,
+                    2,
+                ]
+            )
+
             assignments.append(
                 GPPOEventAssignment(
                     slot_id=int(subtask.subtask_id),
@@ -177,6 +189,10 @@ class GPPOEventAllocator:
                         decision.flat_action
                     ),
                     value=float(decision.value),
+                    processing_time=float(
+                        subtask.processing_time
+                    ),
+                    total_time=total_time,
                 )
             )
 
@@ -186,6 +202,7 @@ class GPPOEventAllocator:
             )
 
             uav.available = False
+            uav.busy_until = float(current_time) + total_time
             uav.assigned_task_num += 1
             uav.current_task = TaskType(
                 subtask.task_type
