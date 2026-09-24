@@ -83,6 +83,32 @@ class GPPOTaskScheduler:
             mixed["max_relay_uavs"]
         )
 
+        self.search_activation_threshold = float(
+            mixed["activation_threshold"]
+        )
+
+        frozen_profile = runtime.config.get(
+            "_gppo_profile",
+            {},
+        )
+
+        self.search_service_steps = int(
+            frozen_profile.get(
+                "search_service_steps",
+                6,
+            )
+        )
+
+        self.search_reach_radius = float(
+            frozen_profile.get(
+                "search_reach_radius",
+                3.5,
+            )
+        )
+
+        self.search_activated = False
+        self.search_activation_step = None
+
         self.search_builder = SearchSlotBuilder(
             max_search_uavs=self.max_search_uavs,
         )
@@ -118,6 +144,14 @@ class GPPOTaskScheduler:
 
         self.heat_by_id = {
             point.heat_id: point
+            for point in self.heat_points
+        }
+
+        # Frozen coordinator stores dwell per Search subtask.
+        # In this integration one heat point corresponds to one
+        # persistent Search slot, so heat_id is the equivalent key.
+        self.search_dwell_by_heat = {
+            int(point.heat_id): 0
             for point in self.heat_points
         }
 
@@ -405,11 +439,41 @@ class GPPOTaskScheduler:
 
         self._last_observed_step = step
 
-    def _sync_search_completions(self) -> None:
-        """Translate sensor-detected target IDs into serviced heat points.
+    def _maybe_activate_search(self) -> bool:
+        """Frozen Search activation: explored_rate >= threshold only."""
 
-        Target coordinates never enter this scheduler.
+        if self.search_activated:
+            return False
+
+        if not self._has_task(
+            "target_search"
+        ):
+            return False
+
+        if (
+            float(self.runtime.exploration_rate)
+            <
+            self.search_activation_threshold
+        ):
+            return False
+
+        self.search_activated = True
+
+        self.search_activation_step = int(
+            self.clock.mission_step(
+                self.runtime.current_step
+            )
+        )
+
+        return True
+
+    def _sync_search_completions(self) -> list[int]:
+        """Translate sensor detections into completed Search slots.
+
+        Hidden coordinates never enter the scheduler.
         """
+
+        newly_serviced = []
 
         search_tasks = [
             task
@@ -431,14 +495,128 @@ class GPPOTaskScheduler:
                         f"mapping: target_index={target_index}"
                     )
 
+                if heat_id in self.serviced_heat_ids:
+                    continue
+
                 self.mark_heat_serviced(
                     heat_id
                 )
+
+                newly_serviced.append(
+                    int(heat_id)
+                )
+
+        return newly_serviced
+
+    def _update_search_service(self):
+        """Frozen 6-step continuous dwell completion."""
+
+        events = []
+
+        robot_by_id = {
+            int(robot.robot_id): robot
+            for robot in self.runtime.robots
+        }
+
+        for heat_id, uav_id in list(
+            self.search_assignments.items()
+        ):
+            heat_id = int(heat_id)
+            uav_id = int(uav_id)
+
+            if heat_id in self.serviced_heat_ids:
+                continue
+
+            point = self.heat_by_id.get(
+                heat_id
+            )
+
+            robot = robot_by_id.get(
+                uav_id
+            )
+
+            if point is None or robot is None:
+                continue
+
+            distance = float(
+                np.linalg.norm(
+                    np.asarray(
+                        robot.position,
+                        dtype=float,
+                    )[:2]
+                    -
+                    np.asarray(
+                        point.position,
+                        dtype=float,
+                    )[:2]
+                )
+            )
+
+            if (
+                distance
+                <=
+                self.search_reach_radius
+                + 1e-9
+            ):
+                self.search_dwell_by_heat[
+                    heat_id
+                ] = (
+                    self.search_dwell_by_heat.get(
+                        heat_id,
+                        0,
+                    )
+                    + 1
+                )
+            else:
+                # Frozen semantics require consecutive dwell.
+                self.search_dwell_by_heat[
+                    heat_id
+                ] = 0
+
+            if (
+                self.search_dwell_by_heat[
+                    heat_id
+                ]
+                >=
+                self.search_service_steps
+            ):
+                dwell_steps = int(
+                    self.search_dwell_by_heat[
+                        heat_id
+                    ]
+                )
+
+                self.mark_heat_serviced(
+                    heat_id
+                )
+
+                events.append({
+                    "type":
+                        "gppo_search_heat_serviced",
+                    "heat_id":
+                        heat_id,
+                    "robot_id":
+                        uav_id,
+                    "reason":
+                        "dwell",
+                    "dwell_steps":
+                        dwell_steps,
+                    "step":
+                        int(
+                            self.runtime.current_step
+                        ),
+                })
+
+        return events
 
     def _refresh_search(
         self,
         stale_positions,
     ) -> None:
+        if not self.search_activated:
+            self.search_assignments.clear()
+            return
+
         task = self._active_task(
             "target_search"
         )
@@ -668,6 +846,10 @@ class GPPOTaskScheduler:
 
         self.last_event_assignments = []
 
+        # Frozen maybe_activate() is evaluated once per
+        # high-level mission step and has no time gate.
+        self._maybe_activate_search()
+
         # Sensor detection from the preceding physics ticks is
         # consumed at this GPPO decision boundary.
         self._sync_search_completions()
@@ -863,12 +1045,37 @@ class GPPOTaskScheduler:
         ):
             return []
 
+        # Target-found short circuit is checked before dwell.
+        detected_heat_ids = (
+            self._sync_search_completions()
+        )
+
+        search_events = [
+            {
+                "type":
+                    "gppo_search_heat_serviced",
+                "heat_id":
+                    int(heat_id),
+                "reason":
+                    "target_found",
+                "step":
+                    int(
+                        self.runtime.current_step
+                    ),
+            }
+            for heat_id in detected_heat_ids
+        ]
+
+        search_events.extend(
+            self._update_search_service()
+        )
+
         escaped = self.safety.post_motion_update(
             self,
             int(self.runtime.current_step),
         )
 
-        return [
+        safety_events = [
             {
                 "type": "gppo_safety_escape",
                 "robot_id": int(uid),
@@ -878,6 +1085,11 @@ class GPPOTaskScheduler:
             }
             for uid in escaped
         ]
+
+        return (
+            search_events
+            + safety_events
+        )
 
     def apply(self, actions):
         actions = list(actions)
@@ -947,21 +1159,57 @@ class GPPOTaskScheduler:
                 int(uav_id)
             )
 
-            route = observed_next_hop(
-                agent,
+            anchor = np.asarray(
                 point.position,
+                dtype=float,
             )
 
-            if route is not None:
-                goal, _node_index = route
+            distance_to_anchor = float(
+                np.linalg.norm(
+                    np.asarray(
+                        robot.position,
+                        dtype=float,
+                    )[:2]
+                    - anchor[:2]
+                )
+            )
+
+            if (
+                distance_to_anchor
+                <=
+                self.search_reach_radius
+                + 1e-9
+            ):
+                # Frozen hold_radius behavior.
+                goal = np.asarray(
+                    robot.position,
+                    dtype=float,
+                ).copy()
 
                 actions[index] = (
                     goal,
                     self._heading(
                         robot,
-                        goal,
+                        anchor,
                     ),
                 )
+
+            else:
+                route = observed_next_hop(
+                    agent,
+                    point.position,
+                )
+
+                if route is not None:
+                    goal, _node_index = route
+
+                    actions[index] = (
+                        goal,
+                        self._heading(
+                            robot,
+                            goal,
+                        ),
+                    )
 
             used_uavs.add(int(uav_id))
 

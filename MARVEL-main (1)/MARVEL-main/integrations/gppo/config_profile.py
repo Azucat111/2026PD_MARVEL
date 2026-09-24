@@ -47,17 +47,31 @@ def prepare_gppo_config(
     # Hidden target truth is segregated from the public task layer.
     hidden_targets = {}
 
-    # Scale task gates expressed in mission-step units.
+    # Align task activation with the frozen Phase14 protocol.
     for task in cfg.get("tasks", []):
-        activation = task.get("activation", {})
-        if "step" in activation:
+        activation = task.setdefault(
+            "activation",
+            {},
+        )
+        task_type = task.get("type")
+
+        if task_type == "target_search":
+            # Frozen maybe_activate() has no independent time gate.
+            activation.pop("step", None)
+            activation["condition"] = (
+                "exploration_rate >= "
+                f"{float(frozen['activation_threshold']):.12g}"
+            )
+
+        elif "step" in activation:
+            # Non-Search legacy gates remain in mission-time units.
             activation["step"] = (
                 int(activation["step"]) * interval
             )
 
         params = task.get("params", {})
 
-        if task.get("type") == "target_search":
+        if task_type == "target_search":
             truth = list(params.pop("targets", []))
 
             hidden_targets[
@@ -119,6 +133,24 @@ def prepare_gppo_config(
         "stale_age_fraction": (
             float(frozen["comm_delay_ms"])
             / control_step_ms
+        ),
+        "activation_threshold": float(
+            frozen["activation_threshold"]
+        ),
+        # Exact frozen Search defaults.
+        "search_service_steps": 6,
+        "search_sensor_range": 10.0,
+        "search_reach_radius": max(
+            10.0 * 0.35,
+            float(
+                cfg.get(
+                    "environment",
+                    {},
+                ).get(
+                    "map_resolution",
+                    1.0,
+                )
+            ),
         ),
     })
 
