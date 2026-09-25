@@ -159,7 +159,9 @@ def test_geometry_mode_is_explicit_and_validated(tmp_path):
 def test_native_map_geometry_matches_original_marvel():
     map_path = resolve_marvel_map(MAPS_TEST, 0)
 
-    occupancy, origin, ground_truth = load_marvel_native_map(map_path)
+    occupancy, origin, ground_truth, _initial_cell = load_marvel_native_map(
+        map_path
+    )
 
     # raw 500x500 -> block_reduce(2, min) -> 250x250
     assert ground_truth.shape == (250, 250)
@@ -419,7 +421,9 @@ def test_native_occupancy_matches_upstream_marvel(frozen_probe):
 
     map_path = MAPS_TEST / frozen_probe["map_name"]
 
-    occupancy, origin, ground_truth = load_marvel_native_map(map_path)
+    occupancy, origin, ground_truth, _initial_cell = load_marvel_native_map(
+        map_path
+    )
 
     assert list(ground_truth.shape) == frozen_probe["ground_truth_shape"]
     assert int((ground_truth == FREE).sum()) == frozen_probe["ground_truth_free"]
@@ -467,7 +471,7 @@ def test_search_generator_matches_frozen_coordinator(frozen_probe):
 
     map_path = MAPS_TEST / frozen_probe["map_name"]
 
-    occupancy, origin, _ = load_marvel_native_map(map_path)
+    occupancy, origin, _, _ = load_marvel_native_map(map_path)
 
     radii = FrozenSearchRadii.derive(
         sensor_range=frozen_probe["sensor_range"],

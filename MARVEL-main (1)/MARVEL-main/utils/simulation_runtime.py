@@ -534,6 +534,17 @@ class SimulationRuntime:
 
         frame = self.obstacles.frame
 
+        # Frozen ScenarioEnv.__init__ first sweeps the start-marker cell
+        # with a full 360 degree field of view, before any per-agent sweep.
+        initial_cell = getattr(
+            self.obstacles, "marvel_initial_cell", None
+        )
+
+        if initial_cell is not None:
+            self.native_belief.observe_with_fov(
+                initial_cell, 0.0, 360.0
+            )
+
         for robot in self.robots:
             self.native_belief.observe(
                 frame.world_to_cell(robot.position),

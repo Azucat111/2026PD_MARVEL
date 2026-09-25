@@ -72,6 +72,7 @@ class ObstacleManager:
         self._file_grid: Optional[np.ndarray] = None  # H×W uint8, 1=occupied 0=free
         # Original MARVEL 255/1 map, populated only in marvel_native mode.
         self.marvel_ground_truth: Optional[np.ndarray] = None
+        self.marvel_initial_cell: Optional[np.ndarray] = None
         self.reset()
 
     def load_from_file(self, path: str) -> None:
@@ -122,8 +123,10 @@ class ObstacleManager:
             map_dir, int(episode_index)
         )
 
-        grid, origin, ground_truth = load_marvel_native_map(
-            map_path, cell_size=self.cell_size
+        grid, origin, ground_truth, initial_cell = (
+            load_marvel_native_map(
+                map_path, cell_size=self.cell_size
+            )
         )
 
         self._file_grid = grid
@@ -135,6 +138,10 @@ class ObstacleManager:
         # Original 255/1 encoding, needed by the frozen sensing/belief
         # path, which writes ground-truth values into the belief map.
         self.marvel_ground_truth = ground_truth
+
+        # Frozen ScenarioEnv performs its first sensing sweep from this
+        # cell with a full 360 degree field of view.
+        self.marvel_initial_cell = initial_cell
 
     @property
     def frame(self) -> GeometryFrame:

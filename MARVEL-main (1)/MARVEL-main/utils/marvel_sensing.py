@@ -243,6 +243,20 @@ class MarvelNativeBelief:
         loop requires integer seeds.
         """
 
+        self.observe_with_fov(cell, heading, self.fov)
+
+    def observe_with_fov(
+        self,
+        cell,
+        heading: float,
+        fov: float,
+    ) -> None:
+        """One sensing sweep from *cell* with an explicit field of view.
+
+        Frozen ``ScenarioEnv.__init__`` uses this for its first sweep of
+        the start marker with ``fov = 360``.
+        """
+
         integer_cell = np.around(
             np.asarray(cell, dtype=float)
         ).astype(int)
@@ -253,7 +267,7 @@ class MarvelNativeBelief:
             self.belief,
             self.ground_truth,
             float(heading),
-            self.fov,
+            float(fov),
         )
 
     # ------------------------------------------------------------------

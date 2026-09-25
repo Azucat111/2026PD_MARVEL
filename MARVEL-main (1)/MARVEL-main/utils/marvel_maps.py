@@ -145,12 +145,14 @@ def load_marvel_native_map(
     *,
     cell_size: float = MARVEL_CELL_SIZE,
     downsample: int = DOWNSAMPLE_FACTOR,
-) -> tuple[np.ndarray, tuple[float, float], np.ndarray]:
+) -> tuple[np.ndarray, tuple[float, float], np.ndarray, np.ndarray]:
     """Load one map in original MARVEL geometry.
 
-    Returns ``(occupancy, origin, ground_truth)`` where ``occupancy`` uses
-    the runtime's 0-free / 1-occupied convention on the 0.4 m lattice and
-    ``origin`` is the upstream belief origin in metres.
+    Returns ``(occupancy, origin, ground_truth, initial_cell)`` where
+    ``occupancy`` uses the runtime's 0-free / 1-occupied convention on the
+    0.4 m lattice, ``origin`` is the upstream belief origin in metres, and
+    ``initial_cell`` is the map's start-marker cell that
+    ``ScenarioEnv.__init__`` performs its initial 360 degree sweep from.
     """
 
     ground_truth, initial_cell = import_marvel_ground_truth(
@@ -161,7 +163,12 @@ def load_marvel_native_map(
         initial_cell, cell_size=cell_size
     )
 
-    return marvel_occupancy(ground_truth), origin, ground_truth
+    return (
+        marvel_occupancy(ground_truth),
+        origin,
+        ground_truth,
+        np.asarray(initial_cell, dtype=int),
+    )
 
 
 def free_lattice_coordinates(

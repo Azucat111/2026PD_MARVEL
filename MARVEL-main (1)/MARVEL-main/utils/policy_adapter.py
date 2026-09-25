@@ -338,9 +338,31 @@ class MARVELPolicyAdapter:
         if total_marked > 0 and self.verbose:
             print(f"[PolicyAdapter] Updated belief: {len(visible_cells)} cells -> {total_marked} belief cells marked FREE")
 
+    def _belief_array(self) -> np.ndarray:
+        """The belief map the MARVEL graph is built from.
+
+        In ``marvel_native`` this MUST be the frozen ``robot_belief``
+        array: frozen ``ScenarioEnv`` hands ``MapInfo(self.robot_belief,
+        belief_origin_x, belief_origin_y, CELL_SIZE)`` to
+        ``Agent.update_graph``.  The adapter's own ``belief_map`` is
+        written from ``IdealSensor`` visible cells, which is a different
+        observation model, so using it here would build a different node
+        graph and therefore select different actions.
+
+        ``extended`` keeps the adapter's accumulated map unchanged.
+        """
+
+        if self._frame.is_native:
+            native = getattr(self.runtime, "native_belief", None)
+
+            if native is not None:
+                return native.belief.copy()
+
+        return self.belief_map.copy()
+
     def _build_map_info(self) -> MapInfo:
         return MapInfo(
-            self.belief_map.copy(),
+            self._belief_array(),
             float(self._belief_origin[0]),
             float(self._belief_origin[1]),
             CELL_SIZE,

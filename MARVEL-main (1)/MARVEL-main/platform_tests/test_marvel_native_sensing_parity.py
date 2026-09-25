@@ -200,7 +200,7 @@ def frozen_sensing(tmp_path_factory):
 
 @pytest.fixture(scope="module")
 def native_ground_truth():
-    _occupancy, _origin, ground_truth = load_marvel_native_map(
+    _occupancy, _origin, ground_truth, _initial_cell = load_marvel_native_map(
         ROOT / "maps_test" / MAP_NAME
     )
 
@@ -208,7 +208,7 @@ def native_ground_truth():
 
 
 def _belief():
-    _occupancy, _origin, ground_truth = load_marvel_native_map(
+    _occupancy, _origin, ground_truth, _initial_cell = load_marvel_native_map(
         ROOT / "maps_test" / MAP_NAME
     )
 

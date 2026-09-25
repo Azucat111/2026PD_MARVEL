@@ -100,8 +100,12 @@ FROZEN_MOTION_PROBE = textwrap.dedent(
     from utils.motion_model import compute_allowable_heading
 
     image = io.imread("maps_test/1.png", 1).astype(int)
-    gt = block_reduce(image, 2, np.min)
-    gt = (gt > 150) | ((gt <= 80) & (gt >= 50))
+    raw = block_reduce(image, 2, np.min)
+    # The start marker is detected on the PRE-threshold array, exactly as
+    # import_ground_truth does.
+    marker = np.array(np.nonzero(raw == 208))
+    initial_cell = np.array([marker[1, 10], marker[0, 10]])
+    gt = (raw > 150) | ((raw <= 80) & (raw >= 50))
     gt = (gt * 254 + 1).astype(np.int32)
 
     payload = json.loads(sys.argv[1])
@@ -119,6 +123,11 @@ FROZEN_MOTION_PROBE = textwrap.dedent(
         return np.array([(p[0]-origin[0])/CELL, (p[1]-origin[1])/CELL], dtype=float)
 
     belief = np.ones(gt.shape, dtype=np.int32) * 127
+
+    # Frozen ScenarioEnv.__init__ line 66: a full 360 degree sweep of the
+    # map's start-marker cell, before any per-agent sweep.
+    belief = sensor_work_heading(
+        initial_cell, RANGE_CELLS, belief, gt, 0, 360)
 
     # Frozen ScenarioEnv.__init__: initial sensing per robot.
     for i in range(len(positions)):
@@ -182,7 +191,7 @@ def frozen_motion(tmp_path_factory):
     if not FROZEN_REPO.exists():
         pytest.skip("frozen MARVEL repo not available")
 
-    _occupancy, origin, _gt = load_marvel_native_map(
+    _occupancy, origin, _gt, _initial_cell = load_marvel_native_map(
         ROOT / "maps_test" / MAP_NAME
     )
 
