@@ -294,6 +294,7 @@ FROZEN_RESOLVER_PROBE = textwrap.dedent(
     from utils.scenario_env import ScenarioEnv
     from utils.node_manager import NodeManager
     from utils.agent import Agent
+    from utils.marvel_gppo_test_worker import MarvelGPPOTestWorker
     from parameter import FOV, SENSOR_RANGE
 
     SEED = int(sys.argv[1])
@@ -307,128 +308,221 @@ FROZEN_RESOLVER_PROBE = textwrap.dedent(
                     SENSOR_RANGE, nm, None, "cpu", False)
               for i in range(4)]
 
+    # Populate the graph the same way production does.  Seeding it by hand
+    # would need NodeManager.add_node_to_dict(coords, local_frontiers,
+    # updating_map_info), i.e. real frontier and map objects.
+    for a in agents:
+        a.update_graph(env.belief_info, env.robot_locations[a.id].copy())
+    for a in agents:
+        a.update_planning_state(env.robot_locations)
+
     class _W:
         """Minimal worker shim: only the resolver is exercised."""
         robot_list = agents
         n_agents = 4
         node_manager = nm
 
-        @staticmethod
-        def _resolve_same_waypoint_collisions(selected_locations):
-            from utils.marvel_gppo_test_worker import MarvelGPPOTestWorker
-            return MarvelGPPOTestWorker._resolve_same_waypoint_collisions(
-                _W, selected_locations)
+    for i, location in enumerate(case["locations"]):
+        agents[i].location = np.asarray(location, dtype=float)
 
-    n = int(case["n_nodes"])
-    nodes = nm.nodes_dict
-    # Seed the graph so nearest_neighbors has candidates.
-    for i in range(n):
-        nodes.add_node((float(case["seed_x"]) + i, float(case["seed_y"])))
+    resolved = MarvelGPPOTestWorker._resolve_same_waypoint_collisions(
+        _W, np.asarray(case["waypoints"], dtype=float)
+    )
 
-    for i, coords in enumerate(case["nodes"]):
-        nodes.add_node((float(coords[0]), float(coords[1])))
-
-    for i in range(4):
-        agents[i].location = np.asarray(case["locations"][i], dtype=float)
-
-    try:
-        out = _W._resolve_same_waypoint_collisions(case["waypoints"])
-    except Exception as exc:  # pragma: no cover - reported to the test
-        print(json.dumps({"error": repr(exc)}))
-        raise SystemExit(0)
-
-    print(json.dumps({"resolved": np.asarray(out, float).tolist()}))
+    print(json.dumps({
+        "node_coords": np.asarray(agents[0].node_coords, float).tolist(),
+        "resolved": np.asarray(resolved, float).tolist(),
+    }))
     '''
 )
 
 
-RESOLVER_CASES = {
-    "all_distinct": {
-        "seed_x": 20.0, "seed_y": 20.0, "n_nodes": 30,
-        "nodes": [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]],
-        "locations": [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]],
-        "waypoints": [[4.0, 0.0], [8.0, 0.0], [12.0, 0.0], [16.0, 0.0]],
-    },
-    "two_duplicates": {
-        "seed_x": 20.0, "seed_y": 20.0, "n_nodes": 30,
-        "nodes": [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]],
-        "locations": [[0.0, 0.0], [0.5, 0.0], [8.0, 0.0], [12.0, 0.0]],
-        # robots 0 and 1 both claim [8, 0]; robot 0 is closer to it.
-        "waypoints": [[8.0, 0.0], [8.0, 0.0], [12.0, 0.0], [16.0, 0.0]],
-    },
-    "multiple_duplicates": {
-        "seed_x": 20.0, "seed_y": 20.0, "n_nodes": 30,
-        "nodes": [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]],
-        "locations": [[0.0, 0.0], [0.5, 0.0], [1.0, 0.0], [1.5, 0.0]],
-        # all four claim the same node.
-        "waypoints": [[4.0, 0.0], [4.0, 0.0], [4.0, 0.0], [4.0, 0.0]],
-    },
-}
+@pytest.fixture(scope="module")
+def frozen_resolver(tmp_path_factory, frozen_starts):
+    """Frozen graph + resolver output for the four resolver cases."""
 
-
-def _frozen_resolve(tmp_path, case):
     if not FROZEN_REPO.exists():
         pytest.skip("frozen MARVEL repo not available")
 
-    script = tmp_path / "resolver_probe.py"
+    starts = frozen_starts["starts"]
+
+    script = tmp_path_factory.mktemp("resolver") / "probe.py"
     script.write_text(FROZEN_RESOLVER_PROBE, encoding="utf-8")
 
+    # First call only supplies locations and a placeholder waypoint list;
+    # the probe returns the real node coordinates, from which the duplicate
+    # cases are then built so both sides resolve identical inputs.
     result = subprocess.run(
-        [sys.executable, str(script), str(SEED), json.dumps(case)],
+        [sys.executable, str(script), str(SEED),
+         json.dumps({"locations": starts, "waypoints": starts})],
         capture_output=True, text=True, cwd=str(FROZEN_REPO),
     )
 
     if result.returncode != 0:
-        pytest.skip(f"frozen resolver probe failed: {result.stderr[-400:]}")
+        pytest.fail(
+            "frozen resolver probe failed:\n" + result.stderr[-800:]
+        )
 
     payload = json.loads(result.stdout.strip().splitlines()[-1])
+    nodes = np.asarray(payload["node_coords"], dtype=float)
 
-    if "error" in payload:
-        pytest.skip(f"frozen resolver unavailable: {payload['error']}")
+    assert len(nodes) >= 8, "frozen graph too small for resolver cases"
 
-    return np.asarray(payload["resolved"], dtype=float)
+    waypoints = {
+        "all_distinct": [
+            nodes[1], nodes[2], nodes[3], nodes[4],
+        ],
+        "two_duplicates": [
+            nodes[5], nodes[5], nodes[2], nodes[3],
+        ],
+        "multiple_duplicates": [
+            nodes[6], nodes[6], nodes[6], nodes[6],
+        ],
+    }
+
+    resolved = {}
+
+    for name, case_waypoints in waypoints.items():
+        case = {
+            "locations": [list(map(float, s)) for s in starts],
+            "waypoints": [list(map(float, w)) for w in case_waypoints],
+        }
+
+        result = subprocess.run(
+            [sys.executable, str(script), str(SEED), json.dumps(case)],
+            capture_output=True, text=True, cwd=str(FROZEN_REPO),
+        )
+
+        if result.returncode != 0:
+            pytest.fail(
+                f"frozen resolver probe failed for {name}:\n"
+                + result.stderr[-800:]
+            )
+
+        resolved[name] = np.asarray(
+            json.loads(
+                result.stdout.strip().splitlines()[-1]
+            )["resolved"],
+            dtype=float,
+        )
+
+    return {
+        "starts": np.asarray(starts, dtype=float),
+        "nodes": nodes,
+        "waypoints": waypoints,
+        "resolved": resolved,
+    }
 
 
-@pytest.mark.parametrize("name", sorted(RESOLVER_CASES))
-def test_same_waypoint_resolver_matches_frozen(tmp_path, name):
+@pytest.mark.parametrize(
+    "name", ["all_distinct", "two_duplicates", "multiple_duplicates"]
+)
+def test_same_waypoint_resolver_matches_frozen(tmp_path, frozen_resolver, name):
     """The port must reproduce the real frozen resolver exactly."""
 
-    case = RESOLVER_CASES[name]
-
-    frozen = _frozen_resolve(tmp_path, case)
-
-    runtime = _native_runtime(tmp_path, case["locations"])
+    runtime = _native_runtime(
+        tmp_path, frozen_resolver["starts"].tolist()
+    )
     adapter = _adapter(runtime)
 
-    for robot, location in zip(runtime.robots, case["locations"]):
+    # The frozen probe builds its graph from the initial locations before
+    # resolving, so the integration must do the same.
+    adapter._policy_actions(runtime._get_observations())
+
+    for robot, location in zip(
+        runtime.robots, frozen_resolver["starts"]
+    ):
         robot.position = np.asarray(location, dtype=float)
 
-    resolved = adapter._resolve_same_waypoint_collisions(
-        [np.asarray(w, dtype=float) for w in case["waypoints"]]
+    # The graphs must agree first, otherwise the comparison is vacuous.
+    integration_nodes = np.asarray(
+        adapter.agents[0].node_coords, dtype=float
     )
 
+    assert integration_nodes.shape == frozen_resolver["nodes"].shape, (
+        name, integration_nodes.shape, frozen_resolver["nodes"].shape,
+    )
     assert np.allclose(
-        np.asarray(resolved, dtype=float), frozen, atol=1e-9
-    ), (name, np.asarray(resolved).tolist(), frozen.tolist())
+        integration_nodes, frozen_resolver["nodes"], atol=1e-9
+    ), f"{name}: node graphs differ, resolver comparison is not valid"
+
+    case_waypoints = [
+        np.asarray(w, dtype=float)
+        for w in frozen_resolver["waypoints"][name]
+    ]
+
+    resolved = adapter._resolve_same_waypoint_collisions(case_waypoints)
+
+    assert np.allclose(
+        np.asarray(resolved, dtype=float),
+        frozen_resolver["resolved"][name],
+        atol=1e-9,
+    ), (
+        name,
+        np.asarray(resolved).tolist(),
+        frozen_resolver["resolved"][name].tolist(),
+    )
+
+    if name != "all_distinct":
+        assert not np.allclose(
+            np.asarray(resolved, dtype=float),
+            np.asarray(case_waypoints, dtype=float),
+        ), f"{name}: resolver did not fire, case is vacuous"
 
 
 def test_resolver_keeps_duplicate_when_no_alternative(tmp_path):
-    """Frozen fallback: every candidate taken -> the duplicate is kept."""
+    """Case D — frozen fallback when every candidate is taken.
 
-    runtime = _native_runtime(tmp_path, [[0.0, 0.0], [4.0, 0.0]])
+    Frozen walks the 25 nearest graph nodes and assigns the first whose
+    exact coordinates are unclaimed.  If none is free the loop ends
+    without assignment, so the duplicate waypoint survives unchanged.
+
+    A real graph here has 17 nodes and only 4 UAVs, so the fallback cannot
+    be reached naturally; the candidate source is stubbed to return only
+    already-claimed coordinates.  The assertion is on the control flow
+    frozen defines, not on a reimplementation of the search.
+    """
+
+    runtime = _native_runtime(
+        tmp_path, [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]]
+    )
     adapter = _adapter(runtime)
 
-    shared = np.asarray([4.0, 0.0], dtype=float)
+    for robot, location in zip(
+        runtime.robots, [[0.0, 0.0], [4.0, 0.0], [8.0, 0.0], [12.0, 0.0]]
+    ):
+        robot.position = np.asarray(location, dtype=float)
 
-    # Claim the node itself; with an empty graph the nearest-neighbour
-    # search yields nothing, so the second duplicate must survive.
-    resolved = adapter._resolve_same_waypoint_collisions(
-        [shared.copy(), shared.copy()]
-    )
+    claimed = np.asarray([4.0, 4.0], dtype=float)
 
-    assert resolved.shape == (2, 2)
-    assert np.allclose(resolved[0], shared, atol=1e-9)
-    assert np.allclose(resolved[1], shared, atol=1e-9)
+    class _StubNode:
+        def __init__(self, coords):
+            self.data = type("D", (), {"coords": coords})()
+
+    class _StubDict:
+        def nearest_neighbors(self, point, count):
+            # Every candidate is the already-claimed node.
+            return [_StubNode(claimed.copy())]
+
+    class _StubManager:
+        nodes_dict = _StubDict()
+
+    for agent in adapter.agents:
+        agent.node_manager = _StubManager()
+
+    waypoints = [
+        claimed.copy(),
+        claimed.copy(),
+        np.asarray([8.0, 0.0], dtype=float),
+        np.asarray([12.0, 0.0], dtype=float),
+    ]
+
+    resolved = adapter._resolve_same_waypoint_collisions(waypoints)
+
+    # Robot 0 claims `claimed`; robot 1 is the duplicate and finds only
+    # `claimed` among its candidates, so it keeps its waypoint unchanged.
+    assert np.allclose(resolved[0], claimed, atol=1e-9)
+    assert np.allclose(resolved[1], claimed, atol=1e-9)
 
 
 # ======================================================================
