@@ -338,6 +338,26 @@ class MARVELPolicyAdapter:
         if total_marked > 0 and self.verbose:
             print(f"[PolicyAdapter] Updated belief: {len(visible_cells)} cells -> {total_marked} belief cells marked FREE")
 
+    def _observation_padding(self) -> bool:
+        """The `pad` argument for `Agent.get_observation`.
+
+        Frozen Phase14-v9 action selection runs with ``pad=False``:
+
+            observation = robot.get_observation(pad=False)
+
+        (``utils/marvel_gppo_test_worker.py:240``; the original MARVEL
+        evaluation worker at ``utils/test_worker.py:69`` does the same.)
+        ``pad=True`` is the training-time shape
+        (``multi_agent_worker.py:93``) and pads the node and edge axes to
+        ``NODE_PADDING_SIZE``/``K_SIZE``, which changes the flat action
+        space and therefore the logits the policy sees.
+
+        ``marvel_native`` must reproduce the frozen reference exactly.
+        The extended environment keeps the historical ``pad=True``.
+        """
+
+        return not self._frame.is_native
+
     def _belief_array(self) -> np.ndarray:
         """The belief map the MARVEL graph is built from.
 
@@ -423,12 +443,13 @@ class MARVELPolicyAdapter:
 
         # 4. Get observations and select waypoints.
         actions: List[Tuple[np.ndarray, float]] = []
+        used_fallback = False
         default = self.runtime.default_actions()
         if self.verbose:
             print(f"[PolicyAdapter] Generating actions for {len(self.agents)} agents")
         for idx, (agent, robot) in enumerate(zip(self.agents, self.runtime.robots)):
             try:
-                obs = agent.get_observation()
+                obs = agent.get_observation(pad=self._observation_padding())
                 next_position, _, _, heading_index = agent.select_next_waypoint(obs, greedy=True)
                 heading_deg = float(heading_index) * (360.0 / NUM_ANGLES_BIN)
                 waypoint = np.asarray(next_position, dtype=float)
@@ -446,5 +467,131 @@ class MARVELPolicyAdapter:
                 traceback.print_exc()
                 logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
                 actions.append(default[idx])
+                used_fallback = True
+
+        # 5. Frozen post-selection filtering.  Only marvel_native reproduces
+        # the frozen worker here; extended keeps the raw PolicyNet output.
+        # A policy failure means the frozen path did not run either.
+        if self._frame.is_native and not used_fallback:
+            actions = self._apply_frozen_post_selection(actions)
 
         return actions
+
+    # ------------------------------------------------------------------
+    # Frozen low-level post-selection semantics (marvel_native only)
+    # ------------------------------------------------------------------
+    def _apply_frozen_post_selection(self, actions):
+        """Frozen worker ordering, reproduced exactly.
+
+        ``marvel_gppo_test_worker.run_episode``:
+
+            selected_locations, _, next_headings = self._select_actions()
+            selected_locations = self._resolve_same_waypoint_collisions(...)
+            selected_locations = self._apply_hazard_traversability(...)
+            # recompute heading bins from the FINAL waypoint directions
+            self._simulate_motion(selected_locations, next_headings)
+
+        The PolicyNet's heading index is therefore overwritten by the
+        heading bin nearest the resolved waypoint direction.
+        """
+
+        waypoints = [
+            np.asarray(action[0], dtype=float) for action in actions
+        ]
+        heading_indices = [
+            int(round(float(action[1]) / (360.0 / NUM_ANGLES_BIN)))
+            for action in actions
+        ]
+
+        waypoints = self._resolve_same_waypoint_collisions(waypoints)
+
+        # Frozen recomputes the bin from the final waypoint direction and
+        # keeps the previous value only when the displacement is ~zero.
+        resolved_headings = []
+
+        for robot, waypoint, heading_index in zip(
+            self.runtime.robots, waypoints, heading_indices
+        ):
+            delta = np.asarray(waypoint, dtype=float) - np.asarray(
+                robot.position, dtype=float
+            )
+
+            if float(np.linalg.norm(delta)) > 1e-9:
+                angle = float(
+                    np.degrees(
+                        np.arctan2(delta[1], delta[0])
+                    ) % 360.0
+                )
+                heading_index = int(
+                    np.floor(angle / 360.0 * NUM_ANGLES_BIN)
+                ) % NUM_ANGLES_BIN
+
+            resolved_headings.append(
+                float(heading_index) * (360.0 / NUM_ANGLES_BIN)
+            )
+
+        return [
+            (waypoint, heading)
+            for waypoint, heading in zip(
+                waypoints, resolved_headings
+            )
+        ]
+
+    def _resolve_same_waypoint_collisions(self, waypoints):
+        """Frozen ``_resolve_same_waypoint_collisions``, ported verbatim.
+
+        Duplicate destinations are resolved against the shared node graph:
+        robots are processed closest-first to their own waypoint, the first
+        claim wins, and a duplicate is moved to the first of the 25 nearest
+        graph nodes whose exact coordinates are unclaimed.  If every
+        candidate is taken the duplicate waypoint is left unchanged.
+        """
+
+        selected = np.asarray(waypoints, dtype=float).copy()
+
+        order = np.argsort(
+            [
+                float(
+                    np.linalg.norm(
+                        selected[i]
+                        - np.asarray(
+                            self.runtime.robots[i].position,
+                            dtype=float,
+                        )
+                    )
+                )
+                for i in range(len(selected))
+            ]
+        )
+
+        occupied = set()
+
+        for rid in order:
+            loc = selected[rid]
+            key = (float(loc[0]), float(loc[1]))
+
+            if key not in occupied:
+                occupied.add(key)
+                continue
+
+            node_manager = self.agents[int(rid)].node_manager
+
+            nearby = (
+                node_manager.nodes_dict.nearest_neighbors(
+                    loc.tolist(),
+                    25,
+                )
+            )
+
+            for node in nearby:
+                coords = np.asarray(
+                    node.data.coords, dtype=float
+                )
+                candidate = (float(coords[0]), float(coords[1]))
+
+                if candidate not in occupied:
+                    selected[rid] = coords
+                    occupied.add(candidate)
+                    break
+
+        return selected

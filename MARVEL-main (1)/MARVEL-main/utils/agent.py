@@ -244,6 +244,13 @@ class Agent:
                 self.device)
             node_padding_mask = torch.cat((node_padding_mask, node_padding), dim=-1)
 
+        # Keep the integer index.  Frozen computes
+        #   current_in_edge = np.argwhere(current_edge == self.current_index)[0][0]
+        # against the integer attribute.  Comparing against the tensor below
+        # broadcasts (k,) with (1,1,1) to (1,1,k), so [0][0] returns the row
+        # axis and pins current_in_edge to 0 for every state.
+        current_index_value = int(current_index)
+
         current_index = torch.tensor([current_index]).reshape(1, 1, 1).to(self.device)
 
         edge_mask = torch.tensor(edge_mask).unsqueeze(0).to(self.device)
@@ -253,7 +260,7 @@ class Agent:
                 (0, NODE_PADDING_SIZE - n_node, 0, NODE_PADDING_SIZE - n_node), 1)
             edge_mask = padding(edge_mask)
 
-        current_in_edge_matches = np.argwhere(current_edge == current_index)
+        current_in_edge_matches = np.argwhere(current_edge == current_index_value)
         current_in_edge = int(current_in_edge_matches[0][0]) if current_in_edge_matches.size else 0
         current_edge = torch.tensor(current_edge).unsqueeze(0)
         k_size = current_edge.size()[-1]
