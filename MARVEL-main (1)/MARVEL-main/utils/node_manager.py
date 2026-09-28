@@ -98,30 +98,51 @@ class NodeManager:
         ):
             return self._shared_cache
 
+        # One pass over the graph collecting coordinates, per-node features
+        # and neighbour lists in iteration order.  The scan version re-found
+        # every node by coordinate and re-scanned the whole coordinate array
+        # once per neighbour; both are replaced here by this pass plus the
+        # coordinate index built below.
         all_node_coords = []
-        for node in self.nodes_dict.__iter__():
-            all_node_coords.append(node.data.coords)
-        all_node_coords = np.array(all_node_coords).reshape(-1, 2)
         utility = []
         frontiers_distribution = []
         highest_utility_angle = []
         heading_visited = []
+        neighbour_lists = []
+
+        for node in self.nodes_dict.__iter__():
+            data = node.data
+            all_node_coords.append(data.coords)
+            utility.append(data.utility)
+            frontiers_distribution.append(data.frontiers_distribution)
+            heading_visited.append(data.heading_visited)
+            highest_utility_angle.append(data.highest_utility_angle)
+            neighbour_lists.append(data.neighbor_list)
+
+        all_node_coords = np.array(all_node_coords).reshape(-1, 2)
 
         n_nodes = all_node_coords.shape[0]
-        adjacent_matrix = np.ones((n_nodes, n_nodes)).astype(int)
-        node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
-        for i, coords in enumerate(all_node_coords):
-            node = self.nodes_dict.find((coords[0], coords[1])).data
-            utility.append(node.utility)
-            frontiers_distribution.append(node.frontiers_distribution)
-            heading_visited.append(node.heading_visited)
-            highest_utility_angle.append(node.highest_utility_angle)
 
-            for neighbor in node.neighbor_list:
-                index = np.argwhere(node_coords_to_check == neighbor[0] + neighbor[1] * 1j)
-                if index or index == [[0]]:
-                    index = index[0][0]
-                    adjacent_matrix[i, index] = 0
+        # Same fill and dtype as `np.ones((n, n)).astype(int)`, without the
+        # intermediate float64 array (232 MB at 5382 nodes).
+        adjacent_matrix = np.ones((n_nodes, n_nodes), dtype=int)
+
+        node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
+
+        # Coordinate -> row, first occurrence wins: the row that
+        # `np.argwhere(...)[0][0]` used to resolve to.
+        index_of = {}
+        for position, coords in enumerate(all_node_coords):
+            key = (coords[0], coords[1])
+            if key not in index_of:
+                index_of[key] = position
+
+        for i, neighbours in enumerate(neighbour_lists):
+            row = adjacent_matrix[i]
+            for neighbor in neighbours:
+                index = index_of.get((neighbor[0], neighbor[1]))
+                if index is not None:
+                    row[index] = 0
 
         self._shared_cache = (
             all_node_coords,

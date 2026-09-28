@@ -336,3 +336,112 @@ def test_full_episode_identical_with_and_without_cache(uavs):
                 assert a[key] == b[key], (
                     f"uavs={uavs} step={step} field={key}"
                 )
+
+
+# ======================================================================
+# I — shared-graph construction
+# ======================================================================
+
+def reference_shared_graph(manager):
+    """Pre-optimization `_shared_graph`, verbatim.
+
+    Re-found every node by coordinate and resolved every neighbour with a
+    full `np.argwhere` scan of the coordinate array.
+    """
+
+    all_node_coords = []
+    for node in manager.nodes_dict.__iter__():
+        all_node_coords.append(node.data.coords)
+    all_node_coords = np.array(all_node_coords).reshape(-1, 2)
+    utility = []
+    frontiers_distribution = []
+    highest_utility_angle = []
+    heading_visited = []
+
+    n_nodes = all_node_coords.shape[0]
+    adjacent_matrix = np.ones((n_nodes, n_nodes)).astype(int)
+    node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
+    for i, coords in enumerate(all_node_coords):
+        node = manager.nodes_dict.find((coords[0], coords[1])).data
+        utility.append(node.utility)
+        frontiers_distribution.append(node.frontiers_distribution)
+        heading_visited.append(node.heading_visited)
+        highest_utility_angle.append(node.highest_utility_angle)
+
+        for neighbor in node.neighbor_list:
+            index = np.argwhere(
+                node_coords_to_check == neighbor[0] + neighbor[1] * 1j
+            )
+            if index or index == [[0]]:
+                index = index[0][0]
+                adjacent_matrix[i, index] = 0
+
+    return (
+        all_node_coords,
+        np.array(utility),
+        np.array(frontiers_distribution),
+        np.array(highest_utility_angle),
+        np.array(heading_visited),
+        adjacent_matrix,
+        node_coords_to_check,
+    )
+
+
+@pytest.mark.parametrize("uavs", [4, 8, 16])
+def test_shared_graph_matches_reference(uavs):
+    """Every shared array identical, values and dtype."""
+
+    runtime, adapter = _extended_runtime(uavs, steps=5)
+    manager = adapter._node_manager
+
+    expected = reference_shared_graph(manager)
+    actual = manager._shared_graph()
+
+    assert len(actual) == len(expected) == 7
+
+    for index, (a, b) in enumerate(zip(expected, actual)):
+        assert isinstance(b, np.ndarray), (index, type(b))
+        assert a.shape == b.shape, (index, a.shape, b.shape)
+        assert a.dtype == b.dtype, (index, a.dtype, b.dtype)
+        assert np.array_equal(a, b), index
+
+    # The adjacency must actually contain edges and non-edges.
+    adjacency = actual[5]
+    assert (adjacency == 0).any(), "no edges, case is vacuous"
+    assert (adjacency == 1).any(), "no non-edges, case is vacuous"
+
+
+@pytest.mark.parametrize("uavs", [4, 8])
+def test_shared_graph_paired_episode_identical(uavs):
+    """A whole episode is identical with the reference construction."""
+
+    from utils.node_manager import NodeManager
+
+    original = NodeManager._shared_graph
+
+    def cached(uavs_arg, steps_arg, use_reference):
+        if use_reference:
+            NodeManager._shared_graph = reference_shared_graph
+        else:
+            NodeManager._shared_graph = original
+
+        try:
+            return _episode_trace(uavs_arg, steps_arg, use_reference=False)
+        finally:
+            NodeManager._shared_graph = original
+
+    fast = cached(uavs, 6, False)
+    slow = cached(uavs, 6, True)
+
+    assert len(fast) == len(slow)
+
+    for step, (a, b) in enumerate(zip(fast, slow)):
+        for key in a:
+            if isinstance(a[key], np.ndarray):
+                assert np.array_equal(a[key], b[key]), (
+                    f"uavs={uavs} step={step} field={key}"
+                )
+            else:
+                assert a[key] == b[key], (
+                    f"uavs={uavs} step={step} field={key}"
+                )
