@@ -16,8 +16,26 @@ from .protocol_profile import (
 )
 from .stale_state import StalePositionTracker
 from .observed_graph import observed_next_hop
+from .task_graph import Subtask, TaskType
 from .safety_layer import FrozenSafetyLayer
 from .relay_release import FrozenRelayReleaseGate
+
+
+# Frozen test_parameter.NUM_ANGLES_BIN.  The frozen worker quantizes the
+# heading of the *final* commanded waypoint into this many bins before
+# motion:
+#
+#   angle = degrees(atan2(dy, dx)) % 360
+#   index = int(floor(angle / 360 * NUM_ANGLES_BIN)) % NUM_ANGLES_BIN
+#   desired_heading = index * (360 / NUM_ANGLES_BIN)
+FROZEN_NUM_ANGLES_BIN = 36
+
+# Frozen Relay subtask as registered by `StudyTask`/`RelayCoordinator`:
+# priority 2, one second of processing, and the relay anchor as its
+# position.  Its identity only matters as the first graph row.
+NATIVE_RELAY_SUBTASK_ID = 0
+NATIVE_RELAY_PRIORITY = 2.0
+NATIVE_RELAY_PROCESSING_TIME = 1.0
 
 
 class GPPOTaskScheduler:
@@ -39,6 +57,17 @@ class GPPOTaskScheduler:
             checkpoint_path,
             device=device,
         )
+
+        # Adapter that owns the frozen native post-selection; bound by
+        # MARVELPolicyAdapter.setup() for marvel_native only.
+        self._post_selection = None
+
+        # Marvel-native only: frozen always hands the allocator the full
+        # subtask registry, so the Search allocation must present the Relay
+        # row plus every Search subtask registered so far, not just the slots
+        # being allocated.  See `_native_search_context`.
+        self._native_relay_row = None
+        self._native_search_rows = {}
 
         checkpoint = self.allocator.adapter.checkpoint
 
@@ -766,6 +795,7 @@ class GPPOTaskScheduler:
         decisions = self.allocator.allocate(
             slots,
             position_overrides=stale_positions,
+            context_subtasks=self._native_search_context(slots),
         )
 
         self.last_event_assignments.extend(
@@ -952,6 +982,45 @@ class GPPOTaskScheduler:
         # Newly created assignments change UAV availability for the next
         # graph build.
         self._reconcile_uav_state()
+
+    def _override_heading(self, robot, goal) -> float:
+        """Heading commanded for a Search/Relay override.
+
+        Frozen recomputes the heading bin from the final waypoint direction
+        after collision resolution and hazard filtering, discarding the
+        PolicyNet heading index:
+
+            angle = degrees(atan2(dy, dx)) % 360
+            index = int(floor(angle / 360 * NUM_ANGLES_BIN)) % NUM_ANGLES_BIN
+            desired_heading = index * (360 / NUM_ANGLES_BIN)
+
+        ``marvel_native`` reproduces that exactly; the continuous atan2
+        angle is off by up to half a bin (e.g. 296.565 -> 290.0) and shifts
+        every interpolated sensing heading downstream.  ``extended`` keeps
+        its historical continuous heading.
+        """
+
+        goal = np.asarray(goal, dtype=float)
+
+        delta = goal - np.asarray(robot.position, dtype=float)
+
+        if float(np.linalg.norm(delta)) < 1e-12:
+            return float(robot.heading)
+
+        angle = float(
+            np.degrees(np.arctan2(delta[1], delta[0])) % 360.0
+        )
+
+        frame = getattr(self.runtime.obstacles, "frame", None)
+
+        if frame is None or not frame.is_native:
+            return angle
+
+        index = int(
+            np.floor(angle / 360.0 * FROZEN_NUM_ANGLES_BIN)
+        ) % FROZEN_NUM_ANGLES_BIN
+
+        return float(index) * (360.0 / FROZEN_NUM_ANGLES_BIN)
 
     @staticmethod
     def _heading(
@@ -1288,7 +1357,7 @@ class GPPOTaskScheduler:
 
                 actions[index] = (
                     goal,
-                    self._heading(
+                    self._override_heading(
                         robot,
                         anchor,
                     ),
@@ -1305,7 +1374,7 @@ class GPPOTaskScheduler:
 
                     actions[index] = (
                         goal,
-                        self._heading(
+                        self._override_heading(
                             robot,
                             goal,
                         ),
@@ -1356,7 +1425,7 @@ class GPPOTaskScheduler:
 
                 actions[index] = (
                     goal,
-                    self._heading(
+                    self._override_heading(
                         robot,
                         goal,
                     ),
@@ -1370,6 +1439,17 @@ class GPPOTaskScheduler:
                 "relay",
                 int(target_uid),
             )
+
+        # Frozen v9 same-waypoint resolution.  `_select_actions` dispatches
+        # the per-task waypoint before returning, so the frozen resolver
+        # only ever sees waypoints that have already been overridden by
+        # Search/Relay/Safety.  Resolving earlier would let a waypoint that
+        # is about to be overridden displace the Exploration robot sharing
+        # it.  Native only; extended mode keeps the raw PolicyNet output.
+        post_selection = self._post_selection_adapter()
+
+        if post_selection is not None:
+            actions = post_selection.resolve_actions(actions)
 
         # Frozen v9 ordinary-motion traversability guard.
         # Search/Relay overrides are already present here.
@@ -1407,4 +1487,118 @@ class GPPOTaskScheduler:
                 None,
             )
 
+        # Frozen recomputes the commanded heading bin from the final
+        # waypoint once every override and the hazard guard have run.
+        if post_selection is not None:
+            actions = post_selection.recompute_headings(actions)
+
         return actions
+
+    def _native_search_context(self, slots):
+        """Frozen full subtask registry for the native Search allocation.
+
+        `TaskManager.build_task_graph()` returns every registered subtask, so
+        the frozen actor is always conditioned on the Relay row and on every
+        Search row registered so far -- including the one it has just
+        finished.  Handing it only the slots being allocated changes which
+        UAV the same checkpoint selects.
+
+        Rows keep their `assigned_uav_id` after completion, because frozen's
+        `apply_assignment` writes the field and `complete_subtask` does not
+        clear it; the assigned-UAV flag is one of the task features.
+        """
+
+        if not (
+            self.runtime.obstacles.frame.is_native
+        ):
+            return ()
+
+        if self._native_relay_row is None:
+            self._native_relay_row = self._native_relay_subtask()
+
+        for slot in slots:
+            heat_id = (
+                None
+                if slot.source_entity_id is None
+                else int(slot.source_entity_id)
+            )
+
+            if heat_id is None or heat_id in self._native_search_rows:
+                continue
+
+            self._native_search_rows[heat_id] = Subtask(
+                subtask_id=int(slot.slot_id),
+                task_type=TaskType.TARGET_SEARCH,
+                priority=float(slot.priority),
+                active=True,
+                completed=False,
+                position=slot.position,
+                processing_time=float(slot.processing_time),
+            )
+
+        for heat_id, row in self._native_search_rows.items():
+            completed = heat_id in self.serviced_heat_ids
+
+            row.completed = bool(completed)
+            row.active = not completed
+
+            assigned = self.search_assignments.get(heat_id)
+
+            if assigned is not None:
+                row.assigned_uav_id = int(assigned)
+
+        rows = []
+
+        if self._native_relay_row is not None:
+            rows.append(self._native_relay_row)
+
+        # Registration order, matching the frozen subtask list.
+        rows.extend(
+            self._native_search_rows[heat_id]
+            for heat_id in sorted(self._native_search_rows)
+        )
+
+        return tuple(rows)
+
+    def _native_relay_subtask(self):
+        """The Relay subtask row frozen registers before Search activates."""
+
+        for _target_uid, (helper_uid, anchor) in (
+            self.relay_assignments.items()
+        ):
+            return Subtask(
+                subtask_id=NATIVE_RELAY_SUBTASK_ID,
+                task_type=TaskType.RELAY,
+                priority=NATIVE_RELAY_PRIORITY,
+                active=True,
+                completed=False,
+                position=tuple(
+                    float(value) for value in np.asarray(anchor, float)[:2]
+                ),
+                processing_time=NATIVE_RELAY_PROCESSING_TIME,
+                assigned_uav_id=int(helper_uid),
+            )
+
+        return None
+
+    def bind_post_selection(self, adapter):
+        """Bind the adapter owning the frozen native post-selection."""
+
+        self._post_selection = adapter
+
+    def _post_selection_adapter(self):
+        """Adapter owning frozen native post-selection, if it is deferred.
+
+        Returns ``None`` for extended mode, and when the PolicyNet failed
+        and the runtime fell back to default actions -- frozen's
+        post-selection only exists on the real policy path.
+        """
+
+        adapter = self._post_selection
+
+        if adapter is None or not getattr(
+            adapter, "_defer_post_selection", False
+        ):
+            return None
+
+        return adapter

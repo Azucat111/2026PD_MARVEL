@@ -42,8 +42,29 @@ class SharedHazardAdapter:
         self.warning_margin = float(warning_margin)
         self.safe_margin = float(safe_margin)
 
-    @staticmethod
-    def _radius_at(obstacle, step: int):
+    def _hazard_step(self, step: int) -> int:
+        """Frozen hazard clocks advance once per mission step.
+
+        ``HazardManager.update`` is driven by the frozen
+        ``SafetyCoordinator`` with the mission-step index, while this
+        runtime's counter ticks at physics rate.  Native hazards therefore
+        carry frozen mission-step activation times and have to be read on
+        the same clock.  Extended obstacles keep their declared
+        physics-step schedule.
+        """
+
+        runtime = self.runtime
+
+        if getattr(runtime, "geometry_mode", None) != "marvel_native":
+            return int(step)
+
+        return int(step) // max(
+            1, int(runtime._mission_step_interval())
+        )
+
+    def _radius_at(self, obstacle, step: int):
+        step = self._hazard_step(step)
+
         if step < int(obstacle.spawn_step):
             return None
 

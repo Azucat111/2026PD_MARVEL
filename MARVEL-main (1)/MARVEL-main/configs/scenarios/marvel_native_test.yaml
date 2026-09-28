@@ -43,6 +43,15 @@ tasks:
     activation:
       condition: exploration_rate >= 0.3
     params: {}
+  - task_id: T3_relay
+    type: relay
+    priority: 2
+    assigned_robot_types: [explorer]
+    # Protocol constants (comm_range, min_connectivity, max_relay,
+    # release threshold, base) are owned by the frozen GPPO profile and
+    # injected by prepare_gppo_config(); the task schema only declares
+    # the task itself.
+    params: {}
 dynamics:
   config_file: ../dynamics/kinematic_simple.yaml
 sensor:

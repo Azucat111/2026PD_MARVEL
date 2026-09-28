@@ -30,6 +30,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from integrations.gppo.event_allocator import GPPOEventSlot
+from integrations.gppo.task_graph import Subtask, TaskType
 from utils.geometry import GEOMETRY_MODE_NATIVE
 from utils.scenario_config import load_and_validate_scenario
 from utils.simulation_runtime import SimulationRuntime
@@ -751,3 +753,240 @@ def test_real_policynet_ten_step_parity(tmp_path_factory, frozen_starts):
             observations = runtime._get_observations()
     finally:
         agent_module.Agent.select_next_waypoint = original
+
+
+# ======================================================================
+# G — post-selection ordering vs the per-task override
+# ======================================================================
+
+def _gppo_native_runtime(starts):
+    """Native runtime on the production GPPO scheduler path.
+
+    The scenario's own dynamics/sensor/communication files are kept: the
+    frozen GPPO profile fails closed unless the runtime protocol matches,
+    so no path may be substituted here.
+    """
+
+    from integrations.gppo.checkpoint import load_frozen_gppo
+    from integrations.gppo.config_profile import prepare_gppo_config
+
+    config = load_and_validate_scenario(NATIVE_SCENARIO)
+
+    environment = config["environment"]
+    environment["geometry_mode"] = "marvel_native"
+    environment["initial_headings"] = 270.0
+    environment["episode_index"] = 0
+
+    config["robots"] = [{
+        "id_range": [0, len(starts) - 1],
+        "type": "explorer",
+        "team_id": 1,
+        "config": {
+            "fov": FOV,
+            "sensor_range": SENSOR_RANGE,
+            "velocity": 1.0,
+            "yaw_rate": 35,
+            "initial_positions": [[float(x), float(y)] for x, y in starts],
+        },
+    }]
+
+    config["task_scheduler"] = {
+        "mode": "gppo",
+        "checkpoint": str(FROZEN_CHECKPOINT),
+        "base_position": [0.0, 0.0],
+        "search_scenario_seed": SEED,
+    }
+    config["scenario"]["random_seed"] = SEED
+
+    _, checkpoint = load_frozen_gppo(str(FROZEN_CHECKPOINT), device="cpu")
+    config = prepare_gppo_config(config, checkpoint)
+
+    np.random.seed(SEED)
+    runtime = SimulationRuntime(config)
+    runtime.reset()
+
+    return runtime
+
+
+@requires_frozen
+@requires_policy
+def test_native_duplicate_resolution_runs_after_task_override(
+    monkeypatch,
+):
+    """Frozen resolves duplicate waypoints AFTER the per-task override.
+
+    Regression for the first belief divergence of the 25-step gate.  At
+    mission 16 the exploration UAV and the target-search UAV shared one raw
+    PolicyNet waypoint.  Frozen's `_select_actions` had already replaced the
+    search UAV's waypoint before `_resolve_same_waypoint_collisions` ran, so
+    the shared raw waypoint was never a real collision and the exploration
+    UAV kept it.  Resolving the raw waypoints instead displaced the
+    exploration UAV onto the search target, which cost one free cell at
+    mission 18 (6823 against the frozen 6822).
+
+    The search UAV is placed nearer the shared waypoint, so under the old
+    ordering the resolver processes it first and displaces the exploration
+    UAV -- the exact configuration of the observed defect.
+    """
+
+    from types import SimpleNamespace
+
+    runtime = _gppo_native_runtime(
+        [[-4.0, 0.0], [-8.0, 4.0], [4.0, -4.0], [8.0, 8.0]],
+    )
+    adapter = _adapter(runtime)
+
+    assert adapter._using_policy
+    assert adapter._frame.is_native
+
+    scheduler = adapter.scheduler
+
+    # The adapter must be the object the scheduler calls back into.
+    assert scheduler._post_selection is adapter
+
+    # UAV2 (exploration) and UAV3 (target_search) share a raw waypoint.
+    # UAV3 starts nearer to it, so it claims it first under the old
+    # ordering and UAV2 is the one displaced.
+    shared = np.asarray([8.0, 8.0], dtype=float)
+    override = np.asarray([8.0, 12.0], dtype=float)
+    anchor = np.asarray([60.0, 60.0], dtype=float)
+
+    raw = [
+        np.asarray([-12.0, 0.0], dtype=float),
+        np.asarray([-16.0, 4.0], dtype=float),
+        shared.copy(),
+        shared.copy(),
+    ]
+
+    for agent, waypoint in zip(adapter.agents, raw):
+        def _select(observation, *args, _w=waypoint, **kwargs):
+            return _w.copy(), 0, 0, 18
+
+        agent.select_next_waypoint = _select
+
+    # Frozen Search routing picks the next observed graph hop; pin it so
+    # the override is deterministic.
+    monkeypatch.setattr(
+        "integrations.gppo.scheduler.observed_next_hop",
+        lambda agent, point: (override.copy(), 0),
+    )
+
+    # Drive only the override/post-selection stages, not the high-level
+    # Search/Relay allocation, which would replace the stubbed state.
+    monkeypatch.setattr(
+        scheduler.clock, "should_update", lambda step: False
+    )
+
+    scheduler.search_assignments = {0: 3}
+    scheduler.serviced_heat_ids = set()
+    scheduler.heat_by_id = {0: SimpleNamespace(position=anchor)}
+    scheduler.search_reach_radius = 0.0
+    scheduler.relay_assignments = {}
+    scheduler.safety.active_uav_ids = set()
+
+    actions = adapter._policy_actions(
+        {index: {} for index in range(len(adapter.agents))}
+    )
+    actions = scheduler.apply(actions)
+
+    assert np.allclose(actions[3][0], override, atol=1e-9), (
+        "search override not applied",
+        np.asarray(actions[3][0]).tolist(),
+    )
+
+    assert np.allclose(actions[2][0], shared, atol=1e-9), (
+        "exploration UAV displaced by a duplicate that the task override "
+        "removed",
+        np.asarray(actions[2][0]).tolist(),
+        shared.tolist(),
+    )
+
+
+# ======================================================================
+# H — Search refill allocation context
+# ======================================================================
+
+@requires_frozen
+@requires_policy
+def test_native_search_allocation_uses_full_dropped_rows():
+    """The native allocator must see the full registered subtask set.
+
+    Frozen ``_allocate_search_subtasks`` always calls
+    ``TaskManager.build_task_graph()``, which returns *every* registered
+    subtask, then masks the non-active rows.  Masked rows still take part in
+    the encoder, so a graph built from only the slots being allocated yields
+    a different policy decision from the same checkpoint.
+
+    Measured at the mission-23 refill: frozen presented four rows (Relay,
+    the assigned Search heat, the completed Search heat, the new heat) and
+    flat action 15 -> the new heat on UAV3.  With a one-row graph the same
+    checkpoint chose UAV2 instead.
+
+    This pins the structural contract: the allocator receives the registry
+    in frozen order and masks everything that is not an active Search row,
+    while the base mask still rejects assigned/completed rows.
+    """
+
+    adapter = _adapter(_gppo_native_runtime([[-4.0, 0.0], [-8.0, 4.0]]))
+    allocator = adapter.scheduler.allocator
+
+    registry = (
+        Subtask(subtask_id=0, task_type=TaskType.RELAY, priority=2.0,
+                active=True, completed=False, position=(7.9, 9.9),
+                processing_time=1.0, assigned_uav_id=1),
+        Subtask(subtask_id=100000, task_type=TaskType.TARGET_SEARCH,
+                priority=5.0, active=True, completed=False,
+                position=(-12.4, -50.8), processing_time=6.0,
+                assigned_uav_id=0),
+        Subtask(subtask_id=100001, task_type=TaskType.TARGET_SEARCH,
+                priority=5.0, active=False, completed=True,
+                position=(-64.0, 34.4), processing_time=6.0,
+                assigned_uav_id=3),
+        Subtask(subtask_id=100002, task_type=TaskType.TARGET_SEARCH,
+                priority=5.0, active=True, completed=False,
+                position=(24.8, 24.4), processing_time=6.0),
+    )
+
+    captured = []
+
+    original = allocator.adapter.assign
+
+    def spy(graph, deterministic=True):
+        captured.append(graph)
+        return None
+
+    allocator.adapter.assign = spy
+
+    try:
+        allocator.allocate(
+            [GPPOEventSlot(slot_id=100002, task_type=TaskType.TARGET_SEARCH,
+                           priority=5.0, position=(24.8, 24.4),
+                           processing_time=6.0, source_entity_id=2)],
+            context_subtasks=registry,
+        )
+    finally:
+        allocator.adapter.assign = original
+
+    assert captured, "allocator never reached the model"
+
+    graph = captured[0]
+
+    assert graph.num_subtasks == 4, graph.num_subtasks
+    assert [int(t.subtask_id) for t in graph.subtasks] == [
+        0, 100000, 100001, 100002
+    ]
+
+    # Frozen mask: only the new heat row has any legal UAV.
+    mask = np.asarray(graph.action_mask).astype(int).tolist()
+    available = [i for i, uav in enumerate(graph.uav_states) if uav.available]
+
+    assert available, "no UAV available, case is vacuous"
+
+    for row_index, row in enumerate(mask):
+        if row_index == 3:
+            assert any(value == 0 for value in row), row
+        else:
+            assert all(value == 1 for value in row), (row_index, row)
+
+    # The completed row keeps its assigned UAV, which is a task feature.
+    assert int(graph.subtasks[2].assigned_uav_id) == 3

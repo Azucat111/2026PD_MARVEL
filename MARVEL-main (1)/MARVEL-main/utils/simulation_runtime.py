@@ -17,11 +17,24 @@ from .marvel_motion import (
     interpolated_sensing_track,
 )
 from .marvel_sensing import FROZEN_NUM_SIM_STEPS, MarvelNativeBelief
-from .obstacle_manager import ObstacleManager
+from .marvel_sensing import FREE as MARVEL_FREE
+from .obstacle_manager import ExpandingCircleObstacle, ObstacleManager
 from .safety_shield import SafetyShield
 from .sensor_models import create_sensor_model
 from .task_manager import TaskManager
 from .target_detector import TargetDetector
+
+
+# Frozen `MarvelGPPOTestWorker` hazard defaults
+# (`HazardManager.project_hazards_from_environment`).
+FROZEN_HAZARD_SEED = 0
+FROZEN_HAZARD_COUNT = 2
+FROZEN_FIRE_ACTIVE_FROM = 20
+FROZEN_FIRE_RADIUS = 3.0
+FROZEN_FIRE_GROWTH_RATE = 0.08
+FROZEN_FIRE_MAX_RADIUS = 8.0
+FROZEN_COLLAPSE_ACTIVE_FROM = 50
+FROZEN_COLLAPSE_RADIUS = 4.0
 
 
 @dataclass
@@ -231,6 +244,7 @@ class SimulationRuntime:
         # Native mode: frozen belief map + initial sensing sweep.
         if self.geometry_mode == GEOMETRY_MODE_NATIVE:
             self._initialize_native_belief()
+            self._provision_native_hazards()
 
         self._capture_mission_start()
 
@@ -285,6 +299,114 @@ class SimulationRuntime:
             robot.travel_distance += float(
                 np.linalg.norm(end - start)
             )
+
+    def _provision_native_hazards(self) -> None:
+        """Frozen ``HazardManager.project_hazards_from_environment``.
+
+        The frozen worker builds its hazards from the environment when
+        ``enable_safety`` is set, so the ordinary-motion hazard guard has a
+        hazard to route around.  Native mode therefore has to own the same
+        hazard state, generated the same way: two hazards drawn with
+        ``default_rng(0)`` from the map cells reachable from the initial UAV
+        cells, alternating fire (growing) and collapse (static).
+
+        Extended mode declares its obstacles in the scenario file and is
+        untouched.
+        """
+
+        if self.native_belief is None:
+            return
+
+        frame = self.obstacles.frame
+        ground_truth = np.asarray(self.native_belief.ground_truth)
+        free_yx = np.argwhere(ground_truth == MARVEL_FREE)
+
+        if free_yx.size == 0:
+            return
+
+        reachable = self._native_reachable_cells(ground_truth)
+
+        if reachable.size:
+            free_yx = reachable
+
+        xy = free_yx[:, [1, 0]].astype(float)
+        xy[:, 0] = frame.origin[0] + xy[:, 0] * frame.cell_size
+        xy[:, 1] = frame.origin[1] + xy[:, 1] * frame.cell_size
+
+        rng = np.random.default_rng(FROZEN_HAZARD_SEED)
+        count = max(1, int(FROZEN_HAZARD_COUNT))
+        replace = len(xy) < count
+
+        for index, picked in enumerate(
+            rng.choice(len(xy), size=count, replace=replace)
+        ):
+            if index % 2 == 0:
+                radius = FROZEN_FIRE_RADIUS
+                growth = FROZEN_FIRE_GROWTH_RATE
+                max_radius = FROZEN_FIRE_MAX_RADIUS
+                active_from = FROZEN_FIRE_ACTIVE_FROM + 10 * (index // 2)
+            else:
+                radius = FROZEN_COLLAPSE_RADIUS
+                growth = 0.0
+                # Frozen leaves `max_radius` unset on a non-growing hazard.
+                max_radius = FROZEN_COLLAPSE_RADIUS
+                active_from = FROZEN_COLLAPSE_ACTIVE_FROM + 10 * (index // 2)
+
+            self.obstacles.dynamic_obstacles.append(
+                ExpandingCircleObstacle(
+                    obstacle_id=f"hazard_{index}",
+                    position=np.asarray(xy[picked], dtype=float),
+                    initial_radius=float(radius),
+                    expansion_rate=float(growth),
+                    max_radius=float(max_radius),
+                    spawn_step=int(active_from),
+                )
+            )
+
+    def _native_reachable_cells(self, ground_truth: np.ndarray) -> np.ndarray:
+        """Frozen flood fill from the initial UAV cells, row-major order."""
+
+        from collections import deque
+
+        free = np.asarray(ground_truth) == MARVEL_FREE
+        height, width = free.shape
+        seen = np.zeros_like(free, dtype=bool)
+        queue: deque = deque()
+
+        origin = self.obstacles.frame.origin
+        cell_size = self.obstacles.frame.cell_size
+
+        for robot in self.robots:
+            position = np.asarray(robot.position, dtype=float)
+            x = int(round((position[0] - origin[0]) / cell_size))
+            y = int(round((position[1] - origin[1]) / cell_size))
+
+            if 0 <= x < width and 0 <= y < height and free[y, x] and not seen[y, x]:
+                seen[y, x] = True
+                queue.append((y, x))
+
+        neighbours = [
+            (-1, -1), (-1, 0), (-1, 1),
+            (0, -1), (0, 1),
+            (1, -1), (1, 0), (1, 1),
+        ]
+
+        while queue:
+            y, x = queue.popleft()
+
+            for dy, dx in neighbours:
+                yy, xx = y + dy, x + dx
+
+                if (
+                    0 <= xx < width
+                    and 0 <= yy < height
+                    and free[yy, xx]
+                    and not seen[yy, xx]
+                ):
+                    seen[yy, xx] = True
+                    queue.append((yy, xx))
+
+        return np.argwhere(seen)
 
     def _capture_mission_start(self) -> None:
         """Record positions/headings at the start of a mission step."""

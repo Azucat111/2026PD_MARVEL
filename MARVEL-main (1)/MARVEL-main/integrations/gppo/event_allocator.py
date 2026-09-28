@@ -77,7 +77,19 @@ class GPPOEventAllocator:
         *,
         deterministic: bool = True,
         position_overrides=None,
+        context_subtasks: Iterable[Subtask] = (),
     ) -> list[GPPOEventAssignment]:
+        """Assign the given slots.
+
+        ``context_subtasks`` reproduces the frozen allocator input.  Frozen's
+        ``ExploreSearchCoordinator._allocate_search_subtasks`` always builds
+        the *full* task graph (``TaskManager.build_task_graph`` over every
+        registered subtask), masks the rows that are not active Search
+        subtasks, and rebuilds the graph after each assignment.  Rows that
+        cannot be selected still reach the encoder, so presenting only the
+        slots being allocated changes the policy's own choice.  An empty
+        argument keeps the historical narrow behaviour.
+        """
 
         slots = list(slots)
 
@@ -114,6 +126,22 @@ class GPPOEventAllocator:
             for slot in slots
         ]
 
+        registry = [replace(row) for row in context_subtasks]
+
+        if registry:
+            # Frozen: every registered subtask is a graph row.  Only active,
+            # uncompleted Search rows survive the mask; Relay rows and
+            # already-finished Search rows stay in the graph as nodes.
+            subtasks = registry
+
+        active_ids = {
+            int(task.subtask_id)
+            for task in subtasks
+            if task.task_type == TaskType.TARGET_SEARCH
+            and task.active
+            and not task.completed
+        }
+
         slot_by_id = {
             int(slot.slot_id): slot
             for slot in slots
@@ -134,6 +162,17 @@ class GPPOEventAllocator:
         )
 
         for _ in range(len(subtasks)):
+            if registry:
+                # Frozen rebuilds the graph after every assignment, so the
+                # row just assigned (and every UAV it took) is re-evaluated.
+                travel_time_matrix = (
+                    observed_travel_time_matrix(
+                        uavs,
+                        subtasks,
+                        self._marvel_agents,
+                    )
+                )
+
             graph = TaskGraph(
                 uav_states=uavs,
                 subtasks=subtasks,
@@ -143,7 +182,10 @@ class GPPOEventAllocator:
 
             # Event-specific hard masks.
             for ti, task in enumerate(graph.subtasks):
-                slot = slot_by_id[int(task.subtask_id)]
+                slot = slot_by_id.get(int(task.subtask_id))
+
+                if slot is None:
+                    continue
 
                 for forbidden_uid in slot.forbidden_uav_ids:
                     ui = graph.uav_id_to_index.get(
@@ -152,6 +194,14 @@ class GPPOEventAllocator:
 
                     if ui is not None:
                         graph.action_mask[ti, ui] = True
+
+            if registry:
+                for ti, task in enumerate(graph.subtasks):
+                    if int(task.subtask_id) not in active_ids:
+                        graph.action_mask[ti, :] = True
+
+                if not (~graph.action_mask).any():
+                    break
 
             decision = self.adapter.assign(
                 graph,
@@ -164,9 +214,11 @@ class GPPOEventAllocator:
             subtask = subtasks[decision.task_index]
             uav = uavs[decision.uav_index]
 
-            slot = slot_by_id[
-                int(subtask.subtask_id)
-            ]
+            slot = slot_by_id.get(int(subtask.subtask_id))
+
+            if slot is None:
+                # Registry row that is not being allocated this cycle.
+                break
 
             total_time = float(
                 graph.edge_features[

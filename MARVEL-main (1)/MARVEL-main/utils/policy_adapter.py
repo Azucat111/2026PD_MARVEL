@@ -45,6 +45,16 @@ class MARVELPolicyAdapter:
         self.verbose = bool(runtime.config.get("debug_policy", False))
         self._using_policy = False
 
+        # Set by `_policy_actions`: True when native post-selection has been
+        # deferred to the scheduler, which is where frozen applies it.
+        self._defer_post_selection = False
+
+        # True once a scheduler has accepted `bind_post_selection`, i.e. the
+        # pipeline it owns can place the post-selection after the per-task
+        # override.  The heuristic scheduler cannot, so the adapter falls
+        # back to applying it itself.
+        self._scheduler_owns_post_selection = False
+
         # Shared belief map at MARVEL's CELL_SIZE resolution.
         self._frame = runtime.obstacles.frame
         width = float(runtime.obstacles.width)
@@ -148,6 +158,16 @@ class MARVELPolicyAdapter:
             self.scheduler.bind_marvel_agents(
                 self.agents
             )
+
+        # Frozen applies the native post-selection after the per-task
+        # override, which only the scheduler can order correctly.  Bind the
+        # adapter so it can call back into the resolver/heading stages.
+        if self._frame.is_native and hasattr(
+            self.scheduler,
+            "bind_post_selection",
+        ):
+            self.scheduler.bind_post_selection(self)
+            self._scheduler_owns_post_selection = True
 
         self._initialize_search_scenario()
 
@@ -469,10 +489,34 @@ class MARVELPolicyAdapter:
                 actions.append(default[idx])
                 used_fallback = True
 
-        # 5. Frozen post-selection filtering.  Only marvel_native reproduces
-        # the frozen worker here; extended keeps the raw PolicyNet output.
-        # A policy failure means the frozen path did not run either.
-        if self._frame.is_native and not used_fallback:
+        # 5. Frozen post-selection filtering.
+        #
+        # Frozen applies this *after* the per-task override, not before:
+        # `_select_actions` dispatches Exploration/Search/Relay/Safety and
+        # returns those waypoints, and only then does `run_episode` call
+        # `_resolve_same_waypoint_collisions` / `_apply_hazard_traversability`
+        # and recompute the heading bins.  Resolving duplicates against the
+        # raw PolicyNet waypoints instead would displace an Exploration
+        # robot that shares a raw waypoint with a robot whose waypoint is
+        # about to be overridden by Search/Relay.
+        #
+        # The scheduler therefore owns the native post-selection, running it
+        # once the overrides are in place.  Extended mode keeps the raw
+        # PolicyNet output.  A policy failure means the frozen path did not
+        # run either, so the scheduler is told to skip it.
+        self._defer_post_selection = bool(
+            self._frame.is_native
+            and not used_fallback
+            and self._scheduler_owns_post_selection
+        )
+
+        if (
+            self._frame.is_native
+            and not used_fallback
+            and not self._defer_post_selection
+        ):
+            # Scheduler cannot order it after the override; keep the
+            # historical eager behaviour rather than dropping it.
             actions = self._apply_frozen_post_selection(actions)
 
         return actions
@@ -493,25 +537,45 @@ class MARVELPolicyAdapter:
 
         The PolicyNet's heading index is therefore overwritten by the
         heading bin nearest the resolved waypoint direction.
+
+        This is the composite form, kept for direct use.  In the live
+        pipeline the two stages are split -- see `resolve_actions` and
+        `recompute_headings` -- because frozen runs the hazard guard
+        between them.
         """
 
-        waypoints = [
-            np.asarray(action[0], dtype=float) for action in actions
+        return self.recompute_headings(self.resolve_actions(actions))
+
+    def resolve_actions(self, actions):
+        """Frozen `_resolve_same_waypoint_collisions` over actions."""
+
+        waypoints = self._resolve_same_waypoint_collisions(
+            [np.asarray(action[0], dtype=float) for action in actions]
+        )
+
+        return [
+            (waypoint, heading)
+            for waypoint, (_original, heading) in zip(
+                waypoints, actions
+            )
         ]
-        heading_indices = [
-            int(round(float(action[1]) / (360.0 / NUM_ANGLES_BIN)))
-            for action in actions
-        ]
 
-        waypoints = self._resolve_same_waypoint_collisions(waypoints)
+    def recompute_headings(self, actions):
+        """Frozen heading-bin recomputation from the final waypoint.
 
-        # Frozen recomputes the bin from the final waypoint direction and
-        # keeps the previous value only when the displacement is ~zero.
-        resolved_headings = []
+        Frozen recomputes the bin from the final waypoint direction and
+        keeps the previous index only when the displacement is ~zero.
+        """
 
-        for robot, waypoint, heading_index in zip(
-            self.runtime.robots, waypoints, heading_indices
+        resolved = []
+
+        for robot, (waypoint, heading) in zip(
+            self.runtime.robots, actions
         ):
+            heading_index = int(
+                round(float(heading) / (360.0 / NUM_ANGLES_BIN))
+            )
+
             delta = np.asarray(waypoint, dtype=float) - np.asarray(
                 robot.position, dtype=float
             )
@@ -526,16 +590,15 @@ class MARVELPolicyAdapter:
                     np.floor(angle / 360.0 * NUM_ANGLES_BIN)
                 ) % NUM_ANGLES_BIN
 
-            resolved_headings.append(
-                float(heading_index) * (360.0 / NUM_ANGLES_BIN)
+            resolved.append(
+                (
+                    waypoint,
+                    float(heading_index)
+                    * (360.0 / NUM_ANGLES_BIN),
+                )
             )
 
-        return [
-            (waypoint, heading)
-            for waypoint, heading in zip(
-                waypoints, resolved_headings
-            )
-        ]
+        return resolved
 
     def _resolve_same_waypoint_collisions(self, waypoints):
         """Frozen ``_resolve_same_waypoint_collisions``, ported verbatim.
