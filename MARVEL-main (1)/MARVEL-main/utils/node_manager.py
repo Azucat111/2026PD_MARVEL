@@ -12,6 +12,7 @@ Key functionalities:
 - Manage neighbor node connections
 - Perform graph-based pathfinding algorithms
 """
+import heapq
 import time
 
 import numpy as np
@@ -194,39 +195,54 @@ class NodeManager:
         return all_node_coords, utility, guidepost, occupancy, adjacent_matrix, current_index, neighbor_indices, highest_utility_angle, frontiers_distribution, heading_visited, path_coords
 
     def Dijkstra(self, start):
-        q = set()
+        """Single-source shortest paths over the node graph.
+
+        Same contract as before: every node is a key of both dicts,
+        unreachable nodes keep the 1e8 sentinel and a None predecessor, edge
+        weights are the 2-decimal Euclidean hop distances, and a node is
+        relaxed only while it is still unvisited.
+
+        The unvisited minimum used to be found by scanning the whole
+        remaining set on every iteration, which is O(V^2) in interpreter
+        time and dominated the planner at scale.  The frontier is now a
+        binary heap with stale-entry skipping, giving O((V + E) log V).
+        Values are accumulated through the identical expression, so the
+        distances are the same floats.
+        """
         dist_dict = {}
         prev_dict = {}
+        remaining = set()
 
         for node in self.nodes_dict.__iter__():
             coords = node.data.coords
             key = (coords[0], coords[1])
             dist_dict[key] = 1e8
             prev_dict[key] = None
-            q.add(key)
+            remaining.add(key)
 
         assert (start[0], start[1]) in dist_dict.keys()
-        dist_dict[(start[0], start[1])] = 0
+        source = (start[0], start[1])
+        dist_dict[source] = 0
 
-        while len(q) > 0:
-            u = None
-            for coords in q:
-                if u is None:
-                    u = coords
-                elif dist_dict[coords] < dist_dict[u]:
-                    u = coords
+        heap = [(0, source)]
 
-            q.remove(u)
+        while heap:
+            dist_u, u = heapq.heappop(heap)
 
-            if self.nodes_dict.find(u) is None:
-                print(u)
-                for node in self.nodes_dict.__iter__():
-                    print(node.data.coords)
+            if u not in remaining:
+                # Already settled, or a stale entry superseded by a shorter
+                # relaxation pushed later.
+                continue
+
+            if dist_u != dist_dict[u]:
+                continue
+
+            remaining.discard(u)
 
             node = self.nodes_dict.find(u).data
             for neighbor_node_coords in node.neighbor_list:
                 v = (neighbor_node_coords[0], neighbor_node_coords[1])
-                if v in q:
+                if v in remaining:
                     cost = ((neighbor_node_coords[0] - u[0]) ** 2 + (
                             neighbor_node_coords[1] - u[1]) ** 2) ** (1 / 2)
                     cost = np.round(cost, 2)
@@ -234,6 +250,7 @@ class NodeManager:
                     if alt < dist_dict[v]:
                         dist_dict[v] = alt
                         prev_dict[v] = u
+                        heapq.heappush(heap, (alt, v))
 
         return dist_dict, prev_dict
 

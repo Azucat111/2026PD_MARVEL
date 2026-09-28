@@ -56,47 +56,31 @@ def decompose(manager, robot_location, robot_locations, repeats=1):
         out[name] = (time.perf_counter() - start) / repeats
         return result
 
-    # --- 1. gather coordinates -------------------------------------------------
-    def gather():
-        coords = []
-        for node in nodes_dict.__iter__():
-            coords.append(node.data.coords)
-        return np.array(coords).reshape(-1, 2)
+    # --- 1-3. shared graph -------------------------------------------------
+    # The shared arrays are cached per planning epoch, so the cold build is
+    # amortised across the UAVs of a step and a warm call is a version check.
+    manager._shared_version = -1
+    start = time.perf_counter()
+    manager._shared_graph()
+    out["shared_cold"] = time.perf_counter() - start
 
-    all_node_coords = timed("coords", gather)
+    start = time.perf_counter()
+    shared = manager._shared_graph()
+    out["shared_warm"] = time.perf_counter() - start
+
+    (
+        all_node_coords,
+        utility,
+        frontiers_distribution,
+        highest_utility_angle,
+        heading_visited,
+        adjacent_matrix,
+        node_coords_to_check,
+    ) = shared
+
     n = all_node_coords.shape[0]
-    out["n_nodes"] = n
-
-    # --- 2. adjacency allocation ----------------------------------------------
-    adjacent_matrix = timed(
-        "adjacency_alloc", lambda: np.ones((n, n)).astype(int)
-    )
-
-    node_coords_to_check = all_node_coords[:, 0] + all_node_coords[:, 1] * 1j
-
-    # --- 3. per-node feature gather + neighbour resolution --------------------
-    def scan():
-        utility, frontiers, angles, visited = [], [], [], []
-        for i, coords in enumerate(all_node_coords):
-            node = nodes_dict.find((coords[0], coords[1])).data
-            utility.append(node.utility)
-            frontiers.append(node.frontiers_distribution)
-            visited.append(node.heading_visited)
-            angles.append(node.highest_utility_angle)
-
-            for neighbour in node.neighbor_list:
-                idx = np.argwhere(
-                    node_coords_to_check
-                    == neighbour[0] + neighbour[1] * 1j
-                )
-                if idx or idx == [[0]]:
-                    adjacent_matrix[i, idx[0][0]] = 0
-        return (np.array(utility), np.array(frontiers),
-                np.array(angles), np.array(visited))
-
-    utility, frontiers, angles, visited = timed("feature_scan", scan)
-
-    n_edges = int((adjacent_matrix == 0).sum())
+    out["n_nodes"] = int(n)
+    out["edges"] = int((adjacent_matrix == 0).sum())
 
     # --- 4. planning start -----------------------------------------------------
     def start_node():
@@ -173,10 +157,18 @@ def decompose(manager, robot_location, robot_locations, repeats=1):
 
     timed("tail", tail)
 
-    out["edges"] = n_edges
-    out["total"] = sum(
-        v for k, v in out.items()
-        if k not in ("n_nodes", "edges", "path_len")
+    # Shared structure is one cold build per mission step, not per UAV.
+    out["shared_per_call_amortised"] = out["shared_cold"] / max(
+        1, len(robot_locations)
+    )
+    out["total"] = (
+        out["shared_per_call_amortised"]
+        + out["shared_warm"]
+        + sum(
+            v for k, v in out.items()
+            if k in ("nearest_start", "dijkstra", "nearest_utility",
+                     "astar", "guidepost", "tail")
+        )
     )
     return out
 
@@ -253,11 +245,9 @@ def main() -> int:
         json.dumps(results, indent=2), encoding="utf-8"
     )
 
-    keys = [k for k in results[0]
-            if k not in ("uavs", "n_nodes", "edges", "path_len",
-                         "calls_per_mission_step",
-                         "shared_coords_identical", "shared_utility_identical",
-                         "shared_adjacency_identical", "current_index_differs")]
+    keys = ["shared_cold", "shared_per_call_amortised", "shared_warm",
+            "nearest_start", "dijkstra", "nearest_utility", "astar",
+            "guidepost", "tail", "total", "whole_call_seconds"]
     print()
     header = "operation".ljust(20) + "".join(
         f"{r['uavs']:>12d}" for r in results
