@@ -24,6 +24,14 @@ class NodeManager:
     def __init__(self, fov, sensor_range, utility_range=None, plot=False):
         self.nodes_dict = quads.QuadTree((0, 0), 1000, 1000)
         self.plot = plot
+
+        # The graph is mutated only by `update_graph`; bumping a version
+        # there lets `get_all_node_graph` reuse the shared arrays across the
+        # UAVs of one planning epoch instead of rebuilding them per robot.
+        self._version = 0
+        self._shared_cache = None
+        self._shared_version = -1
+
         self.fov = fov
         self.sensor_range = sensor_range
         if utility_range is None:
@@ -47,8 +55,10 @@ class NodeManager:
             neighbor_node = self.nodes_dict.find(neighbor_coords)
             neighbor_node.data.neighbor_list.remove(node.coords.tolist())
         self.nodes_dict.remove(node.coords.tolist())
+        self._version += 1
 
     def update_graph(self, robot_location, frontiers, updating_map_info, map_info):
+        self._version += 1
         node_coords, _ = get_updating_node_coords(robot_location, updating_map_info)
 
         all_node_list = []
@@ -69,7 +79,24 @@ class NodeManager:
                     self.sensor_range + NODE_RESOLUTION):
                 node.update_neighbor_nodes(updating_map_info, self.nodes_dict)
 
-    def get_all_node_graph(self, robot_location, robot_locations):
+    def _shared_graph(self):
+        """Coords, per-node features and adjacency of the current graph.
+
+        Every UAV of a planning epoch reads the same `nodes_dict`, and the
+        graph is mutated only inside `update_graph`, which the caller runs
+        to completion before any `get_all_node_graph` call.  Rebuilding the
+        O(n_nodes^2) adjacency plus the per-node gather once per robot was
+        the dominant cost at scale.  The returned arrays are read-only
+        downstream (the caller slices them; nothing writes in place), so
+        they are cached until the graph itself changes.
+        """
+
+        if (
+            self._shared_cache is not None
+            and self._shared_version == self._version
+        ):
+            return self._shared_cache
+
         all_node_coords = []
         for node in self.nodes_dict.__iter__():
             all_node_coords.append(node.data.coords)
@@ -95,10 +122,31 @@ class NodeManager:
                     index = index[0][0]
                     adjacent_matrix[i, index] = 0
 
-        utility = np.array(utility)
-        frontiers_distribution = np.array(frontiers_distribution)
-        highest_utility_angle = np.array(highest_utility_angle)
-        heading_visited = np.array(heading_visited)
+        self._shared_cache = (
+            all_node_coords,
+            np.array(utility),
+            np.array(frontiers_distribution),
+            np.array(highest_utility_angle),
+            np.array(heading_visited),
+            adjacent_matrix,
+            node_coords_to_check,
+        )
+        self._shared_version = self._version
+
+        return self._shared_cache
+
+    def get_all_node_graph(self, robot_location, robot_locations):
+        (
+            all_node_coords,
+            utility,
+            frontiers_distribution,
+            highest_utility_angle,
+            heading_visited,
+            adjacent_matrix,
+            node_coords_to_check,
+        ) = self._shared_graph()
+
+        n_nodes = all_node_coords.shape[0]
 
         # Robot positions normally lie exactly on the node lattice.  In
         # practice map filtering and floating-point coordinate conversion can
