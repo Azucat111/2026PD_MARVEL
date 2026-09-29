@@ -39,9 +39,25 @@ class MARVELPolicyAdapter:
         actions = adapter.get_actions(obs)       # call each step instead of default_actions()
     """
 
-    def __init__(self, runtime, device: str = "cpu") -> None:
+    def __init__(self, runtime, device: str | None = None) -> None:
         self.runtime = runtime
-        self.device = torch.device(device)
+
+        # Device selection is explicit and opt-in.  The scenario may declare
+        #
+        #   policy:
+        #     device: cuda
+        #     batch_inference: true
+        #
+        # but the default is CPU with batching off, and asking for CUDA
+        # without a usable CUDA runtime raises rather than quietly
+        # downgrading -- a silent fallback would change which arithmetic
+        # produces the commanded waypoints.
+        policy_cfg = runtime.config.get("policy", {}) or {}
+
+        requested = (
+            device if device is not None else policy_cfg.get("device", "cpu")
+        )
+        self.device = self._resolve_device(requested)
         self.verbose = bool(runtime.config.get("debug_policy", False))
         self._using_policy = False
 
@@ -54,6 +70,13 @@ class MARVELPolicyAdapter:
         # override.  The heuristic scheduler cannot, so the adapter falls
         # back to applying it itself.
         self._scheduler_owns_post_selection = False
+
+        # One PolicyNet forward per step for all UAVs (extended mode).
+        # Opt-in: it changes only the number of forward passes, and is a
+        # wash on CPU, so it is off unless the scenario asks for it.
+        self.batch_policy_inference = bool(
+            policy_cfg.get("batch_inference", False)
+        )
 
         # Shared belief map at MARVEL's CELL_SIZE resolution.
         self._frame = runtime.obstacles.frame
@@ -467,27 +490,41 @@ class MARVELPolicyAdapter:
         default = self.runtime.default_actions()
         if self.verbose:
             print(f"[PolicyAdapter] Generating actions for {len(self.agents)} agents")
-        for idx, (agent, robot) in enumerate(zip(self.agents, self.runtime.robots)):
-            try:
-                obs = agent.get_observation(pad=self._observation_padding())
-                next_position, _, _, heading_index = agent.select_next_waypoint(obs, greedy=True)
-                heading_deg = float(heading_index) * (360.0 / NUM_ANGLES_BIN)
-                waypoint = np.asarray(next_position, dtype=float)
 
-                # 调试：检查waypoint是否合理
-                dist = np.linalg.norm(waypoint - robot.position)
-                if self.verbose:
-                    print(f"[PolicyAdapter] Robot {robot.robot_id}: pos={robot.position.round(2)}, waypoint={waypoint.round(2)}, dist={dist:.2f}, heading={heading_deg:.1f}")
+        # One forward pass for all UAVs.  Every per-UAV observation is built
+        # exactly as the sequential path builds it -- including the per-agent
+        # nearest-node window -- and the nine fixed-shape tensors are stacked
+        # along the batch axis.  Any failure falls back to the sequential
+        # loop below, so the batched path can never change behaviour, only
+        # how many forward passes it costs.
+        if self._batched_inference_applies():
+            batched = self._batched_actions(default)
+            if batched is not None:
+                actions = batched
+                used_fallback = False
 
-                actions.append((waypoint, heading_deg))
-            except Exception as exc:
-                if self.verbose:
-                    print(f"[PolicyAdapter] Robot {robot.robot_id}: action selection FAILED: {exc}")
-                import traceback
-                traceback.print_exc()
-                logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
-                actions.append(default[idx])
-                used_fallback = True
+        if not actions:
+            for idx, (agent, robot) in enumerate(zip(self.agents, self.runtime.robots)):
+                try:
+                    obs = agent.get_observation(pad=self._observation_padding())
+                    next_position, _, _, heading_index = agent.select_next_waypoint(obs, greedy=True)
+                    heading_deg = float(heading_index) * (360.0 / NUM_ANGLES_BIN)
+                    waypoint = np.asarray(next_position, dtype=float)
+
+                    # 调试：检查waypoint是否合理
+                    dist = np.linalg.norm(waypoint - robot.position)
+                    if self.verbose:
+                        print(f"[PolicyAdapter] Robot {robot.robot_id}: pos={robot.position.round(2)}, waypoint={waypoint.round(2)}, dist={dist:.2f}, heading={heading_deg:.1f}")
+
+                    actions.append((waypoint, heading_deg))
+                except Exception as exc:
+                    if self.verbose:
+                        print(f"[PolicyAdapter] Robot {robot.robot_id}: action selection FAILED: {exc}")
+                    import traceback
+                    traceback.print_exc()
+                    logger.debug("Action selection failed for robot %d: %s", robot.robot_id, exc)
+                    actions.append(default[idx])
+                    used_fallback = True
 
         # 5. Frozen post-selection filtering.
         #
@@ -524,6 +561,109 @@ class MARVELPolicyAdapter:
     # ------------------------------------------------------------------
     # Frozen low-level post-selection semantics (marvel_native only)
     # ------------------------------------------------------------------
+    @staticmethod
+    def _resolve_device(requested) -> torch.device:
+        """Resolve the PolicyNet device, failing loudly on a bad request."""
+
+        name = str(requested).strip().lower()
+
+        if name.startswith("cuda") and not torch.cuda.is_available():
+            raise RuntimeError(
+                f"policy.device={requested!r} was requested but CUDA is not "
+                "available. Set policy.device to 'cpu', or run where a CUDA "
+                "runtime is present."
+            )
+
+        return torch.device(name)
+
+    def _batched_inference_applies(self) -> bool:
+        """Whether one forward pass can serve every UAV this step.
+
+        Extended mode only: `marvel_native` keeps the sequential path the
+        frozen parity suites pin, so batching cannot perturb it.
+        """
+
+        return bool(
+            self.batch_policy_inference
+            and not self._frame.is_native
+            and len(self.agents) > 1
+        )
+
+    def _batched_actions(self, default):
+        """One PolicyNet forward for all agents; `None` means fall back.
+
+        Each agent's observation is built by its own `get_observation`, so
+        the per-agent nearest-node window, the remapped `current_edge` and
+        the neighbour heading candidates are exactly what the sequential
+        path produces.  Only the forward pass is shared: the nine
+        observation tensors are stacked on the batch axis and each row is
+        decoded against that agent's own observation.
+        """
+
+        pad = self._observation_padding()
+
+        try:
+            # Build every observation on CPU.  `get_observation` moves each
+            # tensor to the agent's device as it builds it, so leaving the
+            # agents on CUDA would do nine transfers per UAV; instead one
+            # transfer per tensor happens below, once per mission step.
+            devices = [agent.device for agent in self.agents]
+
+            try:
+                for agent in self.agents:
+                    agent.device = torch.device("cpu")
+                observations = [
+                    agent.get_observation(pad=pad) for agent in self.agents
+                ]
+            finally:
+                for agent, device in zip(self.agents, devices):
+                    agent.device = device
+
+            with torch.no_grad():
+                batched = [
+                    torch.cat([obs[index] for obs in observations], dim=0).to(
+                        self.device
+                    )
+                    for index in range(len(observations[0]))
+                ]
+                logits = self.policy_net(*batched).to("cpu")
+
+            actions = []
+
+            for index, (agent, obs) in enumerate(
+                zip(self.agents, observations)
+            ):
+                (
+                    next_position,
+                    _node,
+                    _action,
+                    heading_index,
+                ) = agent.decode_waypoint(
+                    obs, logits[index:index + 1], greedy=True
+                )
+
+                actions.append(
+                    (
+                        np.asarray(next_position, dtype=float),
+                        float(heading_index) * (360.0 / NUM_ANGLES_BIN),
+                    )
+                )
+
+            return actions
+        except Exception as exc:
+            logger.debug(
+                "Batched policy inference failed (%s); falling back to "
+                "sequential selection.",
+                exc,
+            )
+            if self.device.type == "cuda":
+                # A failed CUDA step must not poison the next one.
+                torch.cuda.empty_cache()
+            if self.verbose:
+                import traceback
+                traceback.print_exc()
+            return None
+
     def _apply_frozen_post_selection(self, actions):
         """Frozen worker ordering, reproduced exactly.
 

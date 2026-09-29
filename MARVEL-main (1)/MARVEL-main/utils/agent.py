@@ -281,9 +281,22 @@ class Agent:
         return [node_inputs, node_padding_mask, edge_mask, current_index, current_edge, edge_padding_mask, all_node_frontier_distribution, node_heading_visited, node_neighbor_best_headings]
 
     def select_next_waypoint(self, observation, greedy = False):
-        _, _, _, _, current_edge, _, _, _, _ = observation
         with torch.no_grad():
             logp = self.policy_net(*observation)
+
+        return self.decode_waypoint(observation, logp, greedy=greedy)
+
+    def decode_waypoint(self, observation, logp, greedy = False):
+        """Decode one action from logits.
+
+        Split out of `select_next_waypoint` so a caller that ran one batched
+        forward for several UAVs can decode each row against that UAV's own
+        observation.  `logp` must be the single-row logits for this agent
+        (`logits[i:i + 1]` of a batch), so the arithmetic is identical to the
+        sequential path.
+        """
+
+        _, _, _, _, current_edge, _, _, _, _ = observation
 
         if greedy:
             action_index = torch.argmax(logp, 1).long()
