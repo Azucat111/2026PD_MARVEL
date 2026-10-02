@@ -35,6 +35,13 @@ class Agent:
         self.device = device
         self.plot = plot
         self.policy_net = policy_net
+
+        # Whether `decode_waypoint` resolves the selected neighbour index
+        # against the windowed node coordinates that `get_observation`
+        # actually indexed.  Off by default so `marvel_native` keeps its
+        # frozen behaviour; `MARVELPolicyAdapter` enables it for extended.
+        self.use_windowed_decode = False
+        self._windowed_node_coords = None
         self.fov = fov
         self.num_prev_headings = 3
         self.sensor_range = sensor_range
@@ -195,6 +202,14 @@ class Agent:
         # larger platform scenarios the shared graph can contain many more
         # nodes; keep a local window around the current node and remap graph
         # indices before applying the original padding logic.
+        #
+        # `_windowed_node_coords` records the same window so that
+        # `decode_waypoint` can resolve the selected neighbour index against
+        # the array it actually indexes.  `current_edge` below is remapped
+        # into window index space, so indexing the unwindowed node array
+        # with it names an unrelated node -- at scale, one hundreds of
+        # metres away -- and the commanded waypoint becomes unreachable.
+        self._windowed_node_coords = None
         if n_node > NODE_PADDING_SIZE:
             distances = np.linalg.norm(node_coords - node_coords[current_index], axis=1)
             keep = np.argsort(distances)[:NODE_PADDING_SIZE]
@@ -219,6 +234,8 @@ class Agent:
             if current_edge.size == 0:
                 current_edge = np.asarray([current_index], dtype=int)
             n_node = node_coords.shape[0]
+            if self.use_windowed_decode:
+                self._windowed_node_coords = node_coords
 
         current_node_coords = node_coords[current_index]
         all_node_coords = np.concatenate((node_coords[:, 0].reshape(-1, 1) - current_node_coords[0],
@@ -306,7 +323,13 @@ class Agent:
         waypoint_index = action_index.item() // self.num_heading_candidates
         next_node_index = current_edge[0, waypoint_index, 0].item()
         heading_index = self.neighbor_best_indices[waypoint_index][action_index.item() % self.num_heading_candidates]
-        next_position = self.node_coords[next_node_index]
+        # `current_edge` is expressed in the index space of the window that
+        # `get_observation` built, so the coordinate lookup has to use that
+        # same window once one was applied.
+        node_coords = self._windowed_node_coords
+        if node_coords is None:
+            node_coords = self.node_coords
+        next_position = node_coords[next_node_index]
 
         return next_position, next_node_index, action_index, heading_index
     

@@ -160,6 +160,20 @@ class MARVELPolicyAdapter:
 
         self._node_manager = NodeManager(fov, sensor_range)
 
+        # Extended only: the planner graph must represent centre positions
+        # the physical footprint can actually occupy, using the very
+        # predicate `SafetyShield` and `runtime.step` apply.  `marvel_native`
+        # keeps its frozen node admission.
+        if not self._frame.is_native:
+            from .safety_shield import SafetyShield
+
+            self._node_manager.use_clearance_admission = True
+            self._node_manager.clearance_blocked = (
+                lambda point: self.runtime.obstacles.check_collision(
+                    point, radius=SafetyShield.COLLISION_RADIUS
+                )[0]
+            )
+
         self.agents = []
         for robot in self.runtime.robots:
             agent = Agent(
@@ -172,6 +186,9 @@ class MARVELPolicyAdapter:
                 ground_truth_node_manager=None,
                 device=self.device,
             )
+            # Extended only: `marvel_native` keeps the frozen decode, and
+            # its graph never reaches NODE_PADDING_SIZE anyway.
+            agent.use_windowed_decode = not self._frame.is_native
             self.agents.append(agent)
 
         if hasattr(

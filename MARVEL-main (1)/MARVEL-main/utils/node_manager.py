@@ -40,6 +40,14 @@ class NodeManager:
         else:
             self.utility_range = utility_range
 
+        # Extended only: refuse nodes the physical UAV footprint cannot
+        # occupy.  `clearance_blocked` is supplied by the adapter and must be
+        # the same collision predicate `SafetyShield` and `runtime.step` use,
+        # otherwise the graph would admit targets execution can never reach.
+        # Off by default so `marvel_native` keeps its frozen node admission.
+        self.use_clearance_admission = False
+        self.clearance_blocked = None
+
     def check_node_exist_in_dict(self, coords):
         key = (coords[0], coords[1])
         exist = self.nodes_dict.find(key)
@@ -49,6 +57,17 @@ class NodeManager:
         key = (coords[0], coords[1])
         node = Node(coords, local_frontiers, updating_map_info, self.fov, self.sensor_range, utility_range=self.utility_range)
         self.nodes_dict.insert(point=key, data=node)
+
+        if self.use_clearance_admission and self.clearance_blocked is not None:
+            if self.clearance_blocked(np.asarray(coords, dtype=float)):
+                # Detach the node: keep the caller's object valid but inert
+                # so it contributes no neighbours and no utility.
+                self.nodes_dict.remove(list(coords))
+                node.utility = 0
+                node.need_update_neighbor = False
+                node.neighbor_list = []
+                node.observable_frontiers = set()
+                node.frontiers_distribution = np.zeros(node.num_angles_bin)
         return node
 
     def remove_node_from_dict(self, node):
