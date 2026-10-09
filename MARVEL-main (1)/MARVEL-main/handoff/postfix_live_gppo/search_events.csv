@@ -1,0 +1,9 @@
+uavs,mission_step,event,heat_id,uav_id,distance
+8,2,initial_allocation,0,0,0.0
+16,2,initial_allocation,0,0,0.0
+16,93,completion,0,-1,0.0
+16,94,refill,2,-1,0.0
+30,2,initial_allocation,0,0,0.0
+30,177,completion,0,-1,0.0
+30,178,refill,2,-1,0.0
+60,2,initial_allocation,0,43,0.0

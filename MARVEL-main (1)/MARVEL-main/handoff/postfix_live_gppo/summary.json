@@ -1,0 +1,341 @@
+[
+  {
+    "uavs": 8,
+    "steps_run": 450,
+    "activation": {
+      "sweep_samples": 1097,
+      "sweep_spacing_m": 8.0,
+      "sweep_headings": [
+        0.0,
+        90.0,
+        180.0,
+        270.0
+      ],
+      "explored_cells": 77613,
+      "free_cell_count": 250000,
+      "exploration_rate": 0.310452,
+      "target_rate": 0.305
+    },
+    "activated": true,
+    "activation_step": 0,
+    "first_completion_step": null,
+    "first_refill_step": null,
+    "first_relay_step": null,
+    "arrivals": {},
+    "service_starts": {},
+    "completed": {},
+    "search_completions": 0,
+    "refills": 0,
+    "search_uavs_used": [
+      0,
+      5
+    ],
+    "mean_travel_m": 368.2125000000455,
+    "shield_blocks": {},
+    "steady": {
+      "n": 449,
+      "mean": 0.6064182873051225,
+      "p95": 0.692566
+    },
+    "allocation": {
+      "n": 1,
+      "mean": 0.744101,
+      "p95": 0.744101
+    },
+    "refill": {
+      "n": 0,
+      "mean": null,
+      "p95": null
+    },
+    "inclusive": {
+      "marvel.belief": 0.00048673855108467655,
+      "marvel.map_info": 0.0004342813667931801,
+      "runtime.collision": 0.011469592734550437,
+      "marvel.graph": 0.14195264939579325,
+      "marvel.planning_shared_graph": 0.011952970971906325,
+      "marvel.planning_state": 0.12063403887962017,
+      "marvel.heading_candidates": 0.03236074350441211,
+      "marvel.observation": 0.045667443855571845,
+      "marvel.policynet_forward": 0.008272087475310804,
+      "marvel.policynet_decode": 0.00021107352476166044,
+      "marvel.batched_actions": 0.13732075945356176,
+      "gppo.maybe_activate": 1.4434156603076393e-06,
+      "gppo.refresh_search": 0.0003393513818931145,
+      "gppo.refresh_relay": 0.0003130753576664978,
+      "gppo.high_level_update": 0.0007330805263902423,
+      "gppo.scheduler_apply": 0.008664377053258553,
+      "runtime.shield": 0.0059770864619026216,
+      "runtime.motion": 0.0010635266049939674,
+      "runtime.sensing": 0.17823409649071337,
+      "runtime.sensing_explored": 0.002819298886800728,
+      "runtime.comm": 0.0006117795200811492,
+      "runtime.tasks": 0.0001438829890685156,
+      "gppo.allocate": 0.00032803273777567987
+    },
+    "ram_mb": 1254.109375,
+    "vram_peak_allocated_mb": 117.373046875,
+    "vram_peak_reserved_mb": 170.0,
+    "heat_points": 4,
+    "search_capacity": 2,
+    "search_service_steps": 6,
+    "search_reach_radius": 3.5,
+    "activation_threshold": 0.3
+  },
+  {
+    "uavs": 16,
+    "steps_run": 144,
+    "activation": {
+      "sweep_samples": 1097,
+      "sweep_spacing_m": 8.0,
+      "sweep_headings": [
+        0.0,
+        90.0,
+        180.0,
+        270.0
+      ],
+      "explored_cells": 77613,
+      "free_cell_count": 250000,
+      "exploration_rate": 0.310452,
+      "target_rate": 0.305
+    },
+    "activated": true,
+    "activation_step": 0,
+    "first_completion_step": 93,
+    "first_refill_step": 94,
+    "first_relay_step": null,
+    "arrivals": {},
+    "service_starts": {},
+    "completed": {
+      "0": 93
+    },
+    "search_completions": 1,
+    "refills": 1,
+    "search_uavs_used": [
+      0,
+      9
+    ],
+    "mean_travel_m": 127.79088108815317,
+    "shield_blocks": {
+      "uav_proximity": 120
+    },
+    "steady": {
+      "n": 142,
+      "mean": 1.1078077323943663,
+      "p95": 1.297207
+    },
+    "allocation": {
+      "n": 1,
+      "mean": 0.97421,
+      "p95": 0.97421
+    },
+    "refill": {
+      "n": 1,
+      "mean": 1.23153,
+      "p95": 1.23153
+    },
+    "inclusive": {
+      "marvel.belief": 0.0012646460837560073,
+      "marvel.map_info": 0.00043586714592594135,
+      "runtime.collision": 0.022214099502990494,
+      "marvel.graph": 0.3005887190483413,
+      "marvel.planning_shared_graph": 0.023089771173444105,
+      "marvel.planning_state": 0.19598757359749974,
+      "marvel.heading_candidates": 0.06146855899340961,
+      "marvel.observation": 0.08640238303946211,
+      "marvel.policynet_forward": 0.007051805402675705,
+      "marvel.policynet_decode": 0.00027720130426839914,
+      "marvel.batched_actions": 0.2265665477221369,
+      "gppo.maybe_activate": 1.6866387745216748e-06,
+      "gppo.refresh_search": 0.0019381743470856033,
+      "gppo.refresh_relay": 0.0005476660417116364,
+      "gppo.high_level_update": 0.0025753706735384993,
+      "gppo.scheduler_apply": 0.00578241268082517,
+      "runtime.shield": 0.01215358965156257,
+      "runtime.motion": 0.0017626218251381135,
+      "runtime.sensing": 0.3378347017499234,
+      "runtime.sensing_explored": 0.008069487050458216,
+      "runtime.comm": 0.0007388162293359023,
+      "runtime.tasks": 0.00015782180546213768,
+      "gppo.allocate": 0.0019267526874702729
+    },
+    "ram_mb": 1310.38671875,
+    "vram_peak_allocated_mb": 206.10107421875,
+    "vram_peak_reserved_mb": 286.0,
+    "heat_points": 4,
+    "search_capacity": 2,
+    "search_service_steps": 6,
+    "search_reach_radius": 3.5,
+    "activation_threshold": 0.3
+  },
+  {
+    "uavs": 30,
+    "steps_run": 228,
+    "activation": {
+      "sweep_samples": 1097,
+      "sweep_spacing_m": 8.0,
+      "sweep_headings": [
+        0.0,
+        90.0,
+        180.0,
+        270.0
+      ],
+      "explored_cells": 77613,
+      "free_cell_count": 250000,
+      "exploration_rate": 0.310452,
+      "target_rate": 0.305
+    },
+    "activated": true,
+    "activation_step": 0,
+    "first_completion_step": 177,
+    "first_refill_step": 178,
+    "first_relay_step": null,
+    "arrivals": {},
+    "service_starts": {},
+    "completed": {
+      "0": 177
+    },
+    "search_completions": 1,
+    "refills": 1,
+    "search_uavs_used": [
+      0,
+      5,
+      21
+    ],
+    "mean_travel_m": 191.18155007594805,
+    "shield_blocks": {
+      "uav_proximity": 270
+    },
+    "steady": {
+      "n": 226,
+      "mean": 2.3447015840707963,
+      "p95": 2.712699
+    },
+    "allocation": {
+      "n": 1,
+      "mean": 2.022698,
+      "p95": 2.022698
+    },
+    "refill": {
+      "n": 1,
+      "mean": 3.112997,
+      "p95": 3.112997
+    },
+    "inclusive": {
+      "marvel.belief": 0.0022204876836200895,
+      "marvel.map_info": 0.0004480048244882359,
+      "runtime.collision": 0.04313908434896643,
+      "marvel.graph": 0.5709458217499017,
+      "marvel.planning_shared_graph": 0.050476467172797,
+      "marvel.planning_state": 0.591935393163894,
+      "marvel.heading_candidates": 0.1034173586485211,
+      "marvel.observation": 0.15535260705719497,
+      "marvel.policynet_forward": 0.009839666986807603,
+      "marvel.policynet_decode": 0.0004360642819129249,
+      "marvel.batched_actions": 0.47326084302611043,
+      "gppo.maybe_activate": 1.7263907163093488e-06,
+      "gppo.refresh_search": 0.0032757664958856032,
+      "gppo.refresh_relay": 0.001206514359549609,
+      "gppo.high_level_update": 0.004606612697292197,
+      "gppo.scheduler_apply": 0.009553997398988781,
+      "runtime.shield": 0.027386270811276564,
+      "runtime.motion": 0.0030857282176600023,
+      "runtime.sensing": 0.6182267605616193,
+      "runtime.sensing_explored": 0.01470881657874806,
+      "runtime.comm": 0.000970569969292244,
+      "runtime.tasks": 0.00016459137323341055,
+      "gppo.allocate": 0.0032649838420886162
+    },
+    "ram_mb": 1492.7109375,
+    "vram_peak_allocated_mb": 356.72802734375,
+    "vram_peak_reserved_mb": 466.0,
+    "heat_points": 4,
+    "search_capacity": 2,
+    "search_service_steps": 6,
+    "search_reach_radius": 3.5,
+    "activation_threshold": 0.3
+  },
+  {
+    "uavs": 60,
+    "steps_run": 450,
+    "activation": {
+      "sweep_samples": 1097,
+      "sweep_spacing_m": 8.0,
+      "sweep_headings": [
+        0.0,
+        90.0,
+        180.0,
+        270.0
+      ],
+      "explored_cells": 77613,
+      "free_cell_count": 250000,
+      "exploration_rate": 0.310452,
+      "target_rate": 0.305
+    },
+    "activated": true,
+    "activation_step": 0,
+    "first_completion_step": null,
+    "first_refill_step": null,
+    "first_relay_step": null,
+    "arrivals": {},
+    "service_starts": {},
+    "completed": {},
+    "search_completions": 0,
+    "refills": 0,
+    "search_uavs_used": [
+      0,
+      43
+    ],
+    "mean_travel_m": 424.34566222602314,
+    "shield_blocks": {
+      "uav_proximity": 2150
+    },
+    "steady": {
+      "n": 449,
+      "mean": 5.79117207572383,
+      "p95": 6.65142
+    },
+    "allocation": {
+      "n": 1,
+      "mean": 5.019856,
+      "p95": 5.019856
+    },
+    "refill": {
+      "n": 0,
+      "mean": null,
+      "p95": null
+    },
+    "inclusive": {
+      "marvel.belief": 0.0040714074090485355,
+      "marvel.map_info": 0.0005052874021122181,
+      "runtime.collision": 0.07694167735609679,
+      "marvel.graph": 1.1311830989712326,
+      "marvel.planning_shared_graph": 0.10485920197752421,
+      "marvel.planning_state": 2.3126972453947947,
+      "marvel.heading_candidates": 0.23446255787497244,
+      "marvel.observation": 0.34836550196283494,
+      "marvel.policynet_forward": 0.00914004606451878,
+      "marvel.policynet_decode": 0.0006594716681380911,
+      "marvel.batched_actions": 0.8634166001601746,
+      "gppo.maybe_activate": 1.9248665194027127e-06,
+      "gppo.refresh_search": 0.0011910126822153365,
+      "gppo.refresh_relay": 0.0034850452330041056,
+      "gppo.high_level_update": 0.004861740793130593,
+      "gppo.scheduler_apply": 0.029491745395741117,
+      "runtime.shield": 0.07837648380036828,
+      "runtime.motion": 0.006178949313826807,
+      "runtime.sensing": 1.2568894366803418,
+      "runtime.sensing_explored": 0.02603525355771934,
+      "runtime.comm": 0.0016466439116468083,
+      "runtime.tasks": 0.00020405963055155653,
+      "gppo.allocate": 0.00118008232444279
+    },
+    "ram_mb": 1577.80078125,
+    "vram_peak_allocated_mb": 682.5029296875,
+    "vram_peak_reserved_mb": 824.0,
+    "heat_points": 4,
+    "search_capacity": 2,
+    "search_service_steps": 6,
+    "search_reach_radius": 3.5,
+    "activation_threshold": 0.3
+  }
+]
