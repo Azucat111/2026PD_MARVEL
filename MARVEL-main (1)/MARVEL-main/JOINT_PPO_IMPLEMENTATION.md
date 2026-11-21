@@ -23,7 +23,7 @@ A_k = V_target_k - old_V_k
 
 另有显式的 D1 技术诊断在下一真实合法事件处截取片段，结算已观察的 running cost，加上该事件的冻结 critic value。它只能经 `--allow-segment` 明确加入更新，单独标记截断，且不产生 C。用户侧的主训练使用完整 H300。
 
-PPO 重用旧 `clipped_policy_loss` 和 `FrozenBehaviorBatch`，仅训练高层 Joint GPPO。每批绑定到模型张量指纹和 checkpoint 文件 SHA。逐事件重放相同 mask，计算 `exp(new_logp-old_logp)` 及 0.2 ratio clipping，value loss 与回报对齐。每轮使用原模型的确定性 eval 状态完成梯度计算，保留归一化熵，Adam 从新状态开始。每个 epoch 前保存模型和 Adam 的完整状态，更新后验证有限梯度和张量、sampled KL、mean exact KL、max-state exact KL。越界恢复两套状态并结束本批。限制见冻结协议。只有有效更新且张量发生变化才生成可加载 checkpoint。
+PPO 重用旧 `clipped_policy_loss` 和 `FrozenBehaviorBatch`，仅训练高层 Joint GPPO。每批绑定到模型张量指纹和 checkpoint 文件 SHA。逐事件重放相同 mask，计算 `exp(new_logp-old_logp)` 及 0.2 ratio clipping，value loss 与回报对齐。每轮使用原模型的确定性 eval 状态完成梯度计算，对合法动作分布加熵正则，Adam 从新状态开始。每个 epoch 前保存模型和 Adam 的完整状态，更新后验证有限梯度和张量、sampled KL、mean exact KL、max-state exact KL。越界恢复两套状态并结束本批。限制见冻结协议。只有有效更新且张量发生变化才生成可加载 checkpoint。
 
 ```text
 log πθ(a|s) = log_softmax(logitsθ(s)[legal] / temperature)[a]
