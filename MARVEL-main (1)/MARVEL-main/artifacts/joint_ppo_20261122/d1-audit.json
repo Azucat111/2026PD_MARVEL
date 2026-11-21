@@ -1,0 +1,38 @@
+{
+  "candidate_sha256": "41aa185820f7a3f1520ad1d6fefe61c33aab9aaa5bf7582a1b2f9163ce6d77a9",
+  "cases": [
+    {
+      "case": "30_static_240311",
+      "greedy_actions_changed": 0,
+      "greedy_roles_changed": 0,
+      "independent_mask_rebuild_step": 10,
+      "states": [
+        {
+          "advantage": -0.0033333333333333335,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 29
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 29
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 54,
+          "mixed": true,
+          "relay_mass_after": 0.03140243515372276,
+          "relay_mass_before": 0.02787882089614868,
+          "role_sample": 1,
+          "step": 10,
+          "target": -0.0033333333333333335,
+          "task_count": 5,
+          "value_after": -0.0016788351349532604,
+          "value_before": 0.0
+        }
+      ]
+    }
+  ],
+  "comparison": "same stored public inputs, no policy rollout"
+}

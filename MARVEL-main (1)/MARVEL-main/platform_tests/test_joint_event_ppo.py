@@ -82,3 +82,18 @@ def test_kl_rejection_restores_weights_and_populated_adam():
     for key in before["state"]:
         for name in before["state"][key]:
             torch.testing.assert_close(after["state"][key][name], before["state"][key][name], atol=0, rtol=0)
+
+
+def test_pair_reducer_refuses_unequal_initial_state_and_no_score_for_truncation():
+    from summarize_joint_ppo_evaluation import paired_summary
+
+    first = dict(case="x", arm="R1", trace=[], status="truncated", commitments=[], offers=[],
+                 initial_sha256="a", config_sha256="c", checkpoint_sha256="original",
+                 compatibility_policy=False, seconds=1.)
+    second = dict(first, arm="P1", checkpoint_sha256="p1")
+    assert paired_summary([first, second], ["x"], p1_sha256="p1")[
+        "pooled_comparable_pairs"]["R1"] == {"count": 0, "cases": [], "percent": None}
+    with pytest.raises(ValueError, match="pairing"):
+        paired_summary([first, dict(second, initial_sha256="b")], ["x"], p1_sha256="p1")
+    with pytest.raises(ValueError, match="Truncated"):
+        paired_summary([first, dict(second, score={})], ["x"], p1_sha256="p1")

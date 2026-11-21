@@ -1,0 +1,202 @@
+[
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.1
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.2
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.30000000000000004
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.4
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.5
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.6000000000000001
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.7000000000000001
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.8
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 0.9
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.0
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.1
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.2000000000000002
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.3
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.4000000000000001
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.5
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.6
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.7000000000000002
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.8
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 1.9000000000000001
+  },
+  {
+    "collisions": 0,
+    "connectivity": 0.5333333333333333,
+    "escapes": 0,
+    "no_fly_violations": 0,
+    "nonrelay_complete": false,
+    "safety_active": [],
+    "safety_records": 0,
+    "time": 2.0
+  }
+]
