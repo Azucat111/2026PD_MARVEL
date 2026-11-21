@@ -25,4 +25,16 @@ A_k = V_target_k - old_V_k
 
 PPO 重用旧 `clipped_policy_loss` 和 `FrozenBehaviorBatch`，仅训练高层 Joint GPPO。每批绑定到模型张量指纹和 checkpoint 文件 SHA。逐事件重放相同 mask，计算 `exp(new_logp-old_logp)` 及 0.2 ratio clipping，value loss 与回报对齐。每轮使用原模型的确定性 eval 状态完成梯度计算，保留归一化熵，Adam 从新状态开始。每个 epoch 前保存模型和 Adam 的完整状态，更新后验证有限梯度和张量、sampled KL、mean exact KL、max-state exact KL。越界恢复两套状态并结束本批。限制见冻结协议。只有有效更新且张量发生变化才生成可加载 checkpoint。
 
+```text
+log πθ(a|s) = log_softmax(logitsθ(s)[legal] / temperature)[a]
+d_k = log πθ(a_k|s_k) - old_logp_k
+ρ_k = exp(d_k)
+L_k = -min(ρ_k A_k, clip(ρ_k, 0.8, 1.2) A_k)
+      + 0.25 (Vθ(s_k) - V_target_k)^2 - 0.002 H(πθ(.|s_k))
+sampled_KL = mean(exp(d_k) - 1 - d_k)
+exact_KL(s) = Σ_{a legal} πold(a|s) (log πold(a|s) - log πθ(a|s))
+```
+
+熵项提供合法动作分布的优化正则。按事件保存和累计的奖励仍然只有原计分对应的物理时间代价。
+
 短批次的事件数量小，PPO 用同一批原行为数据计算固定 old logp 的有限 epoch。采集后换成任何其他起始 checkpoint 都会使该批数据失效。阶段实验只保留一个事先指定的四域批结果，D1 checkpoint 留作技术证据。完整任务收益按独立开发 seeds 的 H300 配对报告。
