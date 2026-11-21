@@ -1,0 +1,301 @@
+{
+  "case_arms": {
+    "30_dynamic_1280022": {
+      "P0": {
+        "status": "not_run"
+      },
+      "P1": {
+        "actions": {
+          "relay": 3,
+          "search": 4
+        },
+        "checkpoint_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+        "collisions": 0,
+        "compatibility_policy": false,
+        "config_sha256": "d1b8182414cd58444c1e067b28e967907a2623b5ce8ce4419629a1b150d79143",
+        "connected_ticks": 2619,
+        "controller_events": 300,
+        "error": null,
+        "final_active_safety": [],
+        "final_connectivity": 1.0,
+        "final_nonrelay_complete": true,
+        "first_connected_s": 38.2,
+        "first_nonrelay_s": 11.100000000000001,
+        "greedy_comparison_events": 7,
+        "initial_sha256": "184e5ddc3a3da6be2a792e632f0073b85269d811fe5fe45f5986a432478e1420",
+        "joint_selection_events": 7,
+        "jointly_ready_ticks": 2619,
+        "last_nonrelay_block_s": 11.0,
+        "last_radio_block_s": 38.1,
+        "last_safety_block_s": 16.900000000000002,
+        "mixed_events": 2,
+        "no_fly_violations": 0,
+        "safety_triggers": 2,
+        "score": {
+          "acceptance_claim": false,
+          "joint_success": true,
+          "physics_dt": 0.1,
+          "primary_search_metric_unchanged": true,
+          "secondary_joint_completion_seconds": 41.2,
+          "stable_seconds": 3.0,
+          "whole_window_safe": true
+        },
+        "seconds": 1206.6113452589998,
+        "shared_uav_events": 2,
+        "status": "complete",
+        "ticks": 3000,
+        "trained_greedy_action_diffs": 0,
+        "trained_greedy_role_diffs": 0
+      },
+      "R0": {
+        "status": "not_run"
+      },
+      "R1": {
+        "actions": {
+          "relay": 3,
+          "search": 4
+        },
+        "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+        "collisions": 0,
+        "compatibility_policy": false,
+        "config_sha256": "d1b8182414cd58444c1e067b28e967907a2623b5ce8ce4419629a1b150d79143",
+        "connected_ticks": 2619,
+        "controller_events": 300,
+        "error": null,
+        "final_active_safety": [],
+        "final_connectivity": 1.0,
+        "final_nonrelay_complete": true,
+        "first_connected_s": 38.2,
+        "first_nonrelay_s": 11.100000000000001,
+        "greedy_comparison_events": 0,
+        "initial_sha256": "184e5ddc3a3da6be2a792e632f0073b85269d811fe5fe45f5986a432478e1420",
+        "joint_selection_events": 7,
+        "jointly_ready_ticks": 2619,
+        "last_nonrelay_block_s": 11.0,
+        "last_radio_block_s": 38.1,
+        "last_safety_block_s": 16.900000000000002,
+        "mixed_events": 2,
+        "no_fly_violations": 0,
+        "safety_triggers": 2,
+        "score": {
+          "acceptance_claim": false,
+          "joint_success": true,
+          "physics_dt": 0.1,
+          "primary_search_metric_unchanged": true,
+          "secondary_joint_completion_seconds": 41.2,
+          "stable_seconds": 3.0,
+          "whole_window_safe": true
+        },
+        "seconds": 1140.0867102209995,
+        "shared_uav_events": 2,
+        "status": "complete",
+        "ticks": 3000,
+        "trained_greedy_action_diffs": 0,
+        "trained_greedy_role_diffs": 0
+      }
+    },
+    "30_static_1280021": {
+      "P0": {
+        "status": "not_run"
+      },
+      "P1": {
+        "actions": {
+          "relay": 1,
+          "search": 4
+        },
+        "checkpoint_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+        "collisions": 0,
+        "compatibility_policy": false,
+        "config_sha256": "668ba2edefca489703f8ad407e8ae4f3f8e06d953ba9fcdd2fa77a626cd8e56f",
+        "connected_ticks": 2210,
+        "controller_events": 300,
+        "error": null,
+        "final_active_safety": [],
+        "final_connectivity": 0.9333333333333333,
+        "final_nonrelay_complete": true,
+        "first_connected_s": 79.10000000000001,
+        "first_nonrelay_s": 12.100000000000001,
+        "greedy_comparison_events": 5,
+        "initial_sha256": "f5cf6921a1a1497a9128ed912cd7ace8bf9c5b8af4850dbe5305e2e4ae6ae633",
+        "joint_selection_events": 5,
+        "jointly_ready_ticks": 2210,
+        "last_nonrelay_block_s": 12.0,
+        "last_radio_block_s": 79.0,
+        "last_safety_block_s": null,
+        "mixed_events": 4,
+        "no_fly_violations": 0,
+        "safety_triggers": 0,
+        "score": {
+          "acceptance_claim": false,
+          "joint_success": true,
+          "physics_dt": 0.1,
+          "primary_search_metric_unchanged": true,
+          "secondary_joint_completion_seconds": 82.10000000000001,
+          "stable_seconds": 3.0,
+          "whole_window_safe": true
+        },
+        "seconds": 1165.1694574869998,
+        "shared_uav_events": 4,
+        "status": "complete",
+        "ticks": 3000,
+        "trained_greedy_action_diffs": 0,
+        "trained_greedy_role_diffs": 0
+      },
+      "R0": {
+        "status": "not_run"
+      },
+      "R1": {
+        "actions": {
+          "relay": 2,
+          "search": 4
+        },
+        "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+        "collisions": 0,
+        "compatibility_policy": false,
+        "config_sha256": "668ba2edefca489703f8ad407e8ae4f3f8e06d953ba9fcdd2fa77a626cd8e56f",
+        "connected_ticks": 2641,
+        "controller_events": 300,
+        "error": null,
+        "final_active_safety": [],
+        "final_connectivity": 1.0,
+        "final_nonrelay_complete": true,
+        "first_connected_s": 36.0,
+        "first_nonrelay_s": 10.100000000000001,
+        "greedy_comparison_events": 0,
+        "initial_sha256": "f5cf6921a1a1497a9128ed912cd7ace8bf9c5b8af4850dbe5305e2e4ae6ae633",
+        "joint_selection_events": 6,
+        "jointly_ready_ticks": 2641,
+        "last_nonrelay_block_s": 10.0,
+        "last_radio_block_s": 35.9,
+        "last_safety_block_s": null,
+        "mixed_events": 4,
+        "no_fly_violations": 0,
+        "safety_triggers": 0,
+        "score": {
+          "acceptance_claim": false,
+          "joint_success": true,
+          "physics_dt": 0.1,
+          "primary_search_metric_unchanged": true,
+          "secondary_joint_completion_seconds": 39.0,
+          "stable_seconds": 3.0,
+          "whole_window_safe": true
+        },
+        "seconds": 1382.973608784001,
+        "shared_uav_events": 4,
+        "status": "complete",
+        "ticks": 3000,
+        "trained_greedy_action_diffs": 0,
+        "trained_greedy_role_diffs": 0
+      }
+    },
+    "60_dynamic_1981204": {
+      "P0": {
+        "status": "not_run"
+      },
+      "P1": {
+        "status": "not_run"
+      },
+      "R0": {
+        "status": "not_run"
+      },
+      "R1": {
+        "status": "not_run"
+      }
+    },
+    "60_static_9164": {
+      "P0": {
+        "status": "not_run"
+      },
+      "P1": {
+        "status": "not_run"
+      },
+      "R0": {
+        "status": "not_run"
+      },
+      "R1": {
+        "actions": {
+          "relay": 1,
+          "search": 3
+        },
+        "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+        "collisions": 0,
+        "compatibility_policy": false,
+        "config_sha256": "b42ca1f0b2181cd2064d1f61723a4dace28fd9e3e598dab5f3b0d37b4a12b762",
+        "connected_ticks": 2861,
+        "controller_events": 300,
+        "error": null,
+        "final_active_safety": [],
+        "final_connectivity": 1.0,
+        "final_nonrelay_complete": true,
+        "first_connected_s": 14.0,
+        "first_nonrelay_s": 4.6000000000000005,
+        "greedy_comparison_events": 0,
+        "initial_sha256": "7a6495214922571ca571a3d412ba45a9a837be87aa60cd663ffc9d7573b75793",
+        "joint_selection_events": 4,
+        "jointly_ready_ticks": 2861,
+        "last_nonrelay_block_s": 4.5,
+        "last_radio_block_s": 13.9,
+        "last_safety_block_s": null,
+        "mixed_events": 3,
+        "no_fly_violations": 0,
+        "safety_triggers": 0,
+        "score": {
+          "acceptance_claim": false,
+          "joint_success": true,
+          "physics_dt": 0.1,
+          "primary_search_metric_unchanged": true,
+          "secondary_joint_completion_seconds": 17.0,
+          "stable_seconds": 3.0,
+          "whole_window_safe": true
+        },
+        "seconds": 2215.7315464000003,
+        "shared_uav_events": 3,
+        "status": "complete",
+        "ticks": 3000,
+        "trained_greedy_action_diffs": 0,
+        "trained_greedy_role_diffs": 0
+      }
+    }
+  },
+  "independent_acceptance": false,
+  "per_case_percent": {
+    "30_dynamic_1280022": {
+      "R1": 0.0
+    },
+    "30_static_1280021": {
+      "R1": -110.51282051282053
+    },
+    "60_dynamic_1981204": {},
+    "60_static_9164": {}
+  },
+  "pooled_comparable_pairs": {
+    "P0": {
+      "cases": [],
+      "count": 0,
+      "percent": null
+    },
+    "P0/R0": {
+      "cases": [],
+      "count": 0,
+      "percent": null
+    },
+    "R0": {
+      "cases": [],
+      "count": 0,
+      "percent": null
+    },
+    "R1": {
+      "cases": [
+        "30_static_1280021",
+        "30_dynamic_1280022"
+      ],
+      "count": 2,
+      "percent": -53.74064837905237
+    },
+    "R1/R0": {
+      "cases": [],
+      "count": 0,
+      "percent": null
+    }
+  }
+}

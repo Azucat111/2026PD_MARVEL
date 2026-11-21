@@ -1,0 +1,32 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 100, 'seconds': 92.98622391499885}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 200, 'seconds': 141.4870479429992}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 300, 'seconds': 184.5865835939985}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 400, 'seconds': 229.13490019799974}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 500, 'seconds': 273.1704881629994}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 600, 'seconds': 317.81855058600013}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 700, 'seconds': 361.36523234800006}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 800, 'seconds': 400.0114645759986}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 900, 'seconds': 435.90471710199927}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1000, 'seconds': 471.3198993389997}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1100, 'seconds': 505.33544805199926}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1200, 'seconds': 539.476134814}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1300, 'seconds': 574.0721819749997}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1400, 'seconds': 609.1860528699999}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1500, 'seconds': 643.773590806999}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1600, 'seconds': 678.0140322729985}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1700, 'seconds': 714.7939174879994}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1800, 'seconds': 749.1280770579997}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 1900, 'seconds': 784.3827867179989}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2000, 'seconds': 819.1128775839989}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2100, 'seconds': 853.3938826309986}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2200, 'seconds': 888.1249210400001}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2300, 'seconds': 923.5751956799995}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2400, 'seconds': 958.3393512309995}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2500, 'seconds': 992.9956753729984}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2600, 'seconds': 1027.4324146499985}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2700, 'seconds': 1061.734601516}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2800, 'seconds': 1096.1964569259999}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 2900, 'seconds': 1131.2051393339989}
+{'arm': 'P1', 'case': '30_static_1280021', 'ticks': 3000, 'seconds': 1165.1668646339986}

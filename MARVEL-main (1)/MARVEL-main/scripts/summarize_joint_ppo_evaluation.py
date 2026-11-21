@@ -31,11 +31,20 @@ def arm_data(row):
     mixed = [o for o in offers if o["search"] and o["relay"]]
     comparisons = [o for o in offers if "frozen_greedy" in o]
     final = trace[-1] if trace else {}
+    observed_cost = score["secondary_joint_completion_seconds"] if score else final.get("time", 0.)
+    through_cost = [t for t in trace if t["time"] <= observed_cost]
     return dict(status=row["status"], ticks=len(trace), score=score, error=row.get("error"),
                 initial_sha256=row["initial_sha256"], config_sha256=row["config_sha256"],
                 checkpoint_sha256=row["checkpoint_sha256"], compatibility_policy=row["compatibility_policy"],
                 first_nonrelay_s=next((t["time"] for t in trace if t["nonrelay_complete"]), None),
                 first_connected_s=next((t["time"] for t in trace if t["connectivity"] >= .9), None),
+                last_nonrelay_block_s=max((t["time"] for t in through_cost if not t["nonrelay_complete"]),
+                                          default=None),
+                last_radio_block_s=max((t["time"] for t in through_cost if t["connectivity"] < .9),
+                                       default=None),
+                last_safety_block_s=max((t["time"] for t in through_cost
+                                         if t["safety_active"] or t["escapes"] != t["safety_records"]),
+                                        default=None),
                 connected_ticks=sum(t["connectivity"] >= .9 for t in trace),
                 jointly_ready_ticks=sum(t["nonrelay_complete"] and t["connectivity"] >= .9
                                         and not t["safety_active"] and t["escapes"] == t["safety_records"]
