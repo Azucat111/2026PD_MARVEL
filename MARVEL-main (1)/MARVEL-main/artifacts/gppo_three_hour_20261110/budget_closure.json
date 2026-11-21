@@ -1,0 +1,55 @@
+{
+  "status": "STOPPED_AT_BUDGET",
+  "acceptance": "INCONCLUSIVE",
+  "goal_15_percent_met": null,
+  "updated_utc": "2026-11-10T12:41:09.293423+00:00",
+  "completed_runs": 15,
+  "expected_runs": 16,
+  "missing": {
+    "case": 5,
+    "seed": 1680026,
+    "arm": "rule",
+    "reason": "Evaluator reached predeclared UTC deadline; not a measured physical failure",
+    "exit_code": 1
+  },
+  "descriptive_subgroups": {
+    "30": {
+      "completed_pairs": 3,
+      "expected_pairs": 4,
+      "seconds": {
+        "rule": 158.9,
+        "candidate": 295.8
+      },
+      "time_reduction_percent": -86.15481434864695,
+      "partial_subset": true
+    },
+    "60": {
+      "completed_pairs": 4,
+      "expected_pairs": 4,
+      "seconds": {
+        "rule": 59.0,
+        "candidate": 43.2
+      },
+      "time_reduction_percent": 26.779661016949152,
+      "partial_subset": false
+    }
+  },
+  "overall_score": null,
+  "heldout_seeds_seen": [
+    1680021,
+    1680022,
+    1680023,
+    1680024,
+    1680025,
+    1680026,
+    1680027,
+    1680028
+  ],
+  "no_retraining_or_selection_on_heldout": true,
+  "next_direction": "Reuse existing observed Relay anchor commitment and arrived-helper augmentation; capture delayed public state to test the all-helpers-arrived barrier before any further training.",
+  "limitations": [
+    "All tests used one connected 80m map; no 500m generalization evidence",
+    "Completed 30-UAV subset cannot replace complete four-pair result",
+    "60-UAV improvement is candidate versus rule, not incremental benefit of this fine-tune"
+  ]
+}

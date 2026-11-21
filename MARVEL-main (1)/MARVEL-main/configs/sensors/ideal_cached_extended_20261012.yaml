@@ -1,0 +1,4 @@
+sensor_type: ideal
+fov: 120.0
+range: 10.0
+visible_cells_cache_entries: 128

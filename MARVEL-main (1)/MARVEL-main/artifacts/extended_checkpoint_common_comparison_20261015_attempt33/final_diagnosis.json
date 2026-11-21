@@ -1,0 +1,4277 @@
+{
+  "status": "COMPLETE",
+  "scores": {
+    "round8": {
+      "pooled_gain": -0.06003976143141165,
+      "mean_find_seconds": 5.239583333333334,
+      "group_gains": {
+        "30_static": 0.034108527131782695,
+        "30_dynamic": 0.034108527131782695,
+        "60_static": -0.21698113207547165,
+        "60_dynamic": -0.09677419354838712
+      },
+      "joint_successes": 12,
+      "full_window_safe_cases": 12,
+      "all_find_cases": 12,
+      "collision_events": 0,
+      "baseline_find_total": 236.4,
+      "candidate_find_total": 251.50000000000003,
+      "mean_joint_completion_seconds_failures_capped_300": 46.09166666666667,
+      "final_radio_stable_cases": 12
+    },
+    "round17": {
+      "pooled_gain": 0.1403762662807524,
+      "mean_find_seconds": 4.3187500000000005,
+      "group_gains": {
+        "30_static": 0.15798611111111094,
+        "30_dynamic": 0.15798611111111094,
+        "60_static": 0.05957446808510625,
+        "60_dynamic": 0.17960088691795995
+      },
+      "joint_successes": 12,
+      "full_window_safe_cases": 12,
+      "all_find_cases": 12,
+      "collision_events": 0,
+      "baseline_find_total": 236.4,
+      "candidate_find_total": 207.30000000000004,
+      "mean_joint_completion_seconds_failures_capped_300": 49.43333333333333,
+      "final_radio_stable_cases": 12
+    },
+    "round19": {
+      "pooled_gain": -0.0021105951878428453,
+      "mean_find_seconds": 4.935416666666666,
+      "group_gains": {
+        "30_static": 0.016768292682926678,
+        "30_dynamic": 0.016768292682926678,
+        "60_static": -0.06390977443609003,
+        "60_dynamic": 0.013333333333333197
+      },
+      "joint_successes": 12,
+      "full_window_safe_cases": 12,
+      "all_find_cases": 12,
+      "collision_events": 0,
+      "baseline_find_total": 236.4,
+      "candidate_find_total": 236.89999999999998,
+      "mean_joint_completion_seconds_failures_capped_300": 49.708333333333336,
+      "final_radio_stable_cases": 12
+    }
+  },
+  "search_best": "round17",
+  "search_ranking": [
+    "round17",
+    "round19",
+    "round8"
+  ],
+  "best_with_all_common_joint_cases": "round17",
+  "paired_comparisons": {
+    "round8": {
+      "best_speed_ratio_gain": 0.21321755909310158,
+      "best_faster_cases": 8,
+      "equal_cases": 2,
+      "best_slower_cases": 2,
+      "three_seed_block_bootstrap_95_percentile": [
+        -0.012559564226301646,
+        0.3878860869213355
+      ],
+      "uncertainty_limit": "Only three historical seeds, not independent final acceptance"
+    },
+    "round19": {
+      "best_speed_ratio_gain": 0.14278822961890936,
+      "best_faster_cases": 7,
+      "equal_cases": 3,
+      "best_slower_cases": 2,
+      "three_seed_block_bootstrap_95_percentile": [
+        0.02978136014814496,
+        0.2676245075091834
+      ],
+      "uncertainty_limit": "Only three historical seeds, not independent final acceptance"
+    }
+  },
+  "radio_diagnostics": {
+    "rule": [
+      {
+        "case_index": 0,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 1,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 2,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 3,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 4,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 5,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 6,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 7,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 8,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 9,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 10,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 11,
+        "final_radio": 1,
+        "final3s": true
+      }
+    ],
+    "round8": [
+      {
+        "case_index": 0,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 1,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 2,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 3,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 4,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 5,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 6,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 7,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 8,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 9,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 10,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 11,
+        "final_radio": 1,
+        "final3s": true
+      }
+    ],
+    "round17": [
+      {
+        "case_index": 0,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 1,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 2,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 3,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 4,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 5,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 6,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 7,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 8,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 9,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 10,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 11,
+        "final_radio": 1,
+        "final3s": true
+      }
+    ],
+    "round19": [
+      {
+        "case_index": 0,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 1,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 2,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 3,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 4,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 5,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 6,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 7,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 8,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 9,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 10,
+        "final_radio": 1,
+        "final3s": true
+      },
+      {
+        "case_index": 11,
+        "final_radio": 1,
+        "final3s": true
+      }
+    ]
+  },
+  "largest_per_target_losses": [
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "case_index": 0,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 8.8,
+      "model_find": 10.5,
+      "best_find": 1.7000000000000002,
+      "model_assignments": [
+        {
+          "time": 3,
+          "uid": 11
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 10
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "case_index": 1,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 8.8,
+      "model_find": 10.5,
+      "best_find": 1.7000000000000002,
+      "model_assignments": [
+        {
+          "time": 3,
+          "uid": 11
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 10
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "case_index": 8,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 6.300000000000001,
+      "model_find": 12.8,
+      "best_find": 6.5,
+      "model_assignments": [
+        {
+          "time": 5,
+          "uid": 20
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 4,
+          "uid": 8
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "case_index": 9,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 6.300000000000001,
+      "model_find": 12.8,
+      "best_find": 6.5,
+      "model_assignments": [
+        {
+          "time": 5,
+          "uid": 20
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 4,
+          "uid": 8
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 6,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 5.8,
+      "model_find": 8.5,
+      "best_find": 2.7,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 18
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 5
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 7,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 2,
+      "loss_seconds": 4.2,
+      "model_find": 7.1000000000000005,
+      "best_find": 2.9000000000000004,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 5
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 37
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 7,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 4.199999999999999,
+      "model_find": 10.5,
+      "best_find": 6.300000000000001,
+      "model_assignments": [
+        {
+          "time": 6,
+          "uid": 20
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 3,
+          "uid": 5
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "case_index": 4,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 4,
+      "model_find": 6.1000000000000005,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 6,
+          "uid": 3
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 13
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "case_index": 5,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 4,
+      "model_find": 6.1000000000000005,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 6,
+          "uid": 3
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 13
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "case_index": 8,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 3.7000000000000006,
+      "model_find": 4.800000000000001,
+      "best_find": 1.1,
+      "model_assignments": [
+        {
+          "time": 4,
+          "uid": 21
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 9
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "case_index": 9,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 3.7000000000000006,
+      "model_find": 4.800000000000001,
+      "best_find": 1.1,
+      "model_assignments": [
+        {
+          "time": 4,
+          "uid": 21
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 9
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 6,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 2,
+      "loss_seconds": 3.7,
+      "model_find": 7.1000000000000005,
+      "best_find": 3.4000000000000004,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 5
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 18
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 2,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 3.1000000000000005,
+      "model_find": 5.1000000000000005,
+      "best_find": 2,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 42
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 42
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 3,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 3.1000000000000005,
+      "model_find": 5.1000000000000005,
+      "best_find": 2,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 42
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 42
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 6,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 0,
+      "loss_seconds": 3.0999999999999996,
+      "model_find": 10.4,
+      "best_find": 7.300000000000001,
+      "model_assignments": [
+        {
+          "time": 8,
+          "uid": 5
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 4,
+          "uid": 5
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 2,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 1,
+      "loss_seconds": 2.8000000000000003,
+      "model_find": 4.9,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 24
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 6
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 3,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 1,
+      "loss_seconds": 2.8000000000000003,
+      "model_find": 4.9,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 24
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 6
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 7,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 3,
+      "loss_seconds": 2.4000000000000004,
+      "model_find": 5.1000000000000005,
+      "best_find": 2.7,
+      "model_assignments": [
+        {
+          "time": 1,
+          "uid": 20
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 1,
+          "uid": 5
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 2,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 1,
+      "loss_seconds": 2.0000000000000004,
+      "model_find": 4.1000000000000005,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 4,
+          "uid": 6
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 6
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 3,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 1,
+      "loss_seconds": 2.0000000000000004,
+      "model_find": 4.1000000000000005,
+      "best_find": 2.1,
+      "model_assignments": [
+        {
+          "time": 4,
+          "uid": 6
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 6
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 6,
+      "model": "round8",
+      "best_model": "round17",
+      "target": 1,
+      "loss_seconds": 1.9999999999999991,
+      "model_find": 9.1,
+      "best_find": 7.1000000000000005,
+      "model_assignments": [
+        {
+          "time": 9,
+          "uid": 0
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 3,
+          "uid": 0
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9170,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 11,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 2,
+      "loss_seconds": 1.200000000000001,
+      "model_find": 10.3,
+      "best_find": 9.1,
+      "model_assignments": [
+        {
+          "time": 2,
+          "uid": 9
+        }
+      ],
+      "best_assignments": [
+        {
+          "time": 2,
+          "uid": 15
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "case_index": 2,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 2,
+      "loss_seconds": 1.2000000000000002,
+      "model_find": 5.1000000000000005,
+      "best_find": 3.9000000000000004,
+      "model_assignments": [],
+      "best_assignments": [
+        {
+          "time": 3,
+          "uid": 42
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "case_index": 3,
+      "model": "round19",
+      "best_model": "round17",
+      "target": 2,
+      "loss_seconds": 1.2000000000000002,
+      "model_find": 5.1000000000000005,
+      "best_find": 3.9000000000000004,
+      "model_assignments": [],
+      "best_assignments": [
+        {
+          "time": 3,
+          "uid": 42
+        }
+      ]
+    }
+  ],
+  "per_case_details": [
+    {
+      "case_index": 0,
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            10.5,
+            2.2,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 11,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 11
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 50.1,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            10.5,
+            2.2,
+            1.1,
+            6.300000000000001
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 11,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 62,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 3,
+                "uid": 11
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 50,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            1.7000000000000002,
+            2.6,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 10,
+              "sensor_step": 16,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 25,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 51.6,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            1.7000000000000002,
+            2.6,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 10,
+              "sensor_step": 16,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 25,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 29,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 29
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 52.6,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 1,
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            10.5,
+            2.2,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 11,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 11
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 83.10000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            10.5,
+            2.2,
+            1.1,
+            6.300000000000001
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 11,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 62,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 3,
+                "uid": 11
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 81.2,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            1.7000000000000002,
+            2.6,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 10,
+              "sensor_step": 16,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 25,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 19,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 19
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 71.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            1.7000000000000002,
+            2.6,
+            3.1,
+            7.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 10,
+              "sensor_step": 16,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 27,
+              "sensor_step": 25,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 29,
+              "sensor_step": 30,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 6,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 27
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 29
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 6
+              }
+            ]
+          },
+          "first_joint_seconds": 73,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 2,
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            4.6000000000000005,
+            4.9,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 24,
+              "sensor_step": 48,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 24
+              }
+            ]
+          },
+          "first_joint_seconds": 18.2,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            4.6000000000000005,
+            4.1000000000000005,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 6,
+              "sensor_step": 40,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 4,
+                "uid": 6
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 7.9,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            4.6000000000000005,
+            2.1,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 6,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 6
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 42
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 7.6000000000000005,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            5.1000000000000005,
+            4.9,
+            5.1000000000000005,
+            5.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 24,
+              "sensor_step": 48,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 5,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 24
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 8.1,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 3,
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            4.6000000000000005,
+            4.9,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 24,
+              "sensor_step": 48,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 24
+              }
+            ]
+          },
+          "first_joint_seconds": 28,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            4.6000000000000005,
+            4.1000000000000005,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 6,
+              "sensor_step": 40,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 4,
+                "uid": 6
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 11,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            4.6000000000000005,
+            2.1,
+            3.9000000000000004,
+            2
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 45,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 6,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 38,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 19,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 6
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 42
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 11,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            5.1000000000000005,
+            4.9,
+            5.1000000000000005,
+            5.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 24,
+              "sensor_step": 48,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 5,
+                "uid": 51
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 24
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 42
+              }
+            ]
+          },
+          "first_joint_seconds": 11,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 4,
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            7,
+            8.1,
+            5.9,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 80,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 118.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            7.1000000000000005,
+            7.300000000000001,
+            5.9,
+            6.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 3,
+              "sensor_step": 60,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 7,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 6,
+                "uid": 3
+              }
+            ]
+          },
+          "first_joint_seconds": 109.60000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            7,
+            7.300000000000001,
+            6,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 59,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 106.60000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            7,
+            8.1,
+            5.9,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 80,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 118.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 5,
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            7,
+            8.1,
+            5.9,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 80,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 117.9,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            7.1000000000000005,
+            7.300000000000001,
+            5.9,
+            6.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 3,
+              "sensor_step": 60,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 7,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 6,
+                "uid": 3
+              }
+            ]
+          },
+          "first_joint_seconds": 109.60000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            7,
+            7.300000000000001,
+            6,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 59,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 107.60000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            7,
+            8.1,
+            5.9,
+            2.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 69,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 28,
+              "sensor_step": 80,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 1,
+              "sensor_step": 58,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 13,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 28
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 1
+              }
+            ],
+            "3": [
+              {
+                "time": 2,
+                "uid": 13
+              }
+            ]
+          },
+          "first_joint_seconds": 117.9,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 6,
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            7.300000000000001,
+            7.1000000000000005,
+            3.4000000000000004,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 0,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 18,
+              "sensor_step": 33,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 0
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 18
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 19,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            10.4,
+            9.1,
+            7.1000000000000005,
+            8.5
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 103,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 0,
+              "sensor_step": 90,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 5,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 18,
+              "sensor_step": 84,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 8,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 9,
+                "uid": 0
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 18
+              }
+            ]
+          },
+          "first_joint_seconds": 31.1,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            7.300000000000001,
+            7.1000000000000005,
+            3.4000000000000004,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 0,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 18,
+              "sensor_step": 33,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 0
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 18
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 19,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            7.300000000000001,
+            5.7,
+            3.4000000000000004,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 72,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 42,
+              "sensor_step": 56,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 18,
+              "sensor_step": 33,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 42
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 18
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 19,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 7,
+      "case": {
+        "seed": 9168,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            10.5,
+            2.8000000000000003,
+            8.3,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 20,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 33,
+              "sensor_step": 27,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 5,
+              "sensor_step": 82,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 3,
+                "uid": 20
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 33
+              }
+            ],
+            "2": [
+              {
+                "time": 3,
+                "uid": 5
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 27,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            10.5,
+            8.1,
+            7.1000000000000005,
+            5.1000000000000005
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 20,
+              "sensor_step": 104,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 0,
+              "sensor_step": 80,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 5,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 20,
+              "sensor_step": 50,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 6,
+                "uid": 20
+              }
+            ],
+            "1": [
+              {
+                "time": 8,
+                "uid": 0
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 20
+              }
+            ]
+          },
+          "first_joint_seconds": 24,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            6.300000000000001,
+            7.1000000000000005,
+            2.9000000000000004,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 62,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 0,
+              "sensor_step": 70,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 37,
+              "sensor_step": 28,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 3,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 0
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 37
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 19,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            6.300000000000001,
+            5.7,
+            2.9000000000000004,
+            2.7
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 5,
+              "sensor_step": 62,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 42,
+              "sensor_step": 56,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 37,
+              "sensor_step": 28,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 5,
+              "sensor_step": 26,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 3,
+                "uid": 5
+              }
+            ],
+            "1": [
+              {
+                "time": 3,
+                "uid": 42
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 37
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 5
+              }
+            ]
+          },
+          "first_joint_seconds": 24,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 8,
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            9.3,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 92,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 81.4,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            6.6000000000000005,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 65,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 51.1,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            9.3,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 92,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 81.4,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            12.8,
+            3.8000000000000003,
+            6.6000000000000005,
+            4.800000000000001
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 20,
+              "sensor_step": 127,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 65,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 21,
+              "sensor_step": 47,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 5,
+                "uid": 20
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 4,
+                "uid": 21
+              }
+            ]
+          },
+          "first_joint_seconds": 77.30000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 9,
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            9.3,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 92,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 91.4,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            6.6000000000000005,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 65,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 51.1,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            6.5,
+            3.8000000000000003,
+            9.3,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 8,
+              "sensor_step": 64,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 92,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 9,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 4,
+                "uid": 8
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 9
+              }
+            ]
+          },
+          "first_joint_seconds": 91.4,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            12.8,
+            3.8000000000000003,
+            6.6000000000000005,
+            4.800000000000001
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 20,
+              "sensor_step": 127,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 23,
+              "sensor_step": 37,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 10,
+              "sensor_step": 65,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 21,
+              "sensor_step": 47,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 5,
+                "uid": 20
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 23
+              }
+            ],
+            "2": [
+              {
+                "time": 1,
+                "uid": 10
+              }
+            ],
+            "3": [
+              {
+                "time": 4,
+                "uid": 21
+              }
+            ]
+          },
+          "first_joint_seconds": 68.60000000000001,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 10,
+      "case": {
+        "seed": 9170,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            9.5,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 94,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 12.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            9.5,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 94,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 12.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            2.1,
+            1.2000000000000002,
+            9.5,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 11,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 94,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 2,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 12.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            9.5,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 58,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 94,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 58
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ]
+          },
+          "first_joint_seconds": 12.5,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    },
+    {
+      "case_index": 11,
+      "case": {
+        "seed": 9170,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "initial_physical_poses_and_headings_equal": true,
+      "arms": {
+        "rule": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            9.1,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 90,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 14,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round8": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            9.1,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 90,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 14,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round17": {
+          "find_seconds": [
+            2.1,
+            1.2000000000000002,
+            9.1,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 48,
+              "sensor_step": 20,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 11,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 15,
+              "sensor_step": 90,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 19,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 2,
+                "uid": 48
+              }
+            ],
+            "1": [
+              {
+                "time": 1,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 15
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 19
+              }
+            ]
+          },
+          "first_joint_seconds": 14,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        },
+        "round19": {
+          "find_seconds": [
+            1.1,
+            2.2,
+            10.3,
+            1.1
+          ],
+          "find_events": {
+            "0": {
+              "detector_uid": 58,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            },
+            "1": {
+              "detector_uid": 37,
+              "sensor_step": 21,
+              "mode": "sensor_visible_cell"
+            },
+            "2": {
+              "detector_uid": 9,
+              "sensor_step": 102,
+              "mode": "sensor_visible_cell"
+            },
+            "3": {
+              "detector_uid": 51,
+              "sensor_step": 10,
+              "mode": "sensor_visible_cell"
+            }
+          },
+          "search_assignments": {
+            "0": [
+              {
+                "time": 1,
+                "uid": 58
+              }
+            ],
+            "1": [
+              {
+                "time": 2,
+                "uid": 37
+              }
+            ],
+            "2": [
+              {
+                "time": 2,
+                "uid": 9
+              }
+            ],
+            "3": [
+              {
+                "time": 1,
+                "uid": 51
+              }
+            ]
+          },
+          "first_joint_seconds": 14,
+          "joint_success": true,
+          "final_radio": 1,
+          "final_3s_radio_stable": true,
+          "safe": true
+        }
+      }
+    }
+  ],
+  "causal_probes": [
+    {
+      "case_index": 8,
+      "case": {
+        "seed": 9170,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "original_arm": "round19",
+      "alternative_arm": "round17",
+      "record_index": 0,
+      "step": 10,
+      "public_state_sha256": "048dbb4cd4c983e14735c77e67a104898669473c6653790e1756e1f61fc3f972",
+      "alternative_task_uid": [
+        100003,
+        9
+      ],
+      "baseline_task_uid": [
+        100002,
+        10
+      ],
+      "original_find_total": 28.000000000000004,
+      "winner_find_total": 20.700000000000003,
+      "original_gap_seconds": 7.300000000000001,
+      "intervention_find_total": 24.300000000000004,
+      "recovered_find_seconds": 3.6999999999999993,
+      "recovered_fraction_of_original_gap": 0.506849315068493,
+      "collision_types": {},
+      "intervention": [
+        {
+          "step": 10,
+          "record_index": 0,
+          "original": {
+            "task": 100002,
+            "uid": 10
+          },
+          "alternative": {
+            "task": 100003,
+            "uid": 9
+          },
+          "public_state_sha256": "048dbb4cd4c983e14735c77e67a104898669473c6653790e1756e1f61fc3f972"
+        }
+      ],
+      "all_find": true,
+      "same_state_stage_choices": {
+        "round8": {
+          "task": 100003,
+          "uid": 9
+        },
+        "round17": {
+          "task": 100003,
+          "uid": 9
+        },
+        "round19": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round18": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round19_initial": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round19_zero_opportunity": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round19_zero_nominal_eta": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round19_zero_removal_regret": {
+          "task": 100002,
+          "uid": 10
+        },
+        "round19_zero_context_flag": {
+          "task": 100002,
+          "uid": 10
+        }
+      },
+      "round19_initial_and_final_choose_same_action": true,
+      "round17_and_round18_choose_same_action": false
+    },
+    {
+      "case_index": 11,
+      "case": {
+        "seed": 9170,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "original_arm": "round19",
+      "alternative_arm": "round17",
+      "record_index": 0,
+      "step": 10,
+      "public_state_sha256": "9522060365250ffeee3a01b6d2abb487da308dab364d269eb341e44b4f478cbe",
+      "alternative_task_uid": [
+        100003,
+        19
+      ],
+      "baseline_task_uid": [
+        100000,
+        58
+      ],
+      "original_find_total": 14.700000000000001,
+      "winner_find_total": 13.5,
+      "original_gap_seconds": 1.200000000000001,
+      "intervention_find_total": 14.700000000000001,
+      "recovered_find_seconds": 0,
+      "recovered_fraction_of_original_gap": 0,
+      "collision_types": {},
+      "intervention": [
+        {
+          "step": 10,
+          "record_index": 0,
+          "original": {
+            "task": 100000,
+            "uid": 58
+          },
+          "alternative": {
+            "task": 100003,
+            "uid": 19
+          },
+          "public_state_sha256": "9522060365250ffeee3a01b6d2abb487da308dab364d269eb341e44b4f478cbe"
+        }
+      ],
+      "all_find": true,
+      "same_state_stage_choices": {
+        "round8": {
+          "task": 100003,
+          "uid": 19
+        },
+        "round17": {
+          "task": 100003,
+          "uid": 19
+        },
+        "round19": {
+          "task": 100000,
+          "uid": 58
+        },
+        "round18": {
+          "task": 100003,
+          "uid": 51
+        },
+        "round19_initial": {
+          "task": 100003,
+          "uid": 51
+        },
+        "round19_zero_opportunity": {
+          "task": 100000,
+          "uid": 58
+        },
+        "round19_zero_nominal_eta": {
+          "task": 100000,
+          "uid": 58
+        },
+        "round19_zero_removal_regret": {
+          "task": 100000,
+          "uid": 58
+        },
+        "round19_zero_context_flag": {
+          "task": 100000,
+          "uid": 58
+        }
+      },
+      "round19_initial_and_final_choose_same_action": false,
+      "round17_and_round18_choose_same_action": false
+    }
+  ],
+  "feature_schema_audit": {
+    "round8_heading_source_identical_to_current": true,
+    "task_graph_sha256": "854470dfc99cac8ae292b5ba4276b5e87cb3b07e1c84e6d1e4df5a0341d722b4",
+    "graph_model_sha256": "339d47f14ba2e26aa8916fef47f8ea940feff6011511de6e5cef143bae95d449",
+    "current_heading_sha256": "1567a9343982f983a98c5aabceae855d32aaf2d92fc62485c5f2be0ae8c295a8",
+    "native_6dim_and_9dim_inputs_verified": true,
+    "optimizer_updates": 0
+  },
+  "matched_state_replay": {
+    "states": 240,
+    "own_action_reproductions_verified": 184,
+    "comparisons": {
+      "round8__round17": {
+        "shared_search_states": 184,
+        "different_actions": 84
+      },
+      "round8__round19": {
+        "shared_search_states": 184,
+        "different_actions": 110
+      },
+      "round17__round18": {
+        "shared_search_states": 184,
+        "different_actions": 105
+      },
+      "round18__round19": {
+        "shared_search_states": 184,
+        "different_actions": 73
+      },
+      "round19_initial__round19": {
+        "shared_search_states": 184,
+        "different_actions": 73
+      },
+      "round19__round19_zero_opportunity": {
+        "shared_search_states": 184,
+        "different_actions": 0
+      },
+      "round17__round19_zero_opportunity": {
+        "shared_search_states": 184,
+        "different_actions": 82
+      }
+    },
+    "round18_to_round19_initialization": {
+      "max_logit_error": 0.00000762939453125,
+      "different_greedy_choices": 0
+    }
+  },
+  "training_update_audit": {
+    "training": "attempt19 completed256",
+    "batches": 32,
+    "records": 1267,
+    "max_completed_update_kl_recompute_error": 8.44052992464428e-8,
+    "role_statistics": {
+      "Search": {
+        "records": 973,
+        "fraction_probability_change_in_advantage_direction": 0.5570400822199383,
+        "mean_advantage_times_log_probability_change": 0.0303702240708542
+      },
+      "Relay": {
+        "records": 294,
+        "fraction_probability_change_in_advantage_direction": 0.47959183673469385,
+        "mean_advantage_times_log_probability_change": 0.016731715340425408
+      }
+    },
+    "search_advantage_variance_between_episodes_fraction": 0.6713335467455407,
+    "batch_objective_direction_positive": 30,
+    "new_optimizer_updates": 0,
+    "new_physical_simulations": 0,
+    "causal_claim": false,
+    "interpretation_limit": "Correct probability updates toward recorded advantage do not prove those labels identify causally better assignments. Between-episode variation also contains physical difficulty, decision timing and critic error."
+  },
+  "source_and_weights_unchanged": true,
+  "optimizer_updates": 0,
+  "comparison_runs": 48,
+  "reserved_final_seeds_used": false,
+  "project_goal_complete": false,
+  "scope": "Same current execution conditions on 3 historical seeds x30/60 xstatic/dynamic H300. Diagnostic ranking only; not original500m or heldout15% acceptance.",
+  "causal_limits": "A local one-action improvement proves that allocation mattered in those cases. It does not uniquely identify a PPO hyperparameter or prove one global training failure mechanism.",
+  "original_goal_alignment_audit": "mission_goal_alignment_audit.json",
+  "project_goal_best_on_this_historical_suite": "round8",
+  "mission_metrics": {
+    "rule": {
+      "mean_completed_joint_mission_seconds": 55.09166666666666,
+      "cases": 12,
+      "all_completed": true,
+      "all_full_h300_safe": true
+    },
+    "round8": {
+      "mean_completed_joint_mission_seconds": 46.09166666666667,
+      "cases": 12,
+      "all_completed": true,
+      "all_full_h300_safe": true,
+      "completed_mission_time_reduction": 0.16336409015277553,
+      "inverse_time_efficiency_gain": 0.19526306273729865
+    },
+    "round17": {
+      "mean_completed_joint_mission_seconds": 49.43333333333334,
+      "cases": 12,
+      "all_completed": true,
+      "all_full_h300_safe": true,
+      "completed_mission_time_reduction": 0.10270760853123562,
+      "inverse_time_efficiency_gain": 0.11446392447741038
+    },
+    "round19": {
+      "mean_completed_joint_mission_seconds": 49.708333333333336,
+      "cases": 12,
+      "all_completed": true,
+      "all_full_h300_safe": true,
+      "completed_mission_time_reduction": 0.09771592799878981,
+      "inverse_time_efficiency_gain": 0.10829840737636198
+    }
+  },
+  "supplementary_joint_prefix_probe": {
+    "case": {
+      "seed": 9164,
+      "uavs": 60,
+      "dynamic": false
+    },
+    "original_mean_find": 5.050000000000001,
+    "intervention_mean_find": 3.95,
+    "intervention_find_times": [
+      4.6000000000000005,
+      5.300000000000001,
+      3.9000000000000004,
+      2
+    ],
+    "override_count": 2,
+    "override_control_step": 10,
+    "all_later_decisions": "original round19",
+    "collision_events": 0,
+    "ranking_unchanged": true,
+    "full_joint_acceptance_claim": false,
+    "optimizer_updates": 0
+  },
+  "original_goal_metric_misalignment_detected": true,
+  "training_permitted": false,
+  "joint_completion_bottleneck_audit": "joint_completion_bottleneck_audit.json",
+  "original_goal_metric_note": "Original project goal concerns paired completed mission time; Search Find is a submetric. Frozen Search ranking retained; original-goal audit is explicitly retrospective and not reserved-seed acceptance."
+}

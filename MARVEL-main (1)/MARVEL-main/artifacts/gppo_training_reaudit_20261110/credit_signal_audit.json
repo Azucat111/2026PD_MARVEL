@@ -1,0 +1,827 @@
+[
+  {
+    "batch": 0,
+    "episodes": [
+      {
+        "index": 0,
+        "seed": 1880021,
+        "uavs": 30,
+        "domain": "static",
+        "completion": 32.5,
+        "records": 6
+      },
+      {
+        "index": 1,
+        "seed": 1880022,
+        "uavs": 60,
+        "domain": "static",
+        "completion": 59.400000000000006,
+        "records": 4
+      },
+      {
+        "index": 2,
+        "seed": 1880023,
+        "uavs": 30,
+        "domain": "dynamic",
+        "completion": 15.8,
+        "records": 5
+      },
+      {
+        "index": 3,
+        "seed": 1880024,
+        "uavs": 60,
+        "domain": "dynamic",
+        "completion": 25.0,
+        "records": 5
+      },
+      {
+        "index": 4,
+        "seed": 1880025,
+        "uavs": 30,
+        "domain": "static",
+        "completion": 20.400000000000002,
+        "records": 6
+      },
+      {
+        "index": 5,
+        "seed": 1880026,
+        "uavs": 60,
+        "domain": "static",
+        "completion": 18.7,
+        "records": 5
+      },
+      {
+        "index": 6,
+        "seed": 1880027,
+        "uavs": 30,
+        "domain": "dynamic",
+        "completion": 17.900000000000002,
+        "records": 5
+      },
+      {
+        "index": 7,
+        "seed": 1880028,
+        "uavs": 60,
+        "domain": "dynamic",
+        "completion": 14.0,
+        "records": 4
+      }
+    ],
+    "records": 40,
+    "saved_value_min": 0.0,
+    "saved_value_max": 0.0,
+    "roles": {
+      "1": {
+        "records": 30,
+        "between_episode_share_of_raw_advantage_variance": 0.9693714441992451,
+        "episodes_with_uniform_advantage_sign": 8,
+        "episodes": 8,
+        "per_episode": [
+          {
+            "episode": 0,
+            "seed": 1880021,
+            "completion": 32.5,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              3.0,
+              4.0
+            ],
+            "normalized_advantages": [
+              -0.738211989402771,
+              -0.738211989402771,
+              -0.578079342842102,
+              -0.49801284074783325
+            ],
+            "raw_advantages": [
+              -0.10499999672174454,
+              -0.10499999672174454,
+              -0.09833333641290665,
+              -0.0949999988079071
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 1,
+            "seed": 1880022,
+            "completion": 59.400000000000006,
+            "records": 3,
+            "decision_times": [
+              1.0,
+              1.0,
+              11.0
+            ],
+            "normalized_advantages": [
+              -2.891998291015625,
+              -2.891998291015625,
+              -2.091334342956543
+            ],
+            "raw_advantages": [
+              -0.19466666877269745,
+              -0.19466666877269745,
+              -0.1613333374261856
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 2,
+            "seed": 1880023,
+            "completion": 15.8,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              8.0
+            ],
+            "normalized_advantages": [
+              0.5988968014717102,
+              0.5988968014717102,
+              0.6789631843566895,
+              1.1593616008758545
+            ],
+            "raw_advantages": [
+              -0.04933333396911621,
+              -0.04933333396911621,
+              -0.04600000008940697,
+              -0.026000000536441803
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 3,
+            "seed": 1880024,
+            "completion": 25.0,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              2.0
+            ],
+            "normalized_advantages": [
+              -0.13771402835845947,
+              -0.13771402835845947,
+              -0.0576477088034153,
+              -0.0576477088034153
+            ],
+            "raw_advantages": [
+              -0.07999999821186066,
+              -0.07999999821186066,
+              -0.07666666805744171,
+              -0.07666666805744171
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 4,
+            "seed": 1880025,
+            "completion": 20.400000000000002,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              5.0
+            ],
+            "normalized_advantages": [
+              0.23059137165546417,
+              0.23059137165546417,
+              0.310657799243927,
+              0.5508569478988647
+            ],
+            "raw_advantages": [
+              -0.06466666609048843,
+              -0.06466666609048843,
+              -0.06133333221077919,
+              -0.05133333429694176
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 5,
+            "seed": 1880026,
+            "completion": 18.7,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              3.0
+            ],
+            "normalized_advantages": [
+              0.36670422554016113,
+              0.36670422554016113,
+              0.44677063822746277,
+              0.5268370509147644
+            ],
+            "raw_advantages": [
+              -0.05900000035762787,
+              -0.05900000035762787,
+              -0.055666666477918625,
+              -0.05233333259820938
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 6,
+            "seed": 1880027,
+            "completion": 17.900000000000002,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              5.0,
+              6.0
+            ],
+            "normalized_advantages": [
+              0.4307573735713959,
+              0.4307573735713959,
+              0.7510229349136353,
+              0.8310893177986145
+            ],
+            "raw_advantages": [
+              -0.056333333253860474,
+              -0.056333333253860474,
+              -0.0430000014603138,
+              -0.03966666758060455
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 7,
+            "seed": 1880028,
+            "completion": 14.0,
+            "records": 3,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0
+            ],
+            "normalized_advantages": [
+              0.7430163025856018,
+              0.7430163025856018,
+              0.8230827450752258
+            ],
+            "raw_advantages": [
+              -0.04333333298563957,
+              -0.04333333298563957,
+              -0.03999999910593033
+            ],
+            "all_same_sign": true
+          }
+        ]
+      },
+      "2": {
+        "records": 10,
+        "between_episode_share_of_raw_advantage_variance": 0.8711373206177238,
+        "episodes_with_uniform_advantage_sign": 7,
+        "episodes": 8,
+        "per_episode": [
+          {
+            "episode": 0,
+            "seed": 1880021,
+            "completion": 32.5,
+            "records": 2,
+            "decision_times": [
+              1.0,
+              19.0
+            ],
+            "normalized_advantages": [
+              -0.8553915023803711,
+              0.5144523978233337
+            ],
+            "raw_advantages": [
+              -0.10499999672174454,
+              -0.04500000178813934
+            ],
+            "all_same_sign": false
+          },
+          {
+            "episode": 1,
+            "seed": 1880022,
+            "completion": 59.400000000000006,
+            "records": 1,
+            "decision_times": [
+              5.0
+            ],
+            "normalized_advantages": [
+              -2.598137617111206
+            ],
+            "raw_advantages": [
+              -0.18133333325386047
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 2,
+            "seed": 1880023,
+            "completion": 15.8,
+            "records": 1,
+            "decision_times": [
+              1.0
+            ],
+            "normalized_advantages": [
+              0.41551923751831055
+            ],
+            "raw_advantages": [
+              -0.04933333396911621
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 3,
+            "seed": 1880024,
+            "completion": 25.0,
+            "records": 1,
+            "decision_times": [
+              1.0
+            ],
+            "normalized_advantages": [
+              -0.2846232056617737
+            ],
+            "raw_advantages": [
+              -0.07999999821186066
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 4,
+            "seed": 1880025,
+            "completion": 20.400000000000002,
+            "records": 2,
+            "decision_times": [
+              3.0,
+              14.0
+            ],
+            "normalized_advantages": [
+              0.21765293180942535,
+              1.0547797679901123
+            ],
+            "raw_advantages": [
+              -0.057999998331069946,
+              -0.02133333310484886
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 5,
+            "seed": 1880026,
+            "completion": 18.7,
+            "records": 1,
+            "decision_times": [
+              7.0
+            ],
+            "normalized_advantages": [
+              0.6514368057250977
+            ],
+            "raw_advantages": [
+              -0.039000000804662704
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 6,
+            "seed": 1880027,
+            "completion": 17.900000000000002,
+            "records": 1,
+            "decision_times": [
+              2.0
+            ],
+            "normalized_advantages": [
+              0.33180657029151917
+            ],
+            "raw_advantages": [
+              -0.05299999937415123
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 7,
+            "seed": 1880028,
+            "completion": 14.0,
+            "records": 1,
+            "decision_times": [
+              1.0
+            ],
+            "normalized_advantages": [
+              0.5525036454200745
+            ],
+            "raw_advantages": [
+              -0.04333333298563957
+            ],
+            "all_same_sign": true
+          }
+        ]
+      }
+    },
+    "scope": "Descriptive variance decomposition, not proof of invalid PPO gradient; each seed has one sampled trajectory and no within-seed counterfactual"
+  },
+  {
+    "batch": 1,
+    "episodes": [
+      {
+        "index": 8,
+        "seed": 1880029,
+        "uavs": 30,
+        "domain": "static",
+        "completion": 53.0,
+        "records": 7
+      },
+      {
+        "index": 9,
+        "seed": 1880030,
+        "uavs": 60,
+        "domain": "static",
+        "completion": 64.4,
+        "records": 5
+      },
+      {
+        "index": 10,
+        "seed": 1880031,
+        "uavs": 30,
+        "domain": "dynamic",
+        "completion": 61.5,
+        "records": 5
+      },
+      {
+        "index": 11,
+        "seed": 1880032,
+        "uavs": 60,
+        "domain": "dynamic",
+        "completion": 14.0,
+        "records": 5
+      },
+      {
+        "index": 12,
+        "seed": 1880033,
+        "uavs": 30,
+        "domain": "static",
+        "completion": 14.3,
+        "records": 4
+      },
+      {
+        "index": 13,
+        "seed": 1880034,
+        "uavs": 60,
+        "domain": "static",
+        "completion": 5.1000000000000005,
+        "records": 4
+      },
+      {
+        "index": 14,
+        "seed": 1880035,
+        "uavs": 30,
+        "domain": "dynamic",
+        "completion": 27.0,
+        "records": 5
+      },
+      {
+        "index": 15,
+        "seed": 1880036,
+        "uavs": 60,
+        "domain": "dynamic",
+        "completion": 21.0,
+        "records": 5
+      }
+    ],
+    "records": 40,
+    "saved_value_min": -0.007667839527130127,
+    "saved_value_max": -0.005553046241402626,
+    "roles": {
+      "1": {
+        "records": 31,
+        "between_episode_share_of_raw_advantage_variance": 0.9920109761868238,
+        "episodes_with_uniform_advantage_sign": 8,
+        "episodes": 8,
+        "per_episode": [
+          {
+            "episode": 8,
+            "seed": 1880029,
+            "completion": 53.0,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              3.0
+            ],
+            "normalized_advantages": [
+              -0.9723541736602783,
+              -0.9710133671760559,
+              -0.9242473244667053,
+              -0.8771964907646179
+            ],
+            "raw_advantages": [
+              -0.16606299579143524,
+              -0.16596536338329315,
+              -0.16256001591682434,
+              -0.1591339260339737
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 9,
+            "seed": 1880030,
+            "completion": 64.4,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              4.0,
+              7.0
+            ],
+            "normalized_advantages": [
+              -1.497725009918213,
+              -1.4971822500228882,
+              -1.3605906963348389,
+              -1.2231420278549194
+            ],
+            "raw_advantages": [
+              -0.20431877672672272,
+              -0.20427925884723663,
+              -0.19433310627937317,
+              -0.18432454764842987
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 10,
+            "seed": 1880031,
+            "completion": 61.5,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              8.0
+            ],
+            "normalized_advantages": [
+              -1.3660411834716797,
+              -1.3647607564926147,
+              -1.324609398841858,
+              -1.0468305349349976
+            ],
+            "raw_advantages": [
+              -0.1947299987077713,
+              -0.1946367621421814,
+              -0.19171306490898132,
+              -0.17148612439632416
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 11,
+            "seed": 1880032,
+            "completion": 14.0,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              4.0,
+              5.0
+            ],
+            "normalized_advantages": [
+              0.8132854104042053,
+              0.8138637542724609,
+              0.9473569393157959,
+              0.990481436252594
+            ],
+            "raw_advantages": [
+              -0.03603857383131981,
+              -0.035996463149785995,
+              -0.02627592347562313,
+              -0.02313574217259884
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 12,
+            "seed": 1880033,
+            "completion": 14.3,
+            "records": 3,
+            "decision_times": [
+              1.0,
+              1.0,
+              3.0
+            ],
+            "normalized_advantages": [
+              0.7918343544006348,
+              0.7922492623329163,
+              0.8874368071556091
+            ],
+            "raw_advantages": [
+              -0.0376005694270134,
+              -0.03757036104798317,
+              -0.03063911199569702
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 13,
+            "seed": 1880034,
+            "completion": 5.1000000000000005,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              2.0,
+              2.0
+            ],
+            "normalized_advantages": [
+              1.196781873703003,
+              1.2010380029678345,
+              1.2563238143920898,
+              1.2606514692306519
+            ],
+            "raw_advantages": [
+              -0.008113620802760124,
+              -0.007803702261298895,
+              -0.003777973121032119,
+              -0.0034628461580723524
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 14,
+            "seed": 1880035,
+            "completion": 27.0,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              3.0,
+              4.0
+            ],
+            "normalized_advantages": [
+              0.21701912581920624,
+              0.21935538947582245,
+              0.3128696084022522,
+              0.36063864827156067
+            ],
+            "raw_advantages": [
+              -0.07945673167705536,
+              -0.0792866125702858,
+              -0.07247721403837204,
+              -0.06899882853031158
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 15,
+            "seed": 1880036,
+            "completion": 21.0,
+            "records": 4,
+            "decision_times": [
+              1.0,
+              1.0,
+              3.0,
+              8.0
+            ],
+            "normalized_advantages": [
+              0.48762550950050354,
+              0.48792555928230286,
+              0.5797786116600037,
+              0.8091796040534973
+            ],
+            "raw_advantages": [
+              -0.05975206196308136,
+              -0.05973021313548088,
+              -0.05304177477955818,
+              -0.03633754700422287
+            ],
+            "all_same_sign": true
+          }
+        ]
+      },
+      "2": {
+        "records": 9,
+        "between_episode_share_of_raw_advantage_variance": 0.8012818735590439,
+        "episodes_with_uniform_advantage_sign": 6,
+        "episodes": 7,
+        "per_episode": [
+          {
+            "episode": 8,
+            "seed": 1880029,
+            "completion": 53.0,
+            "records": 3,
+            "decision_times": [
+              1.0,
+              34.0,
+              34.0
+            ],
+            "normalized_advantages": [
+              -1.1068087816238403,
+              0.5239788293838501,
+              0.5380989909172058
+            ],
+            "raw_advantages": [
+              -0.1668015867471695,
+              -0.057576701045036316,
+              -0.05663098022341728
+            ],
+            "all_same_sign": false
+          },
+          {
+            "episode": 9,
+            "seed": 1880030,
+            "completion": 64.4,
+            "records": 1,
+            "decision_times": [
+              2.0
+            ],
+            "normalized_advantages": [
+              -1.6318821907043457
+            ],
+            "raw_advantages": [
+              -0.20196931064128876
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 10,
+            "seed": 1880031,
+            "completion": 61.5,
+            "records": 1,
+            "decision_times": [
+              5.0
+            ],
+            "normalized_advantages": [
+              -1.333245038986206
+            ],
+            "raw_advantages": [
+              -0.18196755647659302
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 11,
+            "seed": 1880032,
+            "completion": 14.0,
+            "records": 1,
+            "decision_times": [
+              7.0
+            ],
+            "normalized_advantages": [
+              1.1292825937271118
+            ],
+            "raw_advantages": [
+              -0.017035411670804024
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 12,
+            "seed": 1880033,
+            "completion": 14.3,
+            "records": 1,
+            "decision_times": [
+              4.0
+            ],
+            "normalized_advantages": [
+              0.9660382866859436
+            ],
+            "raw_advantages": [
+              -0.027968991547822952
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 14,
+            "seed": 1880035,
+            "completion": 27.0,
+            "records": 1,
+            "decision_times": [
+              1.0
+            ],
+            "normalized_advantages": [
+              0.18932417035102844
+            ],
+            "raw_advantages": [
+              -0.07999078929424286
+            ],
+            "all_same_sign": true
+          },
+          {
+            "episode": 15,
+            "seed": 1880036,
+            "completion": 21.0,
+            "records": 1,
+            "decision_times": [
+              6.0
+            ],
+            "normalized_advantages": [
+              0.7252136468887329
+            ],
+            "raw_advantages": [
+              -0.044098641723394394
+            ],
+            "all_same_sign": true
+          }
+        ]
+      }
+    },
+    "scope": "Descriptive variance decomposition, not proof of invalid PPO gradient; each seed has one sampled trajectory and no within-seed counterfactual"
+  }
+]

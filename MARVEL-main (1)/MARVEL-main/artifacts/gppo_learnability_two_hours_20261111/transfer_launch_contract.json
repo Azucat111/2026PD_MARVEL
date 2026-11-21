@@ -1,0 +1,7 @@
+{
+  "created_utc": "2026-11-11T05:01:02.725723+00:00",
+  "launch_before_utc": "2026-11-11T06:15:00+00:00",
+  "gate": "All nine fixed training-case arms complete, common inputs matched, all arms success and fullH300safe; no gain-based selection",
+  "scope": "Two prespecified new seeds, three arms, diagnostic not overall15percent acceptance",
+  "candidate_selection": false
+}

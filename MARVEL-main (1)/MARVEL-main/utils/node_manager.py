@@ -79,7 +79,13 @@ class NodeManager:
 
     def update_graph(self, robot_location, frontiers, updating_map_info, map_info):
         self._version += 1
-        node_coords, _ = get_updating_node_coords(robot_location, updating_map_info)
+        if self.use_clearance_admission:
+            # Extended observed maps can contain a FREE component smaller
+            # than the node lattice. Keep native's utility path frozen.
+            from integrations.observed_node_lattice import extended_updating_node_coords
+            node_coords, _ = extended_updating_node_coords(robot_location, updating_map_info)
+        else:
+            node_coords, _ = get_updating_node_coords(robot_location, updating_map_info)
 
         all_node_list = []
         for coords in node_coords:

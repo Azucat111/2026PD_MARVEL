@@ -1,0 +1,8 @@
+{
+  "file": "integrations/gppo/scheduler.py",
+  "before_sha256": "7d2accade058dea6f14774464738bd0445740b452468d8e0baf6960e85624371",
+  "after_sha256": "d683592a0db234d9b6ad99646b3336d7b6909453ceb8628300babafe2ed0a069",
+  "scope": "Existing ObservedMeshRelayDemandBuilder branch only; no frozen native semantics or new planner",
+  "prior_reproduction": "artifacts/gppo_later_rounds_hour_20261110/retarget_capture_result.json",
+  "prior_matched_screen": "artifacts/gppo_later_rounds_hour_20261110/retarget_matched_result.json"
+}

@@ -1,0 +1,88 @@
+{
+  "created_utc": "2026-11-11T05:22:26.906971+00:00",
+  "scope": "Read-only diagnosis of rejected first update; no new optimizer, evaluation or transfer outcomes consumed",
+  "evidence_files": {
+    "artifacts/gppo_learnability_two_hours_20261111/update_proof.json": "d39983a2492434a5069bb870f90c076dfffb15319695adc5a7575bf5064faf73",
+    "artifacts/gppo_learnability_two_hours_20261111/update/updates.json": "1f847a612e816210e7cbf6c8c2da611b9e3b42ce84bee59fb437a1f90f436ae1",
+    "artifacts/gppo_learnability_two_hours_20261111/update_independent_review.json": "813b1f1a2fae452e130dca9b90ff08445f099b5e425db9454ec54fb548582db2",
+    "scripts/train_extended_gppo_batched.py": "21dfa2e2348f4494bfb059535623613378f484eb2f1d3a1d5f6b1a133400e372"
+  },
+  "previous_review_explicitly_identified_risk": {
+    "name": "Once-only execution and postgate",
+    "result": "PASS_STATIC",
+    "detail": "Exactlyoneupdatebatch,max4epochs,lr2e-5,temperature1,targetsampledKL.005;mkdir(update,exist_ok=False)prevents rerunoverwrite. Before/afterguards run. Finiteweights,meanexactKL<=.01,maxstateKL<=.05,sampledKL<=.01 controleligible_for_evaluation;candidate/proofhashbound. ExistingpoststepKLstopcanovershoot,butpostgate rejects abovecaps."
+  },
+  "mechanism": {
+    "source": "scripts/train_extended_gppo_batched.py:217-233",
+    "sequence": [
+      "optimizer.step at217 changes parameters",
+      "KL computed afterward at219-226",
+      "if KL>target then break at227",
+      "checkpoint saved at231-233 without undoing laststep"
+    ],
+    "meaning": "Stopping subsequent steps does not guarantee the retained checkpoint satisfies targetKL or final exactKL caps"
+  },
+  "observed_first_update": {
+    "optimizer_steps": 2,
+    "epochs": [
+      {
+        "epoch": 0,
+        "approx_kl": 0.003304604673758149,
+        "clip_fraction": 0.0793650820851326,
+        "preclip_gradient_norm": 2.3459014892578125
+      },
+      {
+        "epoch": 1,
+        "approx_kl": 0.010771719738841057,
+        "clip_fraction": 0.0952381044626236,
+        "preclip_gradient_norm": 1.030009388923645
+      }
+    ],
+    "target_sampled_kl": 0.005,
+    "final_mean_exact_kl": 0.009042333212979354,
+    "final_max_state_exact_kl": 0.12224052846431732,
+    "final_max_sampled_kl": 0.010771719738841057,
+    "gate_caps": {
+      "mean_exact": 0.01,
+      "max_state_exact": 0.05,
+      "max_sampled": 0.01
+    },
+    "eligible_for_evaluation": false,
+    "candidate": "artifacts/gppo_learnability_two_hours_20261111/update/checkpoint_batch_000.pth",
+    "candidate_sha256": "2ca345d01ce4507d6c6a10dfe1314c339db53789addbc3b38b8e74dda0c050b5",
+    "training_state_greedy_changes": 2
+  },
+  "supported_conclusions": [
+    "Post-step stop overshoot is observed in this actual12episode update, not only a hypothetical code concern",
+    "Epoch0 sampledKL.0033046 was belowtarget.005; epoch1 sampledKL.0107717 exceededtarget andfinalcap.01, andthatstep remained inrejectedcheckpoint",
+    "MeanexactKL.0090423 passed.01 whilemaxstateexactKL.1222405 failed.05: anaverage-only gate wouldmiss thislocal largechange",
+    "The independent finaleligibility gate correctly rejected thiscandidate; no evidence here of deployment/evaluation leakage",
+    "Per-step exact/sample gates plus modelandoptimizer rollback can retain anearlier allowedstate; thisis anupdateconstraint change, not proof ofbetter mission performance"
+  ],
+  "unsupported_conclusions": [
+    "Cannot conclude epoch0 satisfied maxstateexactKL: initialrun didnot save per-step exactKL",
+    "Cannot conclude overshoot caused historicalheldout regressions or explains alltraining failures",
+    "Cannot conclude rejectedcandidate wouldperform worse: itwas not evaluated",
+    "Cannot isolate effects of learningrate, rewardcredit, datavariance orsharedencoder fromthisonebatch",
+    "Guarded replay on samedata is development-stage adaptive diagnosis, not independentvalidation ornewon-policydata"
+  ],
+  "guarded_followup": {
+    "expected_proof": "guarded/update_proof.json",
+    "expected_candidate": "guarded/update/checkpoint_batch_000.pth",
+    "status": "PENDING_GUARDED_PROOF",
+    "required_checks": [
+      "Restart fromsame frozenbehavior andsame12capturedtrajectories",
+      "Saveandrestore modelAND optimizerstate onrejectedstep",
+      "Gate retainedcandidateagainstparentbehavior over all63states",
+      "Report attempted/accepted/rejectedsteps separately",
+      "Analyze parent-to-retained action probabilities onlyifeligible_for_evaluationTrue"
+    ]
+  },
+  "analysis_script": {
+    "snapshot": "analyze_learning_signal_initial_snapshot.py",
+    "snapshot_sha256": "6ac63ff544983a278e61d586d421071425c1192deb92c0a0a5e77485f94e8350",
+    "current_sha256": "59c368dfb082577586594d33e7e4706725c13d0b9ef7c8f8e20de8b162e43411",
+    "default_proof": "guarded/update_proof.json",
+    "rejected_proof_behavior": "Print REJECTED_PROOF_NOT_ANALYZED; do not create learning_signal_result.json"
+  }
+}

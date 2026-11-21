@@ -1,0 +1,30 @@
+{
+  "frozen_utc": "2026-11-11T04:56:52.615751+00:00",
+  "max_policy_batches": 1,
+  "plan_sha256": "9c1ea48d0de3003774e2aefc6e6019c4a32351de11222f8034c078141d20d8f9",
+  "behavior_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "update_deadline_utc": "2026-11-11T05:40:00+00:00",
+  "lr": 2e-05,
+  "epochs": 4,
+  "temperature": 1,
+  "target_kl": 0.005,
+  "post_update_mean_kl_cap": 0.01,
+  "max_state_kl_cap": 0.05,
+  "max_sampled_kl_cap": 0.01,
+  "baseline": "Within-seed leave-one-out terminal completion over four complete H300 episodes per seed",
+  "advantage": "(mean(other three C)-own C)/15",
+  "zero_variance_groups": "retained A0; require at least one group variance",
+  "critic_loss": 0,
+  "selection": "None; one candidate only",
+  "source_hashes": {
+    "artifacts/gppo_learnability_two_hours_20261111/update_once.py": "4e4a0f31eed0d82c9b406011ba1a11d786b6f6727469eeea3d2492333a940ccd",
+    "artifacts/gppo_learnability_two_hours_20261111/group_baseline.py": "71fc8d778f43ca7fd4c371ab73fe54655a3ac55b444b428e0d53b8bdb72a5f7d",
+    "artifacts/gppo_learnability_two_hours_20261111/test_update_contract.py": "ce994c9a756abda3b31666b0c76380d79d2b74600320a5e9fd1113b516f698d2",
+    "artifacts/gppo_learnability_two_hours_20261111/effective_execution_contract.json": "c071006d99bea31706de9679268ce18cd6ec15e769da44b680e66bfd3d0311fc",
+    "artifacts/gppo_three_hour_20261110/training_source.py": "0cdf0397cea4d9f57c6495292df05372000d328f505cfe79ae55833286d5984a",
+    "artifacts/gppo_three_hour_20261110/aligned_reward.py": "904f4503aa18ce95ec12d5cb5954ce01c72a13e001be2792fac32b9e53cf6d43",
+    "scripts/gppo_parallel_rollouts.py": "03ed8c500e4f2f79784bec965be6a0f98da82058b82c8d96edcfd20c707e97a6",
+    "scripts/train_extended_gppo_batched.py": "21dfa2e2348f4494bfb059535623613378f484eb2f1d3a1d5f6b1a133400e372"
+  },
+  "scope": "Training-case diagnostic; no acceptance/generalization claim"
+}

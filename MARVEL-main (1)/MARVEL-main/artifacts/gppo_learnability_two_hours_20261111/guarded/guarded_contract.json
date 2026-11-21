@@ -1,0 +1,30 @@
+{
+  "frozen_utc": "2026-11-11T05:25:31.242207+00:00",
+  "purpose": "Transaction-safe reproducible replay of same rejected diagnostic update; no new samples, no result selection, no cap relaxation",
+  "max_replays": 1,
+  "max_epochs": 4,
+  "lr": 2e-05,
+  "target_kl": 0.005,
+  "sampled_kl_cap": 0.01,
+  "mean_exact_kl_cap": 0.01,
+  "max_state_exact_kl_cap": 0.05,
+  "critic_loss": 0,
+  "advantage": "Original within-seed leave-one-out fixed /15; unchanged63 transitions and transition-mean loss",
+  "transaction": "Before each epoch snapshot model+Adam; compute all caps versus original behavior after epoch; reject restores both snapshots and ends. First epoch rejection yields no candidate.",
+  "original_contract_sha256": "84f719d95d8eecfb3d1dee03d56a4311a84dfece0685f6d5d7db35c7785fe722",
+  "original_rejected_proof_sha256": "d39983a2492434a5069bb870f90c076dfffb15319695adc5a7575bf5064faf73",
+  "original_rejected_candidate": "artifacts/gppo_learnability_two_hours_20261111/update/checkpoint_batch_000.pth",
+  "original_rejected_candidate_sha256": "2ca345d01ce4507d6c6a10dfe1314c339db53789addbc3b38b8e74dda0c050b5",
+  "candidate": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+  "proof": "artifacts/gppo_learnability_two_hours_20261111/guarded/update_proof.json",
+  "source_hashes": {
+    "artifacts/gppo_learnability_two_hours_20261111/guarded/guarded_update.py": "9204c913e0cd3ab97f559b7168e362ef69a5bc83b9c7215fe741c915125358fb",
+    "artifacts/gppo_learnability_two_hours_20261111/guarded/epoch_transaction.py": "c777583da119acf9d2871776e83f8ad60ce56b09c42717d9d875b4d9671aa99c",
+    "artifacts/gppo_learnability_two_hours_20261111/guarded/test_epoch_transaction.py": "21e8b599d271d0c34df27c84b2fad9da5872263a8818b6a6323de12b118aab6f",
+    "artifacts/gppo_learnability_two_hours_20261111/update_once.py": "4e4a0f31eed0d82c9b406011ba1a11d786b6f6727469eeea3d2492333a940ccd",
+    "artifacts/gppo_learnability_two_hours_20261111/group_baseline.py": "71fc8d778f43ca7fd4c371ab73fe54655a3ac55b444b428e0d53b8bdb72a5f7d",
+    "artifacts/gppo_three_hour_20261110/training_source.py": "0cdf0397cea4d9f57c6495292df05372000d328f505cfe79ae55833286d5984a",
+    "scripts/train_extended_gppo_batched.py": "21dfa2e2348f4494bfb059535623613378f484eb2f1d3a1d5f6b1a133400e372",
+    "scripts/gppo_parallel_rollouts.py": "03ed8c500e4f2f79784bec965be6a0f98da82058b82c8d96edcfd20c707e97a6"
+  }
+}

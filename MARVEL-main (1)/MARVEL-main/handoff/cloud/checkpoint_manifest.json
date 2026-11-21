@@ -1,0 +1,157 @@
+[
+  {
+    "name": "MARVEL low-level actor",
+    "original_location": "load_model/MARVEL/checkpoint.pth",
+    "cloud_path": "load_model/MARVEL/checkpoint.pth",
+    "bytes": 61200094,
+    "sha256": "2e992ff83c8b05a346e882be5279f3e3db8b04e6be7aad308dd2b6c0532d99b2",
+    "stage": "Upstream MARVEL checkpoint; shared low-level policy",
+    "architecture": "PolicyNet / discrete SAC",
+    "tracked_in_base": true,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "2e992ff83c8b05a346e882be5279f3e3db8b04e6be7aad308dd2b6c0532d99b2",
+    "cloud_bytes": 61200094,
+    "protocol": null,
+    "parameter_count": 1556480
+  },
+  {
+    "name": "Frozen native GPPO",
+    "original_location": "separate native worktree: artifacts/phase14_v9_frozen/gppo_phase14_v9_ckpt80.pth",
+    "cloud_path": "handoff/cloud/models/gppo_phase14_v9_ckpt80.pth",
+    "bytes": 12026646,
+    "sha256": "57abf685f7a8226dcf71e1441333bf74da6e228e423f1bb0034e110975e3fcd9",
+    "stage": "Phase14 v9, checkpoint 80; mixed-config defaults and native reference",
+    "architecture": "AHGNN GPPO, 3 edge features",
+    "tracked_in_base": false,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "57abf685f7a8226dcf71e1441333bf74da6e228e423f1bb0034e110975e3fcd9",
+    "cloud_bytes": 12026646,
+    "protocol": "phase14-pretrain-v9",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 3
+    },
+    "parameter_count": 993156
+  },
+  {
+    "name": "Round 8",
+    "original_location": "artifacts/extended_gppo_joint_batch_20261010_attempt8/checkpoint_batch_001.pth",
+    "cloud_path": "artifacts/extended_gppo_joint_batch_20261010_attempt8/checkpoint_batch_001.pth",
+    "bytes": 12032766,
+    "sha256": "869e2ac49e54d24143c497197c27c39800b882fa1e4100b2f021815f73f30298",
+    "stage": "Historical 6D candidate; independent acceptance attempt34 failed full gate",
+    "architecture": "AHGNN 6D",
+    "tracked_in_base": false,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "869e2ac49e54d24143c497197c27c39800b882fa1e4100b2f021815f73f30298",
+    "cloud_bytes": 12032766,
+    "protocol": "extended-gppo-observed-heading-v2",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 6
+    },
+    "parameter_count": 993924
+  },
+  {
+    "name": "Round 17",
+    "original_location": "artifacts/extended_gppo_joint_batch_20261012_attempt17/checkpoint_batch_015.pth",
+    "cloud_path": "artifacts/extended_gppo_joint_batch_20261012_attempt17/checkpoint_batch_015.pth",
+    "bytes": 12034110,
+    "sha256": "1cda34ecb47ec1eb411e3bf47f30351bbec1a7d48b96ff6297f70ac0739cf22a",
+    "stage": "Warm-start parent, historical 6D",
+    "architecture": "AHGNN 6D",
+    "tracked_in_base": false,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "1cda34ecb47ec1eb411e3bf47f30351bbec1a7d48b96ff6297f70ac0739cf22a",
+    "cloud_bytes": 12034110,
+    "protocol": "extended-gppo-observed-heading-v2",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 6
+    },
+    "parameter_count": 993924
+  },
+  {
+    "name": "Round 19",
+    "original_location": "artifacts/extended_gppo_joint_batch_20261013_attempt19/checkpoint_batch_031.pth",
+    "cloud_path": "artifacts/extended_gppo_joint_batch_20261013_attempt19/checkpoint_batch_031.pth",
+    "bytes": 12043710,
+    "sha256": "7942984adcf3f55e77bac53b02291d0472fbc22f9b259b322395d4bbe9f20fb0",
+    "stage": "Historical 9D Search opportunity training",
+    "architecture": "AHGNN 9D",
+    "tracked_in_base": false,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "7942984adcf3f55e77bac53b02291d0472fbc22f9b259b322395d4bbe9f20fb0",
+    "cloud_bytes": 12043710,
+    "protocol": "extended-gppo-public-opportunity-v1",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 9
+    },
+    "parameter_count": 994692
+  },
+  {
+    "name": "November 10 batch 00",
+    "original_location": "artifacts/gppo_three_hour_20261110/training/batch_00/update/checkpoint_batch_000.pth",
+    "cloud_path": "handoff/cloud/models/nov10_batch00_inference.pth",
+    "bytes": 12032958,
+    "sha256": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d",
+    "stage": "First aligned fine-tune from round17; JCT,H300",
+    "architecture": "AHGNN 6D",
+    "tracked_in_base": false,
+    "transfer": "inference export, identical model tensors; original private training metadata and optimizer excluded",
+    "cloud_sha256": "f47d6a2bf45b0461b32c8f5160ede7ac730a15b704225372120883c7f17ea4e5",
+    "cloud_bytes": 4007808,
+    "protocol": "extended-gppo-observed-heading-v2",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 6
+    },
+    "parameter_count": 993924
+  },
+  {
+    "name": "November behavior parent",
+    "original_location": "artifacts/gppo_three_hour_20261110/training/batch_00/behavior.pth",
+    "cloud_path": "artifacts/gppo_three_hour_20261110/training/batch_00/behavior.pth",
+    "bytes": 4006454,
+    "sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+    "stage": "Round17 actor and encoder, reset critic output",
+    "architecture": "AHGNN 6D",
+    "tracked_in_base": false,
+    "transfer": "Git snapshot",
+    "cloud_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+    "cloud_bytes": 4006454,
+    "protocol": "extended-gppo-observed-heading-v2",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 6
+    },
+    "parameter_count": 993924
+  },
+  {
+    "name": "November 11 guarded candidate",
+    "original_location": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+    "cloud_path": "handoff/cloud/models/guarded_440d_inference.pth",
+    "bytes": 12032894,
+    "sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+    "stage": "12 episodes,63 decisions; one retained Adam step; frozen donor and transfer control",
+    "architecture": "AHGNN 6D",
+    "tracked_in_base": false,
+    "transfer": "inference export, identical model tensors; original private training metadata and optimizer excluded",
+    "cloud_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+    "cloud_bytes": 4007722,
+    "protocol": "extended-gppo-observed-heading-v2",
+    "input_dimensions": {
+      "uav": 13,
+      "task": 12,
+      "edge": 6
+    },
+    "parameter_count": 993924
+  }
+]

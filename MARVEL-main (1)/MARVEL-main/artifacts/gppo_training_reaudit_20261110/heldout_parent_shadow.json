@@ -1,0 +1,2360 @@
+{
+  "models": {
+    "round17": "1cda34ecb47ec1eb411e3bf47f30351bbec1a7d48b96ff6297f70ac0739cf22a",
+    "batch00": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d",
+    "batch01": "cbcbc2a5a9ab68d7a022eb1eedc7074b7daf6602a264bde7c61da7b1c0955ef7"
+  },
+  "scope": "Offline CPU forward pass on previously saved heldout states only; no counterfactual rollout, model selection or optimizer",
+  "candidate_states": 42,
+  "candidate_changed17to00": 1,
+  "candidate_changed00to01": 0,
+  "runs": [
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 7,
+      "changed17to00": 1,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 73,
+          "greedy": {
+            "round17": 82,
+            "batch00": 73,
+            "batch01": 73
+          },
+          "changed17to00": true,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 22,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 13,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 13,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.06598002463579178
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 17,
+          "greedy": {
+            "round17": 17,
+            "batch00": 17,
+            "batch01": 17
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 17,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 17,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 17,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.002991616725921631
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 25,
+          "greedy": {
+            "round17": 25,
+            "batch00": 25,
+            "batch01": 25
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 25,
+              "task": 200016
+            },
+            "batch00": {
+              "uav": 25,
+              "task": 200016
+            },
+            "batch01": {
+              "uav": 25,
+              "task": 200016
+            }
+          },
+          "max_probability_delta_17to00": 0.025987625122070312
+        },
+        {
+          "index": 3,
+          "time": 6.0,
+          "recorded_action": 6,
+          "greedy": {
+            "round17": 6,
+            "batch00": 6,
+            "batch01": 6
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 6,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.03445780277252197
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 31,
+          "greedy": {
+            "round17": 31,
+            "batch00": 31,
+            "batch01": 31
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 1,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 1,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 1,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.005082428455352783
+        },
+        {
+          "index": 5,
+          "time": 45.0,
+          "recorded_action": 21,
+          "greedy": {
+            "round17": 21,
+            "batch00": 21,
+            "batch01": 21
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 21,
+              "task": 200003
+            },
+            "batch00": {
+              "uav": 21,
+              "task": 200003
+            },
+            "batch01": {
+              "uav": 21,
+              "task": 200003
+            }
+          },
+          "max_probability_delta_17to00": 0.0018932819366455078
+        },
+        {
+          "index": 6,
+          "time": 59.0,
+          "recorded_action": 11,
+          "greedy": {
+            "round17": 11,
+            "batch00": 11,
+            "batch01": 11
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 11,
+              "task": 200004
+            },
+            "batch00": {
+              "uav": 11,
+              "task": 200004
+            },
+            "batch01": {
+              "uav": 11,
+              "task": 200004
+            }
+          },
+          "max_probability_delta_17to00": 0.04853636026382446
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 6,
+      "changed17to00": 1,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 17,
+          "greedy": {
+            "round17": 82,
+            "batch00": 73,
+            "batch01": 73
+          },
+          "changed17to00": true,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 22,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 13,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 13,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.06598002463579178
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 82,
+          "greedy": {
+            "round17": 73,
+            "batch00": 73,
+            "batch01": 73
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 13,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 13,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 13,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.026579827070236206
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 25,
+          "greedy": {
+            "round17": 25,
+            "batch00": 25,
+            "batch01": 25
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 25,
+              "task": 200016
+            },
+            "batch00": {
+              "uav": 25,
+              "task": 200016
+            },
+            "batch01": {
+              "uav": 25,
+              "task": 200016
+            }
+          },
+          "max_probability_delta_17to00": 0.025987744331359863
+        },
+        {
+          "index": 3,
+          "time": 6.0,
+          "recorded_action": 31,
+          "greedy": {
+            "round17": 6,
+            "batch00": 6,
+            "batch01": 6
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 6,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.030795305967330933
+        },
+        {
+          "index": 4,
+          "time": 7.0,
+          "recorded_action": 6,
+          "greedy": {
+            "round17": 6,
+            "batch00": 6,
+            "batch01": 6
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 6,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 6,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.0009945170022547245
+        },
+        {
+          "index": 5,
+          "time": 30.0,
+          "recorded_action": 20,
+          "greedy": {
+            "round17": 20,
+            "batch00": 20,
+            "batch01": 20
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 20,
+              "task": 200015
+            },
+            "batch00": {
+              "uav": 20,
+              "task": 200015
+            },
+            "batch01": {
+              "uav": 20,
+              "task": 200015
+            }
+          },
+          "max_probability_delta_17to00": 9.018825949169695e-06
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 6,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 97,
+          "greedy": {
+            "round17": 97,
+            "batch00": 97,
+            "batch01": 97
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.09370499849319458
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 32,
+          "greedy": {
+            "round17": 32,
+            "batch00": 32,
+            "batch01": 32
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 2,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 2,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 2,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.042371511459350586
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 12,
+          "greedy": {
+            "round17": 12,
+            "batch00": 12,
+            "batch01": 12
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 12,
+              "task": 200013
+            },
+            "batch00": {
+              "uav": 12,
+              "task": 200013
+            },
+            "batch01": {
+              "uav": 12,
+              "task": 200013
+            }
+          },
+          "max_probability_delta_17to00": 0.01377493143081665
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 15,
+          "greedy": {
+            "round17": 15,
+            "batch00": 15,
+            "batch01": 15
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 15,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 15,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 15,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.05541670322418213
+        },
+        {
+          "index": 4,
+          "time": 5.0,
+          "recorded_action": 24,
+          "greedy": {
+            "round17": 24,
+            "batch00": 24,
+            "batch01": 24
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 24,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 24,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 24,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.01571863889694214
+        },
+        {
+          "index": 5,
+          "time": 122.0,
+          "recorded_action": 8,
+          "greedy": {
+            "round17": 8,
+            "batch00": 8,
+            "batch01": 8
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 8,
+              "task": 200021
+            },
+            "batch00": {
+              "uav": 8,
+              "task": 200021
+            },
+            "batch01": {
+              "uav": 8,
+              "task": 200021
+            }
+          },
+          "max_probability_delta_17to00": 0.0030957460403442383
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 6,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 32,
+          "greedy": {
+            "round17": 97,
+            "batch00": 97,
+            "batch01": 97
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.09370499849319458
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 68,
+          "greedy": {
+            "round17": 97,
+            "batch00": 97,
+            "batch01": 97
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.05038267374038696
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 12,
+          "greedy": {
+            "round17": 12,
+            "batch00": 12,
+            "batch01": 12
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 12,
+              "task": 200013
+            },
+            "batch00": {
+              "uav": 12,
+              "task": 200013
+            },
+            "batch01": {
+              "uav": 12,
+              "task": 200013
+            }
+          },
+          "max_probability_delta_17to00": 0.013775944709777832
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 15,
+          "greedy": {
+            "round17": 13,
+            "batch00": 13,
+            "batch01": 13
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 13,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 13,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 13,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.02086540311574936
+        },
+        {
+          "index": 4,
+          "time": 8.0,
+          "recorded_action": 7,
+          "greedy": {
+            "round17": 13,
+            "batch00": 13,
+            "batch01": 13
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 13,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 13,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 13,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.04805868864059448
+        },
+        {
+          "index": 5,
+          "time": 42.0,
+          "recorded_action": 26,
+          "greedy": {
+            "round17": 19,
+            "batch00": 19,
+            "batch01": 19
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 19,
+              "task": 200023
+            },
+            "batch00": {
+              "uav": 19,
+              "task": 200023
+            },
+            "batch01": {
+              "uav": 19,
+              "task": 200023
+            }
+          },
+          "max_probability_delta_17to00": 0.029716193675994873
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 38,
+          "greedy": {
+            "round17": 38,
+            "batch00": 38,
+            "batch01": 38
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 38,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 38,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 38,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.0044709742069244385
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 192,
+          "greedy": {
+            "round17": 192,
+            "batch00": 192,
+            "batch01": 192
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 12,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 12,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 12,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.017634987831115723
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 6,
+          "greedy": {
+            "round17": 6,
+            "batch00": 6,
+            "batch01": 6
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 6,
+              "task": 200000
+            },
+            "batch00": {
+              "uav": 6,
+              "task": 200000
+            },
+            "batch01": {
+              "uav": 6,
+              "task": 200000
+            }
+          },
+          "max_probability_delta_17to00": 0.006218671798706055
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 38,
+          "greedy": {
+            "round17": 38,
+            "batch00": 38,
+            "batch01": 38
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 38,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 38,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 38,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.009677469730377197
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 38,
+          "greedy": {
+            "round17": 38,
+            "batch00": 38,
+            "batch01": 38
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 38,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 38,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 38,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.0044709742069244385
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 72,
+          "greedy": {
+            "round17": 192,
+            "batch00": 192,
+            "batch01": 192
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 12,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 12,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 12,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.017634987831115723
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 6,
+          "greedy": {
+            "round17": 6,
+            "batch00": 6,
+            "batch01": 6
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 6,
+              "task": 200000
+            },
+            "batch00": {
+              "uav": 6,
+              "task": 200000
+            },
+            "batch01": {
+              "uav": 6,
+              "task": 200000
+            }
+          },
+          "max_probability_delta_17to00": 0.006218671798706055
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 98,
+          "greedy": {
+            "round17": 98,
+            "batch00": 98,
+            "batch01": 98
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 38,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 38,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 38,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.008060097694396973
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 5,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 232,
+          "greedy": {
+            "round17": 232,
+            "batch00": 232,
+            "batch01": 232
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 52,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.022835440933704376
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 72,
+          "greedy": {
+            "round17": 72,
+            "batch00": 72,
+            "batch01": 72
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 12,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 12,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 12,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.006794631481170654
+        },
+        {
+          "index": 2,
+          "time": 2.0,
+          "recorded_action": 86,
+          "greedy": {
+            "round17": 86,
+            "batch00": 86,
+            "batch01": 86
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 26,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 26,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 26,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.09446746110916138
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 3,
+          "greedy": {
+            "round17": 3,
+            "batch00": 3,
+            "batch01": 3
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 3,
+              "task": 200057
+            },
+            "batch00": {
+              "uav": 3,
+              "task": 200057
+            },
+            "batch01": {
+              "uav": 3,
+              "task": 200057
+            }
+          },
+          "max_probability_delta_17to00": 0.01556926965713501
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 55,
+          "greedy": {
+            "round17": 55,
+            "batch00": 55,
+            "batch01": 55
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 55,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 55,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 55,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.02197033166885376
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 6,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 72,
+          "greedy": {
+            "round17": 232,
+            "batch00": 232,
+            "batch01": 232
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 52,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.022835440933704376
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 232,
+          "greedy": {
+            "round17": 232,
+            "batch00": 232,
+            "batch01": 232
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 52,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 52,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.00632205605506897
+        },
+        {
+          "index": 2,
+          "time": 2.0,
+          "recorded_action": 12,
+          "greedy": {
+            "round17": 86,
+            "batch00": 86,
+            "batch01": 86
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 26,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 26,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 26,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.09446746110916138
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 3,
+          "greedy": {
+            "round17": 3,
+            "batch00": 3,
+            "batch01": 3
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 3,
+              "task": 200057
+            },
+            "batch00": {
+              "uav": 3,
+              "task": 200057
+            },
+            "batch01": {
+              "uav": 3,
+              "task": 200057
+            }
+          },
+          "max_probability_delta_17to00": 0.015565931797027588
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 52,
+          "greedy": {
+            "round17": 52,
+            "batch00": 52,
+            "batch01": 52
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 52,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 52,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 52,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.00911414623260498
+        },
+        {
+          "index": 5,
+          "time": 16.0,
+          "recorded_action": 55,
+          "greedy": {
+            "round17": 55,
+            "batch00": 55,
+            "batch01": 55
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 55,
+              "task": 200052
+            },
+            "batch00": {
+              "uav": 55,
+              "task": 200052
+            },
+            "batch01": {
+              "uav": 55,
+              "task": 200052
+            }
+          },
+          "max_probability_delta_17to00": 0.00034034252166748047
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 6,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 67,
+          "greedy": {
+            "round17": 67,
+            "batch00": 67,
+            "batch01": 67
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.004693031311035156
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 98,
+          "greedy": {
+            "round17": 98,
+            "batch00": 98,
+            "batch01": 98
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 8,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 8,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 8,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.010248303413391113
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 20,
+          "greedy": {
+            "round17": 20,
+            "batch00": 20,
+            "batch01": 20
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 20,
+              "task": 200007
+            },
+            "batch00": {
+              "uav": 20,
+              "task": 200007
+            },
+            "batch01": {
+              "uav": 20,
+              "task": 200007
+            }
+          },
+          "max_probability_delta_17to00": 0.011579394340515137
+        },
+        {
+          "index": 3,
+          "time": 6.0,
+          "recorded_action": 46,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 16,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 16,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 16,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.009087714366614819
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 8,
+          "greedy": {
+            "round17": 8,
+            "batch00": 8,
+            "batch01": 8
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 8,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 8,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 8,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 2.5206628451179824e-11
+        },
+        {
+          "index": 5,
+          "time": 70.0,
+          "recorded_action": 16,
+          "greedy": {
+            "round17": 16,
+            "batch00": 16,
+            "batch01": 16
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 16,
+              "task": 200009
+            },
+            "batch00": {
+              "uav": 16,
+              "task": 200009
+            },
+            "batch01": {
+              "uav": 16,
+              "task": 200009
+            }
+          },
+          "max_probability_delta_17to00": 0.03338497877120972
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 7,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 47,
+          "greedy": {
+            "round17": 67,
+            "batch00": 67,
+            "batch01": 67
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.004693031311035156
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 67,
+          "greedy": {
+            "round17": 67,
+            "batch00": 67,
+            "batch01": 67
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.004446923732757568
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 8,
+          "greedy": {
+            "round17": 8,
+            "batch00": 8,
+            "batch01": 8
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 8,
+              "task": 200007
+            },
+            "batch00": {
+              "uav": 8,
+              "task": 200007
+            },
+            "batch01": {
+              "uav": 8,
+              "task": 200007
+            }
+          },
+          "max_probability_delta_17to00": 0.026148498058319092
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 46,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 16,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 16,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 16,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.023427963256835938
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 7,
+          "greedy": {
+            "round17": 7,
+            "batch00": 7,
+            "batch01": 7
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.010682344436645508
+        },
+        {
+          "index": 5,
+          "time": 6.0,
+          "recorded_action": 46,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 16,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 16,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 16,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.001493990421295166
+        },
+        {
+          "index": 6,
+          "time": 27.0,
+          "recorded_action": 1,
+          "greedy": {
+            "round17": 1,
+            "batch00": 1,
+            "batch01": 1
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 1,
+              "task": 200016
+            },
+            "batch00": {
+              "uav": 1,
+              "task": 200016
+            },
+            "batch01": {
+              "uav": 1,
+              "task": 200016
+            }
+          },
+          "max_probability_delta_17to00": 0.01502370834350586
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 6,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 101,
+          "greedy": {
+            "round17": 101,
+            "batch00": 101,
+            "batch01": 101
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 11,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 11,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 11,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.014226853847503662
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 24,
+          "greedy": {
+            "round17": 24,
+            "batch00": 24,
+            "batch01": 24
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 24,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 24,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 24,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.0019013211131095886
+        },
+        {
+          "index": 2,
+          "time": 1.0,
+          "recorded_action": 2,
+          "greedy": {
+            "round17": 2,
+            "batch00": 2,
+            "batch01": 2
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 2,
+              "task": 200014
+            },
+            "batch00": {
+              "uav": 2,
+              "task": 200014
+            },
+            "batch01": {
+              "uav": 2,
+              "task": 200014
+            }
+          },
+          "max_probability_delta_17to00": 0.04477071762084961
+        },
+        {
+          "index": 3,
+          "time": 2.0,
+          "recorded_action": 18,
+          "greedy": {
+            "round17": 18,
+            "batch00": 18,
+            "batch01": 18
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 18,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 18,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 18,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 3.933906555175781e-05
+        },
+        {
+          "index": 4,
+          "time": 6.0,
+          "recorded_action": 11,
+          "greedy": {
+            "round17": 11,
+            "batch00": 11,
+            "batch01": 11
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 11,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 11,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 11,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.007815659046173096
+        },
+        {
+          "index": 5,
+          "time": 48.0,
+          "recorded_action": 7,
+          "greedy": {
+            "round17": 7,
+            "batch00": 7,
+            "batch01": 7
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 7,
+              "task": 200019
+            },
+            "batch00": {
+              "uav": 7,
+              "task": 200019
+            },
+            "batch01": {
+              "uav": 7,
+              "task": 200019
+            }
+          },
+          "max_probability_delta_17to00": 0.0072411298751831055
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 39,
+          "greedy": {
+            "round17": 39,
+            "batch00": 39,
+            "batch01": 39
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 39,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 39,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 39,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.04772639274597168
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 211,
+          "greedy": {
+            "round17": 211,
+            "batch00": 211,
+            "batch01": 211
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 31,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 31,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 31,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.005803823471069336
+        },
+        {
+          "index": 2,
+          "time": 2.0,
+          "recorded_action": 75,
+          "greedy": {
+            "round17": 75,
+            "batch00": 75,
+            "batch01": 75
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 15,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 15,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 15,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.09047341346740723
+        },
+        {
+          "index": 3,
+          "time": 4.0,
+          "recorded_action": 49,
+          "greedy": {
+            "round17": 49,
+            "batch00": 49,
+            "batch01": 49
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 49,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 49,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 49,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.029141664505004883
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 39,
+          "greedy": {
+            "round17": 39,
+            "batch00": 39,
+            "batch01": 39
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 39,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 39,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 39,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.04772639274597168
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 211,
+          "greedy": {
+            "round17": 211,
+            "batch00": 211,
+            "batch01": 211
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 31,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 31,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 31,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.005803823471069336
+        },
+        {
+          "index": 2,
+          "time": 2.0,
+          "recorded_action": 75,
+          "greedy": {
+            "round17": 75,
+            "batch00": 75,
+            "batch01": 75
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 15,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 15,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 15,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.09047341346740723
+        },
+        {
+          "index": 3,
+          "time": 4.0,
+          "recorded_action": 49,
+          "greedy": {
+            "round17": 49,
+            "batch00": 49,
+            "batch01": 49
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 49,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 49,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 49,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.029141664505004883
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/actor_inputs_9.json",
+      "candidate_trajectory": true,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 162,
+          "greedy": {
+            "round17": 162,
+            "batch00": 162,
+            "batch01": 162
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 42,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 42,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 42,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.022588789463043213
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 46,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 46,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.009476125240325928
+        },
+        {
+          "index": 2,
+          "time": 5.0,
+          "recorded_action": 102,
+          "greedy": {
+            "round17": 102,
+            "batch00": 102,
+            "batch01": 102
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 42,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 42,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 42,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.06333577632904053
+        },
+        {
+          "index": 3,
+          "time": 6.0,
+          "recorded_action": 16,
+          "greedy": {
+            "round17": 16,
+            "batch00": 16,
+            "batch01": 16
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 16,
+              "task": 100001
+            },
+            "batch00": {
+              "uav": 16,
+              "task": 100001
+            },
+            "batch01": {
+              "uav": 16,
+              "task": 100001
+            }
+          },
+          "max_probability_delta_17to00": 0.015986382961273193
+        }
+      ]
+    },
+    {
+      "source": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/actor_inputs_9.json",
+      "candidate_trajectory": false,
+      "states": 4,
+      "changed17to00": 0,
+      "changed00to01": 0,
+      "rows": [
+        {
+          "index": 0,
+          "time": 1.0,
+          "recorded_action": 162,
+          "greedy": {
+            "round17": 162,
+            "batch00": 162,
+            "batch01": 162
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 42,
+              "task": 100002
+            },
+            "batch00": {
+              "uav": 42,
+              "task": 100002
+            },
+            "batch01": {
+              "uav": 42,
+              "task": 100002
+            }
+          },
+          "max_probability_delta_17to00": 0.022588789463043213
+        },
+        {
+          "index": 1,
+          "time": 1.0,
+          "recorded_action": 76,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 46,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.009476125240325928
+        },
+        {
+          "index": 2,
+          "time": 2.0,
+          "recorded_action": 46,
+          "greedy": {
+            "round17": 46,
+            "batch00": 46,
+            "batch01": 46
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": true,
+          "mapped": {
+            "round17": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch00": {
+              "uav": 46,
+              "task": 100000
+            },
+            "batch01": {
+              "uav": 46,
+              "task": 100000
+            }
+          },
+          "max_probability_delta_17to00": 0.056016504764556885
+        },
+        {
+          "index": 3,
+          "time": 5.0,
+          "recorded_action": 42,
+          "greedy": {
+            "round17": 32,
+            "batch00": 32,
+            "batch01": 32
+          },
+          "changed17to00": false,
+          "changed00to01": false,
+          "candidate_replay_matches": false,
+          "mapped": {
+            "round17": {
+              "uav": 32,
+              "task": 100003
+            },
+            "batch00": {
+              "uav": 32,
+              "task": 100003
+            },
+            "batch01": {
+              "uav": 32,
+              "task": 100003
+            }
+          },
+          "max_probability_delta_17to00": 0.03804241120815277
+        }
+      ]
+    }
+  ]
+}

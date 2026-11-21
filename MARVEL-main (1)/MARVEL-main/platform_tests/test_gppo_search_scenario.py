@@ -618,6 +618,8 @@ def test_dwell_completion_still_takes_six_consecutive_steps():
     """Frozen 6-step continuous dwell, unchanged by the scenario install."""
 
     runtime, scheduler = build_gppo_runtime(seed=7)
+    # This regression covers frozen native dwell, not extended confirmation.
+    scheduler._search_recovery = None
 
     truth = initialize_search_scenario(runtime)
     scheduler.install_search_scenario(truth.public_heat_points())
@@ -651,6 +653,8 @@ def test_dwell_completion_still_takes_six_consecutive_steps():
 
 def test_leaving_the_reach_radius_resets_dwell():
     runtime, scheduler = build_gppo_runtime(seed=7)
+    # This regression covers frozen native dwell, not extended confirmation.
+    scheduler._search_recovery = None
 
     truth = initialize_search_scenario(runtime)
     scheduler.install_search_scenario(truth.public_heat_points())

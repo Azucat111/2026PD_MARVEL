@@ -1,0 +1,68 @@
+scenario:
+  name: extended_connected_gppo_20261010
+  description: 'Separate feasibility benchmark: preserve the prior 80m static crop
+    and add an 8m wide public map corridor x[12,20), y[34,59) connecting its two free
+    regions. Historical map remains unchanged. UAV speed, radius, radio range, task
+    capacities and frozen native protocol are unchanged. Both scheduling arms use
+    this identical declared map.'
+  version: '1.0'
+  duration:
+    max_steps: 128
+    step_dt: 0.1
+environment:
+  geometry_mode: extended
+  map_size:
+  - 80
+  - 80
+  map_resolution: 1.0
+  map_file: assets/extended_connected_gppo_20261010.png
+  circular_obstacles: []
+robots:
+- id_range:
+  - 0
+  - 3
+  type: explorer
+  team_id: 1
+  config:
+    fov: 120
+    sensor_range: 10
+    velocity: 1.0
+    yaw_rate: 35
+    initial_positions: random_safe
+tasks:
+- task_id: T1_exploration
+  type: exploration
+  priority: 3
+  assigned_robot_types:
+  - explorer
+  params:
+    target_coverage: 0.8
+- task_id: T2_target_search
+  type: target_search
+  priority: 5
+  assigned_robot_types:
+  - explorer
+  activation:
+    condition: exploration_rate >= 0.3
+  params: {}
+- task_id: T3_relay
+  type: relay
+  priority: 2
+  assigned_robot_types:
+  - explorer
+  params: {}
+dynamics:
+  config_file: ../dynamics/kinematic_simple.yaml
+sensor:
+  config_file: ../sensors/ideal.yaml
+communication:
+  config_file: ../communication/ideal.yaml
+evaluation:
+  metrics:
+  - name: exploration_rate
+    weight: 0.7
+    target: 0.8
+  - name: collision_count
+    weight: 0.3
+    target: 0
+    penalty_per_collision: -1

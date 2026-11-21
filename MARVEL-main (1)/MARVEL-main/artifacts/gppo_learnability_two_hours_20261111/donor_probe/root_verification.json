@@ -1,0 +1,15 @@
+{
+  "checked_utc": "2026-11-11T06:40:46.045081+00:00",
+  "physical_ticks": 3000,
+  "metric": {
+    "secondary_joint_completion_seconds": 44.5,
+    "joint_success": true,
+    "stable_seconds": 3.0,
+    "physics_dt": 0.1,
+    "whole_window_safe": true,
+    "primary_search_metric_unchanged": true,
+    "acceptance_claim": false
+  },
+  "source_guards": 503,
+  "all_guards_match": true
+}

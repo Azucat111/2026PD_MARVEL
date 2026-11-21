@@ -1,0 +1,7 @@
+{
+  "recorded_utc": "2026-11-11T04:56:52.616153+00:00",
+  "previous_contract_sha256": "030fbbfa4e81e5a173ec32ed5ac90e5c71d9b477d068f337e0d482923a6acdd0",
+  "current_contract_sha256": "84f719d95d8eecfb3d1dee03d56a4311a84dfece0685f6d5d7db35c7785fe722",
+  "reason": "The four-equal-completion helper calculation has approximately6e-17 floating residual. Explicitly set zero-variance group advantages to exact0; test helper residual with numeric tolerance. No candidate/update count, data inclusion, scale, role weighting or evaluation gate changed.",
+  "update_started": false
+}

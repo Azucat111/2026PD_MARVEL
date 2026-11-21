@@ -1,0 +1,310 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T05:28:29.243891+00:00",
+  "scope": "Prespecified training trajectories only; no transfer outcomes read; no model selection, simulation or optimizer",
+  "proof_path": "artifacts/gppo_learnability_two_hours_20261111/guarded/update_proof.json",
+  "proof_sha256": "8e727848a1484d208a754dd285b4f5d517b283aca161bc148d2d016e4ca5b765",
+  "parent_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "candidate_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+  "candidate_eligible_for_evaluation": true,
+  "actual_behavior_fingerprint": "8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c",
+  "all12_actual_behavior_models_identical": true,
+  "max_cpu_old_logprob_replay_error": 7.152557373046875e-06,
+  "cpu_replay_tolerance": 0.0001,
+  "groups": [
+    {
+      "seed": 1280022,
+      "selection_rule": "min/max complete trajectory completion_seconds; ties by fixed task index",
+      "all_episode_outcomes": [
+        {
+          "index": 2,
+          "completion_seconds": 29.900000000000002,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 1,
+          "completion_seconds": 38.0,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 3,
+          "completion_seconds": 38.0,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 0,
+          "completion_seconds": 43.7,
+          "success": true,
+          "whole_window_safe": true
+        }
+      ],
+      "fast_index": 2,
+      "slow_index": 0,
+      "has_outcome_variation": true,
+      "initial_public_state_and_config_identical": true,
+      "status": "SAME_INPUT_ACTION_DIVERGENCE_FOUND",
+      "diagnostic": {
+        "time": 1.0,
+        "fast_record_index": 0,
+        "slow_record_index": 0,
+        "same_input_sha256": "5648be7bc91041f682ba5e07284ded01466aff8bde41a18018b5e83ee731c17a",
+        "matching_policy": "All batch tensors bitwise-equal inCPU dtype, UAV/taskIDs equal, decisiontime equal",
+        "fast_trajectory_action": {
+          "flat_action": 114,
+          "task_index": 3,
+          "uav_index": 24,
+          "subtask_id": 100003,
+          "uav_id": 24,
+          "parent_probability": 0.1830497831106186,
+          "candidate_probability": 0.23725588619709015,
+          "delta": 0.05420610308647156
+        },
+        "slow_trajectory_action": {
+          "flat_action": 74,
+          "task_index": 2,
+          "uav_index": 14,
+          "subtask_id": 100002,
+          "uav_id": 14,
+          "parent_probability": 0.2141638845205307,
+          "candidate_probability": 0.1557975560426712,
+          "delta": -0.0583663284778595
+        },
+        "parent_argmax": {
+          "flat_action": 47,
+          "task_index": 1,
+          "uav_index": 17,
+          "subtask_id": 100001,
+          "uav_id": 17
+        },
+        "candidate_argmax": {
+          "flat_action": 47,
+          "task_index": 1,
+          "uav_index": 17,
+          "subtask_id": 100001,
+          "uav_id": 17
+        },
+        "exact_kl_parent_to_candidate": 0.017060909420251846,
+        "relative_fast_over_slow_logodds_change": 0.5775651931762695,
+        "better_trajectory_action_probability_increased": true
+      },
+      "causal_limit": "Whole-trajectory credit association only; first divergent action is not proven an isolated cause. Equal-outcome groups have no better trajectory label."
+    },
+    {
+      "seed": 1880021,
+      "selection_rule": "min/max complete trajectory completion_seconds; ties by fixed task index",
+      "all_episode_outcomes": [
+        {
+          "index": 100,
+          "completion_seconds": 24.1,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 102,
+          "completion_seconds": 24.1,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 103,
+          "completion_seconds": 24.1,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 101,
+          "completion_seconds": 32.5,
+          "success": true,
+          "whole_window_safe": true
+        }
+      ],
+      "fast_index": 100,
+      "slow_index": 101,
+      "has_outcome_variation": true,
+      "initial_public_state_and_config_identical": true,
+      "status": "SAME_INPUT_ACTION_DIVERGENCE_FOUND",
+      "diagnostic": {
+        "time": 1.0,
+        "fast_record_index": 0,
+        "slow_record_index": 0,
+        "same_input_sha256": "58b155e93b48ebebfe8c9241fe1a459a9c459cb838f6835eb7df30d443208376",
+        "matching_policy": "All batch tensors bitwise-equal inCPU dtype, UAV/taskIDs equal, decisiontime equal",
+        "fast_trajectory_action": {
+          "flat_action": 21,
+          "task_index": 0,
+          "uav_index": 21,
+          "subtask_id": 100000,
+          "uav_id": 21,
+          "parent_probability": 0.4083496332168579,
+          "candidate_probability": 0.40640464425086975,
+          "delta": -0.0019449889659881592
+        },
+        "slow_trajectory_action": {
+          "flat_action": 22,
+          "task_index": 0,
+          "uav_index": 22,
+          "subtask_id": 100000,
+          "uav_id": 22,
+          "parent_probability": 0.19184669852256775,
+          "candidate_probability": 0.19419385492801666,
+          "delta": 0.0023471564054489136
+        },
+        "parent_argmax": {
+          "flat_action": 21,
+          "task_index": 0,
+          "uav_index": 21,
+          "subtask_id": 100000,
+          "uav_id": 21
+        },
+        "candidate_argmax": {
+          "flat_action": 21,
+          "task_index": 0,
+          "uav_index": 21,
+          "subtask_id": 100000,
+          "uav_id": 21
+        },
+        "exact_kl_parent_to_candidate": 2.4179058527806774e-05,
+        "relative_fast_over_slow_logodds_change": -0.016934692859649658,
+        "better_trajectory_action_probability_increased": false
+      },
+      "causal_limit": "Whole-trajectory credit association only; first divergent action is not proven an isolated cause. Equal-outcome groups have no better trajectory label."
+    },
+    {
+      "seed": 1880024,
+      "selection_rule": "min/max complete trajectory completion_seconds; ties by fixed task index",
+      "all_episode_outcomes": [
+        {
+          "index": 5,
+          "completion_seconds": 11.0,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 4,
+          "completion_seconds": 25.0,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 6,
+          "completion_seconds": 25.0,
+          "success": true,
+          "whole_window_safe": true
+        },
+        {
+          "index": 7,
+          "completion_seconds": 25.0,
+          "success": true,
+          "whole_window_safe": true
+        }
+      ],
+      "fast_index": 5,
+      "slow_index": 7,
+      "has_outcome_variation": true,
+      "initial_public_state_and_config_identical": true,
+      "status": "SAME_INPUT_ACTION_DIVERGENCE_FOUND",
+      "diagnostic": {
+        "time": 1.0,
+        "fast_record_index": 0,
+        "slow_record_index": 0,
+        "same_input_sha256": "ec493d82383184523e425629dd594bbec587e37c1250449f279a70b84a698b86",
+        "matching_policy": "All batch tensors bitwise-equal inCPU dtype, UAV/taskIDs equal, decisiontime equal",
+        "fast_trajectory_action": {
+          "flat_action": 112,
+          "task_index": 1,
+          "uav_index": 52,
+          "subtask_id": 100001,
+          "uav_id": 52,
+          "parent_probability": 0.11389140039682388,
+          "candidate_probability": 0.10791950672864914,
+          "delta": -0.005971893668174744
+        },
+        "slow_trajectory_action": {
+          "flat_action": 116,
+          "task_index": 1,
+          "uav_index": 56,
+          "subtask_id": 100001,
+          "uav_id": 56,
+          "parent_probability": 0.8720494508743286,
+          "candidate_probability": 0.8803133368492126,
+          "delta": 0.008263885974884033
+        },
+        "parent_argmax": {
+          "flat_action": 116,
+          "task_index": 1,
+          "uav_index": 56,
+          "subtask_id": 100001,
+          "uav_id": 56
+        },
+        "candidate_argmax": {
+          "flat_action": 116,
+          "task_index": 1,
+          "uav_index": 56,
+          "subtask_id": 100001,
+          "uav_id": 56
+        },
+        "exact_kl_parent_to_candidate": 0.0004231911152601242,
+        "relative_fast_over_slow_logodds_change": -0.06329154968261719,
+        "better_trajectory_action_probability_increased": false
+      },
+      "causal_limit": "Whole-trajectory credit association only; first divergent action is not proven an isolated cause. Equal-outcome groups have no better trajectory label."
+    }
+  ],
+  "input_file_sha256": {
+    "artifacts/gppo_learnability_two_hours_20261111/guarded/update_proof.json": "8e727848a1484d208a754dd285b4f5d517b283aca161bc148d2d016e4ca5b765",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/collection_proof.json": "7254b67221f87dda9c4f3512de1ce83b15d1e300dc4be10e3bac41e72cf00515",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/episode_000/aligned_reward_proof.json": "e55c69accb89fbd0f4c73c0dcad8f850817a22eeae20e648a35a2239c2a56491",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/collection_proof.json": "f0326b727281f152f1d4cff4168fe606ac9a4af7ca1111cb6e569caadbfd7da9",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/progress.json": "920a82f16b473c2b274f707a7e8a936c8cbb8cd0723b65129772589ef465f7b8",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/episode_000/actor_inputs.json": "50b036f45c85a16791a271118347458369e25556a3d6c4679a8b389c2d0339bf",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/episode_000/aligned_reward_proof.json": "bba762f24d38afce8961a54206ed6a44e68d4c6e8293cc175891be57c43d94ba",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/collection_proof.json": "6687d8e2ca8b1c8f9739be88bd74ca7e43d8a8c4d902c5588957f8585f549131",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/episode_000/aligned_reward_proof.json": "e55c69accb89fbd0f4c73c0dcad8f850817a22eeae20e648a35a2239c2a56491",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/collection_proof.json": "d612d2df333e233b69b64d14d986fbcdc02513f826998be3255b48feb9ce5106",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/episode_000/aligned_reward_proof.json": "e55c69accb89fbd0f4c73c0dcad8f850817a22eeae20e648a35a2239c2a56491",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/collection_proof.json": "a2f6b17f2a549c5fbf65514d5617068ec4350311700acd80b9bb86f543c78214",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/progress.json": "462e1351d91b2b9985b042a9cf7ca6a6e2cc8f6e6e1b21f5be6fb5aaf02d82d2",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/episode_002/actor_inputs.json": "e0bb60021ee66f41e5f050b8276584e363eb7c27eb96d047e04aca57b01e3929",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/episode_002/aligned_reward_proof.json": "737b297d0b2d509f04931371309b6608ef1fa9e39048f8bb7865014dcce110aa",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/collection_proof.json": "ebb4c7c0bfff1b3a63cb067b29592cd48f3f28ae83ea237a7e5a071dfe0fc448",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/progress.json": "21b62eb6617d43b38e0a0b73362b5d4ed50d1b8c2288f58cd1e65a32ed65ab78",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/episode_002/actor_inputs.json": "6894ac769c129bdb8e993e336b271b998c1f397b50ac29004cfd554faeda0ab7",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/episode_002/aligned_reward_proof.json": "4bd06c701bf235dabc5313ac012d216ab0712a6249938a9baffa8ec938710f24",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/collection_proof.json": "a48c6066a509216f3364b83418b81a4cf46e73a268b10bab9badc7e018e9dc60",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/progress.json": "753f620cc5eccdfad50b3b8159336fe70aba57c66cae852ac9a0d7868cab1d56",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/episode_002/actor_inputs.json": "fa97ef507e24306a3f47fff65a0f6afc15967d5b27e4005326c6fce5790e85f0",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/episode_002/aligned_reward_proof.json": "cb35a4b2b38bc5c6ba18df4db32dc784444f8d3ab51b06435405cdc8b8482357",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/collection_proof.json": "72be75453363a00f2155ef14738e30508f64cd6d4cb0fc3e3ca1b00dbd16a10f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/progress.json": "21b62eb6617d43b38e0a0b73362b5d4ed50d1b8c2288f58cd1e65a32ed65ab78",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/episode_002/actor_inputs.json": "6894ac769c129bdb8e993e336b271b998c1f397b50ac29004cfd554faeda0ab7",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/episode_002/aligned_reward_proof.json": "4bd06c701bf235dabc5313ac012d216ab0712a6249938a9baffa8ec938710f24",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/collection_proof.json": "b32763a15234a9cb7afe1a3160d483f041047d887ea9d1d4d2f6d504aef817ce",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/episode_003/actor_inputs.json": "e54222f44314812fce45698bdb6c545bcca707b7f6b47e3f9da1357e1eec6332",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/episode_003/aligned_reward_proof.json": "4687ab9d431af9ba508d27d54ba1e7582fd2dbe47aeda4eb42d2a903f6701302",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/collection_proof.json": "f9556155aa1f975d8ea3a4ef2a2c76264969597487ca6f0caa29771059d0051e",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/progress.json": "96136717e96bd672c622a49dd1547ad1a4080a3e5bdd6e3ca49bd12f7e9dbfd4",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/episode_003/actor_inputs.json": "8babe8c42cbbd02e78d83f89217c905ab9b4371105349dd460276a3f2fcf5cd3",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/episode_003/aligned_reward_proof.json": "b3f9136399c5e72d95e7347692e94d14a2f0ad4e74ed2a0a658ed3286ada4f8b",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/collection_proof.json": "1405a7b403bca5b2c6e21614ec92d7e355ac128b9213f463b8e90b1bd46b5de3",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/episode_003/actor_inputs.json": "7bbfc3c64612a8d4a7e6139c665a1ec5853bff2816649f4db8192c0f6f8196dc",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/episode_003/aligned_reward_proof.json": "4687ab9d431af9ba508d27d54ba1e7582fd2dbe47aeda4eb42d2a903f6701302",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/collection_proof.json": "74802417b24c9244507ee4a272a9ec417a98bd9c3a57b84d9aa12e51f234df06",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/episode_003/actor_inputs.json": "7bbfc3c64612a8d4a7e6139c665a1ec5853bff2816649f4db8192c0f6f8196dc",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/episode_003/aligned_reward_proof.json": "4687ab9d431af9ba508d27d54ba1e7582fd2dbe47aeda4eb42d2a903f6701302"
+  },
+  "analysis_source_sha256": "59c368dfb082577586594d33e7e4706725c13d0b9ef7c8f8e20de8b162e43411",
+  "new_simulations": 0,
+  "optimizer_steps": 0
+}

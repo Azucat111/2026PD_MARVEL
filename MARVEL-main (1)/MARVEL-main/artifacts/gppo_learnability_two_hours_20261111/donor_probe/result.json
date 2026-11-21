@@ -1,0 +1,136 @@
+{
+  "status": "COMPLETE",
+  "scope": "Single already-observed case development causal probe; no independent acceptance/generalization or model selection.",
+  "case": {
+    "seed": 1981101,
+    "uavs": 30,
+    "dynamic": false
+  },
+  "metric_recomputed": {
+    "secondary_joint_completion_seconds": 44.5,
+    "joint_success": true,
+    "stable_seconds": 3.0,
+    "physics_dt": 0.1,
+    "whole_window_safe": true,
+    "primary_search_metric_unchanged": true,
+    "acceptance_claim": false
+  },
+  "baseline_metrics": {
+    "rule": {
+      "secondary_joint_completion_seconds": 44.5,
+      "joint_success": true,
+      "stable_seconds": 3.0,
+      "physics_dt": 0.1,
+      "whole_window_safe": true,
+      "primary_search_metric_unchanged": true,
+      "acceptance_claim": false
+    },
+    "parent": {
+      "secondary_joint_completion_seconds": 47.900000000000006,
+      "joint_success": true,
+      "stable_seconds": 3.0,
+      "physics_dt": 0.1,
+      "whole_window_safe": true,
+      "primary_search_metric_unchanged": true,
+      "acceptance_claim": false
+    },
+    "candidate": {
+      "secondary_joint_completion_seconds": 47.900000000000006,
+      "joint_success": true,
+      "stable_seconds": 3.0,
+      "physics_dt": 0.1,
+      "whole_window_safe": true,
+      "primary_search_metric_unchanged": true,
+      "acceptance_claim": false
+    }
+  },
+  "common_conditions": [
+    {
+      "arm": "rule",
+      "initial": true,
+      "hidden_layout": true,
+      "normalized_config": true
+    },
+    {
+      "arm": "parent",
+      "initial": true,
+      "hidden_layout": true,
+      "normalized_config": true
+    },
+    {
+      "arm": "candidate",
+      "initial": true,
+      "hidden_layout": true,
+      "normalized_config": true
+    }
+  ],
+  "filter_calls": 8,
+  "pure_search_calls": 6,
+  "changed_mask_calls": 4,
+  "fallback_calls": 2,
+  "missing_position_skips": 0,
+  "masked_donor_ids": [
+    1,
+    10,
+    25
+  ],
+  "same_state_action_comparisons": [
+    {
+      "time": 1.0,
+      "blocked_ids": [
+        1,
+        10
+      ],
+      "baseline_policy_argmax_on_same_public_state": 69,
+      "filtered_choice": 69,
+      "choice_changed": false
+    },
+    {
+      "time": 1.0,
+      "blocked_ids": [
+        1,
+        10
+      ],
+      "baseline_policy_argmax_on_same_public_state": 91,
+      "filtered_choice": 32,
+      "choice_changed": true,
+      "unfiltered_choice": {
+        "task_id": 100003,
+        "uav_id": 1
+      },
+      "filtered_choice_identity": {
+        "uav_id": 2,
+        "subtask_id": 100001
+      }
+    },
+    {
+      "time": 2.0,
+      "blocked_ids": [
+        10,
+        25
+      ],
+      "baseline_policy_argmax_on_same_public_state": 43,
+      "filtered_choice": 43,
+      "choice_changed": false
+    },
+    {
+      "time": 6.0,
+      "blocked_ids": [
+        25
+      ],
+      "baseline_policy_argmax_on_same_public_state": 19,
+      "filtered_choice": 19,
+      "choice_changed": false
+    }
+  ],
+  "actor_input_capture_matches_filtered_masks": true,
+  "physics_range": 20.0,
+  "whole_H300": true,
+  "optimizer_updates": 0,
+  "model_unchanged": true,
+  "source_unchanged": true,
+  "wall_seconds": 322.6035457979997,
+  "interpretation": "Effect is confined to this one observed case and this single prespecified public donor-preservation mask. No threshold/model changes or additional variants were selected from this outcome.",
+  "gain_seconds_vs_unmodified_candidate": 3.4000000000000057,
+  "gain_percent_vs_unmodified_candidate": 7.098121085595
+}

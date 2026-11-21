@@ -1,0 +1,49 @@
+{
+  "status": "INCONCLUSIVE_TWO_SCENARIO_LEARNABILITY",
+  "closed_utc": "2026-11-10T14:42:37.756755+00:00",
+  "user_budget_minutes": 60,
+  "complete_physical_rollouts": 4,
+  "planned_physical_rollouts": 8,
+  "completed_case": {
+    "seed": 1880021,
+    "uavs": 30,
+    "completion_seconds": [
+      24.1,
+      32.5,
+      24.1,
+      24.1
+    ],
+    "all_success_safe": true,
+    "same_initial_state": true,
+    "first_divergence": {
+      "time": 1.0,
+      "same_actor_input": true,
+      "faster": {
+        "uav_id": 21,
+        "subtask_id": 100000
+      },
+      "slower": {
+        "uav_id": 22,
+        "subtask_id": 100000
+      },
+      "faster_logprob": -0.8956327438354492,
+      "slower_logprob": -1.6510555744171143
+    }
+  },
+  "incomplete_case": {
+    "seed": 1880024,
+    "uavs": 60,
+    "reason": "Interrupted session; absolute budget deadline reached before fullH300 capture. Partial outputs preserved and excluded."
+  },
+  "policy_updates": 0,
+  "candidate_evaluations": 0,
+  "critic_probe": "critic_probe/results.json; frozen encoder/actor,500offlinevalue-fittingsteps; early generalization then overfit",
+  "model_promoted": false,
+  "acceptance_claim": false,
+  "source_hashes_unchanged": 478,
+  "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+  "stopped_owned_processes": [],
+  "next": "Complete the same fixed-scene fullH300 capture and execute the single frozen update/evaluation before scaling training; do not restart research or add planning machinery",
+  "commit": false,
+  "push": false
+}

@@ -92,8 +92,15 @@ class MARVELPolicyAdapter:
         else:
             self._map_w = int(np.ceil(width / CELL_SIZE)) + 1
             self._map_h = int(np.ceil(height / CELL_SIZE)) + 1
-            self._belief_origin = (0.0, 0.0)
+            self._belief_origin = self._frame.origin
         self.belief_map: np.ndarray = np.ones((self._map_h, self._map_w), dtype=np.int32) * UNKNOWN
+
+        self._motion_roles = {}
+        self._observed_belief = None
+        if not self._frame.is_native:
+            from integrations.observed_belief import ObservedBeliefMap
+            self._observed_belief = ObservedBeliefMap(
+                self._frame, self._belief_origin, CELL_SIZE, self.belief_map.shape)
 
         # PolicyNet - 需要3个参数：node_dim, embedding_dim, num_angles_bin
         self.policy_net = PolicyNet(NODE_INPUT_DIM, EMBEDDING_DIM, NUM_ANGLES_BIN)
@@ -148,7 +155,10 @@ class MARVELPolicyAdapter:
 
         Must be called once after ``runtime.reset()``.
         """
+        self._motion_roles.clear()
         self.belief_map[:] = UNKNOWN
+        if self._observed_belief is not None:
+            self._observed_belief.evidence.reset()
 
         robots_cfg = self.runtime.config.get("robots", [])
         fov = FOV
@@ -160,19 +170,11 @@ class MARVELPolicyAdapter:
 
         self._node_manager = NodeManager(fov, sensor_range)
 
-        # Extended only: the planner graph must represent centre positions
-        # the physical footprint can actually occupy, using the very
-        # predicate `SafetyShield` and `runtime.step` apply.  `marvel_native`
-        # keeps its frozen node admission.
-        if not self._frame.is_native:
-            from .safety_shield import SafetyShield
-
+        # Extended admission uses only sensor labels and own collision feedback.
+        if self._observed_belief is not None:
             self._node_manager.use_clearance_admission = True
             self._node_manager.clearance_blocked = (
-                lambda point: self.runtime.obstacles.check_collision(
-                    point, radius=SafetyShield.COLLISION_RADIUS
-                )[0]
-            )
+                lambda point: not self._observed_belief.point_clear(point))
 
         self.agents = []
         for robot in self.runtime.robots:
@@ -241,6 +243,9 @@ class MARVELPolicyAdapter:
 
     def get_actions(self, observations: Dict[int, Dict[str, Any]]) -> List[Tuple[np.ndarray, float]]:
         """Convert SimulationRuntime observations to a list of (waypoint, heading) actions."""
+        if getattr(self, "_observed_belief", None) is not None:
+            self._observed_belief.observe(observations)
+            self.belief_map[:] = self._observed_belief.rasterize()
         if not self._using_policy or not self.agents:
             if self.verbose:
                 print(
@@ -279,9 +284,92 @@ class MARVELPolicyAdapter:
                     self.runtime.default_actions()
                 )
 
-        return self.scheduler.apply(
-            base_actions
-        )
+        if hasattr(self.scheduler, "observe"):
+            self.scheduler.observe(observations)
+        actions = self.scheduler.apply(base_actions)
+        actions = self._certify_extended_actions(actions)
+        return self._stationkeep_completed_tasks(actions)
+
+    def _stationkeep_completed_tasks(self, actions):
+        """Hold idle extended UAVs at the final adapter execution boundary."""
+        observed = getattr(self, "_observed_belief", None)
+        if observed is None or not actions:
+            return actions
+        scheduler = self.scheduler
+        recovery = getattr(scheduler, "_search_recovery", None)
+        if recovery is None or not self.runtime.tasks.all_complete():
+            return actions
+        active = set(map(int, scheduler.search_assignments.values()))
+        active.update(int(uid) for uid, _ in scheduler.relay_assignments.values())
+        active.update(map(int, scheduler.safety.active_uav_ids))
+        probe = getattr(scheduler, '_relay_probe', None)
+        if probe is not None:
+            active.add(int(probe['uid']))
+        result = list(actions)
+        for index, robot in enumerate(self.runtime.robots):
+            uid = int(robot.robot_id)
+            if uid in active:
+                continue
+            result[index] = (robot.position.copy(), float(robot.heading))
+            recovery.reset_uid(uid)
+            if observed.evidence is not recovery:
+                observed.evidence.reset_uid(uid)
+        return result
+
+    def _certify_extended_actions(self, actions):
+        """Reuse observed prefixes for ordinary Exploration/Relay execution.
+
+        Search owns its recovery; Safety remains the final authority. No
+        world-map query or new global route is introduced here.
+        """
+        observed=getattr(self,"_observed_belief",None)
+        if observed is None or not actions:
+            return actions
+        controller=observed.evidence
+        roles=getattr(self,"_motion_roles",{})
+        self._motion_roles=roles
+        assignments=getattr(self.scheduler,"assignments",{})
+        result=list(actions)
+        for index,(robot,action) in enumerate(zip(self.runtime.robots,actions)):
+            uid=int(robot.robot_id)
+            token=assignments.get(uid,("exploration",None))
+            if roles.get(uid)!=token:
+                controller.reset_uid(uid)
+                roles[uid]=token
+            if (token[0] in ("target_search", "safety")
+                    or (token[0] == "relay"
+                        and getattr(self.scheduler, "_search_recovery", None) is not None)):
+                # Extended Relay already certifies its own prefix. A second
+                # controller can replace its deliberate hold with old motion.
+                continue
+            anchor=np.asarray(action[0],dtype=float)
+            if token[0]=="relay":
+                entry=getattr(self.scheduler,"relay_assignments",{}).get(token[1])
+                if entry is not None:
+                    anchor=np.asarray(entry[1],dtype=float)
+            elif uid in controller.prefixes:
+                anchor=controller.anchors[uid]
+            agent=self.agents[index] if index<len(self.agents) else None
+            hazards=getattr(getattr(self.scheduler,"safety",None),"hazards",None)
+            segment_filter=None if hazards is None else lambda a,b: not hazards.segment_intersects_warning_buffer(a,b,step=int(self.runtime.current_step))
+            target=controller.select(uid,robot.position,anchor,agent,action[0],action[0],base_heading=action[1],segment_filter=segment_filter)
+            if np.array_equal(target,np.asarray(action[0])):
+                controller.prefix_headings[uid]=float(action[1])
+            heading=controller.prefix_headings.get(uid,float(action[1]))
+            if uid in controller.sensing_uids:
+                delta=anchor-np.asarray(robot.position)
+                heading=float(np.degrees(np.arctan2(delta[1],delta[0]))%360.)
+            hazards=getattr(getattr(self.scheduler,"safety",None),"hazards",None)
+            if hazards is not None and hazards.segment_intersects_warning_buffer(
+                    robot.position,target,step=int(self.runtime.current_step)):
+                # Prefix choice follows the scheduler's hazard guard, so
+                # revalidate its changed path before ordinary execution.
+                controller.prefixes.pop(uid,None)
+                controller.prefix_headings.pop(uid,None)
+                target=np.asarray(robot.position,dtype=float).copy()
+                heading=float(robot.heading)
+            result[index]=(target,heading)
+        return result
 
     # ------------------------------------------------------------------
     # Private helpers
@@ -459,8 +547,9 @@ class MARVELPolicyAdapter:
 
     def _policy_actions(self, observations: Dict[int, Dict[str, Any]]) -> List[Tuple[np.ndarray, float]]:
         # 1. Update shared belief map from every robot's visible cells.
-        for obs in observations.values():
-            self._update_belief(np.asarray(obs.get("visible_cells", []), dtype=float))
+        if self._frame.is_native:
+            for obs in observations.values():
+                self._update_belief(np.asarray(obs.get("visible_cells", []), dtype=float))
 
         map_info = self._build_map_info()
         all_positions = [robot.position for robot in self.runtime.robots]

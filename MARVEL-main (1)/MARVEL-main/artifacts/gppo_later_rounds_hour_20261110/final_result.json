@@ -1,0 +1,444 @@
+{
+  "status": "COMPLETE",
+  "finished_utc": "2026-11-10T09:34:46.621744+00:00",
+  "elapsed_minutes": 56.9603624,
+  "within_one_hour": true,
+  "git": {
+    "root": "<local-home>/MARVEL_INTEGRATION",
+    "branch": "extended-scalability",
+    "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc"
+  },
+  "production_files_unchanged": 475,
+  "all_original_checkpoints_unchanged": true,
+  "existing_git_status_entries_preserved": true,
+  "new_status_entries": [],
+  "training_batches": 0,
+  "optimizer_updates": 0,
+  "run_counts": {
+    "total": 18,
+    "full_h300": 11,
+    "short_h120": 6,
+    "readonly_h30": 1
+  },
+  "runs": [
+    {
+      "section": "screen",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 51.6
+    },
+    {
+      "section": "screen",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 9164,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 71.5
+    },
+    {
+      "section": "screen",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 106.60000000000001
+    },
+    {
+      "section": "screen",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 9168,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 107.60000000000001
+    },
+    {
+      "section": "evaluation",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 49.400000000000006
+    },
+    {
+      "section": "evaluation",
+      "arm": "round17",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 120.4
+    },
+    {
+      "section": "evaluation",
+      "arm": "round8",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 49.400000000000006
+    },
+    {
+      "section": "evaluation",
+      "arm": "rule",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 120.4
+    },
+    {
+      "section": "evaluation",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 59.1
+    },
+    {
+      "section": "evaluation",
+      "arm": "round17",
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 59.1
+    },
+    {
+      "section": "evaluation",
+      "arm": "round8",
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 59.1
+    },
+    {
+      "section": "evaluation",
+      "arm": "rule",
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 55.0
+    },
+    {
+      "section": "supplemental",
+      "arm": "round17",
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 38.0
+    },
+    {
+      "section": "supplemental",
+      "arm": "round19",
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 43.7
+    },
+    {
+      "section": "hybrid_regression",
+      "arm": "hybrid17search8relay",
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "horizon": 300,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 38.0
+    },
+    {
+      "section": "retarget_capture",
+      "arm": "round17",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 30,
+      "complete": false,
+      "safe": true,
+      "completion_seconds": 30.0
+    },
+    {
+      "section": "retarget_order_screen",
+      "arm": "round17",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 44.400000000000006
+    },
+    {
+      "section": "retarget_rule_screen",
+      "arm": "rule",
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "horizon": 120,
+      "complete": true,
+      "safe": true,
+      "completion_seconds": 44.400000000000006
+    }
+  ],
+  "prospective": {
+    "cases": 2,
+    "sum_seconds": {
+      "round8": 108.5,
+      "hybrid17search8relay": 108.5,
+      "round17": 179.5,
+      "rule": 175.4
+    },
+    "time_reduction_vs_rule": {
+      "round8": 0.3814139110604333,
+      "hybrid17search8relay": 0.3814139110604333,
+      "round17": -0.023375142531356863
+    },
+    "hybrid_vs_round8_time_reduction": 0.0,
+    "all_success_safe": true
+  },
+  "known_regression": {
+    "status": "COMPLETE",
+    "case": {
+      "seed": 1280022,
+      "uavs": 30,
+      "dynamic": true
+    },
+    "arms": {
+      "rule": {
+        "completion_seconds": 30.700000000000003,
+        "success": true,
+        "safe": true,
+        "find_mean": 7.8500000000000005,
+        "time_reduction_vs_rule": 0.0
+      },
+      "round8": {
+        "completion_seconds": 52.6,
+        "success": true,
+        "safe": true,
+        "find_mean": 7.325,
+        "time_reduction_vs_rule": -0.7133550488599347
+      },
+      "round17": {
+        "completion_seconds": 38.0,
+        "success": true,
+        "safe": true,
+        "find_mean": 6.4,
+        "time_reduction_vs_rule": -0.23778501628664483
+      },
+      "round19": {
+        "completion_seconds": 43.7,
+        "success": true,
+        "safe": true,
+        "find_mean": 9.775,
+        "time_reduction_vs_rule": -0.42345276872964166
+      },
+      "hybrid17search8relay": {
+        "completion_seconds": 38.0,
+        "success": true,
+        "safe": true,
+        "find_mean": 6.4,
+        "time_reduction_vs_rule": -0.23778501628664483
+      }
+    },
+    "initial_states_match": true,
+    "scope": "Known failure-case regression diagnostic; two baseline runs reused, two later-model runs new; not independent acceptance",
+    "acceptance_claim": false
+  },
+  "four_case_round8": {
+    "rows": [
+      {
+        "cohort": "gppo_alignment_hour_20261110",
+        "case": {
+          "seed": 1280021,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "seconds": {
+          "rule": 93.9,
+          "round8": 98.5
+        }
+      },
+      {
+        "cohort": "gppo_alignment_hour_20261110",
+        "case": {
+          "seed": 1280022,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "seconds": {
+          "rule": 30.700000000000003,
+          "round8": 52.6
+        }
+      },
+      {
+        "cohort": "gppo_later_rounds_hour_20261110",
+        "case": {
+          "seed": 1480021,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "seconds": {
+          "rule": 120.4,
+          "round8": 49.400000000000006
+        }
+      },
+      {
+        "cohort": "gppo_later_rounds_hour_20261110",
+        "case": {
+          "seed": 1480022,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "seconds": {
+          "rule": 55.0,
+          "round8": 59.1
+        }
+      }
+    ],
+    "sum_seconds": {
+      "rule": 300.0,
+      "round8": 259.6
+    },
+    "time_reduction": 0.1346666666666666,
+    "scope": "Posthoc combined summary of four prospective30UAV H300 development cases from two consecutive batches; not reserved final acceptance and not a new hybrid estimate",
+    "acceptance_claim": false
+  },
+  "retarget_order": {
+    "status": "COMPLETE",
+    "case": {
+      "seed": 1480021,
+      "uavs": 30,
+      "dynamic": false
+    },
+    "intervention": "Existing augmentation before existing retarget, extended branch only",
+    "horizon": 120,
+    "initial_states_identical": true,
+    "physical_prefix_before_intervention_identical": true,
+    "actor_inputs_choices_before_intervention_identical": true,
+    "candidate_metric": {
+      "secondary_joint_completion_seconds": 44.400000000000006,
+      "joint_success": true,
+      "stable_seconds": 3.0,
+      "physics_dt": 0.1,
+      "whole_window_safe": true,
+      "primary_search_metric_unchanged": true,
+      "acceptance_claim": false
+    },
+    "baseline_prefix_metric": {
+      "secondary_joint_completion_seconds": 120.0,
+      "joint_success": false,
+      "stable_seconds": 3.0,
+      "physics_dt": 0.1,
+      "whole_window_safe": true,
+      "primary_search_metric_unchanged": true,
+      "acceptance_claim": false
+    },
+    "baseline_full_h300_completion": 120.4,
+    "new_assignments_at23": [
+      {
+        "uav_id": 19,
+        "subtask_id": 200000
+      }
+    ],
+    "scope": "One adaptive historical-diagnostic H120 case; full H300 candidate safety and cross-scene/general GPPO gains unverified",
+    "production_adopted": false,
+    "acceptance_claim": false,
+    "matched_rule_h120_completion": 44.400000000000006,
+    "matched_rule_h120_safe": true,
+    "gppo_vs_matched_rule_gain": 0.0
+  },
+  "actor_replay": {
+    "runs": 11,
+    "decisions": 62,
+    "all_reproduced": true
+  },
+  "tests": {
+    "exit_code": 0,
+    "expected_tests": 9,
+    "stdout": ".........                                                                [100%]\n9 passed in 1.00s\n",
+    "stderr": ""
+  },
+  "all_owned_compute_stopped": true,
+  "temporary_awake_released": true,
+  "commit": false,
+  "push": false,
+  "production_adoption": false,
+  "project_15_percent_accepted": false,
+  "next_step": "Validate the minimal extended Relay arrival-before-retarget ordering on matched full-H300 rule and GPPO development cases; preserve existing motion, masks, safety and native semantics. Freeze corrected executor before further training or 15% acceptance."
+}

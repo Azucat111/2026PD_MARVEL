@@ -1,0 +1,41 @@
+{
+  "status": "STATIC_INDEPENDENT_REVIEW_PASS",
+  "checked_utc": "2026-11-11T07:13:35.170615+00:00",
+  "important_findings": [],
+  "plan_sha256": "8d713e78668f3182b781e39b7b6af15b2e2776014c93cea216581f4ca0d75cea",
+  "donor_function_sha256": "941df1ec25f9edd0950046691530c42beabef6deb1e14aba6c81bff0f287f875",
+  "source_hashes_checked": 505,
+  "candidate_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+  "update_proof_sha256": "8e727848a1484d208a754dd285b4f5d517b283aca161bc148d2d016e4ca5b765",
+  "seed_metadata_audit": {
+    "scope": "Old artifacts plan.json/manifest.json seed fields only; current suite excluded; not a universal claim about unrecorded execution",
+    "files_scanned": 940,
+    "hits": [],
+    "parse_errors": []
+  },
+  "lightweight_tests": {
+    "unfiltered_and_rule_do_not_call_filter": "PASS",
+    "donor_only_calls_filter": "PASS",
+    "real_articulation_mask_addition_original_graph_not_mutated": "PASS",
+    "all_suite_python_ast": "PASS",
+    "frozen_guard_hashes": "PASS"
+  },
+  "confirmed": [
+    "Four unique fresh environment seeds, one each30S/30D/60S/60D,12 complete job combinations; same guarded440d checkpoint for donor and unfiltered; no optimizer is constructed.",
+    "evaluate_arm.py:99-102 passes the actual donor-filtered graph to both model and record; record:62-66 asserts actual model input equality including mask.",
+    "rule path uses base_rule directly; unfiltered graph_for_arm returns original graph without calling the donor filter.",
+    "Source/model/proof/plan hashes guarded before and after each evaluator; donor function bytes identical to prior development probe.",
+    "H300/3000 physics ticks/dt.1/no-policy-failure checks before complete artifact; whole-window safety/success is computed by frozen metric.",
+    "Summarizer compares paired initial, hidden target layout and config excluding only checkpoint path/hash; root verify_results recomputes raw physical metrics.",
+    "Frozen caps:4workers,1800seconds per benchmark arm; runtime cutoff08:10UTC and runner cutoff08:11UTC; parent kill fallback at per-arm1800+10seconds."
+  ],
+  "limits": [
+    "This is a four-seed cross-scenario diagnostic on one connected80m map, not the original eight-seed acceptance suite or500m evidence.",
+    "Static review cannot certify actual full-H300 safety, same conditions or performance before all twelve runs complete.",
+    "summarize_evaluation valid_for_comparison permits complete physical failures atC300; any performance/15percent statement must separately require all_success_safe from rawtrace verifier.",
+    "No early15percent claim, training, result-based model selection, or pooling of the prior development donor probe into fresh statistics."
+  ],
+  "physical_runs_started_by_reviewer": 0,
+  "optimizer_steps_by_reviewer": 0,
+  "peer_or_production_files_modified": false
+}

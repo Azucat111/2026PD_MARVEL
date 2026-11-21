@@ -30,6 +30,16 @@ class KinematicSimple(DynamicsModel):
         self.velocity = float(params.get("velocity", 1.0))
         self.yaw_rate = float(params.get("yaw_rate", 35.0))
 
+    def position_after(self, current_position, final_position, dt, *, _distance=None):
+        """Shared exact translation primitive; heading does not affect this model."""
+        current = np.asarray(current_position, dtype=float)
+        target = np.asarray(final_position, dtype=float)
+        distance = float(np.linalg.norm(target - current)) if _distance is None else _distance
+        if distance > 1e-9:
+            direction = (target - current) / distance
+            return current + direction * min(distance, self.velocity * dt)
+        return current.copy()
+
     def step(self, current_position, final_position, theta_current, theta_desired,
              v_current=0.0, dt=0.1):
         current = np.asarray(current_position, dtype=float)
@@ -40,11 +50,7 @@ class KinematicSimple(DynamicsModel):
         delta = _angle_delta(float(theta_desired), float(theta_current))
         applied = np.clip(delta, -max_delta, max_delta)
         heading = (float(theta_current) + applied) % 360.0
-        if distance > 1e-9:
-            direction = (target - current) / distance
-            position = current + direction * min(distance, self.velocity * dt)
-        else:
-            position = current.copy()
+        position = self.position_after(current, target, dt, _distance=distance)
         return (
             {"position": position, "velocity": self.velocity, "heading": heading,
              "angular_velocity": applied / max(dt, 1e-6)},

@@ -186,6 +186,7 @@ class SimulationRuntime:
 
     def reset(self) -> Dict[int, Dict[str, Any]]:
         self.current_step = 0
+        self._motion_feedback = {}
         self.events = []
         self.explored_cells = set()
         self.obstacles.reset()
@@ -428,8 +429,16 @@ class SimulationRuntime:
         native_motion = self.geometry_mode == GEOMETRY_MODE_NATIVE
 
         if not native_motion:
+            scheduler = getattr(self, "high_level_scheduler", None)
+            if scheduler is not None and hasattr(scheduler, "before_physics_tick"):
+                actions = scheduler.before_physics_tick(actions)
+            requested_targets = {
+                int(robot.robot_id): np.asarray(action[0], dtype=float).copy()
+                for robot, action in zip(self.robots, actions)
+            }
             # Apply safety shield before passing actions to dynamics.
-            actions = self.shield.filter_actions(self.robots, actions, self.current_step)
+            actions = self.shield.filter_actions(
+                self.robots, actions, self.current_step, check_waypoint_proximity=False)
             for shield_event in self.shield.pop_events():
                 self._log_event("safety_shield", shield_event)
         else:
@@ -454,19 +463,53 @@ class SimulationRuntime:
             ) % self._mission_step_interval() == 0:
                 self._apply_native_motion(actions)
         else:
-            for robot, (target_position, target_heading) in zip(self.robots, actions):
-                old_position = robot.position.copy()
-                dynamics = self.dynamics_by_type.get(robot.robot_type, self.dynamics)
-                new_state, feasibility = dynamics.step(
+            # Predict synchronously from the same start state before applying
+            # any UAV motion. Collision-rejected proposals are actual holds.
+            states=[]
+            feasibility_rows=[]
+            proposed=[]
+            for robot, (target_position,target_heading) in zip(self.robots,actions):
+                dynamics=self.dynamics_by_type.get(robot.robot_type,self.dynamics)
+                state,feasibility=dynamics.step(
                     current_position=robot.position,
-                    final_position=np.asarray(target_position, dtype=float),
-                    theta_current=robot.heading,
-                    theta_desired=float(target_heading),
-                    v_current=robot.velocity,
-                    dt=self.dt,
-                )
+                    final_position=np.asarray(target_position,dtype=float),
+                    theta_current=robot.heading,theta_desired=float(target_heading),
+                    v_current=robot.velocity,dt=self.dt)
+                states.append(state);feasibility_rows.append(feasibility)
+                blocked,_=self.obstacles.check_collision(state["position"],radius=.2)
+                proposed.append(robot.position.copy() if blocked else state["position"])
+            allowed=self.shield.filter_motion(self.robots,proposed,self.current_step)
+            for index,robot in enumerate(self.robots):
+                if not allowed[index]:
+                    actions[index]=(robot.position.copy(),robot.heading)
+                    dynamics=self.dynamics_by_type.get(robot.robot_type,self.dynamics)
+                    states[index],feasibility_rows[index]=dynamics.step(
+                        current_position=robot.position,final_position=robot.position.copy(),
+                        theta_current=robot.heading,theta_desired=robot.heading,
+                        v_current=robot.velocity,dt=self.dt)
+            for event in self.shield.pop_events():
+                self._log_event("safety_shield",event)
+            for index,(robot,(target_position,target_heading)) in enumerate(zip(self.robots,actions)):
+                old_position=robot.position.copy()
+                new_state=states[index]
+                feasibility=feasibility_rows[index]
                 info["feasibility"].append({"robot_id": robot.robot_id, **feasibility})
                 collision, collision_type = self.obstacles.check_collision(new_state["position"], radius=0.2)
+                self._motion_feedback[int(robot.robot_id)] = {
+                    "step": int(self.current_step),
+                    "target": np.asarray(target_position, dtype=float).tolist(),
+                    "requested_target": requested_targets[int(robot.robot_id)].tolist(),
+                    "shield_rejected": not np.array_equal(
+                        requested_targets[int(robot.robot_id)],
+                        np.asarray(target_position, dtype=float),
+                    ),
+                    "proposal": np.asarray(new_state["position"], dtype=float).tolist(),
+                    "accepted": not collision,
+                    "grid_probes_clear": bool(
+                        not collision and self.obstacles.has_occupancy_map
+                    ),
+                    "collision_type": collision_type,
+                }
                 if collision:
                     event = {"robot_id": robot.robot_id, "type": collision_type, "step": self.current_step,
                              "position": np.asarray(new_state["position"]).round(3).tolist()}
@@ -513,6 +556,10 @@ class SimulationRuntime:
             observations
         )
 
+        coverage_kwargs={}
+        if any(task.task_type=="exploration" and task.params.get("coverage_basis")=="observed_free"
+                for task in self.tasks.tasks.values()):
+            coverage_kwargs["observed_free_rate"]=self.observed_free_exploration_rate
         task_events = self.tasks.update(
             self.current_step,
             self.robots,
@@ -521,6 +568,7 @@ class SimulationRuntime:
             comm_connected=connected,
             connectivity_ratio=connectivity_ratio,
             target_detections=target_detections,
+            **coverage_kwargs,
         )
         info["task_events"] = task_events
         for event in task_events:
@@ -582,6 +630,22 @@ class SimulationRuntime:
             return float(self.native_belief.explored_rate)
 
         return min(1.0, len(self.explored_cells) / self.free_cell_count)
+
+    @property
+    def observed_free_exploration_rate(self) -> float:
+        """Explicit evaluation measure, separate from Search activation.
+
+        Like native coverage, the denominator is physical FREE map cells.
+        Truth is used only for evaluation, never for routing/assignments.
+        """
+        if self.geometry_mode==GEOMETRY_MODE_NATIVE:
+            return self.exploration_rate
+        mask=self._free_mask()
+        total=int(mask.sum())
+        if total==0:return 1.0
+        observed=sum(1 for col,row in self.explored_cells
+            if 0<=col<mask.shape[1] and 0<=row<mask.shape[0] and mask[row,col])
+        return float(observed/total)
 
     def _free_mask(self) -> np.ndarray:
         """Cached free-cell mask of the occupancy lattice."""
@@ -739,16 +803,48 @@ class SimulationRuntime:
     def _get_observations(self) -> Dict[int, Dict[str, Any]]:
         grid = self.obstacles.get_occupancy_grid()
         positions = [(robot.robot_id, robot.position) for robot in self.robots]
-        return {
+        observations = {
             robot.robot_id: self.sensor_by_type.get(robot.robot_type, self.sensor).sense(
                 robot, grid, positions)
             for robot in self.robots
         }
+        if self.geometry_mode != GEOMETRY_MODE_NATIVE:
+            # Labels exist only for cells already exposed by the sensor.
+            # Keep this physical lattice separate from MARVEL's resampled belief.
+            frame = self.obstacles.frame
+            for uid, observation in observations.items():
+                cells = np.asarray(observation["visible_cells"], dtype=int).reshape(-1, 2)
+                observation["visible_occupancy"] = [
+                    [int(col), int(row), int(grid[row, col])]
+                    for col, row in cells
+                ]
+                observation["nearby_robot_positions"] = {
+                    int(peer): np.asarray(observations[int(peer)]["position"],dtype=float).tolist()
+                    for peer in observation.get("nearby_robots",[])
+                    if int(peer)!=int(uid) and int(peer) in observations
+                }
+                observation["occupancy_frame"] = frame.describe()
+                observation["visible_occupancy_semantics"] = (
+                    "areal_file_grid" if getattr(self.obstacles,"has_occupancy_map",False) else "point_sampled_circles")
+                observation["motion_feedback"] = dict(
+                    getattr(self, "_motion_feedback", {}).get(int(uid), {})
+                )
+        return observations
 
     def _get_target_detections(
         self,
         observations: Dict[int, Dict[str, Any]],
-    ) -> dict[str, dict[int, int]]:
+    ) -> dict[str, dict[int, int]] | None:
+        # Standalone extended public-radius tasks keep the legacy TaskManager
+        # API. GPPO/native tasks remain assigned-UAV, sensor-visible only.
+        strict_sensor = (
+            self.geometry_mode == GEOMETRY_MODE_NATIVE
+            or bool(self.config.get("_gppo_profile"))
+            or self.config.get("task_scheduler", {}).get("mode") in ("gppo", "rule")
+            or getattr(self, "search_scenario", None) is not None
+        )
+        if not strict_sensor:
+            return None
         detections = {}
 
         for task in self.tasks.tasks.values():

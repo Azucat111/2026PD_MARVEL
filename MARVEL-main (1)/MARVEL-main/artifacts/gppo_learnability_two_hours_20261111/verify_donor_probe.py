@@ -1,0 +1,6 @@
+from pathlib import Path
+import sys,json,hashlib,datetime
+R=Path.cwd();O=R/'artifacts/gppo_learnability_two_hours_20261111';D=O/'donor_probe';sys.path.insert(0,str(R/'scripts'))
+from gppo_joint_completion_metric import joint_completion_metric
+P=json.loads((D/'plan.json').read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest();assert sha(D/'plan.json')==(D/'protocol_sha256.txt').read_text().strip();assert all(sha(R/f)==h for f,h in P['source_hashes'].items());assert all(sha(R/m['path'])==m['sha256'] for m in P['models'].values())
+f=D/'data/case_00_1981101_30_static/candidate_original';x=json.loads((f/'complete.json').read_text());trace=json.loads((f/'gppo/physical_joint_trace.json').read_text());assert len(trace)==3000;m=joint_completion_metric(trace,300.);assert m==x['summary']['secondary_joint_metric']==json.loads((D/'result.json').read_text())['metric_recomputed'];assert x['source_stable'] and x['checkpoint_sha256']==P['models']['candidate']['sha256'];r=dict(checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),physical_ticks=len(trace),metric=m,source_guards=len(P['source_hashes']),all_guards_match=True);(D/'root_verification.json').write_text(json.dumps(r,indent=2));print(json.dumps(r))

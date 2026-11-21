@@ -170,6 +170,17 @@ class GeometryFrame:
 
         return col, row
 
+    def world_to_cells_floor(self, positions, *, clip=False) -> np.ndarray:
+        """Batch containing-cell lookup, preserving scalar floor and clipping."""
+        points = np.asarray(positions, dtype=float).reshape(-1, 2)
+        if not np.all(np.isfinite(points)):
+            raise ValueError("positions must be finite")
+        cells = np.floor((points - np.asarray(self.origin)) / self.cell_size)
+        if clip:
+            cells[:, 0] = np.clip(cells[:, 0], 0, self.width_cells - 1)
+            cells[:, 1] = np.clip(cells[:, 1], 0, self.height_cells - 1)
+        return cells.astype(np.int64)
+
     def world_to_cell_float(self, position) -> tuple[float, float]:
         """Unrounded ``(col, row)`` for interpolation along a ray."""
 

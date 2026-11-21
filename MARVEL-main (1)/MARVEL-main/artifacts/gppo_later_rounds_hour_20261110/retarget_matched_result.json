@@ -1,0 +1,25 @@
+{
+  "status": "COMPLETE",
+  "identical_rule_prefix_before_intervention": true,
+  "horizon": 120,
+  "rule_metric": {
+    "secondary_joint_completion_seconds": 44.400000000000006,
+    "joint_success": true,
+    "stable_seconds": 3.0,
+    "physics_dt": 0.1,
+    "whole_window_safe": true,
+    "primary_search_metric_unchanged": true,
+    "acceptance_claim": false
+  },
+  "gppo17_metric": {
+    "secondary_joint_completion_seconds": 44.400000000000006,
+    "joint_success": true,
+    "stable_seconds": 3.0,
+    "physics_dt": 0.1,
+    "whole_window_safe": true,
+    "primary_search_metric_unchanged": true,
+    "acceptance_claim": false
+  },
+  "gppo_vs_matched_rule_time_reduction": 0.0,
+  "scope": "Same corrected executor, same local H120 development case; no H300/general acceptance claim"
+}

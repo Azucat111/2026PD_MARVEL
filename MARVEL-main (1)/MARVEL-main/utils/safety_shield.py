@@ -24,6 +24,7 @@ class SafetyShield:
         robots: List[Any],
         actions: List[Tuple[np.ndarray, float]],
         step: int,
+        *, check_waypoint_proximity: bool = True,
     ) -> List[Tuple[np.ndarray, float]]:
         """Return a new action list where infeasible actions are replaced by hover-in-place.
 
@@ -52,8 +53,8 @@ class SafetyShield:
 
         # Second pass: check UAV-UAV proximity among intended positions.
         for i, robot in enumerate(robots):
-            if not safe[i]:
-                continue  # already hovering
+            if not check_waypoint_proximity or not safe[i]:
+                continue  # actual-tick guard or already hovering
             for j, other in enumerate(robots):
                 if i == j:
                     continue
@@ -72,6 +73,35 @@ class SafetyShield:
                 filtered.append((robot.position.copy(), robot.heading))
 
         return filtered
+
+    def filter_motion(self, robots, proposed_positions, step):
+        """Veto intersecting actual straight physics-tick paths.
+
+        Iterate because a stopped UAV can obstruct another path. Initially
+        close UAVs may move apart; remote waypoint checks still apply.
+        """
+        starts=np.asarray([r.position for r in robots],dtype=float)
+        proposed=np.asarray(proposed_positions,dtype=float)
+        allowed=np.ones(len(robots),dtype=bool)
+        for _ in range(len(robots)+1):
+            ends=np.where(allowed[:,None],proposed,starts)
+            changed=False
+            for i in range(len(robots)):
+                for j in range(i+1,len(robots)):
+                    relative=starts[i]-starts[j]
+                    velocity=(ends[i]-starts[i])-(ends[j]-starts[j])
+                    norm=float(np.dot(velocity,velocity))
+                    t=float(np.clip(-np.dot(relative,velocity)/norm,0.,1.)) if norm>1e-20 else 0.
+                    closest=float(np.linalg.norm(relative+t*velocity))
+                    limit=min(self.UAV_SAFE_DISTANCE,float(np.linalg.norm(relative)))
+                    if closest < limit-1e-9:
+                        for index in (i,j):
+                            if allowed[index] and np.linalg.norm(proposed[index]-starts[index])>1e-12:
+                                allowed[index]=False; changed=True
+                                self._record(robots[index].robot_id,step,'uav_motion_proximity')
+            if not changed:
+                break
+        return allowed.tolist()
 
     def pop_events(self) -> List[Dict[str, Any]]:
         """Drain and return all shield intercept events recorded since last call."""

@@ -1,0 +1,41 @@
+{
+  "captured_utc": "2026-11-10T10:55:45.535515+00:00",
+  "note": "Additional asset guard captured after development; saved per-run configuration equality audited separately",
+  "files": {
+    "<local-home>/MARVEL/artifacts/phase14_v9_frozen/gppo_phase14_v9_ckpt80.pth": {
+      "sha256": "57abf685f7a8226dcf71e1441333bf74da6e228e423f1bb0034e110975e3fcd9",
+      "size": 12026646,
+      "mtime_utc": "2026-09-21T09:01:48.454412+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/artifacts/extended_gppo_joint_batch_20261010_attempt8/checkpoint_batch_001.pth": {
+      "sha256": "869e2ac49e54d24143c497197c27c39800b882fa1e4100b2f021815f73f30298",
+      "size": 12032766,
+      "mtime_utc": "2026-10-10T15:25:53.626332+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/configs/communication/ideal.yaml": {
+      "sha256": "c902a9ae3ee4b56e8ff5d305488502d546177b49d415fda97ef1e8fd1f1c042b",
+      "size": 51,
+      "mtime_utc": "2026-09-21T09:56:26.983289+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/configs/dynamics/kinematic_simple.yaml": {
+      "sha256": "628391593c9d546c3d7381c59e207eb380426d9949161e20cd6dc7c4de8b961a",
+      "size": 85,
+      "mtime_utc": "2026-09-21T09:56:26.984384+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/configs/scenarios/assets/extended_connected_gppo_20261010.png": {
+      "sha256": "e661be43467d4bd7451bcf2850663246cebf51201b6037f91eaa4294dd2613de",
+      "size": 167,
+      "mtime_utc": "2026-10-10T05:49:26.984038+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_connected_gppo_cached_sensing_20261012.yaml": {
+      "sha256": "bc92d08b32a47c29c140eb687ba9bc01e782e2f9973c505f32fb6310a06a7ff0",
+      "size": 1588,
+      "mtime_utc": "2026-10-12T05:13:40.023876+00:00"
+    },
+    "<local-home>/MARVEL_INTEGRATION/MARVEL-main (1)/MARVEL-main/configs/sensors/ideal_cached_extended_20261012.yaml": {
+      "sha256": "4bf094bf23830ac2e442bfcbfd5c574ecb6127498b06500671269e714cfca9f8",
+      "size": 75,
+      "mtime_utc": "2026-10-12T05:13:40.055876+00:00"
+    }
+  }
+}

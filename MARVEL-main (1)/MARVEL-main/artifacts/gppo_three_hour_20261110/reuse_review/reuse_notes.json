@@ -1,0 +1,55 @@
+{
+  "status": "COMPLETE_READ_ONLY_AUDIT",
+  "date": "2026-11-10",
+  "production_changes": 0,
+  "training": 0,
+  "simulations": 0,
+  "provenance": {
+    "gppo_paper": "https://doi.org/10.1109/TASE.2025.3593125",
+    "gppo_authors": ["Jin Yu", "Ya Zhang", "Changyin Sun"],
+    "author_gppo_repo": "Not verified; paper text and narrow exact-title web search did not establish one. This is not proof that none exists.",
+    "official_marvel": "https://github.com/marmotlab/MARVEL",
+    "official_marvel_trainer": "https://github.com/marmotlab/MARVEL/blob/main/driver.py",
+    "official_marvel_algorithm": "SAC: replay buffer, twin Q networks, entropy temperature; see driver.py lines226-249.",
+    "local_gppo_primitives": "<local-home>/MARVEL/utils/gppo_ppo.py is prior local code, NOT verified official MARVEL or GPPO-author upstream."
+  },
+  "options": [
+    {
+      "priority": 1,
+      "name": "Reuse existing lifecycle and implement explicit same-tick arrival-before-retarget ordering",
+      "sources": ["https://doi.org/10.1109/TASE.2025.3593125", "https://simpy.readthedocs.io/en/latest/topical_guides/time_and_scheduling.html"],
+      "established_principle": "GPPO paper updates task lists on completion; SimPy documents deterministic sequential processing of same-time events. Neither source prescribes this project's mesh-anchor retarget order.",
+      "local_reuse": ["integrations/gppo/scheduler.py:_refresh_relay", "integrations/gppo/scheduler.py:_augment_arrived_relay", "integrations/gppo/mesh_relay.py:ObservedMeshRelayDemandBuilder.refresh_assignments"],
+      "exact_local_evidence": "Current scheduler lines928-932 refreshes anchors before testing arrival; augmentation lines1043-1045 compares physical pose with the now-mutated anchor. The parent is independently validating the causal swap.",
+      "compatibility": "Existing observation-only positions, helper budgets, reservations, candidate guards and Safety preemption remain reusable. Snapshot/consume arrival before mutating the target that defines arrival is a minimal local design inference.",
+      "do_not_redo": "Do not install SimPy, replace the scheduler, add a new planner, or claim the call-order repair is a reproduction of the GPPO paper.",
+      "acceptance": "Parent's controlled paired physical H300 validation remains necessary; this audit adds no rollout evidence."
+    },
+    {
+      "priority": 2,
+      "name": "Keep prior local GPPO GAE/batching and use official MAPPO as a mathematical reference",
+      "sources": ["https://github.com/marlbenchmark/on-policy", "https://github.com/marlbenchmark/on-policy/blob/main/onpolicy/algorithms/r_mappo/r_mappo.py", "https://github.com/marlbenchmark/on-policy/blob/main/onpolicy/utils/shared_buffer.py", "https://arxiv.org/abs/2103.01955"],
+      "exact_reference": "R_MAPPO.ppo_update lines95-126 re-evaluates saved actions with available_actions and uses exp(new_logp-old_logp) and the clipped surrogate. SharedReplayBuffer.insert/chooseinsert saves masks, old logp and available_actions; compute_returns distinguishes terminal masks from time-limit bad_masks.",
+      "existing_local_evidence": {
+        "gae": "artifacts/extended_system_review_20261014_attempt19/existing_gae_reuse_contract.json:256 episodes,1267 transitions,max return error1.2595e-8,gamma=lambda=1",
+        "batching": "artifacts/extended_system_review_20261014_attempt19/existing_collation_reuse_contract.json:16 records,mixed30/60 UAVs,1/4 tasks,9D edges,max logp error9.5367e-7",
+        "recent_behavior_consistency": "artifacts/gppo_alignment_hour_20261110/update_proof.json:19 records,max behavior logp/value errors0;2 optimizer steps. This proves an update, not better choices."
+      },
+      "compatibility": "Use the official functions as an oracle for loss/mask/return audits. Existing graph/action layouts need adapters, so wholesale porting is unnecessary. Preserve identical behavior/update model modes and saved legal-action masks.",
+      "objective": "Paper Eq15-17 minimizes global maximum completion time using M_previous-M_current. Physical H300 joint completion is aligned in intent, but -(completion-t)/300 suffix returns are a local adaptation, not the literal paper reward. GAE alone does not solve causal credit assignment.",
+      "cautions": "gamma<1 per irregular assignment event weights event count rather than elapsed physical time; copying .99/.95 changes the objective. H300 can be an intentional finite-horizon penalty, so do not blindly treat every horizon as a bootstrappable time-limit truncation.",
+      "do_not_redo": "Do not rebuild GAE/collation/PPO or retrain native MARVEL just to repair a lifecycle ordering bug."
+    },
+    {
+      "priority": 3,
+      "name": "CBBA-PR and CBBA-with-Relays as optional design references only",
+      "sources": ["https://people.csail.mit.edu/nbuckman/pdfs/aiaa2019.pdf", "https://acl.mit.edu/projects/consensus-based-bundle-algorithm", "https://acl.mit.edu/files/CBBA_MATLAB_ACLMIT_July13_2010.zip"],
+      "reusable_principle": "CBBA-PR limits the allocation subset reopened on a new task; its convergence result requires resetting the last/lowest bid items in bundle-build order. CBBA-with-Relays creates relay tasks from predicted topology using underutilized agents.",
+      "compatibility": "Useful precedent for bounded local repair and persistent useful assignments. Official ACL page links baseline time-window MATLAB code; it does NOT establish that this zip includes CBBA-PR or relay extensions.",
+      "not_drop_in": "Current implementation is not decentralized CBBA, has no bid bundles, and evaluates largest-component physical radio rather than necessarily base-rooted communication. Do not transfer convergence claims or replace its metric.",
+      "do_not_redo": "No CBBA port or planner expansion is justified for the current arrival-order toy fix."
+    }
+  ],
+  "recommended_now": "Finish the parent's smallest lifecycle-order intervention, retain existing models and masks, validate fixed full-H300 joint completion and whole-window safety, then freeze any demonstrated improvement before considering further learning.",
+  "limitations": ["No new tests, simulations or training performed by this audit", "Read prior artifacts without modifying them", "Official MATLAB zip link verified but contents not downloaded or audited", "Local gppo_model.py header claims paper-faithful design; no author repository exists in this evidence to establish exact implementation identity"]
+}

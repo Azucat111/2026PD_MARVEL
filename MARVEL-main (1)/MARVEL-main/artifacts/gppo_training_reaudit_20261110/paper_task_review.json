@@ -1,0 +1,88 @@
+{
+  "status": "COMPLETE_READ_ONLY_PAPER_TASK_REVIEW",
+  "date": "2026-11-10",
+  "production_changes": 0,
+  "training_runs": 0,
+  "simulations": 0,
+  "conclusion": "The premise that combining established repositories should automatically yield a well-trained MARVEL+GPPO policy is not supported. The implemented network/optimizer primitives can be reused, but this experiment changes the learning environment, reward, state, action authority, communication criterion and training scale. It is a new hierarchical physical-loop adaptation, not a verified reproduction of the paper's GPPO task. This establishes a task/protocol mismatch; it does not by itself prove an implementation error in the current PPO sampling or gradients.",
+  "primary_sources": {
+    "gppo_paper_title": "Multi-UAV Dynamic Task Assignment Based on Event-Triggered Graph Reinforcement Learning Under Weak Communication",
+    "gppo_doi": "https://doi.org/10.1109/TASE.2025.3593125",
+    "authors": ["Jin Yu", "Ya Zhang", "Changyin Sun"],
+    "local_user_pdf": "<windows-local>",
+    "extracted_text": "artifacts/original_goal_paper_audit_20261110/gppo_paper.txt",
+    "printed_to_pdf_page_mapping": "printed page19106=PDF page1;19113=8;19114=9;19115=10;19116=11;19117=12;19120=15",
+    "table_verification": "TableII and Fig8 on printed19116/PDF11 were directly rendered with Windows pdftoppm and visually inspected;table values below are not inferred from missing extracted table text.",
+    "official_marvel_repo": "https://github.com/marmotlab/MARVEL",
+    "official_marvel_readme": "https://raw.githubusercontent.com/marmotlab/MARVEL/main/README.md",
+    "official_marvel_driver": "https://github.com/marmotlab/MARVEL/blob/main/driver.py",
+    "official_marvel_utils_listing": "https://github.com/marmotlab/MARVEL/tree/main/utils"
+  },
+  "paper_environment": {
+    "direct_evidence": [
+      {"printed_page":19110,"pdf_page":5,"location":"SectionIII.A","evidence":"Graph nodes are UAVs and precedence-constrained subtasks;edge attributes include completion time and average flight time. Capability determines feasible UAV-task edges."},
+      {"printed_page":19113,"pdf_page":8,"location":"Eq11-14 and SectionIV.A.1","evidence":"State updates use scheduled subtask start/end times,processing times,next UAV available time,utilization and assignment masking. Unassigned-task start times are estimated from predecessors or average processing time."},
+      {"printed_page":19114,"pdf_page":9,"location":"SectionIV.A.4 Transition","evidence":"The paper describes a deterministic transition from S and a to the next operation-completion state."},
+      {"printed_page":19115,"pdf_page":10,"location":"SectionV opening and Fig7","evidence":"Four task-assignment scenario scales are randomly generated;100instances per scenario. T3-2-7 means3UAVs,2tasks,about7subtasks;Fig7demonstrates schedule change T4-4-10toT4-4-11."},
+      {"printed_page":19116,"pdf_page":11,"location":"SectionV continued","evidence":"UAV capabilities and processing times differ randomly between instances;the goal is reducing empty windows and overall schedule completion time."}
+    ],
+    "supported_inference": "The training environment described is an abstract scheduling simulator with algebraic processing/travel-time and precedence updates. The supplied paper does not establish training in a MARVEL sensor-to-motion physical closed loop.",
+    "not_established": ["Exact environment source code or author simulator implementation", "Whether any unreported internal motion simulator existed", "A sensor-driven hidden-target search process with constrained FoV", "Physical Relay anchor travel/retarget/arrival augmentation or collision-shield execution equivalent to this integration"]
+  },
+  "paper_action_reward_and_communication": {
+    "action": {"pages":"19113-19114/PDF8-9,SectionIV.A.2","definition":"Select one executable subtask whose prerequisites are met and assign one currently available capable UAV;dynamic feasible pair set changes after assignment.","difference":"Current scheduler refreshes Search before Relay(scheduler.py1202-1203),builds role-specific event slots and enforces reservations;Safety and many motion/Relay lifecycle decisions are outside the actor. It does not expose every abstract schedule rearrangement or all physical controls to PPO."},
+    "reward": {"page":"19114/PDF9,Eq15-17","definition":"M_task=max subtask completion times;M=max task completion times;R_t=M_(t-1)-M_t.","difference":"Current aligned_returns assigns complete MonteCarlo suffix target G_i=-max(0,C-t_i)/300 after the physical rollout. C includes all nonrelay completion,physical radio>=.9stable3seconds and full-H300 safety;failure is capped300. Same broad makespan aim,substantially different reward generation/credit/state process. Not literal Eq17 reproduction."},
+    "communication": {"pages":"19109/PDF4 and19120/PDF15,SectionV.C","definition":"Leader/follower heartbeat/failure reassignment and event-triggered communication;communication experiments compare intermittent event-triggered exchange against anytime full communication GPPO-F.","difference":"This is not evidence that the paper trains a largest-component>=.9 physical connectivity restoration objective with dedicated moving Relay helpers. The word weak communication alone does not make these objectives equivalent."}
+  },
+  "paper_training_scale_and_parameters": {
+    "scenario_scales_as_printed": ["T5-10-48", "T10-10-53", "T15-8-66", "T20-10-92"],
+    "instances": "100random task instances in each of the4training environments;do not interpret100instances as100training episodes.",
+    "repeats": "Each experimental environment repeated5times and averaged;printed19116/PDF11.",
+    "fig8": "Training curves run to2000episodes on the horizontal axis;printed19116/PDF11.",
+    "tableII": {"learning_rate":0.0002,"Adam":[0.9,0.999],"discount_rate":0.99,"Cropping_ratio_as_printed":0.2,"Advantage_function_as_printed":1.0,"Value_Function_as_printed":0.5,"Entropy_coeff":0.01,"Replay_buffer":1000000,"Batch_size":512,"Max_iterations":2000},
+    "algorithm1": "Printed19115/PDF10:sample k instances,roll assignments until done,save transitions,update PPO everyg1,save/test everyg2,resample instance batch everyg3. Numeric k,g1,g2,g3 and exact minibatch/epoch accounting are not established by available text.",
+    "generalization": "Printed19117/PDF12:8unknown environments,50instances each,total400. Text names training environment T15-08-62,where ablation names T15-8-66;retain manuscript wording rather than silently reconciling this difference.",
+    "unknown": "Exact total unique decisions,optimizer steps,rollout reuse,definition of iterations versus episodes,and exact meaning of Advantage function1.0 are not determined without author code. Table Replay buffer does not authorize off-policy reuse in our PPO."
+  },
+  "current_actual_training": {
+    "source":"artifacts/gppo_three_hour_20261110/final_result.json,training_source.py,update_training.py,andtraining/batch_00/01/update_proof.json",
+    "episodes":16,
+    "actions":80,
+    "optimizer_steps":8,
+    "batch_count":2,
+    "episodes_per_batch":8,
+    "actions_per_batch":[40,40],
+    "Search_actions":[30,31],
+    "Relay_actions":[10,9],
+    "domain_cycle":["30static","60static","30dynamic","60dynamic"],
+    "horizon":300,
+    "physics_dt":0.1,
+    "edge_dim":6,
+    "warm_start":"round17,nottrainingfromscratch",
+    "learning_rate":0.00002,
+    "epochs_per_batch":4,
+    "temperature":1.0,
+    "entropy_weight":0.0,
+    "anchor_weight":0.0,
+    "advantage":"MonteCarlo target-old value,then existing role-centered standardization;no current GAE bootstrap or gamma.99 event discount",
+    "model":"Local paper-inspired AHGNN pair actor/graph critic above frozen MARVEL policy and local physical executor",
+    "behavior_replay_errors":"Both recent update_proof files report max old-logprob and value replay errors0;sampling isCategorical.sample. These checks establish policy-update consistency,not learnability or good credit assignment.",
+    "argmax_changes_on_training_states":[1,0],
+    "mean_exact_KL":[0.0022644159686059594,0.0008073139264353661],
+    "scale_comparison":"Current40-action update batches versus paper configured512batch size,and16new physical episodes versus paper2000episode curves,are visibly different budgets. Do not compute an exact sample-efficiency ratio:paper iterations/episodes/batches are not fully specified,andcurrentactor is warmstarted.",
+    "cost_implication":"FullH300physical simulation spends most wall time between about5high-level actions per episode;elapsed hours therefore do not equal many informative PPO decisions."
+  },
+  "official_code_reuse_boundary": {
+    "MARVEL_verified":"Official README directs training todriver.py;driver implementsSAC with replay buffer,twinQ networks andentropy temperature. Its official utils listing hasmodel.py,etc.but no gppo_ppo.py or GPPO model. MARVEL's pretrained exploration controller is reusable;it is not an official GPPO scheduler/trainer.",
+    "GPPO_official_repo":"No author GPPO repository has been verified. Prior exact-title/author-oriented review and suppliedPDF hyperlinks establish onlypaper/ORCID links. Existing notes explicitly recordauthor_repo_verified=false. This is not proof that an author repository does not exist.",
+    "local_code":"<local-home>/MARVEL/utils/gppo_ppo.py and currentintegrations/gppo are priorlocal implementations. A header claiming paper-faithful does not establish author-code identity or matching simulator/training protocol.",
+    "other_repos":"Official MAPPO can validate PPO loss/masks/returns,but does not supply this GPPO abstract scheduler or solve this MARVEL physical task. It cannot close the task-definition gap by itself."
+  },
+  "decision_on_user_premise": {
+    "supported":"It is reasonable to demand reuse of existing architectures,optimizer primitives and simulator components instead of inventing additional mechanisms. Current evidence also supports auditing task/reward/action/sampling contracts before further expensive collection.",
+    "unsupported":"There is no verified pair of ready-made official MARVEL+GPPO repositories implementing the same state/action/reward environment and jointly trained checkpoint. Therefore plug them together and it should learn well is not an established engineering premise.",
+    "not_a_proven_cause":"Task mismatch and small new sample count are strong reasons performance transfer is unproven. They do not identify the sole cause of heldout regression or prove that simply matching paper hyperparameters fixes it.",
+    "no_new_mechanism_recommendation":"Do not respond to this finding with anotherplanner,featureexpansion,probe mechanism or heldout-driven model reselection. First distinguish paper reproduction from physical-task adaptation and audit whether current high-level actions carry sufficient controllable signal for the chosen target."
+  },
+  "limitations": ["Publisher staging page currently returned418;the user-provided localPDF supplied primary paper evidence.", "No GPPO author code was available to resolve undocumented algorithm settings.", "No new training,simulation,checkpoint edits,production edits or old-artifact modifications performed.", "Only this new JSON is delivered;temporary PDF rendering was written outside repository under WindowsTEMP."]
+}

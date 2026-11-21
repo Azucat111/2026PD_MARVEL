@@ -1,0 +1,50 @@
+{
+  "status": "READ_ONLY_TRAINING_REAUDIT_COMPLETE",
+  "completed_utc": "2026-11-10T12:52:46.653567+00:00",
+  "conclusion": "Training-task design and effective learning signal need priority over further Relay mechanism changes; no demonstrated PPO sign/mask/logprob/update-order bug and no proven single cause of physical regression.",
+  "proved": {
+    "fresh_episodes": 16,
+    "fresh_decisions": 80,
+    "search_decisions": 61,
+    "relay_decisions": 19,
+    "heldout_candidate_states": 42,
+    "parent17_to_candidate_argmax_changes": 1,
+    "second_batch_argmax_changes": 0,
+    "search_between_episode_advantage_variance_share": [
+      0.9693714441992451,
+      0.9920109761868238
+    ],
+    "first_batch_values_all_zero": true
+  },
+  "limits": [
+    "Within-episode shared return is valid episodic policy-gradient supervision; variance/correlation alone does not prove biased gradients",
+    "Shadow choices on saved states are not a new closed-loop parent evaluation and cannot quantify causal fine-tune benefit",
+    "Policy has positions and indirect topology cues; absent explicit adjacency is not proof recovery is unlearnable",
+    "Historical checkpoints predate the revised objective and executor; new16episodes do not represent all prior training",
+    "No verified author GPPO repository; current task/reward are an integration adaptation, not established original-paper reproduction",
+    "No claimed15percent achievement; previous heldout remains15of16complete"
+  ],
+  "priority_next": "One fixed-small-training-set learnability test using existing sampler/PPO/executor: repeat sampled assignments under the same initial scenarios, verify the value baseline and within-scenario action-outcome ranking, before any further long training or Relay mechanism addition; reserve unseen seeds for subsequent acceptance.",
+  "integrity": {
+    "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+    "source_files_checked": 478,
+    "all_unchanged": true,
+    "original_checkpoints_unchanged": {
+      "round8": true,
+      "round17": true,
+      "round19": true
+    }
+  },
+  "new_optimizer_steps": 0,
+  "new_simulation_steps": 0,
+  "production_edits": 0,
+  "commit": false,
+  "push": false,
+  "evidence": [
+    "update_review.json",
+    "credit_signal_audit.json",
+    "heldout_parent_shadow.json",
+    "information_audit.json",
+    "paper_task_review.json"
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "rows": [
+    {
+      "round": 8,
+      "new_logged_episodes": 16,
+      "recorded_decisions": 86,
+      "unique_seeds": 16,
+      "seed_range": [
+        61196,
+        61211
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 4,
+        "60_static": 4,
+        "30_dynamic": 4,
+        "60_dynamic": 4
+      },
+      "updates": 2,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 9,
+      "new_logged_episodes": 27,
+      "recorded_decisions": 133,
+      "unique_seeds": 27,
+      "seed_range": [
+        61212,
+        61238
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 7,
+        "60_static": 7,
+        "30_dynamic": 7,
+        "60_dynamic": 6
+      },
+      "updates": 3,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 10,
+      "new_logged_episodes": 8,
+      "recorded_decisions": 47,
+      "unique_seeds": 8,
+      "seed_range": [
+        61244,
+        61251
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 2,
+        "60_static": 2,
+        "30_dynamic": 2,
+        "60_dynamic": 2
+      },
+      "updates": 1,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 11,
+      "new_logged_episodes": 16,
+      "recorded_decisions": 82,
+      "unique_seeds": 16,
+      "seed_range": [
+        61252,
+        61267
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 4,
+        "60_static": 4,
+        "30_dynamic": 4,
+        "60_dynamic": 4
+      },
+      "updates": 2,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 12,
+      "new_logged_episodes": 6,
+      "recorded_decisions": 34,
+      "unique_seeds": 6,
+      "seed_range": [
+        61268,
+        61273
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 2,
+        "60_static": 2,
+        "30_dynamic": 1,
+        "60_dynamic": 1
+      },
+      "updates": 0,
+      "update_fields": []
+    },
+    {
+      "round": 13,
+      "new_logged_episodes": 1,
+      "recorded_decisions": 5,
+      "unique_seeds": 1,
+      "seed_range": [
+        61332,
+        61332
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 1
+      },
+      "updates": 0,
+      "update_fields": []
+    },
+    {
+      "round": 14,
+      "new_logged_episodes": 8,
+      "recorded_decisions": 40,
+      "unique_seeds": 8,
+      "seed_range": [
+        61396,
+        61403
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 2,
+        "60_static": 2,
+        "30_dynamic": 2,
+        "60_dynamic": 2
+      },
+      "updates": 1,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 15,
+      "new_logged_episodes": 56,
+      "recorded_decisions": 283,
+      "unique_seeds": 56,
+      "seed_range": [
+        61405,
+        62502
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 14,
+        "60_static": 14,
+        "30_dynamic": 14,
+        "60_dynamic": 14
+      },
+      "updates": 8,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 17,
+      "new_logged_episodes": 128,
+      "recorded_decisions": 612,
+      "unique_seeds": 128,
+      "seed_range": [
+        62600,
+        62727
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 32,
+        "60_static": 32,
+        "30_dynamic": 32,
+        "60_dynamic": 32
+      },
+      "updates": 16,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 18,
+      "new_logged_episodes": 256,
+      "recorded_decisions": 1276,
+      "unique_seeds": 256,
+      "seed_range": [
+        62820,
+        63075
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 64,
+        "60_static": 64,
+        "30_dynamic": 64,
+        "60_dynamic": 64
+      },
+      "updates": 32,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    },
+    {
+      "round": 19,
+      "new_logged_episodes": 256,
+      "recorded_decisions": 1267,
+      "unique_seeds": 256,
+      "seed_range": [
+        63100,
+        63355
+      ],
+      "historical_test_seed_overlap": [],
+      "domains": {
+        "30_static": 64,
+        "60_static": 64,
+        "30_dynamic": 64,
+        "60_dynamic": 64
+      },
+      "updates": 32,
+      "update_fields": [
+        "batch",
+        "last_episode",
+        "episodes",
+        "transitions",
+        "behavior_sha256",
+        "role_stats",
+        "losses",
+        "epochs"
+      ]
+    }
+  ],
+  "scope": "Logged rollout records; does not claim all logged decisions entered optimizer updates"
+}

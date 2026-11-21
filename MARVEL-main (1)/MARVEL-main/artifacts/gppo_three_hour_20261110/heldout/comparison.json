@@ -1,0 +1,351 @@
+{
+  "status": "RUNNING",
+  "candidate": {
+    "candidate": "batch_00",
+    "model": {
+      "path": "artifacts/gppo_three_hour_20261110/training/batch_00/update/checkpoint_batch_000.pth",
+      "sha256": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d",
+      "edge_dim": 6
+    },
+    "selection": "Minimum full mission sum on the two prespecified development cases; strict improvement required, ties retain earlier checkpoint",
+    "development_validation_seconds": 37.5,
+    "reviewed": [
+      {
+        "batch": "batch_00",
+        "score": 37.5,
+        "valid": true,
+        "kl_gate": true
+      },
+      {
+        "batch": "batch_01",
+        "score": 37.5,
+        "valid": true,
+        "kl_gate": true
+      }
+    ],
+    "frozen_utc": "2026-11-10T11:50:33.098649+00:00",
+    "contract_sha256": "d9c896a0d13e6894cf0c1b648b0b778fa3b111ca930afca9dd68dcae7514c9c3",
+    "source_fingerprint": "a3b9ba6bf23a0fed8d1c3d039ee40579df8855196f58d1baaab32a5e4f7989db",
+    "heldout_results_observed": false
+  },
+  "rows": [
+    {
+      "case_index": 0,
+      "case": {
+        "seed": 1680021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 43.6,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 536.7710568729963,
+          "metric": {
+            "secondary_joint_completion_seconds": 43.6,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 65.7,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 538.8435727609976,
+          "metric": {
+            "secondary_joint_completion_seconds": 65.7,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 1,
+      "case": {
+        "seed": 1680022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 56.6,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 656.4234494379998,
+          "metric": {
+            "secondary_joint_completion_seconds": 56.6,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 136.6,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 574.3325958799978,
+          "metric": {
+            "secondary_joint_completion_seconds": 136.6,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 2,
+      "case": {
+        "seed": 1680023,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 8.9,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 624.159050137001,
+          "metric": {
+            "secondary_joint_completion_seconds": 8.9,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 8.9,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 625.5181064969947,
+          "metric": {
+            "secondary_joint_completion_seconds": 8.9,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 3,
+      "case": {
+        "seed": 1680024,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 29.0,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 790.1951365019995,
+          "metric": {
+            "secondary_joint_completion_seconds": 29.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 13.200000000000001,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 689.1503920739997,
+          "metric": {
+            "secondary_joint_completion_seconds": 13.200000000000001,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 4,
+      "case": {
+        "seed": 1680025,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 58.7,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 538.1665277400025,
+          "metric": {
+            "secondary_joint_completion_seconds": 58.7,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 93.5,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 506.24073921199306,
+          "metric": {
+            "secondary_joint_completion_seconds": 93.5,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 5,
+      "case": {
+        "seed": 1680026,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arms": {
+        "candidate": {
+          "completion_seconds": 74.4,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 452.75079964100587,
+          "metric": {
+            "secondary_joint_completion_seconds": 74.4,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "RUNNING"
+    },
+    {
+      "case_index": 6,
+      "case": {
+        "seed": 1680027,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 7.1000000000000005,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 668.563622910995,
+          "metric": {
+            "secondary_joint_completion_seconds": 7.1000000000000005,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 7.1000000000000005,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 663.4877318629951,
+          "metric": {
+            "secondary_joint_completion_seconds": 7.1000000000000005,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    },
+    {
+      "case_index": 7,
+      "case": {
+        "seed": 1680028,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 14.0,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 757.3849697279948,
+          "metric": {
+            "secondary_joint_completion_seconds": 14.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        },
+        "candidate": {
+          "completion_seconds": 14.0,
+          "success": true,
+          "safe": true,
+          "wall_seconds": 730.8308993019964,
+          "metric": {
+            "secondary_joint_completion_seconds": 14.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          }
+        }
+      },
+      "status": "COMPLETE"
+    }
+  ],
+  "stats": {},
+  "goal_15_percent_met": null,
+  "scope": "Eight fresh independent seeds, two each30/60 xstatic/dynamic, connected80m domain only. No claim about500m.",
+  "metric": "100*(1-sum(candidate full joint time)/sum(rule full joint time))",
+  "updated_utc": "2026-11-10T12:39:42.317747+00:00"
+}

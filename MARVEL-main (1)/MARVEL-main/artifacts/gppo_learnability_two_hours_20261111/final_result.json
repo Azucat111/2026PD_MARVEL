@@ -1,0 +1,80 @@
+{
+  "status": "BOUNDED_DIAGNOSTIC_COMPLETE_PROJECT_15_PERCENT_NOT_ACCEPTED",
+  "completed_utc": "2026-11-11T06:39:47.804196+00:00",
+  "user_budget_minutes": 120,
+  "elapsed_minutes": 110.4967366,
+  "local_learnability_verified": true,
+  "training_case_stats": {
+    "totals": {
+      "rule": 88.2,
+      "parent": 73.1,
+      "candidate": 65.0
+    },
+    "time_reduction_vs_parent_percent": 11.080711354309159,
+    "time_reduction_vs_rule_percent": 26.30385487528345,
+    "all_success_safe": true
+  },
+  "new_seed_diagnostic_stats": {
+    "totals": {
+      "rule": 81.6,
+      "parent": 85.0,
+      "candidate": 85.0
+    },
+    "time_reduction_vs_parent_percent": 0.0,
+    "time_reduction_vs_rule_percent": -4.166666666666674,
+    "all_success_safe": true
+  },
+  "new_seed_policy_increment_percent": 0.0,
+  "project_goal_15_percent_accepted": false,
+  "overall_acceptance_scope": "Not established: only3newseeds on one80mmap,not the original8seed suite,no60dynamic newseed or500m claim",
+  "training": {
+    "episodes": 12,
+    "new_episodes": 8,
+    "reused_episodes": 4,
+    "decision_records": 63,
+    "original_rejected_optimizer_steps": 2,
+    "guarded_replay_attempted_epochs": 2,
+    "retained_candidate_optimizer_steps": 1,
+    "candidate": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+    "candidate_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae"
+  },
+  "guard_fix": {
+    "exact_reproduction_of_rejected_second_step": true,
+    "model_and_adam_rollback_verified": true,
+    "mean_exact_kl": 0.002984388266979438,
+    "max_state_exact_kl": 0.04060040041804314,
+    "caps_unchanged": true,
+    "scope": "Diagnostic training wrapper only; not a claim explaining all prior regression"
+  },
+  "development_probe": {
+    "seed": 1981101,
+    "original_candidate_seconds": 47.9,
+    "donor_guard_seconds": 44.5,
+    "rule_seconds": 44.5,
+    "full_h300_safe": true,
+    "acceptance_claim": false,
+    "causal_limit": "Whole donor-mask policy variant also changes task order and UAV identity; not isolated bridge-only effect",
+    "dynamic_extension": {
+      "status": "CANCELLED_START_CUTOFF",
+      "now_utc": "2026-11-11T06:37:03.568751+00:00",
+      "cutoff_utc": "2026-11-11T06:37:00+00:00",
+      "simulation_started": false
+    }
+  },
+  "next_direction": "Cross-scenario validation of the same existing public donor-connectivity guard before broader training; no new planner or oracle information",
+  "independent_audit": "final_audit.json",
+  "same_initial_hidden_layout_config_verified": true,
+  "source_files_unchanged": 478,
+  "original_checkpoints_unchanged": true,
+  "execution_assets_unchanged": 7,
+  "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+  "production_edits": false,
+  "active_owned_compute_processes": [],
+  "seen_new_diagnostic_seeds": [
+    1981101,
+    1981102,
+    1981103
+  ],
+  "commit": false,
+  "push": false
+}

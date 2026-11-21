@@ -1,0 +1,114 @@
+{
+  "status": "COMPLETE_READINESS_CPU_CHECK",
+  "checked_utc": "2026-11-11T05:19:47.004778+00:00",
+  "episodes": 12,
+  "new_episodes": 8,
+  "reference_episodes": 4,
+  "records": 63,
+  "groups": [
+    {
+      "seed": 1880021,
+      "completion_seconds": [
+        24.1,
+        32.5,
+        24.1,
+        24.1
+      ],
+      "advantages": [
+        0.1866666666666667,
+        -0.5599999999999997,
+        0.1866666666666667,
+        0.1866666666666667
+      ],
+      "has_variance": true,
+      "all_safe": true,
+      "all_success": true,
+      "episode_records": [
+        5,
+        6,
+        5,
+        5
+      ],
+      "initial_and_config_identical": true,
+      "origins": [
+        "read_only_reference",
+        "read_only_reference",
+        "read_only_reference",
+        "read_only_reference"
+      ]
+    },
+    {
+      "seed": 1280022,
+      "completion_seconds": [
+        43.7,
+        38.0,
+        29.900000000000002,
+        38.0
+      ],
+      "advantages": [
+        -0.5599999999999999,
+        -0.05333333333333314,
+        0.6666666666666664,
+        -0.05333333333333314
+      ],
+      "has_variance": true,
+      "all_safe": true,
+      "all_success": true,
+      "episode_records": [
+        6,
+        5,
+        6,
+        5
+      ],
+      "initial_and_config_identical": true,
+      "origins": [
+        "new_collection",
+        "new_collection",
+        "new_collection",
+        "new_collection"
+      ]
+    },
+    {
+      "seed": 1880024,
+      "completion_seconds": [
+        25.0,
+        11.0,
+        25.0,
+        25.0
+      ],
+      "advantages": [
+        -0.31111111111111117,
+        0.9333333333333333,
+        -0.31111111111111117,
+        -0.31111111111111117
+      ],
+      "has_variance": true,
+      "all_safe": true,
+      "all_success": true,
+      "episode_records": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "initial_and_config_identical": true,
+      "origins": [
+        "new_collection",
+        "new_collection",
+        "new_collection",
+        "new_collection"
+      ]
+    }
+  ],
+  "max_cpu_logprob_replay_error": 7.152557373046875e-06,
+  "max_cpu_value_replay_error": 0.0,
+  "actual_behavior_fingerprint": "8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c",
+  "actual_behavior_file_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "source_hashes_checked": 490,
+  "reference_hashes_checked": 28,
+  "controller_hashes_checked": 3,
+  "contract_sha256": "84f719d95d8eecfb3d1dee03d56a4311a84dfece0685f6d5d7db35c7785fe722",
+  "all_old_artifacts_unchanged": true,
+  "update_started_by_this_check": false,
+  "note": "CPU replay is diagnostic; updater independently enforces GPU replay1e-5 gate before any optimizer step. Physical failures would remain included atC300; no success/safety filtering was applied."
+}

@@ -1,0 +1,421 @@
+{
+  "status": "INCONCLUSIVE",
+  "goal_15_percent_met": null,
+  "completed_utc": "2026-11-10T12:40:30.061932+00:00",
+  "elapsed_minutes": 177.0676988666667,
+  "scope": "Eight fresh independent seeds, two each30/60 xstatic/dynamic, connected80m domain only. No claim about500m.",
+  "primary_metric": "100*(1-sum(candidate full joint time)/sum(rule full joint time))",
+  "heldout_stats": {},
+  "completed_heldout_runs": 15,
+  "expected_heldout_runs": 16,
+  "selected_candidate": {
+    "candidate": "batch_00",
+    "model": {
+      "path": "artifacts/gppo_three_hour_20261110/training/batch_00/update/checkpoint_batch_000.pth",
+      "sha256": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d",
+      "edge_dim": 6
+    },
+    "selection": "Minimum full mission sum on the two prespecified development cases; strict improvement required, ties retain earlier checkpoint",
+    "development_validation_seconds": 37.5,
+    "reviewed": [
+      {
+        "batch": "batch_00",
+        "score": 37.5,
+        "valid": true,
+        "kl_gate": true
+      },
+      {
+        "batch": "batch_01",
+        "score": 37.5,
+        "valid": true,
+        "kl_gate": true
+      }
+    ],
+    "frozen_utc": "2026-11-10T11:50:33.098649+00:00",
+    "contract_sha256": "d9c896a0d13e6894cf0c1b648b0b778fa3b111ca930afca9dd68dcae7514c9c3",
+    "source_fingerprint": "a3b9ba6bf23a0fed8d1c3d039ee40579df8855196f58d1baaab32a5e4f7989db",
+    "heldout_results_observed": false
+  },
+  "training": {
+    "batches": [
+      {
+        "batch": "batch_00",
+        "episodes": 8,
+        "records": 40,
+        "optimizer_steps_this_batch": 4,
+        "saved_Adam_step_values": [
+          4.0
+        ],
+        "collection_started_utc": "2026-11-10T10:23:51.861404+00:00",
+        "collection_finished_utc": "2026-11-10T11:10:06.031085+00:00",
+        "collection_wall_seconds": 2774.169680595398,
+        "sum_worker_wall_seconds": 4872.262763738632
+      },
+      {
+        "batch": "batch_01",
+        "episodes": 8,
+        "records": 40,
+        "optimizer_steps_this_batch": 4,
+        "saved_Adam_step_values": [
+          8.0
+        ],
+        "collection_started_utc": "2026-11-10T11:18:13.869704+00:00",
+        "collection_finished_utc": "2026-11-10T11:42:31.418859+00:00",
+        "collection_wall_seconds": 1457.5491545200348,
+        "sum_worker_wall_seconds": 4520.588560342789
+      }
+    ],
+    "total_episodes": 16,
+    "total_records": 80,
+    "total_optimizer_steps": 8,
+    "caution": "Collection wall time includes physical simulation and overlaps other experiments; sum worker wall time is not measured GPU time. Gradient update duration was not separately instrumented."
+  },
+  "validation": [
+    {
+      "batch": 0,
+      "candidate_seconds": 37.5,
+      "parent_seconds": 45.6,
+      "gain_vs_parent": 0.17763157894736847,
+      "safe": true
+    },
+    {
+      "batch": 1,
+      "candidate_seconds": 37.5,
+      "parent_seconds": 37.5,
+      "gain_vs_parent": 0.0,
+      "safe": true
+    }
+  ],
+  "production_change": {
+    "file": "integrations/gppo/scheduler.py",
+    "before_sha256": "7d2accade058dea6f14774464738bd0445740b452468d8e0baf6960e85624371",
+    "after_sha256": "d683592a0db234d9b6ad99646b3336d7b6909453ceb8628300babafe2ed0a069",
+    "scope": "Existing ObservedMeshRelayDemandBuilder branch only; no frozen native semantics or new planner",
+    "prior_reproduction": "artifacts/gppo_later_rounds_hour_20261110/retarget_capture_result.json",
+    "prior_matched_screen": "artifacts/gppo_later_rounds_hour_20261110/retarget_matched_result.json"
+  },
+  "integrity": {
+    "checked_utc": "2026-11-10T12:40:06.158841+00:00",
+    "git_root": "<local-home>/MARVEL_INTEGRATION",
+    "branch": "extended-scalability",
+    "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+    "head_unchanged": true,
+    "changed_existing_source_files": [
+      "integrations/gppo/scheduler.py",
+      "platform_tests/test_observed_mesh_relay.py"
+    ],
+    "added_source_files": [
+      "platform_tests/test_extended_relay_arrival_priority.py",
+      "artifacts/gppo_three_hour_20261110/development/evaluate_arm.py",
+      "artifacts/gppo_three_hour_20261110/role_router.py"
+    ],
+    "corrected_frozen_sources": 478,
+    "core_python_sources": 476,
+    "all_corrected_sources_unchanged": true,
+    "original_checkpoints_unchanged": {
+      "round8": true,
+      "round17": true,
+      "round19": true
+    },
+    "execution_assets_unchanged": 7,
+    "scope": "Hash comparison against actual turn-start source bytes, not against clean HEAD; prior dirty work preserved",
+    "commit": false,
+    "push": false,
+    "goal_claim": false
+  },
+  "radio_reliability": {
+    "scope": "Secondary descriptive connectivity reliability from full H300 traces; does not alter the frozen primary acceptance gate",
+    "rows": [
+      {
+        "case": {
+          "seed": 1680021,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 62.6,
+        "mean_connectivity": 0.8808333333333326,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 234.3,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680021,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 40.5,
+        "mean_connectivity": 0.9439888888888883,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 256.40000000000003,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680022,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 133.5,
+        "mean_connectivity": 0.8810999999999928,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 163.4,
+        "safety_events": 5,
+        "safety_escapes": 5
+      },
+      {
+        "case": {
+          "seed": 1680022,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 53.5,
+        "mean_connectivity": 0.9519444444444456,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 243.4,
+        "safety_events": 3,
+        "safety_escapes": 3
+      },
+      {
+        "case": {
+          "seed": 1680023,
+          "uavs": 60,
+          "dynamic": false
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 3.5,
+        "mean_connectivity": 0.9961111111111112,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 291.1,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680023,
+          "uavs": 60,
+          "dynamic": false
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 3.5,
+        "mean_connectivity": 0.9961111111111112,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 291.1,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680024,
+          "uavs": 60,
+          "dynamic": true
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 8.9,
+        "mean_connectivity": 0.9854499999999999,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 286.8,
+        "safety_events": 1,
+        "safety_escapes": 1
+      },
+      {
+        "case": {
+          "seed": 1680024,
+          "uavs": 60,
+          "dynamic": true
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 20.1,
+        "mean_connectivity": 0.9734722222222223,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 271.0,
+        "safety_events": 2,
+        "safety_escapes": 2
+      },
+      {
+        "case": {
+          "seed": 1680025,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 90.4,
+        "mean_connectivity": 0.9154444444444465,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 206.5,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680025,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 55.6,
+        "mean_connectivity": 0.9461777777777781,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 241.3,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680026,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 45.0,
+        "mean_connectivity": 0.9489999999999994,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 225.60000000000002,
+        "safety_events": 1,
+        "safety_escapes": 1
+      },
+      {
+        "case": {
+          "seed": 1680027,
+          "uavs": 60,
+          "dynamic": false
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 0.0,
+        "mean_connectivity": 1.0,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 292.90000000000003,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680027,
+          "uavs": 60,
+          "dynamic": false
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 0.0,
+        "mean_connectivity": 1.0,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 292.90000000000003,
+        "safety_events": 0,
+        "safety_escapes": 0
+      },
+      {
+        "case": {
+          "seed": 1680028,
+          "uavs": 60,
+          "dynamic": true
+        },
+        "arm": "candidate",
+        "whole_window_below90_seconds": 0.0,
+        "mean_connectivity": 1.0,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 286.0,
+        "safety_events": 5,
+        "safety_escapes": 5
+      },
+      {
+        "case": {
+          "seed": 1680028,
+          "uavs": 60,
+          "dynamic": true
+        },
+        "arm": "rule",
+        "whole_window_below90_seconds": 0.0,
+        "mean_connectivity": 1.0,
+        "final_connectivity": 1.0,
+        "post_completion_below90_seconds": 0.0,
+        "post_completion_window_seconds": 286.0,
+        "safety_events": 5,
+        "safety_escapes": 5
+      }
+    ],
+    "primary_gate_unchanged": true,
+    "updated_utc": "2026-11-10T12:40:06.444105+00:00"
+  },
+  "limitations": [
+    "One fixed connected80m map;8fresh seeds,two per30/60static/dynamic stratum",
+    "No500m acceptance claim",
+    "Training and checkpoint selection used declared development cases; heldout was not used for retuning"
+  ],
+  "no_commit": true,
+  "no_push": true,
+  "no_ppt_or_formal_report": true,
+  "budget_closure": {
+    "status": "STOPPED_AT_BUDGET",
+    "acceptance": "INCONCLUSIVE",
+    "goal_15_percent_met": null,
+    "updated_utc": "2026-11-10T12:41:09.293423+00:00",
+    "completed_runs": 15,
+    "expected_runs": 16,
+    "missing": {
+      "case": 5,
+      "seed": 1680026,
+      "arm": "rule",
+      "reason": "Evaluator reached predeclared UTC deadline; not a measured physical failure",
+      "exit_code": 1
+    },
+    "descriptive_subgroups": {
+      "30": {
+        "completed_pairs": 3,
+        "expected_pairs": 4,
+        "seconds": {
+          "rule": 158.9,
+          "candidate": 295.8
+        },
+        "time_reduction_percent": -86.15481434864695,
+        "partial_subset": true
+      },
+      "60": {
+        "completed_pairs": 4,
+        "expected_pairs": 4,
+        "seconds": {
+          "rule": 59.0,
+          "candidate": 43.2
+        },
+        "time_reduction_percent": 26.779661016949152,
+        "partial_subset": false
+      }
+    },
+    "overall_score": null,
+    "heldout_seeds_seen": [
+      1680021,
+      1680022,
+      1680023,
+      1680024,
+      1680025,
+      1680026,
+      1680027,
+      1680028
+    ],
+    "no_retraining_or_selection_on_heldout": true,
+    "next_direction": "Reuse existing observed Relay anchor commitment and arrived-helper augmentation; capture delayed public state to test the all-helpers-arrived barrier before any further training.",
+    "limitations": [
+      "All tests used one connected 80m map; no 500m generalization evidence",
+      "Completed 30-UAV subset cannot replace complete four-pair result",
+      "60-UAV improvement is candidate versus rule, not incremental benefit of this fine-tune"
+    ]
+  }
+}

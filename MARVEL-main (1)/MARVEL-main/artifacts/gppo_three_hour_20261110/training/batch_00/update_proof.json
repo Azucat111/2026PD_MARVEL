@@ -1,0 +1,23 @@
+{
+  "status": "COMPLETE",
+  "batch": 0,
+  "eligible_for_validation": true,
+  "eligible_as_next_behavior": true,
+  "episodes": 8,
+  "records": 40,
+  "role_counts": {
+    "1": 30,
+    "2": 10
+  },
+  "optimizer_steps": 4,
+  "max_sampled_kl": 0.001011566841043532,
+  "mean_exact_kl": 0.0022644159686059594,
+  "max_state_exact_kl": 0.021328706294298172,
+  "max_behavior_logprob_error": 0.0,
+  "max_behavior_value_error": 0.0,
+  "training_state_argmax_changes": 1,
+  "post_completion_decisions": 0,
+  "candidate": "artifacts/gppo_three_hour_20261110/training/batch_00/update/checkpoint_batch_000.pth",
+  "candidate_sha256": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d",
+  "acceptance_claim": false
+}

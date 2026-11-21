@@ -1,0 +1,13 @@
+{
+  "candidate": "round8",
+  "checkpoint": "artifacts/extended_gppo_joint_batch_20261010_attempt8/checkpoint_batch_001.pth",
+  "sha256": "869e2ac49e54d24143c497197c27c39800b882fa1e4100b2f021815f73f30298",
+  "criterion": "Lowest mean actually completed joint mission time on common12 historical cases, allfullH300 safe",
+  "mean_joint_seconds": 46.09166666666667,
+  "paired_mission_time_reduction": 0.16336409015277553,
+  "search_specialist": "round17",
+  "production_deployed": false,
+  "training_permitted": false,
+  "reserved_final_acceptance": false,
+  "project_goal_complete": false
+}

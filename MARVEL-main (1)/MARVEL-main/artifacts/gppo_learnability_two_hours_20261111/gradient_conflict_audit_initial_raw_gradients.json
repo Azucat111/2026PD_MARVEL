@@ -1,0 +1,277 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T05:30:52.500323+00:00",
+  "scope": "CPU autograd of original initial clipped policy-only loss; no optimizer, no new candidate, no transfer/evaluation outcomes read",
+  "parent_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "accepted_candidate_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+  "parameter_scope": "All AHGNN encoder and actor parameters; critic excluded because policy-only coefficient0",
+  "parameter_count": 960899,
+  "records": 63,
+  "normalization": "Each group sum divided by original total63; float32 advantages exactly as original update",
+  "max_cpu_saved_logprob_error": 7.152557373046875e-06,
+  "group_gradients": {
+    "1880021": {
+      "records": 21,
+      "transition_weight": 0.3333333333333333,
+      "roles_1_search_2_relay": {
+        "1": 16,
+        "2": 5
+      },
+      "fixed_episode_advantages": [
+        0.1866666666666667,
+        -0.5599999999999997,
+        0.1866666666666667,
+        0.1866666666666667
+      ],
+      "initial_total63mean_loss_contribution": 0.008888856507837772,
+      "weighted_gradient_norm": 0.09558660470299601,
+      "blocks": {
+        "ahgnn": {
+          "gradient_norm": 0.0949237904578528,
+          "dot_with_actual_accepted_delta": 0.00013697898911161266
+        },
+        "actor": {
+          "gradient_norm": 0.011237126134399065,
+          "dot_with_actual_accepted_delta": -4.275453554647232e-06
+        }
+      },
+      "cosine_with_aggregate_gradient": -0.01697322956513435,
+      "loss_directional_derivative_along_aggregate_descent": 0.0038060134348140793,
+      "dot_with_actual_accepted_delta": 0.0001327035355569655,
+      "cosine_negative_gradient_with_actual_delta": -0.07488550521071122
+    },
+    "1280022": {
+      "records": 22,
+      "transition_weight": 0.3492063492063492,
+      "roles_1_search_2_relay": {
+        "1": 16,
+        "2": 6
+      },
+      "fixed_episode_advantages": [
+        -0.5599999999999999,
+        -0.05333333333333314,
+        0.6666666666666664,
+        -0.05333333333333314
+      ],
+      "initial_total63mean_loss_contribution": -0.0016930566634982824,
+      "weighted_gradient_norm": 1.931027288787175,
+      "blocks": {
+        "ahgnn": {
+          "gradient_norm": 1.9123556288540815,
+          "dot_with_actual_accepted_delta": -0.009049533570163547
+        },
+        "actor": {
+          "gradient_norm": 0.26788493580423256,
+          "dot_with_actual_accepted_delta": -0.0008911151932546698
+        }
+      },
+      "cosine_with_aggregate_gradient": 0.9227466461546832,
+      "loss_directional_derivative_along_aggregate_descent": -4.1800327351287185,
+      "dot_with_actual_accepted_delta": -0.00994064876341821,
+      "cosine_negative_gradient_with_actual_delta": 0.27767617842918485
+    },
+    "1880024": {
+      "records": 20,
+      "transition_weight": 0.31746031746031744,
+      "roles_1_search_2_relay": {
+        "1": 16,
+        "2": 4
+      },
+      "fixed_episode_advantages": [
+        -0.31111111111111117,
+        0.9333333333333333,
+        -0.31111111111111117,
+        -0.31111111111111117
+      ],
+      "initial_total63mean_loss_contribution": -2.932926967957883e-08,
+      "weighted_gradient_norm": 0.8943951652716504,
+      "blocks": {
+        "ahgnn": {
+          "gradient_norm": 0.8799070386814188,
+          "dot_with_actual_accepted_delta": -0.00040525661104556245
+        },
+        "actor": {
+          "gradient_norm": 0.1603318899663879,
+          "dot_with_actual_accepted_delta": -0.0003017578295215781
+        }
+      },
+      "cosine_with_aggregate_gradient": 0.632460578665314,
+      "loss_directional_derivative_along_aggregate_descent": -1.327002375647936,
+      "dot_with_actual_accepted_delta": -0.0007070144405671404,
+      "cosine_negative_gradient_with_actual_delta": 0.04263940610965495
+    }
+  },
+  "pairwise_gradient_comparisons": [
+    {
+      "seed_a": 1280022,
+      "seed_b": 1880021,
+      "dot": -0.04441806566602505,
+      "cosine": -0.24064353308103512,
+      "blocks": {
+        "ahgnn": {
+          "dot": -0.04419256877937082,
+          "cosine": -0.24344761042720994
+        },
+        "actor": {
+          "dot": -0.0002254968866542646,
+          "cosine": -0.07490951790894933
+        }
+      }
+    },
+    {
+      "seed_a": 1280022,
+      "seed_b": 1880024,
+      "dot": 0.4955844107540468,
+      "cosine": 0.2869457406221361,
+      "blocks": {
+        "ahgnn": {
+          "dot": 0.4831361941289989,
+          "cosine": 0.28712044841048584
+        },
+        "actor": {
+          "dot": 0.01244821662504789,
+          "cosine": 0.2898270611498324
+        }
+      }
+    },
+    {
+      "seed_a": 1880021,
+      "seed_b": 1880024,
+      "dot": 0.03147525323256439,
+      "cosine": 0.3681652161970311,
+      "blocks": {
+        "ahgnn": {
+          "dot": 0.03087022308369066,
+          "cosine": 0.36959654619764126
+        },
+        "actor": {
+          "dot": 0.0006050301488737299,
+          "cosine": 0.33581635892508016
+        }
+      }
+    }
+  ],
+  "aggregate_gradient_norm": 2.345896224759684,
+  "original_cuda_reported_preclip_norm": 2.3459014892578125,
+  "accepted_delta_norm": 0.018539059324303397,
+  "aggregate_gradient_dot_delta": -0.010514959668428392,
+  "aggregate_descent_cosine_actual_delta": 0.24177484898803006,
+  "fast_action_local_probes": [
+    {
+      "seed": 1280022,
+      "fast_episode_index": 2,
+      "record_index": 0,
+      "mapping": {
+        "flat_action": 114,
+        "task_index": 3,
+        "uav_index": 24,
+        "subtask_id": 100003,
+        "uav_id": 24
+      },
+      "initial_logprob_gradient_norm": 85.44433001426553,
+      "actual_logprob_change": 0.2593810558319092,
+      "first_order_logprob_change_along_actual_delta": 0.2820927482033476,
+      "per_seed_raw_gradient_descent_logprob_derivatives": {
+        "1880021": 1.5440848321263325,
+        "1280022": 111.67028118668651,
+        "1880024": 32.13026443575148
+      },
+      "aggregate_raw_gradient_descent_logprob_derivative": 145.34463045456408,
+      "interpretation": "Per-seed raw gradient descent probes are local derivatives, not isolated Adam updates or physical action counterfactuals."
+    },
+    {
+      "seed": 1880021,
+      "fast_episode_index": 100,
+      "record_index": 0,
+      "mapping": {
+        "flat_action": 21,
+        "task_index": 0,
+        "uav_index": 21,
+        "subtask_id": 100000,
+        "uav_id": 21
+      },
+      "initial_logprob_gradient_norm": 6.15697344878098,
+      "actual_logprob_change": -0.0047743916511535645,
+      "first_order_logprob_change_along_actual_delta": -0.004613077365075177,
+      "per_seed_raw_gradient_descent_logprob_derivatives": {
+        "1880021": 0.22217985890566658,
+        "1280022": -1.3501552590353505,
+        "1880024": 0.44767741518317133
+      },
+      "aggregate_raw_gradient_descent_logprob_derivative": -0.6802979849465163,
+      "interpretation": "Per-seed raw gradient descent probes are local derivatives, not isolated Adam updates or physical action counterfactuals."
+    },
+    {
+      "seed": 1880024,
+      "fast_episode_index": 5,
+      "record_index": 0,
+      "mapping": {
+        "flat_action": 112,
+        "task_index": 1,
+        "uav_index": 52,
+        "subtask_id": 100001,
+        "uav_id": 52
+      },
+      "initial_logprob_gradient_norm": 37.47033506029145,
+      "actual_logprob_change": -0.053859710693359375,
+      "first_order_logprob_change_along_actual_delta": -0.05303633152678777,
+      "per_seed_raw_gradient_descent_logprob_derivatives": {
+        "1880021": -0.25196286690895875,
+        "1280022": -0.8568223373268524,
+        "1880024": 20.773100505543745
+      },
+      "aggregate_raw_gradient_descent_logprob_derivative": 19.6643153013079,
+      "interpretation": "Per-seed raw gradient descent probes are local derivatives, not isolated Adam updates or physical action counterfactuals."
+    }
+  ],
+  "interpretation_rules": [
+    "Negative pairwise gradient dot/cosine is evidence of locally competing seed objectives on shared parameters",
+    "Negative group gradient dot actualdelta predicts local group loss improvement; positive predicts deterioration",
+    "Actual accepted update is clipped-gradient Adam; Euclidean aggregate descent andAdam direction need not match",
+    "A group-average loss improvement does not require every positivelyweighted trajectory action probability to increase",
+    "Action-specific local derivatives and finite logprobchanges do not establish physicalcausal effect on mission completion",
+    "These observations cannot establish uniquecause or explain historicalgeneralization regressions; Search/Relay samplecounts alone do not prove interference"
+  ],
+  "input_file_sha256": {
+    "artifacts/gppo_learnability_hour_20261110/worker_00/collection_proof.json": "7254b67221f87dda9c4f3512de1ce83b15d1e300dc4be10e3bac41e72cf00515",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/collection_proof.json": "f0326b727281f152f1d4cff4168fe606ac9a4af7ca1111cb6e569caadbfd7da9",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/progress.json": "920a82f16b473c2b274f707a7e8a936c8cbb8cd0723b65129772589ef465f7b8",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/episode_000/actor_inputs.json": "50b036f45c85a16791a271118347458369e25556a3d6c4679a8b389c2d0339bf",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/collection_proof.json": "6687d8e2ca8b1c8f9739be88bd74ca7e43d8a8c4d902c5588957f8585f549131",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_02/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/collection_proof.json": "d612d2df333e233b69b64d14d986fbcdc02513f826998be3255b48feb9ce5106",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/progress.json": "58a83ad3939c5c46e680452610eebf543d7d75015e2163fd8c7de82e7175a2b1",
+    "artifacts/gppo_learnability_hour_20261110/worker_03/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/collection_proof.json": "a2f6b17f2a549c5fbf65514d5617068ec4350311700acd80b9bb86f543c78214",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/progress.json": "462e1351d91b2b9985b042a9cf7ca6a6e2cc8f6e6e1b21f5be6fb5aaf02d82d2",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/episode_002/actor_inputs.json": "e0bb60021ee66f41e5f050b8276584e363eb7c27eb96d047e04aca57b01e3929",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/collection_proof.json": "ebb4c7c0bfff1b3a63cb067b29592cd48f3f28ae83ea237a7e5a071dfe0fc448",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/progress.json": "21b62eb6617d43b38e0a0b73362b5d4ed50d1b8c2288f58cd1e65a32ed65ab78",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_01/episode_002/actor_inputs.json": "6894ac769c129bdb8e993e336b271b998c1f397b50ac29004cfd554faeda0ab7",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/collection_proof.json": "a48c6066a509216f3364b83418b81a4cf46e73a268b10bab9badc7e018e9dc60",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/progress.json": "753f620cc5eccdfad50b3b8159336fe70aba57c66cae852ac9a0d7868cab1d56",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/episode_002/actor_inputs.json": "fa97ef507e24306a3f47fff65a0f6afc15967d5b27e4005326c6fce5790e85f0",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/collection_proof.json": "72be75453363a00f2155ef14738e30508f64cd6d4cb0fc3e3ca1b00dbd16a10f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/progress.json": "21b62eb6617d43b38e0a0b73362b5d4ed50d1b8c2288f58cd1e65a32ed65ab78",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_03/episode_002/actor_inputs.json": "6894ac769c129bdb8e993e336b271b998c1f397b50ac29004cfd554faeda0ab7",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/collection_proof.json": "b32763a15234a9cb7afe1a3160d483f041047d887ea9d1d4d2f6d504aef817ce",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_04/episode_003/actor_inputs.json": "e54222f44314812fce45698bdb6c545bcca707b7f6b47e3f9da1357e1eec6332",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/collection_proof.json": "f9556155aa1f975d8ea3a4ef2a2c76264969597487ca6f0caa29771059d0051e",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/progress.json": "96136717e96bd672c622a49dd1547ad1a4080a3e5bdd6e3ca49bd12f7e9dbfd4",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/episode_003/actor_inputs.json": "8babe8c42cbbd02e78d83f89217c905ab9b4371105349dd460276a3f2fcf5cd3",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/collection_proof.json": "1405a7b403bca5b2c6e21614ec92d7e355ac128b9213f463b8e90b1bd46b5de3",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_06/episode_003/actor_inputs.json": "7bbfc3c64612a8d4a7e6139c665a1ec5853bff2816649f4db8192c0f6f8196dc",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/collection_proof.json": "74802417b24c9244507ee4a272a9ec417a98bd9c3a57b84d9aa12e51f234df06",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/progress.json": "91d0ca29c9179306f410cf8e544392c61fbd1ec0a55a4cdac4eccfa9a337cc8f",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/episode_003/actor_inputs.json": "7bbfc3c64612a8d4a7e6139c665a1ec5853bff2816649f4db8192c0f6f8196dc"
+  },
+  "analysis_source_sha256": "09abee2f38c840b617c2e4801839f8f5375a674302b93f69ccbae5e3d093990f",
+  "new_simulations": 0,
+  "optimizer_steps": 0,
+  "parameter_mutations": 0
+}

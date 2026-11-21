@@ -1,0 +1,54 @@
+{
+  "scope": "Frozen four-new-seed cross-scenario donor-preservation validation; no training, model selection, threshold selection or original15percent acceptance claim.",
+  "cases": [
+    {
+      "seed": 1981201,
+      "uavs": 30,
+      "dynamic": false
+    },
+    {
+      "seed": 1981202,
+      "uavs": 30,
+      "dynamic": true
+    },
+    {
+      "seed": 1981203,
+      "uavs": 60,
+      "dynamic": false
+    },
+    {
+      "seed": 1981204,
+      "uavs": 60,
+      "dynamic": true
+    }
+  ],
+  "arms": [
+    "rule",
+    "unfiltered",
+    "donor"
+  ],
+  "variant_count": 1,
+  "donor_filter_original_path": "artifacts/gppo_learnability_two_hours_20261111/donor_probe/donor_filter.py",
+  "donor_filter_sha256": "941df1ec25f9edd0950046691530c42beabef6deb1e14aba6c81bff0f287f875",
+  "candidate": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+    "sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+    "edge_dim": 6
+  },
+  "training_permitted": false,
+  "source_changed": false,
+  "physical_range_m": 20,
+  "donor_rule": "Only pure Search public delayed graph positions; removal splits original donor component; missing positions skip; all masked fallback original. No endpoint gain or hidden map input.",
+  "same_input_checks": [
+    "initial",
+    "hidden_layout",
+    "normalized_config"
+  ],
+  "horizon_seconds": 300,
+  "physics_steps": 3000,
+  "whole_window_safety": true,
+  "source_guard_parent_count": 499,
+  "assets_guard_count": 7,
+  "freshness_metadata_search": "Exact1981201..1981204 search in prior plan/manifest/summary JSON returned no match before this protocol was written.",
+  "created_utc": "2026-11-11T07:10:48.584971+00:00"
+}

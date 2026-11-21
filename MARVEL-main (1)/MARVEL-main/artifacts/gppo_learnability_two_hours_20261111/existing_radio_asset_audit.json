@@ -1,0 +1,245 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T06:16:54.595652+00:00",
+  "answer": "Earlier9D attempt19 is a genuine trainedandvalidated publicSearchopportunity extension, notanexplicit radio-topology/articulation extension. Existingradio primitivesarealready implemented oncontroller side andshouldnotbedescribed asmissingfromsystem.",
+  "assets": [
+    {
+      "path": "integrations/gppo/opportunity_features.py",
+      "lines": "10-39,43-58",
+      "functions": [
+        "nominal_find_eta",
+        "opportunity_extra",
+        "opportunity_batch",
+        "public_search_context"
+      ],
+      "already_available_fields": [
+        "edge6 nominal_sensor_approach_seconds_div80 for Search tasks",
+        "edge7 mean_pending_search_removal_regret_seconds_div80: removing candidateUAV worsens remainingSearch nominalETA",
+        "edge8 context_available"
+      ],
+      "contains_radio_topology": false,
+      "interpretation": "Relay rows canreceive pendingSearch opportunitycost, butthisis costof removing ahelper fromSearch capacity, not connectivity/articulation orcomponent restorationcost."
+    },
+    {
+      "path": "integrations/gppo/mesh_relay.py",
+      "lines": "17-39",
+      "functions": [
+        "mesh_components",
+        "ObservedMeshRelayDemandBuilder.snapshot"
+      ],
+      "already_available_fields": [
+        "component membership, sortedcomponentsizes",
+        "largestcomponent connectivityratio",
+        "connected/isolated/activeUAV IDs",
+        "coarse mesh hop_counts0/-1"
+      ],
+      "actor_input_status": "Controllerderived state; noexplicit scalar in6D/9Dactor schema"
+    },
+    {
+      "path": "integrations/gppo/mesh_relay.py",
+      "lines": "41-102,104-177",
+      "functions": [
+        "_choose_anchor",
+        "build",
+        "_candidate_lcc_sizes",
+        "refresh_assignments",
+        "candidate_mask"
+      ],
+      "already_available_fields": [
+        "component boundarygap andendpoint identities",
+        "candidateanchor LCCafter relocatinghelper andplannedexistinghelpers",
+        "componentconnectionpreservation afterdonorremoval",
+        "Booleanlegal-mask requiringLCCgrowth andpreservation"
+      ],
+      "actor_input_status": "Anchors, taskslots andmask affect actor input; numeric topologyforecasts staycontroller-side",
+      "articulation_relation": "Donorremoval pluspreservation testaddresses somecut-vertex-like risks without anexplicit articulation-pointlabel or actorfeature. No namedcutvertex computationfound in inspectedfiles."
+    },
+    {
+      "path": "integrations/gppo/relay_release.py",
+      "lines": "21-25,44-105",
+      "functions": [
+        "FrozenRelayReleaseGate.observe"
+      ],
+      "already_available_fields": [
+        "stable_counter",
+        "last_counterfactual_connectivity",
+        "last_counterfactual_target_ratio",
+        "allhelpersremoved counterfactualsnapshot",
+        "targetrecovery membership"
+      ],
+      "actor_input_status": "Releasecontroller memory, notexplicitactor feature"
+    },
+    {
+      "path": "integrations/gppo/mesh_relay.py",
+      "lines": "179-198",
+      "functions": [
+        "ObservedMeshRelayReleaseGate.observe"
+      ],
+      "already_available_fields": [
+        "helperexcluded conservative full-fleetconnectedratio",
+        "remainingfleet connectivity threshold andcompletepublicfleet check"
+      ],
+      "actor_input_status": "Releasegate only"
+    },
+    {
+      "path": "integrations/gppo/relay_frontier.py",
+      "lines": "14-52,80-122",
+      "functions": [
+        "ObservedRelayFrontier.select",
+        "known_route"
+      ],
+      "already_available_fields": [
+        "forecast_lcc",
+        "potential_unknown_cells",
+        "known_path_m",
+        "observedFREE path andanchor",
+        "gap+.05pathlength-.01potential score"
+      ],
+      "actor_input_status": "Commonobserved exploration/executionprimitive, nottrained edgefeature",
+      "cost_limit": "Knownroute/geometricproxy; notexpectedfulljoint recoveryduration orfuturefleetstablecompletion"
+    }
+  ],
+  "attempt19_actual_execution": {
+    "complete_record": {
+      "episodes": 256,
+      "updates": 32,
+      "initial_unchanged": true,
+      "all_episodes_fresh": true,
+      "advantage_normalization": "role_centered_standardized_v1",
+      "production_source_unchanged": true,
+      "acceptance_claim": false
+    },
+    "progress_episode_count": 256,
+    "update_batch_count": 32,
+    "protocol": "extended-gppo-public-opportunity-v1",
+    "training_horizon": 150,
+    "reward_protocol": "joint_physical_v1",
+    "reward": "negative remaining true capped detection latency / target_count / horizon; optional weighted actual radio deficit below .9 over full horizon; collision penalty",
+    "temperature": 2.5,
+    "initialization": "6to9 zeroadditionalprojectioncolumns, initial policyparity verified",
+    "natural_pilot_proof": {
+      "passed": true,
+      "records": 5,
+      "max_actor_and_critic_error": 3.814697265625e-06,
+      "max_double_precision_error": 0.0,
+      "fp32_atol": 1e-05,
+      "fp32_rtol": 1e-06,
+      "all_argmax_equal": true,
+      "actual_public_feature_audit": 6.890172568781161e-16,
+      "pilot_optimizer_updates": 0,
+      "find": 4,
+      "collisions": {},
+      "joint_acceptance_computed": false,
+      "acceptance_claim": false
+    },
+    "first8_public_input_audit": {
+      "passed": true,
+      "episodes": 8,
+      "records": 39,
+      "max_public_input_error": 2.4492937051703357e-16,
+      "production_control_clock_verified": true,
+      "truth_inputs": false,
+      "acceptance_claim": false
+    },
+    "existing_h300_validation": [
+      {
+        "case": "extended_integrated_candidate_9170_30_dynamic_20261013_attempt19",
+        "arms": {
+          "rule": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 5.175000000000001
+          },
+          "gppo": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 7.000000000000001
+          }
+        }
+      },
+      {
+        "case": "extended_integrated_candidate_9170_30_static_20261013_attempt19",
+        "arms": {
+          "rule": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 5.175000000000001
+          },
+          "gppo": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 7.000000000000001
+          }
+        }
+      },
+      {
+        "case": "extended_integrated_candidate_9170_60_dynamic_20261013_attempt19",
+        "arms": {
+          "rule": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 3.375
+          },
+          "gppo": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 3.6750000000000003
+          }
+        }
+      },
+      {
+        "case": "extended_integrated_candidate_9170_60_static_20261013_attempt19",
+        "arms": {
+          "rule": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 3.475
+          },
+          "gppo": {
+            "mission_steps": 300,
+            "valid_for_comparison": true,
+            "collision_types": {},
+            "search_mean_capped_seconds": 3.475
+          }
+        }
+      }
+    ],
+    "limits": "These historical9170 tests establish that9D wasactually run, notthat extra3featuresimproved performance. No controlled6Dvs9D ablation claimed; olderrewardH150 andexecutor/source differfromcurrentH300jointmakespan experiment."
+  },
+  "source_snapshot_comparison": {
+    "integrations/gppo/opportunity_features.py": true,
+    "integrations/gppo/mesh_relay.py": true,
+    "integrations/gppo/relay_release.py": true,
+    "integrations/gppo/scheduler.py": false
+  },
+  "not_found_in_bounded_scope": [
+    "Explicitper-UAV articulationlabel input",
+    "Continuousactor feature forLCCgain/donorcomponentloss",
+    "Calibratedexpectedtime tocomponentrestoration or3s stablefulljoint completion"
+  ],
+  "search_scope": "Read opportunity_features,mesh_relay,relay_release,relay_frontier plus boundedgrep of integrations/gppo andopportunityscripts/design. This isnota repositorywide mathematicalnonexistenceproof.",
+  "reuse_boundary": "ExistingrelativeXY andsharedmask already conveyindirectradio information. Absenceofexplicitradiofeature doesnotprove nonidentifiability orlearningimpossibility. No newplanner, featureimplementation orarchitecture proposed inthisaudit.",
+  "new_simulations": 0,
+  "optimizer_steps": 0,
+  "new_fresh_remaining_outcomes_read": false,
+  "input_file_sha256": {
+    "integrations/gppo/opportunity_features.py": "ec6f729d2659cd30d911d7127724f415ae80083a3b300c901dee34e2867532cd",
+    "integrations/gppo/mesh_relay.py": "56b3b14714332eb9d8b49420b6a79613df6708e4464ad0b249c6b76acbcf4824",
+    "integrations/gppo/relay_release.py": "2c6e3c47520e32dac1240d227e85161aaf0b9a696b1ecc5fe532d335a8bc80d1",
+    "integrations/gppo/relay_frontier.py": "ec1400393449c2b7548bc95ded587b86feabc11a60d5a61249b3ceb9f478265c",
+    "artifacts/extended_gppo_joint_batch_20261013_attempt19/manifest.json": "90aefa3ba594f0227a4802549d6fbec056d6bd334cf9af81979bdb39aeff05d4",
+    "artifacts/extended_gppo_joint_batch_20261013_attempt19/complete.json": "29eac819008b7c2dcf06e952d409f5e4320b0ef4eaabe050a431be90ff8f4daa",
+    "artifacts/extended_gppo_joint_batch_20261013_attempt19/updates.json": "a2ab12095bca673d40eaa9cdecd8b2980d108596bddcacf9dedd369f6a9ad082",
+    "artifacts/extended_gppo_joint_batch_20261013_attempt19/progress.json": "7bad81033ef2ff185bb753ca164c1ca89be9348711edb4040082741eb0aba755",
+    "artifacts/extended_gppo_joint_batch_20261013_attempt19/public_input_audit_first8.json": "096d1a7a59adffef1d9f2030441a0c87cb4c397b9c4ae97e8e9e0307aeda7951",
+    "artifacts/extended_public_opportunity_design_20261013_attempt1/design.json": "bbe5a7f64cc0be2573c6008b40aa20899deabc62c2d6b030c68d0cdb451d9503",
+    "artifacts/extended_public_opportunity_design_20261013_attempt1/actual_natural_pilot_proof.json": "55c24595c6b8a7850cfb47a78c375751c0d1c0d0dc9e5c311dd1d1b61dea1187"
+  }
+}

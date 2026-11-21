@@ -1,0 +1,1895 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T06:25:25.009049+00:00",
+  "models": {
+    "current": {
+      "path": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+      "sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae"
+    },
+    "previous_selected": {
+      "path": "artifacts/gppo_three_hour_20261110/training/batch_00/update/checkpoint_batch_000.pth",
+      "sha256": "92415b8ff6f1a645045612b53f2716c130ccb6c0905c2874d8aa7ac4f6e1642d"
+    },
+    "parent17_behavior": {
+      "path": "artifacts/gppo_three_hour_20261110/training/batch_00/behavior.pth",
+      "sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a"
+    }
+  },
+  "scope": "CPU shadow replay of three fixed models on CURRENT candidate trajectory states only. No previous-model rollout or model selection.",
+  "all_current_recorded_actions_replayed_exactly": true,
+  "total_current_trajectory_states": 34,
+  "stage_totals": {
+    "evaluation": {
+      "records": 16,
+      "current_vs_previous_selected": 0,
+      "current_vs_parent17_behavior": 1,
+      "previous_selected_vs_parent17_behavior": 1
+    },
+    "transfer": {
+      "records": 18,
+      "current_vs_previous_selected": 1,
+      "current_vs_parent17_behavior": 0,
+      "previous_selected_vs_parent17_behavior": 1
+    }
+  },
+  "cases": [
+    {
+      "stage": "evaluation",
+      "case_index": 0,
+      "case": {
+        "seed": 1880021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "records": 5,
+      "role_counts": {
+        "1": 4,
+        "2": 1
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 0
+      },
+      "all_current_vs_previous_choices_identical": true,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 21,
+            "task_index": 0,
+            "uav_index": 21,
+            "subtask_id": 100000,
+            "uav_id": 21
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100000,
+              "uav_id": 21,
+              "greedy_probability": 0.40640464425086975,
+              "recorded_action_probability": 0.40640464425086975
+            },
+            "previous_selected": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100000,
+              "uav_id": 21,
+              "greedy_probability": 0.4088132083415985,
+              "recorded_action_probability": 0.4088132083415985
+            },
+            "parent17_behavior": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100000,
+              "uav_id": 21,
+              "greedy_probability": 0.4083496332168579,
+              "recorded_action_probability": 0.4083496332168579
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 112,
+            "task_index": 3,
+            "uav_index": 22,
+            "subtask_id": 100003,
+            "uav_id": 22
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 112,
+              "task_index": 3,
+              "uav_index": 22,
+              "subtask_id": 100003,
+              "uav_id": 22,
+              "greedy_probability": 0.6168749928474426,
+              "recorded_action_probability": 0.6168749928474426
+            },
+            "previous_selected": {
+              "flat_action": 112,
+              "task_index": 3,
+              "uav_index": 22,
+              "subtask_id": 100003,
+              "uav_id": 22,
+              "greedy_probability": 0.6172993183135986,
+              "recorded_action_probability": 0.6172993183135986
+            },
+            "parent17_behavior": {
+              "flat_action": 112,
+              "task_index": 3,
+              "uav_index": 22,
+              "subtask_id": 100003,
+              "uav_id": 22,
+              "greedy_probability": 0.616865336894989,
+              "recorded_action_probability": 0.616865336894989
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 16,
+            "task_index": 0,
+            "uav_index": 16,
+            "subtask_id": 200022,
+            "uav_id": 16
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 16,
+              "task_index": 0,
+              "uav_index": 16,
+              "subtask_id": 200022,
+              "uav_id": 16,
+              "greedy_probability": 0.9999843835830688,
+              "recorded_action_probability": 0.9999843835830688
+            },
+            "previous_selected": {
+              "flat_action": 16,
+              "task_index": 0,
+              "uav_index": 16,
+              "subtask_id": 200022,
+              "uav_id": 16,
+              "greedy_probability": 0.9999591112136841,
+              "recorded_action_probability": 0.9999591112136841
+            },
+            "parent17_behavior": {
+              "flat_action": 16,
+              "task_index": 0,
+              "uav_index": 16,
+              "subtask_id": 200022,
+              "uav_id": 16,
+              "greedy_probability": 0.9999861717224121,
+              "recorded_action_probability": 0.9999861717224121
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 5.0,
+          "step": 50,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 25,
+            "task_index": 0,
+            "uav_index": 25,
+            "subtask_id": 100001,
+            "uav_id": 25
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 25,
+              "task_index": 0,
+              "uav_index": 25,
+              "subtask_id": 100001,
+              "uav_id": 25,
+              "greedy_probability": 0.9822425842285156,
+              "recorded_action_probability": 0.9822425842285156
+            },
+            "previous_selected": {
+              "flat_action": 25,
+              "task_index": 0,
+              "uav_index": 25,
+              "subtask_id": 100001,
+              "uav_id": 25,
+              "greedy_probability": 0.9811983108520508,
+              "recorded_action_probability": 0.9811983108520508
+            },
+            "parent17_behavior": {
+              "flat_action": 25,
+              "task_index": 0,
+              "uav_index": 25,
+              "subtask_id": 100001,
+              "uav_id": 25,
+              "greedy_probability": 0.9825448989868164,
+              "recorded_action_probability": 0.9825448989868164
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 4,
+          "time": 6.0,
+          "step": 60,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 21,
+            "task_index": 0,
+            "uav_index": 21,
+            "subtask_id": 100002,
+            "uav_id": 21
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100002,
+              "uav_id": 21,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            },
+            "previous_selected": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100002,
+              "uav_id": 21,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            },
+            "parent17_behavior": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 100002,
+              "uav_id": 21,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "evaluation",
+      "case_index": 1,
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "records": 6,
+      "role_counts": {
+        "1": 4,
+        "2": 2
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 1,
+        "previous_selected_vs_parent17_behavior": 1
+      },
+      "all_current_vs_previous_choices_identical": true,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 47,
+            "task_index": 1,
+            "uav_index": 17,
+            "subtask_id": 100001,
+            "uav_id": 17
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 47,
+              "task_index": 1,
+              "uav_index": 17,
+              "subtask_id": 100001,
+              "uav_id": 17,
+              "greedy_probability": 0.5963708162307739,
+              "recorded_action_probability": 0.5963708162307739
+            },
+            "previous_selected": {
+              "flat_action": 47,
+              "task_index": 1,
+              "uav_index": 17,
+              "subtask_id": 100001,
+              "uav_id": 17,
+              "greedy_probability": 0.6510544419288635,
+              "recorded_action_probability": 0.6510544419288635
+            },
+            "parent17_behavior": {
+              "flat_action": 47,
+              "task_index": 1,
+              "uav_index": 17,
+              "subtask_id": 100001,
+              "uav_id": 17,
+              "greedy_probability": 0.5890381336212158,
+              "recorded_action_probability": 0.5890381336212158
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 114,
+            "task_index": 3,
+            "uav_index": 24,
+            "subtask_id": 100003,
+            "uav_id": 24
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 114,
+              "task_index": 3,
+              "uav_index": 24,
+              "subtask_id": 100003,
+              "uav_id": 24,
+              "greedy_probability": 0.5591061115264893,
+              "recorded_action_probability": 0.5591061115264893
+            },
+            "previous_selected": {
+              "flat_action": 114,
+              "task_index": 3,
+              "uav_index": 24,
+              "subtask_id": 100003,
+              "uav_id": 24,
+              "greedy_probability": 0.6729826331138611,
+              "recorded_action_probability": 0.6729826331138611
+            },
+            "parent17_behavior": {
+              "flat_action": 74,
+              "task_index": 2,
+              "uav_index": 14,
+              "subtask_id": 100002,
+              "uav_id": 14,
+              "greedy_probability": 0.5570405125617981,
+              "recorded_action_probability": 0.4173441529273987
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": true,
+            "previous_selected_vs_parent17_behavior": true
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 13,
+            "task_index": 0,
+            "uav_index": 13,
+            "subtask_id": 200003,
+            "uav_id": 13
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 13,
+              "task_index": 0,
+              "uav_index": 13,
+              "subtask_id": 200003,
+              "uav_id": 13,
+              "greedy_probability": 0.9190507531166077,
+              "recorded_action_probability": 0.9190507531166077
+            },
+            "previous_selected": {
+              "flat_action": 13,
+              "task_index": 0,
+              "uav_index": 13,
+              "subtask_id": 200003,
+              "uav_id": 13,
+              "greedy_probability": 0.8959135413169861,
+              "recorded_action_probability": 0.8959135413169861
+            },
+            "parent17_behavior": {
+              "flat_action": 13,
+              "task_index": 0,
+              "uav_index": 13,
+              "subtask_id": 200003,
+              "uav_id": 13,
+              "greedy_probability": 0.9206211566925049,
+              "recorded_action_probability": 0.9206211566925049
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 7.0,
+          "step": 70,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 44,
+            "task_index": 1,
+            "uav_index": 14,
+            "subtask_id": 100002,
+            "uav_id": 14
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 44,
+              "task_index": 1,
+              "uav_index": 14,
+              "subtask_id": 100002,
+              "uav_id": 14,
+              "greedy_probability": 0.9909787178039551,
+              "recorded_action_probability": 0.9909787178039551
+            },
+            "previous_selected": {
+              "flat_action": 44,
+              "task_index": 1,
+              "uav_index": 14,
+              "subtask_id": 100002,
+              "uav_id": 14,
+              "greedy_probability": 0.9955552220344543,
+              "recorded_action_probability": 0.9955552220344543
+            },
+            "parent17_behavior": {
+              "flat_action": 44,
+              "task_index": 1,
+              "uav_index": 14,
+              "subtask_id": 100002,
+              "uav_id": 14,
+              "greedy_probability": 0.989167332649231,
+              "recorded_action_probability": 0.989167332649231
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 4,
+          "time": 8.0,
+          "step": 80,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 7,
+            "task_index": 0,
+            "uav_index": 7,
+            "subtask_id": 100000,
+            "uav_id": 7
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 7,
+              "task_index": 0,
+              "uav_index": 7,
+              "subtask_id": 100000,
+              "uav_id": 7,
+              "greedy_probability": 0.9981324076652527,
+              "recorded_action_probability": 0.9981324076652527
+            },
+            "previous_selected": {
+              "flat_action": 7,
+              "task_index": 0,
+              "uav_index": 7,
+              "subtask_id": 100000,
+              "uav_id": 7,
+              "greedy_probability": 0.9991531372070312,
+              "recorded_action_probability": 0.9991531372070312
+            },
+            "parent17_behavior": {
+              "flat_action": 7,
+              "task_index": 0,
+              "uav_index": 7,
+              "subtask_id": 100000,
+              "uav_id": 7,
+              "greedy_probability": 0.9979339838027954,
+              "recorded_action_probability": 0.9979339838027954
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 5,
+          "time": 19.0,
+          "step": 190,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 5,
+            "task_index": 0,
+            "uav_index": 5,
+            "subtask_id": 200004,
+            "uav_id": 5
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200004,
+              "uav_id": 5,
+              "greedy_probability": 0.6032675504684448,
+              "recorded_action_probability": 0.6032675504684448
+            },
+            "previous_selected": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200004,
+              "uav_id": 5,
+              "greedy_probability": 0.6088764667510986,
+              "recorded_action_probability": 0.6088764667510986
+            },
+            "parent17_behavior": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200004,
+              "uav_id": 5,
+              "greedy_probability": 0.6020856499671936,
+              "recorded_action_probability": 0.6020856499671936
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "evaluation",
+      "case_index": 2,
+      "case": {
+        "seed": 1880024,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "records": 5,
+      "role_counts": {
+        "1": 4,
+        "2": 1
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 0
+      },
+      "all_current_vs_previous_choices_identical": true,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 116,
+            "task_index": 1,
+            "uav_index": 56,
+            "subtask_id": 100001,
+            "uav_id": 56
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 116,
+              "task_index": 1,
+              "uav_index": 56,
+              "subtask_id": 100001,
+              "uav_id": 56,
+              "greedy_probability": 0.8803133368492126,
+              "recorded_action_probability": 0.8803133368492126
+            },
+            "previous_selected": {
+              "flat_action": 116,
+              "task_index": 1,
+              "uav_index": 56,
+              "subtask_id": 100001,
+              "uav_id": 56,
+              "greedy_probability": 0.9075114130973816,
+              "recorded_action_probability": 0.9075114130973816
+            },
+            "parent17_behavior": {
+              "flat_action": 116,
+              "task_index": 1,
+              "uav_index": 56,
+              "subtask_id": 100001,
+              "uav_id": 56,
+              "greedy_probability": 0.8720494508743286,
+              "recorded_action_probability": 0.8720494508743286
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 238,
+            "task_index": 3,
+            "uav_index": 58,
+            "subtask_id": 100003,
+            "uav_id": 58
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 238,
+              "task_index": 3,
+              "uav_index": 58,
+              "subtask_id": 100003,
+              "uav_id": 58,
+              "greedy_probability": 0.44364434480667114,
+              "recorded_action_probability": 0.44364434480667114
+            },
+            "previous_selected": {
+              "flat_action": 238,
+              "task_index": 3,
+              "uav_index": 58,
+              "subtask_id": 100003,
+              "uav_id": 58,
+              "greedy_probability": 0.4616120457649231,
+              "recorded_action_probability": 0.4616120457649231
+            },
+            "parent17_behavior": {
+              "flat_action": 238,
+              "task_index": 3,
+              "uav_index": 58,
+              "subtask_id": 100003,
+              "uav_id": 58,
+              "greedy_probability": 0.4377635419368744,
+              "recorded_action_probability": 0.4377635419368744
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 57,
+            "task_index": 0,
+            "uav_index": 57,
+            "subtask_id": 200012,
+            "uav_id": 57
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 57,
+              "task_index": 0,
+              "uav_index": 57,
+              "subtask_id": 200012,
+              "uav_id": 57,
+              "greedy_probability": 0.9662913680076599,
+              "recorded_action_probability": 0.9662913680076599
+            },
+            "previous_selected": {
+              "flat_action": 57,
+              "task_index": 0,
+              "uav_index": 57,
+              "subtask_id": 200012,
+              "uav_id": 57,
+              "greedy_probability": 0.9820631742477417,
+              "recorded_action_probability": 0.9820631742477417
+            },
+            "parent17_behavior": {
+              "flat_action": 57,
+              "task_index": 0,
+              "uav_index": 57,
+              "subtask_id": 200012,
+              "uav_id": 57,
+              "greedy_probability": 0.9642430543899536,
+              "recorded_action_probability": 0.9642430543899536
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "step": 20,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 107,
+            "task_index": 1,
+            "uav_index": 47,
+            "subtask_id": 100002,
+            "uav_id": 47
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 107,
+              "task_index": 1,
+              "uav_index": 47,
+              "subtask_id": 100002,
+              "uav_id": 47,
+              "greedy_probability": 0.9974046349525452,
+              "recorded_action_probability": 0.9974046349525452
+            },
+            "previous_selected": {
+              "flat_action": 107,
+              "task_index": 1,
+              "uav_index": 47,
+              "subtask_id": 100002,
+              "uav_id": 47,
+              "greedy_probability": 0.9982534050941467,
+              "recorded_action_probability": 0.9982534050941467
+            },
+            "parent17_behavior": {
+              "flat_action": 107,
+              "task_index": 1,
+              "uav_index": 47,
+              "subtask_id": 100002,
+              "uav_id": 47,
+              "greedy_probability": 0.9971888661384583,
+              "recorded_action_probability": 0.9971888661384583
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 4,
+          "time": 3.0,
+          "step": 30,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 59,
+            "task_index": 0,
+            "uav_index": 59,
+            "subtask_id": 100000,
+            "uav_id": 59
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 59,
+              "task_index": 0,
+              "uav_index": 59,
+              "subtask_id": 100000,
+              "uav_id": 59,
+              "greedy_probability": 0.9548627734184265,
+              "recorded_action_probability": 0.9548627734184265
+            },
+            "previous_selected": {
+              "flat_action": 59,
+              "task_index": 0,
+              "uav_index": 59,
+              "subtask_id": 100000,
+              "uav_id": 59,
+              "greedy_probability": 0.9681028127670288,
+              "recorded_action_probability": 0.9681028127670288
+            },
+            "parent17_behavior": {
+              "flat_action": 59,
+              "task_index": 0,
+              "uav_index": 59,
+              "subtask_id": 100000,
+              "uav_id": 59,
+              "greedy_probability": 0.9528965950012207,
+              "recorded_action_probability": 0.9528965950012207
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "transfer",
+      "case_index": 0,
+      "case": {
+        "seed": 1981101,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "records": 7,
+      "role_counts": {
+        "1": 5,
+        "2": 2
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 0
+      },
+      "all_current_vs_previous_choices_identical": true,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 69,
+            "task_index": 2,
+            "uav_index": 9,
+            "subtask_id": 100002,
+            "uav_id": 9
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 69,
+              "task_index": 2,
+              "uav_index": 9,
+              "subtask_id": 100002,
+              "uav_id": 9,
+              "greedy_probability": 0.6951198577880859,
+              "recorded_action_probability": 0.6951198577880859
+            },
+            "previous_selected": {
+              "flat_action": 69,
+              "task_index": 2,
+              "uav_index": 9,
+              "subtask_id": 100002,
+              "uav_id": 9,
+              "greedy_probability": 0.8264117240905762,
+              "recorded_action_probability": 0.8264117240905762
+            },
+            "parent17_behavior": {
+              "flat_action": 69,
+              "task_index": 2,
+              "uav_index": 9,
+              "subtask_id": 100002,
+              "uav_id": 9,
+              "greedy_probability": 0.6129165291786194,
+              "recorded_action_probability": 0.6129165291786194
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 91,
+            "task_index": 3,
+            "uav_index": 1,
+            "subtask_id": 100003,
+            "uav_id": 1
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 91,
+              "task_index": 3,
+              "uav_index": 1,
+              "subtask_id": 100003,
+              "uav_id": 1,
+              "greedy_probability": 0.99273282289505,
+              "recorded_action_probability": 0.99273282289505
+            },
+            "previous_selected": {
+              "flat_action": 91,
+              "task_index": 3,
+              "uav_index": 1,
+              "subtask_id": 100003,
+              "uav_id": 1,
+              "greedy_probability": 0.9900982975959778,
+              "recorded_action_probability": 0.9900982975959778
+            },
+            "parent17_behavior": {
+              "flat_action": 91,
+              "task_index": 3,
+              "uav_index": 1,
+              "subtask_id": 100003,
+              "uav_id": 1,
+              "greedy_probability": 0.9928661584854126,
+              "recorded_action_probability": 0.9928661584854126
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "step": 20,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 32,
+            "task_index": 1,
+            "uav_index": 2,
+            "subtask_id": 100001,
+            "uav_id": 2
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 32,
+              "task_index": 1,
+              "uav_index": 2,
+              "subtask_id": 100001,
+              "uav_id": 2,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            },
+            "previous_selected": {
+              "flat_action": 32,
+              "task_index": 1,
+              "uav_index": 2,
+              "subtask_id": 100001,
+              "uav_id": 2,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            },
+            "parent17_behavior": {
+              "flat_action": 32,
+              "task_index": 1,
+              "uav_index": 2,
+              "subtask_id": 100001,
+              "uav_id": 2,
+              "greedy_probability": 1.0,
+              "recorded_action_probability": 1.0
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "step": 20,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 73,
+            "task_index": 2,
+            "uav_index": 13,
+            "subtask_id": 100003,
+            "uav_id": 13
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 73,
+              "task_index": 2,
+              "uav_index": 13,
+              "subtask_id": 100003,
+              "uav_id": 13,
+              "greedy_probability": 0.9959073066711426,
+              "recorded_action_probability": 0.9959073066711426
+            },
+            "previous_selected": {
+              "flat_action": 73,
+              "task_index": 2,
+              "uav_index": 13,
+              "subtask_id": 100003,
+              "uav_id": 13,
+              "greedy_probability": 0.9926885962486267,
+              "recorded_action_probability": 0.9926885962486267
+            },
+            "parent17_behavior": {
+              "flat_action": 73,
+              "task_index": 2,
+              "uav_index": 13,
+              "subtask_id": 100003,
+              "uav_id": 13,
+              "greedy_probability": 0.9967566132545471,
+              "recorded_action_probability": 0.9967566132545471
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 4,
+          "time": 4.0,
+          "step": 40,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 19,
+            "task_index": 0,
+            "uav_index": 19,
+            "subtask_id": 100000,
+            "uav_id": 19
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 19,
+              "task_index": 0,
+              "uav_index": 19,
+              "subtask_id": 100000,
+              "uav_id": 19,
+              "greedy_probability": 0.9903562664985657,
+              "recorded_action_probability": 0.9903562664985657
+            },
+            "previous_selected": {
+              "flat_action": 19,
+              "task_index": 0,
+              "uav_index": 19,
+              "subtask_id": 100000,
+              "uav_id": 19,
+              "greedy_probability": 0.9864839911460876,
+              "recorded_action_probability": 0.9864839911460876
+            },
+            "parent17_behavior": {
+              "flat_action": 19,
+              "task_index": 0,
+              "uav_index": 19,
+              "subtask_id": 100000,
+              "uav_id": 19,
+              "greedy_probability": 0.9909795522689819,
+              "recorded_action_probability": 0.9909795522689819
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 5,
+          "time": 17.0,
+          "step": 170,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 5,
+            "task_index": 0,
+            "uav_index": 5,
+            "subtask_id": 200019,
+            "uav_id": 5
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200019,
+              "uav_id": 5,
+              "greedy_probability": 0.8757311701774597,
+              "recorded_action_probability": 0.8757311701774597
+            },
+            "previous_selected": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200019,
+              "uav_id": 5,
+              "greedy_probability": 0.8534460067749023,
+              "recorded_action_probability": 0.8534460067749023
+            },
+            "parent17_behavior": {
+              "flat_action": 5,
+              "task_index": 0,
+              "uav_index": 5,
+              "subtask_id": 200019,
+              "uav_id": 5,
+              "greedy_probability": 0.8766829371452332,
+              "recorded_action_probability": 0.8766829371452332
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 6,
+          "time": 37.0,
+          "step": 370,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 9,
+            "task_index": 0,
+            "uav_index": 9,
+            "subtask_id": 200025,
+            "uav_id": 9
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 9,
+              "task_index": 0,
+              "uav_index": 9,
+              "subtask_id": 200025,
+              "uav_id": 9,
+              "greedy_probability": 0.9893893599510193,
+              "recorded_action_probability": 0.9893893599510193
+            },
+            "previous_selected": {
+              "flat_action": 9,
+              "task_index": 0,
+              "uav_index": 9,
+              "subtask_id": 200025,
+              "uav_id": 9,
+              "greedy_probability": 0.9877339601516724,
+              "recorded_action_probability": 0.9877339601516724
+            },
+            "parent17_behavior": {
+              "flat_action": 9,
+              "task_index": 0,
+              "uav_index": 9,
+              "subtask_id": 200025,
+              "uav_id": 9,
+              "greedy_probability": 0.9895641803741455,
+              "recorded_action_probability": 0.9895641803741455
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "transfer",
+      "case_index": 1,
+      "case": {
+        "seed": 1981102,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "records": 7,
+      "role_counts": {
+        "1": 4,
+        "2": 3
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 0
+      },
+      "all_current_vs_previous_choices_identical": true,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 115,
+            "task_index": 3,
+            "uav_index": 25,
+            "subtask_id": 100003,
+            "uav_id": 25
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 115,
+              "task_index": 3,
+              "uav_index": 25,
+              "subtask_id": 100003,
+              "uav_id": 25,
+              "greedy_probability": 0.6986212134361267,
+              "recorded_action_probability": 0.6986212134361267
+            },
+            "previous_selected": {
+              "flat_action": 115,
+              "task_index": 3,
+              "uav_index": 25,
+              "subtask_id": 100003,
+              "uav_id": 25,
+              "greedy_probability": 0.7064567804336548,
+              "recorded_action_probability": 0.7064567804336548
+            },
+            "parent17_behavior": {
+              "flat_action": 115,
+              "task_index": 3,
+              "uav_index": 25,
+              "subtask_id": 100003,
+              "uav_id": 25,
+              "greedy_probability": 0.6954374313354492,
+              "recorded_action_probability": 0.6954374313354492
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 24,
+            "task_index": 0,
+            "uav_index": 24,
+            "subtask_id": 100000,
+            "uav_id": 24
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 24,
+              "task_index": 0,
+              "uav_index": 24,
+              "subtask_id": 100000,
+              "uav_id": 24,
+              "greedy_probability": 0.5161905884742737,
+              "recorded_action_probability": 0.5161905884742737
+            },
+            "previous_selected": {
+              "flat_action": 24,
+              "task_index": 0,
+              "uav_index": 24,
+              "subtask_id": 100000,
+              "uav_id": 24,
+              "greedy_probability": 0.47889187932014465,
+              "recorded_action_probability": 0.47889187932014465
+            },
+            "parent17_behavior": {
+              "flat_action": 24,
+              "task_index": 0,
+              "uav_index": 24,
+              "subtask_id": 100000,
+              "uav_id": 24,
+              "greedy_probability": 0.5184100866317749,
+              "recorded_action_probability": 0.5184100866317749
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "step": 20,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 10,
+            "task_index": 0,
+            "uav_index": 10,
+            "subtask_id": 200011,
+            "uav_id": 10
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 10,
+              "task_index": 0,
+              "uav_index": 10,
+              "subtask_id": 200011,
+              "uav_id": 10,
+              "greedy_probability": 0.9999140501022339,
+              "recorded_action_probability": 0.9999140501022339
+            },
+            "previous_selected": {
+              "flat_action": 10,
+              "task_index": 0,
+              "uav_index": 10,
+              "subtask_id": 200011,
+              "uav_id": 10,
+              "greedy_probability": 0.9997954964637756,
+              "recorded_action_probability": 0.9997954964637756
+            },
+            "parent17_behavior": {
+              "flat_action": 10,
+              "task_index": 0,
+              "uav_index": 10,
+              "subtask_id": 200011,
+              "uav_id": 10,
+              "greedy_probability": 0.999919056892395,
+              "recorded_action_probability": 0.999919056892395
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 4.0,
+          "step": 40,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 37,
+            "task_index": 1,
+            "uav_index": 7,
+            "subtask_id": 100002,
+            "uav_id": 7
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 100002,
+              "uav_id": 7,
+              "greedy_probability": 0.8259503841400146,
+              "recorded_action_probability": 0.8259503841400146
+            },
+            "previous_selected": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 100002,
+              "uav_id": 7,
+              "greedy_probability": 0.7293182015419006,
+              "recorded_action_probability": 0.7293182015419006
+            },
+            "parent17_behavior": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 100002,
+              "uav_id": 7,
+              "greedy_probability": 0.8742901682853699,
+              "recorded_action_probability": 0.8742901682853699
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 4,
+          "time": 7.0,
+          "step": 70,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 14,
+            "task_index": 0,
+            "uav_index": 14,
+            "subtask_id": 100001,
+            "uav_id": 14
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 14,
+              "task_index": 0,
+              "uav_index": 14,
+              "subtask_id": 100001,
+              "uav_id": 14,
+              "greedy_probability": 0.85955810546875,
+              "recorded_action_probability": 0.85955810546875
+            },
+            "previous_selected": {
+              "flat_action": 14,
+              "task_index": 0,
+              "uav_index": 14,
+              "subtask_id": 100001,
+              "uav_id": 14,
+              "greedy_probability": 0.8751994371414185,
+              "recorded_action_probability": 0.8751994371414185
+            },
+            "parent17_behavior": {
+              "flat_action": 14,
+              "task_index": 0,
+              "uav_index": 14,
+              "subtask_id": 100001,
+              "uav_id": 14,
+              "greedy_probability": 0.8581963181495667,
+              "recorded_action_probability": 0.8581963181495667
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 5,
+          "time": 19.0,
+          "step": 190,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 37,
+            "task_index": 1,
+            "uav_index": 7,
+            "subtask_id": 200025,
+            "uav_id": 7
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 200025,
+              "uav_id": 7,
+              "greedy_probability": 0.9850281476974487,
+              "recorded_action_probability": 0.9850281476974487
+            },
+            "previous_selected": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 200025,
+              "uav_id": 7,
+              "greedy_probability": 0.9853420257568359,
+              "recorded_action_probability": 0.9853420257568359
+            },
+            "parent17_behavior": {
+              "flat_action": 37,
+              "task_index": 1,
+              "uav_index": 7,
+              "subtask_id": 200025,
+              "uav_id": 7,
+              "greedy_probability": 0.985867440700531,
+              "recorded_action_probability": 0.985867440700531
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 6,
+          "time": 19.0,
+          "step": 190,
+          "role_1_search_2_relay": 2,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 21,
+            "task_index": 0,
+            "uav_index": 21,
+            "subtask_id": 200002,
+            "uav_id": 21
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 200002,
+              "uav_id": 21,
+              "greedy_probability": 0.9993257522583008,
+              "recorded_action_probability": 0.9993257522583008
+            },
+            "previous_selected": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 200002,
+              "uav_id": 21,
+              "greedy_probability": 0.9984523057937622,
+              "recorded_action_probability": 0.9984523057937622
+            },
+            "parent17_behavior": {
+              "flat_action": 21,
+              "task_index": 0,
+              "uav_index": 21,
+              "subtask_id": 200002,
+              "uav_id": 21,
+              "greedy_probability": 0.9993836879730225,
+              "recorded_action_probability": 0.9993836879730225
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    },
+    {
+      "stage": "transfer",
+      "case_index": 2,
+      "case": {
+        "seed": 1981103,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "records": 4,
+      "role_counts": {
+        "1": 4
+      },
+      "greedy_difference_counts": {
+        "current_vs_previous_selected": 1,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 1
+      },
+      "all_current_vs_previous_choices_identical": false,
+      "states": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 42,
+            "task_index": 0,
+            "uav_index": 42,
+            "subtask_id": 100000,
+            "uav_id": 42
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 42,
+              "task_index": 0,
+              "uav_index": 42,
+              "subtask_id": 100000,
+              "uav_id": 42,
+              "greedy_probability": 0.4552798271179199,
+              "recorded_action_probability": 0.4552798271179199
+            },
+            "previous_selected": {
+              "flat_action": 42,
+              "task_index": 0,
+              "uav_index": 42,
+              "subtask_id": 100000,
+              "uav_id": 42,
+              "greedy_probability": 0.48274219036102295,
+              "recorded_action_probability": 0.48274219036102295
+            },
+            "parent17_behavior": {
+              "flat_action": 42,
+              "task_index": 0,
+              "uav_index": 42,
+              "subtask_id": 100000,
+              "uav_id": 42,
+              "greedy_probability": 0.4450981318950653,
+              "recorded_action_probability": 0.4450981318950653
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "step": 10,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 235,
+            "task_index": 3,
+            "uav_index": 55,
+            "subtask_id": 100003,
+            "uav_id": 55
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 235,
+              "task_index": 3,
+              "uav_index": 55,
+              "subtask_id": 100003,
+              "uav_id": 55,
+              "greedy_probability": 0.5037572979927063,
+              "recorded_action_probability": 0.5037572979927063
+            },
+            "previous_selected": {
+              "flat_action": 105,
+              "task_index": 1,
+              "uav_index": 45,
+              "subtask_id": 100001,
+              "uav_id": 45,
+              "greedy_probability": 0.4189470708370209,
+              "recorded_action_probability": 0.3959980010986328
+            },
+            "parent17_behavior": {
+              "flat_action": 235,
+              "task_index": 3,
+              "uav_index": 55,
+              "subtask_id": 100003,
+              "uav_id": 55,
+              "greedy_probability": 0.6209114193916321,
+              "recorded_action_probability": 0.6209114193916321
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": true,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": true
+          }
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "step": 20,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 45,
+            "task_index": 0,
+            "uav_index": 45,
+            "subtask_id": 100001,
+            "uav_id": 45
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 45,
+              "task_index": 0,
+              "uav_index": 45,
+              "subtask_id": 100001,
+              "uav_id": 45,
+              "greedy_probability": 0.5455010533332825,
+              "recorded_action_probability": 0.5455010533332825
+            },
+            "previous_selected": {
+              "flat_action": 45,
+              "task_index": 0,
+              "uav_index": 45,
+              "subtask_id": 100001,
+              "uav_id": 45,
+              "greedy_probability": 0.5227980017662048,
+              "recorded_action_probability": 0.5227980017662048
+            },
+            "parent17_behavior": {
+              "flat_action": 45,
+              "task_index": 0,
+              "uav_index": 45,
+              "subtask_id": 100001,
+              "uav_id": 45,
+              "greedy_probability": 0.5572746396064758,
+              "recorded_action_probability": 0.5572746396064758
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        },
+        {
+          "record_index": 3,
+          "time": 3.0,
+          "step": 30,
+          "role_1_search_2_relay": 1,
+          "saved_edge_dim": 9,
+          "actual_edge_dim": 6,
+          "recorded_current": {
+            "flat_action": 54,
+            "task_index": 0,
+            "uav_index": 54,
+            "subtask_id": 100002,
+            "uav_id": 54
+          },
+          "current_replay_matches_recording": true,
+          "greedy_choices": {
+            "current": {
+              "flat_action": 54,
+              "task_index": 0,
+              "uav_index": 54,
+              "subtask_id": 100002,
+              "uav_id": 54,
+              "greedy_probability": 0.9995086193084717,
+              "recorded_action_probability": 0.9995086193084717
+            },
+            "previous_selected": {
+              "flat_action": 54,
+              "task_index": 0,
+              "uav_index": 54,
+              "subtask_id": 100002,
+              "uav_id": 54,
+              "greedy_probability": 0.9997983574867249,
+              "recorded_action_probability": 0.9997983574867249
+            },
+            "parent17_behavior": {
+              "flat_action": 54,
+              "task_index": 0,
+              "uav_index": 54,
+              "subtask_id": 100002,
+              "uav_id": 54,
+              "greedy_probability": 0.9994515776634216,
+              "recorded_action_probability": 0.9994515776634216
+            }
+          },
+          "differences": {
+            "current_vs_previous_selected": false,
+            "current_vs_parent17_behavior": false,
+            "previous_selected_vs_parent17_behavior": false
+          }
+        }
+      ]
+    }
+  ],
+  "all_current_vs_previous_choices_identical": false,
+  "conclusion_if_all_same": null,
+  "limits": [
+    "Different shadow actions do not establish better or worse mission completion because later states remain from currentcandidate trajectory.",
+    "Matching allobservedactions is not a measured previouscandidate closed-loop score or general policy equivalence.",
+    "The30dynamic29.9s result must not be presented as a firstbreakthrough solely from comparison againstparent17; priorselectedcandidate history is a distinct comparison.",
+    "No training/evaluation protocol/model altered; no result-based selection; no freshsimulation oroptimizer."
+  ],
+  "input_file_sha256": {
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/plan.json": "a06bfd143344c0700e0b634b5621affceeb9b560fb5917fb06dec16faca21514",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/plan.json": "95db194374e180999ad1c7eca0e413ecbab018fe65ac061dabb36c4e735a5c50",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/actor_inputs_9.json": "7922275c34c5bf23ff86c71bca99ea6170079d0399af0c59626efca0b8b0ab83",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/complete.json": "fe8e2935ca72cb7cf5d6daaca5dae03ec5f2201faeb0923a57416b2939eff732",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/actor_inputs_9.json": "c0e3aa9c257efa17a1e9427c023c049a97f4a0ef4852047f4b6dd5d61ad88a20",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/complete.json": "b23c3c536acea3be4729cbe7aa7f84b133997696f2ad0e601e5ce9203f77cb32",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/actor_inputs_9.json": "e6a38e7e36ea7c0c4a3a985c434cc3766c67814a5ec429b8546fb453ec999178",
+    "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/complete.json": "26cd39c30e1977d9e0f055fb8b0f3beae9e558186b0fa4b4aad1f49a427b143c",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/actor_inputs_9.json": "0360af764df37a6dea1f0926056c159ef290127c16c86ec02345b50c1ae0db44",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/complete.json": "d38a5071f7ed61064fb548a44df26a549882d6030f4dfbf434f39db36ac7f95f",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/actor_inputs_9.json": "90b8f956a88f3a6dc999aa7b45b6ec293fd2945caae16b82cbb8db6feea91666",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/complete.json": "ca0a6d4bcbf3cfcf27d7fa4c7ba0cc815988f393c91a3717a0d11bd4898b676e",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/actor_inputs_9.json": "b31688f80d47961329ca5d3d308ca9445e057da98d0d01d401c3e8a8dd80ec45",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/complete.json": "62d76a4dba48b17e285b812bcd412db0945d9aab4aefe02126ef3c97523063b5"
+  },
+  "analysis_source_sha256": "6ff0b8f0b8f9d159763b36881daa41767e1a0d3470c29723a71c66eb98def6ff",
+  "new_simulations": 0,
+  "optimizer_steps": 0
+}

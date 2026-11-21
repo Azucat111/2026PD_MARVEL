@@ -1,0 +1,250 @@
+{
+  "status": "COLLECTION_RUNNING_UPDATE_PREPARED_NOT_STARTED",
+  "scope": "Training-case learnability diagnostic only: four fresh policy draws each30dynamic/60dynamic, plus four same-behavior old30static references; no acceptance/generalization claim",
+  "user_budget_start_utc": "2026-11-11T04:49:18+00:00",
+  "user_budget_end_utc": "2026-11-11T06:49:18+00:00",
+  "plan_sha256": "9c1ea48d0de3003774e2aefc6e6019c4a32351de11222f8034c078141d20d8f9",
+  "behavior_checkpoint": "artifacts/gppo_three_hour_20261110/training/batch_00/behavior.pth",
+  "behavior_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "behavior_state_fingerprint": "8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c",
+  "new_tasks": [
+    {
+      "index": 0,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981100,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_00",
+      "origin": "new_collection"
+    },
+    {
+      "index": 1,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981101,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_01",
+      "origin": "new_collection"
+    },
+    {
+      "index": 2,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981102,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_02",
+      "origin": "new_collection"
+    },
+    {
+      "index": 3,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981103,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_03",
+      "origin": "new_collection"
+    },
+    {
+      "index": 4,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981104,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_04",
+      "origin": "new_collection"
+    },
+    {
+      "index": 5,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981105,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_05",
+      "origin": "new_collection"
+    },
+    {
+      "index": 6,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981106,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_06",
+      "origin": "new_collection"
+    },
+    {
+      "index": 7,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981107,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_07",
+      "origin": "new_collection"
+    }
+  ],
+  "read_only_reference_tasks": [
+    {
+      "index": 100,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980100,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_00",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 101,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980101,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_01",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 102,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980102,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_02",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 103,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980103,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_03",
+      "origin": "read_only_reference"
+    }
+  ],
+  "update_tasks": [
+    {
+      "index": 100,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980100,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_00",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 101,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980101,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_01",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 102,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980102,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_02",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 103,
+      "global_index": 0,
+      "seed": 1880021,
+      "sample_seed": 2980103,
+      "folder": "artifacts/gppo_learnability_hour_20261110/worker_03",
+      "origin": "read_only_reference"
+    },
+    {
+      "index": 0,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981100,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_00",
+      "origin": "new_collection"
+    },
+    {
+      "index": 1,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981101,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_01",
+      "origin": "new_collection"
+    },
+    {
+      "index": 2,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981102,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_02",
+      "origin": "new_collection"
+    },
+    {
+      "index": 3,
+      "global_index": 2,
+      "seed": 1280022,
+      "sample_seed": 3981103,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_03",
+      "origin": "new_collection"
+    },
+    {
+      "index": 4,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981104,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_04",
+      "origin": "new_collection"
+    },
+    {
+      "index": 5,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981105,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_05",
+      "origin": "new_collection"
+    },
+    {
+      "index": 6,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981106,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_06",
+      "origin": "new_collection"
+    },
+    {
+      "index": 7,
+      "global_index": 3,
+      "seed": 1880024,
+      "sample_seed": 3981107,
+      "folder": "artifacts/gppo_learnability_two_hours_20261111/worker_07",
+      "origin": "new_collection"
+    }
+  ],
+  "new_collection_episodes": 8,
+  "read_only_reference_episodes": 4,
+  "total_update_episodes": 12,
+  "groups": 3,
+  "episodes_per_group": 4,
+  "workers": 4,
+  "wall_budget_seconds_per_new_arm": 1500,
+  "collection_cutoff_utc": "2026-11-11T05:32:00+00:00",
+  "runner_cutoff_utc": "2026-11-11T05:33:00+00:00",
+  "update_cutoff_utc": "2026-11-11T05:40:00+00:00",
+  "max_policy_updates": 1,
+  "update_auto_start": false,
+  "fixed_candidate": "artifacts/gppo_learnability_two_hours_20261111/update/checkpoint_batch_000.pth",
+  "advantage": "(mean other within-seed completion - own completion)/15 for every transition of that episode",
+  "zero_variance": "Keep all zero-variance groups with A0; update only if at least one of three groups varies",
+  "failure_handling": "Include complete H300 physical failures at C300; technical/incomplete rollouts block update; no success-only filtering",
+  "weighting": "Original per-transition mean; no per-role standardization or extra episode balancing",
+  "critic_loss": 0,
+  "lr": 2e-05,
+  "ppo_epochs": 4,
+  "temperature": 1,
+  "postgate": {
+    "mean_exact_kl_max": 0.01,
+    "max_state_exact_kl_max": 0.05,
+    "sampled_kl_max": 0.01
+  },
+  "model_selection": "None; only one diagnostic candidate",
+  "old_inherited_fields_not_effective": [
+    "training_seeds",
+    "domain_cycle",
+    "max_batches",
+    "minimum_planned_batches",
+    "validation_gate",
+    "next_batch_gate",
+    "checkpoint_selection",
+    "optimizer_gate",
+    "batch",
+    "global_indices",
+    "training_seeds",
+    "batch_size as collector count for eight new tasks"
+  ],
+  "created_utc": "2026-11-11T04:55:59.752264+00:00"
+}

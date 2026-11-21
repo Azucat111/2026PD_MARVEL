@@ -1,0 +1,173 @@
+{
+  "status": "VALIDATION_COMPLETE_NO_ADDED_DONOR_GAIN",
+  "completed_utc": "2026-11-11T07:53:24.059423+00:00",
+  "elapsed_minutes": 45.15099038333334,
+  "scope": "Four previously unseen seeds, one80mmap,30/60 static/dynamic;cross-scenario donor validation,not original8seed acceptance",
+  "cases": [
+    {
+      "case": {
+        "seed": 1981201,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "seconds": 10.3,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "unfiltered": {
+          "seconds": 11.4,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "donor": {
+          "seconds": 11.4,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        }
+      },
+      "complete": true
+    },
+    {
+      "case": {
+        "seed": 1981202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "seconds": 60.1,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "unfiltered": {
+          "seconds": 37.9,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "donor": {
+          "seconds": 37.9,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        }
+      },
+      "complete": true
+    },
+    {
+      "case": {
+        "seed": 1981203,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "seconds": 5.1000000000000005,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "unfiltered": {
+          "seconds": 5.1000000000000005,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "donor": {
+          "seconds": 5.1000000000000005,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        }
+      },
+      "complete": true
+    },
+    {
+      "case": {
+        "seed": 1981204,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "seconds": 28.0,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "unfiltered": {
+          "seconds": 28.0,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        },
+        "donor": {
+          "seconds": 28.0,
+          "success": true,
+          "safe": true,
+          "physical_ticks": 3000
+        }
+      },
+      "complete": true
+    }
+  ],
+  "stats": {
+    "all": {
+      "totals": {
+        "rule": 103.5,
+        "unfiltered": 82.4,
+        "donor": 82.4
+      },
+      "donor_time_reduction_vs_unfiltered_percent": 0.0,
+      "donor_time_reduction_vs_rule_percent": 20.38647342995169,
+      "all_success_safe": true
+    },
+    "30": {
+      "totals": {
+        "rule": 70.4,
+        "unfiltered": 49.3,
+        "donor": 49.3
+      },
+      "donor_time_reduction_vs_unfiltered_percent": 0.0,
+      "donor_time_reduction_vs_rule_percent": 29.971590909090917,
+      "all_success_safe": true
+    },
+    "60": {
+      "totals": {
+        "rule": 33.1,
+        "unfiltered": 33.1,
+        "donor": 33.1
+      },
+      "donor_time_reduction_vs_unfiltered_percent": 0.0,
+      "donor_time_reduction_vs_rule_percent": 0.0,
+      "all_success_safe": true
+    }
+  },
+  "all12full_h300_safe": true,
+  "filter_activity_file": "filter_activity.json",
+  "independent_audit_file": "final_independent_audit.json",
+  "conclusion": "Do not promote the donor hard mask based on these cases; no added efficiency demonstrated. Existing GPPO benefit versus rule is not donor benefit.",
+  "training": false,
+  "model_or_threshold_selection": false,
+  "production_edits": false,
+  "old_development_probe_excluded": true,
+  "descriptive_same_checkpoint_seven_newseed_summary": {
+    "rule_seconds": 185.1,
+    "unfiltered_gppo_seconds": 167.4,
+    "time_reduction_percent": 9.562398703403563,
+    "scope": "Retrospective descriptive sum only,not a preregistered original8seed acceptance;two30S,two30D,two60S,one60D"
+  },
+  "project_15_percent_formally_accepted": false,
+  "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+  "original_checkpoints_unchanged": true,
+  "source_files_unchanged": 478,
+  "active_owned_compute_processes": [],
+  "commit": false,
+  "push": false
+}

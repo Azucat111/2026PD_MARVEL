@@ -1,0 +1,5288 @@
+{
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/actor_inputs_9.json",
+    "bytes": 245716,
+    "sha256": "906d520f3ef5aee5fe042449b4c8d1c4a352f0452557ab17097e578ac272b52d",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/mission_frames.jsonl",
+    "bytes": 705412,
+    "sha256": "e713388554c4f6f89fa474f4211c7247abcc1343fa6cb6a2e353f92d2afe5ddf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/physical_joint_trace.json",
+    "bytes": 612998,
+    "sha256": "02fbc67a00c3a76e88d4c0ad3094d3da1dc3a2d9b2eaab3269e4c582f5c3003b",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.800000000000001,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.4,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/donor_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "a605afcb9a92b1b2acf296b4e55d430cd2303434b994bb310dcea4dcf1b1b095",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 245719,
+    "sha256": "9820b668a18a58dffcc9292f3335940291e64a323fa0ac284be06c845c84b1f2",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 740809,
+    "sha256": "015702c24f67072d0d30f94e8688eb905ca1d837d95e6cf936cef7eac5c355bc",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 613044,
+    "sha256": "6c0d77e58c83cf2611dc90bf218487cd7e8a0d6506ee7022d1fda012e101b022",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5.5,
+          0.5333333333333333,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7.300000000000001,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "a605afcb9a92b1b2acf296b4e55d430cd2303434b994bb310dcea4dcf1b1b095",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/actor_inputs_9.json",
+    "bytes": 245744,
+    "sha256": "7899d81578b26f76ed43cc79daacfc94892b0363dcebbea2bf1b7eee2e47f2fc",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/mission_frames.jsonl",
+    "bytes": 705412,
+    "sha256": "e713388554c4f6f89fa474f4211c7247abcc1343fa6cb6a2e353f92d2afe5ddf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/physical_joint_trace.json",
+    "bytes": 612998,
+    "sha256": "02fbc67a00c3a76e88d4c0ad3094d3da1dc3a2d9b2eaab3269e4c582f5c3003b",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.800000000000001,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.4,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_00_1981201_30_static/unfiltered_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "a605afcb9a92b1b2acf296b4e55d430cd2303434b994bb310dcea4dcf1b1b095",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/actor_inputs_9.json",
+    "bytes": 275453,
+    "sha256": "71d7400797ad7167f4825a1050ac73162ce1a18e6f3dd990c6b8b64c317fc3b5",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/mission_frames.jsonl",
+    "bytes": 731042,
+    "sha256": "e10559bd458688a21bafd0d4247aeec98e8a4b1829d6162fd0c56cc9039ce3ac",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/physical_joint_trace.json",
+    "bytes": 620404,
+    "sha256": "cb6a33005b9d092589cafa0da859af9915f414f47c69a8d584b1d64c7a72138e",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.4,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          5.0,
+          0.7666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.7666666666666667,
+          false,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          12.100000000000001,
+          0.7666666666666667,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          12.5,
+          0.43333333333333335,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          13.8,
+          0.7666666666666667,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          15.0,
+          0.7666666666666667,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          19.0,
+          0.7666666666666667,
+          true,
+          true,
+          5,
+          3,
+          0,
+          0
+        ],
+        [
+          20.0,
+          0.7666666666666667,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          24.0,
+          0.7666666666666667,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          34.9,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/donor_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "99c8a71b0a8b0578c56c1a2eb66adc7b061410e7fbee8e63608363f284e03068",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275379,
+    "sha256": "135369d56d748a0bb493229030502e5de1bdb9f35a205efbee7ab5d3bac456ff",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 732513,
+    "sha256": "f45bd9f5bacc3ece14d20355bd6ff6a343d103baf59ad88134eade5d74db51a9",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 623901,
+    "sha256": "ae9457f1391be1d8d10ce2126ccbcc705621686125788fc373861170bdf09616",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.4,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          5.0,
+          0.7666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          8.5,
+          0.4666666666666667,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          9.0,
+          0.4666666666666667,
+          false,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.4666666666666667,
+          false,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          11.700000000000001,
+          0.4666666666666667,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.4666666666666667,
+          false,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          14.100000000000001,
+          0.4666666666666667,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          17.0,
+          0.4666666666666667,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          22.0,
+          0.4666666666666667,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          31.900000000000002,
+          0.7666666666666667,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          57.1,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "99c8a71b0a8b0578c56c1a2eb66adc7b061410e7fbee8e63608363f284e03068",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/actor_inputs_9.json",
+    "bytes": 275485,
+    "sha256": "29e3e987a4714b4e8af7f1f0002fa3f97957b24855e87c1c4d0694eb7f5667a5",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/mission_frames.jsonl",
+    "bytes": 731042,
+    "sha256": "e10559bd458688a21bafd0d4247aeec98e8a4b1829d6162fd0c56cc9039ce3ac",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/physical_joint_trace.json",
+    "bytes": 620404,
+    "sha256": "cb6a33005b9d092589cafa0da859af9915f414f47c69a8d584b1d64c7a72138e",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.4,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          5.0,
+          0.7666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.7666666666666667,
+          false,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.7666666666666667,
+          false,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          12.100000000000001,
+          0.7666666666666667,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          12.5,
+          0.43333333333333335,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          13.8,
+          0.7666666666666667,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          15.0,
+          0.7666666666666667,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          19.0,
+          0.7666666666666667,
+          true,
+          true,
+          5,
+          3,
+          0,
+          0
+        ],
+        [
+          20.0,
+          0.7666666666666667,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          24.0,
+          0.7666666666666667,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          34.9,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_01_1981202_30_dynamic/unfiltered_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "99c8a71b0a8b0578c56c1a2eb66adc7b061410e7fbee8e63608363f284e03068",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/actor_inputs_9.json",
+    "bytes": 444403,
+    "sha256": "78e0c04ca5353ea1fcba26d42702bc6e9203ec20bb0b416d7545a3c8811e83fa",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/mission_frames.jsonl",
+    "bytes": 1445629,
+    "sha256": "9a866bb64344aed5a50fba293c6b7d18f7a3787274ecf060c20cc66558259caf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/physical_joint_trace.json",
+    "bytes": 612350,
+    "sha256": "a36f7a7a742744c140257a209c88d2199d2ef6f5b541dfdb7d29de6bcd814380",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/donor_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "072dfc4cc552acb627b68b528a2c9cf88eaa2ca0445e76c1d8f4ca220fdee579",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 444289,
+    "sha256": "e739b67171a2b466db7713fe38c6a17f6f3f5f5880c8b322c2ae67eb0b30cbe3",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1445924,
+    "sha256": "3f878ed7682d6f30e87e2468362a9f0c26e7fc13b3e2d43daa73d14600249b40",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 612350,
+    "sha256": "a36f7a7a742744c140257a209c88d2199d2ef6f5b541dfdb7d29de6bcd814380",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "072dfc4cc552acb627b68b528a2c9cf88eaa2ca0445e76c1d8f4ca220fdee579",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/actor_inputs_9.json",
+    "bytes": 444423,
+    "sha256": "9c5fd6d7eff9c1bde857efa084d1e425696196f3b69335dbfa9641ca30660798",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/mission_frames.jsonl",
+    "bytes": 1445629,
+    "sha256": "9a866bb64344aed5a50fba293c6b7d18f7a3787274ecf060c20cc66558259caf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/physical_joint_trace.json",
+    "bytes": 612350,
+    "sha256": "a36f7a7a742744c140257a209c88d2199d2ef6f5b541dfdb7d29de6bcd814380",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_02_1981203_60_static/unfiltered_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "072dfc4cc552acb627b68b528a2c9cf88eaa2ca0445e76c1d8f4ca220fdee579",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/actor_inputs_9.json",
+    "bytes": 503256,
+    "sha256": "870da3e91a6da9a75a62dde46623198cf187ef396ff446c25dfb543368d4a9e2",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/mission_frames.jsonl",
+    "bytes": 1477219,
+    "sha256": "18ddebbf244e9fd8de4ea84e7e07783c9b5b59d6df751fc6b87a1bcdd5a60be0",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/physical_joint_trace.json",
+    "bytes": 615996,
+    "sha256": "0c07376ae9baf9463ea1c6403e20433643b9cb4ed27c75e273c846161a5d7bf0",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0.8,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          1.0,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.7,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          0.7,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          1.0,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          9.0,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          1.0,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          13.3,
+          1.0,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          19.0,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          20.200000000000003,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          25.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/donor_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "3b085bc7e3a9b514438200745c3f490b370396c9b312ca0b649828420d85cf27",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 503072,
+    "sha256": "7f69d0c883abb8a820768a811259a9a5689174c0ff0d9388578291c9a379fae6",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1478482,
+    "sha256": "27ec09712cfa90fccd77a845e7eaef2934e79470999aeedf892b667384422f99",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 615996,
+    "sha256": "5978feedcd2626f25994666c8c9153744d737ee079cbd35115c23466fc72f082",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0.8,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          1.0,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.7,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          0.7,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          6.7,
+          1.0,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          9.0,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          1.0,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          13.3,
+          1.0,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          19.0,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          20.200000000000003,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          25.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "3b085bc7e3a9b514438200745c3f490b370396c9b312ca0b649828420d85cf27",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/actor_inputs_9.json",
+    "bytes": 503287,
+    "sha256": "00d5e2fca31c0cd3459a39b589d6750fabacc1db345dd2781a11cca8c6be9ce7",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/mission_frames.jsonl",
+    "bytes": 1477219,
+    "sha256": "18ddebbf244e9fd8de4ea84e7e07783c9b5b59d6df751fc6b87a1bcdd5a60be0",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/physical_joint_trace.json",
+    "bytes": 615996,
+    "sha256": "0c07376ae9baf9463ea1c6403e20433643b9cb4ed27c75e273c846161a5d7bf0",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0.8,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          1.0,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.7,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2.1,
+          0.7,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          1.0,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          9.0,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          11.0,
+          1.0,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          13.3,
+          1.0,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          19.0,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          20.200000000000003,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          25.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_donor_validation_20261111/evaluation/data/case_03_1981204_60_dynamic/unfiltered_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "3b085bc7e3a9b514438200745c3f490b370396c9b312ca0b649828420d85cf27",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 245944,
+    "sha256": "7922275c34c5bf23ff86c71bca99ea6170079d0399af0c59626efca0b8b0ab83",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 696959,
+    "sha256": "5bd509311ab6c27ad0ced4dd18f975b967a5634aa216f846b845c42dd730c896",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 612540,
+    "sha256": "4344c39d10bb4496fa9f51d065a30058333686176092a239073af1cdd213b53f",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.200000000000001,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          21.1,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "beada97afa9542050adf62c96c4e6cc246347f4c2e835f86c596e346c3e5b19a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 245929,
+    "sha256": "ffeb6d068bab46d9c8e5c6e1360af5962f8a3a39369adf5f9951b528ca82a2ab",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 696959,
+    "sha256": "5bd509311ab6c27ad0ced4dd18f975b967a5634aa216f846b845c42dd730c896",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 612540,
+    "sha256": "4344c39d10bb4496fa9f51d065a30058333686176092a239073af1cdd213b53f",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.200000000000001,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          21.1,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "beada97afa9542050adf62c96c4e6cc246347f4c2e835f86c596e346c3e5b19a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275764,
+    "sha256": "d31371dc2f9ce33aacec0973efd4ae37520a768ee955207b45d0366510442b8b",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 683820,
+    "sha256": "c684a95b2af9d6045a68ae4bc77dc2b566d273f94545a38a87553162d2a2d711",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 612624,
+    "sha256": "a3ce2dcdc4b19d27ca50b02fe106d3f0837192581d305cfb56a49f8c49813f2f",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.200000000000001,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          18.1,
+          0.6,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          29.0,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          29.5,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_00_1880021_30_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "beada97afa9542050adf62c96c4e6cc246347f4c2e835f86c596e346c3e5b19a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 275431,
+    "sha256": "c0e3aa9c257efa17a1e9427c023c049a97f4a0ef4852047f4b6dd5d61ad88a20",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 711703,
+    "sha256": "b8acce3e49042027f8f34230f07b79b6bc406168e63b400208930a56adb349df",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 617021,
+    "sha256": "ec8280d8643f9cfcc773c2535f682963da4939adce05ebc9d91290ab213951d1",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          6.5,
+          0.7666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          11.100000000000001,
+          0.7666666666666667,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          11.9,
+          0.8,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.8,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          13.0,
+          0.8,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          18.900000000000002,
+          0.8,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          24.0,
+          0.8,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          26.900000000000002,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "909a61e72dffc734169e46bd3e75cd40ba285a0fe18e223644b6780892524964",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 246140,
+    "sha256": "c4ead78d4f7fc81d37c4f4adf621e1eaf69fb3721342d2ef9f8dcd71dfa3052c",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 699939,
+    "sha256": "9924735bd957fd3d6ec17c62dd6ef454eb19691de91f4e4ba2cfd8273eeafe55",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 616086,
+    "sha256": "0938550d55650d38dd7fcdc900df27004ae831d2fe58b215d693dea4f604b16e",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          10.200000000000001,
+          0.8,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          11.100000000000001,
+          0.8,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.8,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          20.900000000000002,
+          0.8,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          26.0,
+          0.8,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          35.0,
+          1.0,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "909a61e72dffc734169e46bd3e75cd40ba285a0fe18e223644b6780892524964",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275404,
+    "sha256": "a198f1537eee4b6131875f317bfc22010870ef80ac204e5f13c2bbc2659f10ff",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 718466,
+    "sha256": "53ea38209fce1135365e66d54465bd8ff35f328367198cb912a2fb89043a3c9c",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 617021,
+    "sha256": "dc88164e907ed8edd7faf3f721a2f309f703f2c0d4c91f52eeb6ce19ca94f38c",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          6.5,
+          0.7666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          11.100000000000001,
+          0.7666666666666667,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          11.9,
+          0.8,
+          true,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          12.0,
+          0.8,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          13.0,
+          0.8,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          18.900000000000002,
+          0.8,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          24.0,
+          0.8,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          27.700000000000003,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_01_1280022_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "909a61e72dffc734169e46bd3e75cd40ba285a0fe18e223644b6780892524964",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 477244,
+    "sha256": "e6a38e7e36ea7c0c4a3a985c434cc3766c67814a5ec429b8546fb453ec999178",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 1484194,
+    "sha256": "4c6728395dde8cd019eeda8e945df46c7beff5da987fefab8739815b55a8544f",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 616339,
+    "sha256": "a0df21c54fbf193b17018a701b037201d71e8726f90268b0bc68fd9ea0ef39b7",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          3.1,
+          0.7666666666666667,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          7.2,
+          1.0,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          12.3,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          12.600000000000001,
+          1.0,
+          true,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          16.1,
+          1.0,
+          true,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          18.0,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          21.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "e2aa576f0870a1018127453d4c2e271ed6e7804d7fa9be1417485a928709d0cb",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 477229,
+    "sha256": "db95f31593dc3dbc06638aa6deb5cdd0a1f5795ce2f780c6b25cfad0c4e42dc1",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 1484194,
+    "sha256": "4c6728395dde8cd019eeda8e945df46c7beff5da987fefab8739815b55a8544f",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 616339,
+    "sha256": "a0df21c54fbf193b17018a701b037201d71e8726f90268b0bc68fd9ea0ef39b7",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          3.1,
+          0.7666666666666667,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          7.2,
+          1.0,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          12.3,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          12.600000000000001,
+          1.0,
+          true,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          16.1,
+          1.0,
+          true,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          18.0,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          21.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "e2aa576f0870a1018127453d4c2e271ed6e7804d7fa9be1417485a928709d0cb",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 503014,
+    "sha256": "99f224ada38329fa1c5daa277a99f45d05b6903259ce490901444c684c44ca98",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1510363,
+    "sha256": "5b8593ffddec1866e67a4b45271ef673235c41a1724d4a1cfe06ab2d92407ab5",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 616217,
+    "sha256": "b8fb53abc82ee8be1ae1432a3eff4857989a3ae0a4cef0e369b8104612850040",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.7666666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          2.9000000000000004,
+          0.7666666666666667,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          6.0,
+          1.0,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          9.8,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          13.3,
+          1.0,
+          true,
+          true,
+          3,
+          1,
+          0,
+          0
+        ],
+        [
+          15.0,
+          1.0,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          16.7,
+          1.0,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          18.0,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          22.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/evaluation/data/case_02_1880024_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "e2aa576f0870a1018127453d4c2e271ed6e7804d7fa9be1417485a928709d0cb",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 346005,
+    "sha256": "0360af764df37a6dea1f0926056c159ef290127c16c86ec02345b50c1ae0db44",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 735524,
+    "sha256": "0d6458bf82db777c532c8907b68a570c23535c283e2307cc8e8abd68e5bcbfaf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 617852,
+    "sha256": "0dba154c225ccb48715cfc73651849ba79932df6815f918f961ef37e90264933",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.700000000000001,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14.5,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          16.8,
+          0.4666666666666667,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          35.800000000000004,
+          0.8,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          44.900000000000006,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "37582ef647d7a5b5bf2697e1bc3e2214bf7ddef2eff2fc2516bbd44f260b68fc",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 345984,
+    "sha256": "3ec0dbe20f224bd0928856ae31da6c8bb68d8c9303a908b40b1ff5b859e35147",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 735524,
+    "sha256": "0d6458bf82db777c532c8907b68a570c23535c283e2307cc8e8abd68e5bcbfaf",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 617852,
+    "sha256": "0dba154c225ccb48715cfc73651849ba79932df6815f918f961ef37e90264933",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.700000000000001,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14.5,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          16.8,
+          0.4666666666666667,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          35.800000000000004,
+          0.8,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          44.900000000000006,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "37582ef647d7a5b5bf2697e1bc3e2214bf7ddef2eff2fc2516bbd44f260b68fc",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275061,
+    "sha256": "4aee84d380822a89cdf3fcdedd0b555af3bbd1dd32a090b5856c4fa873c38b48",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 736275,
+    "sha256": "eb315e1b4cebf0fc3f5efa1284524b6b232dea3a8cd3ab7e917793bf07dbac95",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 617547,
+    "sha256": "73bb1528cdb2325a24cb11b0736a0a38f3979f0927b7a8f5447736edd4de0714",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.700000000000001,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          14.5,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          20.8,
+          0.4666666666666667,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          33.5,
+          0.8,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          41.5,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 252,
+    "sha256": "37582ef647d7a5b5bf2697e1bc3e2214bf7ddef2eff2fc2516bbd44f260b68fc",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 330583,
+    "sha256": "90b8f956a88f3a6dc999aa7b45b6ec293fd2945caae16b82cbb8db6feea91666",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 721758,
+    "sha256": "d70536a965d2b4366d49d8463b24568d4ee11b9afd49efe64e2401ad5a7c994a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 621033,
+    "sha256": "2efe7227139e4b38fc435c56912b84a4dc2d6b695816cd061844c29d178ba9c8",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.9,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.9,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.9,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          1.4000000000000001,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          6.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          7.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          9.0,
+          0.43333333333333335,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          9.8,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          14.0,
+          0.43333333333333335,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          15.9,
+          0.6666666666666666,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          16.1,
+          0.6666666666666666,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          17.2,
+          0.6666666666666666,
+          true,
+          true,
+          6,
+          4,
+          0,
+          0
+        ],
+        [
+          20.5,
+          0.6666666666666666,
+          true,
+          true,
+          7,
+          4,
+          0,
+          0
+        ],
+        [
+          21.0,
+          0.9,
+          true,
+          true,
+          7,
+          5,
+          0,
+          0
+        ],
+        [
+          22.0,
+          0.9,
+          true,
+          true,
+          7,
+          6,
+          0,
+          0
+        ],
+        [
+          23.6,
+          1.0,
+          true,
+          true,
+          7,
+          6,
+          0,
+          0
+        ],
+        [
+          25.0,
+          1.0,
+          true,
+          false,
+          7,
+          7,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 253,
+    "sha256": "8ed254a2629ca3c6b73210bff6e1c04ecaecce3ebe3126db001f1eb436958563",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 330562,
+    "sha256": "d9de07290ce03bbe21bb45c6d37a3abe7c6784aa854503188d06db3be8696e12",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 721758,
+    "sha256": "d70536a965d2b4366d49d8463b24568d4ee11b9afd49efe64e2401ad5a7c994a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 621033,
+    "sha256": "2efe7227139e4b38fc435c56912b84a4dc2d6b695816cd061844c29d178ba9c8",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.9,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.9,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.9,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          1.4000000000000001,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          6.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          7.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          9.0,
+          0.43333333333333335,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          9.8,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          14.0,
+          0.43333333333333335,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          15.9,
+          0.6666666666666666,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          16.1,
+          0.6666666666666666,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          17.2,
+          0.6666666666666666,
+          true,
+          true,
+          6,
+          4,
+          0,
+          0
+        ],
+        [
+          20.5,
+          0.6666666666666666,
+          true,
+          true,
+          7,
+          4,
+          0,
+          0
+        ],
+        [
+          21.0,
+          0.9,
+          true,
+          true,
+          7,
+          5,
+          0,
+          0
+        ],
+        [
+          22.0,
+          0.9,
+          true,
+          true,
+          7,
+          6,
+          0,
+          0
+        ],
+        [
+          23.6,
+          1.0,
+          true,
+          true,
+          7,
+          6,
+          0,
+          0
+        ],
+        [
+          25.0,
+          1.0,
+          true,
+          false,
+          7,
+          7,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 253,
+    "sha256": "8ed254a2629ca3c6b73210bff6e1c04ecaecce3ebe3126db001f1eb436958563",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275268,
+    "sha256": "738b3f80873d556ad65002f6d4119b6f73b2ac9083d3c6c440ef2c9aa38e8806",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 751875,
+    "sha256": "7c4d2f936632921b548c9fcad40f498d888ff7781f75f11565350f31585e3c1c",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 620007,
+    "sha256": "ec7bc98e104abdf8910327e5109c2a251600de9b3f7bcc064531e7683aa02405",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.9,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.9,
+          false,
+          true,
+          3,
+          0,
+          0,
+          0
+        ],
+        [
+          1.2000000000000002,
+          0.9,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          1.4000000000000001,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          6.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          7.0,
+          0.6666666666666666,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          9.0,
+          0.43333333333333335,
+          false,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          10.700000000000001,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          11.0,
+          0.43333333333333335,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          13.8,
+          0.7,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          14.0,
+          0.7,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          16.7,
+          0.7,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          16.900000000000002,
+          0.7666666666666667,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          19.8,
+          0.7666666666666667,
+          true,
+          true,
+          6,
+          4,
+          0,
+          0
+        ],
+        [
+          20.6,
+          1.0,
+          true,
+          true,
+          6,
+          4,
+          0,
+          0
+        ],
+        [
+          22.0,
+          1.0,
+          true,
+          true,
+          6,
+          5,
+          0,
+          0
+        ],
+        [
+          24.0,
+          1.0,
+          true,
+          false,
+          6,
+          6,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_01_1981102_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 253,
+    "sha256": "8ed254a2629ca3c6b73210bff6e1c04ecaecce3ebe3126db001f1eb436958563",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 418803,
+    "sha256": "b31688f80d47961329ca5d3d308ca9445e057da98d0d01d401c3e8a8dd80ec45",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 1370264,
+    "sha256": "7e84bc252b351623c31ffe2cddeedc075067202cec4224c2470ef4ed44d6b7fb",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 612390,
+    "sha256": "3eb982568fb7d8aec23d851563e0edac16ddebe592774e9bdf9161ff676892bd",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.1000000000000005,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "2b03e0663f4a6c18d5185931ad0e8d478ff5d71c2ed44ea1896fed6513c6c052",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/actor_inputs_9.json",
+    "bytes": 418791,
+    "sha256": "475672ae469d6f36443a531423fc626dc0a7cbfb5d12527c6ad62c3c4ffa6ee8",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/mission_frames.jsonl",
+    "bytes": 1370264,
+    "sha256": "7e84bc252b351623c31ffe2cddeedc075067202cec4224c2470ef4ed44d6b7fb",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/physical_joint_trace.json",
+    "bytes": 612390,
+    "sha256": "3eb982568fb7d8aec23d851563e0edac16ddebe592774e9bdf9161ff676892bd",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.1000000000000005,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/parent_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "2b03e0663f4a6c18d5185931ad0e8d478ff5d71c2ed44ea1896fed6513c6c052",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 445060,
+    "sha256": "58128153825daa616476eeb4522c9f7651d200010bdd6728061a52a3789395b5",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1341726,
+    "sha256": "856bd167a2a5790c4fea120d405380be8b5159d02c54181bcaa77fecbcfd7858",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 612400,
+    "sha256": "a40f6511d8ad064652447ac405a79b3b261ce7f8e7e5eceed86f9ce0606560c3",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          7.1000000000000005,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_02_1981103_60_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "2b03e0663f4a6c18d5185931ad0e8d478ff5d71c2ed44ea1896fed6513c6c052",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 318553,
+    "sha256": "f9c97e1f2d936fc964beaab73433eab1e4d88baf186b223e694e93bbb940a9f3",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 1938692,
+    "sha256": "992940e115022c011d42d8eff747533a265c80efbcce485eb8ee5544f2dffa2d",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 614696,
+    "sha256": "e21719b99672e5f6a5b63fc8433bf33bab4709a2b73de70342b53b69ae7293f6",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.4,
+          0.3,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          0.43333333333333335,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.1,
+          0.3,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          11.600000000000001,
+          0.3,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          41.6,
+          0.5333333333333333,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          50.2,
+          0.7,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          62.7,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "a088d8f523fae981f212a93758d5e8980ddc2eb28cf6a639cab50ab08074257a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275541,
+    "sha256": "4ffc112cba92b0e34e6c33f16ec3b6a53c1ae5cbda8337e1ebd7f03c0fe88f00",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1863162,
+    "sha256": "3c7110d0753a4d2986b6381ef8a807c531dc3e3e17c6f0636886727c9ff3ff83",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 618034,
+    "sha256": "7ff7534d39b8770b179ced2c055262c38ed0f3cd5aad4d466d7f37b2a74ecbbc",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.4,
+          0.3,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.0,
+          0.43333333333333335,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.1,
+          0.3,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          9.700000000000001,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          10.9,
+          0.4666666666666667,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          20.6,
+          0.7333333333333333,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          40.6,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_00_1680021_30_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "a088d8f523fae981f212a93758d5e8980ddc2eb28cf6a639cab50ab08074257a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 275643,
+    "sha256": "9c66c508d224801e79c59d4d460ac69bd67ed46d84b6a373c1b348939c9a35a9",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 2148499,
+    "sha256": "8a81e9e2735f8d2a5e15d0842a86f7e81ee9af740d0af62694a602e57cfddb79",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 620505,
+    "sha256": "0e2edb7d990e2ed2353b63c8388b0e35cd328f0d251093c444b3de2d7378ba8b",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          0.36666666666666664,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          6.4,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          7.0,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          8.0,
+          0.4666666666666667,
+          false,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          9.9,
+          0.5333333333333333,
+          false,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          11.9,
+          0.5333333333333333,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          16.5,
+          0.5333333333333333,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          17.6,
+          0.5333333333333333,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          21.1,
+          0.5333333333333333,
+          true,
+          true,
+          5,
+          2,
+          0,
+          0
+        ],
+        [
+          22.0,
+          0.5333333333333333,
+          true,
+          true,
+          5,
+          3,
+          0,
+          0
+        ],
+        [
+          23.0,
+          0.5333333333333333,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          26.0,
+          0.5333333333333333,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          31.1,
+          0.8,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ],
+        [
+          133.6,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "728d64368c10c2af0975afb0426919a58b377b9677675727e57ecce7b1d92be4",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 275451,
+    "sha256": "b54015e6a82ce4a4d87a6b0d9f40b9e67bc8aac92c33001bf45e1f75f5c4f601",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 2649216,
+    "sha256": "7012f2ffb454e7cd43401604d65bfa6ff5562ed31674fc52f91e1a1bdf5e2977",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 616353,
+    "sha256": "27d83cef9ed28f38f7eca4286ead518d129471a6760fee60278834d7a4e68a28",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          0.36666666666666664,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          6.4,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          7.0,
+          0.4666666666666667,
+          false,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          9.0,
+          0.4666666666666667,
+          false,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          11.100000000000001,
+          0.8,
+          false,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          14.700000000000001,
+          0.8,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ],
+        [
+          19.5,
+          0.8,
+          true,
+          true,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          24.0,
+          0.8,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ],
+        [
+          53.6,
+          1.0,
+          true,
+          false,
+          3,
+          3,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_01_1680022_30_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "728d64368c10c2af0975afb0426919a58b377b9677675727e57ecce7b1d92be4",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 418557,
+    "sha256": "5699041912677f3ec0f7a4d700ac71481187cf15dd981da70cd5fcd4c59388c8",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 2167384,
+    "sha256": "0bfe3a3d96540573469dc35b621cb63e35691bec804354f164a8101fe1ac4142",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 612913,
+    "sha256": "cefbdfeec2e529e822f0ab33f6a99ee0650b682d514005ac387bb6ef425bd7d0",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6666666666666666,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3.6,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 253,
+    "sha256": "e8812cfc55ec2a09c41b068ff78704f1c00f394c6bdc552b5b87e2bd2afa4c5a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 418466,
+    "sha256": "714b703ed0d9c3838dc7e9e4c684a181700ef99e73717184d1a5cd6f9e0833b1",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 2167384,
+    "sha256": "8c2e877a2fdaa12fd7958c1f6c9c29135bdeffbc5dfe1005c8691ee0167d51e1",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 612913,
+    "sha256": "cefbdfeec2e529e822f0ab33f6a99ee0650b682d514005ac387bb6ef425bd7d0",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6666666666666666,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          3.6,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5.9,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_02_1680023_60_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 253,
+    "sha256": "e8812cfc55ec2a09c41b068ff78704f1c00f394c6bdc552b5b87e2bd2afa4c5a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 477539,
+    "sha256": "a945993fd9c823992dd9c369f45570bb83e9c7965347c112a7fba8d7dd7c6e8e",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 2966740,
+    "sha256": "bec1476b7175053867d267fb12dd9411b7cad7fefdfdb4663662343f12808082",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 614474,
+    "sha256": "bc95ea9a70ff2fcbd7c142e23709c933d7619f632305f11220846eaae695ff1e",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.48333333333333334,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.48333333333333334,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          8.5,
+          0.5166666666666667,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          9.0,
+          1.0,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          10.0,
+          1.0,
+          false,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          10.200000000000001,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 249,
+    "sha256": "2317a140224cfd4591ecfc66bc0ae0321178ba998f01ed057d7ebac982e2b19a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 534795,
+    "sha256": "b75aa9ee03c820f92bacfe2583a937bde40226ecd6692a5b5ecc018efec6d898",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 2478557,
+    "sha256": "5b856b8eecf926ba59eeb0cca9c53f6652de409f1bd78806a73e79cb6bed8e8f",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 615294,
+    "sha256": "3857e7875f254194314d0b725b62557541175710a59b96ef0e76bf151799f7a8",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.7,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          0.48333333333333334,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4.4,
+          0.48333333333333334,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          7.1000000000000005,
+          0.48333333333333334,
+          true,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          10.0,
+          0.7,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          20.200000000000003,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          21.1,
+          1.0,
+          true,
+          true,
+          2,
+          1,
+          0,
+          0
+        ],
+        [
+          26.0,
+          1.0,
+          true,
+          false,
+          2,
+          2,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_03_1680024_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 249,
+    "sha256": "2317a140224cfd4591ecfc66bc0ae0321178ba998f01ed057d7ebac982e2b19a",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 288856,
+    "sha256": "18acecf7c8623aa541ff8a5f8b38d40fae9639982d8bf16afe5ae950b43b7f23",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 1939133,
+    "sha256": "b3d58aa0112aba1dc53a58906a875dab3df45e2679eb433f04c1245df4d3654f",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 626000,
+    "sha256": "1573d64e89f4656ead5774639fa6afd5354055e89a3cca0a16cb17013d8ac6e9",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6666666666666666,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          11.100000000000001,
+          0.6666666666666666,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          19.0,
+          0.7333333333333333,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          90.5,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "934bb68a51ba38db78e05d4aea9f98ab69c5dde63bedb19bba12fd2d4753cb89",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 332897,
+    "sha256": "463e60344163a33e9e0965823388e390112d204f49a3f266f13b93a6968ffd2b",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 4159080,
+    "sha256": "ee191328649f827ecb34262855300e22bacdb4eb2ce9cd2028d4e7e138c6bb9b",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 620957,
+    "sha256": "7e1bb686a6ea775916ed90c22c6027d5693209ed94e814355ddc3783c7db0186",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.6666666666666666,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          19.900000000000002,
+          0.7333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          28.8,
+          0.7333333333333333,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          55.7,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_04_1680025_30_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 250,
+    "sha256": "934bb68a51ba38db78e05d4aea9f98ab69c5dde63bedb19bba12fd2d4753cb89",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 276323,
+    "sha256": "e71cfbc4600b477e5958743a4ffa3b781ddf4564f35c3433f6eae671b39dfb44",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 8486430,
+    "sha256": "bd123fae0023032a7aaf0ba3ff8123a8a7282416df89186557589e9034f8c449",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 620404,
+    "sha256": "9459e9cd4179b509b82ad987d0a092b6a4b7565e6d1da97789a79f20e4496759",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          6.5,
+          0.5333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          8.6,
+          0.4666666666666667,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          13.8,
+          0.7333333333333333,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          20.3,
+          0.7333333333333333,
+          false,
+          true,
+          1,
+          0,
+          0,
+          0
+        ],
+        [
+          25.0,
+          0.7333333333333333,
+          false,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          43.5,
+          1.0,
+          false,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          47.6,
+          0.8666666666666667,
+          false,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          49.2,
+          1.0,
+          false,
+          false,
+          1,
+          1,
+          0,
+          0
+        ],
+        [
+          71.4,
+          1.0,
+          true,
+          false,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "6b790c806e8ea1186800ed4b5a750b7eacf3f13045879fc968ba2670b566b5f6",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_05_1680026_30_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 21581780,
+    "sha256": "67fe24e4b05b38f57274e81385174f018778905849cee42b8e8663ce65ac3383",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 418998,
+    "sha256": "2c2f735108a31f928d39114dc84658d538fee1e43edeeca8412b5ccd857cf4a4",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 1880856,
+    "sha256": "f378b48327c284f274de77fea9ee0a40d2e5ea310a99e822ce7ba7607d2c927b",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 612370,
+    "sha256": "6efc45d82fbd89c1368b73956863bbbb023e30a40f9ebbbeae0f9bf71f371fac",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4.1000000000000005,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 249,
+    "sha256": "cf700ec40215a1b372295895dfb75fc4cb8e1a472fd48a40376f190565191e22",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/actor_inputs_9.json",
+    "bytes": 418917,
+    "sha256": "bcd39c7522c06776d087727a2596d489b4a5692f1ccd02f4edae2cb4fd131d85",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/mission_frames.jsonl",
+    "bytes": 1880856,
+    "sha256": "f378b48327c284f274de77fea9ee0a40d2e5ea310a99e822ce7ba7607d2c927b",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/physical_joint_trace.json",
+    "bytes": 612370,
+    "sha256": "6efc45d82fbd89c1368b73956863bbbb023e30a40f9ebbbeae0f9bf71f371fac",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          4.1000000000000005,
+          1.0,
+          true,
+          false,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_06_1680027_60_static/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 249,
+    "sha256": "cf700ec40215a1b372295895dfb75fc4cb8e1a472fd48a40376f190565191e22",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/actor_inputs_9.json",
+    "bytes": 419339,
+    "sha256": "85d5be2208663f4c7e002cf561664ae0f8d49b35a47203956b9c8030db8b9fa7",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/mission_frames.jsonl",
+    "bytes": 2740850,
+    "sha256": "547b52ad4faa52854d7b5098e5791b7b98e7d593d93022146b03be91e5614467",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/physical_joint_trace.json",
+    "bytes": 616734,
+    "sha256": "c746432032bd318e34a6d195efb61284334e51784064fb22edd81254e6970c09",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          1.0,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          6.300000000000001,
+          1.0,
+          true,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          7.0,
+          1.0,
+          true,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          8.0,
+          1.0,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          11.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          14.100000000000001,
+          1.0,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          19.0,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/candidate_original/gppo/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "b6f13a42226301d0d00cefd0d8e5f1ef0ba37bb820af0c2375f588428239ba47",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/actor_inputs_9.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/actor_inputs_9.json",
+    "bytes": 419446,
+    "sha256": "e81646aa48a1fc73cbab0c82396feccff9b74757c1a8e3ee248158b267296901",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/mission_frames.jsonl": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/mission_frames.jsonl",
+    "bytes": 2547962,
+    "sha256": "922ce60f6a25eb3caaa1845c6d59826013d4030cbf5efc1ff8f3b7d4e3c8371c",
+    "transfer": "index only"
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/physical_joint_trace.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/physical_joint_trace.json",
+    "bytes": 616752,
+    "sha256": "f84bc4d222c1318add19294a643fc626b0da7dddfcd60778cd21f4fbb0da789d",
+    "transfer": "index only",
+    "compact_trace": {
+      "samples": 3000,
+      "columns": [
+        "time",
+        "connectivity",
+        "all_nonrelay_complete",
+        "any_safety_active",
+        "safety_records",
+        "escapes",
+        "no_fly_violations",
+        "collisions"
+      ],
+      "changes": [
+        [
+          0.1,
+          1.0,
+          false,
+          false,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          1.1,
+          1.0,
+          false,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          5.5,
+          1.0,
+          true,
+          true,
+          4,
+          0,
+          0,
+          0
+        ],
+        [
+          7.0,
+          1.0,
+          true,
+          true,
+          4,
+          1,
+          0,
+          0
+        ],
+        [
+          8.0,
+          1.0,
+          true,
+          true,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          10.0,
+          1.0,
+          true,
+          true,
+          4,
+          3,
+          0,
+          0
+        ],
+        [
+          11.0,
+          1.0,
+          true,
+          false,
+          4,
+          4,
+          0,
+          0
+        ],
+        [
+          14.200000000000001,
+          1.0,
+          true,
+          true,
+          5,
+          4,
+          0,
+          0
+        ],
+        [
+          20.0,
+          1.0,
+          true,
+          false,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "truncated_changes": 0
+    }
+  },
+  "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json": {
+    "path": "artifacts/gppo_three_hour_20261110/heldout/data/case_07_1680028_60_dynamic/rule_original/rule/private_target_identity_diagnostic_only.json",
+    "bytes": 251,
+    "sha256": "b6f13a42226301d0d00cefd0d8e5f1ef0ba37bb820af0c2375f588428239ba47",
+    "transfer": "index only"
+  }
+}

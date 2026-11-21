@@ -1,0 +1,166 @@
+{
+  "status": "AUDIT_PASS_WITH_SCOPE_LIMITS",
+  "checked_utc": "2026-11-11T06:30:11.232096+00:00",
+  "full_safe_h300_arms": 18,
+  "stages": {
+    "evaluation": {
+      "cases": [
+        {
+          "case": {
+            "seed": 1880021,
+            "uavs": 30,
+            "dynamic": false
+          },
+          "seconds": {
+            "rule": 32.5,
+            "parent": 24.1,
+            "candidate": 24.1
+          },
+          "same_conditions": true
+        },
+        {
+          "case": {
+            "seed": 1280022,
+            "uavs": 30,
+            "dynamic": true
+          },
+          "seconds": {
+            "rule": 30.700000000000003,
+            "parent": 38.0,
+            "candidate": 29.900000000000002
+          },
+          "same_conditions": true
+        },
+        {
+          "case": {
+            "seed": 1880024,
+            "uavs": 60,
+            "dynamic": true
+          },
+          "seconds": {
+            "rule": 25.0,
+            "parent": 11.0,
+            "candidate": 11.0
+          },
+          "same_conditions": true
+        }
+      ],
+      "stats": {
+        "totals": {
+          "rule": 88.2,
+          "parent": 73.1,
+          "candidate": 65.0
+        },
+        "reduction_vs_rule_percent": 26.30385487528345,
+        "reduction_vs_parent_percent": 11.080711354309159
+      }
+    },
+    "transfer": {
+      "cases": [
+        {
+          "case": {
+            "seed": 1981101,
+            "uavs": 30,
+            "dynamic": false
+          },
+          "seconds": {
+            "rule": 44.5,
+            "parent": 47.900000000000006,
+            "candidate": 47.900000000000006
+          },
+          "same_conditions": true
+        },
+        {
+          "case": {
+            "seed": 1981102,
+            "uavs": 30,
+            "dynamic": true
+          },
+          "seconds": {
+            "rule": 27.0,
+            "parent": 28.0,
+            "candidate": 28.0
+          },
+          "same_conditions": true
+        },
+        {
+          "case": {
+            "seed": 1981103,
+            "uavs": 60,
+            "dynamic": false
+          },
+          "seconds": {
+            "rule": 10.100000000000001,
+            "parent": 9.1,
+            "candidate": 9.1
+          },
+          "same_conditions": true
+        }
+      ],
+      "stats": {
+        "totals": {
+          "rule": 81.6,
+          "parent": 85.0,
+          "candidate": 85.0
+        },
+        "reduction_vs_rule_percent": -4.166666666666674,
+        "reduction_vs_parent_percent": 0.0
+      }
+    }
+  },
+  "saved_state_verification": {
+    "guarded": {
+      "model_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539",
+      "adam_steps": [
+        1.0
+      ]
+    },
+    "rejected": {
+      "model_fingerprint": "b387475e7d33518bcaff16f5fd3116951fc9fc1345562b70aaa6fa96fbda163c",
+      "adam_steps": [
+        2.0
+      ]
+    }
+  },
+  "guarded_update": {
+    "accepted_epochs": 1,
+    "attempted_epochs": 2,
+    "rejected_step_reproduced_exactly": true,
+    "model_and_Adam_restored": true,
+    "accepted_mean_exact_kl": 0.002984388266979438,
+    "accepted_max_state_exact_kl": 0.04060040041804314,
+    "accepted_sampled_kl": 0.003304604673758149
+  },
+  "previous_selected_comparison": {
+    "scope": "CPU shadow replay of three fixed models on CURRENT candidate trajectory states only. No previous-model rollout or model selection.",
+    "states": 34,
+    "stage_totals": {
+      "evaluation": {
+        "records": 16,
+        "current_vs_previous_selected": 0,
+        "current_vs_parent17_behavior": 1,
+        "previous_selected_vs_parent17_behavior": 1
+      },
+      "transfer": {
+        "records": 18,
+        "current_vs_previous_selected": 1,
+        "current_vs_parent17_behavior": 0,
+        "previous_selected_vs_parent17_behavior": 1
+      }
+    },
+    "input_hashes_match": true
+  },
+  "recommended_conclusion": "Local training-case learnability demonstrated; no incremental fresh-seed improvement demonstrated; fresh diagnostic misses15percent and overall project acceptance remains unpassed/unassessed under the original broader suite.",
+  "necessary_statement_limits": [
+    "Local learnability PASS is limited to this prespecified three-training-case diagnostic and this single update; the 8.1-second incremental gain versus parent comes entirely from 30dynamic seed1280022 (38 to29.9), with the other two cases tied.",
+    "The26.30percent training gain versus rule includes historical parent policy benefit; the new update increment versus its parent is11.08percent, not26.30percent.",
+    "Fresh three-case candidate equals parent in every measured completion time and is4.1667percent slower in aggregate than rule. Incremental generalization is not demonstrated; no statistical equivalence or universal failure claim follows from three seeds.",
+    "The three fresh cases omit60dynamic, use one connected80m map and are not the original balanced eight-seed acceptance suite. Do not pool training/fresh cases to claim overall15percent acceptance.",
+    "Guarded replay demonstrably reproduces the original rejected second-step state and saves the accepted first-step model with Adam step1; this fixes retention of overshooting epochs only in the new diagnostic wrapper. It does not explain all historical regressions or change production PPO source.",
+    "Current-vs-previous-selected shadow replay matches all16 observed training trajectory choices and differs on1of18 fresh trajectory states. This is not a closed-loop previous-selected rollout or proof of policy equivalence; the29.9second result was already achieved by the prior selected checkpoint, so it is not a new performance breakthrough.",
+    "Any donor probe using already-observed fresh seed1981101 is now development evidence only, must remain separate from frozen fresh statistics, and cannot be retrospectively counted as independent acceptance or used to replace the frozen candidate."
+  ],
+  "original_artifacts_modified": false,
+  "new_training_or_simulation": false,
+  "verification_file_location": "guarded/actual_saved_state_verification.json"
+}

@@ -1,0 +1,267 @@
+{
+  "status": "COMPLETE_INDEPENDENT_AUDIT_PASS",
+  "checked_utc": "2026-11-11T07:51:00.997085+00:00",
+  "full_safe_h300_arms": 12,
+  "rows": [
+    {
+      "case": {
+        "seed": 1981201,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 10.3,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "unfiltered": {
+          "completion_seconds": 11.4,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "donor": {
+          "completion_seconds": 11.4,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        }
+      },
+      "common_conditions_match": true,
+      "donor_seconds_saved_vs_unfiltered": 0.0,
+      "donor_reduction_vs_unfiltered_percent": 0.0,
+      "donor_reduction_vs_rule_percent": -10.679611650485432,
+      "filter_activity": {
+        "calls": 7,
+        "expected_no_filter_calls": false,
+        "no_filter_call_check": null,
+        "applied_calls": 6,
+        "missing_public_calls": 0,
+        "fallback_calls": 2,
+        "actual_mask_changed_calls": 2,
+        "additional_masked_entries": 3,
+        "unmasked_entries": 0,
+        "blocked_ids_nonempty_calls": 2,
+        "reason_counts": {
+          "donor_component_removal_only": 4,
+          "no_legal_action_fallback_original": 2,
+          "not_pure_search": 1
+        },
+        "malformed_mask_calls": []
+      },
+      "semantic_action_sequence_identical": true,
+      "actual_input_mask_sequence_identical": false,
+      "joint_metric_trace_identical": true
+    },
+    {
+      "case": {
+        "seed": 1981202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 60.1,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "unfiltered": {
+          "completion_seconds": 37.9,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "donor": {
+          "completion_seconds": 37.9,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        }
+      },
+      "common_conditions_match": true,
+      "donor_seconds_saved_vs_unfiltered": 0.0,
+      "donor_reduction_vs_unfiltered_percent": 0.0,
+      "donor_reduction_vs_rule_percent": 36.938435940099836,
+      "filter_activity": {
+        "calls": 8,
+        "expected_no_filter_calls": false,
+        "no_filter_call_check": null,
+        "applied_calls": 6,
+        "missing_public_calls": 0,
+        "fallback_calls": 2,
+        "actual_mask_changed_calls": 1,
+        "additional_masked_entries": 2,
+        "unmasked_entries": 0,
+        "blocked_ids_nonempty_calls": 1,
+        "reason_counts": {
+          "donor_component_removal_only": 4,
+          "no_legal_action_fallback_original": 2,
+          "not_pure_search": 2
+        },
+        "malformed_mask_calls": []
+      },
+      "semantic_action_sequence_identical": true,
+      "actual_input_mask_sequence_identical": false,
+      "joint_metric_trace_identical": true
+    },
+    {
+      "case": {
+        "seed": 1981203,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 5.1000000000000005,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "unfiltered": {
+          "completion_seconds": 5.1000000000000005,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "donor": {
+          "completion_seconds": 5.1000000000000005,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        }
+      },
+      "common_conditions_match": true,
+      "donor_seconds_saved_vs_unfiltered": 0.0,
+      "donor_reduction_vs_unfiltered_percent": 0.0,
+      "donor_reduction_vs_rule_percent": 0.0,
+      "filter_activity": {
+        "calls": 5,
+        "expected_no_filter_calls": false,
+        "no_filter_call_check": null,
+        "applied_calls": 5,
+        "missing_public_calls": 0,
+        "fallback_calls": 1,
+        "actual_mask_changed_calls": 0,
+        "additional_masked_entries": 0,
+        "unmasked_entries": 0,
+        "blocked_ids_nonempty_calls": 0,
+        "reason_counts": {
+          "donor_component_removal_only": 4,
+          "no_legal_action_fallback_original": 1
+        },
+        "malformed_mask_calls": []
+      },
+      "semantic_action_sequence_identical": true,
+      "actual_input_mask_sequence_identical": true,
+      "joint_metric_trace_identical": true
+    },
+    {
+      "case": {
+        "seed": 1981204,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "completion_seconds": 28.0,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "unfiltered": {
+          "completion_seconds": 28.0,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        },
+        "donor": {
+          "completion_seconds": 28.0,
+          "safe": true,
+          "success": true,
+          "physical_ticks": 3000,
+          "post_completion_below90_seconds": 0.0
+        }
+      },
+      "common_conditions_match": true,
+      "donor_seconds_saved_vs_unfiltered": 0.0,
+      "donor_reduction_vs_unfiltered_percent": 0.0,
+      "donor_reduction_vs_rule_percent": 0.0,
+      "filter_activity": {
+        "calls": 6,
+        "expected_no_filter_calls": false,
+        "no_filter_call_check": null,
+        "applied_calls": 5,
+        "missing_public_calls": 0,
+        "fallback_calls": 1,
+        "actual_mask_changed_calls": 2,
+        "additional_masked_entries": 6,
+        "unmasked_entries": 0,
+        "blocked_ids_nonempty_calls": 2,
+        "reason_counts": {
+          "donor_component_removal_only": 4,
+          "no_legal_action_fallback_original": 1,
+          "not_pure_search": 1
+        },
+        "malformed_mask_calls": []
+      },
+      "semantic_action_sequence_identical": true,
+      "actual_input_mask_sequence_identical": false,
+      "joint_metric_trace_identical": true
+    }
+  ],
+  "aggregate": {
+    "totals": {
+      "rule": 103.5,
+      "unfiltered": 82.4,
+      "donor": 82.4
+    },
+    "donor_reduction_vs_unfiltered_percent": 0.0,
+    "unfiltered_reduction_vs_rule_percent": 20.38647342995169,
+    "donor_reduction_vs_rule_percent": 20.38647342995169,
+    "all_success_safe": true
+  },
+  "root_verifier_crosscheck": {
+    "status": "ROOT_STILL_PARTIAL_AT_READ"
+  },
+  "integrity": {
+    "plan_sha256": "8d713e78668f3182b781e39b7b6af15b2e2776014c93cea216581f4ca0d75cea",
+    "source_hashes_checked": 505,
+    "donor_filter_original_bytes_unchanged": true,
+    "donor_filter_sha256": "941df1ec25f9edd0950046691530c42beabef6deb1e14aba6c81bff0f287f875",
+    "guarded_model_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+    "update_proof_sha256": "8e727848a1484d208a754dd285b4f5d517b283aca161bc148d2d016e4ca5b765",
+    "all_source_model_proof_hashes_match": true
+  },
+  "filter_totals": {
+    "calls": 26,
+    "applied_calls": 22,
+    "missing_public_calls": 0,
+    "fallback_calls": 6,
+    "actual_mask_changed_calls": 5,
+    "additional_masked_entries": 11
+  },
+  "conclusion": "All12 paired arms complete and safe. Donor adds zero measured completion gain over unfiltered on all four fresh cases. Mask constraints actually changed5 invocations across3 cases but never changed the selected action sequence; fourth case had no actual mask change.",
+  "limits": [
+    "Any donor-versus-rule gain is inherited from the fixed GPPO policy here: donor equals unfiltered in every measured case, so it is not donor incremental benefit.",
+    "Three cases demonstrate constraint activity with no changed selected actions; one case has no actual mask modification. These do not establish universal uselessness or general policy equivalence.",
+    "Four fresh seeds on one connected80m map, one per30/60static/dynamic cell, are not the original eight-seed formal acceptance suite or500m evidence.",
+    "Do not pool the earlier observed1981101 development donor probe with this fixed fresh suite or choose a best result after seeing these outcomes.",
+    "Joint-metric trace equality concerns sampled connectivity/completion/safety, not full physical pose trajectories; action records were compared in their original ordinal order with no ambiguous timestamp joining or probability replay."
+  ],
+  "additional_training_or_simulation": false,
+  "frozen_files_modified": false
+}

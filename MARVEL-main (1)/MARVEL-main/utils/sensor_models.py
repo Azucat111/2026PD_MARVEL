@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import OrderedDict
 from pathlib import Path
 from typing import Any, Dict
 
@@ -29,6 +30,13 @@ class IdealSensor(SensorModel):
         # World <-> grid transform.  When absent, the historical implicit
         # frame (origin 0, 1 m cells) is assumed.
         self.frame = frame
+        capacity = params.get("visible_cells_cache_entries", 0)
+        if isinstance(capacity, bool) or not isinstance(capacity, (int, np.integer)) or not 0 <= int(capacity) <= 256:
+            raise ValueError("visible cell cache capacity must be an integer in [0,256]")
+        self._visible_cache_entries = int(capacity)
+        self._visible_cell_cache = OrderedDict()
+        self._visible_cache_hits = 0
+        self._visible_cache_misses = 0
 
     def sense(self, robot_state, occupancy_grid: np.ndarray, all_robot_positions) -> Dict[str, Any]:
         position = np.asarray(robot_state.position, dtype=float)
@@ -59,6 +67,33 @@ class IdealSensor(SensorModel):
         )
 
     def _visible_cells(self, position: np.ndarray, heading: float, occupancy_grid: np.ndarray) -> np.ndarray:
+        from .geometry import GeometryFrame, GEOMETRY_MODE_EXTENDED
+        if self._visible_cache_entries == 0:
+            return self._compute_visible_cells(position, heading, occupancy_grid)
+        frame = self._resolve_frame(occupancy_grid)
+        point = np.asarray(position, dtype=float)[:2]
+        grid = np.asarray(occupancy_grid)
+        finite = np.isfinite(point).all() and np.isfinite([heading,self.fov,self.sensor_range,frame.origin_x,frame.origin_y,frame.cell_size]).all() if type(frame) is GeometryFrame else False
+        if (type(frame) is not GeometryFrame or frame.mode != GEOMETRY_MODE_EXTENDED
+                or not finite or grid.ndim != 2 or grid.size > 16384
+                or grid.nbytes > 131072 or grid.dtype.hasobject):
+            return self._compute_visible_cells(position, heading, occupancy_grid)
+        key = (frame, point.tobytes(), np.asarray([heading,self.fov,self.sensor_range],dtype=np.float64).tobytes(),
+               self.los_occlusion, grid.shape, grid.dtype.str, grid.tobytes())
+        cached = self._visible_cell_cache.get(key)
+        if cached is not None:
+            self._visible_cell_cache.move_to_end(key)
+            self._visible_cache_hits += 1
+            return cached.copy()
+        self._visible_cache_misses += 1
+        cells = self._compute_visible_cells(position, heading, occupancy_grid)
+        self._visible_cell_cache[key] = cells.copy()
+        self._visible_cell_cache.move_to_end(key)
+        while len(self._visible_cell_cache) > self._visible_cache_entries:
+            self._visible_cell_cache.popitem(last=False)
+        return cells
+
+    def _compute_visible_cells(self, position: np.ndarray, heading: float, occupancy_grid: np.ndarray) -> np.ndarray:
         from .geometry import iter_cells_in_radius
 
         frame = self._resolve_frame(occupancy_grid)

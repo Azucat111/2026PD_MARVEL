@@ -1,0 +1,849 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T06:20:28.134208+00:00",
+  "scope": "Pureoffline publicobserved graphfeature probe; fixed three trainingpairs plusfreshcase0 firstsameinput divergence. No optimizer, simulation, fittedfeature, newplanner ormodelselection.",
+  "method": "Existing integrations.gppo.mesh_relay.mesh_components reused atfixedphysicalcommrange20. Currentcomponents, singlechosenUAV removal andstaticpublictaskendpoint relocation arecomputed fromrecordedpublicXY.",
+  "training_pairs": [
+    {
+      "stage": "training",
+      "seed": 1280022,
+      "time": 1.0,
+      "fast_episode_index": 2,
+      "slow_episode_index": 0,
+      "fast_completion_seconds": 29.900000000000002,
+      "slow_completion_seconds": 43.7,
+      "same_actual6D_input_andIDs_and_publicXY": true,
+      "fast_action_public_features": {
+        "chosen": {
+          "uav_id": 24,
+          "subtask_id": 100003
+        },
+        "flat_action": 114,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          8.929400393394388,
+          8.28156035985631
+        ],
+        "task_endpoint": [
+          21.0,
+          4.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          23,
+          7
+        ],
+        "source_component_ids": [
+          0,
+          2,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            0,
+            2,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            25,
+            26,
+            27,
+            28
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.7586206896551724,
+        "after_removal_lcc_ratio_original_fleet": 0.7333333333333333,
+        "scalars": {
+          "current_lcc_size": 23,
+          "current_component_count": 2,
+          "chosen_source_component_size": 23,
+          "lcc_size_after_chosen_removal": 22,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 30,
+          "static_task_endpoint_component_count": 1,
+          "static_task_endpoint_lcc_gain": 7,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          30
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "slow_action_public_features": {
+        "chosen": {
+          "uav_id": 14,
+          "subtask_id": 100002
+        },
+        "flat_action": 74,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          58.44241905319108,
+          68.85131114213036
+        ],
+        "task_endpoint": [
+          73.0,
+          74.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          23,
+          7
+        ],
+        "source_component_ids": [
+          0,
+          2,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            0,
+            2,
+            6,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            15,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.7586206896551724,
+        "after_removal_lcc_ratio_original_fleet": 0.7333333333333333,
+        "scalars": {
+          "current_lcc_size": 23,
+          "current_component_count": 2,
+          "chosen_source_component_size": 23,
+          "lcc_size_after_chosen_removal": 22,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 23,
+          "static_task_endpoint_component_count": 2,
+          "static_task_endpoint_lcc_gain": 0,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          23,
+          7
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "distinguishing_public_scalars": {
+        "static_task_endpoint_lcc_size": {
+          "fast": 30,
+          "slow": 23
+        },
+        "static_task_endpoint_component_count": {
+          "fast": 1,
+          "slow": 2
+        },
+        "static_task_endpoint_lcc_gain": {
+          "fast": 7,
+          "slow": 0
+        }
+      },
+      "these_scalar_features_distinguish_actions": true,
+      "limit": "Labels rankcompletebehaviortrajectories, notisolatedactioncausalquality. No fitting, classifier orselection."
+    },
+    {
+      "stage": "training",
+      "seed": 1880021,
+      "time": 1.0,
+      "fast_episode_index": 100,
+      "slow_episode_index": 101,
+      "fast_completion_seconds": 24.1,
+      "slow_completion_seconds": 32.5,
+      "same_actual6D_input_andIDs_and_publicXY": true,
+      "fast_action_public_features": {
+        "chosen": {
+          "uav_id": 21,
+          "subtask_id": 100000
+        },
+        "flat_action": 21,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          15.904548637430315,
+          60.11468956823017
+        ],
+        "task_endpoint": [
+          14.0,
+          45.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          18,
+          12
+        ],
+        "source_component_ids": [
+          1,
+          2,
+          4,
+          5,
+          9,
+          12,
+          14,
+          16,
+          21,
+          22,
+          25,
+          26
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            1,
+            2,
+            4,
+            5,
+            9,
+            12,
+            14,
+            16,
+            22,
+            25,
+            26
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.6206896551724138,
+        "after_removal_lcc_ratio_original_fleet": 0.6,
+        "scalars": {
+          "current_lcc_size": 18,
+          "current_component_count": 2,
+          "chosen_source_component_size": 12,
+          "lcc_size_after_chosen_removal": 18,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 30,
+          "static_task_endpoint_component_count": 1,
+          "static_task_endpoint_lcc_gain": 12,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          30
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "slow_action_public_features": {
+        "chosen": {
+          "uav_id": 22,
+          "subtask_id": 100000
+        },
+        "flat_action": 22,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          16.725403173351015,
+          57.85253734356512
+        ],
+        "task_endpoint": [
+          14.0,
+          45.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          18,
+          12
+        ],
+        "source_component_ids": [
+          1,
+          2,
+          4,
+          5,
+          9,
+          12,
+          14,
+          16,
+          21,
+          22,
+          25,
+          26
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            1,
+            2,
+            4,
+            5,
+            9,
+            12,
+            14,
+            16,
+            21,
+            25,
+            26
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.6206896551724138,
+        "after_removal_lcc_ratio_original_fleet": 0.6,
+        "scalars": {
+          "current_lcc_size": 18,
+          "current_component_count": 2,
+          "chosen_source_component_size": 12,
+          "lcc_size_after_chosen_removal": 18,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 30,
+          "static_task_endpoint_component_count": 1,
+          "static_task_endpoint_lcc_gain": 12,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          30
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "distinguishing_public_scalars": {},
+      "these_scalar_features_distinguish_actions": false,
+      "limit": "Labels rankcompletebehaviortrajectories, notisolatedactioncausalquality. No fitting, classifier orselection."
+    },
+    {
+      "stage": "training",
+      "seed": 1880024,
+      "time": 1.0,
+      "fast_episode_index": 5,
+      "slow_episode_index": 7,
+      "fast_completion_seconds": 11.0,
+      "slow_completion_seconds": 25.0,
+      "same_actual6D_input_andIDs_and_publicXY": true,
+      "fast_action_public_features": {
+        "chosen": {
+          "uav_id": 52,
+          "subtask_id": 100001
+        },
+        "flat_action": 112,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          66.90525114261744,
+          69.37857269241336
+        ],
+        "task_endpoint": [
+          73.0,
+          75.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          46,
+          14
+        ],
+        "source_component_ids": [
+          0,
+          2,
+          3,
+          6,
+          7,
+          8,
+          9,
+          13,
+          15,
+          16,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          37,
+          38,
+          39,
+          40,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          49,
+          51,
+          52,
+          54,
+          55,
+          56,
+          57,
+          59
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            0,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            37,
+            38,
+            39,
+            40,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            49,
+            51,
+            54,
+            55,
+            56,
+            57,
+            59
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.7627118644067796,
+        "after_removal_lcc_ratio_original_fleet": 0.75,
+        "scalars": {
+          "current_lcc_size": 46,
+          "current_component_count": 2,
+          "chosen_source_component_size": 46,
+          "lcc_size_after_chosen_removal": 45,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 46,
+          "static_task_endpoint_component_count": 2,
+          "static_task_endpoint_lcc_gain": 0,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          46,
+          14
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "slow_action_public_features": {
+        "chosen": {
+          "uav_id": 56,
+          "subtask_id": 100001
+        },
+        "flat_action": 116,
+        "task_type_0explore_1search_2relay_3safety": 1,
+        "position": [
+          71.68200972413541,
+          69.92575190476569
+        ],
+        "task_endpoint": [
+          73.0,
+          75.0
+        ],
+        "public_state_source": "public_heading_control_snapshot.public_uav_positions/public_task_positions; same delayed publicXY used by actorheading generation",
+        "comm_range": 20.0,
+        "component_sizes": [
+          46,
+          14
+        ],
+        "source_component_ids": [
+          0,
+          2,
+          3,
+          6,
+          7,
+          8,
+          9,
+          13,
+          15,
+          16,
+          17,
+          18,
+          19,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          37,
+          38,
+          39,
+          40,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          49,
+          51,
+          52,
+          54,
+          55,
+          56,
+          57,
+          59
+        ],
+        "source_fragments_ids_after_removal": [
+          [
+            0,
+            2,
+            3,
+            6,
+            7,
+            8,
+            9,
+            13,
+            15,
+            16,
+            17,
+            18,
+            19,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            37,
+            38,
+            39,
+            40,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            49,
+            51,
+            52,
+            54,
+            55,
+            57,
+            59
+          ]
+        ],
+        "after_removal_lcc_ratio_remaining_fleet": 0.7627118644067796,
+        "after_removal_lcc_ratio_original_fleet": 0.75,
+        "scalars": {
+          "current_lcc_size": 46,
+          "current_component_count": 2,
+          "chosen_source_component_size": 46,
+          "lcc_size_after_chosen_removal": 45,
+          "component_count_after_chosen_removal": 2,
+          "source_component_fragments_after_removal": 1,
+          "is_articulation_in_current_public_graph": false,
+          "source_nonchosen_members_outside_largest_fragment": 0,
+          "static_task_endpoint_lcc_size": 46,
+          "static_task_endpoint_component_count": 2,
+          "static_task_endpoint_lcc_gain": 0,
+          "static_task_endpoint_preserves_nonchosen_components": true
+        },
+        "static_task_endpoint_component_sizes": [
+          46,
+          14
+        ],
+        "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+      },
+      "distinguishing_public_scalars": {},
+      "these_scalar_features_distinguish_actions": false,
+      "limit": "Labels rankcompletebehaviortrajectories, notisolatedactioncausalquality. No fitting, classifier orselection."
+    }
+  ],
+  "fresh_case0_pair": {
+    "stage": "fresh_case0_only",
+    "seed": 1981101,
+    "time": 1.0,
+    "rule_record_index": 1,
+    "candidate_record_index": 1,
+    "same_actual6D_input_andIDs_and_publicXY": true,
+    "rule_action_public_features": {
+      "chosen": {
+        "uav_id": 2,
+        "subtask_id": 100001
+      },
+      "flat_action": 32,
+      "task_type_0explore_1search_2relay_3safety": 1,
+      "position": [
+        71.7908706665039,
+        63.236366271972656
+      ],
+      "task_endpoint": [
+        70.0,
+        75.0
+      ],
+      "public_state_source": "raw_uav_features/raw_task_features of public delayedTaskGraph captured asdiagnostic; not hiddenorphysicalposes",
+      "comm_range": 20.0,
+      "component_sizes": [
+        14,
+        13,
+        3
+      ],
+      "source_component_ids": [
+        1,
+        2,
+        18
+      ],
+      "source_fragments_ids_after_removal": [
+        [
+          1,
+          18
+        ]
+      ],
+      "after_removal_lcc_ratio_remaining_fleet": 0.4827586206896552,
+      "after_removal_lcc_ratio_original_fleet": 0.4666666666666667,
+      "scalars": {
+        "current_lcc_size": 14,
+        "current_component_count": 3,
+        "chosen_source_component_size": 3,
+        "lcc_size_after_chosen_removal": 14,
+        "component_count_after_chosen_removal": 3,
+        "source_component_fragments_after_removal": 1,
+        "is_articulation_in_current_public_graph": false,
+        "source_nonchosen_members_outside_largest_fragment": 0,
+        "static_task_endpoint_lcc_size": 14,
+        "static_task_endpoint_component_count": 3,
+        "static_task_endpoint_lcc_gain": 0,
+        "static_task_endpoint_preserves_nonchosen_components": true
+      },
+      "static_task_endpoint_component_sizes": [
+        14,
+        13,
+        3
+      ],
+      "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+    },
+    "candidate_action_public_features": {
+      "chosen": {
+        "uav_id": 1,
+        "subtask_id": 100003
+      },
+      "flat_action": 91,
+      "task_type_0explore_1search_2relay_3safety": 1,
+      "position": [
+        53.83601379394531,
+        69.9861068725586
+      ],
+      "task_endpoint": [
+        42.0,
+        59.0
+      ],
+      "public_state_source": "raw_uav_features/raw_task_features of public delayedTaskGraph captured asdiagnostic; not hiddenorphysicalposes",
+      "comm_range": 20.0,
+      "component_sizes": [
+        14,
+        13,
+        3
+      ],
+      "source_component_ids": [
+        1,
+        2,
+        18
+      ],
+      "source_fragments_ids_after_removal": [
+        [
+          2
+        ],
+        [
+          18
+        ]
+      ],
+      "after_removal_lcc_ratio_remaining_fleet": 0.4827586206896552,
+      "after_removal_lcc_ratio_original_fleet": 0.4666666666666667,
+      "scalars": {
+        "current_lcc_size": 14,
+        "current_component_count": 3,
+        "chosen_source_component_size": 3,
+        "lcc_size_after_chosen_removal": 14,
+        "component_count_after_chosen_removal": 4,
+        "source_component_fragments_after_removal": 2,
+        "is_articulation_in_current_public_graph": true,
+        "source_nonchosen_members_outside_largest_fragment": 1,
+        "static_task_endpoint_lcc_size": 15,
+        "static_task_endpoint_component_count": 3,
+        "static_task_endpoint_lcc_gain": 1,
+        "static_task_endpoint_preserves_nonchosen_components": false
+      },
+      "static_task_endpoint_component_sizes": [
+        15,
+        14,
+        1
+      ],
+      "forecast_limit": "Replaceoneposition atcurrentpublicsnapshot only. ForSearch thisis apublicheat point, notRelayanchor. Notteleport execution, lawfulroute proof, arrival-time orfuturefleet forecast."
+    },
+    "distinguishing_public_scalars": {
+      "component_count_after_chosen_removal": {
+        "rule": 3,
+        "candidate": 4
+      },
+      "source_component_fragments_after_removal": {
+        "rule": 1,
+        "candidate": 2
+      },
+      "is_articulation_in_current_public_graph": {
+        "rule": false,
+        "candidate": true
+      },
+      "source_nonchosen_members_outside_largest_fragment": {
+        "rule": 0,
+        "candidate": 1
+      },
+      "static_task_endpoint_lcc_size": {
+        "rule": 14,
+        "candidate": 15
+      },
+      "static_task_endpoint_lcc_gain": {
+        "rule": 0,
+        "candidate": 1
+      },
+      "static_task_endpoint_preserves_nonchosen_components": {
+        "rule": true,
+        "candidate": false
+      }
+    },
+    "these_scalar_features_distinguish_actions": true,
+    "limit": "Rule/candidate trajectoriesandtheirlaterdecisionsdiffer; noisolatedcausal claim."
+  },
+  "missing_intermediate_fields": [
+    "No futurepublicfleetroute/goal commitments orpredicted movingpositions",
+    "No fullhelperassignment-to-anchor/targetmapping/releasestablecounter inactorbatch",
+    "No actualpath arrival/progress orfuturehazard executioncertificate inthisprobe",
+    "ActorXY isnormalized;rawXY andrangeusedhere arecontroller-publicrecording fields, notnewactorfeatures alreadytrained"
+  ],
+  "interpretation": [
+    "If aselected scalar differs, thisonlyestablishes observableinformation thatdistinguishes theseactions; no proof ofpredictivegeneralization orrewardcausality",
+    "If scalarsmatch, thisprobeset offersnoextra distinction for thatpair; itdoesnot prove allpublicradiofeatures useless",
+    "No explicitactor topologyfeature isnotproof ofnonlearnability: relativeXY, edgefeatures andmasks alreadycarryindirect information",
+    "No selectedfeature/architecture/trainingproposal isimplemented andno hyperparameterschanged"
+  ],
+  "input_file_sha256": {
+    "artifacts/gppo_learnability_two_hours_20261111/learning_signal_result.json": "28be8e77a93a8deba766bf0252cdbc179833699b302f34656ebb7a847f383781",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_02/episode_002/actor_inputs.json": "fa97ef507e24306a3f47fff65a0f6afc15967d5b27e4005326c6fce5790e85f0",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_00/episode_002/actor_inputs.json": "e0bb60021ee66f41e5f050b8276584e363eb7c27eb96d047e04aca57b01e3929",
+    "artifacts/gppo_learnability_hour_20261110/worker_00/episode_000/actor_inputs.json": "8946be2049f57de87330e36db9fa9cfabd8df49d622945668d1aa031e57eb19f",
+    "artifacts/gppo_learnability_hour_20261110/worker_01/episode_000/actor_inputs.json": "50b036f45c85a16791a271118347458369e25556a3d6c4679a8b389c2d0339bf",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_05/episode_003/actor_inputs.json": "8babe8c42cbbd02e78d83f89217c905ab9b4371105349dd460276a3f2fcf5cd3",
+    "artifacts/gppo_learnability_two_hours_20261111/worker_07/episode_003/actor_inputs.json": "7bbfc3c64612a8d4a7e6139c665a1ec5853bff2816649f4db8192c0f6f8196dc",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/actor_inputs_9.json": "4aee84d380822a89cdf3fcdedd0b555af3bbd1dd32a090b5856c4fa873c38b48",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/actor_inputs_9.json": "0360af764df37a6dea1f0926056c159ef290127c16c86ec02345b50c1ae0db44"
+  },
+  "primitive_sha256": "56b3b14714332eb9d8b49420b6a79613df6708e4464ad0b249c6b76acbcf4824",
+  "new_simulations": 0,
+  "optimizer_steps": 0
+}

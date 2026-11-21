@@ -1,0 +1,107 @@
+{
+  "status": "PASS_CODE_REVIEW_WITH_RUNTIME_DATA_GATES",
+  "important_defects_found": false,
+  "reviewed_utc": "2026-11-11T04:59:14.739356+00:00",
+  "scope": "Independent read-only review; CPU inference on existing four references and pure helper tests only. No optimizer execution,new rollout,production edits or edits to updater/contract/controller.",
+  "reviewed_update_source_sha256": "4e4a0f31eed0d82c9b406011ba1a11d786b6f6727469eeea3d2492333a940ccd",
+  "reviewed_update_contract_sha256": "84f719d95d8eecfb3d1dee03d56a4311a84dfece0685f6d5d7db35c7785fe722",
+  "reviewed_plan_sha256": "9c1ea48d0de3003774e2aefc6e6019c4a32351de11222f8034c078141d20d8f9",
+  "actual_behavior_file_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "actual_behavior_state_fingerprint": "8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c",
+  "checks": [
+    {
+      "name": "Frozen source and behavior binding",
+      "result": "PASS",
+      "detail": "All490plan source guards,3controller guards,28old-reference file hashes and8update-contract source guards match current files. Plan SHA matches plan_sha256.txt and update contract. Behavior file SHA matches both plan and contract."
+    },
+    {
+      "name": "Old four references actual behavior identity",
+      "result": "PASS",
+      "detail": "Loaded actual6Dmodel weights and independently recomputed fingerprint8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c;all4row fingerprints match. Each manifest initial SHA equals current actual behavior file;all relevant production/config manifest source hashes still match."
+    },
+    {
+      "name": "Old four MC returns and full horizon",
+      "result": "PASS",
+      "detail": "All4traces have3000physical ticks and300mission steps;aligned_returns re-evaluation exactly equals collection proof,row returns,and captured transition returns. Initial/config JSON identical across the4same-seed runs. No execution failures."
+    },
+    {
+      "name": "Old four masks/log probabilities/value",
+      "result": "PASS",
+      "detail": "21captured actions independently replayed on CPU;allchosen actions legal,max old-logprob error3.337860107421875e-6 versus savedCUDA,values exactly equal. Same-device updater repeats with1e-5threshold before any gradient step."
+    },
+    {
+      "name": "12episode task and chronological flat order",
+      "result": "PASS_STATIC_AND_SYNTHETIC",
+      "detail": "TLIST=4readonlyreferences+8newtasks;12unique task IDs and12sample seeds;3environment seeds each4episodes. ordered tracksTLIST;groups preserve encounter order;advantages map back by task.index;flat_adv and collector.extend traverse exactly the same per-episode transition order. Extracted existing PPO uses collector.transitions without reordering."
+    },
+    {
+      "name": "RLOO sign/scale",
+      "result": "PASS",
+      "detail": "A_i=(mean other3completion-owncompletion)/15. Faster episodes receivepositive andslowernegative advantages. Formula independently checked withmixed outcomes andfailure300. Four helper/contract tests pass."
+    },
+    {
+      "name": "Zero variance handling",
+      "result": "PASS",
+      "detail": "Updater explicitly sets aa=[0.]*len(g) whenever completion range<=1e-6. This removes tinyfloating residuals such as-5.9e-17. Zero groups remain inbatch,contribute0policygradient,andare included inKL diagnostics. Onlyall3groupszero blocks the update;oneinformativegroupis sufficient as declared."
+    },
+    {
+      "name": "All12runtimeMC gate",
+      "result": "PRESENT_PENDING_NEW_DATA",
+      "detail": "Updater will recompute fullphysicalH300suffixreturns for each of12episodes,and compare alignment proof,row andcapturedreturn exactly. It verifies3000ticks,actualbehaviorfingerprint,initialmanifestSHA,temperature1,domain/fleetidentity,legalmask,oldlogp/value andsame-seedinitial/config. The8newrollouts were not yet complete andwere not claimed verified by this review."
+    },
+    {
+      "name": "Criticloss and PPOreuse",
+      "result": "PASS_STATIC",
+      "detail": "Effective source replaces onlyrawadvantage assignment withdiagnostic_advantages andcriticvaluecoefficient.25with0. FreshAdam withoutweightdecay,noentropy oranchorloss,andno role-normalization insertion. Criticmodule parameter SHA is assertedunchanged afterupdate. Sharedactor/criticencoder may changeunderactorgradient;criterion is criticmoduleparameter invariance,not frozenvaluefunction output."
+    },
+    {
+      "name": "Once-only execution and postgate",
+      "result": "PASS_STATIC",
+      "detail": "Exactlyoneupdatebatch,max4epochs,lr2e-5,temperature1,targetsampledKL.005;mkdir(update,exist_ok=False)prevents rerunoverwrite. Before/afterguards run. Finiteweights,meanexactKL<=.01,maxstateKL<=.05,sampledKL<=.01 controleligible_for_evaluation;candidate/proofhashbound. ExistingpoststepKLstopcanovershoot,butpostgate rejects abovecaps."
+    },
+    {
+      "name": "Independent tests",
+      "result": "PASS",
+      "detail": "test_update_contract.py:4tests passed. Existingupdate extraction compiled andfounddiagnostic_advantages inactualfunctionglobals withoutcallingit. Syntheticvaryingepisode-lengthflatmappingandRLOOindependentformula passed."
+    }
+  ],
+  "old_reference_results": [
+    {
+      "task_index": 100,
+      "seed": 1880021,
+      "sample_seed": 2980100,
+      "records": 5,
+      "completion_seconds": 24.1
+    },
+    {
+      "task_index": 101,
+      "seed": 1880021,
+      "sample_seed": 2980101,
+      "records": 6,
+      "completion_seconds": 32.5
+    },
+    {
+      "task_index": 102,
+      "seed": 1880021,
+      "sample_seed": 2980102,
+      "records": 5,
+      "completion_seconds": 24.1
+    },
+    {
+      "task_index": 103,
+      "seed": 1880021,
+      "sample_seed": 2980103,
+      "records": 5,
+      "completion_seconds": 24.1
+    }
+  ],
+  "nonblocking_notes": [
+    "The12-episode update intentionally preserves originaltransition-mean weighting. It is not anequalweightper-seed objective;thecontractstates this,so it is not anundocumentedorderingbug.",
+    "Readonlyreferencehashes freeze capturedstates,manifest,summaryofprogress,proofandtraces;updateralso checks initial/config contents. Explicit hashes foroldconfig andepisode summary would be additionalhardening,but noactualdrift was found andnoexistingartifactis beingmodified.",
+    "No private_target_layoutfile is available in thiscollector;identicalseed/runtime/config/initialstate andseparatepolicyRNG supportcomparability,but do not callhidden-layoutJSONequalityverified.",
+    "Thisapproves code/data-gate readiness only. New8episoderuntimeproofs,actual12episodeupdateandpostgate remainmandatory;it is not a performance,learnability,transfer oracceptanceclaim.",
+    "If updaterorcontractchangesafterthisreview,compare reviewedSHAfields andobtain newreviewbefore using thisapproval."
+  ],
+  "pipeline_condition": "May proceed afterall8newcollectionscompleteandallupdateruntimeassertionspass,providedreviewedupdateandcontractSHAsremainunchanged. Noimportantcode defectidentified.",
+  "candidate_generated_by_reviewer": false
+}

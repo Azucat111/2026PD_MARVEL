@@ -1,0 +1,34 @@
+{
+  "batches": [
+    {
+      "batch": "batch_00",
+      "episodes": 8,
+      "records": 40,
+      "optimizer_steps_this_batch": 4,
+      "saved_Adam_step_values": [
+        4.0
+      ],
+      "collection_started_utc": "2026-11-10T10:23:51.861404+00:00",
+      "collection_finished_utc": "2026-11-10T11:10:06.031085+00:00",
+      "collection_wall_seconds": 2774.169680595398,
+      "sum_worker_wall_seconds": 4872.262763738632
+    },
+    {
+      "batch": "batch_01",
+      "episodes": 8,
+      "records": 40,
+      "optimizer_steps_this_batch": 4,
+      "saved_Adam_step_values": [
+        8.0
+      ],
+      "collection_started_utc": "2026-11-10T11:18:13.869704+00:00",
+      "collection_finished_utc": "2026-11-10T11:42:31.418859+00:00",
+      "collection_wall_seconds": 1457.5491545200348,
+      "sum_worker_wall_seconds": 4520.588560342789
+    }
+  ],
+  "total_episodes": 16,
+  "total_records": 80,
+  "total_optimizer_steps": 8,
+  "caution": "Collection wall time includes physical simulation and overlaps other experiments; sum worker wall time is not measured GPU time. Gradient update duration was not separately instrumented."
+}

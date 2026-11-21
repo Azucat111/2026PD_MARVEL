@@ -1,0 +1,147 @@
+{
+  "status": "COMPLETE",
+  "eligible_for_evaluation": true,
+  "groups": [
+    {
+      "seed": 1880021,
+      "completion_seconds": [
+        24.1,
+        32.5,
+        24.1,
+        24.1
+      ],
+      "advantages": [
+        0.1866666666666667,
+        -0.5599999999999997,
+        0.1866666666666667,
+        0.1866666666666667
+      ],
+      "has_variance": true,
+      "full_h300": true,
+      "initial_identical": true,
+      "config_identical": true,
+      "success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "safe": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "seed": 1280022,
+      "completion_seconds": [
+        43.7,
+        38.0,
+        29.900000000000002,
+        38.0
+      ],
+      "advantages": [
+        -0.5599999999999999,
+        -0.05333333333333314,
+        0.6666666666666664,
+        -0.05333333333333314
+      ],
+      "has_variance": true,
+      "full_h300": true,
+      "initial_identical": true,
+      "config_identical": true,
+      "success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "safe": [
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "seed": 1880024,
+      "completion_seconds": [
+        25.0,
+        11.0,
+        25.0,
+        25.0
+      ],
+      "advantages": [
+        -0.31111111111111117,
+        0.9333333333333333,
+        -0.31111111111111117,
+        -0.31111111111111117
+      ],
+      "has_variance": true,
+      "full_h300": true,
+      "initial_identical": true,
+      "config_identical": true,
+      "success": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "safe": [
+        true,
+        true,
+        true,
+        true
+      ]
+    }
+  ],
+  "episodes": 12,
+  "new_episodes": 8,
+  "read_only_reference_episodes": 4,
+  "records": 63,
+  "optimizer_steps": 1,
+  "accepted_epochs": 1,
+  "attempted_epochs": 2,
+  "epoch_transactions": [
+    {
+      "epoch": 0,
+      "sampled_kl": 0.003304604673758149,
+      "mean_exact_kl": 0.002984388266979438,
+      "max_state_exact_kl": 0.04060040041804314,
+      "attempted_model_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539",
+      "matches_original_rejected_model": false,
+      "accepted": true,
+      "rolled_back": false,
+      "retained_model_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539"
+    },
+    {
+      "epoch": 1,
+      "sampled_kl": 0.010771719738841057,
+      "mean_exact_kl": 0.009042333212979354,
+      "max_state_exact_kl": 0.12224052846431732,
+      "attempted_model_fingerprint": "b387475e7d33518bcaff16f5fd3116951fc9fc1345562b70aaa6fa96fbda163c",
+      "matches_original_rejected_model": true,
+      "accepted": false,
+      "rolled_back": true,
+      "retained_model_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539"
+    }
+  ],
+  "rollback_performed": true,
+  "original_rejected_model_fingerprint": "b387475e7d33518bcaff16f5fd3116951fc9fc1345562b70aaa6fa96fbda163c",
+  "actual_behavior_fingerprint": "8b825bf584f482fa7506a97ddc674e59a40e4466759176498723e6a52786988c",
+  "actual_behavior_file_sha256": "e55eba9ca97a1dbfd9954a6360138a3768e3f997f74f92ffc441932c59db430a",
+  "all_rows_match_actual_behavior": true,
+  "source_unchanged": true,
+  "critic_parameters_unchanged": true,
+  "max_logprob_replay_error": 0.0,
+  "max_value_replay_error": 0.0,
+  "mean_exact_kl": 0.002984388266979438,
+  "max_state_exact_kl": 0.04060040041804314,
+  "max_sampled_kl": 0.003304604673758149,
+  "training_state_greedy_changes": 2,
+  "candidate": "artifacts/gppo_learnability_two_hours_20261111/guarded/update/checkpoint_batch_000.pth",
+  "candidate_sha256": "440d13d0ce33e1a68a87b38f57781280b58855bc75524f132c3f2ad6326fd7ae",
+  "contract_sha256": "28fb66d29741e127a08b1f76b1b433ef2271ffd87ef390cd639fe97fb891bdfb",
+  "scope": "Guarded reproducible replay of the same original batch; per-epoch model+Adam rollback on unchanged KL caps; not result-based model selection. One training-case within-seed leave-one-out baseline PPO diagnostic; zero-variance groups retained A0; critic loss0; fixed scale0.05; original transition-mean weighting; no acceptance/generalization/model-selection claim"
+}

@@ -1,0 +1,427 @@
+{
+  "status": "COMPLETE",
+  "prefix300_physics_samples_identical": true,
+  "actor_inputs_choices_identical": true,
+  "public_state_captured": true,
+  "rows": [
+    {
+      "time": 15.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 5.233132102516058,
+      "max_distance_after": 5.233132102516058,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2789
+    },
+    {
+      "time": 16.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 4.261579496487897,
+      "max_distance_after": 4.261579496487897,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2794
+    },
+    {
+      "time": 17.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 3.3070300886729096,
+      "max_distance_after": 3.3070300886729096,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2797
+    },
+    {
+      "time": 18.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 2.389944813147342,
+      "max_distance_after": 2.389944813147342,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2799
+    },
+    {
+      "time": 19.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 1.6148690140689759,
+      "max_distance_after": 1.6148690140689759,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2803
+    },
+    {
+      "time": 20.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 0.6311388300841855,
+      "max_distance_after": 0.6311388300841855,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2803
+    },
+    {
+      "time": 21.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 0.02905694150421186,
+      "max_distance_after": 0.02905694150421186,
+      "arrived_before": true,
+      "arrived_after": true,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 22.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "max_distance_before": 0.0,
+      "max_distance_after": 0.0,
+      "arrived_before": true,
+      "arrived_after": true,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 23.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 0.0,
+      "max_distance_after": 59.135437767890075,
+      "arrived_before": true,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 24.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.16487783104273,
+      "max_distance_after": 59.16487783104273,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 25.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.212320011493276,
+      "max_distance_after": 59.212320011493276,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 26.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.276596676300194,
+      "max_distance_after": 59.276596676300194,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 27.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.3576531367779,
+      "max_distance_after": 59.3576531367779,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 28.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.45542076453008,
+      "max_distance_after": 59.45542076453008,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    },
+    {
+      "time": 29.0,
+      "before": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 59.51588898216089,
+      "max_distance_after": 59.51588898216089,
+      "arrived_before": false,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    }
+  ],
+  "arrival_retarget_deferrals": [
+    {
+      "time": 23.0,
+      "before": {
+        "26": [
+          29,
+          [
+            41.5,
+            67.5
+          ]
+        ]
+      },
+      "after": {
+        "26": [
+          29,
+          [
+            37.5,
+            8.5
+          ]
+        ]
+      },
+      "max_distance_before": 0.0,
+      "max_distance_after": 59.135437767890075,
+      "arrived_before": true,
+      "arrived_after": false,
+      "known_anchor_count": 2804
+    }
+  ],
+  "scope": "Read-only capture; a deferral identifies execution-order mechanism, not proof that reordering improves full mission"
+}

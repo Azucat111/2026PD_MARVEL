@@ -1,0 +1,167 @@
+{
+  "training": {
+    "files": 16,
+    "records": 80,
+    "dimensions_uav_task_savededge_actualedge": {
+      "(13, 12, 6, 6)": 80
+    },
+    "source_policies": {
+      "None": 80
+    },
+    "input_keys": [
+      "action_mask",
+      "capability_matrix",
+      "edge_features",
+      "precedence_matrix",
+      "task_features",
+      "task_valid_mask",
+      "uav_features",
+      "uav_valid_mask"
+    ],
+    "roles_1_search_2_relay": {
+      "1": 61,
+      "2": 19
+    },
+    "selectable_task_rows": {
+      "4": 16,
+      "3": 16,
+      "1": 33,
+      "2": 15
+    },
+    "nonzero_precedence_entries": 0,
+    "completed_task_rows": 0,
+    "assigned_task_rows": 19,
+    "invalid_chosen_actions": 0,
+    "constant_feature_columns": {
+      "uav": {
+        "2": 0.0,
+        "4": 1.0,
+        "5": 1.0,
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0,
+        "11": 1.0
+      },
+      "task": {
+        "0": 1.0,
+        "1": 1.0,
+        "2": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "9": 0.0
+      }
+    }
+  },
+  "heldout_candidate": {
+    "files": 8,
+    "records": 42,
+    "dimensions_uav_task_savededge_actualedge": {
+      "(13, 12, 9, 6)": 42
+    },
+    "source_policies": {
+      "candidate": 42
+    },
+    "input_keys": [
+      "action_mask",
+      "capability_matrix",
+      "edge_features",
+      "precedence_matrix",
+      "task_features",
+      "task_valid_mask",
+      "uav_features",
+      "uav_valid_mask"
+    ],
+    "roles_1_search_2_relay": {
+      "1": 31,
+      "2": 11
+    },
+    "selectable_task_rows": {
+      "4": 8,
+      "3": 8,
+      "1": 18,
+      "2": 8
+    },
+    "nonzero_precedence_entries": 0,
+    "completed_task_rows": 0,
+    "assigned_task_rows": 10,
+    "invalid_chosen_actions": 0,
+    "constant_feature_columns": {
+      "uav": {
+        "2": 0.0,
+        "4": 1.0,
+        "5": 1.0,
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0,
+        "11": 1.0
+      },
+      "task": {
+        "0": 1.0,
+        "1": 1.0,
+        "2": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "9": 0.0
+      }
+    }
+  },
+  "heldout_rule": {
+    "files": 7,
+    "records": 37,
+    "dimensions_uav_task_savededge_actualedge": {
+      "(13, 12, 9, None)": 37
+    },
+    "source_policies": {
+      "rule": 37
+    },
+    "input_keys": [
+      "action_mask",
+      "capability_matrix",
+      "edge_features",
+      "precedence_matrix",
+      "task_features",
+      "task_valid_mask",
+      "uav_features",
+      "uav_valid_mask"
+    ],
+    "roles_1_search_2_relay": {
+      "1": 28,
+      "2": 9
+    },
+    "selectable_task_rows": {
+      "4": 7,
+      "3": 7,
+      "1": 15,
+      "2": 8
+    },
+    "nonzero_precedence_entries": 0,
+    "completed_task_rows": 0,
+    "assigned_task_rows": 8,
+    "invalid_chosen_actions": 0,
+    "constant_feature_columns": {
+      "uav": {
+        "2": 0.0,
+        "4": 1.0,
+        "5": 1.0,
+        "6": 1.0,
+        "7": 1.0,
+        "8": 1.0,
+        "11": 1.0
+      },
+      "task": {
+        "0": 1.0,
+        "1": 1.0,
+        "2": 0.0,
+        "5": 0.0,
+        "6": 0.0,
+        "9": 0.0
+      }
+    }
+  },
+  "scope": {
+    "new_simulations": 0,
+    "optimizer_updates": 0,
+    "source_changes": false,
+    "note": "Saved 9-edge evaluation records are diagnostic supersets; actual_model_edge_dim specifies actual inference dimension."
+  }
+}

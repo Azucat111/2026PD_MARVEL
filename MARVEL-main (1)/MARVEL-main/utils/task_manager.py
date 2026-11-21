@@ -44,7 +44,7 @@ class TaskManager:
     def update(self, current_step: int, robot_states, observations,
                exploration_rate: float = 0.0, comm_connected: bool = True,
                connectivity_ratio: float | None = None,
-               target_detections=None) -> list[Dict[str, Any]]:
+               target_detections=None, observed_free_rate: float | None = None) -> list[Dict[str, Any]]:
         events = []
         for task in self.tasks.values():
             if task.status == "pending" and self._should_activate(task, current_step, exploration_rate):
@@ -54,7 +54,7 @@ class TaskManager:
                 events.extend(self._update_active_task(
                     task, current_step, robot_states, exploration_rate,
                     comm_connected, connectivity_ratio,
-                    target_detections))
+                    target_detections, observed_free_rate))
         return events
 
     def _should_activate(self, task: Task, current_step: int, exploration_rate: float) -> bool:
@@ -72,7 +72,7 @@ class TaskManager:
     def _update_active_task(self, task: Task, current_step: int, robot_states,
                             exploration_rate: float, comm_connected: bool,
                             connectivity_ratio: float | None = None,
-                            target_detections=None) -> list[Dict[str, Any]]:
+                            target_detections=None, observed_free_rate: float | None = None) -> list[Dict[str, Any]]:
         events = []
         allowed_types = set(task.assigned_robot_types)
         if not allowed_types:
@@ -80,7 +80,15 @@ class TaskManager:
         eligible_robots = [robot for robot in robot_states
                            if not allowed_types or robot.robot_type in allowed_types]
         if task.task_type == "exploration":
-            task.progress = exploration_rate
+            basis=task.params.get("coverage_basis","legacy_visible")
+            if basis=="observed_free":
+                if observed_free_rate is None:
+                    raise ValueError("observed_free coverage requires an explicit evaluation rate")
+                task.progress=float(observed_free_rate)
+            elif basis=="legacy_visible":
+                task.progress=exploration_rate
+            else:
+                raise ValueError(f"Unknown coverage_basis={basis!r}")
             if task.progress >= float(task.params.get("target_coverage", 1.0)):
                 task.status = "complete"
                 events.append({"type": "task_completed", "task_id": task.task_id, "step": current_step})

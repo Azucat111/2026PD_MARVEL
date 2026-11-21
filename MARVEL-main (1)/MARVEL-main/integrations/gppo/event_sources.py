@@ -64,6 +64,7 @@ class SearchSlotBuilder:
         *,
         active_heat_ids: Iterable[int] = (),
         source_task_id: str = "T2_target_search",
+        include_all_pending: bool = False,
     ) -> list[GPPOEventSlot]:
 
         active = {
@@ -85,9 +86,10 @@ class SearchSlotBuilder:
             )
         )
 
-        selected = pending[
-            : self.max_search_uavs
-        ]
+        # The default preserves frozen native registration. Extended callers
+        # can expose the full public catalog and enforce execution capacity
+        # independently in the existing event allocator.
+        selected = pending if include_all_pending else pending[:self.max_search_uavs]
 
         return [
             GPPOEventSlot(

@@ -1,0 +1,511 @@
+{
+  "status": "VERIFIED",
+  "verdict": "FAIL",
+  "runs": 24,
+  "physical_samples": 72000,
+  "primary": {
+    "cases": 12,
+    "rule_mean_seconds": 29.441666666666666,
+    "round8_mean_seconds": 20.908333333333335,
+    "completed_time_reduction": 0.289838664024908,
+    "inverse_time_efficiency_gain": 0.40813072937425265,
+    "all_pairs_eligible": true
+  },
+  "groups": {
+    "30_static": {
+      "cases": 3,
+      "rule_mean_seconds": 44.400000000000006,
+      "round8_mean_seconds": 28.233333333333334,
+      "completed_time_reduction": 0.3641141141141142,
+      "inverse_time_efficiency_gain": 0.5726092089728454,
+      "all_pairs_eligible": true
+    },
+    "30_dynamic": {
+      "cases": 3,
+      "rule_mean_seconds": 47.166666666666664,
+      "round8_mean_seconds": 27.46666666666667,
+      "completed_time_reduction": 0.4176678445229681,
+      "inverse_time_efficiency_gain": 0.7172330097087378,
+      "all_pairs_eligible": true
+    },
+    "60_static": {
+      "cases": 3,
+      "rule_mean_seconds": 10.866666666666667,
+      "round8_mean_seconds": 12.133333333333335,
+      "completed_time_reduction": -0.11656441717791433,
+      "inverse_time_efficiency_gain": -0.10439560439560447,
+      "all_pairs_eligible": true
+    },
+    "60_dynamic": {
+      "cases": 3,
+      "rule_mean_seconds": 15.333333333333334,
+      "round8_mean_seconds": 15.800000000000002,
+      "completed_time_reduction": -0.0304347826086957,
+      "inverse_time_efficiency_gain": -0.029535864978903037,
+      "all_pairs_eligible": true
+    }
+  },
+  "source_and_weights_unchanged": true,
+  "tracked_workspace_unchanged": true,
+  "optimizer_updates": 0,
+  "protocol_sha256": "ebf301f30a319fb0d000872f2899f373dce32c9d7961958690481566e2042826",
+  "verified_utc": "2026-10-15T15:23:38.661477+00:00",
+  "records": [
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 33.1,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bfd3e79b36b448f7087dc0da98b03b93fad601a965a8e6fb6fced3c665b8b661"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 33.1,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bfd3e79b36b448f7087dc0da98b03b93fad601a965a8e6fb6fced3c665b8b661"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 25.200000000000003,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "cc18db0fd7bbdfa8e1bbc737794fb678c1c6d7293bf860917329e91655a0c0f6"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 25.200000000000003,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "cc18db0fd7bbdfa8e1bbc737794fb678c1c6d7293bf860917329e91655a0c0f6"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 12.8,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "17274b54012ecb7ac5023a790d6cb9463dcf1471307cb1edaa16fe2110f959ce"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 12.8,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "17274b54012ecb7ac5023a790d6cb9463dcf1471307cb1edaa16fe2110f959ce"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 15.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "70c5cb6ddc0823cebbde6d118544b5bc54f9a03bf89039ca85f5da16458f21e9"
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 15.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "70c5cb6ddc0823cebbde6d118544b5bc54f9a03bf89039ca85f5da16458f21e9"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 22.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "be00e7ae0a02cdc45b25b7aaa09be1b574613978842fc0203707eb29cb9a955a"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 22.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "be00e7ae0a02cdc45b25b7aaa09be1b574613978842fc0203707eb29cb9a955a"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 28.1,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bf702fe3f5d1e14ebea9d329bd6ce798459e9e8e29004f8ba1a491719020c495"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 28.1,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bf702fe3f5d1e14ebea9d329bd6ce798459e9e8e29004f8ba1a491719020c495"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 5.1000000000000005,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "a36f7a7a742744c140257a209c88d2199d2ef6f5b541dfdb7d29de6bcd814380"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 5.1000000000000005,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "a36f7a7a742744c140257a209c88d2199d2ef6f5b541dfdb7d29de6bcd814380"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 11.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bcb39232d907b6e84224bbf25b2e438986aeab0f6a22234ffef1c4a4e002ba6d"
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 11.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "bcb39232d907b6e84224bbf25b2e438986aeab0f6a22234ffef1c4a4e002ba6d"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 78.10000000000001,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "6b54d8dae3e89ebd649d505896c5001eeeafb095f65f45c9c4c9e1de02012417"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 29.6,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "9b904497459ca17e1d368bfdc098d7393eeaabdfe4e388fb275d040103687694"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 88.2,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "25e9e71eea55e7a3b52aac4155a8a4e848c60e1201070a03937307218a4487bd"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 29.1,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "d9994eeba8e3e3324dc66ec44e13d721b616e79e5e3f6863b5e2b66f93a58324"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 14.700000000000001,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "89709ec4a2d5a98dcf589742fe1b8a3cc616c308aa9ee228a7dfe2bd76c61198"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 18.5,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "c33c73b5073fac9b6ae73834698a524bbc2de0933ca0e51fe252ed8b42a892af"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 20.0,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "839aad00aaac4aa49a719488a562872329b9613e147c20190c8b83712baef85d"
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "full_physics_samples": 3000,
+      "metric": {
+        "secondary_joint_completion_seconds": 21.400000000000002,
+        "joint_success": true,
+        "stable_seconds": 3.0,
+        "physics_dt": 0.1,
+        "whole_window_safe": true,
+        "primary_search_metric_unchanged": true,
+        "acceptance_claim": false
+      },
+      "trace_sha256": "0e615d9339713f9275cf2011159342d1c50e87405ea500d89b6741e34ef8dd12"
+    }
+  ]
+}

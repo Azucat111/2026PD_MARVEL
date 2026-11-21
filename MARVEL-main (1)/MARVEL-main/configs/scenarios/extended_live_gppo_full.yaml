@@ -1,0 +1,73 @@
+scenario:
+  name: extended_live_gppo_full
+  description: >-
+    Live-GPPO activation-state benchmark on the SAME extended 500 m map as
+    baseline_maps_test.yaml, so its numbers are directly comparable with the
+    60-UAV CUDA heuristic baseline.  Same gppo task_scheduler with the frozen
+    Phase14-v9 checkpoint, same real MARVEL PolicyNet, same target_search /
+    relay / safety task set.  Only the map extent and the gppo scheduler
+    differ from the heuristic baseline; the frozen Search activation
+    threshold (exploration_rate >= 0.3), search_service_steps, Search
+    capacity, Relay and Safety semantics and the geometry mode are all
+    unchanged.
+
+    This scenario is intended to be driven with a CONTROLLED
+    ACTIVATION-STATE start (see scripts/benchmark_live_gppo.py): the
+    fleet's explored/belief state is seeded from a real coverage sweep so
+    that Search activates through the normal maybe_activate() path.  It is
+    not a natural-from-reset deployment run.
+  version: "1.0"
+  duration:
+    # prepare_gppo_config rewrites this to mission_steps * interval.
+    max_steps: 128
+    step_dt: 0.1
+environment:
+  # Explicit: 'extended' is the 500 m / 1.0 m scalability environment.
+  geometry_mode: extended
+  map_size: [500, 500]
+  map_resolution: 1.0
+  map_file: ../../maps_test/1.png
+  circular_obstacles: []
+robots:
+  - id_range: [0, 3]
+    type: explorer
+    team_id: 1
+    config:
+      fov: 120
+      sensor_range: 10
+      velocity: 1.0
+      yaw_rate: 35
+      initial_positions: random_safe
+tasks:
+  - task_id: T1_exploration
+    type: exploration
+    priority: 3
+    assigned_robot_types: [explorer]
+    params:
+      target_coverage: 0.8
+  - task_id: T2_target_search
+    type: target_search
+    priority: 5
+    assigned_robot_types: [explorer]
+    # Frozen maybe_activate() has no independent time gate.
+    activation:
+      condition: exploration_rate >= 0.3
+    params: {}
+  - task_id: T3_relay
+    type: relay
+    priority: 2
+    assigned_robot_types: [explorer]
+    # Protocol constants (comm_range, min_connectivity, max_relay, release
+    # threshold, base) are owned by the frozen GPPO profile and injected by
+    # prepare_gppo_config(); the task schema only declares the task itself.
+    params: {}
+dynamics:
+  config_file: ../dynamics/kinematic_simple.yaml
+sensor:
+  config_file: ../sensors/ideal.yaml
+communication:
+  config_file: ../communication/ideal.yaml
+evaluation:
+  metrics:
+    - {name: exploration_rate, weight: 0.7, target: 0.8}
+    - {name: collision_count, weight: 0.3, target: 0, penalty_per_collision: -1}

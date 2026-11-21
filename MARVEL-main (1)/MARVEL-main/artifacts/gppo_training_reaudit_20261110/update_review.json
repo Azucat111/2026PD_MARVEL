@@ -1,0 +1,113 @@
+{
+  "reviewer": "review_fix_training",
+  "scope": "Reaudit actual two-batch reward construction, advantage normalization, frozen captured transitions, CPU model replay and gradient decomposition; no new training or simulation",
+  "conclusion": "No verified PPO sign, mask, log-probability, action-index or update-order implementation error found. The strongest demonstrated limitation is an almost untrained state-value baseline with only sixteen independent trajectory outcomes: role-centered advantages mostly rank seed difficulty and provide very weak evidence that sampled individual actions caused better completion.",
+  "important_design_limitations": [
+    {
+      "priority": 1,
+      "files": ["artifacts/gppo_three_hour_20261110/aligned_reward.py:16-19", "artifacts/gppo_three_hour_20261110/update_training.py:33", "artifacts/extended_role_advantage_design_20261012_attempt1/role_advantages.py:11-16", "scripts/train_extended_gppo_batched.py:31-33,188-190,205"],
+      "finding": "The reset critic offers no state baseline in batch00, and batch01 critic predictions remain nearly constant and close to zero relative to remaining-time targets. Same-seed actions share one terminal C; global per-role centering does not distinguish intrinsic seed difficulty from action quality.",
+      "actual_evidence": {
+        "batch00_value_range": [0.0, 0.0],
+        "batch01_value_range": [-0.007667839527130127, -0.005553046241402626],
+        "batch01_return_range": [-0.21133333333333335, -0.010333333333333335],
+        "search_advantage_vs_episode_completion_correlation": [-0.9828700423240662, -0.9955858588218689],
+        "relay_example": "Batch01 episode8 C=53s: relay at t=1s has A=-1.1068, two relay allocations at t=34s have A=+0.5240/+0.5381. This follows remaining-time targets and does not demonstrate that later sampled helpers improved the episode."
+      },
+      "interpretation_limit": "High correlation with C is expected for a team-return estimator and is NOT proof of a biased gradient, a sign error or a causal defect. The demonstrated issue is high-variance, poorly identified credit assignment with an ineffective learned baseline.",
+      "minimal_next_check": "Before further optimization, compare action quality under repeated stochastic rollouts of fixed training seeds or an independently validated state-value baseline; inspect within-seed policy improvement rather than treating faster seeds as good-action labels."
+    },
+    {
+      "priority": 2,
+      "files": ["scripts/gppo_rollout_batch.py:43", "scripts/train_extended_gppo_batched.py:186-208", "artifacts/gppo_three_hour_20261110/update_training.py:19-29"],
+      "finding": "Eighty decision records are only sixteen independent episode outcomes, not eighty independent completion labels. Each seed was sampled once; only nineteen Relay actions were observed, versus sixty-one Search actions. The expensive full H300 execution did not create additional policy decisions after completion.",
+      "actual_evidence": {
+        "episodes": 16,
+        "records": 80,
+        "search_records": 61,
+        "relay_records": 19,
+        "episode_decision_count_range": [4, 7],
+        "post_completion_records": 0,
+        "observed_failed_or_unsafe_training_episodes": 0,
+        "batch00_episode_decision_counts": [6, 4, 5, 5, 6, 5, 5, 4],
+        "batch01_episode_decision_counts": [7, 5, 5, 5, 4, 4, 5, 5]
+      },
+      "interpretation_limit": "Flattened per-decision averaging gives episodes/roles different numbers of gradient terms. This is common in episodic policy gradients and is not automatically an implementation bug: blindly dividing by decision count would itself change the estimator. Balanced episode domains do not imply equal empirical role/domain influence."
+    },
+    {
+      "priority": 3,
+      "files": ["scripts/train_extended_gppo_batched.py:133-146,201-208", "artifacts/gppo_three_hour_20261110/collect_training.py:20", "artifacts/gppo_three_hour_20261110/training_recipe.json:update"],
+      "finding": "Warm-started policy remains concentrated despite many legal alternatives, so a single rollout per seed explores little. Four epochs reuse the same forty records; they do not add information about unsampled alternatives.",
+      "actual_evidence": {
+        "batch00_mean_top1_probability": 0.8104351293295622,
+        "batch01_mean_top1_probability": 0.7817532010376453,
+        "batch00_states_with_top1_probability_at_least_0_95": 18,
+        "batch01_states_with_top1_probability_at_least_0_95": 13,
+        "sampled_non_greedy_actions": [9, 8],
+        "mean_categorical_entropy_nats": [0.48178586850542615, 0.540598850074792],
+        "single_legal_action_states": 0,
+        "legal_action_count_range": [7, 149],
+        "recorded_argmax_changes_on_each_training_batch": [1, 0]
+      },
+      "minimal_next_check": "Measure repeated-seed exploration and actual alternative-action outcomes before choosing additional optimizer steps or a larger training duration."
+    },
+    {
+      "priority": 4,
+      "files": ["artifacts/extended_role_advantage_design_20261012_attempt1/role_advantages.py:12-16", "scripts/train_extended_gppo_batched.py:203-208"],
+      "finding": "Per-role standardization rescales policy gradients separately and removes absolute advantage scale. It does not equalize role counts: the summed loss still contains roughly three Search terms per Relay term. This is an explicit optimizer-weighting choice, not a guarantee of faithful optimization of an unweighted common-time objective.",
+      "actual_evidence": {
+        "batch00_raw_advantage_std_search_relay": [0.04163211211562157, 0.043800607323646545],
+        "batch01_raw_advantage_std_search_relay": [0.07281672209501266, 0.06697677075862885],
+        "legal_graphs_containing_multiple_roles": 0
+      },
+      "interpretation_limit": "Because every observed legal graph has only one role, the selected role is state-determined here; I did NOT find the more serious action-dependent-baseline bug that would arise if competing legal actions had different role-conditioned baselines."
+    },
+    {
+      "priority": 5,
+      "files": ["artifacts/gppo_three_hour_20261110/update_training.py:36-40", "scripts/train_extended_gppo_batched.py:206-207"],
+      "finding": "KL gates evaluate only the forty collected states per update. With anchor_weight=0 there is no separate frozen round17 reference constraint on unseen states. Small measured KL or one observed argmax flip cannot establish policy preservation on unseen heldout trajectories.",
+      "interpretation_limit": "This is a generalization limitation rather than evidence that PPO clipping or the measured exact-KL code is wrong."
+    }
+  ],
+  "ruled_out_or_not_supported": [
+    {
+      "topic": "Reward and PPO sign",
+      "files": ["artifacts/gppo_three_hour_20261110/aligned_reward.py:19", "scripts/train_extended_gppo_batched.py:27-29,201-203"],
+      "conclusion": "At a fixed decision state/time, smaller C gives a larger return. The clipped PPO loss increases the probability of sampled actions with positive A and decreases it for negative A. No sign inversion found. The +t term is a valid state/time baseline for a remaining-time return; it alone does not prove an incentive to delay."
+    },
+    {
+      "topic": "Mask, logprob, temperature, action order",
+      "files": ["scripts/train_extended_gppo_batched.py:135-146", "integrations/gppo/gppo_model.py:339-345,426-431", "artifacts/gppo_three_hour_20261110/update_training.py:23-28"],
+      "conclusion": "Actual captured behavior was replayed on CPU against each frozen behavior checkpoint. Maximum logprob errors were 1.91e-6 and 4.77e-6; maximum value errors were 0 and 9.31e-10. Same masked flattened logits and temperature1 are used in collection/update. No masked or empty-action sampling defect found."
+    },
+    {
+      "topic": "RReLU train/eval behavior",
+      "files": ["integrations/gppo/gppo_model.py:132", "scripts/train_extended_gppo_batched.py:74", "artifacts/gppo_three_hour_20261110/update_training.py:17"],
+      "conclusion": "F.rrelu(...,training=self.training) does exist; any earlier claim that no RReLU exists is inaccurate. Collection and update both keep model.eval(), so this functional activation is deterministic and does not explain a behavior-logprob mismatch."
+    },
+    {
+      "topic": "Shared encoder critic interference",
+      "files": ["integrations/gppo/gppo_model.py:406-438", "scripts/train_extended_gppo_batched.py:205-217"],
+      "conclusion": "Actor/critic share AHGNN, so value loss can alter policy features. But CPU gradient decomposition at each batch's actual behavior checkpoint does NOT support critic domination: batch00 shared value gradient is zero because the value output is zero-initialized; batch01 weighted value gradient norm=0.00034749 versus policy norm=1.00900, cosine=-0.39149. Later optimizer epochs were not decomposed."
+    },
+    {
+      "topic": "Silently dropping physical failure episodes",
+      "files": ["scripts/train_extended_gppo_batched.py:170-172", "scripts/benchmark_fair_search.py:113", "scripts/gppo_joint_completion_metric.py:19-21", "artifacts/gppo_three_hour_20261110/update_training.py:20-22"],
+      "conclusion": "A full-horizon physical failure is assigned C=300 by the metric and is not filtered merely for success=False; collection rejects incomplete/runtime-error episodes and the updater requires every scheduled collector to succeed technically. No success-only filtering was found. Actual sixteen training episodes happened to be safe/successful, so there were no observed failure examples."
+    },
+    {
+      "topic": "Update sequencing and warm start",
+      "files": ["artifacts/gppo_three_hour_20261110/prepare_training_batch.py:13-18", "artifacts/gppo_three_hour_20261110/update_training.py:17-34"],
+      "conclusion": "Behavior is frozen throughout each collection batch and replayed before updates; critic output/Adam reset only once; second batch loads prior optimizer state. Existing on-policy/update checks address mechanical consistency, not effectiveness of the learning signal."
+    }
+  ],
+  "verification": {
+    "actual_transitions_read_cpu": 80,
+    "actual_behavior_checkpoints_read_cpu": 2,
+    "read_only_forward_and_autograd_only": true,
+    "optimizer_steps_executed_by_reviewer": 0,
+    "simulations_executed_by_reviewer": 0,
+    "production_or_old_artifacts_modified": false,
+    "sampling_variance_causality_warning": "The observed statistics identify weak data/credit assignment, not a proven cause of the heldout regression."
+  }
+}

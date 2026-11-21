@@ -1,0 +1,859 @@
+{
+  "status": "COMPLETE",
+  "verdict": "FAIL",
+  "threshold": 0.15,
+  "primary": {
+    "cases": 12,
+    "rule_mean_seconds": 29.441666666666666,
+    "round8_mean_seconds": 20.908333333333335,
+    "completed_time_reduction": 0.289838664024908,
+    "inverse_time_efficiency_gain": 0.40813072937425265,
+    "all_pairs_eligible": true
+  },
+  "groups": {
+    "30_static": {
+      "cases": 3,
+      "rule_mean_seconds": 44.400000000000006,
+      "round8_mean_seconds": 28.233333333333334,
+      "completed_time_reduction": 0.3641141141141142,
+      "inverse_time_efficiency_gain": 0.5726092089728454,
+      "all_pairs_eligible": true
+    },
+    "30_dynamic": {
+      "cases": 3,
+      "rule_mean_seconds": 47.166666666666664,
+      "round8_mean_seconds": 27.46666666666667,
+      "completed_time_reduction": 0.4176678445229681,
+      "inverse_time_efficiency_gain": 0.7172330097087378,
+      "all_pairs_eligible": true
+    },
+    "60_static": {
+      "cases": 3,
+      "rule_mean_seconds": 10.866666666666667,
+      "round8_mean_seconds": 12.133333333333335,
+      "completed_time_reduction": -0.11656441717791433,
+      "inverse_time_efficiency_gain": -0.10439560439560447,
+      "all_pairs_eligible": true
+    },
+    "60_dynamic": {
+      "cases": 3,
+      "rule_mean_seconds": 15.333333333333334,
+      "round8_mean_seconds": 15.800000000000002,
+      "completed_time_reduction": -0.0304347826086957,
+      "inverse_time_efficiency_gain": -0.029535864978903037,
+      "all_pairs_eligible": true
+    }
+  },
+  "seed_results": {
+    "101101": {
+      "cases": 4,
+      "rule_mean_seconds": 21.525000000000002,
+      "round8_mean_seconds": 21.525000000000002,
+      "completed_time_reduction": 0.0,
+      "inverse_time_efficiency_gain": 0.0,
+      "all_pairs_eligible": true
+    },
+    "202202": {
+      "cases": 4,
+      "rule_mean_seconds": 16.55,
+      "round8_mean_seconds": 16.55,
+      "completed_time_reduction": 0.0,
+      "inverse_time_efficiency_gain": 0.0,
+      "all_pairs_eligible": true
+    },
+    "303303": {
+      "cases": 4,
+      "rule_mean_seconds": 50.25,
+      "round8_mean_seconds": 24.650000000000002,
+      "completed_time_reduction": 0.5094527363184079,
+      "inverse_time_efficiency_gain": 1.0385395537525355,
+      "all_pairs_eligible": true
+    }
+  },
+  "seed_cluster_bootstrap_95pct": [
+    0.0,
+    0.4626313966264363
+  ],
+  "confidence_limitation": "Only3 independent seeds; CI descriptive, not evidence that population lower bound exceeds15%",
+  "rows": [
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              14.5,
+              8.5,
+              5.1000000000000005,
+              14.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 10.55
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 33.1,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 649.9717287509702
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              14.5,
+              8.5,
+              5.1000000000000005,
+              14.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 10.55
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 33.1,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 644.8153307570028
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              14.5,
+              8.5,
+              5.1000000000000005,
+              14.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 10.55
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 25.200000000000003,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 749.765144141973
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              14.5,
+              8.5,
+              5.1000000000000005,
+              14.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 10.55
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 25.200000000000003,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 747.6276966650039
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.3000000000000003,
+              3.1,
+              3.2,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 12.8,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 1081.5164202980231
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.3000000000000003,
+              3.1,
+              3.2,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 12.8,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 1081.9332537419978
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 101101,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.3000000000000003,
+              3.1,
+              3.2,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 15.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 1162.0351593870437
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.3000000000000003,
+              3.1,
+              3.2,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 15.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 1120.1064782230533
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.9000000000000004,
+              5.4,
+              4.4,
+              8.8
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 5.375
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 22.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 458.97713774698786
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.9000000000000004,
+              6.5,
+              4.3,
+              8.8
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 5.625
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 22.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 472.01600896398304
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.9000000000000004,
+              5.4,
+              4.4,
+              8.8
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 5.375
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 28.1,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 563.9488203389919
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              2.9000000000000004,
+              6.5,
+              4.3,
+              8.8
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 5.625
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 28.1,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 548.5888578490121
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              1.1,
+              2.1,
+              2.1,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 1.6
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 5.1000000000000005,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 786.2668187129893
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              1.1,
+              2.1,
+              1.1,
+              2.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 1.6
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 5.1000000000000005,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 790.2528508259566
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 202202,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              1.1,
+              2.1,
+              2.1,
+              1.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 1.6
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 11.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 871.7657866289956
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              1.1,
+              1.1,
+              2.1,
+              2.1
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 1.6
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 11.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 873.7924544999842
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              13.200000000000001,
+              5.1000000000000005,
+              2.2,
+              13.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 8.4
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 78.10000000000001,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 517.8789282719954
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              26.6,
+              7.4,
+              2.2,
+              13.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 12.325000000000001
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 29.6,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 509.3741580400383
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              14.100000000000001,
+              10.100000000000001,
+              2.2,
+              13.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 9.875000000000002
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 88.2,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 486.93179679999594
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              26.1,
+              10.100000000000001,
+              2.2,
+              13.100000000000001
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 12.875000000000002
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 29.1,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 461.4939222909743
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              3.2,
+              2.1,
+              3.1,
+              1.3
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 14.700000000000001,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 805.8500866889954
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              3.2,
+              2.1,
+              3.1,
+              1.3
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 18.5,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 809.0318896949757
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 303303,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "paired_identity_verified": true,
+      "arms": {
+        "rule": {
+          "metric": {
+            "capped_detection_seconds": [
+              3.2,
+              2.1,
+              3.1,
+              1.3
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 20.0,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 864.789349477971
+        },
+        "round8": {
+          "metric": {
+            "capped_detection_seconds": [
+              3.2,
+              2.1,
+              3.1,
+              1.3
+            ],
+            "detected_targets": 4,
+            "total_targets": 4,
+            "horizon_seconds": 300.0,
+            "mean_capped_seconds": 2.4250000000000003
+          },
+          "joint": {
+            "secondary_joint_completion_seconds": 21.400000000000002,
+            "joint_success": true,
+            "stable_seconds": 3.0,
+            "physics_dt": 0.1,
+            "whole_window_safe": true,
+            "primary_search_metric_unchanged": true,
+            "acceptance_claim": false
+          },
+          "collisions": {},
+          "nonrelay_complete": true,
+          "valid": true,
+          "wall_seconds": 850.4391538180062
+        }
+      }
+    }
+  ],
+  "runs": 24,
+  "paired_identity_verified": true,
+  "source_and_checkpoint_unchanged": true,
+  "protocol_sha256": "ebf301f30a319fb0d000872f2899f373dce32c9d7961958690481566e2042826",
+  "optimizer_updates": 0,
+  "training_permitted": false,
+  "scope": "Unseen seeds on unchanged connected80m scenario. Does not establish original500m deployment/map generalization.",
+  "full_original_500m_goal_claim": false,
+  "finished_utc": "2026-10-15T15:23:03.832861+00:00",
+  "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc",
+  "git_status_after": " M \"MARVEL-main (1)/MARVEL-main/__pycache__/parameter.cpython-311.pyc\"\n M \"MARVEL-main (1)/MARVEL-main/integrations/gppo/event_allocator.py\"\n M \"MARVEL-main (1)/MARVEL-main/integrations/gppo/event_sources.py\"\n M \"MARVEL-main (1)/MARVEL-main/integrations/gppo/scheduler.py\"\n M \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_search_scenario.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/__pycache__/agent.cpython-311.pyc\"\n M \"MARVEL-main (1)/MARVEL-main/utils/__pycache__/utils.cpython-311.pyc\"\n M \"MARVEL-main (1)/MARVEL-main/utils/dynamics_models.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/geometry.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/node_manager.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/safety_shield.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/sensor_models.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/simulation_runtime.py\"\n M \"MARVEL-main (1)/MARVEL-main/utils/task_manager.py\"\n?? \"MARVEL-main (1)/MARVEL-main/artifacts/\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/assets/\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_connected_gppo_20261010.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_connected_gppo_cached_sensing_20261012.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_gppo_scalability.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_live_gppo.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_live_gppo_full.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/configs/sensors/ideal_cached_extended_20261012.yaml\"\n?? \"MARVEL-main (1)/MARVEL-main/handoff/codex/\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/extended_safety_motion.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/extended_travel.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/heading_adapter.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/heading_features.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/mesh_relay.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/observed_reachability.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/opportunity_features.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/relay_frontier.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/route_support.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/search_deadline.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/search_recovery.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/gppo/search_viewpoints.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/observed_belief.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/observed_node_lattice.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/rule_scheduling.py\"\n?? \"MARVEL-main (1)/MARVEL-main/integrations/search_efficiency.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_common_benchmark_wall_budget.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_completed_task_stationkeeping.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_exploration_coverage_basis.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_candidate_inference.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_certified_route.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_final_motion_authority.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_gppo_training.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_motion_shield.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_node_lattice.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_observed_travel.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_relay_augmentation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_relay_budget.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_relay_motion.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_safety_motion.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_safety_release_route.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_search_catalog.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_search_observed_frontier.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_search_recovery.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_search_service_scan.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_search_viewpoints.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_extended_warning_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_frozen_behavior_rollout_batch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_acceptance_protocol.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_benchmark_domains.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_joint_cost_audit.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_joint_reward.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_motion_capture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_pair_score.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_parallel_rollouts.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_gppo_safety_motion_capture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_joint_completion_metric.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_known_relay_route.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_belief.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_matching_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_mesh_relay.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_peer_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_relay_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_route_risk_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_search_reachability.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_observed_search_visibility.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_public_opportunity.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_rule_scheduling_baseline.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_scheduler_candidate_filter.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_search_deadline_bound.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_search_efficiency.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_search_route_support.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_training_production_heading_clock.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_training_wall_budget_wrapper.py\"\n?? \"MARVEL-main (1)/MARVEL-main/platform_tests/test_vector_observed_ray.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_checkpoint_training_update_direction.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_completed_worker002_heading_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_declared_shadow_search.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_dynamic_repair_pair.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_frozen_search_choices.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_frozen_training_domain.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_gppo_exploration.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_gppo_joint_cost.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_gppo_observed_inputs.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_graph_clearance.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_heading_candidate_shadow.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_historical_training_actual_mission_clock.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_integrated_inference_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_integrated_inference_9165_30_static.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_integrated_inference_9166_30_static.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_joint_ppo_rollouts.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_joint_search_allocation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_linear_first_public_choices.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_observed_matching_shadow.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_offline_find_head_strong_baselines.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_opportunity_inputs.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_opportunity_ppo_rollouts.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_relay_geometry.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_search_inference_contract.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_search_observed_components.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_sensing_correctness.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_training_heading_control_contract.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/audit_training_workspace.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/benchmark_fair_search.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/benchmark_live_gppo.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/benchmark_policy_devices.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/build_connected_gppo_scenario.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/calibrated_find_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_empty_observed_graph.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_integrated_environment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_public_search_visibility_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_public_search_visibility_state.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_route_visibility_fresh_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_route_visibility_fresh_prefix_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/capture_warning_residual_63402.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_existing_gae_reuse.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_existing_graph_batch_reuse.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_final_staged_safety_sensing_full.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_public_supported_prior_candidates.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_safe_public_calibration_group_cv.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_staged_safety_cost_full.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_staged_safety_cost_physical.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_staged_safety_cost_physical_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/check_staged_safety_sensing_full.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_paired_calibration_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_paired_calibration_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_public_visibility_preflight_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_public_visibility_preflight_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_second_search_preflight_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/collect_second_search_preflight_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/complete_checkpoint_common_comparison_pipeline.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/completed_task_stationkeeping.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/continue_completed_opportunity_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/debug_dynamic_relay_warning.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/debug_dynamic_relay_warning_2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/debug_search_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_attempt15_public_latency_signal.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_attempt15_public_policy_rankings.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_canonical_attachment_cycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_captured_certified_routes.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_completed_task_drift.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_goal_certificate_observed_path.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_joint_relay_anchors.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_observed_frontier_9165.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_observed_peripheral_ranking_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_observed_relay_chain_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_observed_relay_frontier_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_peripheral_search_sensor_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_relay_cycle_61134.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_relay_truth_anchor_oracle_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_role_normalized_actual_update.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_safety_residual_9164.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_saved_training_relay_endpoints_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_search_catalog_scope.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_search_warning_support_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_warning_residual_observed_escape.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/diagnose_warning_residual_oracle_escape.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_calibrated_find_head_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_checkpoint_causal_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_checkpoint_common_arm.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_checkpoint_joint_prefix_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_expected_find_teacher_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_expected_find_teacher_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo_heading.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo_heading_dynamic.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo_joint_acceptance.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo_joint_lifecycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_extended_gppo_joint_stationkeeping.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_heat_facing_probe_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_heat_facing_probe_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_integrated_gppo_joint_acceptance.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_linear_find_head_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_observed_matching_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_observed_matching_probe_dynamic.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_observed_route_risk_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_observed_visibility_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_opportunity_gppo_joint_acceptance.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_public_visibility_teacher_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_public_visibility_teacher_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_route_visibility_fresh_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_route_visibility_fresh_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_route_visibility_teacher_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/evaluate_route_visibility_teacher_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/expected_find_teacher.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/extended_gppo_heading.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/filter_scheduler_candidates.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/finish_checkpoint_common_diagnosis.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_censor_aware_paired_calibration_once.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_global_find_advantage_head.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_linear_observed_find_heads.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_offline_observed_find_cost_head.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_paired_calibration_once.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_recovered_paired_calibration_once.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_saved_public_search_latency_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/fit_second_search_calibration_once.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/freeze_checkpoint_common_comparison.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/freeze_public_visibility_candidates.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_acceptance_protocol.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_benchmark_domains.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_joint_completion_metric.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_joint_reward.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_motion_capture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_parallel_rollouts.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_rollout_batch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/gppo_training_records.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/guard_opportunity_attempt19_detached.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/heat_facing_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/inspect_acceptance_dependencies.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/inspect_attempt19_live.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/install_safety_capture_after_natural.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_goal_current_fixtures.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_goal_fixture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_goal_live_fixture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_goal_live_v3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_joint_attempt4.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/interrupt_joint_attempt7.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/keep_checkpoint_comparison_awake.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/keep_detached_linux_training_awake.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/keep_paired_calibration_awake.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/keep_paired_recovery_awake.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/keep_training_host_awake.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/launch_guarded_training_attempt18.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/launch_guarded_training_attempt18_retry2.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/linear_find_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/observed_find_cost_features.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/observed_matching_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/observed_route_risk_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/observed_search_visibility.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/opportunity_training_source.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/paired_gain_calibration.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/paired_latency_intervals.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/prepare_opportunity_initial_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/probe_observed_partial_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/probe_public_first_assignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/probe_public_radio_relay_goal.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/probe_search_candidate_context.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/probe_sensing_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/profile_full_pipeline.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/profile_paired_validation_cost.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/prototype_clearance_graph.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/prototype_path_execution.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/public_visibility_teacher.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/read_original_gppo_paper.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/reconstruct_dynamic_relay_warning.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/reconstruct_failed_heading_episode.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/reconstruct_training_initial.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/recover_guarded_training_attempt18.ps1\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/recover_paired_calibration_preflight.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/replay_checkpoint_common_states.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/replay_extended_gppo_inputs.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/replay_goal_certificate_boundary.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/replay_relay_cycle_boundary.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/resume_opportunity_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/retry_paired_calibration_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/review_attempt19_offline.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/review_attempt19_warm_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/route_visibility_teacher.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_catalog_candidate_dev9164.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_catalog_candidate_dev9164_attempt8.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_checkpoint_common_comparison.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_gppo_rollout_worker.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt10_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt11_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt12_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt13_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt14_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt15_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt16_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt17_20261012.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt18_20261012.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_reserved_final_attempt19_20261013.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9165_attempt10.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9165_attempt9.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9166_attempt11.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9167_attempt12.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9167_attempt13.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9167_attempt14.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9167_attempt15.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9168_attempt16.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9168_attempt17.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9169_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_integrated_training_dev9170_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_opportunity_rollout_worker.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_paired_calibration_preflight.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_parallel_rollout_pilots.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_parallel_rollout_pilots_attempt2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_public_first_assignment_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_search_independent_validation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/run_search_scale_validation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/score_gppo_pairs.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/stop_idle_waiter_attempt16.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/stop_service_scan_validation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/summarize_checkpoint_common_diagnosis.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/summarize_clearance_audit.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/summarize_live_gppo.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/summarize_postfix_validation.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/summarize_sensing_audit.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_heat_facing_probe.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_candidate_inference.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_candidate_wiring_red.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_integrated_candidate.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_integrated_candidate_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_integrated_safety_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_safety_motion_capture.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_safety_motion_capture_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_scheduler_red.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_scheduler_red_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_search_scheduler.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_search_scheduler_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_search_scheduler_regressions_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/test_staged_search_viewpoints.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_extended_heading_stall.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_search_recovery_case.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_search_service_scan.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_search_service_scan_confirmed.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_search_stall.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/trace_unconfirmed_search_service.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_batched.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_heading.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_online.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_parallel_continuation_attempt15.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_parallel_role_normalized_attempt16.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_parallel_role_normalized_attempt17.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_parallel_role_normalized_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_public_opportunity_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_wall_budget.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_wall_budget_attempt11.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_wall_budget_attempt13.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/train_extended_gppo_wall_budget_attempt14.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_actual_scheduler_observed_prefix_9165.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_catalog_training_attempt8.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_catalog_training_complete.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_implemented_search_recovery.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_postfix_live_gppo.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_scheduler_observed_prefix_9165.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_second_search_calibration_branch.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/validate_second_search_calibration_cohort.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_attempt18_horizon_reset.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_attempt19_continuation_contract.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_benchmark_warning_physical_rate.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_captured_service_prefix.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_checkpoint_comparison_goal_alignment.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_default_relay_route_equivalence.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_dynamic_safety_lifecycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_existing_mesh_bridge_after_probe_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_extended_safety_physical.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_frozen_feature_source.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_cycle_continuous.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_cycle_continuous_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_live_observed.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_live_observed_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_live_observed_v3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_live_observed_v4.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_previous_detour.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_previous_detour_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_previous_detour_v3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_regressions_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_regressions_v3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_goal_certificate_source_guard.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_installed_exact_sensor_cache_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_installed_known_relay_route_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_installed_relay_probe_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_integrated_production_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_mesh_relay_moving_lifecycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_mesh_relay_physical_lifecycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_mesh_relay_moving.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_mesh_relay_physical.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_peripheral_prototype_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_peripheral_prototype_61206_attempt2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_peripheral_prototype_61206_attempt3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_radio_probe_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_ray_actual_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_ray_vectorization_draft.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_observed_relay_frontier_physical_9168.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_opportunity_actual_pilot.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_original_search_snapshot_current.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_original_search_snapshot_frontier.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_original_search_snapshot_vector_ray.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_peripheral_search_motion_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_recovery_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_relay_cycle_continuous.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_relay_physical_lifecycle.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_relay_probe_initialized_guard_equivalence.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_safety_residual_local_route_9164.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_safety_residual_route_9164.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_saved_training_relay_known_paths_attempt18.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_search_goal_region_continuous.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_search_goal_region_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_search_observed_frontier_regressions.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_exact_sensor_cache.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_exact_sensor_cache_physics.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_known_relay_routes_attempt1.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_known_relay_routes_full_attempt1.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_known_relay_routes_physical_attempt1.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_first_failure.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_natural_62811.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_natural_62811_capture40.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_natural_62811_recovery150.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_natural_dynamic_62813.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_partial_guard.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_platform.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_platform_attempt2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_platform_attempt2_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_platform_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_platform_v3.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_scheduler_physical.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_relay_probe_scheduler_physical_v2.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_safety_release_9164.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_search_scheduler_physical_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_search_viewpoints_physical_61206.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_sensor_cache_full_platform.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_sensor_cache_still_runtime.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_warning_sensing_63402.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_warning_sensing_v2_63402.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/verify_staged_warning_sensing_v3_63402.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_and_run_integrated_final_20261011.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_and_run_integrated_training_attempt15.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_and_run_role_normalized_training_attempt16.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_continue_completed_opportunity_attempt19.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_install_cache_and_train_attempt17.py\"\n?? \"MARVEL-main (1)/MARVEL-main/scripts/wait_install_relay_and_train_attempt18.py\"\n"
+}

@@ -1,0 +1,160 @@
+{
+  "recorded_utc": "2026-11-11T05:07:46.307780+00:00",
+  "method": "Read-only /proc thread tick deltas over1.200216s; ps process names/CPU/thread count/nice; inspected only named BLAS env keys",
+  "cpu_count": 20,
+  "loadavg": [
+    4.05126953125,
+    4.05712890625,
+    2.71630859375
+  ],
+  "workers": [
+    {
+      "pid": 125253,
+      "threads": 4,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "nice": 0,
+      "main_thread_cpu_percent": 100.0,
+      "other_active_thread_cpu_percent": 0.0,
+      "blas_env": {
+        "OMP_NUM_THREADS": "UNSET",
+        "OPENBLAS_NUM_THREADS": "UNSET",
+        "MKL_NUM_THREADS": "UNSET",
+        "OMP_THREAD_LIMIT": "UNSET",
+        "MKL_DYNAMIC": "UNSET"
+      }
+    },
+    {
+      "pid": 126101,
+      "threads": 4,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "nice": 0,
+      "main_thread_cpu_percent": 100.0,
+      "other_active_thread_cpu_percent": 0.0,
+      "blas_env": {
+        "OMP_NUM_THREADS": "UNSET",
+        "OPENBLAS_NUM_THREADS": "UNSET",
+        "MKL_NUM_THREADS": "UNSET",
+        "OMP_THREAD_LIMIT": "UNSET",
+        "MKL_DYNAMIC": "UNSET"
+      }
+    },
+    {
+      "pid": 126102,
+      "threads": 4,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "nice": 0,
+      "main_thread_cpu_percent": 100.0,
+      "other_active_thread_cpu_percent": 0.8,
+      "blas_env": {
+        "OMP_NUM_THREADS": "UNSET",
+        "OPENBLAS_NUM_THREADS": "UNSET",
+        "MKL_NUM_THREADS": "UNSET",
+        "OMP_THREAD_LIMIT": "UNSET",
+        "MKL_DYNAMIC": "UNSET"
+      }
+    },
+    {
+      "pid": 128684,
+      "threads": 4,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "nice": 0,
+      "main_thread_cpu_percent": 100.0,
+      "other_active_thread_cpu_percent": 0.0,
+      "blas_env": {
+        "OMP_NUM_THREADS": "UNSET",
+        "OPENBLAS_NUM_THREADS": "UNSET",
+        "MKL_NUM_THREADS": "UNSET",
+        "OMP_THREAD_LIMIT": "UNSET",
+        "MKL_DYNAMIC": "UNSET"
+      }
+    }
+  ],
+  "other_cpu_observation": "Only init approximately18.9percent and diagnostic Python3percent among non-worker processes",
+  "conclusion": "No evidence of BLAS thread oversubscription or scheduler CPU contention; one busy thread per worker",
+  "priority_affinity_or_process_adjustments": false,
+  "note": "Initial timing extrapolation was transient; later observed H40->H70 progress was approximately2.7s per mission. Do not modify run parameters."
+}

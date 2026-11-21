@@ -1,0 +1,896 @@
+{
+  "status": "COMPLETE",
+  "created_utc": "2026-11-11T06:11:04.433526+00:00",
+  "scope": "Onlyfreshcase1981101; read-only savedartifact and public mesh primitive analysis. Nootherfreshoutcomes, simulation, training, planner, model selection orhyperparameterchange.",
+  "arms": {
+    "rule": {
+      "timeline": {
+        "search_all_targets_found_seconds": 20.8,
+        "first_nonrelay_complete": 20.8,
+        "first_radio_atleast90percent": 41.5,
+        "first_radio_stable3s": {
+          "interval_start": 41.5,
+          "first_confirmed_after3s": 44.5
+        },
+        "first_joint_eligible_stable3s": {
+          "interval_start": 41.5,
+          "first_confirmed_after3s": 44.5
+        },
+        "saved_joint_metric": {
+          "secondary_joint_completion_seconds": 44.5,
+          "joint_success": true,
+          "stable_seconds": 3.0,
+          "physics_dt": 0.1,
+          "whole_window_safe": true,
+          "primary_search_metric_unchanged": true,
+          "acceptance_claim": false
+        }
+      },
+      "allocations": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 100002
+          },
+          "action": 69
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 2,
+            "subtask_id": 100001
+          },
+          "action": 32
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 13,
+            "subtask_id": 100003
+          },
+          "action": 43
+        },
+        {
+          "record_index": 3,
+          "time": 6.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 19,
+            "subtask_id": 100000
+          },
+          "action": 19
+        },
+        {
+          "record_index": 4,
+          "time": 20.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 22,
+            "subtask_id": 200019
+          },
+          "action": 22
+        },
+        {
+          "record_index": 5,
+          "time": 36.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 200025
+          },
+          "action": 9
+        }
+      ],
+      "components": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 3,
+          "time": 6.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            10,
+            3,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 4,
+          "time": 20.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            14,
+            10,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 22,
+          "fixed_task_anchor": [
+            41.5,
+            8.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            24,
+            6
+          ],
+          "hypothetical_lcc_ratio": 0.8,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        },
+        {
+          "record_index": 5,
+          "time": 36.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            24,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.8,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 9,
+          "fixed_task_anchor": [
+            21.5,
+            59.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            30
+          ],
+          "hypothetical_lcc_ratio": 1.0,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        }
+      ],
+      "events": [
+        {
+          "step": 16,
+          "timestamp": 1794376736.7166245,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 2,
+            "robot_id": 9,
+            "step": 16,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 54,
+          "timestamp": 1794376749.7604835,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 1,
+            "robot_id": 2,
+            "step": 54,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 57,
+          "timestamp": 1794376750.1283925,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T1_exploration",
+            "step": 57
+          }
+        },
+        {
+          "step": 90,
+          "timestamp": 1794376764.7291524,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 3,
+            "robot_id": 13,
+            "step": 90,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 207,
+          "timestamp": 1794376799.71163,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 0,
+            "robot_id": 19,
+            "step": 207,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 207,
+          "timestamp": 1794376799.7116306,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T2_target_search",
+            "step": 207
+          }
+        }
+      ]
+    },
+    "parent": {
+      "timeline": {
+        "search_all_targets_found_seconds": 16.8,
+        "first_nonrelay_complete": 16.8,
+        "first_radio_atleast90percent": 44.900000000000006,
+        "first_radio_stable3s": {
+          "interval_start": 44.900000000000006,
+          "first_confirmed_after3s": 47.900000000000006
+        },
+        "first_joint_eligible_stable3s": {
+          "interval_start": 44.900000000000006,
+          "first_confirmed_after3s": 47.900000000000006
+        },
+        "saved_joint_metric": {
+          "secondary_joint_completion_seconds": 47.900000000000006,
+          "joint_success": true,
+          "stable_seconds": 3.0,
+          "physics_dt": 0.1,
+          "whole_window_safe": true,
+          "primary_search_metric_unchanged": true,
+          "acceptance_claim": false
+        }
+      },
+      "allocations": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 100002
+          },
+          "action": 69
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 1,
+            "subtask_id": 100003
+          },
+          "action": 91
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 2,
+            "subtask_id": 100001
+          },
+          "action": 32
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 13,
+            "subtask_id": 100003
+          },
+          "action": 73
+        },
+        {
+          "record_index": 4,
+          "time": 4.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 19,
+            "subtask_id": 100000
+          },
+          "action": 19
+        },
+        {
+          "record_index": 5,
+          "time": 17.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 5,
+            "subtask_id": 200019
+          },
+          "action": 5
+        },
+        {
+          "record_index": 6,
+          "time": 37.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 200025
+          },
+          "action": 9
+        }
+      ],
+      "components": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 4,
+          "time": 4.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 5,
+          "time": 17.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            14,
+            10,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 5,
+          "fixed_task_anchor": [
+            33.5,
+            8.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            24,
+            6
+          ],
+          "hypothetical_lcc_ratio": 0.8,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        },
+        {
+          "record_index": 6,
+          "time": 37.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            24,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.8,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 9,
+          "fixed_task_anchor": [
+            19.5,
+            56.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            30
+          ],
+          "hypothetical_lcc_ratio": 1.0,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        }
+      ],
+      "events": [
+        {
+          "step": 16,
+          "timestamp": 1794376736.5420291,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 2,
+            "robot_id": 9,
+            "step": 16,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 34,
+          "timestamp": 1794376743.6640687,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 1,
+            "robot_id": 2,
+            "step": 34,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 62,
+          "timestamp": 1794376754.3668716,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T1_exploration",
+            "step": 62
+          }
+        },
+        {
+          "step": 90,
+          "timestamp": 1794376764.8491642,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 3,
+            "robot_id": 13,
+            "step": 90,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 167,
+          "timestamp": 1794376786.7838943,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 0,
+            "robot_id": 19,
+            "step": 167,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 167,
+          "timestamp": 1794376786.7838948,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T2_target_search",
+            "step": 167
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "timeline": {
+        "search_all_targets_found_seconds": 16.8,
+        "first_nonrelay_complete": 16.8,
+        "first_radio_atleast90percent": 44.900000000000006,
+        "first_radio_stable3s": {
+          "interval_start": 44.900000000000006,
+          "first_confirmed_after3s": 47.900000000000006
+        },
+        "first_joint_eligible_stable3s": {
+          "interval_start": 44.900000000000006,
+          "first_confirmed_after3s": 47.900000000000006
+        },
+        "saved_joint_metric": {
+          "secondary_joint_completion_seconds": 47.900000000000006,
+          "joint_success": true,
+          "stable_seconds": 3.0,
+          "physics_dt": 0.1,
+          "whole_window_safe": true,
+          "primary_search_metric_unchanged": true,
+          "acceptance_claim": false
+        }
+      },
+      "allocations": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 100002
+          },
+          "action": 69
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 1,
+            "subtask_id": 100003
+          },
+          "action": 91
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 2,
+            "subtask_id": 100001
+          },
+          "action": 32
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 13,
+            "subtask_id": 100003
+          },
+          "action": 73
+        },
+        {
+          "record_index": 4,
+          "time": 4.0,
+          "role_1_search_2_relay": 1,
+          "chosen": {
+            "uav_id": 19,
+            "subtask_id": 100000
+          },
+          "action": 19
+        },
+        {
+          "record_index": 5,
+          "time": 17.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 5,
+            "subtask_id": 200019
+          },
+          "action": 5
+        },
+        {
+          "record_index": 6,
+          "time": 37.0,
+          "role_1_search_2_relay": 2,
+          "chosen": {
+            "uav_id": 9,
+            "subtask_id": 200025
+          },
+          "action": 9
+        }
+      ],
+      "components": [
+        {
+          "record_index": 0,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 1,
+          "time": 1.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 2,
+          "time": 2.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 3,
+          "time": 2.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 4,
+          "time": 4.0,
+          "role": 1,
+          "public_delayed_component_sizes": [
+            14,
+            13,
+            3
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots"
+        },
+        {
+          "record_index": 5,
+          "time": 17.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            14,
+            10,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.4666666666666667,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 5,
+          "fixed_task_anchor": [
+            33.5,
+            8.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            24,
+            6
+          ],
+          "hypothetical_lcc_ratio": 0.8,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        },
+        {
+          "record_index": 6,
+          "time": 37.0,
+          "role": 2,
+          "public_delayed_component_sizes": [
+            24,
+            6
+          ],
+          "public_delayed_lcc_ratio": 0.8,
+          "comm_range": 20.0,
+          "source": "raw_uav_features XY from public delayed TaskGraph; not physical_poses diagnostic snapshots",
+          "chosen_helper": 9,
+          "fixed_task_anchor": [
+            19.5,
+            56.5
+          ],
+          "hypothetical_arrival_component_sizes": [
+            30
+          ],
+          "hypothetical_lcc_ratio": 1.0,
+          "donor_components_preserved": true,
+          "warning": "One-position hypothetical at recorded instant; not prediction of moving fleet or physical route arrival."
+        }
+      ],
+      "events": [
+        {
+          "step": 16,
+          "timestamp": 1794376736.880833,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 2,
+            "robot_id": 9,
+            "step": 16,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 34,
+          "timestamp": 1794376743.756757,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 1,
+            "robot_id": 2,
+            "step": 34,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 62,
+          "timestamp": 1794376754.5895436,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T1_exploration",
+            "step": 62
+          }
+        },
+        {
+          "step": 90,
+          "timestamp": 1794376765.1819916,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 3,
+            "robot_id": 13,
+            "step": 90,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 167,
+          "timestamp": 1794376786.926624,
+          "type": "target_found",
+          "data": {
+            "type": "target_found",
+            "task_id": "T2_target_search",
+            "target_index": 0,
+            "robot_id": 19,
+            "step": 167,
+            "detection_mode": "sensor_visible_cell"
+          }
+        },
+        {
+          "step": 167,
+          "timestamp": 1794376786.9266245,
+          "type": "task_completed",
+          "data": {
+            "type": "task_completed",
+            "task_id": "T2_target_search",
+            "step": 167
+          }
+        }
+      ]
+    }
+  },
+  "parent_vs_candidate": {
+    "same_allocation_action_sequence_and_times": true,
+    "same_actual6D_actor_batches_andIDs": true,
+    "identical_physical_joint_trace": true,
+    "parent_records": 7,
+    "candidate_records": 7,
+    "interpretation": "Thiscase shows no changed realized GPPO allocation sequence or improved completion relative toparent; thisdoesnot establish failureoftransfer ingeneral."
+  },
+  "public_information_audit": {
+    "computable_existing_primitives": [
+      "mesh_components(public delayedpositions,comm_range20) computes components andLCC exactly for thatobserved snapshot (mesh_relay.py:17-39)",
+      "candidate_mask computes onehelper relocation tofixedanchor, LCCincrease anddonorcomponentpreservation using samedelayedpositions andearlier plannedassignments (mesh_relay.py:150-176)",
+      "_choose_anchor uses observed safeanchor candidates andcomponent endpoints; build fixes slots beforeGPPO selection (mesh_relay.py:41-88)"
+    ],
+    "actor_has": [
+      "AllUAV/task relativeXY geometry, normalized jointly (task_graph.py:340-351)",
+      "Busy/availability/currentrole andtimeestimates; relativeheadingcos/sin",
+      "Sharedcandidate hardmask reflects someconnectivity/routefeasibility restrictions"
+    ],
+    "not_direct_actor_inputs": [
+      "RawabsoluteXY, normalizationcenter/span, explicitcommradius; rawfeatures savedby recorder are a diagnostic superset, not extraactorinputs",
+      "Explicitcomponent membership/LCC/counterfactual LCC numbers calculatedabove",
+      "Existing helper-to-target/anchor assignmentmapping andfuturemotion/arrival commitments, release stablecounter andtask completiontimes"
+    ],
+    "missing_intermediate_state_for_this_mechanism": "Mappingfrom aselected helper/fixedanchor to time-varying fleet connectivity until3s stability: otherUAV upcomingroutes/goals, exacthelperarrival/executionprogress, preservedexistingassignments andreleasewindowstate are notinactorbatch. Thesnapshothypothetical can becomputed,but isnotthatfuturetrajectory.",
+    "identifiability_limit": "Noexplicitcomponent feature is notproof thatnetworkcannot infer components: actor receives relativegeometry andmasks, whilerawobservedstate pluscommrange suffices for exactcomponents. No samefullactorbatch/differentrequiredoptimalaction counterexample established.",
+    "action_limits": [
+      "GPPOselects task/UAVpair amongprebuilt legal slots; no standalonewait/anchorplacement/release action (event_allocator.py:186-197,286-341)",
+      "Scheduler fixes Search-beforeRelay order andtriggers/releases; existingRelay persistswithoutGPPOreselection eachsecond (scheduler.py:914-938,1202-1203)",
+      "Observedprobe andanchor refresh arecommonrules, notmodelactions (scheduler.py:930-934,972-1014)"
+    ]
+  },
+  "causal_limits": [
+    "CompletionlaterthanSearch is descriptive, notproofRelayallocatoralonecausedgap",
+    "Ruleandmodelchoices maydiffer; no isolatedactionintervention wasrun toassigncausality",
+    "Noresultusedtochange frozenmodel/protocol orselectmodels"
+  ],
+  "input_file_sha256": {
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/summary.json": "e2ebf561c5b02b3b7f72a39730f35fd4010c20f6611e5faf2ae5df0c0bf7f81e",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/physical_joint_trace.json": "73bb1528cdb2325a24cb11b0736a0a38f3979f0927b7a8f5447736edd4de0714",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/actor_inputs_9.json": "4aee84d380822a89cdf3fcdedd0b555af3bbd1dd32a090b5856c4fa873c38b48",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/config.json": "c811ae01c0fbea264b28fd344a7a65b71a1b731cd75177b7f851e1a856fef89a",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/rule_original/rule/events.json": "f4fa8f1f6c021e395a1ee42677d4e11f2bd63be65b473ff2899350ce626f712b",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/summary.json": "a6a4ee81d0cda6b3918d5a92786b31cc0a9315820f53c2db77d4211cce980fe7",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/physical_joint_trace.json": "0dba154c225ccb48715cfc73651849ba79932df6815f918f961ef37e90264933",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/actor_inputs_9.json": "3ec0dbe20f224bd0928856ae31da6c8bb68d8c9303a908b40b1ff5b859e35147",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/config.json": "ed1ad50b75521c89e116d7023172cc16dab4475a4c305ef6d5d25fe13e949e68",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/parent_original/gppo/events.json": "7ec511539a1fae123f2214af03e891c4b5d3b9e4569773550b45da1b00f5e34a",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/summary.json": "2bedffc80d0a41b47cf2a4fb8cb4879711033dee798d932884cba71057b389cb",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/physical_joint_trace.json": "0dba154c225ccb48715cfc73651849ba79932df6815f918f961ef37e90264933",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/actor_inputs_9.json": "0360af764df37a6dea1f0926056c159ef290127c16c86ec02345b50c1ae0db44",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/config.json": "18d9354f08c8175d73a7e4c1787961219dc0d719c20d890d22cf73ba2ce336d9",
+    "artifacts/gppo_learnability_two_hours_20261111/transfer/data/case_00_1981101_30_static/candidate_original/gppo/events.json": "0d5791f59535361b8e325489a952e298d2ecaacbba662feb99b50bad54cc295c"
+  },
+  "new_simulations": 0,
+  "optimizer_steps": 0
+}

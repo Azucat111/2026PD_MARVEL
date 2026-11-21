@@ -16,9 +16,12 @@ from .protocol_profile import (
 )
 from .stale_state import StalePositionTracker
 from .observed_graph import observed_next_hop
+from .search_recovery import ObservedSearchRecovery
 from .task_graph import Subtask, TaskType
 from .safety_layer import FrozenSafetyLayer
+from .extended_safety_motion import ObservedMotionSafetyLayer
 from .relay_release import FrozenRelayReleaseGate
+from .mesh_relay import ObservedMeshRelayDemandBuilder, ObservedMeshRelayReleaseGate
 
 
 # Frozen test_parameter.NUM_ANGLES_BIN.  The frozen worker quantizes the
@@ -52,11 +55,16 @@ class GPPOTaskScheduler:
         self.runtime = runtime
         self.config = dict(scheduler_config or {})
 
-        self.allocator = GPPOEventAllocator(
-            runtime,
-            checkpoint_path,
-            device=device,
-        )
+        candidate_options = {}
+        if self.config.get('extended_checkpoint') is not None:
+            candidate_options['extended_checkpoint'] = self.config['extended_checkpoint']
+            candidate_options['extended_checkpoint_sha256'] = self.config.get('extended_checkpoint_sha256')
+        elif self.config.get('extended_checkpoint_sha256') is not None:
+            raise ValueError('Candidate hash requires explicit extended checkpoint')
+        self.allocator = GPPOEventAllocator(runtime, checkpoint_path, device=device, **candidate_options)
+        if getattr(self.allocator.adapter,'model_protocol',None)=='extended-gppo-public-opportunity-v1':
+            from .opportunity_features import public_search_context
+            self.allocator.adapter.public_search_context_provider=lambda:public_search_context(self)
 
         # Adapter that owns the frozen native post-selection; bound by
         # MARVELPolicyAdapter.setup() for marvel_native only.
@@ -145,7 +153,9 @@ class GPPOTaskScheduler:
             search_service_steps=float(self.search_service_steps),
         )
 
-        self.relay_builder = ObservedRelayDemandBuilder(
+        extended_mesh = getattr(runtime,"geometry_mode",None)=="extended"
+        relay_builder_type = ObservedMeshRelayDemandBuilder if extended_mesh else ObservedRelayDemandBuilder
+        self.relay_builder = relay_builder_type(
             comm_range=float(
                 mixed["comm_range"]
             ),
@@ -159,12 +169,18 @@ class GPPOTaskScheduler:
             mixed["connectivity_threshold"]
         )
 
-        self.relay_release_gate = FrozenRelayReleaseGate(
+        release_kwargs = {}
+        if extended_mesh:
+            release_kwargs = dict(min_connectivity=self.relay_trigger_threshold,
+                fleet_uav_ids=tuple(int(robot.robot_id) for robot in runtime.robots))
+        release_gate_type = ObservedMeshRelayReleaseGate if extended_mesh else FrozenRelayReleaseGate
+        self.relay_release_gate = release_gate_type(
             release_threshold=float(
                 mixed["relay_release_threshold"]
             ),
             # Frozen RelayCoordinator default.
             stable_release_steps=3,
+            **release_kwargs,
         )
 
         # Public Search prior. Populated by install_search_scenario() after
@@ -178,6 +194,9 @@ class GPPOTaskScheduler:
         # In this integration one heat point corresponds to one
         # persistent Search slot, so heat_id is the equivalent key.
         self.search_dwell_by_heat: dict[int, int] = {}
+        self._search_scan_bearings: dict[int, float] = {}
+        self._search_scan_phases: dict[int, int] = {}
+        self._search_scan_owners: dict[int, int] = {}
 
         search_tasks = [
             task
@@ -225,8 +244,19 @@ class GPPOTaskScheduler:
         self.last_event_assignments = []
 
         self._marvel_agents = {}
+        self._search_recovery = self._make_search_recovery(runtime)
+        self._search_viewpoints = None
+        self._peripheral_search_targets = {}
+        if self._search_recovery is not None:
+            from .search_viewpoints import ObservedSearchViewpoints
+            fov, sensor_range = runtime._sensor_params()
+            self._search_viewpoints = ObservedSearchViewpoints(
+                runtime.obstacles.frame, sensor_range=sensor_range, fov=fov,
+                prior_radius=float(runtime.config.get('_gppo_profile', {}).get('search_guaranteed_hidden_radius', 5.5)))
 
-        self.safety = FrozenSafetyLayer(
+        safety_type = FrozenSafetyLayer if self._search_recovery is None else ObservedMotionSafetyLayer
+        safety_kwargs = {} if self._search_recovery is None else {"recovery": self._search_recovery}
+        self.safety = safety_type(
             runtime,
             warning_margin=float(
                 self.config.get(
@@ -240,13 +270,13 @@ class GPPOTaskScheduler:
                     8.0,
                 )
             ),
-            stable_release_steps=int(
-                self.config.get(
-                    "safety_stable_release_steps",
-                    2,
-                )
-            ),
+            stable_release_steps=int(self.config.get("safety_stable_release_steps", 2)),
+            **safety_kwargs,
         )
+
+        if isinstance(self.relay_builder, ObservedMeshRelayDemandBuilder):
+            self.relay_builder.anchor_candidates_provider = self._observed_relay_anchor_candidates
+            self.relay_builder.motion_candidate_guard = self._observed_relay_motion_impossible
 
         # Optional hook used by SimulationRuntime after dynamics.
         runtime.high_level_scheduler = self
@@ -338,6 +368,9 @@ class GPPOTaskScheduler:
         if relay_removed:
             self.relay_release_gate.reset_stability()
 
+        recovery = getattr(self, "_search_recovery", None)
+        if recovery is not None:
+            recovery.reset_uid(uid)
         return previous
 
     def install_search_scenario(
@@ -371,6 +404,12 @@ class GPPOTaskScheduler:
             for point in points
         }
 
+        self._search_scan_bearings = {}
+        self._search_scan_phases = {}
+        self._search_scan_owners = {}
+        recovery = getattr(self, "_search_recovery", None)
+        if recovery is not None:
+            recovery.reset()
         # A fresh scenario invalidates every previous Search assignment.
         self.search_assignments.clear()
 
@@ -446,6 +485,10 @@ class GPPOTaskScheduler:
 
         for helper_uid, _anchor in self.relay_assignments.values():
             owned.add(int(helper_uid))
+
+        probe = getattr(self, '_relay_probe', None)
+        if probe is not None:
+            owned.add(int(probe['uid']))
 
         for robot in self.runtime.robots:
             uid = int(robot.robot_id)
@@ -598,7 +641,7 @@ class GPPOTaskScheduler:
         return newly_serviced
 
     def _update_search_service(self):
-        """Frozen 6-step continuous dwell completion."""
+        """Preserve native dwell; require public confirmation in extended scenarios."""
 
         events = []
 
@@ -675,6 +718,15 @@ class GPPOTaskScheduler:
                     ]
                 )
 
+                confirmed = getattr(self.runtime, "completed_search_heat_ids", None)
+                if (getattr(self, "_search_recovery", None) is not None
+                        and (not callable(confirmed) or heat_id not in confirmed())):
+                    if dwell_steps == self.search_service_steps:
+                        events.append({"type": "gppo_search_service_unconfirmed",
+                                       "heat_id": heat_id, "robot_id": uav_id,
+                                       "dwell_steps": dwell_steps})
+                    continue
+
                 self.mark_heat_serviced(
                     heat_id
                 )
@@ -746,15 +798,18 @@ class GPPOTaskScheduler:
             for point in self.heat_points
         ]
 
+        extended_catalog = getattr(self.runtime, 'geometry_mode', None) == 'extended'
         slots = self.search_builder.build(
             visible_points,
             active_heat_ids=(
                 self.search_assignments.keys()
             ),
             source_task_id=task.task_id,
+            **({"include_all_pending": True} if extended_catalog else {}),
         )
 
-        slots = slots[:free_slots]
+        if not extended_catalog:
+            slots = slots[:free_slots]
 
         # Frozen semantics: an assigned UAV is globally unavailable.
         # Active Relay helpers are already executing a task and must not be
@@ -792,10 +847,25 @@ class GPPOTaskScheduler:
                 for slot in slots
             ]
 
+        age_kwargs={}
+        if self._search_recovery is not None:
+            # StalePositionTracker interpolates consecutive CONTROL snapshots.
+            age_kwargs['position_age_bound_seconds']=(
+                max(0,self.runtime.current_step-self._last_observed_step)*self.runtime.dt
+                +self.profile.stale_age_fraction*self.profile.high_level_interval_steps*self.runtime.dt)
+        allocation_kwargs = {}
+        if extended_catalog:
+            # Candidate count is independent of actual concurrent capacity.
+            # This guard only adds invalid actions; all existing hard masks
+            # and Search/Relay/Safety reservations remain in force.
+            allocation_kwargs['candidate_guard'] = lambda graph, assigned: np.full(
+                graph.action_mask.shape, len(assigned) >= free_slots, dtype=bool)
         decisions = self.allocator.allocate(
             slots,
             position_overrides=stale_positions,
             context_subtasks=self._native_search_context(slots),
+            **age_kwargs,
+            **allocation_kwargs,
         )
 
         self.last_event_assignments.extend(
@@ -829,6 +899,7 @@ class GPPOTaskScheduler:
             task is None
             or self.base_position is None
         ):
+            self._relay_probe = None
             self.relay_assignments.clear()
             self.relay_release_gate.reset_stability()
             return
@@ -851,7 +922,16 @@ class GPPOTaskScheduler:
             )
 
             if should_release:
+                self._relay_probe = None
                 self.relay_assignments.clear()
+            elif isinstance(self.relay_builder,ObservedMeshRelayDemandBuilder):
+                # Arrival is an observed event. Consume its augmentation
+                # opportunity before retargeting can make the helper in-flight.
+                self._augment_arrived_relay(task,stale_positions)
+                self.relay_builder.refresh_assignments(
+                    self.relay_assignments,stale_positions,
+                )
+                self._refresh_observed_relay_probe(stale_positions)
 
             # Frozen maybe_trigger() always returns here,
             # even on the step that release_all() fires.
@@ -876,6 +956,7 @@ class GPPOTaskScheduler:
             snapshot.connectivity_ratio
             >= self.relay_trigger_threshold
         ):
+            self._relay_probe = None
             return
 
         result = self.relay_builder.build(
@@ -885,15 +966,107 @@ class GPPOTaskScheduler:
             snapshot=snapshot,
         )
 
+        self._allocate_relay_result(result,stale_positions)
+        self._refresh_observed_relay_probe(stale_positions)
+
+    def _refresh_observed_relay_probe(self, positions):
+        """Bounded observed information gathering after required tasks complete."""
+        runtime = getattr(self, 'runtime', None)
+        if (getattr(runtime, 'geometry_mode', None) != 'extended'
+                or getattr(self, '_search_recovery', None) is None or not runtime.tasks.all_complete()
+                or self._active_task('relay') is None):
+            self._relay_probe = None
+            return
+        from .mesh_relay import extended_relay_helper_budget
+        budget = extended_relay_helper_budget(len(self.runtime.robots), self.relay_builder.max_demands)
+        if (len(self.relay_assignments) >= budget
+                or any(int(uid) not in positions or np.linalg.norm(np.asarray(positions[int(uid)])-anchor) > .5
+                    for uid,anchor in self.relay_assignments.values())):
+            self._relay_probe = None
+            return
+        snapshot = self.relay_builder.snapshot(positions)
+        if snapshot.connectivity_ratio >= self.relay_trigger_threshold:
+            self._relay_probe = None
+            return
+        probe = getattr(self, '_relay_probe', None)
+        if probe is not None and int(probe['uid']) not in self.safety.active_uav_ids:
+            return
+        from .relay_frontier import ObservedRelayFrontier
+        planner = getattr(self, '_relay_frontier', None)
+        if planner is None:
+            fov, sensor_range = self.runtime._sensor_params()
+            planner = ObservedRelayFrontier(self._search_recovery,
+                comm_range=self.relay_builder.comm_range, sensor_range=sensor_range, fov=fov)
+            self._relay_frontier = planner
+        hazards = getattr(self.safety, 'hazards', None)
+        step = int(self.runtime.current_step)
+        clear = None if hazards is None else lambda a,b: not hazards.segment_intersects_warning_buffer(a,b,step=step)
+        reserved = set(self.search_assignments.values()) | set(self.safety.active_uav_ids)
+        reserved.update(int(uid) for uid,_ in self.relay_assignments.values())
+        choice = planner.select(positions, reserved=reserved, segment_filter=clear)
+        self._relay_probe = choice
+        if choice is not None:
+            choice['path'] = [np.asarray(p,dtype=float).copy() for p in choice['path'][1:]]
+            self._apply_uav_state(choice['uid'], 'relay', choice['known_path_m'])
+            self.runtime._log_event('gppo_relay_observed_probe', dict(robot_id=int(choice['uid']),
+                anchor=choice['anchor'].tolist(), potential_unknown_cells=choice['potential_unknown_cells'],
+                known_path_m=choice['known_path_m'], forecast_lcc=choice['forecast_lcc'],
+                potential_not_guaranteed=True))
+
+    def _relay_probe_action(self, robot, choice):
+        rec = self._search_recovery
+        position = np.asarray(robot.position,dtype=float)
+        while choice['path'] and np.linalg.norm(choice['path'][0]-position) <= .1:
+            choice['path'].pop(0)
+        if not choice['path']:
+            self._relay_probe = None
+            return position.copy(), float(robot.heading)
+        target = choice['path'][0]
+        hazards = getattr(self.safety, 'hazards', None)
+        if (not rec.segment_safe(position,target)
+                or (hazards is not None and hazards.segment_intersects_warning_buffer(
+                    position,target,step=int(self.runtime.current_step)))):
+            self._relay_probe = None
+            return position.copy(), float(robot.heading)
+        feedback = rec.failed.get(int(robot.robot_id),[])
+        if any(np.linalg.norm(position-origin)<.5 and np.linalg.norm(target-old)<1e-6 for old,origin in feedback):
+            self._relay_probe = None
+            return position.copy(), float(robot.heading)
+        heading = choice['heading'] if len(choice['path'])==1 else self._heading(robot,target)
+        return target.copy(), float(heading)
+
+    def _augment_arrived_relay(self,task,stale_positions):
+        budget=int(self.relay_builder.max_demands)
+        runtime=getattr(self,"runtime",None)
+        if getattr(runtime,"geometry_mode",None)=="extended":
+            from .mesh_relay import extended_relay_helper_budget
+            budget=extended_relay_helper_budget(len(runtime.robots),budget)
+        remaining=budget-len(self.relay_assignments)
+        if remaining<=0:return
+        if any(int(uid) not in stale_positions or np.linalg.norm(np.asarray(stale_positions[int(uid)])-anchor)>.5
+            for uid,anchor in self.relay_assignments.values()):return
+        snapshot=self.relay_builder.snapshot(stale_positions,base_position=self.base_position)
+        if snapshot.connectivity_ratio>=self.relay_trigger_threshold:return
+        result=self.relay_builder.build(stale_positions,base_position=self.base_position,
+            source_task_id=task.task_id,snapshot=snapshot)
+        self._allocate_relay_result(result,stale_positions,append=True,limit=remaining)
+
+    def _allocate_relay_result(self,result,stale_positions,*,append=False,limit=None):
         # Search reservations remain unavailable to Relay if a
         # future scenario gives a UAV overlapping capabilities.
         reserved = set(
             self.search_assignments.values()
-        )
+        ) | {int(uid) for uid,_ in self.relay_assignments.values()}
+
+        probe = getattr(self, '_relay_probe', None)
+        if probe is not None:
+            reserved.add(int(probe['uid']))
 
         slots = []
 
         for slot in result.slots:
+            if append and int(slot.source_entity_id) in self.relay_assignments:continue
+            if limit is not None and len(slots)>=limit:break
             forbidden = (
                 set(slot.forbidden_uav_ids)
                 | reserved
@@ -914,9 +1087,13 @@ class GPPOTaskScheduler:
         if not slots:
             return
 
+        guard_kwargs = {}
+        if isinstance(self.relay_builder,ObservedMeshRelayDemandBuilder):
+            guard_kwargs["candidate_guard"] = self.relay_builder.candidate_mask
         decisions = self.allocator.allocate(
             slots,
             position_overrides=stale_positions,
+            **guard_kwargs,
         )
 
         self.last_event_assignments.extend(
@@ -932,7 +1109,8 @@ class GPPOTaskScheduler:
             for slot in slots
         }
 
-        self.relay_assignments = {}
+        if not append:
+            self.relay_assignments = {}
 
         for decision in decisions:
             target_uid = int(
@@ -956,6 +1134,49 @@ class GPPOTaskScheduler:
         # counterfactual stability window.
         self.relay_release_gate.reset_stability()
 
+    def _release_proven_unreachable_search(self,stale_positions):
+        released=[]
+        if getattr(self.runtime,'geometry_mode',None)!='extended':return released
+        from .observed_reachability import observed_search_impossibility
+        age=(max(0,self.runtime.current_step-self._last_observed_step)*self.runtime.dt
+            +self.profile.stale_age_fraction*self.profile.high_level_interval_steps*self.runtime.dt)
+        robots={int(r.robot_id):r for r in self.runtime.robots}
+        for heat,uid in list(self.search_assignments.items()):
+            if uid not in stale_positions or uid not in robots or heat not in self.heat_by_id:continue
+            reason=observed_search_impossibility(self.runtime,uid,stale_positions[uid],
+                self.heat_by_id[heat].position,age)
+            if reason is None:continue
+            self.search_assignments.pop(heat)
+            self.search_dwell_by_heat[heat]=0
+            released.append((int(heat),int(uid)))
+            log=getattr(self.runtime,'_log_event',None)
+            if callable(log):log('gppo_search_assignment_infeasible',{'heat_id':int(heat),
+                'robot_id':int(uid),**reason})
+        return released
+
+    def _release_unsupported_search_routes(self,stale_positions):
+        if getattr(self.runtime,'geometry_mode',None)!='extended' or not self.search_assignments:return []
+        from .runtime_graph import RuntimeGraphBuilder
+        from .task_graph import TaskGraph
+        from .route_support import observed_support_yields
+        uavs=RuntimeGraphBuilder(self.runtime,position_overrides=stale_positions).build().graph.uav_states
+        tasks=[Subtask(100000+int(heat),TaskType.TARGET_SEARCH,5,
+            position=tuple(self.heat_by_id[heat].position),processing_time=float(self.search_service_steps))
+            for heat in sorted(self.search_assignments) if heat in self.heat_by_id]
+        matrix=self.allocator._travel_time_matrix(uavs,tasks,self._marvel_agents)
+        graph=TaskGraph(uavs,tasks,current_time=self.runtime.current_step*self.runtime.dt,travel_time_matrix=matrix)
+        age=(max(0,self.runtime.current_step-self._last_observed_step)*self.runtime.dt
+            +self.profile.stale_age_fraction*self.profile.high_level_interval_steps*self.runtime.dt)
+        self.allocator._apply_deadline_mask(graph,age)
+        self.allocator._apply_observed_reachability_mask(graph,age)
+        active={100000+int(heat):int(uid) for heat,uid in self.search_assignments.items()}
+        yields=observed_support_yields(self.runtime,graph,self.allocator.last_travel_estimates,active)
+        for reason in yields:
+            heat=int(reason['task_id'])-100000;uid=int(reason['deferred_uav_id'])
+            self.search_assignments.pop(heat,None);self.search_dwell_by_heat[heat]=0
+            self.runtime._log_event('gppo_search_route_support_yield',{'heat_id':heat,'robot_id':uid,**reason})
+        return yields
+
     def _high_level_update(self) -> None:
         stale = self.tracker.positions(
             self.profile.stale_age_fraction
@@ -970,6 +1191,8 @@ class GPPOTaskScheduler:
         # Sensor detection from the preceding physics ticks is
         # consumed at this GPPO decision boundary.
         self._sync_search_completions()
+        self._release_proven_unreachable_search(stale)
+        self._release_unsupported_search_routes(stale)
 
         # Release anything that no longer holds an assignment, and publish
         # the currently assigned Search UAV set, before the allocation
@@ -1260,6 +1483,247 @@ class GPPOTaskScheduler:
             + safety_events
         )
 
+    @staticmethod
+    def _make_search_recovery(runtime):
+        frame = runtime.obstacles.frame
+        if frame.is_native:
+            return None
+        from utils.dynamics_models import KinematicSimple
+        models = [runtime.dynamics, *runtime.dynamics_by_type.values()]
+        if not all(isinstance(model, KinematicSimple) for model in models):
+            raise ValueError(
+                "Extended observed Search recovery requires KinematicSimple; "
+                "other dynamics need their actual trajectory validation."
+            )
+        return ObservedSearchRecovery(frame)
+
+    def _observed_relay_motion_impossible(self,uid,position,goal):
+        from .observed_reachability import observed_motion_impossibility
+        age=(max(0,self.runtime.current_step-getattr(self,'_last_observed_step',self.runtime.current_step))*self.runtime.dt
+            +self.profile.stale_age_fraction*self.profile.high_level_interval_steps*self.runtime.dt)
+        return observed_motion_impossibility(self.runtime,uid,position,goal,age) is not None
+
+    def _observed_relay_anchor_candidates(self):
+        rec=self._search_recovery
+        if rec is None or not rec._authoritative_areal_grid:return []
+        stamp=int(self.runtime.current_step)
+        if getattr(self,'_relay_anchor_stamp',None)!=stamp:
+            origin=np.asarray(rec.frame.origin,dtype=float)
+            candidates=[]
+            for (col,row),label in sorted(rec.cells.items()):
+                if label!=0:continue
+                point=origin+(np.array([col,row],dtype=float)+.5)*rec.frame.cell_size
+                if rec.segment_safe(point,point):candidates.append(point)
+            self._relay_anchor_points=candidates;self._relay_anchor_stamp=stamp
+        return [point for point in self._relay_anchor_points
+            if not self.safety.hazards.segment_intersects_warning_buffer(point,point,step=stamp)]
+
+    def _relay_action(self,robot,anchor,agent,route,base_action):
+        if self._search_recovery is None:
+            if route is None:return base_action
+            goal,_index=route
+            return goal,self._override_heading(robot,goal)
+        distance=float(np.linalg.norm(np.asarray(robot.position)-np.asarray(anchor)))
+        if distance<=.1:return np.asarray(robot.position).copy(),float(robot.heading)
+        if distance<=6.:route=(np.asarray(anchor,dtype=float),None)
+        return self._search_action(robot,anchor,agent,route,base_action,
+                                   allow_observed_frontier=True,allow_observed_grid_route=True)
+
+    def before_physics_tick(self, actions):
+        """Extended public warnings preempt motion at the physical clock."""
+        if self._search_recovery is None:
+            return actions
+        self.safety.pre_motion_update(self, int(self.runtime.current_step))
+        result=list(actions)
+        for index,robot in enumerate(self.runtime.robots):
+            if int(robot.robot_id) in self.safety.active_uav_ids:
+                result[index]=self.safety.select_action(robot, step=int(self.runtime.current_step))
+        return result
+
+    def _peripheral_search_target(self, robot, anchor, agent):
+        views = getattr(self, '_search_viewpoints', None)
+        if views is None:
+            return None
+        uid = int(robot.robot_id)
+        heat = next((int(h) for h, assigned in getattr(self, 'search_assignments', {}).items()
+                     if int(assigned) == uid), None)
+        targets = self._peripheral_search_targets
+        if heat is None:
+            targets.pop(uid, None)
+            return None
+        hazards = getattr(getattr(self, 'safety', None), 'hazards', None)
+        step = int(self.runtime.current_step)
+        risk = None if hazards is None else hazards.risk_at(anchor, step=step)
+        # The public warning must exclude the WHOLE original service disk.
+        # This changes execution goals only; Search completion still needs Find.
+        if risk is None or risk.clearance + self.search_reach_radius > hazards.warning_margin:
+            targets.pop(uid, None)
+            return None
+        segment_filter = lambda a, b: not hazards.segment_intersects_warning_buffer(a, b, step=step)
+        cached = targets.get(uid)
+        if cached is not None and cached[0] == heat and np.linalg.norm(robot.position-cached[1]) > .1:
+            from .extended_travel import extended_observed_next_hop
+            hop = extended_observed_next_hop(uid, robot.position, cached[1], agent,
+                self._search_recovery, segment_filter=segment_filter)
+            if hop is not None:
+                return cached[1].copy()
+        targets.pop(uid, None)
+        choice = views.select(uid, heat, anchor, agent, self._search_recovery, segment_filter=segment_filter)
+        if choice is None:
+            return None
+        targets[uid] = (heat, choice.position.copy())
+        return choice.position.copy()
+
+    def observe(self, observations):
+        """Consume only sensor-visible physical labels and own motion feedback."""
+        inference = getattr(getattr(self, 'allocator', None), 'adapter', None)
+        candidate_observe = getattr(inference, 'observe', None)
+        if callable(candidate_observe):
+            control_index = int(self.runtime.current_step) // int(self.profile.high_level_interval_steps)
+            if control_index != getattr(self, '_last_heading_observation_control_index', None):
+                candidate_observe(observations)
+                self._last_heading_observation_control_index = control_index
+        if self._search_recovery is not None:
+            self._search_recovery.observe(observations)
+        views = getattr(self, '_search_viewpoints', None)
+        if views is not None:
+            views.observe(observations, self.search_assignments)
+
+    def _search_action(self, robot, anchor, agent, route, base_action,
+                       service_scan_heading=None, route_goal_radius=0.,
+                       allow_observed_frontier=False,allow_observed_grid_route=False):
+        peripheral_heat = None
+        if self._search_recovery is not None and service_scan_heading is None:
+            support = self._peripheral_search_target(robot, anchor, agent)
+            if support is not None:
+                peripheral_heat = np.asarray(anchor, dtype=float).copy()
+                anchor = support
+                route = None
+                route_goal_radius = 0.
+        if self._search_recovery is None:
+            # Preserve frozen native routing and exploration heading exactly.
+            if route is None:
+                return base_action
+            goal, _node_index = route
+        else:
+            hazards = getattr(getattr(self, "safety", None), "hazards", None)
+            segment_filter = None if hazards is None else lambda a, b: not hazards.segment_intersects_warning_buffer(
+                a, b, step=int(self.runtime.current_step))
+            progress_target=None
+            if service_scan_heading is None:
+                fallback_preferred=None if route is None else route[0]
+                route=None
+                from .extended_travel import extended_observed_next_hop
+                rec=self._search_recovery
+                origin=np.asarray(robot.position,dtype=float)[:2]
+                peers=rec.nearby_positions.get(int(robot.robot_id),[])
+                def route_clear(a,b):
+                    if segment_filter is not None and not segment_filter(a,b):return False
+                    a=np.asarray(a,dtype=float)[:2];b=np.asarray(b,dtype=float)[:2];delta=b-a;length2=float(np.dot(delta,delta))
+                    for peer in peers:
+                        t=float(np.clip(np.dot(peer-a,delta)/length2,0.,1.)) if length2>1e-20 else 0.
+                        if np.linalg.norm(a+t*delta-peer)<min(.5,float(np.linalg.norm(origin-peer)))-1e-9:return False
+                    return True
+                if np.linalg.norm(origin-np.asarray(anchor))<=6. and rec.segment_safe(origin,anchor) and route_clear(origin,anchor):
+                    route=(np.asarray(anchor,dtype=float),None);progress_target=route[0]
+                else:
+                    details={}
+                    certified=extended_observed_next_hop(robot.robot_id,origin,anchor,agent,rec,segment_filter=segment_filter,route_details=details,goal_radius=route_goal_radius)
+                    if certified is None and allow_observed_grid_route:
+                        from .relay_frontier import ObservedRelayFrontier
+                        planner=getattr(self,'_relay_motion_routes',None)
+                        if planner is None or planner.recovery is not rec:
+                            planner=ObservedRelayFrontier(rec);self._relay_motion_routes=planner
+                        path=planner.known_route(robot.robot_id,anchor,segment_filter=segment_filter)
+                        if path is not None:
+                            points=[np.asarray(p,dtype=float) for p in path[1:] if np.linalg.norm(np.asarray(p)-origin)>.1]
+                            if points:
+                                certified=(points[0],None)
+                                details={'route_waypoints':[p.tolist() for p in points]}
+                    if certified is None and allow_observed_frontier:
+                        from .extended_travel import observed_frontier_next_hop
+                        frontier = observed_frontier_next_hop(
+                            robot.robot_id, origin, anchor, agent, rec, details,
+                            segment_filter=segment_filter,
+                        )
+                        if frontier is not None:
+                            certified, details = frontier
+                    if certified is not None:
+                        route=certified;progress_target=route[0]
+                        # A peer can occupy a coarse lattice node while the
+                        # continuous FREE corridor around it remains usable.
+                        # Look ahead on the same observed path for progress;
+                        # rec.select still certifies every actual move.
+                        for point in details.get('route_waypoints',[]):
+                            point=np.asarray(point,dtype=float)
+                            if np.linalg.norm(point-origin)<=.1:continue
+                            if all(np.linalg.norm(point-peer)>=.5-1e-9 for peer in peers):
+                                progress_target=point;break
+            goal = self._search_recovery.select(
+                robot.robot_id, robot.position, anchor, agent,
+                None if route is None else route[0], base_action[0],
+                base_heading=base_action[1], segment_filter=segment_filter, progress_target=progress_target,
+                prefer_base=(service_scan_heading is None and progress_target is None),
+                fallback_preferred=(fallback_preferred if service_scan_heading is None else None),
+                max_anchor_distance=(self.search_reach_radius
+                                     if service_scan_heading is not None else None),
+            )
+        if self._search_recovery is not None and service_scan_heading is not None:
+            if np.linalg.norm(np.asarray(goal)[:2] - np.asarray(robot.position)[:2]) <= .1:
+                # A service pose may have only outward graph/base directions.
+                # Retry the public heat direction through the same observed
+                # prefix, failed-motion, peer and unchanged service-radius gate.
+                goal = self._search_recovery.select(
+                    robot.robot_id, robot.position, anchor, agent, anchor, base_action[0],
+                    base_heading=base_action[1], max_anchor_distance=self.search_reach_radius,
+                    segment_filter=segment_filter,
+                )
+            return (goal, float(service_scan_heading))
+        heading_goal = goal
+        if (self._search_recovery is not None
+                and int(robot.robot_id) in self._search_recovery.sensing_uids):
+            # KinematicSimple supports independent waypoint and desired heading.
+            # A short legal movement lets FoV turn toward the public Search prior;
+            # holding position would provide no yaw in this motion model.
+            heading_goal = goal if progress_target is not None else anchor
+        heading = self._override_heading(robot, heading_goal)
+        if self._search_recovery is not None and progress_target is None:
+            heading = self._search_recovery.prefix_headings.get(
+                int(robot.robot_id), heading
+            )
+        if peripheral_heat is not None and progress_target is not None:
+            heading = self._override_heading(robot, peripheral_heat)
+        return (goal, heading)
+
+    def _service_scan_heading(self, heat_id, robot, anchor):
+        # Advance only after real movement has achieved the requested heading.
+        for name in ("_search_scan_bearings", "_search_scan_phases", "_search_scan_owners"):
+            if not hasattr(self, name):
+                setattr(self, name, {})
+        bearings = self._search_scan_bearings
+        phases = self._search_scan_phases
+        owners = self._search_scan_owners
+        entering = (heat_id not in bearings
+                    or owners.get(heat_id) != int(robot.robot_id)
+                    or self.search_dwell_by_heat.get(heat_id, 0) == 0)
+        if entering:
+            bearings[heat_id] = self._override_heading(robot, anchor)
+            phases[heat_id] = 0
+            owners[heat_id] = int(robot.robot_id)
+        sensors = getattr(self.runtime, "sensor_by_type", {})
+        sensor = sensors.get(getattr(robot, "robot_type", None),
+                             getattr(self.runtime, "sensor", None))
+        fov = float(getattr(sensor, "fov", 120.))
+        if not np.isfinite(fov) or fov <= 0:
+            fov = 120.
+        sectors = max(1, int(np.ceil(360. / min(360., fov))))
+        desired = (bearings[heat_id] + 360. / sectors * phases[heat_id]) % 360.
+        error = abs((float(robot.heading) - desired + 180.) % 360. - 180.)
+        if not entering and error <= 1e-6:
+            phases[heat_id] = (phases[heat_id] + 1) % sectors
+            desired = (bearings[heat_id] + 360. / sectors * phases[heat_id]) % 360.
+        return desired
+
     def apply(self, actions):
         actions = list(actions)
 
@@ -1295,6 +1759,9 @@ class GPPOTaskScheduler:
         self.assignments = {}
 
         used_uavs: set[int] = set()
+
+        if self._search_recovery is not None:
+            self._search_recovery.sync_assignments(self.search_assignments)
 
         # Search override.
         for heat_id, uav_id in (
@@ -1349,36 +1816,30 @@ class GPPOTaskScheduler:
                 self.search_reach_radius
                 + 1e-9
             ):
-                # Frozen hold_radius behavior.
-                goal = np.asarray(
-                    robot.position,
-                    dtype=float,
-                ).copy()
-
-                actions[index] = (
-                    goal,
-                    self._override_heading(
-                        robot,
-                        anchor,
-                    ),
-                )
+                if self._search_recovery is None:
+                    # Frozen native hold_radius behavior.
+                    goal = np.asarray(robot.position, dtype=float).copy()
+                    actions[index] = (goal, self._override_heading(robot, anchor))
+                else:
+                    actions[index] = self._search_action(
+                        robot, anchor, agent, None, actions[index],
+                        service_scan_heading=self._service_scan_heading(
+                            heat_id, robot, anchor),
+                    )
 
             else:
+                for name in ("_search_scan_bearings", "_search_scan_phases", "_search_scan_owners"):
+                    getattr(self, name, {}).pop(heat_id, None)
                 route = observed_next_hop(
                     agent,
                     point.position,
                 )
 
-                if route is not None:
-                    goal, _node_index = route
-
-                    actions[index] = (
-                        goal,
-                        self._override_heading(
-                            robot,
-                            goal,
-                        ),
-                    )
+                actions[index] = self._search_action(
+                    robot, anchor, agent, route, actions[index],
+                    route_goal_radius=self.search_reach_radius,
+                    allow_observed_frontier=True,
+                )
 
             used_uavs.add(int(uav_id))
 
@@ -1420,16 +1881,9 @@ class GPPOTaskScheduler:
                 anchor,
             )
 
-            if route is not None:
-                goal, _node_index = route
-
-                actions[index] = (
-                    goal,
-                    self._override_heading(
-                        robot,
-                        goal,
-                    ),
-                )
+            actions[index] = self._relay_action(
+                robot,anchor,agent,route,actions[index],
+            )
 
             used_uavs.add(int(helper_uid))
 
@@ -1439,6 +1893,16 @@ class GPPOTaskScheduler:
                 "relay",
                 int(target_uid),
             )
+
+        probe = getattr(self, '_relay_probe', None)
+        if probe is not None:
+            uid = int(probe['uid'])
+            index = robot_index.get(uid)
+            if index is not None and uid not in used_uavs and uid not in self.safety.active_uav_ids:
+                actions[index] = self._relay_probe_action(self.runtime.robots[index], probe)
+                if getattr(self, '_relay_probe', None) is not None:
+                    used_uavs.add(uid)
+                    self.assignments[uid] = ('relay', None)
 
         # Frozen v9 same-waypoint resolution.  `_select_actions` dispatches
         # the per-task waypoint before returning, so the frozen resolver

@@ -1,0 +1,14 @@
+{
+  "rejected": {
+    "adam_steps": [
+      2.0
+    ],
+    "model_fingerprint": "b387475e7d33518bcaff16f5fd3116951fc9fc1345562b70aaa6fa96fbda163c"
+  },
+  "guarded": {
+    "adam_steps": [
+      1.0
+    ],
+    "model_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539"
+  }
+}

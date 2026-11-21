@@ -1,0 +1,143 @@
+{
+  "status": "COMPLETE",
+  "finished_utc": "2026-11-10T08:36:08.353973+00:00",
+  "elapsed_minutes": 52.65589954853058,
+  "within_one_hour": true,
+  "git": {
+    "root": "<local-home>/MARVEL_INTEGRATION",
+    "branch": "extended-scalability",
+    "head": "5143fbdc4bdadf907f59c433e81ab11b2e98c6dc"
+  },
+  "production_files_unchanged": 475,
+  "original_round8_unchanged": true,
+  "training": {
+    "batches": 1,
+    "optimizer_steps": 2,
+    "episodes": 4,
+    "decisions": 19,
+    "collection_wall_minutes": 14.384874018033345,
+    "max_kl": 0.0006186146638356149,
+    "candidate": "artifacts/gppo_alignment_hour_20261110/update/checkpoint_batch_000.pth",
+    "production_adopted": false
+  },
+  "evaluation": {
+    "status": "COMPLETE",
+    "rows": [
+      {
+        "case": {
+          "seed": 1280021,
+          "uavs": 30,
+          "dynamic": false
+        },
+        "arms": {
+          "rule": {
+            "completion_seconds": 93.9,
+            "success": true,
+            "safe": true,
+            "find_mean": 6.4,
+            "trace_sha256": "385aff8def43715d6137a73386176bc757537d8904f54e09c3048698470f98e7"
+          },
+          "round8": {
+            "completion_seconds": 98.5,
+            "success": true,
+            "safe": true,
+            "find_mean": 8.4,
+            "trace_sha256": "b6b367055b5700fd658c48b5ad9e099216e4f5792b418080f0878135a0067647"
+          },
+          "candidate": {
+            "completion_seconds": 98.5,
+            "success": true,
+            "safe": true,
+            "find_mean": 8.4,
+            "trace_sha256": "b6b367055b5700fd658c48b5ad9e099216e4f5792b418080f0878135a0067647"
+          }
+        },
+        "status": "COMPLETE",
+        "round8_candidate_actor_choices_and_inputs_identical": true,
+        "round8_candidate_joint_trace_identical": true
+      },
+      {
+        "case": {
+          "seed": 1280022,
+          "uavs": 30,
+          "dynamic": true
+        },
+        "arms": {
+          "rule": {
+            "completion_seconds": 30.700000000000003,
+            "success": true,
+            "safe": true,
+            "find_mean": 7.8500000000000005,
+            "trace_sha256": "dc88164e907ed8edd7faf3f721a2f309f703f2c0d4c91f52eeb6ce19ca94f38c"
+          },
+          "round8": {
+            "completion_seconds": 52.6,
+            "success": true,
+            "safe": true,
+            "find_mean": 7.325,
+            "trace_sha256": "0d1964029b4f08ffc8bb34e907205f91ae0f5a9ba662ae75d6463105378438c7"
+          },
+          "candidate": {
+            "completion_seconds": 52.6,
+            "success": true,
+            "safe": true,
+            "find_mean": 7.325,
+            "trace_sha256": "0d1964029b4f08ffc8bb34e907205f91ae0f5a9ba662ae75d6463105378438c7"
+          }
+        },
+        "status": "COMPLETE",
+        "round8_candidate_actor_choices_and_inputs_identical": true,
+        "round8_candidate_joint_trace_identical": true
+      }
+    ],
+    "stats": {
+      "cases": 2,
+      "sum_seconds": {
+        "rule": 124.60000000000001,
+        "round8": 151.1,
+        "candidate": 151.1
+      },
+      "candidate_vs_rule_time_reduction": -0.21268057784911698,
+      "candidate_vs_round8_time_reduction": 0.0,
+      "round8_vs_rule_time_reduction": -0.21268057784911698,
+      "all_success_safe": true
+    },
+    "scope": "Two predeclared fresh held-out development cases, 30UAV 80m, static/dynamic; insufficient for whole-project 30/60 15% acceptance",
+    "acceptance_claim": false,
+    "production_adoption": false
+  },
+  "reward_alignment": {
+    "trajectories": 72,
+    "paired_comparisons": 84,
+    "strict_rank_reversals": 17,
+    "scope": "Old formula projected on common H300; not causal attribution of historical regression"
+  },
+  "probe_screen": {
+    "cases": 4,
+    "horizon": 60,
+    "decision": "Rejected unconditional early probe"
+  },
+  "tests": {
+    "passed": 45,
+    "groups": [
+      {
+        "passed": 31,
+        "scope": "objective, frozen batch, new reward and probe contracts"
+      },
+      {
+        "passed": 5,
+        "scope": "existing PPO rollout/update reproduction"
+      },
+      {
+        "passed": 9,
+        "scope": "mixed catalog API and existing Search catalog"
+      }
+    ]
+  },
+  "all_owned_compute_processes_stopped": true,
+  "temporary_awake_released": true,
+  "commit": false,
+  "push": false,
+  "project_goal_15_percent_accepted": false,
+  "next_step": "Expose observed Relay probe/bridge options jointly with Search through existing allocator; bounded causal validation before more training"
+}

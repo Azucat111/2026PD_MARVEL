@@ -1,0 +1,815 @@
+{
+  "scope": "Posthoc read-only attribution from the frozen heldout; no policy/checkpoint/metric changes and no alternative-action performance claims",
+  "pairs": [
+    {
+      "case": {
+        "seed": 1680021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 43.6,
+          "first_nonrelay_complete": 10.9,
+          "last_target_detection": 10.9,
+          "mean_target_detection": 7.550000000000001,
+          "before_qualifying_stability": {
+            "time": 40.5,
+            "connectivity": 0.7333333333333333,
+            "nonrelay_complete": true,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 17,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 22,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 25,
+                "subtask_id": 200016
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 1,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 7.0,
+              "chosen": {
+                "uav_id": 6,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 30.0,
+              "chosen": {
+                "uav_id": 20,
+                "subtask_id": 200015
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 65.7,
+          "first_nonrelay_complete": 11.600000000000001,
+          "last_target_detection": 11.600000000000001,
+          "mean_target_detection": 7.3500000000000005,
+          "before_qualifying_stability": {
+            "time": 62.6,
+            "connectivity": 0.7,
+            "nonrelay_complete": true,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 13,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 17,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 25,
+                "subtask_id": 200016
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 6,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 1,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 45.0,
+              "chosen": {
+                "uav_id": 21,
+                "subtask_id": 200003
+              }
+            },
+            {
+              "time": 59.0,
+              "chosen": {
+                "uav_id": 11,
+                "subtask_id": 200004
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": {
+        "index": 0,
+        "same_public_input": true,
+        "rule": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 17,
+            "subtask_id": 100000
+          },
+          "estimated_cost": 19.562721252441406
+        },
+        "candidate": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 13,
+            "subtask_id": 100002
+          },
+          "estimated_cost": 22.216352462768555
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 1680022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 56.6,
+          "first_nonrelay_complete": 14.700000000000001,
+          "last_target_detection": 14.700000000000001,
+          "mean_target_detection": 8.75,
+          "before_qualifying_stability": {
+            "time": 53.5,
+            "connectivity": 0.8,
+            "nonrelay_complete": true,
+            "safety_active": [],
+            "safety_records": 3,
+            "escapes": 3,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 2,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 8,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 200013
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 15,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 8.0,
+              "chosen": {
+                "uav_id": 7,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 42.0,
+              "chosen": {
+                "uav_id": 26,
+                "subtask_id": 200023
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 136.6,
+          "first_nonrelay_complete": 11.9,
+          "last_target_detection": 11.9,
+          "mean_target_detection": 5.6000000000000005,
+          "before_qualifying_stability": {
+            "time": 133.5,
+            "connectivity": 0.8,
+            "nonrelay_complete": true,
+            "safety_active": [],
+            "safety_records": 5,
+            "escapes": 5,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 7,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 2,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 200013
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 15,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 5.0,
+              "chosen": {
+                "uav_id": 24,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 122.0,
+              "chosen": {
+                "uav_id": 8,
+                "subtask_id": 200021
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": {
+        "index": 0,
+        "same_public_input": true,
+        "rule": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 2,
+            "subtask_id": 100001
+          },
+          "estimated_cost": 18.729904174804688
+        },
+        "candidate": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 7,
+            "subtask_id": 100003
+          },
+          "estimated_cost": 21.85635757446289
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 1680023,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 8.9,
+          "first_nonrelay_complete": 5.9,
+          "last_target_detection": 5.9,
+          "mean_target_detection": 4.45,
+          "before_qualifying_stability": {
+            "time": 5.800000000000001,
+            "connectivity": 1.0,
+            "nonrelay_complete": false,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 38,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 6,
+                "subtask_id": 200000
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 38,
+                "subtask_id": 100003
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 8.9,
+          "first_nonrelay_complete": 5.9,
+          "last_target_detection": 5.9,
+          "mean_target_detection": 4.45,
+          "before_qualifying_stability": {
+            "time": 5.800000000000001,
+            "connectivity": 1.0,
+            "nonrelay_complete": false,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 38,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 6,
+                "subtask_id": 200000
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 38,
+                "subtask_id": 100001
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": {
+        "index": 1,
+        "same_public_input": true,
+        "rule": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 12,
+            "subtask_id": 100001
+          },
+          "estimated_cost": 30.68300437927246
+        },
+        "candidate": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 12,
+            "subtask_id": 100003
+          },
+          "estimated_cost": 30.68300437927246
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 1680024,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 29.0,
+          "first_nonrelay_complete": 7.1000000000000005,
+          "last_target_detection": 7.1000000000000005,
+          "mean_target_detection": 5.125,
+          "before_qualifying_stability": {
+            "time": 25.900000000000002,
+            "connectivity": 1.0,
+            "nonrelay_complete": true,
+            "safety_active": [
+              56
+            ],
+            "safety_records": 2,
+            "escapes": 1,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 52,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 3,
+                "subtask_id": 200057
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 52,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 16.0,
+              "chosen": {
+                "uav_id": 55,
+                "subtask_id": 200052
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 13.200000000000001,
+          "first_nonrelay_complete": 10.200000000000001,
+          "last_target_detection": 10.200000000000001,
+          "mean_target_detection": 6.65,
+          "before_qualifying_stability": {
+            "time": 10.100000000000001,
+            "connectivity": 1.0,
+            "nonrelay_complete": false,
+            "safety_active": [],
+            "safety_records": 1,
+            "escapes": 1,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 52,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 12,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 26,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 3,
+                "subtask_id": 200057
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 55,
+                "subtask_id": 100000
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": {
+        "index": 0,
+        "same_public_input": true,
+        "rule": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 12,
+            "subtask_id": 100001
+          },
+          "estimated_cost": 18.780975341796875
+        },
+        "candidate": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 52,
+            "subtask_id": 100003
+          },
+          "estimated_cost": 19.913742065429688
+        }
+      }
+    },
+    {
+      "case": {
+        "seed": 1680027,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 7.1000000000000005,
+          "first_nonrelay_complete": 4.1000000000000005,
+          "last_target_detection": 4.1000000000000005,
+          "mean_target_detection": 3.1000000000000005,
+          "before_qualifying_stability": {
+            "time": 4.0,
+            "connectivity": 1.0,
+            "nonrelay_complete": false,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 39,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 31,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 15,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 4.0,
+              "chosen": {
+                "uav_id": 49,
+                "subtask_id": 100001
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 7.1000000000000005,
+          "first_nonrelay_complete": 4.1000000000000005,
+          "last_target_detection": 4.1000000000000005,
+          "mean_target_detection": 3.1000000000000005,
+          "before_qualifying_stability": {
+            "time": 4.0,
+            "connectivity": 1.0,
+            "nonrelay_complete": false,
+            "safety_active": [],
+            "safety_records": 0,
+            "escapes": 0,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 39,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 31,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 15,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 4.0,
+              "chosen": {
+                "uav_id": 49,
+                "subtask_id": 100001
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": null
+    },
+    {
+      "case": {
+        "seed": 1680028,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "rows": [
+        {
+          "arm": "rule",
+          "completion_seconds": 14.0,
+          "first_nonrelay_complete": 5.5,
+          "last_target_detection": 5.5,
+          "mean_target_detection": 4.0,
+          "before_qualifying_stability": {
+            "time": 10.9,
+            "connectivity": 1.0,
+            "nonrelay_complete": true,
+            "safety_active": [
+              53
+            ],
+            "safety_records": 4,
+            "escapes": 3,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 42,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 16,
+                "subtask_id": 100001
+              }
+            },
+            {
+              "time": 2.0,
+              "chosen": {
+                "uav_id": 46,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 5.0,
+              "chosen": {
+                "uav_id": 42,
+                "subtask_id": 100003
+              }
+            }
+          ]
+        },
+        {
+          "arm": "candidate",
+          "completion_seconds": 14.0,
+          "first_nonrelay_complete": 6.300000000000001,
+          "last_target_detection": 6.300000000000001,
+          "mean_target_detection": 5.300000000000001,
+          "before_qualifying_stability": {
+            "time": 10.9,
+            "connectivity": 1.0,
+            "nonrelay_complete": true,
+            "safety_active": [
+              31,
+              53
+            ],
+            "safety_records": 4,
+            "escapes": 2,
+            "no_fly_violations": 0,
+            "collisions": 0
+          },
+          "actions": [
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 42,
+                "subtask_id": 100002
+              }
+            },
+            {
+              "time": 1.0,
+              "chosen": {
+                "uav_id": 46,
+                "subtask_id": 100000
+              }
+            },
+            {
+              "time": 5.0,
+              "chosen": {
+                "uav_id": 42,
+                "subtask_id": 100003
+              }
+            },
+            {
+              "time": 6.0,
+              "chosen": {
+                "uav_id": 16,
+                "subtask_id": 100001
+              }
+            }
+          ]
+        }
+      ],
+      "first_action_divergence": {
+        "index": 1,
+        "same_public_input": true,
+        "rule": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 16,
+            "subtask_id": 100001
+          },
+          "estimated_cost": 19.6605224609375
+        },
+        "candidate": {
+          "time": 1.0,
+          "chosen": {
+            "uav_id": 46,
+            "subtask_id": 100000
+          },
+          "estimated_cost": 21.202707290649414
+        }
+      }
+    }
+  ]
+}

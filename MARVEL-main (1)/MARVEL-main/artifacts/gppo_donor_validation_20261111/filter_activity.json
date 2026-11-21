@@ -1,0 +1,403 @@
+{
+  "status": "COMPLETE",
+  "checked_utc": "2026-11-11T07:52:38.658622+00:00",
+  "scope": "Offline donor-filter activity and ordered saved-action comparison only; no probability replay, training, physical execution, model selection or15percent claim.",
+  "plan_sha256": "8d713e78668f3182b781e39b7b6af15b2e2776014c93cea216581f4ca0d75cea",
+  "expected_arms": 12,
+  "complete_valid_arms": 12,
+  "rows": [
+    {
+      "case_index": 0,
+      "case": {
+        "seed": 1981201,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "arm": "rule",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        },
+        "unfiltered": {
+          "arm": "unfiltered",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        },
+        "donor": {
+          "arm": "donor",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 7,
+            "expected_no_filter_calls": false,
+            "no_filter_call_check": null,
+            "applied_calls": 6,
+            "missing_public_calls": 0,
+            "fallback_calls": 2,
+            "actual_mask_changed_calls": 2,
+            "additional_masked_entries": 3,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 2,
+            "reason_counts": {
+              "donor_component_removal_only": 4,
+              "no_legal_action_fallback_original": 2,
+              "not_pure_search": 1
+            },
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        }
+      },
+      "unfiltered_vs_donor": {
+        "status": "COMPLETE",
+        "comparison_method": "Whole saved sequence in original order; semantic chosen task/UAV plus time/step; strict graph-ID/action-context equality reported separately. Never match by timestamp, never force probability replay.",
+        "unfiltered_records": 5,
+        "donor_records": 5,
+        "semantic_action_sequence_identical": true,
+        "strict_context_and_action_sequence_identical": true,
+        "actual_input_mask_sequence_identical": false,
+        "first_semantic_difference": null,
+        "joint_metric_sample_trace_identical": true,
+        "joint_trace_samples": {
+          "unfiltered": 3000,
+          "donor": 3000
+        },
+        "joint_trace_hashes": {
+          "unfiltered": "0f28b64e4f5ac6126a9886958faa89ed395b65992b85eb820cf2d554bde35ddd",
+          "donor": "0f28b64e4f5ac6126a9886958faa89ed395b65992b85eb820cf2d554bde35ddd"
+        },
+        "interpretation_hint": "Donor mask changed but the observed chosen sequence stayed the same; altered excluded alternatives did not change recorded actions."
+      }
+    },
+    {
+      "case_index": 1,
+      "case": {
+        "seed": 1981202,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "arm": "rule",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 6,
+          "joint_trace_samples": 3000
+        },
+        "unfiltered": {
+          "arm": "unfiltered",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 6,
+          "joint_trace_samples": 3000
+        },
+        "donor": {
+          "arm": "donor",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 8,
+            "expected_no_filter_calls": false,
+            "no_filter_call_check": null,
+            "applied_calls": 6,
+            "missing_public_calls": 0,
+            "fallback_calls": 2,
+            "actual_mask_changed_calls": 1,
+            "additional_masked_entries": 2,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 1,
+            "reason_counts": {
+              "donor_component_removal_only": 4,
+              "no_legal_action_fallback_original": 2,
+              "not_pure_search": 2
+            },
+            "malformed_mask_calls": []
+          },
+          "actor_records": 6,
+          "joint_trace_samples": 3000
+        }
+      },
+      "unfiltered_vs_donor": {
+        "status": "COMPLETE",
+        "comparison_method": "Whole saved sequence in original order; semantic chosen task/UAV plus time/step; strict graph-ID/action-context equality reported separately. Never match by timestamp, never force probability replay.",
+        "unfiltered_records": 6,
+        "donor_records": 6,
+        "semantic_action_sequence_identical": true,
+        "strict_context_and_action_sequence_identical": true,
+        "actual_input_mask_sequence_identical": false,
+        "first_semantic_difference": null,
+        "joint_metric_sample_trace_identical": true,
+        "joint_trace_samples": {
+          "unfiltered": 3000,
+          "donor": 3000
+        },
+        "joint_trace_hashes": {
+          "unfiltered": "4eac077cc4d316eb06326c12a2438eb2db27a6a82fc1bd60b76a3f6ec4307383",
+          "donor": "4eac077cc4d316eb06326c12a2438eb2db27a6a82fc1bd60b76a3f6ec4307383"
+        },
+        "interpretation_hint": "Donor mask changed but the observed chosen sequence stayed the same; altered excluded alternatives did not change recorded actions."
+      }
+    },
+    {
+      "case_index": 2,
+      "case": {
+        "seed": 1981203,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arms": {
+        "rule": {
+          "arm": "rule",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 4,
+          "joint_trace_samples": 3000
+        },
+        "unfiltered": {
+          "arm": "unfiltered",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 4,
+          "joint_trace_samples": 3000
+        },
+        "donor": {
+          "arm": "donor",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 5,
+            "expected_no_filter_calls": false,
+            "no_filter_call_check": null,
+            "applied_calls": 5,
+            "missing_public_calls": 0,
+            "fallback_calls": 1,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {
+              "donor_component_removal_only": 4,
+              "no_legal_action_fallback_original": 1
+            },
+            "malformed_mask_calls": []
+          },
+          "actor_records": 4,
+          "joint_trace_samples": 3000
+        }
+      },
+      "unfiltered_vs_donor": {
+        "status": "COMPLETE",
+        "comparison_method": "Whole saved sequence in original order; semantic chosen task/UAV plus time/step; strict graph-ID/action-context equality reported separately. Never match by timestamp, never force probability replay.",
+        "unfiltered_records": 4,
+        "donor_records": 4,
+        "semantic_action_sequence_identical": true,
+        "strict_context_and_action_sequence_identical": true,
+        "actual_input_mask_sequence_identical": true,
+        "first_semantic_difference": null,
+        "joint_metric_sample_trace_identical": true,
+        "joint_trace_samples": {
+          "unfiltered": 3000,
+          "donor": 3000
+        },
+        "joint_trace_hashes": {
+          "unfiltered": "1d8178e723b10be7928e028000da67169ff036a18770f20d37e1d6534829842b",
+          "donor": "1d8178e723b10be7928e028000da67169ff036a18770f20d37e1d6534829842b"
+        },
+        "interpretation_hint": "No actual donor mask change recorded; do not describe this case as evidence of a changed-action constraint effect."
+      }
+    },
+    {
+      "case_index": 3,
+      "case": {
+        "seed": 1981204,
+        "uavs": 60,
+        "dynamic": true
+      },
+      "arms": {
+        "rule": {
+          "arm": "rule",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        },
+        "unfiltered": {
+          "arm": "unfiltered",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 0,
+            "expected_no_filter_calls": true,
+            "no_filter_call_check": true,
+            "applied_calls": 0,
+            "missing_public_calls": 0,
+            "fallback_calls": 0,
+            "actual_mask_changed_calls": 0,
+            "additional_masked_entries": 0,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 0,
+            "reason_counts": {},
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        },
+        "donor": {
+          "arm": "donor",
+          "status": "COMPLETE",
+          "complete_marker": true,
+          "filter": {
+            "calls": 6,
+            "expected_no_filter_calls": false,
+            "no_filter_call_check": null,
+            "applied_calls": 5,
+            "missing_public_calls": 0,
+            "fallback_calls": 1,
+            "actual_mask_changed_calls": 2,
+            "additional_masked_entries": 6,
+            "unmasked_entries": 0,
+            "blocked_ids_nonempty_calls": 2,
+            "reason_counts": {
+              "donor_component_removal_only": 4,
+              "no_legal_action_fallback_original": 1,
+              "not_pure_search": 1
+            },
+            "malformed_mask_calls": []
+          },
+          "actor_records": 5,
+          "joint_trace_samples": 3000
+        }
+      },
+      "unfiltered_vs_donor": {
+        "status": "COMPLETE",
+        "comparison_method": "Whole saved sequence in original order; semantic chosen task/UAV plus time/step; strict graph-ID/action-context equality reported separately. Never match by timestamp, never force probability replay.",
+        "unfiltered_records": 5,
+        "donor_records": 5,
+        "semantic_action_sequence_identical": true,
+        "strict_context_and_action_sequence_identical": true,
+        "actual_input_mask_sequence_identical": false,
+        "first_semantic_difference": null,
+        "joint_metric_sample_trace_identical": true,
+        "joint_trace_samples": {
+          "unfiltered": 3000,
+          "donor": 3000
+        },
+        "joint_trace_hashes": {
+          "unfiltered": "48c99de569212fa9a38055d4c742c57563033454c32d03fd12a8a89d053a8363",
+          "donor": "48c99de569212fa9a38055d4c742c57563033454c32d03fd12a8a89d053a8363"
+        },
+        "interpretation_hint": "Donor mask changed but the observed chosen sequence stayed the same; altered excluded alternatives did not change recorded actions."
+      }
+    }
+  ],
+  "limits": [
+    "A joint metric trace contains radio/completion/safety-clock samples, not full robot motion; equality is not general trajectory or policy equivalence.",
+    "applied=True and blocked_ids nonempty are not the same as actual mask modification; fallbacks restore the original mask.",
+    "Changed actions do not establish improved completion; root rawtrace verifier remains authoritative.",
+    "Same-time allocation records are compared by original ordinal order, never joined by time."
+  ]
+}

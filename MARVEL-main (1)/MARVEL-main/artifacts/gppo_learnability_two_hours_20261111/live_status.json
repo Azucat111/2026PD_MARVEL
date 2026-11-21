@@ -1,0 +1,54 @@
+{
+  "updated_utc": "2026-11-11T05:32:59.097919+00:00",
+  "complete_new_rollouts": 8,
+  "collection": [
+    {
+      "index": 0,
+      "completion": 43.7,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 1,
+      "completion": 38.0,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 2,
+      "completion": 29.900000000000002,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 3,
+      "completion": 38.0,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 4,
+      "completion": 25.0,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 5,
+      "completion": 11.0,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 6,
+      "completion": 25.0,
+      "success": true,
+      "safe": true
+    },
+    {
+      "index": 7,
+      "completion": 25.0,
+      "success": true,
+      "safe": true
+    }
+  ]
+}
