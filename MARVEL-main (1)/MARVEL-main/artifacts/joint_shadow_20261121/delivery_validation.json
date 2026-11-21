@@ -90,7 +90,8 @@
     "platform_tests/test_joint_shadow.py": "136485e78fbf443a958a02aaae4df28d1650921742fedbe35fbc59ceefa5f7a2",
     "scripts/audit_joint_candidates.py": "39ae19d0fe6ab64b524a042e9da8df62829cd6fdc86c91ab4397b58a49835b6e",
     "scripts/verify_joint_shadow.py": "99faf628b4eae5d4deae79992701fcce55e774b3527ef2ac9aab1351e2ab311f",
-    "handoff/cloud/requirements-joint-shadow.txt": "755f7ee49ba3f1ddc30ca84826e97aa2c5ccc43d9796ccd96ceaaa8264f68579"
+    "handoff/cloud/requirements-joint-shadow.txt": "755f7ee49ba3f1ddc30ca84826e97aa2c5ccc43d9796ccd96ceaaa8264f68579",
+    "handoff/cloud/JOINT_SHADOW_PUBLICATION.md": "93e7f5ccac4dfb2974debdc508e50867216d69e649897da39f9e383336214d39"
   },
   "primary_manifest_sha256": "e42a7e0d505b556a48fb2b906033299dd118b7336c3760fe58c4ddc2c890d226",
   "preliminary_manifest_sha256": "18ef025e7cdac64aa78d186834ebcfbf7781f79f8583c9e505d4fbc7b99ec024",
@@ -98,5 +99,12 @@
   "capture_source_hashes_verified": 19,
   "public_snapshot_digests_verified": 12,
   "packaged_passivity_independently_recomputed": true,
-  "gzip_and_plain_event_replay": "EXACT_PUBLIC_REPLAY_OK events=3"
+  "gzip_and_plain_event_replay": "EXACT_PUBLIC_REPLAY_OK events=3",
+  "remote_publication": {
+    "published": false,
+    "git_push": "403 permission denied",
+    "github_connector_create_branch": "403 Resource not accessible by integration",
+    "remote_handoff_modified": false,
+    "bundle": "/workspace/joint-gppo-shadow-20261121.bundle"
+  }
 }
