@@ -1,0 +1,15 @@
+{
+  "synthetic_only": true,
+  "complete_ticks": 3000,
+  "complete_score": {
+    "secondary_joint_completion_seconds": 3.1,
+    "joint_success": true,
+    "stable_seconds": 3.0,
+    "physics_dt": 0.1,
+    "whole_window_safe": true,
+    "primary_search_metric_unchanged": true,
+    "acceptance_claim": false
+  },
+  "truncated_ticks": 19,
+  "truncated_has_no_score": true
+}

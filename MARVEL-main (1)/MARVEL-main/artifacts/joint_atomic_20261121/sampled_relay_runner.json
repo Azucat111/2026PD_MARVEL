@@ -1,0 +1,9 @@
+{
+  "case": "30_static_1280021",
+  "commit": "ac3cd49b54d4957eac2c0792d6d2392d10f12fa9",
+  "numpy": "1.26.4",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "steps": 3,
+  "suite": "sampled",
+  "torch": "2.5.1+cpu"
+}

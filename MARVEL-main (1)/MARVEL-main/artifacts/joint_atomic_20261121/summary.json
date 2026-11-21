@@ -1,0 +1,224 @@
+{
+  "directed_branches": 8,
+  "directed_postcommit_ticks": 24,
+  "domains": [
+    {
+      "arms": {
+        "joint_gppo": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "joint_rule": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_gppo": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_rule": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        }
+      },
+      "case": "30_static_1280021",
+      "directed_ticks": 6,
+      "event_step": 10,
+      "first_position_separation_m": 0.137337371517238,
+      "legal_pairs": 46,
+      "relay_after": [
+        22.19263785707682,
+        74.03157467770751
+      ],
+      "search_after": [
+        22.32967087899898,
+        74.02243659704769
+      ],
+      "uav": 0
+    },
+    {
+      "arms": {
+        "joint_gppo": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "joint_rule": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_gppo": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_rule": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        }
+      },
+      "case": "30_dynamic_1280022",
+      "directed_ticks": 6,
+      "event_step": 10,
+      "first_position_separation_m": 0.09315737673964655,
+      "legal_pairs": 86,
+      "relay_after": [
+        51.408409367116064,
+        17.6878951459838
+      ],
+      "search_after": [
+        51.42224800241223,
+        17.59577137590163
+      ],
+      "uav": 1
+    },
+    {
+      "arms": {
+        "joint_gppo": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "joint_rule": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_gppo": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_rule": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        }
+      },
+      "case": "60_static_9164",
+      "directed_ticks": 6,
+      "event_step": 10,
+      "first_position_separation_m": 0.12062830057517626,
+      "legal_pairs": 188,
+      "relay_after": [
+        70.54658201824789,
+        65.69453274155366
+      ],
+      "search_after": [
+        70.55385132181176,
+        65.81494181150003
+      ],
+      "uav": 1
+    },
+    {
+      "arms": {
+        "joint_gppo": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "joint_rule": {
+          "commits": 2,
+          "legal_choice_counts": {
+            "TARGET_SEARCH": 2
+          },
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_gppo": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        },
+        "legacy_rule": {
+          "commits": 0,
+          "legal_choice_counts": {},
+          "observed_collisions": 0,
+          "observed_no_fly": 0,
+          "ticks": 30
+        }
+      },
+      "case": "60_dynamic_1981204",
+      "directed_ticks": 6,
+      "event_step": 20,
+      "first_position_separation_m": 0.044301157711483054,
+      "legal_pairs": 131,
+      "relay_after": [
+        72.37904149395602,
+        24.635810951195506
+      ],
+      "search_after": [
+        72.42117344794957,
+        24.622118214899814
+      ],
+      "uav": 6
+    }
+  ],
+  "legacy_parity": {
+    "phase1_and_shadow_off_on_exact": true,
+    "ticks": 30
+  },
+  "sampled_relay": {
+    "probability_mass": 0.00020766701540382186,
+    "seed": 3886,
+    "slot": 200015,
+    "uav": 29
+  },
+  "smoke_physical_ticks": 480,
+  "smoke_windows": 16,
+  "tests": {
+    "failed": 0,
+    "passed": 157,
+    "skipped": 2
+  },
+  "verdict": "ATOMIC_READY"
+}

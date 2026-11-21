@@ -1,0 +1,18 @@
+{
+  "source_files_checked": 428,
+  "intentional_source_changes": [
+    "integrations/gppo/mesh_relay.py",
+    "integrations/gppo/scheduler.py",
+    "utils/policy_adapter.py"
+  ],
+  "source_mismatches": [],
+  "model_smoke": "8 SHA256 + strict CPU load + masked forward",
+  "portable_test_checkpoint": "handoff/cloud/models/gppo_phase14_v9_ckpt80.pth",
+  "portability_change": "test module path variable only; no production/test file rewritten",
+  "tests": {
+    "passed": 157,
+    "failed": 0,
+    "skipped": 2
+  },
+  "exit_code": 0
+}
