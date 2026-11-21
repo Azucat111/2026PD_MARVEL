@@ -321,6 +321,11 @@ class JointTaskScheduler(GPPOTaskScheduler):
                 role = "target_search"
             else:
                 self.relay_assignments[slot.source_entity_id] = (uid, np.asarray(slot.position).copy())
+                # The isolated certificate starts a new Relay route. Do not
+                # reuse a still-valid route cached for a previous commitment.
+                routes = getattr(self, "_relay_motion_routes", None)
+                if routes is not None:
+                    routes.routes.pop(uid, None)
                 self.relay_release_gate.reset_stability()
                 locked_targets = (slot.source_entity_id,)
                 role = "relay"

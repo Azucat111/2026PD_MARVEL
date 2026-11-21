@@ -276,3 +276,21 @@ def test_finalizer_error_restores_adapter_motion_state(monkeypatch):
         s.apply_with_finalizer(base_actions, finalize, motion_context=motion_context)
     assert not s.relay_assignments and s.last_joint_receipt is None
     assert not evidence.prefixes and not motion_context._motion_roles
+
+
+def test_new_relay_commit_discards_only_its_old_route_and_restores_it_on_failure():
+    s, stale = prepare_controller()
+    plan = s.joint_planner.enumerate(s._snapshot())
+    proposal = selected(plan)
+    old_routes = {proposal.uav_id: {"points": [1]}, 99: {"points": [2]}}
+    s._relay_motion_routes = SimpleNamespace(routes=deepcopy(old_routes))
+
+    def fail():
+        assert s._relay_motion_routes.routes == {99: old_routes[99]}
+        raise RuntimeError("injected")
+
+    with pytest.raises(RuntimeError, match="injected"):
+        commit(s, plan, proposal, stale, fail)
+    assert s._relay_motion_routes.routes == old_routes
+    commit(s, plan, proposal, stale)
+    assert s._relay_motion_routes.routes == {99: old_routes[99]}
