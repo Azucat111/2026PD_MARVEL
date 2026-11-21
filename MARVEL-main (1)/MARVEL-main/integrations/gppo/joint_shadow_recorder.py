@@ -9,7 +9,7 @@ import pickle
 import numpy as np
 import torch
 
-from .joint_shadow import (RECOVERY_FIELDS, capture_public_state, enumerate_joint,
+from .joint_shadow import (capture_public_state, enumerate_joint,
                            attach_actual, graph_record, snapshot_digest)
 
 
@@ -98,6 +98,8 @@ class JointShadowRecorder:
     def _allocate(self, *args, **kwargs):
         adapter = self.scheduler.allocator.adapter
         original = adapter.assign
+        own_assign = adapter.__dict__.get('assign')
+        had_own_assign = 'assign' in adapter.__dict__
         def observe(graph, deterministic=True):
             record = graph_record(graph)
             choice = original(graph, deterministic=deterministic)
@@ -109,7 +111,10 @@ class JointShadowRecorder:
         try:
             return self._originals['allocate'][3](*args, **kwargs)
         finally:
-            adapter.assign = original
+            if had_own_assign:
+                adapter.assign = own_assign
+            else:
+                delattr(adapter, 'assign')
 
     def _apply(self, actions):
         result = self._originals['apply'][3](actions)

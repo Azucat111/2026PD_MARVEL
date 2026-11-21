@@ -7,7 +7,6 @@ import pickle
 
 import numpy as np
 import pytest
-import torch
 
 from integrations.gppo.joint_shadow import (
     ALLOWED, CONTRACT, ILLEGAL, ORDER, _sandbox, attach_actual,
@@ -112,7 +111,8 @@ def test_untriggered_search_and_capacity_are_not_legal_catalog_edges():
     event = enumerate_joint(state)
     assert not any(r['role'] == 'TARGET_SEARCH' for r in event['candidates'])
     assert event['dormant_catalog']
-    assert all(not r['admission_legal'] and r['category'] == CONTRACT for r in event['dormant_catalog'])
+    assert all(not r['admission_legal'] and r['category'] == ILLEGAL for r in event['dormant_catalog'])
+    assert not event['metrics']['needs_contract_catalog']
     state['controls']['search_activated'] = True
     # Keep builder's valid positive budget but occupy it with other heat IDs.
     state['controls']['max_search_uavs'] = 1
@@ -220,3 +220,35 @@ def test_unsupported_snapshot_contract_fails_closed():
     s.runtime.geometry_mode = 'marvel_native'
     with pytest.raises(ValueError, match='Only audited extended'):
         capture_public_state(s, stale, scenario='invalid')
+
+
+def test_physical_lifecycle_clock_and_existing_model_are_unchanged():
+    import torch
+    s, stale = live_fixture()
+    s.clock = NS(last_update=10)
+    s.allocator.adapter.model = torch.nn.Linear(2, 2)
+    physical = pickle.dumps((s.runtime.robots, s.runtime.tasks, s.clock,
+                             s.search_assignments, s.relay_assignments,
+                             s.relay_release_gate.__dict__))
+    tensors = {k: v.clone() for k, v in s.allocator.adapter.model.state_dict().items()}
+    state = capture_public_state(s, stale, scenario='invariance')
+    rng = rng_digest()
+    enumerate_joint(state)
+    assert rng_digest() == rng
+    assert physical == pickle.dumps((s.runtime.robots, s.runtime.tasks, s.clock,
+                                     s.search_assignments, s.relay_assignments,
+                                     s.relay_release_gate.__dict__))
+    assert all(torch.equal(v, tensors[k]) for k, v in s.allocator.adapter.model.state_dict().items())
+
+
+def test_recorder_restores_inherited_selector_without_extra_instance_attribute():
+    s, stale = live_fixture()
+    class Selector:
+        def assign(self, graph, deterministic=True):
+            return choose_rule_assignment(graph, deterministic)
+    s.allocator.adapter = Selector()
+    recorder = JointShadowRecorder(s, scenario='inherited')
+    s._refresh_search(stale)
+    s._refresh_relay(stale)
+    recorder.close()
+    assert 'assign' not in s.allocator.adapter.__dict__

@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import platform
+import shutil
 import subprocess
 import sys
 
@@ -24,17 +25,93 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def verify_passivity(enabled, disabled):
+    """Only wall-clock event timestamp is excluded; every semantic field stays."""
+    checks = {}
+    for name in ('initial.json', 'config.json', 'decisions.json', 'collisions.json', 'progress.csv'):
+        assert (enabled/name).read_bytes() == (disabled/name).read_bytes(), name
+        checks[name] = dict(exact_bytes_equal=True, sha256=sha(enabled/name))
+    events = []
+    for folder in (enabled, disabled):
+        rows = json.loads((folder/'events.json').read_text())
+        events.append([{k: v for k, v in row.items() if k != 'timestamp'} for row in rows])
+    assert events[0] == events[1], 'semantic event trace differs'
+    checks['events.json'] = dict(semantic_equal=True, excluded_fields=['top_level_timestamp'],
+        events=len(events[0]), enabled_raw_sha256=sha(enabled/'events.json'),
+        disabled_raw_sha256=sha(disabled/'events.json'))
+    return dict(checks=checks, raw_events_byte_equal=False,
+                scope='all recorded choices/events/progress, not an unrecorded full-pose trace')
+
+
+def rebuild(source, out):
+    """Reuse captured public inputs; no simulator/model runs or new samples."""
+    capture_manifest = json.loads((source/'manifest.json').read_text())
+    summaries = []
+    all_events = []
+    for case in capture_manifest['cases']:
+        name = case['case']; original = source/name; folder = out/name
+        folder.mkdir()
+        captured = json.loads((original/'events.json').read_text())
+        events = []
+        for i, old in enumerate(captured):
+            state_file = original/f'public_state_{i:03d}.json.gz'
+            with gzip.open(state_file, 'rt') as f:
+                state = unpack(json.load(f))
+            event = enumerate_joint(state)
+            assert event == enumerate_joint(state), 'rebuild not repeatable'
+            attach_actual(event, old['actual_graphs'], [])
+            for field in ('actual_assignments', 'actual_scheduler_commands',
+                          'executor_ownership_after', 'purity_verified'):
+                event[field] = old[field]
+            event['repeat_verified'] = True
+            event['capture_prototype_commit'] = 'ad864dd'
+            shutil.copyfile(state_file, folder/state_file.name)
+            events.append(event)
+        (folder/'events.json').write_text(json.dumps(events, indent=2, allow_nan=False))
+        summary = dict(summarize(events), case=name,
+            sampled_physical_seconds=case['elapsed_seconds'],
+            requested_control_steps=6, observed_control_boundaries=len(events),
+            physical_window_complete_to_requested=case['mission_steps'] == 6,
+            smoke_only=True, model_tensors_unchanged=case['model_tensors_unchanged'])
+        summaries.append(summary);all_events.extend(events)
+        (folder/'summary.json').write_text(json.dumps(summary, indent=2))
+        raw = folder/'original_run'; raw.mkdir()
+        for path in (original/'gppo').iterdir():
+            if path.suffix in ('.json', '.csv'):
+                # Preserve every original byte, including timestamps and oracle
+                # scoring summaries; these are never fed back to enumerate_joint.
+                with gzip.GzipFile(filename=str(raw/(path.name+'.gz')), mode='wb', mtime=0) as f:
+                    f.write(path.read_bytes())
+    passivity = verify_passivity(source/capture_manifest['cases'][0]['case']/'gppo',
+                                 source/'passive_disabled/gppo')
+    (out/'passivity.json').write_text(json.dumps(passivity, indent=2))
+    (out/'capture_manifest.json').write_text(json.dumps(capture_manifest, indent=2))
+    files = ('integrations/gppo/joint_shadow.py', 'integrations/gppo/joint_shadow_recorder.py',
+             'scripts/audit_joint_candidates.py', 'platform_tests/test_joint_shadow.py')
+    manifest = dict(cases=summaries, aggregate=summarize(all_events),
+        capture_prototype_commit='ad864dd', base_commit=capture_manifest['base_head'],
+        method='exact recorded public-state re-enumeration; no new simulation',
+        enumeration_source_sha256={p: sha(PROJECT/p) for p in files},
+        evidence_sha256={str(p.relative_to(out)): sha(p) for p in sorted(out.rglob('*')) if p.is_file()})
+    (out/'manifest.json').write_text(json.dumps(manifest, indent=2))
+    print('PUBLIC_STATE_REBUILD_OK', json.dumps(manifest['aggregate']))
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--steps', type=int, default=8)
     p.add_argument('--wall-seconds-per-case', type=float, default=180)
     p.add_argument('--replay', type=Path)
+    p.add_argument('--rebuild-from', type=Path)
     p.add_argument('--verify-passive', action='store_true')
     args = p.parse_args()
     if not 2 <= args.steps <= 20:
         p.error('Discovery smoke is bounded to 2..20 control steps')
     args.out.mkdir(parents=True, exist_ok=False)
+    if args.rebuild_from:
+        rebuild(args.rebuild_from, args.out)
+        return
     if args.replay:
         events = json.loads((args.replay/'events.json').read_text())
         for i, event in enumerate(events):
@@ -139,11 +216,9 @@ def main():
         result = benchmark.run(disabled, 'gppo', 30, 1280021, args.steps,
                                physical_coverage=True, stop_on_completion=False,
                                wall_budget_seconds=args.wall_seconds_per_case)
-        for file in ('initial.json', 'config.json', 'decisions.json', 'events.json', 'collisions.json', 'progress.csv'):
-            assert (enabled/file).read_bytes() == (disabled/'gppo'/file).read_bytes(), file
-        (args.out/'passivity.json').write_text(json.dumps(dict(exact_files_equal=True,
-            compared=['initial', 'config', 'decisions', 'events', 'collisions', 'progress'],
-            control_steps=args.steps, uavs=30, seed=1280021), indent=2))
+        proof = verify_passivity(enabled, disabled/'gppo')
+        proof.update(control_steps=args.steps, uavs=30, seed=1280021)
+        (args.out/'passivity.json').write_text(json.dumps(proof, indent=2))
         print('PASSIVE_TRAJECTORY_EQUIVALENCE_OK', flush=True)
 
 if __name__ == '__main__':

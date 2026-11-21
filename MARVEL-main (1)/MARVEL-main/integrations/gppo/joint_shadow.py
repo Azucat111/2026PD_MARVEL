@@ -19,7 +19,6 @@ from .event_allocator import GPPOEventAllocator
 from .event_sources import PublicHeatPoint, SearchSlotBuilder
 from .mesh_relay import ObservedMeshRelayDemandBuilder, ObservedMeshRelayReleaseGate
 from .observed_graph import observed_next_hop
-from .runtime_graph import RuntimeGraphBuilder
 from .safety_layer import SharedHazardAdapter
 from .scheduler import GPPOTaskScheduler
 from .search_recovery import ObservedSearchRecovery
@@ -272,10 +271,12 @@ def _prefix(s, slot, uid, state):
     agent = s._marvel_agents.get(uid)
     route = observed_next_hop(agent, anchor)
     base = (r.position.copy(), float(r.heading))
+    if slot.task_type == TaskType.TARGET_SEARCH:
+        s.search_assignments[int(slot.source_entity_id)] = uid
+    rec.sync_assignments(s.search_assignments)
     if slot.task_type == TaskType.RELAY:
         target, heading = s._relay_action(r, anchor, agent, route, base)
     else:
-        s.search_assignments[int(slot.source_entity_id)] = uid
         if np.linalg.norm(r.position-anchor) <= s.search_reach_radius + 1e-9:
             heading = s._service_scan_heading(int(slot.source_entity_id), r, anchor)
             target, heading = s._search_action(r, anchor, agent, None, base, service_scan_heading=heading)
@@ -348,6 +349,9 @@ def enumerate_joint(state):
                     rejection_reasons=reasons,
                     immediately_executable=bool(legal and certificate['certified']), prefix=certificate,
                     category=ALLOWED if legal else ILLEGAL,
+                    forbidden_uav_ids=list(slot.forbidden_uav_ids),
+                    resources=dict(exclusive_uav_id=uid, exclusive_slot_id=tid,
+                                   role_capacity=TaskType(task.task_type).name),
                     prerequisites=['one_uav_one_assignment', 'role_capacity', 'task_lifecycle',
                                    'Safety_preempts', 'per_tick_physics_and_Shield_authority'],
                     total_time_estimate=float(graph.edge_features[ti, ui, 2])))
@@ -377,7 +381,8 @@ def enumerate_joint(state):
         include_all_pending=True, source_task_id=None if search_task is None else search_task.task_id)
     if search_gate:
         diagnostics.extend(dict(role='TARGET_SEARCH', slot_id=p.slot_id,
-            category=CONTRACT, admission_legal=False, immediately_executable=False,
+            category=CONTRACT if search_gate == ['search_capacity_full'] else ILLEGAL,
+            admission_legal=False, immediately_executable=False,
             prerequisites=search_gate, position=list(p.position),
             reason='dormant_catalog_not_a_legal_action') for p in pending)
     relay_task = s._active_task('relay')
@@ -390,11 +395,16 @@ def enumerate_joint(state):
         relay_gate.append('existing_relay_event_release_arrival_or_budget_gate')
     if relay_gate:
         result = s.relay_builder.build(stale, source_task_id=None if relay_task is None else relay_task.task_id)
-        diagnostics.extend(dict(role='RELAY', slot_id=p.slot_id, category=CONTRACT,
+        diagnostics.extend(dict(role='RELAY', slot_id=p.slot_id,
+            category=CONTRACT if relay_gate == ['existing_relay_event_release_arrival_or_budget_gate'] else ILLEGAL,
             admission_legal=False, immediately_executable=False,
             prerequisites=relay_gate, position=list(p.position),
             reason='dormant_catalog_not_a_legal_action') for p in result.slots
             if p.source_entity_id not in original_owned)
+    # These are per-UAV proposals, explicitly NOT legal candidates. Other masks
+    # have not been evaluated after the failed prerequisite; never count them.
+    diagnostics = [dict(item, uav_id=int(robot['robot_id']), other_constraints_evaluated=False)
+                   for item in diagnostics for robot in state['robots']]
     roles = {r['role'] for r in rows if r['immediately_executable']}
     legal_roles = {r['role'] for r in rows if r['admission_legal']}
     joint_uids = sorted({r['uav_id'] for r in rows if r['immediately_executable'] and r['role'] == 'RELAY'} &
@@ -417,7 +427,7 @@ def enumerate_joint(state):
             # Different role/task IDs define distinct high-level transitions.
             two_meaningful_executable_actions=len({(r['role'], r['slot_id']) for r in rows
                                                     if r['immediately_executable']}) >= 2,
-            needs_contract_catalog=bool(diagnostics)),
+            needs_contract_catalog=any(d['category'] == CONTRACT for d in diagnostics)),
         scope='one-step public evidence; no hidden truth, no performance claim')
 
 
@@ -448,7 +458,9 @@ def summarize(events):
         same_role_multiple_events=0, potential_cross_role_events=0,
         executable_cross_role_events=0, shared_uav_cross_role_events=0,
         order_excluded_events=0, order_excluded_executable_events=0,
-        needs_contract_events=0, actual_mixed_graphs=0, actual_graphs=0)
+        needs_contract_events=0, actual_mixed_graphs=0, actual_graphs=0,
+        no_executable_events=0, single_executable_events=0,
+        two_meaningful_executable_events=0)
     for e in events:
         m = e['metrics']; n = m['legal_candidates']
         result['no_candidate_events'] += n == 0
@@ -460,6 +472,9 @@ def summarize(events):
         result['order_excluded_events'] += m.get('order_excluded_candidates', 0) > 0
         result['order_excluded_executable_events'] += m.get('order_excluded_executable_candidates', 0) > 0
         result['needs_contract_events'] += m['needs_contract_catalog']
+        result['no_executable_events'] += m['executable_candidates'] == 0
+        result['single_executable_events'] += m['executable_candidates'] == 1
+        result['two_meaningful_executable_events'] += m['two_meaningful_executable_actions']
         for g in e.get('actual_graphs', []):
             roles = {role for role, mask in zip(g['roles'], g['mask']) if not all(mask)}
             result['actual_graphs'] += 1

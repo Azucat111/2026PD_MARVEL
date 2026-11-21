@@ -1,0 +1,4 @@
+-r requirements-audit.txt
+# Required by utils.agent in the real MARVEL CPU rollout, absent from the
+# earlier model-only smoke dependency list. Torch is installed separately.
+shapely==2.1.2
