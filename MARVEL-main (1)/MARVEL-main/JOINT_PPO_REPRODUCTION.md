@@ -60,3 +60,17 @@ sha=$(sha256sum "$model" | cut -d' ' -f1)
 ```bash
 (cd artifacts/joint_ppo_20261122 && sha256sum -c SHA256SUMS)
 ```
+
+使用已训练 P1 和已归档的完整物理日志重算开发配对与公开掩码：
+
+```bash
+a=artifacts/joint_ppo_20261122
+model="$a/main-update/checkpoint.pth"
+sha=$(sha256sum "$model" | cut -d' ' -f1)
+"$py" -B scripts/audit_joint_event_ppo.py \
+  --rollout "$a/training/30_static_240311" "$a/training/30_dynamic_240312" \
+            "$a/training/60_static_240313" "$a/training/60_dynamic_240314" \
+  --checkpoint "$model" --sha256 "$sha" --out "$run/archived-public-audit.json"
+"$py" -B scripts/summarize_joint_ppo_evaluation.py --arm-file "$a"/evaluation/*/*.json.gz \
+  --protocol "$a/protocol.json" --p1-sha256 "$sha" --out "$run/archived-evaluation.json"
+```

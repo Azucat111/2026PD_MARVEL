@@ -1,0 +1,34 @@
+[
+  {
+    "bridge_slots": 0,
+    "found_anchor_points": 1927,
+    "ratio": 0.7,
+    "relay_task_active": true,
+    "step": 10,
+    "threshold": 0.9
+  },
+  {
+    "bridge_slots": 0,
+    "found_anchor_points": 2174,
+    "ratio": 0.7,
+    "relay_task_active": true,
+    "step": 20,
+    "threshold": 0.9
+  },
+  {
+    "bridge_slots": 0,
+    "found_anchor_points": 2262,
+    "ratio": 0.7,
+    "relay_task_active": true,
+    "step": 30,
+    "threshold": 0.9
+  },
+  {
+    "bridge_slots": 1,
+    "found_anchor_points": 2355,
+    "ratio": 0.5,
+    "relay_task_active": true,
+    "step": 50,
+    "threshold": 0.9
+  }
+]

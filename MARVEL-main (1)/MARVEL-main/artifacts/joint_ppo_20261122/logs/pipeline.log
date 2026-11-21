@@ -1,2 +1,9 @@
 started eval-30_dynamic_1280022-R1 6277
 started eval-60_static_9164-R1 6310
+started eval-60_dynamic_1981204-R1 6673
+Frozen eligible training roster /workspace/phase3-runs/train-30_static_240311 /workspace/phase3-runs/train-30_dynamic_240312 /workspace/phase3-runs/train-60_static_240313 /workspace/phase3-runs/train-60_dynamic_240314
+started main-update 6706
+finished eval-30_dynamic_1280022-R1 0
+finished main-update 0
+started eval-30_static_1280021-P1 6722
+started eval-30_dynamic_1280022-P1 6723

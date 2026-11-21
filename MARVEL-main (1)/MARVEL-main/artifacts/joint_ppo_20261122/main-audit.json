@@ -1,0 +1,882 @@
+{
+  "candidate_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+  "cases": [
+    {
+      "admission": [
+        {
+          "relay_gate_connectivity": 0.5333333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "relay_admission_guard": 2,
+            "reserved_or_relay_endpoint": 2
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 92
+          },
+          "search_rows": 4,
+          "step": 10
+        },
+        {
+          "relay_gate_connectivity": 0.5333333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "prefix_not_certified": 1,
+            "relay_admission_guard": 1,
+            "requires_observed_first_tick": 1,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "observed_detection_support_precedence": 69,
+            "uav_unavailable": 3
+          },
+          "search_rows": 3,
+          "step": 20
+        },
+        {
+          "relay_gate_connectivity": 0.5333333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "relay_admission_guard": 1,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 2
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 2,
+          "search_rejections": {},
+          "search_rows": 0,
+          "step": 30
+        },
+        {
+          "relay_gate_connectivity": 0.5517241379310345,
+          "relay_owners": 1,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "observed_detection_support_precedence": 44,
+            "uav_unavailable": 4
+          },
+          "search_rows": 2,
+          "step": 70
+        },
+        {
+          "relay_gate_connectivity": 0.5517241379310345,
+          "relay_owners": 1,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "observed_detection_support_precedence": 20,
+            "uav_unavailable": 2
+          },
+          "search_rows": 1,
+          "step": 80
+        },
+        {
+          "relay_gate_connectivity": 0.5517241379310345,
+          "relay_owners": 1,
+          "relay_rejections": {
+            "relay_admission_guard": 1,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {},
+          "search_rows": 0,
+          "step": 310
+        }
+      ],
+      "case": "30_static_240311",
+      "greedy_actions_changed": 1,
+      "greedy_roles_changed": 0,
+      "independent_mask_rebuild_steps": [
+        10,
+        20,
+        30,
+        70,
+        80,
+        310
+      ],
+      "states": [
+        {
+          "advantage": -0.12999999999999998,
+          "after": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 14
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 29
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 54,
+          "mixed": true,
+          "relay_mass_after": 0.03238494694232941,
+          "relay_mass_before": 0.02787882089614868,
+          "role_sample": 1,
+          "step": 10,
+          "target": -0.12999999999999998,
+          "task_count": 5,
+          "value_after": -0.003353783627972007,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.12666666666666665,
+          "after": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 14
+          },
+          "before": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 14
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 43,
+          "mixed": true,
+          "relay_mass_after": 0.0018247932894155383,
+          "relay_mass_before": 0.001994980266317725,
+          "role_sample": 1,
+          "step": 20,
+          "target": -0.12666666666666665,
+          "task_count": 4,
+          "value_after": -0.003440971253439784,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.12333333333333332,
+          "after": {
+            "role": 2,
+            "slot": 200014,
+            "uav": 1
+          },
+          "before": {
+            "role": 2,
+            "slot": 200014,
+            "uav": 1
+          },
+          "duration_seconds": 4.0,
+          "legal_count": 25,
+          "mixed": false,
+          "relay_mass_after": 1.0,
+          "relay_mass_before": 0.9999998807907104,
+          "role_sample": 2,
+          "step": 30,
+          "target": -0.12333333333333332,
+          "task_count": 1,
+          "value_after": -0.003319712122902274,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.10999999999999999,
+          "after": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 14
+          },
+          "before": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 14
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 12,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 70,
+          "target": -0.10999999999999999,
+          "task_count": 2,
+          "value_after": -0.0033467698376625776,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.10666666666666666,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 3
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 3
+          },
+          "duration_seconds": 23.0,
+          "legal_count": 8,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 80,
+          "target": -0.10666666666666666,
+          "task_count": 1,
+          "value_after": -0.0036475188098847866,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.03,
+          "after": {
+            "role": 2,
+            "slot": 200022,
+            "uav": 15
+          },
+          "before": {
+            "role": 2,
+            "slot": 200022,
+            "uav": 15
+          },
+          "duration_seconds": 269.0,
+          "legal_count": 26,
+          "mixed": false,
+          "relay_mass_after": 1.0,
+          "relay_mass_before": 1.0,
+          "role_sample": 2,
+          "step": 310,
+          "target": -0.03,
+          "task_count": 1,
+          "value_after": -0.0028801891021430492,
+          "value_before": 0.0
+        }
+      ]
+    },
+    {
+      "admission": [
+        {
+          "relay_gate_connectivity": 0.7,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 90,
+            "uav_unavailable": 4
+          },
+          "search_rows": 4,
+          "step": 10
+        },
+        {
+          "relay_gate_connectivity": 0.7,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 71,
+            "uav_unavailable": 3
+          },
+          "search_rows": 3,
+          "step": 20
+        },
+        {
+          "relay_gate_connectivity": 0.7,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "observed_detection_support_precedence": 42,
+            "uav_unavailable": 4
+          },
+          "search_rows": 2,
+          "step": 30
+        },
+        {
+          "relay_gate_connectivity": 0.5,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "prefix_not_certified": 3,
+            "requires_observed_first_tick": 3,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 3
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 2,
+          "search_rejections": {},
+          "search_rows": 0,
+          "step": 50
+        },
+        {
+          "relay_gate_connectivity": 0.5172413793103449,
+          "relay_owners": 1,
+          "relay_rejections": {
+            "prefix_not_certified": 2,
+            "relay_admission_guard": 1,
+            "requires_observed_first_tick": 2,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {},
+          "search_rows": 0,
+          "step": 380
+        }
+      ],
+      "case": "30_dynamic_240312",
+      "greedy_actions_changed": 0,
+      "greedy_roles_changed": 0,
+      "independent_mask_rebuild_steps": [
+        10,
+        20,
+        30,
+        50,
+        380
+      ],
+      "states": [
+        {
+          "advantage": -0.184,
+          "after": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 4
+          },
+          "before": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 4
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 26,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 10,
+          "target": -0.184,
+          "task_count": 4,
+          "value_after": -0.00350277591496706,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.18066666666666667,
+          "after": {
+            "role": 1,
+            "slot": 100000,
+            "uav": 17
+          },
+          "before": {
+            "role": 1,
+            "slot": 100000,
+            "uav": 17
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 16,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 20,
+          "target": -0.18066666666666667,
+          "task_count": 3,
+          "value_after": -0.0037426366470754147,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.17733333333333334,
+          "after": {
+            "role": 1,
+            "slot": 100002,
+            "uav": 10
+          },
+          "before": {
+            "role": 1,
+            "slot": 100002,
+            "uav": 10
+          },
+          "duration_seconds": 2.0,
+          "legal_count": 14,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 30,
+          "target": -0.17733333333333334,
+          "task_count": 2,
+          "value_after": -0.003749413648620248,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.1706666666666667,
+          "after": {
+            "role": 2,
+            "slot": 200005,
+            "uav": 13
+          },
+          "before": {
+            "role": 2,
+            "slot": 200005,
+            "uav": 13
+          },
+          "duration_seconds": 33.0,
+          "legal_count": 22,
+          "mixed": false,
+          "relay_mass_after": 1.0000001192092896,
+          "relay_mass_before": 1.0000001192092896,
+          "role_sample": 2,
+          "step": 50,
+          "target": -0.1706666666666667,
+          "task_count": 1,
+          "value_after": -0.00333987595513463,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.060666666666666674,
+          "after": {
+            "role": 2,
+            "slot": 200010,
+            "uav": 26
+          },
+          "before": {
+            "role": 2,
+            "slot": 200010,
+            "uav": 26
+          },
+          "duration_seconds": 262.0,
+          "legal_count": 24,
+          "mixed": false,
+          "relay_mass_after": 1.0,
+          "relay_mass_before": 1.0,
+          "role_sample": 2,
+          "step": 380,
+          "target": -0.060666666666666674,
+          "task_count": 1,
+          "value_after": -0.0030912356451153755,
+          "value_before": 0.0
+        }
+      ]
+    },
+    {
+      "admission": [
+        {
+          "relay_gate_connectivity": 1.0,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 192
+          },
+          "search_rows": 4,
+          "step": 10
+        },
+        {
+          "relay_gate_connectivity": 1.0,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 51
+          },
+          "search_rows": 3,
+          "step": 20
+        },
+        {
+          "relay_gate_connectivity": 0.6833333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "uav_unavailable": 2
+          },
+          "search_rows": 2,
+          "step": 30
+        },
+        {
+          "relay_gate_connectivity": 0.6833333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "prefix_not_certified": 4,
+            "requires_observed_first_tick": 4,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {
+            "observed_detection_support_precedence": 1,
+            "prefix_not_certified": 4,
+            "requires_observed_first_tick": 4,
+            "uav_unavailable": 1
+          },
+          "search_rows": 1,
+          "step": 40
+        },
+        {
+          "relay_gate_connectivity": 0.6833333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "prefix_not_certified": 4,
+            "requires_observed_first_tick": 4,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 1
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 1,
+          "search_rejections": {},
+          "search_rows": 0,
+          "step": 50
+        }
+      ],
+      "case": "60_static_240313",
+      "greedy_actions_changed": 0,
+      "greedy_roles_changed": 0,
+      "independent_mask_rebuild_steps": [
+        10,
+        20,
+        30,
+        40,
+        50
+      ],
+      "states": [
+        {
+          "advantage": -0.04366666666666667,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 25
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 25
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 48,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 10,
+          "target": -0.04366666666666667,
+          "task_count": 4,
+          "value_after": -0.003690279321745038,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.04033333333333334,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 25
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 25
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 129,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 20,
+          "target": -0.04033333333333334,
+          "task_count": 3,
+          "value_after": -0.0036160775925964117,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.037000000000000005,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 58
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 58
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 175,
+          "mixed": true,
+          "relay_mass_after": 0.02395421266555786,
+          "relay_mass_before": 0.021736793220043182,
+          "role_sample": 1,
+          "step": 30,
+          "target": -0.037000000000000005,
+          "task_count": 3,
+          "value_after": -0.003552383277565241,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.03366666666666667,
+          "after": {
+            "role": 1,
+            "slot": 100000,
+            "uav": 58
+          },
+          "before": {
+            "role": 1,
+            "slot": 100000,
+            "uav": 58
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 107,
+          "mixed": true,
+          "relay_mass_after": 0.11973367631435394,
+          "relay_mass_before": 0.10735142976045609,
+          "role_sample": 1,
+          "step": 40,
+          "target": -0.03366666666666667,
+          "task_count": 2,
+          "value_after": -0.003501594765111804,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.030333333333333337,
+          "after": {
+            "role": 2,
+            "slot": 200008,
+            "uav": 24
+          },
+          "before": {
+            "role": 2,
+            "slot": 200008,
+            "uav": 24
+          },
+          "duration_seconds": 295.0,
+          "legal_count": 53,
+          "mixed": false,
+          "relay_mass_after": 1.0,
+          "relay_mass_before": 0.9999998211860657,
+          "role_sample": 2,
+          "step": 50,
+          "target": -0.030333333333333337,
+          "task_count": 1,
+          "value_after": -0.0031417093705385923,
+          "value_before": 0.0
+        }
+      ]
+    },
+    {
+      "admission": [
+        {
+          "relay_gate_connectivity": 0.7166666666666667,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "relay_admission_guard": 1,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 3
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 150,
+            "uav_unavailable": 12
+          },
+          "search_rows": 4,
+          "step": 10
+        },
+        {
+          "relay_gate_connectivity": 0.7166666666666667,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "relay_admission_guard": 1,
+            "reserved_or_relay_endpoint": 2,
+            "uav_unavailable": 3
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 114,
+            "uav_unavailable": 9
+          },
+          "search_rows": 3,
+          "step": 20
+        },
+        {
+          "relay_gate_connectivity": 1.0,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 80,
+            "uav_unavailable": 6
+          },
+          "search_rows": 2,
+          "step": 30
+        },
+        {
+          "relay_gate_connectivity": 1.0,
+          "relay_owners": 0,
+          "relay_rejections": {},
+          "relay_rows": 0,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 40,
+            "uav_unavailable": 3
+          },
+          "search_rows": 1,
+          "step": 40
+        }
+      ],
+      "case": "60_dynamic_240314",
+      "greedy_actions_changed": 1,
+      "greedy_roles_changed": 0,
+      "independent_mask_rebuild_steps": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "states": [
+        {
+          "advantage": -0.05,
+          "after": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 18
+          },
+          "before": {
+            "role": 1,
+            "slot": 100001,
+            "uav": 18
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 132,
+          "mixed": true,
+          "relay_mass_after": 0.004776299931108952,
+          "relay_mass_before": 0.003492180025205016,
+          "role_sample": 1,
+          "step": 10,
+          "target": -0.05,
+          "task_count": 5,
+          "value_after": -0.0027003965806216,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.04666666666666667,
+          "after": {
+            "role": 1,
+            "slot": 100000,
+            "uav": 1
+          },
+          "before": {
+            "role": 1,
+            "slot": 100002,
+            "uav": 39
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 111,
+          "mixed": true,
+          "relay_mass_after": 0.04376598447561264,
+          "relay_mass_before": 0.036789800971746445,
+          "role_sample": 1,
+          "step": 20,
+          "target": -0.04666666666666667,
+          "task_count": 4,
+          "value_after": -0.002983065787702799,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.043333333333333335,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 11
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 11
+          },
+          "duration_seconds": 1.0,
+          "legal_count": 34,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 30,
+          "target": -0.043333333333333335,
+          "task_count": 2,
+          "value_after": -0.003035107161849737,
+          "value_before": 0.0
+        },
+        {
+          "advantage": -0.04,
+          "after": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 11
+          },
+          "before": {
+            "role": 1,
+            "slot": 100003,
+            "uav": 11
+          },
+          "duration_seconds": 296.0,
+          "legal_count": 17,
+          "mixed": false,
+          "relay_mass_after": 0.0,
+          "relay_mass_before": 0.0,
+          "role_sample": 1,
+          "step": 40,
+          "target": -0.04,
+          "task_count": 1,
+          "value_after": -0.0034218113869428635,
+          "value_before": 0.0
+        }
+      ]
+    }
+  ],
+  "comparison": "same stored public inputs, no policy rollout"
+}
