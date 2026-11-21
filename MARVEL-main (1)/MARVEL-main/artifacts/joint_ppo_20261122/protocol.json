@@ -1,0 +1,21 @@
+{
+  "phase2_commit": "7b4144349a0b7849257e58e870e1b7e95faa3791",
+  "setting": "Development only, shared connected80 scenario with 0.2 m/s warning in dynamic cases",
+  "training_cases": {
+    "30_static_240311": 3411,
+    "30_dynamic_240312": 3412,
+    "60_static_240313": 3413,
+    "60_dynamic_240314": 3414
+  },
+  "development_cases": ["30_static_1280021", "30_dynamic_1280022", "60_static_9164", "60_dynamic_1981204"],
+  "heldout_acceptance": "No formal acceptance attempts or claims",
+  "optimizer": {"fresh_adam": true, "epochs": 2, "learning_rate": 0.00002, "ppo_clip": 0.2,
+                "temperature": 3.0, "gamma_per_physical_second": 1, "lambda": 1,
+                "kl_caps": {"sampled_kl": 0.01, "mean_exact_kl": 0.01, "max_state_exact_kl": 0.05}},
+  "budgets": {"D1_wall_seconds": 240, "D1_bootstrap_after_ticks": 20,
+              "training_wall_seconds_30": 3000, "training_wall_seconds_60": 4200,
+              "development_per_arm_wall_seconds": 3000, "physical_ticks_per_full_window": 3000},
+  "model_selection": "One capped joint update batch, keep last KL-accepted epoch with changed weights. Prefer all four H300 training domains. If a full rollout is unavailable, report exact omissions. Separate D1 branch reserved for engineering diagnostics.",
+  "pair_priority": "R1/P1 first, followed by R0 and P0 as CPU time permits. Never exchange training and development seeds.",
+  "termination": "Keep all 3000 physical ticks. An unsafe or unsuccessful complete H300 gets C=300. Truncation has no C."
+}
