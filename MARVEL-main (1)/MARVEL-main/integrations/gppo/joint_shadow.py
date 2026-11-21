@@ -1,7 +1,6 @@
 """Read-only, extended-only joint Search/Relay admission and first-step audit.
 
-No production entry point imports this module. A public allowlist crosses the
-boundary; all mutating scheduler/mask/motion methods run on disposable objects.
+A public allowlist crosses the boundary; all mutating scheduler/mask/motion methods run on disposable objects.
 An admitted edge is NOT a path/completion/safety guarantee. The stronger prefix
 certificate covers one physics tick, including a conservative peer speed ball.
 """
@@ -323,18 +322,32 @@ def _prefix(s, slot, uid, state):
                                'own_pose_hold; conditional_only_not_exact_executor_context')
 
 
-def enumerate_joint(state):
-    """Both roles at one pre-reservation boundary; no inference, RNG or clock."""
+def _collect_joint(state, *, defer_relay_maintenance=False, inspect_row=None):
+    """Run the shared admission gates on disposable state."""
     s = _sandbox(state)
     stale = state['stale_positions']
     graphs, rows = [], []
     original_allocate = s.allocator.allocate
     current = {}
+    maintenance = dict(retarget=False, probe=False)
+    if defer_relay_maintenance:
+        def mark_retarget(assignments, positions):
+            maintenance['retarget'] = True
+
+        def mark_probe(positions):
+            maintenance['probe'] = True
+
+        s.relay_builder.refresh_assignments = mark_retarget
+        s._refresh_observed_relay_probe = mark_probe
 
     def inspect(graph, deterministic=True):
-        graphs.append(graph_record(graph))
+        if inspect_row is None:
+            graphs.append(graph_record(graph))
         for ti, task in enumerate(graph.subtasks):
             slot = current['slots'][int(task.subtask_id)]
+            if inspect_row is not None:
+                inspect_row(s, graph, ti, slot)
+                continue
             for ui, uav in enumerate(graph.uav_states):
                 uid, tid = int(uav.uav_id), int(task.subtask_id)
                 reasons = _reason_rows(s.allocator, tid, uid)
@@ -375,6 +388,13 @@ def enumerate_joint(state):
     s.allocator.allocate = allocate
     s._refresh_search(stale)
     s._refresh_relay(stale)
+    return s, graphs, rows, maintenance
+
+
+def enumerate_joint(state):
+    """Both roles at one pre-reservation boundary; no inference, RNG or clock."""
+    s, graphs, rows, _ = _collect_joint(state)
+    stale = state['stale_positions']
 
     # Dormant catalog: explicit contract prerequisites, NEVER promoted to legal.
     # Diagnose release/arrival/capacity gates without clearing real reservations.

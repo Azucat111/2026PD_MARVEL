@@ -101,7 +101,7 @@ class ObservedMeshRelayDemandBuilder(ObservedRelayDemandBuilder):
             touched+=len(group)*reaches
         return np.maximum(touched,max(map(len,groups),default=0))
 
-    def refresh_assignments(self,assignments,positions):
+    def refresh_assignments(self,assignments,positions,*,fixed_targets=()):
         """Jointly retarget existing bridges using only public radio positions.
 
         Helpers are excluded when finding disconnected component boundaries.
@@ -115,6 +115,7 @@ class ObservedMeshRelayDemandBuilder(ObservedRelayDemandBuilder):
         if len(groups)<2:return
         proposed={}
         for target,(helper,old_anchor) in tuple(assignments.items()):
+            if target in fixed_targets:continue
             group=next((g for g in groups if int(target) in g),None)
             if group is None or int(helper) not in positions:continue
             others=[g for g in groups if g!=group]

@@ -1199,12 +1199,15 @@ class GPPOTaskScheduler:
         # graphs are built.
         self._reconcile_uav_state()
 
-        self._refresh_search(stale)
-        self._refresh_relay(stale)
+        self._allocate_event(stale)
 
         # Newly created assignments change UAV availability for the next
         # graph build.
         self._reconcile_uav_state()
+
+    def _allocate_event(self, stale):
+        self._refresh_search(stale)
+        self._refresh_relay(stale)
 
     def _override_heading(self, robot, goal) -> float:
         """Heading commanded for a Search/Relay override.

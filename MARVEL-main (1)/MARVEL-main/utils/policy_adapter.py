@@ -120,7 +120,7 @@ class MARVELPolicyAdapter:
         if scheduler_mode == "heuristic":
             self.scheduler = TaskScheduler(runtime)
 
-        elif scheduler_mode == "gppo":
+        elif scheduler_mode in ("gppo", "joint_rule", "joint_gppo"):
             from integrations.gppo import GPPOTaskScheduler
 
             checkpoint = scheduler_cfg.get(
@@ -133,7 +133,12 @@ class MARVELPolicyAdapter:
                     "when mode='gppo'"
                 )
 
-            self.scheduler = GPPOTaskScheduler(
+            scheduler_class = GPPOTaskScheduler
+            if scheduler_mode.startswith("joint_"):
+                from integrations.gppo.joint_atomic import JointTaskScheduler
+                scheduler_class = JointTaskScheduler
+
+            self.scheduler = scheduler_class(
                 runtime,
                 checkpoint_path=str(checkpoint),
                 device=str(self.device),
@@ -286,9 +291,13 @@ class MARVELPolicyAdapter:
 
         if hasattr(self.scheduler, "observe"):
             self.scheduler.observe(observations)
-        actions = self.scheduler.apply(base_actions)
-        actions = self._certify_extended_actions(actions)
-        return self._stationkeep_completed_tasks(actions)
+        joint_apply = getattr(self.scheduler, "apply_with_finalizer", None)
+        if joint_apply is not None:
+            return joint_apply(base_actions, self._finalize_actions, motion_context=self)
+        return self._finalize_actions(self.scheduler.apply(base_actions))
+
+    def _finalize_actions(self, actions):
+        return self._stationkeep_completed_tasks(self._certify_extended_actions(actions))
 
     def _stationkeep_completed_tasks(self, actions):
         """Hold idle extended UAVs at the final adapter execution boundary."""
