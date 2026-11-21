@@ -1,0 +1,10 @@
+{
+  "replay_from_same_behavior": true,
+  "original_file_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+  "replay_file_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+  "model_fingerprint_equal": true,
+  "update_ledger_equal": true,
+  "file_bytes_equal": true,
+  "rejected_against_updated_checkpoint": true,
+  "emitted_checkpoint_from_stale_data": false
+}

@@ -67,6 +67,11 @@ sha=$(sha256sum "$model" | cut -d' ' -f1)
 a=artifacts/joint_ppo_20261122
 model="$a/main-update/checkpoint.pth"
 sha=$(sha256sum "$model" | cut -d' ' -f1)
+"$py" -B scripts/train_joint_event_ppo.py update --epochs 2 \
+  --rollout "$a/training/30_static_240311" "$a/training/30_dynamic_240312" \
+            "$a/training/60_static_240313" "$a/training/60_dynamic_240314" \
+  --out "$run/replay-main"
+cmp "$model" "$run/replay-main/checkpoint.pth"
 "$py" -B scripts/audit_joint_event_ppo.py \
   --rollout "$a/training/30_static_240311" "$a/training/30_dynamic_240312" \
             "$a/training/60_static_240313" "$a/training/60_dynamic_240314" \
