@@ -28,15 +28,22 @@ def arm_data(row):
     offers = row["offers"]
     mixed = [o for o in offers if o["search"] and o["relay"]]
     comparisons = [o for o in offers if "frozen_greedy" in o]
+    final = trace[-1] if trace else {}
     return dict(status=row["status"], ticks=len(trace), score=score, error=row.get("error"),
                 initial_sha256=row["initial_sha256"], config_sha256=row["config_sha256"],
                 checkpoint_sha256=row["checkpoint_sha256"], compatibility_policy=row["compatibility_policy"],
                 first_nonrelay_s=next((t["time"] for t in trace if t["nonrelay_complete"]), None),
                 first_connected_s=next((t["time"] for t in trace if t["connectivity"] >= .9), None),
-                safety_triggers=trace[-1]["safety_records"] if trace else None,
+                connected_ticks=sum(t["connectivity"] >= .9 for t in trace),
+                jointly_ready_ticks=sum(t["nonrelay_complete"] and t["connectivity"] >= .9
+                                        and not t["safety_active"] and t["escapes"] == t["safety_records"]
+                                        for t in trace),
+                final_connectivity=final.get("connectivity"), final_nonrelay_complete=final.get("nonrelay_complete"),
+                safety_triggers=final.get("safety_records"), final_active_safety=final.get("safety_active"),
                 collisions=sum(t["collisions"] for t in trace),
-                no_fly_violations=trace[-1]["no_fly_violations"] if trace else None,
+                no_fly_violations=final.get("no_fly_violations"),
                 actions=dict(roles), controller_events=len(row["commitments"]),
+                joint_selection_events=len(offers),
                 mixed_events=len(mixed), shared_uav_events=sum(o["shared_uavs"] > 0 for o in mixed),
                 greedy_comparison_events=len(comparisons),
                 trained_greedy_action_diffs=sum(o["trained_greedy"] != o["frozen_greedy"] for o in comparisons),

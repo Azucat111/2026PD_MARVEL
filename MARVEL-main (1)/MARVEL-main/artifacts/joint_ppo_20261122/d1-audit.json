@@ -5,7 +5,9 @@
       "case": "30_static_240311",
       "greedy_actions_changed": 0,
       "greedy_roles_changed": 0,
-      "independent_mask_rebuild_step": 10,
+      "independent_mask_rebuild_steps": [
+        10
+      ],
       "states": [
         {
           "advantage": -0.0033333333333333335,

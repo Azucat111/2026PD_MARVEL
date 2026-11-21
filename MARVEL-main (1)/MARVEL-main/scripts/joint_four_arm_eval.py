@@ -38,7 +38,7 @@ def require_marvel():
         def emit(self, record):
             if any(marker in record.getMessage() for marker in (
                 "Policy inference error", "update_graph failed", "update_planning_state failed",
-                "Action selection failed", "batched inference failed",
+                "Action selection failed", "Batched policy inference failed",
             )):
                 raise RuntimeError(record.getMessage())
 

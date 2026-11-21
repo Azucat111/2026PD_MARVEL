@@ -7,7 +7,7 @@
 - `scripts/joint_event_ppo.py:48` 在真实 `get_actions` 路径观察候选图，并通过独立 seeded Torch generator 从一个联合 categorical 采样。先物理索引映射到合法向量，后将动作映射回原始二维图中的稳定 slot/UAV。训练行为温度为 3，同一事件的 Search 和 Relay 共享归一化。
 - 公共观测压缩保存在 `public_observations.zip`，每份观测以同一版本摘要绑定到事件。用于 PPO 的最终公开特征、六维边、任务角色、稳定 ID、逐元素 mask、完整合法 log probability 向量、所选 logp/value 保存在 `rollout.pt`。整个图动态形状逐事件保存。
 - 在 `get_actions` 完成后才检查原子 receipt，校验决策步、版本、角色、flat index 和稳定 ID。未获得对应 receipt 的提案留作拒绝诊断。没有候选的控制边界和 Safety 强制运动不成为 PPO 动作，物理时间仍进入区间计费。若出现执行中断或意外截断，整条轨迹没有 H300 分数，且不进入完整回合批。
-- 更新前从物理日志重新计分、重算 return、验证快照 SHA，并对同一个精确行为 checkpoint 回放存储 logits、value 和已选动作。每个事件训练时直接复用原 mask。独立审计器还从每个真实 episode 的一个公开快照重建准入图，核查稳定 ID、排序和 mask。隐藏真值仅供运行环境与配对身份的离线审核，actor 只收到公开 TaskGraph。
+- 更新前从物理日志重新计分、重算 return、验证快照 SHA，并对同一个精确行为 checkpoint 回放存储 logits、value 和已选动作。每个事件训练时直接复用原 mask。独立审计器从每个采样事件的公开快照重建准入图，核查稳定 ID、排序和 mask。隐藏真值仅供运行环境与配对身份的离线审核，actor 只收到公开 TaskGraph。
 
 ## 目标与更新
 

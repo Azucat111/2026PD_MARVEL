@@ -15,20 +15,24 @@ from integrations.gppo.joint_atomic import JointCandidatePlanner, JointSnapshot
 
 
 def audit_masks(path, events):
-    """Independently rebuild one real admission graph per episode."""
-    row = next((e for e in events if len(set(e["roles"])) > 1), events[0])
+    """Independently rebuild admission from each real public snapshot."""
+    steps = []
+    planner = JointCandidatePlanner()
     with ZipFile(path / "public_observations.zip") as archive:
-        raw = archive.read(row["public_snapshot"])
-    version = row["snapshot_version"]
-    if hashlib.sha256(raw).hexdigest() != version.rsplit(":", 1)[-1]:
-        raise ValueError("Tampered public archive")
-    snapshot = JointSnapshot(row["step"], int(version.split(":")[1]), version, raw)
-    graph = JointCandidatePlanner().enumerate(snapshot).graph
-    assert row["task_ids"] == [int(t.subtask_id) for t in graph.subtasks]
-    assert row["uav_ids"] == [int(u.uav_id) for u in graph.uav_states]
-    assert row["roles"] == [int(t.task_type) for t in graph.subtasks]
-    torch.testing.assert_close(torch.as_tensor(graph.action_mask), row["batch"]["action_mask"][0])
-    return row["step"]
+        for row in events:
+            raw = archive.read(row["public_snapshot"])
+            version = row["snapshot_version"]
+            if hashlib.sha256(raw).hexdigest() != version.rsplit(":", 1)[-1]:
+                raise ValueError("Tampered public archive")
+            snapshot = JointSnapshot(row["step"], int(version.split(":")[1]), version, raw)
+            graph = planner.enumerate(snapshot).graph
+            if (row["task_ids"] != [int(t.subtask_id) for t in graph.subtasks]
+                    or row["uav_ids"] != [int(u.uav_id) for u in graph.uav_states]
+                    or row["roles"] != [int(t.task_type) for t in graph.subtasks]):
+                raise ValueError(f"Rebuilt stable IDs or roles differ at step {row['step']}")
+            torch.testing.assert_close(torch.as_tensor(graph.action_mask), row["batch"]["action_mask"][0])
+            steps.append(row["step"])
+    return steps
 
 
 @torch.no_grad()
@@ -76,7 +80,7 @@ def main():
             raise ValueError("Diagnostic expects the frozen Phase 2 behavior weights")
         states = diagnose(behavior.model, child.scheduler.allocator.adapter.model,
                           episode["summary"]["temperature"], episode["events"])
-        results.append(dict(case=case, independent_mask_rebuild_step=audit_masks(path, episode["events"]),
+        results.append(dict(case=case, independent_mask_rebuild_steps=audit_masks(path, episode["events"]),
                             greedy_actions_changed=sum(r["before"]!=r["after"] for r in states),
                             greedy_roles_changed=sum(r["before"]["role"]!=r["after"]["role"] for r in states),
                             states=states))
