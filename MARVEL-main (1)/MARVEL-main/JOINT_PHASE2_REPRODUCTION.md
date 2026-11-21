@@ -34,3 +34,15 @@ done
 ## 启用配置
 
 沿用 `prepare_gppo_config`、基底 checkpoint、搜索场景种子、冻结 MARVEL 及经过 SHA 验证的 6D checkpoint。在 `task_scheduler` 中设置 `mode: joint_rule` 或 `mode: joint_gppo`。原 `mode: gppo` 仍走既有调度器。建议先用上述有界入口校验自己的场景。未来 H300 CLI 参数可用 `python -B scripts/joint_four_arm_eval.py --help` 检查。
+
+## 分支导入
+
+GitHub 直接发布新分支返回 403，完整分支保存在 `/workspace/joint-gppo-atomic-20261121.bundle`。它包含 Phase 1 和 Phase 2 的新增提交，前置对象为交接提交 `5692ca4fe5c56f398707deea87c1efc844297b71`。在含有该基底的仓库中执行以下命令。远端发布需要对团队仓库有写权限的 Git 凭据。
+
+```bash
+git bundle verify /workspace/joint-gppo-atomic-20261121.bundle
+git fetch /workspace/joint-gppo-atomic-20261121.bundle \
+  refs/heads/codex/joint-gppo-atomic-20261121:refs/heads/codex/joint-gppo-atomic-20261121
+git switch codex/joint-gppo-atomic-20261121
+git push -u origin codex/joint-gppo-atomic-20261121
+```
