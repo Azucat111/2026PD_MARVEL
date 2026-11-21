@@ -10,6 +10,8 @@ from pathlib import Path
 from gppo_joint_completion_metric import joint_completion_metric
 
 ARMS = ("R0", "P0", "R1", "P1")
+CONTRASTS = {"R0": ("P1", "R0"), "P0": ("P1", "P0"), "R1": ("P1", "R1"),
+             "R1/R0": ("R1", "R0"), "P0/R0": ("P0", "R0")}
 
 
 def arm_data(row):
@@ -53,7 +55,7 @@ def arm_data(row):
 
 def paired_summary(rows, cases, *, p1_sha256):
     records = {case: {} for case in cases}
-    pairs = {key: [] for key in ARMS if key != "P1"}
+    pairs = {contrast: [] for contrast in CONTRASTS}
     for row in rows:
         case, arm = row["case"], row["arm"]
         if arm not in ARMS or arm in records[case]:
@@ -67,19 +69,19 @@ def paired_summary(rows, cases, *, p1_sha256):
         if len({(r["initial_sha256"], r["config_sha256"]) for r in available.values()}) > 1:
             raise ValueError(f"Physical pairing mismatch: {case}")
         per_case[case] = {}
-        p1 = available.get("P1", {}).get("score")
-        for ref in pairs:
-            baseline = available.get(ref, {}).get("score")
-            if baseline is None or p1 is None:
+        for contrast, (test, reference) in CONTRASTS.items():
+            test_score = available.get(test, {}).get("score")
+            reference_score = available.get(reference, {}).get("score")
+            if test_score is None or reference_score is None:
                 continue
-            p, r = (x["secondary_joint_completion_seconds"] for x in (p1, baseline))
-            pairs[ref].append(dict(case=case, p1=p, reference=r))
-            per_case[case][ref] = 100*(1-p/r)
+            t, r = (x["secondary_joint_completion_seconds"] for x in (test_score, reference_score))
+            pairs[contrast].append(dict(case=case, test=t, reference=r))
+            per_case[case][contrast] = 100*(1-t/r)
     pooled = {}
     for ref, matched in pairs.items():
         pooled[ref] = dict(count=len(matched), cases=[p["case"] for p in matched],
                            percent=None if not matched else
-                           100*(1-sum(p["p1"] for p in matched)/sum(p["reference"] for p in matched)))
+                           100*(1-sum(p["test"] for p in matched)/sum(p["reference"] for p in matched)))
     return dict(case_arms={case: {arm: observed.get(arm, {"status": "not_run"})
                                  for arm in ARMS} for case, observed in records.items()},
                 per_case_percent=per_case, pooled_comparable_pairs=pooled,

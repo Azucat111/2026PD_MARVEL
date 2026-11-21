@@ -97,3 +97,25 @@ def test_pair_reducer_refuses_unequal_initial_state_and_no_score_for_truncation(
         paired_summary([first, dict(second, initial_sha256="b")], ["x"], p1_sha256="p1")
     with pytest.raises(ValueError, match="Truncated"):
         paired_summary([first, dict(second, score={})], ["x"], p1_sha256="p1")
+
+
+def test_full_four_arm_contrasts_count_complete_failure():
+    from gppo_joint_completion_metric import joint_completion_metric
+    from summarize_joint_ppo_evaluation import paired_summary
+
+    def run(arm, ready_at):
+        trace = [dict(time=t*.1, connectivity=1., nonrelay_complete=t >= ready_at,
+                      safety_active=[], escapes=0, safety_records=0, collisions=0,
+                      no_fly_violations=0) for t in range(1, 3001)]
+        return dict(case="x", arm=arm, trace=trace, status="complete", commitments=[], offers=[],
+                    initial_sha256="same", config_sha256="same", checkpoint_sha256=arm,
+                    compatibility_policy=False, seconds=1., score=joint_completion_metric(trace, 300))
+
+    result = paired_summary([run("R0", 30), run("P0", 3001), run("R1", 20), run("P1", 10)],
+                            ["x"], p1_sha256="P1")
+    contrasts = result["pooled_comparable_pairs"]
+    assert contrasts["R0"]["percent"] == pytest.approx(100*(1-4/6))
+    assert contrasts["R1/R0"]["percent"] == pytest.approx(100*(1-5/6))
+    assert contrasts["P0/R0"]["percent"] == pytest.approx(100*(1-300/6))
+    assert contrasts["P0/R0"]["count"] == 1
+    assert not result["case_arms"]["x"]["P0"]["score"]["joint_success"]
