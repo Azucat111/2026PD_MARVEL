@@ -52,6 +52,7 @@ def state_fixture():
             serviced_heat_ids=set(), search_assignments={}, relay_assignments={}, search_dwell_by_heat={0: 0},
             _search_scan_bearings={}, _search_scan_phases={}, _search_scan_owners={}, _peripheral_search_targets={}),
         stale_positions=positions, base_position=np.zeros(2), relay_probe=None,
+        base_actions={uid: (p.copy(), 0.) for uid, p in positions.items()},
         relay_builder=dict(comm_range=20., max_hops=2, max_demands=2),
         release=dict(release_threshold=.95, stable_release_steps=3, stable_counter=0,
             release_count=0, last_counterfactual_connectivity=1., last_counterfactual_target_ratio=1.,
@@ -200,6 +201,7 @@ def test_recorder_forwards_original_once_and_preserves_real_rule_actions():
         return original(graph, deterministic)
     traced.allocator.adapter.assign = counted
     recorder = JointShadowRecorder(traced, scenario='fixture')
+    recorder._base_actions = list(state_fixture()['base_actions'].values())
     traced._refresh_search(stale)
     traced._refresh_relay(stale)
     recorder.close()
@@ -252,3 +254,13 @@ def test_recorder_restores_inherited_selector_without_extra_instance_attribute()
     s._refresh_relay(stale)
     recorder.close()
     assert 'assign' not in s.allocator.adapter.__dict__
+
+
+def test_missing_actual_marvel_base_action_is_only_conditional_evidence():
+    state = state_fixture()
+    state.pop('base_actions')
+    event = enumerate_joint(state)
+    assert event['metrics']['potential_both_roles']
+    assert not event['metrics']['executable_both_roles']
+    assert any(r['conditional_prefix_certified'] for r in event['candidates'])
+    assert not any(r['immediately_executable'] for r in event['candidates'])

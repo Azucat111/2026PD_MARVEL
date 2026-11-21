@@ -68,10 +68,13 @@ def rebuild(source, out):
             shutil.copyfile(state_file, folder/state_file.name)
             events.append(event)
         (folder/'events.json').write_text(json.dumps(events, indent=2, allow_nan=False))
+        raw_summary = json.loads((original/'gppo/summary.json').read_text())
+        period = state['profile']['effective_control_step_ms']/1000.
+        requested_steps = int(round(raw_summary['metric']['horizon_seconds']/period))
         summary = dict(summarize(events), case=name,
             sampled_physical_seconds=case['elapsed_seconds'],
-            requested_control_steps=6, observed_control_boundaries=len(events),
-            physical_window_complete_to_requested=case['mission_steps'] == 6,
+            requested_control_steps=requested_steps, observed_control_boundaries=len(events),
+            physical_window_complete_to_requested=case['mission_steps'] == requested_steps,
             smoke_only=True, model_tensors_unchanged=case['model_tensors_unchanged'])
         summaries.append(summary);all_events.extend(events)
         (folder/'summary.json').write_text(json.dumps(summary, indent=2))
@@ -85,6 +88,12 @@ def rebuild(source, out):
     passivity = verify_passivity(source/capture_manifest['cases'][0]['case']/'gppo',
                                  source/'passive_disabled/gppo')
     (out/'passivity.json').write_text(json.dumps(passivity, indent=2))
+    raw_disabled = out/'passive_disabled/original_run'
+    raw_disabled.mkdir(parents=True)
+    for path in (source/'passive_disabled/gppo').iterdir():
+        if path.suffix in ('.json', '.csv'):
+            with gzip.GzipFile(filename=str(raw_disabled/(path.name+'.gz')), mode='wb', mtime=0) as f:
+                f.write(path.read_bytes())
     (out/'capture_manifest.json').write_text(json.dumps(capture_manifest, indent=2))
     files = ('integrations/gppo/joint_shadow.py', 'integrations/gppo/joint_shadow_recorder.py',
              'scripts/audit_joint_candidates.py', 'platform_tests/test_joint_shadow.py')
@@ -142,7 +151,7 @@ def main():
         name = f'{uavs}_{"dynamic" if dynamic else "static"}_{seed}'
         folder = args.out/name
         folder.mkdir()
-        recorders, models = [], []
+        recorders, models, physical_rows = [], [], []
         def model_digest(adapter):
             h = hashlib.sha256()
             for model in (adapter.policy_net, adapter.scheduler.allocator.adapter.model):
@@ -155,6 +164,13 @@ def main():
                 config['task_scheduler']['extended_checkpoint_sha256'] = candidate_sha
                 config['policy']['device'] = 'cpu'
                 super().__init__(config)
+            def step(self, actions):
+                observations, info = super().step(actions)
+                physical_rows.append(dict(step=int(self.current_step),
+                    observations={int(uid): {k: (v.tolist() if hasattr(v, 'tolist') else v)
+                        for k, v in obs.items() if k in ('position', 'heading', 'velocity', 'motion_feedback')}
+                        for uid, obs in observations.items()}))
+                return observations, info
         class Adapter(adapter_type):
             def setup(self):
                 with benchmark.torch.random.fork_rng():
@@ -163,6 +179,15 @@ def main():
                 recorders.append(recorder)
                 models.append((self, model_digest(self)))
                 return result
+            def get_actions(self, observations):
+                actions = super().get_actions(observations)
+                if recorders and recorders[-1].events:
+                    e = recorders[-1].events[-1]
+                    if e['step'] == self.runtime.current_step:
+                        e['actual_adapter_commands'] = [dict(uav_id=int(r.robot_id),
+                            waypoint=action[0].tolist(), heading=float(action[1]))
+                            for r, action in zip(self.runtime.robots, actions)]
+                return actions
         benchmark.SimulationRuntime, benchmark.MARVELPolicyAdapter = Runtime, Adapter
         benchmark.load_and_validate_scenario = lambda file: load_domain(loader, file, scenario, dynamic, .2)
         result = benchmark.run(folder, 'gppo', uavs, seed, args.steps,
@@ -178,6 +203,7 @@ def main():
             with gzip.GzipFile(filename=str(folder/f'public_state_{i:03d}.json.gz'), mode='wb', mtime=0) as f:
                 f.write(snapshot_bytes(state))
         (folder/'events.json').write_text(json.dumps(events, indent=2, allow_nan=False))
+        (folder/'gppo/physical_observations.json').write_text(json.dumps(physical_rows, sort_keys=True))
         summary = summarize(events)
         summary.update(case=name, elapsed_seconds=result['elapsed_simulation_seconds'],
                        mission_steps=result['mission_steps'], smoke_only=True,
@@ -203,6 +229,7 @@ def main():
         numpy=benchmark.np.__version__, device='cpu', cases=reports,
         base_sha256=base_sha, candidate_sha256=candidate_sha, marvel_sha256=marvel_sha,
         source_sha256={f: sha(PROJECT/f) for f in files},
+        requested_control_steps=args.steps,
         purpose='decision-space discovery only; known development seeds; no performance acceptance')
     (args.out/'manifest.json').write_text(json.dumps(result, indent=2))
     if args.verify_passive:
@@ -210,13 +237,17 @@ def main():
         enabled = args.out/reports[0]['case']/'gppo'
         disabled = args.out/'passive_disabled'
         disabled.mkdir()
+        physical_rows.clear()
         benchmark.SimulationRuntime = Runtime
         benchmark.MARVELPolicyAdapter = adapter_type
         benchmark.load_and_validate_scenario = lambda file: load_domain(loader, file, scenario, False, .2)
         result = benchmark.run(disabled, 'gppo', 30, 1280021, args.steps,
                                physical_coverage=True, stop_on_completion=False,
                                wall_budget_seconds=args.wall_seconds_per_case)
+        (disabled/'gppo/physical_observations.json').write_text(json.dumps(physical_rows, sort_keys=True))
         proof = verify_passivity(enabled, disabled/'gppo')
+        assert (enabled/'physical_observations.json').read_bytes() == (disabled/'gppo/physical_observations.json').read_bytes()
+        proof['physical_observation_bytes_equal'] = True
         proof.update(control_steps=args.steps, uavs=30, seed=1280021)
         (args.out/'passivity.json').write_text(json.dumps(proof, indent=2))
         print('PASSIVE_TRAJECTORY_EQUIVALENCE_OK', flush=True)

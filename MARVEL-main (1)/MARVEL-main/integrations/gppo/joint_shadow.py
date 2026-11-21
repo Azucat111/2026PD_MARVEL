@@ -98,7 +98,7 @@ def snapshot_digest(state):
     return hashlib.sha256(snapshot_bytes(state)).hexdigest()
 
 
-def capture_public_state(scheduler, stale_positions, *, scenario):
+def capture_public_state(scheduler, stale_positions, *, scenario, base_actions=None):
     """Capture at _refresh_search entry, AFTER completion/release/reconcile.
 
     Do not deepcopy runtime/scheduler/agents: they link to hidden truth/model/RNG.
@@ -161,6 +161,9 @@ def capture_public_state(scheduler, stale_positions, *, scenario):
         safe_margin=scheduler.safety.hazards.safe_margin,
         controls=controls, stale_positions=deepcopy(stale_positions),
         base_position=deepcopy(scheduler.base_position),
+        base_actions=None if base_actions is None else {
+            int(r.robot_id): (np.asarray(action[0], dtype=float).copy(), float(action[1]))
+            for r, action in zip(rt.robots, base_actions)},
         relay_probe=deepcopy(getattr(scheduler, '_relay_probe', None)),
         relay_builder=dict(comm_range=scheduler.relay_builder.comm_range,
                            max_hops=scheduler.relay_builder.max_hops,
@@ -270,7 +273,9 @@ def _prefix(s, slot, uid, state):
     anchor = np.asarray(slot.position, dtype=float)
     agent = s._marvel_agents.get(uid)
     route = observed_next_hop(agent, anchor)
-    base = (r.position.copy(), float(r.heading))
+    recorded_base = state.get('base_actions')
+    exact_context = recorded_base is not None and uid in recorded_base
+    base = recorded_base[uid] if exact_context else (r.position.copy(), float(r.heading))
     if slot.task_type == TaskType.TARGET_SEARCH:
         s.search_assignments[int(slot.source_entity_id)] = uid
     rec.sync_assignments(s.search_assignments)
@@ -307,13 +312,15 @@ def _prefix(s, slot, uid, state):
             peer_ok = False
             break
     ok = bool((moving or maintaining) and static_ok and hazard_ok and peer_ok)
-    return dict(certified=ok, reason='one_tick_public_certificate' if ok else 'prefix_not_certified',
+    return dict(certified=ok, exact_executor_context=bool(exact_context),
+        reason='one_tick_public_certificate' if ok else 'prefix_not_certified',
         waypoint=np.asarray(target).tolist(), heading=float(heading), next_position=end.tolist(),
         moved=bool(moving), maintaining_relay=bool(maintaining),
         observed_five_probe_clear=bool(static_ok), public_hazard_clear=bool(hazard_ok),
         conservative_peer_ball_clear=bool(peer_ok), peer_age_seconds=float(age),
         horizon_seconds=s.runtime.dt, future_completion_guaranteed=False,
-        base_action_assumption='own_pose_hold; no unobserved MARVEL fallback invented')
+        base_action_assumption='recorded_frozen_MARVEL_output' if exact_context else
+                               'own_pose_hold; conditional_only_not_exact_executor_context')
 
 
 def enumerate_joint(state):
@@ -347,7 +354,9 @@ def enumerate_joint(state):
                     position=list(slot.position), admission_legal=legal,
                     legal_reasons=['trigger_open', 'capacity_open', 'all_existing_masks_pass'] if legal else [],
                     rejection_reasons=reasons,
-                    immediately_executable=bool(legal and certificate['certified']), prefix=certificate,
+                    immediately_executable=bool(legal and certificate['certified']
+                                                and certificate.get('exact_executor_context', False)),
+                    conditional_prefix_certified=bool(legal and certificate['certified']), prefix=certificate,
                     category=ALLOWED if legal else ILLEGAL,
                     forbidden_uav_ids=list(slot.forbidden_uav_ids),
                     resources=dict(exclusive_uav_id=uid, exclusive_slot_id=tid,

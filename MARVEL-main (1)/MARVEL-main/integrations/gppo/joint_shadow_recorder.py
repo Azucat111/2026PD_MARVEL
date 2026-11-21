@@ -48,6 +48,7 @@ class JointShadowRecorder:
         self.verify_repeat = verify_repeat
         self.events, self.states = [], []
         self._pending = None
+        self._base_actions = None
         self._originals = {}
         self._install(scheduler, '_refresh_search', self._search)
         self._install(scheduler, '_refresh_relay', self._relay)
@@ -68,7 +69,7 @@ class JointShadowRecorder:
     def _search(self, stale):
         s = self.scheduler
         before, rng = related_state_digest(s, stale, self.scenario), rng_digest()
-        state = capture_public_state(s, stale, scenario=self.scenario)
+        state = capture_public_state(s, stale, scenario=self.scenario, base_actions=self._base_actions)
         event = enumerate_joint(state)
         if self.verify_repeat:
             assert event == enumerate_joint(state), 'Shadow enumeration is not repeatable'
@@ -117,7 +118,11 @@ class JointShadowRecorder:
                 delattr(adapter, 'assign')
 
     def _apply(self, actions):
-        result = self._originals['apply'][3](actions)
+        self._base_actions = [(np.asarray(a[0]).copy(), float(a[1])) for a in actions]
+        try:
+            result = self._originals['apply'][3](actions)
+        finally:
+            self._base_actions = None
         if self.events and self.events[-1]['step'] == self.scheduler.runtime.current_step:
             self.events[-1]['actual_scheduler_commands'] = [
                 dict(uav_id=int(r.robot_id), waypoint=np.asarray(a[0]).tolist(), heading=float(a[1]))
