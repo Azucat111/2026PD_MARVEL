@@ -1,0 +1,39 @@
+{
+  "checks": {
+    "initial.json": {
+      "exact_bytes_equal": true,
+      "sha256": "5266caaad8b34266c7e757a16224ddfa4bcfcb667e9081629b10bbbb886b4b62"
+    },
+    "config.json": {
+      "exact_bytes_equal": true,
+      "sha256": "9d44bd841d541852f4d655fab8b03ee2d06c19468110485c2827bb4edc46e8a7"
+    },
+    "decisions.json": {
+      "exact_bytes_equal": true,
+      "sha256": "03f483d3ec2b8c66669aefc21b3306bd3f465e94e142db3c86a78477710cfb07"
+    },
+    "collisions.json": {
+      "exact_bytes_equal": true,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "progress.csv": {
+      "exact_bytes_equal": true,
+      "sha256": "f53da4fe8dbbaef11fc0f4c38861c433ba12fb9e26852ec666ca4d9715aeb3fd"
+    },
+    "events.json": {
+      "semantic_equal": true,
+      "excluded_fields": [
+        "top_level_timestamp"
+      ],
+      "events": 36,
+      "enabled_raw_sha256": "719adc893c3b652297b63e9ccd918a6f117eeb1dce5d36c8db20ce68bac338ce",
+      "disabled_raw_sha256": "ad4f62bb8529df00cdd5fcd480bbac71f6d97912cfea25e2f56f93cef4f47dcd"
+    }
+  },
+  "raw_events_byte_equal": false,
+  "scope": "all recorded choices/events/progress, not an unrecorded full-pose trace",
+  "physical_observation_bytes_equal": true,
+  "control_steps": 3,
+  "uavs": 30,
+  "seed": 1280021
+}

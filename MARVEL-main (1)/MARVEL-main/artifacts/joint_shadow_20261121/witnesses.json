@@ -1,0 +1,454 @@
+[
+  {
+    "case": "30_dynamic_1280022",
+    "event_index": 1,
+    "time": 1.0,
+    "public_state_sha256": "b925efabf52f66ad59fb0fbf499c095023ab60c735fefe4bbe096bda8958dcaa",
+    "uav_id": 1,
+    "search": {
+      "slot_id": 100000,
+      "position": [
+        65.0,
+        5.0
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          56.0,
+          16.0
+        ],
+        "heading": 340.78181311629896,
+        "next_position": [
+          51.42224800241223,
+          17.59577137590163
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "relay": {
+      "slot_id": 200003,
+      "position": [
+        23.5,
+        13.5
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          60.0,
+          24.0
+        ],
+        "heading": 40.0,
+        "next_position": [
+          51.408409367116064,
+          17.6878951459838
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "legal_search": 59,
+    "legal_relay": 27,
+    "shared_uavs": 27,
+    "order_blocked": [
+      {
+        "slot_id": 200003,
+        "uav_id": 17,
+        "role": "RELAY"
+      },
+      {
+        "slot_id": 200003,
+        "uav_id": 24,
+        "role": "RELAY"
+      }
+    ],
+    "actual_assignments": [
+      {
+        "slot_id": 100001,
+        "task_type": 1,
+        "uav_id": 17,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 1,
+        "flat_action": 47,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 21.285520553588867
+      },
+      {
+        "slot_id": 100003,
+        "task_type": 1,
+        "uav_id": 24,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 3,
+        "flat_action": 114,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 18.807464599609375
+      },
+      {
+        "slot_id": 200003,
+        "task_type": 2,
+        "uav_id": 13,
+        "source_task_id": "T3_relay",
+        "source_entity_id": 3,
+        "flat_action": 13,
+        "value": 0.0,
+        "processing_time": 1.0,
+        "total_time": 19.602705001831055
+      }
+    ]
+  },
+  {
+    "case": "30_static_1280021",
+    "event_index": 1,
+    "time": 1.0,
+    "public_state_sha256": "3d19e489df85194bd097d693bf5f6660ed4cfa7a7fe0d9e8d6630b9c2e3f74d5",
+    "uav_id": 0,
+    "search": {
+      "slot_id": 100002,
+      "position": [
+        44.0,
+        73.0
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          24.0,
+          72.0
+        ],
+        "heading": 309.5532791747722,
+        "next_position": [
+          22.32967087899898,
+          74.02243659704769
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "relay": {
+      "slot_id": 200015,
+      "position": [
+        13.5,
+        52.5
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          20.0,
+          72.0
+        ],
+        "heading": 222.8164516425522,
+        "next_position": [
+          22.19263785707682,
+          74.03157467770751
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "legal_search": 19,
+    "legal_relay": 27,
+    "shared_uavs": 15,
+    "order_blocked": [
+      {
+        "slot_id": 200015,
+        "uav_id": 18,
+        "role": "RELAY"
+      },
+      {
+        "slot_id": 200015,
+        "uav_id": 27,
+        "role": "RELAY"
+      }
+    ],
+    "actual_assignments": [
+      {
+        "slot_id": 100002,
+        "task_type": 1,
+        "uav_id": 27,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 2,
+        "flat_action": 87,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 17.933578491210938
+      },
+      {
+        "slot_id": 100003,
+        "task_type": 1,
+        "uav_id": 18,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 3,
+        "flat_action": 108,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 19.92847442626953
+      },
+      {
+        "slot_id": 200015,
+        "task_type": 2,
+        "uav_id": 29,
+        "source_task_id": "T3_relay",
+        "source_entity_id": 15,
+        "flat_action": 29,
+        "value": 0.0,
+        "processing_time": 1.0,
+        "total_time": 14.78307056427002
+      }
+    ]
+  },
+  {
+    "case": "60_dynamic_1981204",
+    "event_index": 2,
+    "time": 2.0,
+    "public_state_sha256": "ad100180f4fa2886e390438a1dd4e882eee6d0a187c81d086f6a0e54e0e24aad",
+    "uav_id": 6,
+    "search": {
+      "slot_id": 100001,
+      "position": [
+        75.0,
+        4.0
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          72.0,
+          20.0
+        ],
+        "heading": 264.79351196172274,
+        "next_position": [
+          72.42117344794957,
+          24.622118214899814
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "relay": {
+      "slot_id": 200002,
+      "position": [
+        46.5,
+        5.5
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          72.0,
+          24.0
+        ],
+        "heading": 239.19853075564566,
+        "next_position": [
+          72.37904149395602,
+          24.635810951195506
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "legal_search": 75,
+    "legal_relay": 56,
+    "shared_uavs": 55,
+    "order_blocked": [
+      {
+        "slot_id": 200002,
+        "uav_id": 48,
+        "role": "RELAY"
+      }
+    ],
+    "actual_assignments": [
+      {
+        "slot_id": 100001,
+        "task_type": 1,
+        "uav_id": 48,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 1,
+        "flat_action": 48,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 13.64322280883789
+      },
+      {
+        "slot_id": 100003,
+        "task_type": 1,
+        "uav_id": 54,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 3,
+        "flat_action": 114,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 11.657442092895508
+      },
+      {
+        "slot_id": 200002,
+        "task_type": 2,
+        "uav_id": 57,
+        "source_task_id": "T3_relay",
+        "source_entity_id": 2,
+        "flat_action": 57,
+        "value": 0.0,
+        "processing_time": 1.0,
+        "total_time": 11.62923526763916
+      }
+    ]
+  },
+  {
+    "case": "60_static_9164",
+    "event_index": 1,
+    "time": 1.0,
+    "public_state_sha256": "113573c3801ba2fefeb6089d31a66a1be36b12af6e80fa1439170e924dd0abf9",
+    "uav_id": 1,
+    "search": {
+      "slot_id": 100001,
+      "position": [
+        30.0,
+        75.0
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          68.0,
+          68.0
+        ],
+        "heading": 139.44992399196326,
+        "next_position": [
+          70.55385132181176,
+          65.81494181150003
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "relay": {
+      "slot_id": 200051,
+      "position": [
+        40.5,
+        7.5
+      ],
+      "prefix": {
+        "certified": true,
+        "exact_executor_context": true,
+        "reason": "one_tick_public_certificate",
+        "waypoint": [
+          68.0,
+          64.0
+        ],
+        "heading": 213.64037218877772,
+        "next_position": [
+          70.54658201824789,
+          65.69453274155366
+        ],
+        "moved": true,
+        "maintaining_relay": false,
+        "observed_five_probe_clear": true,
+        "public_hazard_clear": true,
+        "conservative_peer_ball_clear": true,
+        "peer_age_seconds": 0.05,
+        "horizon_seconds": 0.1,
+        "future_completion_guaranteed": false,
+        "base_action_assumption": "recorded_frozen_MARVEL_output"
+      }
+    },
+    "legal_search": 130,
+    "legal_relay": 58,
+    "shared_uavs": 58,
+    "order_blocked": [],
+    "actual_assignments": [
+      {
+        "slot_id": 100003,
+        "task_type": 1,
+        "uav_id": 42,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 3,
+        "flat_action": 222,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 19.326026916503906
+      },
+      {
+        "slot_id": 100000,
+        "task_type": 1,
+        "uav_id": 51,
+        "source_task_id": "T2_target_search",
+        "source_entity_id": 0,
+        "flat_action": 51,
+        "value": 0.0,
+        "processing_time": 6.0,
+        "total_time": 17.91668128967285
+      },
+      {
+        "slot_id": 200051,
+        "task_type": 2,
+        "uav_id": 53,
+        "source_task_id": "T3_relay",
+        "source_entity_id": 51,
+        "flat_action": 53,
+        "value": 0.0,
+        "processing_time": 1.0,
+        "total_time": 14.466638565063477
+      }
+    ]
+  }
+]

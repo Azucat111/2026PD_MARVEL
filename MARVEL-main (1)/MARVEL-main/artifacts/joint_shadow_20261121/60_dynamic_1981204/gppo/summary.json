@@ -1,0 +1,67 @@
+{
+  "arm": "gppo",
+  "uavs": 60,
+  "seed": 1981204,
+  "mission_steps": 3,
+  "natural_from_reset": true,
+  "smoke_only": true,
+  "valid_for_comparison": true,
+  "required_nonrelay_tasks_complete": true,
+  "elapsed_simulation_seconds": 3.0,
+  "task_summary": {
+    "T1_exploration": {
+      "type": "exploration",
+      "status": "complete",
+      "progress": 0.9052991452991453,
+      "found_targets": []
+    },
+    "T2_target_search": {
+      "type": "target_search",
+      "status": "complete",
+      "progress": 1.0,
+      "found_targets": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "T3_relay": {
+      "type": "relay",
+      "status": "active",
+      "progress": 1.0,
+      "found_targets": []
+    }
+  },
+  "candidate_budget": 0,
+  "physical_coverage": true,
+  "metric": {
+    "capped_detection_seconds": [
+      1.1,
+      2.1,
+      1.1,
+      2.1
+    ],
+    "detected_targets": 4,
+    "total_targets": 4,
+    "horizon_seconds": 3.0,
+    "mean_capped_seconds": 1.6
+  },
+  "physical_free_coverage": {
+    "observed_free_cells": 2845,
+    "total_free_cells": 2925,
+    "coverage": 0.9726495726495726,
+    "evaluation_oracle_only": true
+  },
+  "activation_step": 0,
+  "serviced": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "policy_execution_failures": [],
+  "collision_types": {},
+  "wall_budget_seconds": 180.0,
+  "seconds": 159.89341599099998
+}

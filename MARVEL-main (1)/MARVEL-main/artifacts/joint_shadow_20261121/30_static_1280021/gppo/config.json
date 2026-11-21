@@ -1,0 +1,164 @@
+{
+  "scenario": {
+    "name": "extended_connected_gppo_20261010",
+    "description": "Separate feasibility benchmark: preserve the prior 80m static crop and add an 8m wide public map corridor x[12,20), y[34,59) connecting its two free regions. Historical map remains unchanged. UAV speed, radius, radio range, task capacities and frozen native protocol are unchanged. Both scheduling arms use this identical declared map.",
+    "version": "1.0",
+    "duration": {
+      "max_steps": 3000,
+      "step_dt": 0.1
+    },
+    "random_seed": 1280021
+  },
+  "environment": {
+    "geometry_mode": "extended",
+    "map_size": [
+      80,
+      80
+    ],
+    "map_resolution": 1.0,
+    "map_file": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/configs/scenarios/assets/extended_connected_gppo_20261010.png",
+    "circular_obstacles": []
+  },
+  "robots": [
+    {
+      "id_range": [
+        0,
+        29
+      ],
+      "type": "explorer",
+      "team_id": 1,
+      "config": {
+        "fov": 120,
+        "sensor_range": 10.0,
+        "velocity": 1.0,
+        "yaw_rate": 35,
+        "initial_positions": "random_safe"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "T1_exploration",
+      "type": "exploration",
+      "priority": 3,
+      "assigned_robot_types": [
+        "explorer"
+      ],
+      "params": {
+        "target_coverage": 0.8,
+        "coverage_basis": "observed_free"
+      },
+      "activation": {}
+    },
+    {
+      "task_id": "T2_target_search",
+      "type": "target_search",
+      "priority": 5,
+      "assigned_robot_types": [
+        "explorer"
+      ],
+      "activation": {
+        "condition": "exploration_rate >= 0.3"
+      },
+      "params": {
+        "target_count": 4
+      }
+    },
+    {
+      "task_id": "T3_relay",
+      "type": "relay",
+      "priority": 2,
+      "assigned_robot_types": [
+        "explorer"
+      ],
+      "params": {
+        "comm_range": 20.0,
+        "min_connectivity": 0.9
+      },
+      "activation": {}
+    }
+  ],
+  "dynamics": {
+    "config_file": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/configs/dynamics/kinematic_simple.yaml",
+    "params": {
+      "model_type": "kinematic_2d",
+      "params": {
+        "velocity": 1.0,
+        "yaw_rate": 35.0,
+        "num_sim_steps": 6
+      }
+    }
+  },
+  "sensor": {
+    "config_file": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/configs/sensors/ideal_cached_extended_20261012.yaml",
+    "params": {
+      "sensor_type": "ideal",
+      "fov": 120.0,
+      "range": 10.0,
+      "visible_cells_cache_entries": 128,
+      "los_occlusion": true
+    }
+  },
+  "communication": {
+    "config_file": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/configs/communication/ideal.yaml",
+    "params": {
+      "comm_range": 20.0,
+      "delay_steps": 0,
+      "packet_loss": 0.0
+    }
+  },
+  "evaluation": {
+    "metrics": [
+      {
+        "name": "exploration_rate",
+        "weight": 0.7,
+        "target": 0.8
+      },
+      {
+        "name": "collision_count",
+        "weight": 0.3,
+        "target": 0,
+        "penalty_per_collision": -1
+      }
+    ]
+  },
+  "_source_file": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/configs/scenarios/extended_connected_gppo_cached_sensing_20261012.yaml",
+  "task_scheduler": {
+    "mode": "gppo",
+    "checkpoint": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/handoff/cloud/models/gppo_phase14_v9_ckpt80.pth",
+    "base_position": [
+      0.0,
+      0.0
+    ],
+    "search_scenario_seed": 1280021,
+    "extended_checkpoint": "/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/handoff/cloud/models/guarded_440d_inference.pth",
+    "extended_checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d"
+  },
+  "_gppo_hidden_targets": {
+    "T2_target_search": []
+  },
+  "_gppo_profile": {
+    "physics_step_ms": 100.0,
+    "control_step_ms": 1000.0,
+    "high_level_interval_steps": 10,
+    "mission_steps": 300,
+    "physics_steps": 3000,
+    "comm_range": 20.0,
+    "comm_max_hops": 2,
+    "comm_delay_ms": 50.0,
+    "stale_age_fraction": 0.05,
+    "activation_threshold": 0.3,
+    "geometry_mode": "extended",
+    "search_service_steps": 6,
+    "search_sensor_range": 10.0,
+    "search_cell_size": 1.0,
+    "search_survivor_count": 4,
+    "search_reach_radius": 3.5,
+    "search_guaranteed_hidden_radius": 5.5,
+    "search_heat_target_radius": 4.0
+  },
+  "policy": {
+    "device": "cpu",
+    "batch_inference": true
+  }
+}

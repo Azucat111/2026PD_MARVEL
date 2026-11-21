@@ -1,0 +1,102 @@
+{
+  "base": "5692ca4fe5c56f398707deea87c1efc844297b71",
+  "capture_source_commit": "a98b9a3aa263090bc0e40a024f3920c3ed8cb192",
+  "production_files_modified": [],
+  "frozen_weight_files_modified": [],
+  "rule_behavior_modified": false,
+  "verification": {
+    "source_files_checked": 428,
+    "source_mismatches": [],
+    "model_smoke": "8 SHA256 + strict CPU load + masked forward",
+    "portable_test_checkpoint": "handoff/cloud/models/gppo_phase14_v9_ckpt80.pth",
+    "portability_change": "test module path variable only; no production/test file rewritten",
+    "tests": {
+      "passed": 91,
+      "failed": 0,
+      "skipped": 0
+    },
+    "exit_code": 0
+  },
+  "aggregate": {
+    "events": 12,
+    "no_candidate_events": 5,
+    "single_candidate_events": 0,
+    "same_role_multiple_events": 3,
+    "potential_cross_role_events": 4,
+    "executable_cross_role_events": 4,
+    "shared_uav_cross_role_events": 4,
+    "order_excluded_events": 3,
+    "order_excluded_executable_events": 3,
+    "needs_contract_events": 1,
+    "actual_mixed_graphs": 0,
+    "actual_graphs": 22,
+    "no_executable_events": 5,
+    "single_executable_events": 0,
+    "two_meaningful_executable_events": 7,
+    "denominator": "events: all pre-search control boundaries, including no allocation",
+    "actual_graph_denominator": 22
+  },
+  "passivity": {
+    "checks": {
+      "initial.json": {
+        "exact_bytes_equal": true,
+        "sha256": "5266caaad8b34266c7e757a16224ddfa4bcfcb667e9081629b10bbbb886b4b62"
+      },
+      "config.json": {
+        "exact_bytes_equal": true,
+        "sha256": "9d44bd841d541852f4d655fab8b03ee2d06c19468110485c2827bb4edc46e8a7"
+      },
+      "decisions.json": {
+        "exact_bytes_equal": true,
+        "sha256": "03f483d3ec2b8c66669aefc21b3306bd3f465e94e142db3c86a78477710cfb07"
+      },
+      "collisions.json": {
+        "exact_bytes_equal": true,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "progress.csv": {
+        "exact_bytes_equal": true,
+        "sha256": "f53da4fe8dbbaef11fc0f4c38861c433ba12fb9e26852ec666ca4d9715aeb3fd"
+      },
+      "events.json": {
+        "semantic_equal": true,
+        "excluded_fields": [
+          "top_level_timestamp"
+        ],
+        "events": 36,
+        "enabled_raw_sha256": "719adc893c3b652297b63e9ccd918a6f117eeb1dce5d36c8db20ce68bac338ce",
+        "disabled_raw_sha256": "ad4f62bb8529df00cdd5fcd480bbac71f6d97912cfea25e2f56f93cef4f47dcd"
+      }
+    },
+    "raw_events_byte_equal": false,
+    "scope": "all recorded choices/events/progress, not an unrecorded full-pose trace",
+    "physical_observation_bytes_equal": true,
+    "control_steps": 3,
+    "uavs": 30,
+    "seed": 1280021
+  },
+  "replay": {
+    "events": 3,
+    "exact_replay": true
+  },
+  "source_and_report_sha256": {
+    "DECISION_AUTHORITY_AUDIT.md": "0af04666a9dcbecc41b463947471df8f7c32ff2584cb6e63f287f3f053847136",
+    "JOINT_CANDIDATE_SHADOW_AUDIT.md": "e41d215e476bb5225df54cd6acd2dd9e0f7d965bc75c67af292fcc217f88374d",
+    "JOINT_GPPO_ARCHITECTURE.md": "7659a705f79872f127d3df6b95fdc7e46a0ad7085e9eece3aceaab8c21b4224f",
+    "JOINT_GPPO_EXPERIMENT_PLAN.md": "64aadc56fbd1df7bc122d45bc3ced7dcb3d2cac8d90470af77d1bb0529be495d",
+    "JOINT_SHADOW_REPRODUCTION.md": "d93250e9a2ec1beb29caf3b1b0a3ea04fba390f88f403c1854af793ab73dc127",
+    "integrations/gppo/joint_shadow.py": "7779cd6b289788af2abebcb523285d8ae8a649f962b12a9087c466139d03916b",
+    "integrations/gppo/joint_shadow_recorder.py": "92e22991903a46eb190f5e5f3024ab4cb6b48cd61eccbb4367b5bde9dcaf29e5",
+    "platform_tests/test_joint_shadow.py": "136485e78fbf443a958a02aaae4df28d1650921742fedbe35fbc59ceefa5f7a2",
+    "scripts/audit_joint_candidates.py": "39ae19d0fe6ab64b524a042e9da8df62829cd6fdc86c91ab4397b58a49835b6e",
+    "scripts/verify_joint_shadow.py": "99faf628b4eae5d4deae79992701fcce55e774b3527ef2ac9aab1351e2ab311f",
+    "handoff/cloud/requirements-joint-shadow.txt": "755f7ee49ba3f1ddc30ca84826e97aa2c5ccc43d9796ccd96ceaaa8264f68579"
+  },
+  "primary_manifest_sha256": "e42a7e0d505b556a48fb2b906033299dd118b7336c3760fe58c4ddc2c890d226",
+  "preliminary_manifest_sha256": "18ef025e7cdac64aa78d186834ebcfbf7781f79f8583c9e505d4fbc7b99ec024",
+  "scope": "feasibility/prototype only; no training, no H300 acceptance, no claimed speedup",
+  "capture_source_hashes_verified": 19,
+  "public_snapshot_digests_verified": 12,
+  "packaged_passivity_independently_recomputed": true,
+  "gzip_and_plain_event_replay": "EXACT_PUBLIC_REPLAY_OK events=3"
+}

@@ -1,0 +1,35 @@
+{
+  "checks": {
+    "initial.json": {
+      "exact_bytes_equal": true,
+      "sha256": "5266caaad8b34266c7e757a16224ddfa4bcfcb667e9081629b10bbbb886b4b62"
+    },
+    "config.json": {
+      "exact_bytes_equal": true,
+      "sha256": "9d44bd841d541852f4d655fab8b03ee2d06c19468110485c2827bb4edc46e8a7"
+    },
+    "decisions.json": {
+      "exact_bytes_equal": true,
+      "sha256": "03f483d3ec2b8c66669aefc21b3306bd3f465e94e142db3c86a78477710cfb07"
+    },
+    "collisions.json": {
+      "exact_bytes_equal": true,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "progress.csv": {
+      "exact_bytes_equal": true,
+      "sha256": "18bf5fa2465f58d060acb740512b5f97830342259e630d60177249a4ef7436af"
+    },
+    "events.json": {
+      "semantic_equal": true,
+      "excluded_fields": [
+        "top_level_timestamp"
+      ],
+      "events": 86,
+      "enabled_raw_sha256": "7bbb7d1681955d94facd03c0da2511dc0d1375011241013aa406702d4c102ea5",
+      "disabled_raw_sha256": "3ba88f9848811e5807c97cd8cba59fd9a954c9c2c3094f62263eeecaff2c8b07"
+    }
+  },
+  "raw_events_byte_equal": false,
+  "scope": "all recorded choices/events/progress, not an unrecorded full-pose trace"
+}

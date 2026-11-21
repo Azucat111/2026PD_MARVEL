@@ -1,0 +1,25 @@
+{
+  "lossless": true,
+  "files": {
+    "30_dynamic_1280022/events.json.gz": {
+      "raw_sha256": "17515cbbc2ed98994d46619e09964d054485a76ab29cea0fe47f7b069c6b39bf",
+      "gzip_sha256": "3fb70b9931d30e40c28d8678d4bcc3abadb5ed612633df6677043ccbd7bbd4f2",
+      "original_bytes": 596037
+    },
+    "30_static_1280021/events.json.gz": {
+      "raw_sha256": "6fd13f29c482251325ab189af88dd9303898af36ee1d4a73b92b0d4b83779647",
+      "gzip_sha256": "1f344083c7b864f76f8a3650687e403db6fcfadaa57294bbeede7a5714e19df3",
+      "original_bytes": 646924
+    },
+    "60_static_9164/events.json.gz": {
+      "raw_sha256": "2bc80ce4c6e84138543096d9ad630e94e4ba48e2b5dce725a63b7eb279be55a0",
+      "gzip_sha256": "28fcf0882d6d5bf1c1df85837ea3ee29fc393f3c8f652a81a6b5f1146e0ee140",
+      "original_bytes": 1451058
+    },
+    "60_dynamic_1981204/events.json.gz": {
+      "raw_sha256": "1969040374b16297208bfc98a1558e4946ab9834700f5e29baf5a321f1168b00",
+      "gzip_sha256": "233f8466c4605b1fbf02e78a41c50544a104843fb71b022aeaa38b308b144063",
+      "original_bytes": 1285850
+    }
+  }
+}

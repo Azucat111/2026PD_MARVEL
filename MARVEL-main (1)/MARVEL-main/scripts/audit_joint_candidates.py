@@ -25,6 +25,14 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def read_event_json(folder):
+    path = folder/'events.json'
+    if path.exists():
+        return json.loads(path.read_text())
+    with gzip.open(folder/'events.json.gz', 'rt') as handle:
+        return json.load(handle)
+
+
 def verify_passivity(enabled, disabled):
     """Only wall-clock event timestamp is excluded; every semantic field stays."""
     checks = {}
@@ -51,7 +59,7 @@ def rebuild(source, out):
     for case in capture_manifest['cases']:
         name = case['case']; original = source/name; folder = out/name
         folder.mkdir()
-        captured = json.loads((original/'events.json').read_text())
+        captured = read_event_json(original)
         events = []
         for i, old in enumerate(captured):
             state_file = original/f'public_state_{i:03d}.json.gz'
@@ -122,7 +130,7 @@ def main():
         rebuild(args.rebuild_from, args.out)
         return
     if args.replay:
-        events = json.loads((args.replay/'events.json').read_text())
+        events = read_event_json(args.replay)
         for i, event in enumerate(events):
             with gzip.open(args.replay/f'public_state_{i:03d}.json.gz', 'rt') as f:
                 state = unpack(json.load(f))
