@@ -20,7 +20,7 @@
 | `artifacts/gppo_donor_validation_20261111/evaluation/` | 最新四种子三臂、原始过滤函数、复核脚本和冻结协议 | 历史运行目录保留精选文件 |
 | `artifacts/extended_round8_independent_mission_acceptance_20261015_attempt34/` | 原目标的历史正式规则对照和跨 seed 聚合 | 原执行器与历史合同，成绩不能和最新套件混算 |
 
-调用链为 `benchmark_fair_search.run → MARVELPolicyAdapter.get_actions → GPPOMissionScheduler.apply → _high_level_update`。先 `_refresh_search`，再 `_refresh_relay`。Search 调用 `SearchSlotBuilder.build`，Relay 从观测连通性与 demand/anchor 形成 slot；`EventAllocator.allocate` 构造 TaskGraph、应用候选约束，委派 Rule 或 `ExtendedGPPOInferenceAdapter.assign`。后者返回 task/UAV 配对，调度器落实预占和 override，低层动作进入 `SimulationRuntime.step`。物理前后分别走 `before_physics_tick`、`post_physics_step`，Safety、碰撞、任务完成和物理连通状态按物理时钟记录。H300 由 `joint_completion_metric` 从完整物理样本重算。
+调用链为 `benchmark_fair_search.run → MARVELPolicyAdapter.get_actions → GPPOTaskScheduler.apply → _high_level_update`。先 `_refresh_search`，再 `_refresh_relay`。Search 调用 `SearchSlotBuilder.build`，Relay 从观测连通性与 demand/anchor 形成 slot；`GPPOEventAllocator.allocate` 构造 TaskGraph、应用候选约束，委派 Rule 或 `ExtendedGPPOInferenceAdapter.assign`。后者返回 task/UAV 配对，调度器落实预占和 override，低层动作进入 `SimulationRuntime.step`。物理前后分别走 `before_physics_tick`、`post_physics_step`，Safety、碰撞、任务完成和物理连通状态按物理时钟记录。H300 由 `joint_completion_metric` 从完整物理样本重算。
 
 历史正式与当前诊断的逐入口差异见 [规则审计](RULE_BASELINE_AUDIT.md)。重要训练协议包括历史 `joint_physical_v1`、目标对齐后的 `joint_makespan_physical_h300_v2`、以及同 seed 组内对照。前者的成绩或 critic 权重不适合直接解释后者。最近模型输入为 UAV 13、task 12、edge 6，9D 边新增 Search 机会字段而非 radio 拓扑。最新模型身份证明、原始 optimizer 是否保留见 [模型清单](checkpoint_manifest.json)。
 
@@ -31,3 +31,4 @@
 - [原始轨迹索引](raw_trace_index.json) 含最近四套实验的原始路径、大小、SHA-256，并为完整版物理指标序列保留状态变化摘要。原始姿态、模型输入、隐藏目标布局、采样张量和失败长日志继续由本地保存。公共压缩摘要不足以逐 tick 重现全部动作。
 - 公开归档计划中的路径替换会改变原始哈希，原截止时间也已过期。先读结果和源码，再用 [可移植入口](CLOUD_REPRODUCTION.md) 和新环境配置建自己的冻结实验。
 - 依赖外部旧 worktree、未迁移采样包或旧 deadline 的历史入口仅作代码溯源。论文正文和原 PDF 按原授权来源获取。
+

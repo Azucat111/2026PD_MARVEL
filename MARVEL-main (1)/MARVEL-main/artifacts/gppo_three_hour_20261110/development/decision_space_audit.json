@@ -1,0 +1,1325 @@
+{
+  "scope": "Read-only actual completed development actor graphs; descriptive counts, no causal alternative-action claim",
+  "aggregates": {
+    "hybrid17search8relay": {
+      "episodes": 4,
+      "decisions": 23,
+      "decisions_per_episode": [
+        6,
+        5,
+        6,
+        6
+      ],
+      "mixed_role_decisions": 0,
+      "single_task_decisions": 11,
+      "single_action_decisions": 0,
+      "median_legal_actions": 24
+    },
+    "round17": {
+      "episodes": 5,
+      "decisions": 28,
+      "decisions_per_episode": [
+        6,
+        5,
+        6,
+        6,
+        5
+      ],
+      "mixed_role_decisions": 0,
+      "single_task_decisions": 13,
+      "single_action_decisions": 0,
+      "median_legal_actions": 25.0
+    },
+    "round8": {
+      "episodes": 4,
+      "decisions": 25,
+      "decisions_per_episode": [
+        6,
+        7,
+        6,
+        6
+      ],
+      "mixed_role_decisions": 0,
+      "single_task_decisions": 13,
+      "single_action_decisions": 0,
+      "median_legal_actions": 24
+    },
+    "rule": {
+      "episodes": 5,
+      "decisions": 28,
+      "decisions_per_episode": [
+        6,
+        6,
+        6,
+        7,
+        3
+      ],
+      "mixed_role_decisions": 0,
+      "single_task_decisions": 14,
+      "single_action_decisions": 0,
+      "median_legal_actions": 24.5
+    }
+  },
+  "cases": [
+    {
+      "case": {
+        "seed": 1280021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "hybrid17search8relay",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 19,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.933578491210938,
+          "minimum_estimated_seconds": 17.933578491210938
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 10,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.92847442626953,
+          "minimum_estimated_seconds": 19.92847442626953
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.78307056427002,
+          "minimum_estimated_seconds": 14.78307056427002
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 9,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 25.372922897338867,
+          "minimum_estimated_seconds": 21.421161651611328
+        },
+        {
+          "time": 8.0,
+          "legal_actions": 19,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 15.26119613647461,
+          "minimum_estimated_seconds": 15.26119613647461
+        },
+        {
+          "time": 91.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 15.651378631591797,
+          "minimum_estimated_seconds": 15.549725532531738
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round17",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 19,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.933578491210938,
+          "minimum_estimated_seconds": 17.933578491210938
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 10,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.92847442626953,
+          "minimum_estimated_seconds": 19.92847442626953
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.78307056427002,
+          "minimum_estimated_seconds": 14.78307056427002
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 9,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 25.372922897338867,
+          "minimum_estimated_seconds": 21.421161651611328
+        },
+        {
+          "time": 8.0,
+          "legal_actions": 19,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 15.26119613647461,
+          "minimum_estimated_seconds": 15.26119613647461
+        },
+        {
+          "time": 91.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 15.651378631591797,
+          "minimum_estimated_seconds": 15.549725532531738
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 19,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.933578491210938,
+          "minimum_estimated_seconds": 17.933578491210938
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 10,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.356800079345703,
+          "minimum_estimated_seconds": 19.92847442626953
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.78307056427002,
+          "minimum_estimated_seconds": 14.78307056427002
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 9,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 25.372922897338867,
+          "minimum_estimated_seconds": 20.767200469970703
+        },
+        {
+          "time": 10.0,
+          "legal_actions": 15,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.25,
+          "minimum_estimated_seconds": 18.25
+        },
+        {
+          "time": 90.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 16.659568786621094,
+          "minimum_estimated_seconds": 16.659568786621094
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 19,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.933578491210938,
+          "minimum_estimated_seconds": 17.933578491210938
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 10,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.92847442626953,
+          "minimum_estimated_seconds": 19.92847442626953
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.78307056427002,
+          "minimum_estimated_seconds": 14.78307056427002
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 9,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.421161651611328,
+          "minimum_estimated_seconds": 21.421161651611328
+        },
+        {
+          "time": 8.0,
+          "legal_actions": 2,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.813404083251953,
+          "minimum_estimated_seconds": 18.813404083251953
+        },
+        {
+          "time": 85.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 15.549725532531738,
+          "minimum_estimated_seconds": 15.549725532531738
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "hybrid17search8relay",
+      "decisions": 5,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 59,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.285520553588867,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 45,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.104482650756836,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 16.47690200805664,
+          "minimum_estimated_seconds": 16.47690200805664
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 26,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.05628204345703,
+          "minimum_estimated_seconds": 21.05628204345703
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.777921676635742,
+          "minimum_estimated_seconds": 21.777921676635742
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round17",
+      "decisions": 5,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 59,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.285520553588867,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 45,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.104482650756836,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 16.47690200805664,
+          "minimum_estimated_seconds": 16.47690200805664
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 26,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.05628204345703,
+          "minimum_estimated_seconds": 21.05628204345703
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.777921676635742,
+          "minimum_estimated_seconds": 21.777921676635742
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "decisions": 7,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 59,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.807464599609375,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 30,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.104482650756836,
+          "minimum_estimated_seconds": 21.285520553588867
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.602705001831055,
+          "minimum_estimated_seconds": 19.602705001831055
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 26,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.06281280517578,
+          "minimum_estimated_seconds": 19.76508331298828
+        },
+        {
+          "time": 8.0,
+          "legal_actions": 19,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 14.994272232055664,
+          "minimum_estimated_seconds": 14.994272232055664
+        },
+        {
+          "time": 19.0,
+          "legal_actions": 26,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 15.113712310791016,
+          "minimum_estimated_seconds": 15.113712310791016
+        },
+        {
+          "time": 40.0,
+          "legal_actions": 26,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 17.086185455322266,
+          "minimum_estimated_seconds": 17.086185455322266
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1280022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 59,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.807464599609375,
+          "minimum_estimated_seconds": 18.807464599609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 30,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.285520553588867,
+          "minimum_estimated_seconds": 21.285520553588867
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.602705001831055,
+          "minimum_estimated_seconds": 19.602705001831055
+        },
+        {
+          "time": 7.0,
+          "legal_actions": 25,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.435165405273438,
+          "minimum_estimated_seconds": 17.435165405273438
+        },
+        {
+          "time": 8.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.15654945373535,
+          "minimum_estimated_seconds": 18.15654945373535
+        },
+        {
+          "time": 19.0,
+          "legal_actions": 23,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 18.5166015625,
+          "minimum_estimated_seconds": 18.5166015625
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "hybrid17search8relay",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 27,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 20.482425689697266,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.496917724609375,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 15,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.046268463134766,
+          "minimum_estimated_seconds": 18.046268463134766
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 24.554170608520508,
+          "minimum_estimated_seconds": 24.554170608520508
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 22.02686882019043,
+          "minimum_estimated_seconds": 17.643068313598633
+        },
+        {
+          "time": 28.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 18.581138610839844,
+          "minimum_estimated_seconds": 18.581138610839844
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round17",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 27,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 20.482425689697266,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.496917724609375,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 15,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.046268463134766,
+          "minimum_estimated_seconds": 18.046268463134766
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 24.554170608520508,
+          "minimum_estimated_seconds": 24.554170608520508
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 17.66077423095703,
+          "minimum_estimated_seconds": 17.643068313598633
+        },
+        {
+          "time": 23.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 18.581138610839844,
+          "minimum_estimated_seconds": 18.581138610839844
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "round8",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 27,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.046268463134766,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 19,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 20.482425689697266,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 17,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.496917724609375,
+          "minimum_estimated_seconds": 17.496917724609375
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 6,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 24.554170608520508,
+          "minimum_estimated_seconds": 24.554170608520508
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 22.02686882019043,
+          "minimum_estimated_seconds": 17.643068313598633
+        },
+        {
+          "time": 28.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 18.581138610839844,
+          "minimum_estimated_seconds": 18.581138610839844
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480021,
+        "uavs": 30,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 27,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.496917724609375,
+          "minimum_estimated_seconds": 18.496917724609375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 16,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.046268463134766,
+          "minimum_estimated_seconds": 19.046268463134766
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 8,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.83761215209961,
+          "minimum_estimated_seconds": 19.83761215209961
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 17.643068313598633,
+          "minimum_estimated_seconds": 17.643068313598633
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 16,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 24.671688079833984,
+          "minimum_estimated_seconds": 24.671688079833984
+        },
+        {
+          "time": 23.0,
+          "legal_actions": 24,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 18.581138610839844,
+          "minimum_estimated_seconds": 18.581138610839844
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "hybrid17search8relay",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 23,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.031829833984375,
+          "minimum_estimated_seconds": 21.031829833984375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 17,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.73809051513672,
+          "minimum_estimated_seconds": 22.73809051513672
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.380794525146484,
+          "minimum_estimated_seconds": 19.380794525146484
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 32,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.118572235107422,
+          "minimum_estimated_seconds": 17.118572235107422
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 11,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 27.595966339111328,
+          "minimum_estimated_seconds": 26.7773380279541
+        },
+        {
+          "time": 36.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 21.51729965209961,
+          "minimum_estimated_seconds": 21.51729965209961
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round17",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 23,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.031829833984375,
+          "minimum_estimated_seconds": 21.031829833984375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 17,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.73809051513672,
+          "minimum_estimated_seconds": 22.73809051513672
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.380794525146484,
+          "minimum_estimated_seconds": 19.380794525146484
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 32,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.118572235107422,
+          "minimum_estimated_seconds": 17.118572235107422
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 11,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 27.595966339111328,
+          "minimum_estimated_seconds": 26.7773380279541
+        },
+        {
+          "time": 36.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 21.51729965209961,
+          "minimum_estimated_seconds": 21.51729965209961
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "round8",
+      "decisions": 6,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 23,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.73809051513672,
+          "minimum_estimated_seconds": 21.031829833984375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 16,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.031829833984375,
+          "minimum_estimated_seconds": 21.031829833984375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.380794525146484,
+          "minimum_estimated_seconds": 19.380794525146484
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 32,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.118572235107422,
+          "minimum_estimated_seconds": 17.118572235107422
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 11,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 27.595966339111328,
+          "minimum_estimated_seconds": 26.7773380279541
+        },
+        {
+          "time": 36.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 21.51729965209961,
+          "minimum_estimated_seconds": 21.51729965209961
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 1480022,
+        "uavs": 30,
+        "dynamic": true
+      },
+      "arm": "rule",
+      "decisions": 7,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 23,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 21.031829833984375,
+          "minimum_estimated_seconds": 21.031829833984375
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 17,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 22.73809051513672,
+          "minimum_estimated_seconds": 22.73809051513672
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 19.380794525146484,
+          "minimum_estimated_seconds": 19.380794525146484
+        },
+        {
+          "time": 4.0,
+          "legal_actions": 32,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.118572235107422,
+          "minimum_estimated_seconds": 17.118572235107422
+        },
+        {
+          "time": 5.0,
+          "legal_actions": 11,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 26.7773380279541,
+          "minimum_estimated_seconds": 26.7773380279541
+        },
+        {
+          "time": 16.0,
+          "legal_actions": 27,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.2611026763916,
+          "minimum_estimated_seconds": 19.2611026763916
+        },
+        {
+          "time": 39.0,
+          "legal_actions": 25,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 21.39702606201172,
+          "minimum_estimated_seconds": 21.39702606201172
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "round17",
+      "decisions": 5,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 127,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 19.326026916503906,
+          "minimum_estimated_seconds": 17.91668128967285
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 91,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.91668128967285,
+          "minimum_estimated_seconds": 17.91668128967285
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 58,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.466638565063477,
+          "minimum_estimated_seconds": 14.466638565063477
+        },
+        {
+          "time": 2.0,
+          "legal_actions": 57,
+          "legal_tasks": 2,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.870159149169922,
+          "minimum_estimated_seconds": 18.870159149169922
+        },
+        {
+          "time": 3.0,
+          "legal_actions": 58,
+          "legal_tasks": 1,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.906024932861328,
+          "minimum_estimated_seconds": 18.906024932861328
+        }
+      ]
+    },
+    {
+      "case": {
+        "seed": 9164,
+        "uavs": 60,
+        "dynamic": false
+      },
+      "arm": "rule",
+      "decisions": 3,
+      "records": [
+        {
+          "time": 1.0,
+          "legal_actions": 127,
+          "legal_tasks": 4,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 17.91668128967285,
+          "minimum_estimated_seconds": 17.91668128967285
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 91,
+          "legal_tasks": 3,
+          "roles": [
+            1
+          ],
+          "chosen_estimated_seconds": 18.10147476196289,
+          "minimum_estimated_seconds": 18.10147476196289
+        },
+        {
+          "time": 1.0,
+          "legal_actions": 57,
+          "legal_tasks": 1,
+          "roles": [
+            2
+          ],
+          "chosen_estimated_seconds": 14.466638565063477,
+          "minimum_estimated_seconds": 14.466638565063477
+        }
+      ]
+    }
+  ],
+  "source_evidence": [
+    {
+      "file": "integrations/gppo/scheduler.py",
+      "method": "_high_level_update",
+      "fact": "Calls _refresh_search then _refresh_relay sequentially"
+    },
+    {
+      "file": "integrations/gppo/scheduler.py",
+      "method": "_refresh_search",
+      "fact": "Calls allocator.allocate on Search slots with globally reserved UAVs masked"
+    },
+    {
+      "file": "integrations/gppo/scheduler.py",
+      "method": "_allocate_relay_result",
+      "fact": "Separate allocator.allocate call on Relay slots with existing Search reservations masked"
+    }
+  ],
+  "limits": [
+    "No simultaneous legal Search/Relay choices were observed in these completed actor graphs; this does not prove mixed catalog alone improves the final metric.",
+    "Multiple legal UAV actions remain; task separation does not imply there is nothing to learn.",
+    "No production interfaces or masks changed by this audit."
+  ]
+}

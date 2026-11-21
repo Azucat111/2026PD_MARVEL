@@ -3186,11 +3186,16 @@
       "cloud_sha256": "4e1880aded7e9af0ef7114d35f123c26f687da6cbdb806ad9c5c992bb54bff0a",
       "redacted": false,
       "bytes": 965
+    },
+    {
+      "path": "artifacts/gppo_three_hour_20261110/development/decision_space_audit.json",
+      "original_sha256": "ad12205959d6a8df04fc0687bca82c384e82bc2006d524dcefd5fafa92002ae2",
+      "cloud_sha256": "ad12205959d6a8df04fc0687bca82c384e82bc2006d524dcefd5fafa92002ae2",
+      "redacted": false,
+      "bytes": 33223
     }
   ],
-  "selected_missing": [
-    "artifacts/gppo_three_hour_20261110/decision_space_audit.json"
-  ],
+  "selected_missing": [],
   "excluded": [
     {
       "path": "scripts/keep_checkpoint_comparison_awake.ps1",
