@@ -54,3 +54,9 @@ sha=$(sha256sum "$model" | cut -d' ' -f1)
 ```
 
 可单独指定 `--arms R0` 或 `--arms P0` 补充同开发 seed 的 Legacy 对照。汇总会验证物理输入一致、训练模型 SHA 和完整 H300 评分，只有配对双方都完整的窗口才进入比例。跳过、超时和已完成但任务失败各有记录。
+
+可直接核验交付中已归档的模型和物理轨迹。已压缩的评测 JSON 可直接传给汇总器，无需解压。
+
+```bash
+(cd artifacts/joint_ppo_20261122 && sha256sum -c SHA256SUMS)
+```

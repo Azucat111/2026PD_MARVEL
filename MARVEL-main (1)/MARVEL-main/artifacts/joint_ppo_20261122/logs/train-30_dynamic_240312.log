@@ -1,0 +1,33 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+30_dynamic_240312 ticks=100 events=4 elapsed=70.7s
+30_dynamic_240312 ticks=200 events=4 elapsed=121.8s
+30_dynamic_240312 ticks=300 events=4 elapsed=167.0s
+30_dynamic_240312 ticks=400 events=5 elapsed=220.0s
+30_dynamic_240312 ticks=500 events=5 elapsed=275.6s
+30_dynamic_240312 ticks=600 events=5 elapsed=322.0s
+30_dynamic_240312 ticks=700 events=5 elapsed=368.3s
+30_dynamic_240312 ticks=800 events=5 elapsed=414.2s
+30_dynamic_240312 ticks=900 events=5 elapsed=460.8s
+30_dynamic_240312 ticks=1000 events=5 elapsed=507.4s
+30_dynamic_240312 ticks=1100 events=5 elapsed=554.9s
+30_dynamic_240312 ticks=1200 events=5 elapsed=602.5s
+30_dynamic_240312 ticks=1300 events=5 elapsed=649.3s
+30_dynamic_240312 ticks=1400 events=5 elapsed=696.5s
+30_dynamic_240312 ticks=1500 events=5 elapsed=743.0s
+30_dynamic_240312 ticks=1600 events=5 elapsed=789.9s
+30_dynamic_240312 ticks=1700 events=5 elapsed=836.4s
+30_dynamic_240312 ticks=1800 events=5 elapsed=882.4s
+30_dynamic_240312 ticks=1900 events=5 elapsed=929.1s
+30_dynamic_240312 ticks=2000 events=5 elapsed=975.6s
+30_dynamic_240312 ticks=2100 events=5 elapsed=1021.8s
+30_dynamic_240312 ticks=2200 events=5 elapsed=1069.4s
+30_dynamic_240312 ticks=2300 events=5 elapsed=1116.7s
+30_dynamic_240312 ticks=2400 events=5 elapsed=1164.4s
+30_dynamic_240312 ticks=2500 events=5 elapsed=1211.1s
+30_dynamic_240312 ticks=2600 events=5 elapsed=1258.3s
+30_dynamic_240312 ticks=2700 events=5 elapsed=1295.9s
+30_dynamic_240312 ticks=2800 events=5 elapsed=1333.0s
+30_dynamic_240312 ticks=2900 events=5 elapsed=1371.3s
+30_dynamic_240312 ticks=3000 events=5 elapsed=1407.1s
+{"case": "30_dynamic_240312", "episode_id": "train-30_dynamic_240312", "status": "complete", "error": null, "episode_terminated": true, "episode_truncated": false, "eligible": true, "behavior_fingerprint": "ab3f435ada16bb8a2a986e69199e855afa97961b5715e2e48e1c684045507539", "behavior_checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d", "frozen_marvel_fingerprint": "3d3d38427c81191e53c7cf85b04e12a277f187f2efa77bba807953c1c7b70248", "policy_seed": 3412, "temperature": 3.0, "ticks": 3000, "score": {"secondary_joint_completion_seconds": 56.2, "joint_success": true, "stable_seconds": 3.0, "physics_dt": 0.1, "whole_window_safe": true, "primary_search_metric_unchanged": true, "acceptance_claim": false}, "seconds": 1407.1514365710009, "action_events": 5, "forced_events": 295, "safety_triggered": 1, "completion_tick": 225, "collisions": 0, "rejected": false, "prefix_reward": -0.0033333333333333335, "reward_protocol": "joint-h300-undiscounted-time-v1", "mixed_events": 0, "shared_uav_events": 0, "search": 3, "relay": 2, "role_switches": 1}

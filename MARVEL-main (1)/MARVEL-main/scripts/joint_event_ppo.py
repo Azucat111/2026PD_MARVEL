@@ -13,7 +13,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 
 import torch
 
-from verify_joint_atomic import ROOT, setup, write
+from verify_joint_atomic import setup, write
 from gppo_joint_completion_metric import joint_completion_metric
 from gppo_rollout_batch import FrozenBehaviorBatch, model_state_fingerprint
 from joint_four_arm_eval import HORIZON_SECONDS, PHYSICAL_TICKS, physical_sample, require_marvel
@@ -300,8 +300,6 @@ def guarded_epoch(model, optimizer, rows, temperature, *, limits=KL_LIMITS):
     optimizer.zero_grad(set_to_none=True)
     return dict(accepted=True, loss=loss_sum, gradient_norm=grad, **metrics)
 
-
-
 def verify_rollout_files(path, episode):
     summary = episode["summary"]
     events = episode["events"]
@@ -334,6 +332,7 @@ def verify_rollout_files(path, episode):
         for name, version in snapshots:
             if hashlib.sha256(archive.read(name)).hexdigest() != version.rsplit(":", 1)[-1]:
                 raise ValueError("Public snapshot version differs from recorded decision")
+
 
 def update_rollouts(paths, output, *, model=None, lr=2e-5, epochs=2, allow_segment=False):
     if not 1 <= epochs <= 4 or not math.isfinite(lr) or lr <= 0:

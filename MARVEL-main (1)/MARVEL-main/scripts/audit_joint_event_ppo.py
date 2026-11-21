@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+from collections import Counter
 import hashlib
+import json
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -12,11 +14,12 @@ from joint_event_ppo import (action_distribution, configure_torch, verify_replay
                              verify_rollout_files)
 from verify_joint_atomic import setup, write
 from integrations.gppo.joint_atomic import JointCandidatePlanner, JointSnapshot
+from integrations.gppo.joint_shadow import unpack
 
 
 def audit_masks(path, events):
     """Independently rebuild admission from each real public snapshot."""
-    steps = []
+    rows = []
     planner = JointCandidatePlanner()
     with ZipFile(path / "public_observations.zip") as archive:
         for row in events:
@@ -25,14 +28,28 @@ def audit_masks(path, events):
             if hashlib.sha256(raw).hexdigest() != version.rsplit(":", 1)[-1]:
                 raise ValueError("Tampered public archive")
             snapshot = JointSnapshot(row["step"], int(version.split(":")[1]), version, raw)
-            graph = planner.enumerate(snapshot).graph
+            plan = planner.enumerate(snapshot)
+            graph = plan.graph
             if (row["task_ids"] != [int(t.subtask_id) for t in graph.subtasks]
                     or row["uav_ids"] != [int(u.uav_id) for u in graph.uav_states]
                     or row["roles"] != [int(t.task_type) for t in graph.subtasks]):
                 raise ValueError(f"Rebuilt stable IDs or roles differ at step {row['step']}")
             torch.testing.assert_close(torch.as_tensor(graph.action_mask), row["batch"]["action_mask"][0])
-            steps.append(row["step"])
-    return steps
+            state = unpack(json.loads(raw))
+            controls = state["controls"]
+            reasons = {1: Counter(), 2: Counter()}
+            role_by_id = dict(zip(row["task_ids"], row["roles"]))
+            for (slot_id, _), rejected in plan.rejected.items():
+                reasons[role_by_id[slot_id]].update(rejected)
+            rows.append(dict(step=row["step"], search_rows=row["roles"].count(1),
+                             relay_rows=row["roles"].count(2),
+                             search_owners=len(controls["search_assignments"]),
+                             relay_owners=len(controls["relay_assignments"]),
+                             search_capacity=controls["max_search_uavs"],
+                             relay_trigger_threshold=controls["relay_trigger_threshold"],
+                             relay_gate_connectivity=plan.relay_gate["last_counterfactual_connectivity"],
+                             search_rejections=dict(reasons[1]), relay_rejections=dict(reasons[2])))
+    return rows
 
 
 @torch.no_grad()
@@ -80,7 +97,9 @@ def main():
             raise ValueError("Diagnostic expects the frozen Phase 2 behavior weights")
         states = diagnose(behavior.model, child.scheduler.allocator.adapter.model,
                           episode["summary"]["temperature"], episode["events"])
-        results.append(dict(case=case, independent_mask_rebuild_steps=audit_masks(path, episode["events"]),
+        admission = audit_masks(path, episode["events"])
+        results.append(dict(case=case, independent_mask_rebuild_steps=[r["step"] for r in admission],
+                            admission=admission,
                             greedy_actions_changed=sum(r["before"]!=r["after"] for r in states),
                             greedy_roles_changed=sum(r["before"]["role"]!=r["after"]["role"] for r in states),
                             states=states))

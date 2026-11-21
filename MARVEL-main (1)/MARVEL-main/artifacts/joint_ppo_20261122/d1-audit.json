@@ -2,6 +2,25 @@
   "candidate_sha256": "41aa185820f7a3f1520ad1d6fefe61c33aab9aaa5bf7582a1b2f9163ce6d77a9",
   "cases": [
     {
+      "admission": [
+        {
+          "relay_gate_connectivity": 0.5333333333333333,
+          "relay_owners": 0,
+          "relay_rejections": {
+            "relay_admission_guard": 2,
+            "reserved_or_relay_endpoint": 2
+          },
+          "relay_rows": 1,
+          "relay_trigger_threshold": 0.9,
+          "search_capacity": 2,
+          "search_owners": 0,
+          "search_rejections": {
+            "observed_detection_support_precedence": 92
+          },
+          "search_rows": 4,
+          "step": 10
+        }
+      ],
       "case": "30_static_240311",
       "greedy_actions_changed": 0,
       "greedy_roles_changed": 0,
