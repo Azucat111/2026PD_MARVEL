@@ -1,0 +1,899 @@
+{
+  "arms": {
+    "J0": {
+      "final_joint_window_start": 79.10000000000001,
+      "first_3s_radio_start": 79.10000000000001,
+      "first_joint_hold_end": 82.10000000000001,
+      "helper_motion": {
+        "distance_m": {
+          "22": 72.40713345630206
+        },
+        "first_relay_step": 50,
+        "radio_step": 791
+      },
+      "last_radio_blocker_before_completion": 79.0,
+      "nonrelay_done": 12.100000000000001,
+      "official_h300": {
+        "acceptance_claim": false,
+        "joint_success": true,
+        "physics_dt": 0.1,
+        "primary_search_metric_unchanged": true,
+        "secondary_joint_completion_seconds": 82.10000000000001,
+        "stable_seconds": 3.0,
+        "whole_window_safe": true
+      },
+      "radio_first_09": 79.10000000000001,
+      "search_done": 12.100000000000001,
+      "threshold_merge": {
+        "after": [
+          [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "before": [
+          [
+            0,
+            6,
+            7,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "gained_intercomponent_edges": [
+          {
+            "distance": 19.9202966084131,
+            "largest_without_edge": 17,
+            "uavs": [
+              17,
+              22
+            ]
+          }
+        ],
+        "largest_after": 28,
+        "largest_before": 17,
+        "largest_if_helper_isolated": {
+          "22": 16
+        },
+        "probe": null,
+        "relay": {
+          "15": [
+            22,
+            [
+              33.5,
+              8.5
+            ]
+          ]
+        },
+        "step": 791
+      },
+      "wait_after_nonrelay": 67.0
+    },
+    "J0_SWAP_S3": {
+      "final_joint_window_start": 36.0,
+      "first_3s_radio_start": 36.0,
+      "first_joint_hold_end": 39.0,
+      "helper_motion": {
+        "distance_m": {
+          "3": 18.0,
+          "22": 18.373237355230128
+        },
+        "first_relay_step": 50,
+        "radio_step": 360
+      },
+      "last_radio_blocker_before_completion": 35.9,
+      "nonrelay_done": 10.100000000000001,
+      "official_h300": null,
+      "radio_first_09": 36.0,
+      "search_done": 10.100000000000001,
+      "threshold_merge": {
+        "after": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        ],
+        "before": [
+          [
+            0,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ]
+        ],
+        "gained_intercomponent_edges": [
+          {
+            "distance": 19.999999999999943,
+            "largest_without_edge": 19,
+            "uavs": [
+              3,
+              14
+            ]
+          }
+        ],
+        "largest_after": 30,
+        "largest_before": 19,
+        "largest_if_helper_isolated": {
+          "3": 19,
+          "22": 19
+        },
+        "probe": null,
+        "relay": {
+          "15": [
+            22,
+            [
+              12.5,
+              52.5
+            ]
+          ],
+          "17": [
+            3,
+            [
+              33.5,
+              8.5
+            ]
+          ]
+        },
+        "step": 360
+      },
+      "wait_after_nonrelay": 25.9
+    },
+    "P1": {
+      "final_joint_window_start": 79.10000000000001,
+      "first_3s_radio_start": 79.10000000000001,
+      "first_joint_hold_end": 82.10000000000001,
+      "helper_motion": {
+        "distance_m": {
+          "22": 72.40713345630206
+        },
+        "first_relay_step": 50,
+        "radio_step": 791
+      },
+      "last_radio_blocker_before_completion": 79.0,
+      "nonrelay_done": 12.100000000000001,
+      "official_h300": {
+        "acceptance_claim": false,
+        "joint_success": true,
+        "physics_dt": 0.1,
+        "primary_search_metric_unchanged": true,
+        "secondary_joint_completion_seconds": 82.10000000000001,
+        "stable_seconds": 3.0,
+        "whole_window_safe": true
+      },
+      "radio_first_09": 79.10000000000001,
+      "search_done": 12.100000000000001,
+      "threshold_merge": {
+        "after": [
+          [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6,
+            7,
+            8,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "before": [
+          [
+            0,
+            6,
+            7,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ],
+          [
+            4,
+            9
+          ]
+        ],
+        "gained_intercomponent_edges": [
+          {
+            "distance": 19.9202966084131,
+            "largest_without_edge": 17,
+            "uavs": [
+              17,
+              22
+            ]
+          }
+        ],
+        "largest_after": 28,
+        "largest_before": 17,
+        "largest_if_helper_isolated": {
+          "22": 16
+        },
+        "probe": null,
+        "relay": {
+          "15": [
+            22,
+            [
+              33.5,
+              8.5
+            ]
+          ]
+        },
+        "step": 791
+      },
+      "wait_after_nonrelay": 67.0
+    },
+    "R1": {
+      "final_joint_window_start": 36.0,
+      "first_3s_radio_start": 36.0,
+      "first_joint_hold_end": 39.0,
+      "helper_motion": {
+        "distance_m": {
+          "3": 18.0,
+          "22": 18.373237355230128
+        },
+        "first_relay_step": 50,
+        "radio_step": 360
+      },
+      "last_radio_blocker_before_completion": 35.9,
+      "nonrelay_done": 10.100000000000001,
+      "official_h300": {
+        "acceptance_claim": false,
+        "joint_success": true,
+        "physics_dt": 0.1,
+        "primary_search_metric_unchanged": true,
+        "secondary_joint_completion_seconds": 39.0,
+        "stable_seconds": 3.0,
+        "whole_window_safe": true
+      },
+      "radio_first_09": 36.0,
+      "search_done": 10.100000000000001,
+      "threshold_merge": {
+        "after": [
+          [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ]
+        ],
+        "before": [
+          [
+            0,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ]
+        ],
+        "gained_intercomponent_edges": [
+          {
+            "distance": 19.999999999999943,
+            "largest_without_edge": 19,
+            "uavs": [
+              3,
+              14
+            ]
+          }
+        ],
+        "largest_after": 30,
+        "largest_before": 19,
+        "largest_if_helper_isolated": {
+          "3": 19,
+          "22": 19
+        },
+        "probe": null,
+        "relay": {
+          "15": [
+            22,
+            [
+              12.5,
+              52.5
+            ]
+          ],
+          "17": [
+            3,
+            [
+              33.5,
+              8.5
+            ]
+          ]
+        },
+        "step": 360
+      },
+      "wait_after_nonrelay": 25.9
+    }
+  },
+  "common_graph_events": 5,
+  "detailed_ticks": {
+    "J0": 3000,
+    "J0_SWAP_S3": 900,
+    "P1": 900,
+    "R1": 900
+  },
+  "first_differences": {
+    "J0/J0_SWAP_S3": {
+      "events": {
+        "actors": {
+          "step": 40,
+          "time": 4.0
+        },
+        "candidates": {
+          "step": 40,
+          "time": 4.0
+        },
+        "command_sha256": {
+          "step": 30,
+          "time": 3.0
+        },
+        "demands": {
+          "step": 240,
+          "time": 24.0
+        },
+        "input_sha256": {
+          "step": 40,
+          "time": 4.0
+        },
+        "mask": {
+          "step": 40,
+          "time": 4.0
+        },
+        "relay_after": {
+          "step": 130,
+          "time": 13.0
+        },
+        "relay_before": {
+          "step": 140,
+          "time": 14.0
+        },
+        "search_after": {
+          "step": 30,
+          "time": 3.0
+        },
+        "search_before": {
+          "step": 40,
+          "time": 4.0
+        },
+        "selected": {
+          "step": 30,
+          "time": 3.0
+        },
+        "snapshot_version": {
+          "step": 40,
+          "time": 4.0
+        },
+        "stale_xy": {
+          "step": 40,
+          "time": 4.0
+        },
+        "task_ids": {
+          "step": 40,
+          "time": 4.0
+        }
+      },
+      "ticks": {
+        "comm_hex": {
+          "step": 39,
+          "time": 3.9
+        },
+        "commands": {
+          "step": 31,
+          "time": 3.1
+        },
+        "observed": {
+          "step": 31,
+          "time": 3.1
+        },
+        "relay": {
+          "step": 131,
+          "time": 13.1
+        },
+        "search": {
+          "step": 31,
+          "time": 3.1
+        },
+        "tasks": {
+          "step": 31,
+          "time": 3.1
+        }
+      }
+    },
+    "J0/P1": {
+      "events": {},
+      "ticks": {}
+    },
+    "R1/J0": {
+      "events": {
+        "actors": {
+          "step": 40,
+          "time": 4.0
+        },
+        "candidates": {
+          "step": 40,
+          "time": 4.0
+        },
+        "command_sha256": {
+          "step": 30,
+          "time": 3.0
+        },
+        "demands": {
+          "step": 240,
+          "time": 24.0
+        },
+        "input_sha256": {
+          "step": 40,
+          "time": 4.0
+        },
+        "mask": {
+          "step": 40,
+          "time": 4.0
+        },
+        "relay_after": {
+          "step": 130,
+          "time": 13.0
+        },
+        "relay_before": {
+          "step": 140,
+          "time": 14.0
+        },
+        "search_after": {
+          "step": 30,
+          "time": 3.0
+        },
+        "search_before": {
+          "step": 40,
+          "time": 4.0
+        },
+        "selected": {
+          "step": 30,
+          "time": 3.0
+        },
+        "snapshot_version": {
+          "step": 40,
+          "time": 4.0
+        },
+        "stale_xy": {
+          "step": 40,
+          "time": 4.0
+        },
+        "task_ids": {
+          "step": 40,
+          "time": 4.0
+        }
+      },
+      "ticks": {
+        "comm_hex": {
+          "step": 39,
+          "time": 3.9
+        },
+        "commands": {
+          "step": 31,
+          "time": 3.1
+        },
+        "observed": {
+          "step": 31,
+          "time": 3.1
+        },
+        "relay": {
+          "step": 131,
+          "time": 13.1
+        },
+        "search": {
+          "step": 31,
+          "time": 3.1
+        },
+        "tasks": {
+          "step": 31,
+          "time": 3.1
+        }
+      }
+    },
+    "R1/J0_SWAP_S3": {
+      "events": {},
+      "ticks": {}
+    }
+  },
+  "first_j0_p1_same_input_policy_fork": null,
+  "matched_archived_p1_offer_steps": [
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "metadata": {
+    "config_sha256": "668ba2edefca489703f8ad407e8ae4f3f8e06d953ba9fcdd2fa77a626cd8e56f",
+    "driver_sha256": "59e18a5df229ab3a43841091d9ece139cf1592d5da551f187ba9db1bf962891c",
+    "initial_sha256": "f5cf6921a1a1497a9128ed912cd7ace8bf9c5b8af4850dbe5305e2e4ae6ae633",
+    "marvel_sha256": "2e992ff83c8b05a346e882be5279f3e3db8b04e6be7aad308dd2b6c0532d99b2",
+    "native_sha256": "57abf685f7a8226dcf71e1441333bf74da6e228e423f1bb0034e110975e3fcd9",
+    "radio_range": 20.0,
+    "scenario_sha256": "bc92d08b32a47c29c140eb687ba9bc01e782e2f9973c505f32fb6310a06a7ff0",
+    "source_head": "6b58e26b0d56c3d53c122ad97931cf015ab17092",
+    "torch_version": "2.5.1+cpu"
+  },
+  "prefix_validations": {
+    "J0": {
+      "first_commitment_mismatch_control": null,
+      "first_scoring_mismatch_tick": null,
+      "scoring_trace": true,
+      "stable_commitments": true,
+      "ticks": 3000
+    },
+    "J0_SWAP_S3": {
+      "first_commitment_mismatch_control": 30,
+      "first_scoring_mismatch_tick": 101,
+      "scoring_trace": false,
+      "stable_commitments": false,
+      "ticks": 900
+    },
+    "P1": {
+      "first_commitment_mismatch_control": null,
+      "first_scoring_mismatch_tick": null,
+      "scoring_trace": true,
+      "stable_commitments": true,
+      "ticks": 900
+    },
+    "R1": {
+      "first_commitment_mismatch_control": null,
+      "first_scoring_mismatch_tick": null,
+      "scoring_trace": true,
+      "stable_commitments": true,
+      "ticks": 900
+    }
+  },
+  "retarget_evidence": {
+    "arms": {
+      "J0": {
+        "lost_physical_edges": [
+          [
+            6,
+            9
+          ]
+        ],
+        "moved_anchor": {
+          "component_sizes": [
+            28,
+            2
+          ],
+          "helper_distance": 56.58262340787944,
+          "preserved_nonhelpers": true
+        },
+        "retained_anchor": {
+          "component_sizes": [
+            17,
+            11,
+            2
+          ],
+          "helper_distance": 8.899232269355071,
+          "preserved_nonhelpers": true
+        },
+        "stale_groups": [
+          [
+            0,
+            6,
+            7,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ],
+          [
+            4,
+            9
+          ]
+        ]
+      },
+      "R1": {
+        "lost_physical_edges": [],
+        "moved_anchor": {
+          "component_sizes": [
+            20,
+            10
+          ],
+          "helper_distance": 56.58262340787944,
+          "preserved_nonhelpers": false
+        },
+        "retained_anchor": {
+          "component_sizes": [
+            19,
+            11
+          ],
+          "helper_distance": 8.899232269355071,
+          "preserved_nonhelpers": true
+        },
+        "stale_groups": [
+          [
+            0,
+            4,
+            6,
+            7,
+            9,
+            10,
+            12,
+            14,
+            15,
+            18,
+            20,
+            21,
+            22,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          [
+            1,
+            2,
+            3,
+            5,
+            8,
+            11,
+            13,
+            16,
+            17,
+            19,
+            23
+          ]
+        ]
+      }
+    },
+    "helper": 22,
+    "new_anchor": [
+      33.5,
+      8.5
+    ],
+    "old_anchor": [
+      12.5,
+      52.5
+    ],
+    "step": 130,
+    "target": 15
+  },
+  "same_graph_greedy_differences": [],
+  "swap_against_r1_archive": {
+    "first_commitment_mismatch_control": null,
+    "first_scoring_mismatch_tick": null,
+    "scoring_trace": true,
+    "stable_commitments": true,
+    "ticks": 900
+  },
+  "swap_matches_r1_all_detailed_ticks": true,
+  "verdict": "POLICY_EFFECT_NOT_OBSERVED"
+}

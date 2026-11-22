@@ -1,0 +1,4972 @@
+{
+  "J0": [
+    {
+      "actor_picks": {
+        "J0": [
+          100002,
+          27
+        ],
+        "P1": [
+          100002,
+          27
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          44.0,
+          73.0
+        ],
+        "heading": 17.07135596453499,
+        "role": 1,
+        "slot": 100002,
+        "uav": 27,
+        "waypoint": [
+          36.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "706044dccba50dfdb7f7498b9cdb33df0752b668cd8b284b31b19b25170e18de",
+      "legal_counts": {
+        "1": 19,
+        "2": 27
+      },
+      "logit_delta_max": 0.3659553527832031,
+      "normal_choice": [
+        100002,
+        27
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.005007953401736132,
+      "policy_tv_t3": 0.025171290651087475,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 87,
+        "processing_time": 6.0,
+        "slot_id": 100002,
+        "source_entity_id": 2,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 17.933578491210938,
+        "uav_id": 27,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.000207666918868199,
+        "P1": 0.00029802790959365666
+      },
+      "relay_mass_t3": {
+        "J0": 0.08051754534244537,
+        "P1": 0.08777879178524017
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 1.0,
+      "selected": [
+        100002,
+        27
+      ],
+      "stale_relay_distance": {},
+      "step": 10
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100003,
+          14
+        ],
+        "P1": [
+          100003,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          4.0,
+          13.0
+        ],
+        "heading": 158.83440967726455,
+        "role": 1,
+        "slot": 100003,
+        "uav": 14,
+        "waypoint": [
+          12.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "d4d18376c1b934f64e901bd87a3bb5cf3edf0cb714227ec913b3460de22a637c",
+      "legal_counts": {
+        "1": 18,
+        "2": 27
+      },
+      "logit_delta_max": 0.4865436553955078,
+      "normal_choice": [
+        100003,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.003894797621163451,
+      "policy_tv_t3": 0.002834954007653323,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 74,
+        "processing_time": 6.0,
+        "slot_id": 100003,
+        "source_entity_id": 3,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 20.826446533203125,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 2.494799218766275e-06,
+        "P1": 3.0719820642843843e-06
+      },
+      "relay_mass_t3": {
+        "J0": 0.01557221356779337,
+        "P1": 0.016347769647836685
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 2.0,
+      "selected": [
+        100003,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 20
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          73.0,
+          75.0
+        ],
+        "heading": 63.43494882292201,
+        "role": 1,
+        "slot": 100001,
+        "uav": 4,
+        "waypoint": [
+          64.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "20cabe6d892365120c8287f21427f80d36e5fc4f7cb14cd77dfd02c9818c4521",
+      "legal_counts": {
+        "1": 10,
+        "2": 27
+      },
+      "logit_delta_max": 0.5606260299682617,
+      "normal_choice": [
+        100001,
+        4
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.009086276234797288,
+      "policy_tv_t3": 0.06267881256917462,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 34,
+        "processing_time": 6.0,
+        "slot_id": 100001,
+        "source_entity_id": 1,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 24.475696563720703,
+        "uav_id": 4,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.0028305810410529375,
+        "P1": 0.008555774576961994
+      },
+      "relay_mass_t3": {
+        "J0": 0.1304367631673813,
+        "P1": 0.1645527184009552
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 3.0,
+      "selected": [
+        100001,
+        4
+      ],
+      "stale_relay_distance": {},
+      "step": 30
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100000,
+          14
+        ],
+        "P1": [
+          100000,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          30.0,
+          4.0
+        ],
+        "heading": 8.87414485819883,
+        "role": 1,
+        "slot": 100000,
+        "uav": 14,
+        "waypoint": [
+          20.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "ad269e692b4dac9ab4efb81b5c2796646e1178c482e4e0faaa76d1368cf990b1",
+      "legal_counts": {
+        "1": 8,
+        "2": 24
+      },
+      "logit_delta_max": 0.3277263641357422,
+      "normal_choice": [
+        100000,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.042987934895758174,
+      "policy_tv_t3": 0.018384914266789565,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 14,
+        "processing_time": 6.0,
+        "slot_id": 100000,
+        "source_entity_id": 0,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 22.937976837158203,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.11259446293115616,
+        "P1": 0.13715976476669312
+      },
+      "relay_mass_t3": {
+        "J0": 0.35524216294288635,
+        "P1": 0.3631473183631897
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 4.0,
+      "selected": [
+        100000,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 40
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200015,
+          22
+        ],
+        "P1": [
+          200015,
+          22
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          12.5,
+          52.5
+        ],
+        "heading": 258.1232149860474,
+        "role": 2,
+        "slot": 200015,
+        "uav": 22,
+        "waypoint": [
+          12.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "41d615193a29e5550d54e1fd271f57a8fd6e4c651f0ee43155821381154bb359",
+      "legal_counts": {
+        "2": 22
+      },
+      "logit_delta_max": 0.3086872100830078,
+      "normal_choice": [
+        200015,
+        22
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 0.00031985890538262663,
+      "policy_tv_t3": 0.012081728491466492,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 22,
+        "processing_time": 1.0,
+        "slot_id": 200015,
+        "source_entity_id": 15,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 16.94526481628418,
+        "uav_id": 22,
+        "value": 0.0
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "relay_mass_t3": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 5.0,
+      "selected": [
+        200015,
+        22
+      ],
+      "stale_relay_distance": {},
+      "step": 50
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 12.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 9.762959283558889
+      },
+      "step": 120
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 13.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.899232269355071
+      },
+      "step": 130
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 14.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 55.58760355430351
+      },
+      "step": 140
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 20.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 49.73080031529754
+      },
+      "step": 200
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 21.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 48.79602955159361
+      },
+      "step": 210
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 22.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 47.86389557902695
+      },
+      "step": 220
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 23.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 46.934555500185574
+      },
+      "step": 230
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 24.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 46.008178620762635
+      },
+      "step": 240
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 25.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 45.08494759894925
+      },
+      "step": 250
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 26.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 44.47180451602562
+      },
+      "step": 260
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 27.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 43.57542701744966
+      },
+      "step": 270
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 28.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 42.62497149260284
+      },
+      "step": 280
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 29.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 41.674585685556984
+      },
+      "step": 290
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 30.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 40.726575959445164
+      },
+      "step": 300
+    }
+  ],
+  "J0_SWAP_S3": [
+    {
+      "actor_picks": {
+        "J0": [
+          100002,
+          27
+        ],
+        "P1": [
+          100002,
+          27
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          44.0,
+          73.0
+        ],
+        "heading": 17.07135596453499,
+        "role": 1,
+        "slot": 100002,
+        "uav": 27,
+        "waypoint": [
+          36.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "706044dccba50dfdb7f7498b9cdb33df0752b668cd8b284b31b19b25170e18de",
+      "legal_counts": {
+        "1": 19,
+        "2": 27
+      },
+      "logit_delta_max": 0.3659553527832031,
+      "normal_choice": [
+        100002,
+        27
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.005007953401736132,
+      "policy_tv_t3": 0.025171290651087475,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 87,
+        "processing_time": 6.0,
+        "slot_id": 100002,
+        "source_entity_id": 2,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 17.933578491210938,
+        "uav_id": 27,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.000207666918868199,
+        "P1": 0.00029802790959365666
+      },
+      "relay_mass_t3": {
+        "J0": 0.08051754534244537,
+        "P1": 0.08777879178524017
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 1.0,
+      "selected": [
+        100002,
+        27
+      ],
+      "stale_relay_distance": {},
+      "step": 10
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100003,
+          14
+        ],
+        "P1": [
+          100003,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          4.0,
+          13.0
+        ],
+        "heading": 158.83440967726455,
+        "role": 1,
+        "slot": 100003,
+        "uav": 14,
+        "waypoint": [
+          12.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "d4d18376c1b934f64e901bd87a3bb5cf3edf0cb714227ec913b3460de22a637c",
+      "legal_counts": {
+        "1": 18,
+        "2": 27
+      },
+      "logit_delta_max": 0.4865436553955078,
+      "normal_choice": [
+        100003,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.003894797621163451,
+      "policy_tv_t3": 0.002834954007653323,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 74,
+        "processing_time": 6.0,
+        "slot_id": 100003,
+        "source_entity_id": 3,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 20.826446533203125,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 2.494799218766275e-06,
+        "P1": 3.0719820642843843e-06
+      },
+      "relay_mass_t3": {
+        "J0": 0.01557221356779337,
+        "P1": 0.016347769647836685
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 2.0,
+      "selected": [
+        100003,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 20
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          30.0,
+          4.0
+        ],
+        "heading": 14.702208635481949,
+        "role": 1,
+        "slot": 100000,
+        "uav": 14,
+        "waypoint": [
+          20.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "20cabe6d892365120c8287f21427f80d36e5fc4f7cb14cd77dfd02c9818c4521",
+      "legal_counts": {
+        "1": 10,
+        "2": 27
+      },
+      "logit_delta_max": 0.5606260299682617,
+      "normal_choice": [
+        100001,
+        4
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.009086276234797288,
+      "policy_tv_t3": 0.06267881256917462,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 14,
+        "processing_time": 6.0,
+        "slot_id": 100000,
+        "source_entity_id": 0,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 22.1005802154541,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.0028305810410529375,
+        "P1": 0.008555774576961994
+      },
+      "relay_mass_t3": {
+        "J0": 0.1304367631673813,
+        "P1": 0.1645527184009552
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 3.0,
+      "selected": [
+        100000,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 30
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          73.0,
+          75.0
+        ],
+        "heading": 0.0,
+        "role": 1,
+        "slot": 100001,
+        "uav": 4,
+        "waypoint": [
+          64.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "772842c52c556106b94971864aa526989bc284b7a680bb291475b470315b017f",
+      "legal_counts": {
+        "1": 2,
+        "2": 23
+      },
+      "logit_delta_max": 0.8059954643249512,
+      "normal_choice": [
+        100001,
+        4
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 7.044921535797574e-05,
+      "policy_tv_t3": 0.012244940399256166,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 4,
+        "processing_time": 6.0,
+        "slot_id": 100001,
+        "source_entity_id": 1,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 23.309179306030273,
+        "uav_id": 4,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 3.0220739972719457e-06,
+        "P1": 1.1935594557144213e-05
+      },
+      "relay_mass_t3": {
+        "J0": 0.02171037346124649,
+        "P1": 0.03115379437804222
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 4.0,
+      "selected": [
+        100001,
+        4
+      ],
+      "stale_relay_distance": {},
+      "step": 40
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200015,
+          22
+        ],
+        "P1": [
+          200015,
+          22
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          12.5,
+          52.5
+        ],
+        "heading": 258.1232149860474,
+        "role": 2,
+        "slot": 200015,
+        "uav": 22,
+        "waypoint": [
+          12.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "ce15968594cb2d9692c0ab8631e23db96acf222e83ff6d56e3859e0adb3a2dc1",
+      "legal_counts": {
+        "2": 22
+      },
+      "logit_delta_max": 0.30885887145996094,
+      "normal_choice": [
+        200015,
+        22
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 0.0003194824710301084,
+      "policy_tv_t3": 0.0120712599818944,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 22,
+        "processing_time": 1.0,
+        "slot_id": 200015,
+        "source_entity_id": 15,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 16.94526481628418,
+        "uav_id": 22,
+        "value": 0.0
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.9999999403953552,
+        "P1": 1.0000001192092896
+      },
+      "relay_mass_t3": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 5.0,
+      "selected": [
+        200015,
+        22
+      ],
+      "stale_relay_distance": {},
+      "step": 50
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 12.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 9.762959283558889
+      },
+      "step": 120
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 13.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.899232269355071
+      },
+      "step": 130
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 14.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.067050018156113
+      },
+      "step": 140
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 20.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 3.9997474683058205
+      },
+      "step": 200
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 21.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 2.999747468305833
+      },
+      "step": 210
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 22.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 1.9997474683058347
+      },
+      "step": 220
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 23.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 0.9997474683058367
+      },
+      "step": 230
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200017,
+          3
+        ],
+        "P1": [
+          200017,
+          3
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          33.5,
+          8.5
+        ],
+        "heading": 180.0,
+        "role": 2,
+        "slot": 200017,
+        "uav": 3,
+        "waypoint": [
+          52.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.6333333333333333
+      ],
+      "input_sha256": "5c8e10256728933a5c63682e65e04d2ae54456c5a6a0db179165f6f3a2c8a29a",
+      "legal_counts": {
+        "2": 25
+      },
+      "logit_delta_max": 0.4232158660888672,
+      "normal_choice": [
+        200017,
+        3
+      ],
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": 9.632826474149196e-05,
+      "policy_tv_t3": 0.0063420563219551696,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 3,
+        "processing_time": 1.0,
+        "slot_id": 200017,
+        "source_entity_id": 17,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 22.511898040771484,
+        "uav_id": 3,
+        "value": 0.0
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [
+        [
+          200017
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.9999999403953552,
+        "P1": 1.0000001192092896
+      },
+      "relay_mass_t3": {
+        "J0": 0.9999998807907104,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 24.0,
+      "selected": [
+        200017,
+        3
+      ],
+      "stale_relay_distance": {
+        "22": 0.047487373415290524
+      },
+      "step": 240
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 25.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 20.55608182509496,
+        "22": 0.0
+      },
+      "step": 250
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 26.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 19.556392816672474,
+        "22": 0.0
+      },
+      "step": 260
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 27.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 18.556737320983984,
+        "22": 0.0
+      },
+      "step": 270
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 28.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 17.55712106240654,
+        "22": 0.0
+      },
+      "step": 280
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 29.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 16.557551147437202,
+        "22": 0.0
+      },
+      "step": 290
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 30.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 15.558036508505776,
+        "22": 0.0
+      },
+      "step": 300
+    }
+  ],
+  "P1": [
+    {
+      "actor_picks": {
+        "J0": [
+          100002,
+          27
+        ],
+        "P1": [
+          100002,
+          27
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          44.0,
+          73.0
+        ],
+        "heading": 17.07135596453499,
+        "role": 1,
+        "slot": 100002,
+        "uav": 27,
+        "waypoint": [
+          36.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "706044dccba50dfdb7f7498b9cdb33df0752b668cd8b284b31b19b25170e18de",
+      "legal_counts": {
+        "1": 19,
+        "2": 27
+      },
+      "logit_delta_max": 0.3659553527832031,
+      "normal_choice": [
+        100002,
+        27
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.005007953401736132,
+      "policy_tv_t3": 0.025171290651087475,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 87,
+        "processing_time": 6.0,
+        "slot_id": 100002,
+        "source_entity_id": 2,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 17.933578491210938,
+        "uav_id": 27,
+        "value": -0.003419160610064864
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.000207666918868199,
+        "P1": 0.00029802790959365666
+      },
+      "relay_mass_t3": {
+        "J0": 0.08051754534244537,
+        "P1": 0.08777879178524017
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 1.0,
+      "selected": [
+        100002,
+        27
+      ],
+      "stale_relay_distance": {},
+      "step": 10
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100003,
+          14
+        ],
+        "P1": [
+          100003,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          4.0,
+          13.0
+        ],
+        "heading": 158.83440967726455,
+        "role": 1,
+        "slot": 100003,
+        "uav": 14,
+        "waypoint": [
+          12.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "d4d18376c1b934f64e901bd87a3bb5cf3edf0cb714227ec913b3460de22a637c",
+      "legal_counts": {
+        "1": 18,
+        "2": 27
+      },
+      "logit_delta_max": 0.4865436553955078,
+      "normal_choice": [
+        100003,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.003894797621163451,
+      "policy_tv_t3": 0.002834954007653323,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 74,
+        "processing_time": 6.0,
+        "slot_id": 100003,
+        "source_entity_id": 3,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 20.826446533203125,
+        "uav_id": 14,
+        "value": -0.0034363013692200184
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 2.494799218766275e-06,
+        "P1": 3.0719820642843843e-06
+      },
+      "relay_mass_t3": {
+        "J0": 0.01557221356779337,
+        "P1": 0.016347769647836685
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 2.0,
+      "selected": [
+        100003,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 20
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          73.0,
+          75.0
+        ],
+        "heading": 63.43494882292201,
+        "role": 1,
+        "slot": 100001,
+        "uav": 4,
+        "waypoint": [
+          64.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "20cabe6d892365120c8287f21427f80d36e5fc4f7cb14cd77dfd02c9818c4521",
+      "legal_counts": {
+        "1": 10,
+        "2": 27
+      },
+      "logit_delta_max": 0.5606260299682617,
+      "normal_choice": [
+        100001,
+        4
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.009086276234797288,
+      "policy_tv_t3": 0.06267881256917462,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 34,
+        "processing_time": 6.0,
+        "slot_id": 100001,
+        "source_entity_id": 1,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 24.475696563720703,
+        "uav_id": 4,
+        "value": -0.003375421045348048
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.0028305810410529375,
+        "P1": 0.008555774576961994
+      },
+      "relay_mass_t3": {
+        "J0": 0.1304367631673813,
+        "P1": 0.1645527184009552
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 3.0,
+      "selected": [
+        100001,
+        4
+      ],
+      "stale_relay_distance": {},
+      "step": 30
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100000,
+          14
+        ],
+        "P1": [
+          100000,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          30.0,
+          4.0
+        ],
+        "heading": 8.87414485819883,
+        "role": 1,
+        "slot": 100000,
+        "uav": 14,
+        "waypoint": [
+          20.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "ad269e692b4dac9ab4efb81b5c2796646e1178c482e4e0faaa76d1368cf990b1",
+      "legal_counts": {
+        "1": 8,
+        "2": 24
+      },
+      "logit_delta_max": 0.3277263641357422,
+      "normal_choice": [
+        100000,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.042987934895758174,
+      "policy_tv_t3": 0.018384914266789565,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 14,
+        "processing_time": 6.0,
+        "slot_id": 100000,
+        "source_entity_id": 0,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 22.937976837158203,
+        "uav_id": 14,
+        "value": -0.0036627044901251793
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.11259446293115616,
+        "P1": 0.13715976476669312
+      },
+      "relay_mass_t3": {
+        "J0": 0.35524216294288635,
+        "P1": 0.3631473183631897
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 4.0,
+      "selected": [
+        100000,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 40
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200015,
+          22
+        ],
+        "P1": [
+          200015,
+          22
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          12.5,
+          52.5
+        ],
+        "heading": 258.1232149860474,
+        "role": 2,
+        "slot": 200015,
+        "uav": 22,
+        "waypoint": [
+          12.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "41d615193a29e5550d54e1fd271f57a8fd6e4c651f0ee43155821381154bb359",
+      "legal_counts": {
+        "2": 22
+      },
+      "logit_delta_max": 0.3086872100830078,
+      "normal_choice": [
+        200015,
+        22
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 0.00031985890538262663,
+      "policy_tv_t3": 0.012081728491466492,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 22,
+        "processing_time": 1.0,
+        "slot_id": 200015,
+        "source_entity_id": 15,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 16.94526481628418,
+        "uav_id": 22,
+        "value": -0.0034171438310295343
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "relay_mass_t3": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 5.0,
+      "selected": [
+        200015,
+        22
+      ],
+      "stale_relay_distance": {},
+      "step": 50
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 12.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 9.762959283558889
+      },
+      "step": 120
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 13.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.899232269355071
+      },
+      "step": 130
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 14.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 55.58760355430351
+      },
+      "step": 140
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 20.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 49.73080031529754
+      },
+      "step": 200
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 21.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 48.79602955159361
+      },
+      "step": 210
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 22.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 47.86389557902695
+      },
+      "step": 220
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 23.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 46.934555500185574
+      },
+      "step": 230
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 24.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 46.008178620762635
+      },
+      "step": 240
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 25.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 45.08494759894925
+      },
+      "step": 250
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 26.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 44.47180451602562
+      },
+      "step": 260
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 27.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 43.57542701744966
+      },
+      "step": 270
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 28.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 42.62497149260284
+      },
+      "step": 280
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 29.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 41.674585685556984
+      },
+      "step": 290
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        17,
+        11,
+        2
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.5517241379310345,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 30.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 40.726575959445164
+      },
+      "step": 300
+    }
+  ],
+  "R1": [
+    {
+      "actor_picks": {
+        "J0": [
+          100002,
+          27
+        ],
+        "P1": [
+          100002,
+          27
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          44.0,
+          73.0
+        ],
+        "heading": 17.07135596453499,
+        "role": 1,
+        "slot": 100002,
+        "uav": 27,
+        "waypoint": [
+          36.0,
+          72.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "706044dccba50dfdb7f7498b9cdb33df0752b668cd8b284b31b19b25170e18de",
+      "legal_counts": {
+        "1": 19,
+        "2": 27
+      },
+      "logit_delta_max": 0.3659553527832031,
+      "normal_choice": [
+        100002,
+        27
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.005007953401736132,
+      "policy_tv_t3": 0.025171290651087475,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 87,
+        "processing_time": 6.0,
+        "slot_id": 100002,
+        "source_entity_id": 2,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 17.933578491210938,
+        "uav_id": 27,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.000207666918868199,
+        "P1": 0.00029802790959365666
+      },
+      "relay_mass_t3": {
+        "J0": 0.08051754534244537,
+        "P1": 0.08777879178524017
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 1.0,
+      "selected": [
+        100002,
+        27
+      ],
+      "stale_relay_distance": {},
+      "step": 10
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100003,
+          14
+        ],
+        "P1": [
+          100003,
+          14
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          4.0,
+          13.0
+        ],
+        "heading": 158.83440967726455,
+        "role": 1,
+        "slot": 100003,
+        "uav": 14,
+        "waypoint": [
+          12.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "d4d18376c1b934f64e901bd87a3bb5cf3edf0cb714227ec913b3460de22a637c",
+      "legal_counts": {
+        "1": 18,
+        "2": 27
+      },
+      "logit_delta_max": 0.4865436553955078,
+      "normal_choice": [
+        100003,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.003894797621163451,
+      "policy_tv_t3": 0.002834954007653323,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 74,
+        "processing_time": 6.0,
+        "slot_id": 100003,
+        "source_entity_id": 3,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 20.826446533203125,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 2.494799218766275e-06,
+        "P1": 3.0719820642843843e-06
+      },
+      "relay_mass_t3": {
+        "J0": 0.01557221356779337,
+        "P1": 0.016347769647836685
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 2.0,
+      "selected": [
+        100003,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 20
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          30.0,
+          4.0
+        ],
+        "heading": 14.702208635481949,
+        "role": 1,
+        "slot": 100000,
+        "uav": 14,
+        "waypoint": [
+          20.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "20cabe6d892365120c8287f21427f80d36e5fc4f7cb14cd77dfd02c9818c4521",
+      "legal_counts": {
+        "1": 10,
+        "2": 27
+      },
+      "logit_delta_max": 0.5606260299682617,
+      "normal_choice": [
+        100000,
+        14
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        7,
+        1
+      ],
+      "policy_tv_t1": 0.009086276234797288,
+      "policy_tv_t3": 0.06267881256917462,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 14,
+        "processing_time": 6.0,
+        "slot_id": 100000,
+        "source_entity_id": 0,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 22.1005802154541,
+        "uav_id": 14,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.0028305810410529375,
+        "P1": 0.008555774576961994
+      },
+      "relay_mass_t3": {
+        "J0": 0.1304367631673813,
+        "P1": 0.1645527184009552
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 3.0,
+      "selected": [
+        100000,
+        14
+      ],
+      "stale_relay_distance": {},
+      "step": 30
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          100001,
+          4
+        ],
+        "P1": [
+          100001,
+          4
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          73.0,
+          75.0
+        ],
+        "heading": 0.0,
+        "role": 1,
+        "slot": 100001,
+        "uav": 4,
+        "waypoint": [
+          64.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "772842c52c556106b94971864aa526989bc284b7a680bb291475b470315b017f",
+      "legal_counts": {
+        "1": 2,
+        "2": 23
+      },
+      "logit_delta_max": 0.8059954643249512,
+      "normal_choice": [
+        100001,
+        4
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 7.044921535797574e-05,
+      "policy_tv_t3": 0.012244940399256166,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 4,
+        "processing_time": 6.0,
+        "slot_id": 100001,
+        "source_entity_id": 1,
+        "source_task_id": "T2_target_search",
+        "task_type": 1,
+        "total_time": 23.309179306030273,
+        "uav_id": 4,
+        "value": 0.0
+      },
+      "relay_after": {},
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 3.0220739972719457e-06,
+        "P1": 1.1935594557144213e-05
+      },
+      "relay_mass_t3": {
+        "J0": 0.02171037346124649,
+        "P1": 0.03115379437804222
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 4.0,
+      "selected": [
+        100001,
+        4
+      ],
+      "stale_relay_distance": {},
+      "step": 40
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200015,
+          22
+        ],
+        "P1": [
+          200015,
+          22
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          12.5,
+          52.5
+        ],
+        "heading": 258.1232149860474,
+        "role": 2,
+        "slot": 200015,
+        "uav": 22,
+        "waypoint": [
+          12.0,
+          64.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.36666666666666664
+      ],
+      "input_sha256": "ce15968594cb2d9692c0ab8631e23db96acf222e83ff6d56e3859e0adb3a2dc1",
+      "legal_counts": {
+        "2": 22
+      },
+      "logit_delta_max": 0.30885887145996094,
+      "normal_choice": [
+        200015,
+        22
+      ],
+      "observed_mesh_sizes": [
+        11,
+        11,
+        8
+      ],
+      "policy_tv_t1": 0.0003194824710301084,
+      "policy_tv_t3": 0.0120712599818944,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 22,
+        "processing_time": 1.0,
+        "slot_id": 200015,
+        "source_entity_id": 15,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 16.94526481628418,
+        "uav_id": 22,
+        "value": 0.0
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {},
+      "relay_demand_slots": [
+        [
+          200015
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.9999999403953552,
+        "P1": 1.0000001192092896
+      },
+      "relay_mass_t3": {
+        "J0": 1.0,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.36666666666666664,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": false,
+      "seconds": 5.0,
+      "selected": [
+        200015,
+        22
+      ],
+      "stale_relay_distance": {},
+      "step": 50
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 12.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 9.762959283558889
+      },
+      "step": 120
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 13.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.899232269355071
+      },
+      "step": 130
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 14.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 8.067050018156113
+      },
+      "step": 140
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 20.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 3.9997474683058205
+      },
+      "step": 200
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 21.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 2.999747468305833
+      },
+      "step": 210
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 22.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 1.9997474683058347
+      },
+      "step": 220
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 23.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "22": 0.9997474683058367
+      },
+      "step": 230
+    },
+    {
+      "actor_picks": {
+        "J0": [
+          200017,
+          3
+        ],
+        "P1": [
+          200017,
+          3
+        ]
+      },
+      "chosen": {
+        "anchor": [
+          33.5,
+          8.5
+        ],
+        "heading": 180.0,
+        "role": 2,
+        "slot": 200017,
+        "uav": 3,
+        "waypoint": [
+          52.0,
+          8.0
+        ]
+      },
+      "demand_public_connectivity": [
+        0.6333333333333333
+      ],
+      "input_sha256": "5c8e10256728933a5c63682e65e04d2ae54456c5a6a0db179165f6f3a2c8a29a",
+      "legal_counts": {
+        "2": 25
+      },
+      "logit_delta_max": 0.4232158660888672,
+      "normal_choice": [
+        200017,
+        3
+      ],
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": 9.632826474149196e-05,
+      "policy_tv_t3": 0.0063420563219551696,
+      "probe_after": null,
+      "receipt": {
+        "flat_action": 3,
+        "processing_time": 1.0,
+        "slot_id": 200017,
+        "source_entity_id": 17,
+        "source_task_id": "T3_relay",
+        "task_type": 2,
+        "total_time": 22.511898040771484,
+        "uav_id": 3,
+        "value": 0.0
+      },
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [
+        [
+          200017
+        ]
+      ],
+      "relay_mass_t1": {
+        "J0": 0.9999999403953552,
+        "P1": 1.0000001192092896
+      },
+      "relay_mass_t3": {
+        "J0": 0.9999998807907104,
+        "P1": 1.0
+      },
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.3793103448275862,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 24.0,
+      "selected": [
+        200017,
+        3
+      ],
+      "stale_relay_distance": {
+        "22": 0.047487373415290524
+      },
+      "step": 240
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 25.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 20.55608182509496,
+        "22": 0.0
+      },
+      "step": 250
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 26.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 19.556392816672474,
+        "22": 0.0
+      },
+      "step": 260
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 27.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 18.556737320983984,
+        "22": 0.0
+      },
+      "step": 270
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 28.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 17.55712106240654,
+        "22": 0.0
+      },
+      "step": 280
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 29.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 16.557551147437202,
+        "22": 0.0
+      },
+      "step": 290
+    },
+    {
+      "actor_picks": null,
+      "chosen": null,
+      "demand_public_connectivity": [],
+      "input_sha256": null,
+      "legal_counts": {},
+      "logit_delta_max": null,
+      "normal_choice": null,
+      "observed_mesh_sizes": [
+        19,
+        11
+      ],
+      "policy_tv_t1": null,
+      "policy_tv_t3": null,
+      "probe_after": null,
+      "receipt": null,
+      "relay_after": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_before": {
+        "15": [
+          22,
+          [
+            12.5,
+            52.5
+          ]
+        ],
+        "17": [
+          3,
+          [
+            33.5,
+            8.5
+          ]
+        ]
+      },
+      "relay_demand_slots": [],
+      "relay_mass_t1": null,
+      "relay_mass_t3": null,
+      "release_gate": {
+        "last_counterfactual_connectivity": 0.35714285714285715,
+        "last_counterfactual_target_ratio": 1.0,
+        "release_count": 0,
+        "stable_counter": 0
+      },
+      "retarget": true,
+      "seconds": 30.0,
+      "selected": null,
+      "stale_relay_distance": {
+        "3": 15.558036508505776,
+        "22": 0.0
+      },
+      "step": 300
+    }
+  ]
+}

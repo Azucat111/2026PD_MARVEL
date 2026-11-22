@@ -1,0 +1,11 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+{"arm": "R1", "ticks": 100, "seconds": 82.12}
+{"arm": "R1", "ticks": 200, "seconds": 118.2}
+{"arm": "R1", "ticks": 300, "seconds": 160.86}
+{"arm": "R1", "ticks": 400, "seconds": 199.61}
+{"arm": "R1", "ticks": 500, "seconds": 234.73}
+{"arm": "R1", "ticks": 600, "seconds": 269.47}
+{"arm": "R1", "ticks": 700, "seconds": 303.6}
+{"arm": "R1", "ticks": 800, "seconds": 338.21}
+{"arm": "R1", "ticks": 900, "seconds": 371.99}
