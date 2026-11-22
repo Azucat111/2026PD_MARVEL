@@ -4,6 +4,8 @@
 
 开始于 2026-11-22 20:39:02（UTC+8），计划停止时间 22:39:02。在 CPU 四核配额内，每条物理运行使用确定性单线程 PyTorch。核实 Phase 2 提交 `7b4144349a0b7849257e58e870e1b7e95faa3791`、Phase 3 提交 `3d070512dd7701b79d1dc2f6c4258aa6440b1988` 与继承的 Phase 3.5 `7c294d0f616d84dc8a784080b9a0a87b5b36a7b3`。对 Phase 3 和 Phase 3.5 的两个资产 SHA-256 清单复核通过。
 
+实际复现实验环境为 Python 3.12.14、PyTorch 2.5.1+cpu、NumPy 1.26.4、SciPy 1.15.1。调度器、Rule、物理、Safety 以及所有既有模型与正式结果文件相对 Phase 3.5 无变化。
+
 继承的直接因果证据表明，在 `30_static_1280021`，J0/P1 均为 82.1 秒，实际分配和 3000 tick 评分逐条一致。第 3 秒的一次同角色 Search 分配使轨迹从未及时到达的单 Relay 路径切换到可及时增援的路径，90 秒诊断中首次稳定完成为 39.0 秒。本轮先在原评分下重走完整反事实，并测试真实混合图上的两种合法 Relay 选择。
 
 ## 研究假设
@@ -108,6 +110,8 @@ P2-O 真实部署在这两个开发图上分别提交了 Search 100000／UAV 14 
 | 30 静态第 3 秒 | Search 100001／4 → Search 100000／14 | 0.2098% | 73.6938% |
 | 30 动态第 1 秒 | Search 100003／24 → Relay 200003／13 | 2.7980e−9 | 8.3347% |
 
+按「原动作／新动作」排列，静态的 J0 logits 为 −10.472／−16.632，P2-O 为 −3.463／0.277；动态的 J0 logits 为 −3.160／−22.843，P2-O 为 −1.944／−1.477。动态合法 Relay 的合计诊断概率由 0.645% 变为 43.095%。保存的公开事件含完整合法索引、mask、分数、归一化概率、行为概率和实际回执。
+
 两个 P2-O 开发窗口完成，均安全成功。静态 39.0 秒复现角色内修正，动态 32.6 秒复现供体感知干预。两场合计 71.6 秒，相对角色内 P2-S 的 80.2 秒再减少 8.6 秒。2026-11-22 21:58:22（UTC+8）按预先冻结规则选择校准后的 P2-O，后续仅测迁移不再训练。先验校准、拟合和角色先验回放中的其它变体分别保留。
 
 ### 供体模型与冻结后物理运行的复现
@@ -126,6 +130,10 @@ run j0-60-dynamic --case 60_dynamic_1981204 --policy J0
 run p2-60-static --case 60_static_9164 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
 run p2-60-dynamic --case 60_dynamic_1981204 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
 run p2-holdout --case 30_static_240327 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+p1=artifacts/joint_ppo_20261122/main-update/checkpoint.pth
+"$py" -B scripts/joint_four_arm_eval.py --uavs 30 --domain static --seed 240327 --arms P1 \
+  --compare-frozen --p1-checkpoint "$p1" --p1-sha256 d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55 \
+  --out "$out/p1-holdout"
 ```
 
 P2-O 的两个开发窗口分别与所对应的静态 Search 分叉、动态供体分叉在全部 3,000 条评分记录和稳定 ID 提交上逐条相同。供体模型从原始配对重拟合得到逐字节相同的 checkpoint。模型选择文件与运行日志保存于证据目录。联合回归首轮 67 项通过，增加训练配对原子回执检查后，针对性回归 48 项通过。继承 Phase 2 回归 157 项通过，2 项历史样例缺失而跳过，8 个冻结 checkpoint 通过 SHA-256 和严格 CPU 加载。
@@ -137,3 +145,7 @@ P2-O 的两个开发窗口分别与所对应的静态 Search 分叉、动态供�
   platform_tests/test_joint_completion_metric.py
 "$py" -B scripts/verify_joint_shadow.py --phase2 --out /tmp/marvel-phase2-regression.json
 ```
+
+## 冻结与独立对照
+
+两个 60 架 J0 对照均按原物理时钟安全成功。静态为 14.9 秒，动态为 18.0 秒，其 3,000 条评分记录和 300 个控制边界实际承诺均与同 case 的历史 P1 一致。连同 30 架两个案例，四个历史开发种子上训练后的 P1 与冻结的 J0 均未分开实际执行轨迹。独立静态种子 `240327` 使用同一初始化与配置，冻结候选与另取的 J0、实际 Phase 3 P1、联合 Rule 和原 Rule 配对。P1 复跑使用已校验的 `d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55` checkpoint。

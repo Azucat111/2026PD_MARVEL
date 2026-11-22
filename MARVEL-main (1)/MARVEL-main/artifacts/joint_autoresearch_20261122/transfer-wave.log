@@ -1,3 +1,4 @@
 frozen {'cases': ['30_static_1280021', '30_dynamic_1280022'], 'checkpoint_sha256': '52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276', 'eligible': True, 'label': 'p2-o', 'safe_complete': True, 'scores': [39.0, 32.6], 'sum_seconds': 71.6} /workspace/joint-autoresearch-2h/models/p2-o-calibrated.json 2026-11-22T21:58:22+0800
 started p2-60-dynamic 60_dynamic_1981204 3247 wall_limit 2259
 started p2-60-static 60_static_9164 3248 wall_limit 2259
+started p2-holdout 30_static_240327 4257 wall_limit 1639

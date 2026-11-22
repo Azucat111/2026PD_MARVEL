@@ -8,7 +8,7 @@
 | J0 冻结 6D 底座 | `c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d` |
 | MARVEL 底层 PolicyNet | `2e992ff83c8b05a346e882be5279f3e3db8b04e6be7aad308dd2b6c0532d99b2` |
 
-checkpoint 为 `artifacts/joint_autoresearch_20261122/runs/models/p2-o-calibrated.json`。六个完整 H300 配对提供监督。五组继续使用冻结 J0，一组继续使用冻结 P2-S。模型依赖合法的公开图及原 actor logit。最终先验系数为 0.15，核正则为 0.20，支持阈值 0.42，改选分数门槛 0.20。从公开分叉的完整回报拟合相对价值，无新 PPO 权重更新。
+checkpoint 为 `artifacts/joint_autoresearch_20261122/runs/models/p2-o-calibrated.json`。六个完整 H300 配对来自四个可分叉决策状态。五组继续使用冻结 J0，一组继续使用冻结 P2-S。模型依赖合法的公开图及原 actor logit。最终先验系数为 0.15，核正则为 0.20，支持阈值 0.42，改选分数门槛 0.20。从公开分叉的完整回报拟合相对价值，无新 PPO 权重更新。
 
 ## 冻结依据
 
