@@ -52,7 +52,7 @@ def relay_assignments(scheduler):
 
 
 def probe_state(scheduler):
-    probe = scheduler._relay_probe
+    probe = getattr(scheduler, "_relay_probe", None)
     return deepcopy(probe)
 
 
