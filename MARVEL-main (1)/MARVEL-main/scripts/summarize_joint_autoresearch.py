@@ -166,6 +166,8 @@ def summarize(root, out_csv, out_json):
                     first_pose = dict(step=step, public_pose_displacements=moved)
                     break
         seconds = metrics["h300_seconds"]
+        full_j0_trace_match = None if seconds is None or reference.get("J0") is None else row["trace"] == base["trace"]
+        full_j0_commitment_match = None if full_j0_trace_match is None else actual_first_diff is None
         p1 = refs[row["case"]].get("P1")
         full_p1_trace_match = None if seconds is None or p1 is None else row["trace"] == p1["trace"]
         full_p1_commitment_match = None if full_p1_trace_match is None else (
@@ -188,6 +190,7 @@ def summarize(root, out_csv, out_json):
                             changed_choices=choices_changed, changed_roles=roles_changed,
                             first_committed_difference_tick=actual_first_diff, first_radio_difference_tick=first_radio_trace_diff,
                             first_public_pose_difference=first_pose,
+                            full_j0_trace_match=full_j0_trace_match, full_j0_commitment_match=full_j0_commitment_match,
                             full_p1_trace_match=full_p1_trace_match, full_p1_commitment_match=full_p1_commitment_match,
                             max_legal_support=max(supports,default=None),
                             comparisons=reference, gain_percent=gain, verdict=verdict, events=actions,
@@ -214,6 +217,7 @@ def summarize(root, out_csv, out_json):
               "h300_seconds","radio_first","radio_stable_start","stable_start","tasks_done",
               "safe","success","collisions","no_fly_violations","choices","mixed_events","changed_choices",
               "changed_roles","first_committed_difference_tick","first_radio_difference_tick",
+              "full_j0_trace_match","full_j0_commitment_match",
               "full_p1_trace_match","full_p1_commitment_match","max_legal_support",
               "J0_seconds","P1_seconds","R1_seconds","R0_seconds","P0_seconds","gain_vs_J0_pct","gain_vs_P1_pct",
               "gain_vs_R1_pct","gain_vs_R0_pct","checkpoint_sha256","base_sha256","training_pairs","driver_sha256","verdict","error"]

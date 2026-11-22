@@ -148,6 +148,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 83,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -350,6 +352,8 @@
       "step": 20
     },
     "first_radio_difference_tick": 105,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -529,6 +533,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 102,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -707,6 +713,8 @@
       "step": 30
     },
     "first_radio_difference_tick": 71,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -886,6 +894,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 71,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -1089,6 +1099,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 130,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -1241,6 +1253,8 @@
     "first_committed_difference_tick": null,
     "first_public_pose_difference": null,
     "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
     "full_p1_commitment_match": true,
     "full_p1_trace_match": true,
     "gain_percent": {
@@ -1390,6 +1404,8 @@
     "first_committed_difference_tick": null,
     "first_public_pose_difference": null,
     "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
     "full_p1_commitment_match": true,
     "full_p1_trace_match": true,
     "gain_percent": {
@@ -1611,6 +1627,8 @@
     "first_committed_difference_tick": null,
     "first_public_pose_difference": null,
     "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
     "full_p1_commitment_match": true,
     "full_p1_trace_match": true,
     "gain_percent": {
@@ -1651,6 +1669,7 @@
     "collisions": 0,
     "comparisons": {
       "J0": 65.0,
+      "P1": 65.0,
       "R0": 25.1,
       "R1": 29.1
     },
@@ -1806,10 +1825,13 @@
     "first_committed_difference_tick": null,
     "first_public_pose_difference": null,
     "first_radio_difference_tick": null,
-    "full_p1_commitment_match": null,
-    "full_p1_trace_match": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
+    "full_p1_commitment_match": true,
+    "full_p1_trace_match": true,
     "gain_percent": {
       "J0": 0.0,
+      "P1": 0.0,
       "R0": -158.9641434262948,
       "R1": -123.36769759450172
     },
@@ -1833,6 +1855,203 @@
     "training_pairs": 0,
     "verdict": "control",
     "wall_seconds": 1061.4128784309996
+  },
+  {
+    "base_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+    "case": "30_static_240327",
+    "changed_choices": 0,
+    "changed_roles": 0,
+    "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+    "choices": 6,
+    "collisions": 0,
+    "comparisons": {
+      "J0": 65.0,
+      "P1": 65.0,
+      "R0": 25.1,
+      "R1": 29.1
+    },
+    "config_sha256": "527973c814c5a8f18658d12c9df6a73d4d778b67f03dffbd422d5a8efb4ffa8e",
+    "driver_sha256": "3a13fad4a877bf0f916408c62b0fa7e85ebdf1d2327cafdc2770dfb2ea0b860d",
+    "error": null,
+    "events": [
+      {
+        "command_sha256": "8c7f81ba1aa5d6132d423bc4ff6317697e9035356b168ff0452b5fadce3e4ec2",
+        "j0_choice_combined_probability": 0.20273747227879588,
+        "j0_choice_support": 0.36771928622659605,
+        "j0_probability_for_j0": 0.6850087642669678,
+        "j0_probability_for_selected": 0.6850087642669678,
+        "j0_raw_logit_for_j0": -4.193563461303711,
+        "j0_raw_logit_for_selected": -4.193563461303711,
+        "j0_role": 1,
+        "max_legal_support": 0.3797010119394375,
+        "mixed": true,
+        "pair": [
+          100000,
+          13
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100000,
+          13
+        ],
+        "selected_combined_probability": 0.20273747227879588,
+        "snapshot_version": "extended-joint-single-action-v1:1:02ce88db18fcbf70fb32e2f1bdb3bb5d3a188629de805a8e2b548380076490cd",
+        "step": 10
+      },
+      {
+        "command_sha256": "5786d876659fa22dc170b08a58d676cf124fd476a569c9e9daab74ec000df8e1",
+        "j0_choice_combined_probability": 0.18587666083992085,
+        "j0_choice_support": 0.10193639455948374,
+        "j0_probability_for_j0": 0.7631875276565552,
+        "j0_probability_for_selected": 0.7631875276565552,
+        "j0_raw_logit_for_j0": -12.317890167236328,
+        "j0_raw_logit_for_selected": -12.317890167236328,
+        "j0_role": 1,
+        "max_legal_support": 0.13062295424866735,
+        "mixed": true,
+        "pair": [
+          100003,
+          18
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100003,
+          18
+        ],
+        "selected_combined_probability": 0.18587666083992085,
+        "snapshot_version": "extended-joint-single-action-v1:2:b8860fb948bee85fb7e49e3aaf8ea2f61b7512ad2388ef8a7c3cef7c27a300b0",
+        "step": 20
+      },
+      {
+        "command_sha256": "88a2e347cec03fdb7c6d047ed2f006a9fbeb1dae6385f8360bb266768d7d4073",
+        "j0_choice_combined_probability": 0.8054289830235809,
+        "j0_choice_support": 0.00608560179813763,
+        "j0_probability_for_j0": 0.9999943971633911,
+        "j0_probability_for_selected": 0.9999943971633911,
+        "j0_raw_logit_for_j0": 9.860260009765625,
+        "j0_raw_logit_for_selected": 9.860260009765625,
+        "j0_role": 1,
+        "max_legal_support": 0.00608560179813763,
+        "mixed": false,
+        "pair": [
+          100001,
+          2
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100001,
+          2
+        ],
+        "selected_combined_probability": 0.8054289830235809,
+        "snapshot_version": "extended-joint-single-action-v1:4:6ce49d057cff66c56a33720dea6721b9a39719e51aaa1ef172c0011b071b49e6",
+        "step": 40
+      },
+      {
+        "command_sha256": "ae57ec7678d7ab0c78a02665a3015f9a1052557a1a0bea9f1d82562322a79f23",
+        "j0_choice_combined_probability": 0.6387326833570128,
+        "j0_choice_support": 0.0004449473029874836,
+        "j0_probability_for_j0": 0.998759388923645,
+        "j0_probability_for_selected": 0.998759388923645,
+        "j0_raw_logit_for_j0": -7.859160423278809,
+        "j0_raw_logit_for_selected": -7.859160423278809,
+        "j0_role": 1,
+        "max_legal_support": 0.003072923728395146,
+        "mixed": false,
+        "pair": [
+          100002,
+          24
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100002,
+          24
+        ],
+        "selected_combined_probability": 0.6387326833570128,
+        "snapshot_version": "extended-joint-single-action-v1:5:11507c99e2077b4203bacd0b7d818d36fee8835e9989360d18bd1cdee2d69858",
+        "step": 50
+      },
+      {
+        "command_sha256": "5450ace06deb2c3af84ff063766b585022fefc40fd841b34022d5f946faa4295",
+        "j0_choice_combined_probability": 0.18684009101338583,
+        "j0_choice_support": 0.0004820141741693192,
+        "j0_probability_for_j0": 0.9920598268508911,
+        "j0_probability_for_selected": 0.9920598268508911,
+        "j0_raw_logit_for_j0": -28.91282081604004,
+        "j0_raw_logit_for_selected": -28.91282081604004,
+        "j0_role": 2,
+        "max_legal_support": 0.0072227587094649244,
+        "mixed": false,
+        "pair": [
+          200018,
+          13
+        ],
+        "role": 2,
+        "same_state_j0": [
+          200018,
+          13
+        ],
+        "selected_combined_probability": 0.18684009101338583,
+        "snapshot_version": "extended-joint-single-action-v1:8:5a6ca6883541154fe8f7c2cf7501b8b95a6bf80f8935b10717c74872c09e38eb",
+        "step": 80
+      },
+      {
+        "command_sha256": "92a69e7990c33d72b81fa9d54d2ff8aa39b62627be1454c09b290aaf03da3c34",
+        "j0_choice_combined_probability": 0.217326998792043,
+        "j0_choice_support": 1.605858811506406e-85,
+        "j0_probability_for_j0": 0.8667543530464172,
+        "j0_probability_for_selected": 0.8667543530464172,
+        "j0_raw_logit_for_j0": -27.172019958496094,
+        "j0_raw_logit_for_selected": -27.172019958496094,
+        "j0_role": 2,
+        "max_legal_support": 6.140509812135922e-85,
+        "mixed": false,
+        "pair": [
+          200024,
+          15
+        ],
+        "role": 2,
+        "same_state_j0": [
+          200024,
+          15
+        ],
+        "selected_combined_probability": 0.217326998792043,
+        "snapshot_version": "extended-joint-single-action-v1:35:d7dba894a8b499899c4b57a57024e87121add2aa0dce3593a802fd3d97e36ff3",
+        "step": 350
+      }
+    ],
+    "first_committed_difference_tick": null,
+    "first_public_pose_difference": null,
+    "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
+    "full_p1_commitment_match": true,
+    "full_p1_trace_match": true,
+    "gain_percent": {
+      "J0": 0.0,
+      "P1": 0.0,
+      "R0": -158.9641434262948,
+      "R1": -123.36769759450172
+    },
+    "h300_seconds": 65.0,
+    "initial_sha256": "06624ef503e5d9d64194455fe4aa46ca4fe5bc546c9bb3f59e7fd9bd77f55bf8",
+    "intervention_step": null,
+    "max_legal_support": 0.3797010119394375,
+    "mixed_events": 2,
+    "no_fly_violations": 0,
+    "policy": "learned",
+    "radio_first": 62.0,
+    "radio_stable_start": 62.0,
+    "requested_pair": null,
+    "run": "p2-holdout",
+    "safe": true,
+    "stable_start": 62.0,
+    "status": "complete",
+    "success": true,
+    "tasks_done": 9.3,
+    "ticks": 3000,
+    "training_pairs": 6,
+    "verdict": "no_h300_gain_vs_J0",
+    "wall_seconds": 1090.089719861
   },
   {
     "base_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
@@ -2006,6 +2225,8 @@
       "step": 20
     },
     "first_radio_difference_tick": 105,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -2209,6 +2430,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 130,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -2430,6 +2653,8 @@
     "first_committed_difference_tick": null,
     "first_public_pose_difference": null,
     "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
     "full_p1_commitment_match": true,
     "full_p1_trace_match": true,
     "gain_percent": {
@@ -2633,6 +2858,8 @@
       "step": 40
     },
     "first_radio_difference_tick": 130,
+    "full_j0_commitment_match": false,
+    "full_j0_trace_match": false,
     "full_p1_commitment_match": false,
     "full_p1_trace_match": false,
     "gain_percent": {
@@ -2708,6 +2935,29 @@
     "ticks": 3000,
     "verdict": "control",
     "wall_seconds": 1067.7365036359997
+  },
+  {
+    "case": "30_static_240327",
+    "checkpoint_sha256": "d464796efcf866add38d3851cad4512bd46834ebdc6e30bb6a1f433511980c55",
+    "choices": 6,
+    "collisions": 0,
+    "comparisons": {},
+    "error": null,
+    "gain_percent": {},
+    "h300_seconds": 65.0,
+    "no_fly_violations": 0,
+    "policy": "P1",
+    "radio_first": 62.0,
+    "radio_stable_start": 62.0,
+    "run": "p1-holdout",
+    "safe": true,
+    "stable_start": 62.0,
+    "status": "complete",
+    "success": true,
+    "tasks_done": 9.3,
+    "ticks": 3000,
+    "verdict": "control",
+    "wall_seconds": 1085.7264802589998
   },
   {
     "case": "30_static_1280021",
