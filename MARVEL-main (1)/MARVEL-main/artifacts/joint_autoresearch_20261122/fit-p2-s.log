@@ -1,0 +1,1 @@
+{"checkpoint": "/workspace/joint-autoresearch-2h/models/p2-s.json", "sha256": "2195937d27252785fc1049a511aff893e9f0a692d73cdddeeb33f371162df509", "variant": "same_role", "pairs": [{"step": 30, "intervention": "ct-search", "old_pair": [100001, 4], "new_pair": [100000, 14], "control_seconds": 82.10000000000001, "treatment_seconds": 39.0}]}

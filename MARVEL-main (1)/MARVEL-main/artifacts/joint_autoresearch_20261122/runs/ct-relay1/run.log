@@ -1,0 +1,32 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 100, "seconds": 54.37}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 200, "seconds": 93.69}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 300, "seconds": 126.91}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 400, "seconds": 160.37}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 500, "seconds": 193.86}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 600, "seconds": 226.71}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 700, "seconds": 261.34}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 800, "seconds": 295.46}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 900, "seconds": 328.63}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1000, "seconds": 360.88}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1100, "seconds": 393.33}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1200, "seconds": 425.29}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1300, "seconds": 457.5}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1400, "seconds": 491.8}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1500, "seconds": 524.19}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1600, "seconds": 556.15}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1700, "seconds": 588.33}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1800, "seconds": 620.26}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 1900, "seconds": 652.85}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2000, "seconds": 685.21}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2100, "seconds": 717.98}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2200, "seconds": 750.42}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2300, "seconds": 782.87}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2400, "seconds": 815.43}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2500, "seconds": 847.75}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2600, "seconds": 880.12}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2700, "seconds": 912.72}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2800, "seconds": 945.51}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 2900, "seconds": 977.68}
+{"case": "30_static_1280021", "policy": "nearest_relay", "ticks": 3000, "seconds": 1009.98}

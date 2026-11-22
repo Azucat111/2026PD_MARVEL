@@ -143,6 +143,8 @@ def summarize(root, out_csv, out_json):
                    "regressed_vs_J0" if j0_gain<-1e-8 else "no_h300_gain_vs_J0")
         records.append(dict(run=label, case=row["case"], policy=row["policy"], status=row["status"],
                             ticks=len(row["trace"]), wall_seconds=row["seconds"], checkpoint_sha256=row["checkpoint_sha256"],
+                            intervention_step=row["intervention_step"], requested_pair=row["requested_pair"],
+                            driver_sha256=row["driver_sha256"],
                             **metrics, choices=len(actions), mixed_events=sum(a["mixed"] for a in actions),
                             changed_choices=choices_changed, changed_roles=roles_changed,
                             first_committed_difference_tick=actual_first_diff, first_radio_difference_tick=first_radio_trace_diff,
@@ -161,13 +163,14 @@ def summarize(root, out_csv, out_json):
         records.append(dict(run="p2-j-static-only", case=BASE_CASE, policy="all_roles", status="offline",
                             checkpoint_sha256=hashlib.sha256(blob).hexdigest(), comparisons={}, gain_percent={},
                             verdict="no_additional_changes_on_replayed_graphs", events=json.loads(prototype.read_text())))
-    fields = ["run","case","policy","status","ticks","wall_seconds","h300_seconds","radio_first","stable_start","tasks_done",
+    fields = ["run","case","policy","intervention_step","requested_pair","status","ticks","wall_seconds",
+              "h300_seconds","radio_first","stable_start","tasks_done",
               "safe","success","collisions","no_fly_violations","choices","mixed_events","changed_choices",
               "changed_roles","first_committed_difference_tick","first_radio_difference_tick",
               "J0_seconds","P1_seconds","R1_seconds","R0_seconds","P0_seconds","gain_vs_J0_pct","gain_vs_P1_pct",
-              "gain_vs_R1_pct","gain_vs_R0_pct","checkpoint_sha256","verdict","error"]
+              "gain_vs_R1_pct","gain_vs_R0_pct","checkpoint_sha256","driver_sha256","verdict","error"]
     with out_csv.open("w",newline="") as handle:
-        writer = csv.DictWriter(handle,fieldnames=fields)
+        writer = csv.DictWriter(handle,fieldnames=fields,lineterminator="\n")
         writer.writeheader()
         for row in records:
             flat = {f: row.get(f) for f in fields}
