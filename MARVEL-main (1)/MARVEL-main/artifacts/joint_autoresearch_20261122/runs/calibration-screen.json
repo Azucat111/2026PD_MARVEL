@@ -1,0 +1,297 @@
+[
+  {
+    "prior_scale": 0.25,
+    "ridge": 0.2,
+    "selected_for_physics": false,
+    "decisions": [
+      {
+        "reference": "p2-s-static",
+        "step": 10,
+        "ranked": [
+          100002,
+          27
+        ],
+        "selected": [
+          100002,
+          27
+        ],
+        "chosen_score": -3.402609348297119
+      },
+      {
+        "reference": "p2-s-static",
+        "step": 30,
+        "ranked": [
+          100000,
+          14
+        ],
+        "selected": [
+          100000,
+          14
+        ],
+        "chosen_score": -1.1742626462658885
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 10,
+        "ranked": [
+          200003,
+          24
+        ],
+        "selected": [
+          100003,
+          24
+        ],
+        "chosen_score": -2.5462418950117898
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 30,
+        "ranked": [
+          200003,
+          26
+        ],
+        "selected": [
+          200003,
+          26
+        ],
+        "chosen_score": 1.9439796209335327
+      }
+    ]
+  },
+  {
+    "prior_scale": 0.15,
+    "ridge": 0.2,
+    "selected_for_physics": true,
+    "decisions": [
+      {
+        "reference": "p2-s-static",
+        "step": 10,
+        "ranked": [
+          100002,
+          27
+        ],
+        "selected": [
+          100002,
+          27
+        ],
+        "chosen_score": -2.041565608978271
+      },
+      {
+        "reference": "p2-s-static",
+        "step": 30,
+        "ranked": [
+          100000,
+          14
+        ],
+        "selected": [
+          100000,
+          14
+        ],
+        "chosen_score": 0.27662586909518394
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 10,
+        "ranked": [
+          200003,
+          13
+        ],
+        "selected": [
+          100003,
+          24
+        ],
+        "chosen_score": -1.4770238627728636
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 30,
+        "ranked": [
+          200003,
+          26
+        ],
+        "selected": [
+          200003,
+          26
+        ],
+        "chosen_score": 1.1663877725601195
+      }
+    ]
+  },
+  {
+    "prior_scale": 0.25,
+    "ridge": 0.05,
+    "selected_for_physics": false,
+    "decisions": [
+      {
+        "reference": "p2-s-static",
+        "step": 10,
+        "ranked": [
+          200015,
+          29
+        ],
+        "selected": [
+          100002,
+          27
+        ],
+        "chosen_score": -4.4064170482832345
+      },
+      {
+        "reference": "p2-s-static",
+        "step": 30,
+        "ranked": [
+          100000,
+          14
+        ],
+        "selected": [
+          100000,
+          14
+        ],
+        "chosen_score": -0.8420322485646445
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 10,
+        "ranked": [
+          200003,
+          13
+        ],
+        "selected": [
+          100003,
+          24
+        ],
+        "chosen_score": -2.419808121409069
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 30,
+        "ranked": [
+          200003,
+          26
+        ],
+        "selected": [
+          200003,
+          26
+        ],
+        "chosen_score": 1.9439796209335327
+      }
+    ]
+  },
+  {
+    "prior_scale": 0.15,
+    "ridge": 0.1,
+    "selected_for_physics": false,
+    "decisions": [
+      {
+        "reference": "p2-s-static",
+        "step": 10,
+        "ranked": [
+          100002,
+          27
+        ],
+        "selected": [
+          100002,
+          27
+        ],
+        "chosen_score": -2.041565608978271
+      },
+      {
+        "reference": "p2-s-static",
+        "step": 30,
+        "ranked": [
+          100000,
+          14
+        ],
+        "selected": [
+          100000,
+          14
+        ],
+        "chosen_score": 0.47158858184098396
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 10,
+        "ranked": [
+          200003,
+          13
+        ],
+        "selected": [
+          100003,
+          24
+        ],
+        "chosen_score": -1.3417838874306223
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 30,
+        "ranked": [
+          200003,
+          26
+        ],
+        "selected": [
+          200003,
+          26
+        ],
+        "chosen_score": 1.1663877725601195
+      }
+    ]
+  },
+  {
+    "prior_scale": 0.15,
+    "ridge": 0.05,
+    "selected_for_physics": false,
+    "decisions": [
+      {
+        "reference": "p2-s-static",
+        "step": 10,
+        "ranked": [
+          100002,
+          27
+        ],
+        "selected": [
+          100002,
+          27
+        ],
+        "chosen_score": -2.041565608978271
+      },
+      {
+        "reference": "p2-s-static",
+        "step": 30,
+        "ranked": [
+          100000,
+          14
+        ],
+        "selected": [
+          100000,
+          14
+        ],
+        "chosen_score": 0.5813641579423425
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 10,
+        "ranked": [
+          200003,
+          13
+        ],
+        "selected": [
+          100003,
+          24
+        ],
+        "chosen_score": -1.2651579900879346
+      },
+      {
+        "reference": "j0-dynamic",
+        "step": 30,
+        "ranked": [
+          200003,
+          26
+        ],
+        "selected": [
+          200003,
+          26
+        ],
+        "chosen_score": 1.1663877725601195
+      }
+    ]
+  }
+]

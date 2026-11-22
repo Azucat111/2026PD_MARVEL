@@ -1,0 +1,32 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 100, "seconds": 115.0}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 200, "seconds": 192.84}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 300, "seconds": 235.09}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 400, "seconds": 268.43}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 500, "seconds": 301.35}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 600, "seconds": 334.56}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 700, "seconds": 367.64}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 800, "seconds": 402.09}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 900, "seconds": 435.28}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1000, "seconds": 467.96}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1100, "seconds": 501.7}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1200, "seconds": 534.89}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1300, "seconds": 569.33}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1400, "seconds": 602.88}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1500, "seconds": 636.44}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1600, "seconds": 669.79}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1700, "seconds": 702.46}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1800, "seconds": 735.65}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 1900, "seconds": 768.67}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2000, "seconds": 802.18}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2100, "seconds": 836.4}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2200, "seconds": 870.28}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2300, "seconds": 903.43}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2400, "seconds": 936.15}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2500, "seconds": 969.43}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2600, "seconds": 1002.96}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2700, "seconds": 1036.37}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2800, "seconds": 1069.47}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 2900, "seconds": 1102.82}
+{"case": "30_dynamic_1280022", "policy": "opportunity_relay", "ticks": 3000, "seconds": 1136.13}

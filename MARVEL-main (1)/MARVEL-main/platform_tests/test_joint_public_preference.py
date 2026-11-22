@@ -13,6 +13,7 @@ from integrations.gppo.public_pair_preference import (
 )
 from integrations.gppo.task_graph import Subtask, TaskGraph, TaskType, UAVState
 from run_joint_autoresearch import action_at
+from summarize_joint_autoresearch import BASE_CASE, DYNAMIC_DEV, choose_for_transfer
 
 
 def event():
@@ -92,3 +93,16 @@ def test_donor_regret_exposes_shared_search_resource_using_only_legal_rows():
     _, features = event_features(raw,opportunity=True)
     assert features.shape == (3,15)
     assert features[:, -1].tolist() == [0.,0.,.5]
+
+
+def test_freeze_uses_only_development_and_rejects_dynamic_degradation():
+    def row(name, case, score, sha):
+        return dict(run=name, case=case, h300_seconds=score, checkpoint_sha256=sha,
+                    status="complete", safe=True, success=True, comparisons={"J0":41.2})
+
+    log = [row("p2-s-static",BASE_CASE,39.,"s"), row("p2-s-dynamic",DYNAMIC_DEV,41.2,"s"),
+           row("p2-o-static",BASE_CASE,29.,"o"), row("p2-o-dynamic",DYNAMIC_DEV,50.,"o"),
+           row("p2-o-holdout","30_static_240327",10.,"o")]
+    assert choose_for_transfer(log)["selected"]["label"] == "p2-s"
+    log[3]["h300_seconds"] = 37.
+    assert choose_for_transfer(log)["selected"]["label"] == "p2-o"

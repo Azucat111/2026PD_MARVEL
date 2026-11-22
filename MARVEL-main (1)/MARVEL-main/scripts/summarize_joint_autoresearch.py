@@ -17,6 +17,7 @@ from verify_joint_atomic import ROOT, write
 OLD = ROOT/"artifacts/joint_ppo_20261122/evaluation"
 OLD_J0 = ROOT/"artifacts/joint_causal_20261122/runs/J0"
 BASE_CASE = "30_static_1280021"
+DYNAMIC_DEV = "30_dynamic_1280022"
 
 
 def full_score(row):
@@ -95,6 +96,29 @@ def action_metrics(events):
     return result
 
 
+def choose_for_transfer(records):
+    """Apply the frozen two-development-case selection contract."""
+    by_run = {row["run"]:row for row in records}
+    candidates = []
+    for label in ("p2-s", "p2-j", "p2-o"):
+        static, dynamic = (by_run.get(f"{label}-{domain}") for domain in ("static","dynamic"))
+        if static is None or dynamic is None:
+            continue
+        pair = (static, dynamic)
+        if ((static["case"], dynamic["case"]) != (BASE_CASE,DYNAMIC_DEV)
+                or static["checkpoint_sha256"] != dynamic["checkpoint_sha256"]):
+            raise ValueError("Invalid two-case checkpoint comparison")
+        complete = all(row["status"] == "complete" and row["safe"] and row["success"] for row in pair)
+        allowed = complete and dynamic["h300_seconds"] <= dynamic["comparisons"]["J0"]+5.
+        candidates.append(dict(label=label, checkpoint_sha256=static["checkpoint_sha256"],
+                               eligible=allowed, safe_complete=complete,
+                               cases=[row["case"] for row in pair],
+                               scores=[row["h300_seconds"] for row in pair],
+                               sum_seconds=sum(row["h300_seconds"] for row in pair) if complete else None))
+    eligible = [row for row in candidates if row["eligible"]]
+    return dict(candidates=candidates, selected=min(eligible,key=lambda row:row["sum_seconds"]) if eligible else None)
+
+
 def summarize(root, out_csv, out_json):
     dirs = {p.name:p for p in sorted(root.iterdir()) if p.is_dir() and
             any((p/name).is_file() for name in ("summary.json","summary.json.gz"))}
@@ -157,12 +181,17 @@ def summarize(root, out_csv, out_json):
                             checkpoint_sha256=row["checkpoint_sha256"], **physical_metrics(row),
                             choices=sum(map(len,row["commitments"])), comparisons={}, gain_percent={},
                             verdict="control", error=row.get("error")))
-    prototype = root/"p2-j-static-only-offline.json"
-    if prototype.is_file():
-        blob = (root/"models/p2-j-static-only.json").read_bytes()
-        records.append(dict(run="p2-j-static-only", case=BASE_CASE, policy="all_roles", status="offline",
+    prototypes = {"p2-j-static-only": "no_additional_changes_on_replayed_graphs",
+                  "p2-j-nearest": "no_additional_changes_on_replayed_graphs",
+                  "p2-o": "unadjusted_prior_preferred_weaker_donor"}
+    for name, decision in prototypes.items():
+        prototype = root/f"{name}-offline.json"
+        if not prototype.is_file():
+            continue
+        blob = (root/"models"/f"{name}.json").read_bytes()
+        records.append(dict(run=name, case=BASE_CASE, policy="all_roles", status="offline",
                             checkpoint_sha256=hashlib.sha256(blob).hexdigest(), comparisons={}, gain_percent={},
-                            verdict="no_additional_changes_on_replayed_graphs", events=json.loads(prototype.read_text())))
+                            verdict=decision, events=json.loads(prototype.read_text())))
     fields = ["run","case","policy","intervention_step","requested_pair","status","ticks","wall_seconds",
               "h300_seconds","radio_first","stable_start","tasks_done",
               "safe","success","collisions","no_fly_violations","choices","mixed_events","changed_choices",
@@ -180,6 +209,7 @@ def summarize(root, out_csv, out_json):
                 flat[f"gain_vs_{name}_pct"] = row["gain_percent"].get(name)
             writer.writerow(flat)
     write(out_json, records)
+    return records
 
 
 def main():
@@ -187,8 +217,11 @@ def main():
     cli.add_argument("--runs", type=Path, required=True)
     cli.add_argument("--csv", type=Path, required=True)
     cli.add_argument("--json", type=Path, required=True)
+    cli.add_argument("--selection", type=Path)
     args = cli.parse_args()
-    summarize(args.runs,args.csv,args.json)
+    records = summarize(args.runs,args.csv,args.json)
+    if args.selection:
+        write(args.selection, choose_for_transfer(records))
 
 
 if __name__=="__main__":

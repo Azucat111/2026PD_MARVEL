@@ -1,0 +1,56 @@
+[
+  {
+    "trajectory": "p2-s-static",
+    "step": 30,
+    "j0": [
+      100001,
+      4
+    ],
+    "ranked": [
+      100000,
+      14
+    ],
+    "behavior": [
+      100000,
+      14
+    ],
+    "raw_role": 1,
+    "rerank_score": 0.27662586909518394
+  },
+  {
+    "trajectory": "j0-dynamic",
+    "step": 10,
+    "j0": [
+      100003,
+      24
+    ],
+    "ranked": [
+      200003,
+      13
+    ],
+    "behavior": [
+      100003,
+      24
+    ],
+    "raw_role": 2,
+    "rerank_score": -1.4770238627728636
+  },
+  {
+    "trajectory": "ct-donor-aware",
+    "step": 10,
+    "j0": [
+      100003,
+      24
+    ],
+    "ranked": [
+      200003,
+      13
+    ],
+    "behavior": [
+      200003,
+      13
+    ],
+    "raw_role": 2,
+    "rerank_score": -1.4770238627728636
+  }
+]

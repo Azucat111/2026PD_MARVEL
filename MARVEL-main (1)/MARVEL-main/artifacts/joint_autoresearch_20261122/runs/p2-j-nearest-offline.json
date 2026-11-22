@@ -1,0 +1,38 @@
+[
+  {
+    "trajectory": "ct-search",
+    "step": 30,
+    "j0": [
+      100001,
+      4
+    ],
+    "ranked": [
+      100000,
+      14
+    ],
+    "behavior": [
+      100000,
+      14
+    ],
+    "raw_role": 1,
+    "rerank_score": -1.1772040805877477
+  },
+  {
+    "trajectory": "ct-relay3",
+    "step": 30,
+    "j0": [
+      100001,
+      4
+    ],
+    "ranked": [
+      100000,
+      14
+    ],
+    "behavior": [
+      200015,
+      29
+    ],
+    "raw_role": 1,
+    "rerank_score": -1.1772040805877477
+  }
+]

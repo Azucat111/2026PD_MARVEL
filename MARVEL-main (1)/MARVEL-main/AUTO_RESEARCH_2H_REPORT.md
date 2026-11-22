@@ -50,3 +50,51 @@ P2-S 在动态例的 7 次提交均与 J0 相同，完整计时维持 41.2 秒�
 ## 第二轮物理分叉和供体特征
 
 动态 t=1 的同一张真实合法图上，Relay UAV 24 的原成本为 16.477 秒，对它的独占会使冻结 Search 最高 logit 下降 5.446；UAV 13 的成本为 19.603 秒，扣除该供体不损失首选 Search 分数。第二轮预先冻结供体搜索损失 `g(u)=clip(max_{a in Search} z(a) - max_{a in Search,donor(a)!=u} z(a), 0, 8)`。第一次干预使用公开成本 `ETA+2g` 挑选合法 Relay，随后回到冻结 J0。反事实标签仍使用原 H300 真实 C，从未用 ETA 替代回报。第二个分叉在静态 P2-S 已成功纠正第 3 秒 Search 后，改用第 4 秒合法的最近成本 Relay，检验角色时机是否依赖已纠正的拓扑。两者均使用原合法 mask 与原子回执；干预计入确定性行为，实际执行概率为 1。供体特征型训练进一步把 `g/4` 传入核的动作描述，使同一需求的不同无人机可在学习中区分。常规模型不含该字段。
+
+普通联合原型加入 38.0 秒的动态最近供体标签后仍只在旧静态第 3 秒改选。这一训练产生 `p2-j-nearest`，SHA-256 `3289b7528b4bbb3eb4db2cf1f7558a0c794ee92b01136ffb0353413771d03905`，未追加 H300。已记下它的实际公开图重放，避免用更多参数或训练轮次重复这个行为。
+
+## 复现首轮与第二轮
+
+在项目目录设置下列环境。独立物理运行可在四个终端中执行，每条命令的输出目录需要为空。已有归档可以直接用于训练与汇总，完整复跑保留原时钟。
+
+```bash
+export XDG_CACHE_HOME=/tmp/marvel-cache MPLCONFIGDIR=/tmp/marvel-mpl
+py=/workspace/marvel-audit-venv/bin/python
+out=/tmp/marvel-autoresearch
+mkdir -p "$out/models"
+run() { "$py" -B scripts/run_joint_autoresearch.py --out "$out/$1" "${@:2}"; }
+fit() { "$py" -B scripts/fit_joint_public_preference.py "$@"; }
+control=artifacts/joint_causal_20261122/runs/J0
+run ct-search --case 30_static_1280021 --policy pair --step 30 --pair 100000 14
+run ct-relay1 --case 30_static_1280021 --policy nearest_relay --step 10
+run ct-relay3 --case 30_static_1280021 --policy relay --step 30
+run j0-dynamic --case 30_dynamic_1280022 --policy J0
+run ct-dynamic --case 30_dynamic_1280022 --policy nearest_relay --step 10
+run j0-holdout --case 30_static_240327 --policy J0
+fit --control "$control" --treatment "$out/ct-search" --variant same_role --out "$out/models/p2-s.json"
+fit --control "$control" --treatment "$out/ct-search" "$out/ct-relay1" "$out/ct-relay3" \
+  --variant all_roles --out "$out/models/p2-j-static-only.json"
+fit --control "$control" --treatment "$out/ct-search" "$out/ct-relay1" "$out/ct-relay3" \
+  --extra-pair "$out/j0-dynamic" "$out/ct-dynamic" --variant all_roles --out "$out/models/p2-j-nearest.json"
+s=$(sha256sum "$out/models/p2-s.json" | cut -d' ' -f1)
+run p2-s-static --case 30_static_1280021 --policy learned --checkpoint "$out/models/p2-s.json" --sha256 "$s"
+run p2-s-dynamic --case 30_dynamic_1280022 --policy learned --checkpoint "$out/models/p2-s.json" --sha256 "$s"
+run ct-after-search --case 30_static_1280021 --policy learned --checkpoint "$out/models/p2-s.json" --sha256 "$s" --step 40
+run ct-donor-aware --case 30_dynamic_1280022 --policy opportunity_relay --step 10
+for arm in R0 R1; do
+  "$py" -B scripts/joint_four_arm_eval.py --uavs 30 --domain static --seed 240327 --arms "$arm" --out "$out/${arm,,}-holdout"
+done
+for name in p2-j-static-only p2-j-nearest; do
+  sha=$(sha256sum "$out/models/$name.json" | cut -d' ' -f1)
+  "$py" -B scripts/replay_joint_public_preference.py --checkpoint "$out/models/$name.json" --sha256 "$sha" \
+    --trajectory "$out/ct-search" "$out/ct-relay1" "$out/ct-relay3" "$out/j0-dynamic" --out "$out/$name-offline.json"
+done
+```
+
+## 第二轮结果与部署校准
+
+供体机会成本分叉真实改选 UAV 13，于 29.6 秒达标并以 32.6 秒完成，较最近成本 UAV 24 分叉的 38.0 秒缩短 5.4 秒，较 J0 的 41.2 秒缩短 8.6 秒，三者均通过全窗口安全。两个分叉的非 Relay 完成均为 11.1 秒。本次较慢的名义 Relay 供体反而产生更快的完整通信结果，与公共资源机会成本假设一致。它仍比原 R0 的 30.7 秒慢 1.9 秒。
+
+静态条件分叉保留 P2-S 第 3 秒纠正的 Search，再提前一秒派 UAV 22 执行 Relay。完整耗时由 39.0 秒增至 80.1 秒，通信首次达标由 36.0 秒推迟至 77.1 秒，非 Relay 完成时间均为 10.1 秒。该臂安全完成。这个负结果排除了把提前 Relay 当作统一规则的做法，并作为一个真实负回报配对保留。此配对的两端在分叉前、分叉状态、遮罩、输入摘要和其余时刻的继续策略上使用相同冻结 P2-S；其来源 checkpoint SHA 与五组 J0 继续策略配对分别存入训练数据。混合这些配对是离策略拟合，部署仍须同环境完整计分。
+
+六组物理对照拟合供体特征模型后，原系数 0.25 在动态图仍偏向 UAV 24。该图中 J0 对 Relay 13 和 Relay 24 的 logit 分别为 −22.84、−8.19。用真实图比较了五个先验/正则组合，相同正则 0.20 下把先验系数调到 0.15 已将这两个候选的组合分数顺序翻到 UAV 13（−1.477 对 −1.536），并保留在已记录 P2-S 静态路径上的 Search 动作。继续降低正则的变体有额外施加第 1 秒静态 Relay 的情形，未追加物理运行。校准只使用两个开发案例。由此冻结要跑完整部署的 P2-O（`p2-o-calibrated.json`），SHA-256 `52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276`。
