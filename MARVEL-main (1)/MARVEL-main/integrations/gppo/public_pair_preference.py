@@ -15,9 +15,20 @@ from .mesh_relay import mesh_components
 
 FORMAT = "joint-public-pair-preference-v1"
 FEATURE_VERSION = "public-mesh-candidate-v1"
+DONOR_FEATURE_VERSION = "public-mesh-candidate-donor-v2"
 
 
-def event_features(event):
+def search_donor_regret(rows, uid):
+    """Lost best legal Search score if a Relay exclusively owns this UAV."""
+    search = [r for r in rows if r["role"] == 1]
+    if not search:
+        return 0.
+    best = max(r["logit"] for r in search)
+    unreserved = max((r["logit"] for r in search if r["uav"] != uid), default=best-8.)
+    return float(np.clip(best-unreserved, 0., 8.))
+
+
+def event_features(event, *, opportunity=False):
     stale = {int(uid): np.asarray(xy, dtype=float) for uid, xy in event["stale_xy"].items()}
     rows = event["rows"]
     radius = float(event["range_m"])
@@ -60,12 +71,15 @@ def event_features(event):
         held_edges = np.linalg.norm(coords-(own+delta), axis=1) <= radius
         lost = np.count_nonzero(old_edges & ~held_edges) / max(1, np.count_nonzero(old_edges))
         nearest_relay = min(2., float(np.linalg.norm(relay_anchors-own, axis=1).min()/radius)) if relay_anchors.size else 0.
-        features.append([2.*(row["role"]==2), min(row["total"], 100.)/15.,
+        vector = [2.*(row["role"]==2), min(row["total"], 100.)/15.,
                          *((own-center)/(1.8*radius)), *(movement/(1.4*radius)),
                          *(delta/(0.5*radius)), float(old_edges.sum())/n*4., lost*2.,
                          (mesh_size(own+delta)-len(groups[0]))/n*4.,
                          (mesh_size(anchor)-len(groups[0]))/n*4.,
-                         min(length/radius, 4.), nearest_relay])
+                         min(length/radius, 4.), nearest_relay]
+        if opportunity:
+            vector.append(search_donor_regret(rows, uid)/4. if row["role"] == 2 else 0.)
+        features.append(vector)
     vectors = np.asarray(features, dtype=float)
     if not np.isfinite(vectors).all() or not np.isfinite(context).all():
         raise ValueError("Nonfinite public ranking features")
@@ -79,7 +93,7 @@ def kernel(left_context, left, right_context, right, *, context_scale=1., action
 
 
 def make_checkpoint(contrasts, *, base_sha, mode, context_scale, action_scale,
-                    ridge=.20, prior_scale=.25, support=.45, margin=.20):
+                    ridge=.20, prior_scale=.25, support=.45, margin=.20, opportunity=False):
     """Solve ridge regression on differences of action evaluations in one state."""
     if not contrasts:
         raise ValueError("Need at least one verified paired contrast")
@@ -90,7 +104,8 @@ def make_checkpoint(contrasts, *, base_sha, mode, context_scale, action_scale,
     target = [np.clip((row["control_seconds"]-row["treatment_seconds"])/10., -8., 8.)
               - prior_scale*(row["new_logit"]-row["old_logit"]) for row in contrasts]
     weights = np.linalg.solve(diff_gram + ridge*np.eye(len(contrasts)), target)
-    return dict(format=FORMAT, feature_version=FEATURE_VERSION, base_sha256=base_sha, mode=mode,
+    return dict(format=FORMAT, feature_version=DONOR_FEATURE_VERSION if opportunity else FEATURE_VERSION,
+                base_sha256=base_sha, mode=mode,
                 context_scale=context_scale, action_scale=action_scale, ridge=ridge, prior_scale=prior_scale,
                 support=support, margin=margin, contexts=contexts.tolist(), actions=actions.tolist(),
                 weights=np.column_stack([weights,-weights]).flatten().tolist(), physical_training_pairs=contrasts)
@@ -100,7 +115,7 @@ class PublicPairPreference:
     """Residual policy with explicit legal support and a deterministic fallback."""
     def __init__(self, checkpoint):
         self.parameters = checkpoint
-        if checkpoint["format"] != FORMAT or checkpoint["feature_version"] != FEATURE_VERSION:
+        if checkpoint["format"] != FORMAT or checkpoint["feature_version"] not in (FEATURE_VERSION, DONOR_FEATURE_VERSION):
             raise ValueError("Incompatible ranking checkpoint")
         if checkpoint["mode"] not in ("within_role", "joint"):
             raise ValueError("Unknown ranking mode")
@@ -125,7 +140,7 @@ class PublicPairPreference:
     def choose(self, event):
         p = self.parameters
         rows = event["rows"]
-        context, features = event_features(event)
+        context, features = event_features(event, opportunity=p["feature_version"]==DONOR_FEATURE_VERSION)
         similarity = kernel(np.repeat(context[None, :], len(rows), axis=0), features,
                             self.contexts, self.actions,
                             context_scale=p["context_scale"], action_scale=p["action_scale"])

@@ -40,6 +40,7 @@ class ExperimentRecorder(Recorder):
         self.override_pair = pair
         self.ranker = ranker
         self.intervened = False
+        self.forced = False
 
     def observe_choice(self, graph):
         normal = super().observe_choice(graph)
@@ -59,29 +60,40 @@ class ExperimentRecorder(Recorder):
         record["range_m"] = self.scheduler.relay_builder.comm_range
         record["time_seconds"] = self.scheduler.runtime.current_step*self.scheduler.runtime.dt
         choice = normal
+        if self.ranker is not None:
+            flat, evidence = self.ranker.choose(record)
+            choice = action_at(graph, flat, normal.value)
+            record["ranker"] = evidence
+            record["reference_choice"] = [choice.subtask_id, choice.uav_id]
         if record["step"] == self.override_step:
             if self.policy == "pair":
                 options = [r for r in record["rows"] if (r["slot"], r["uav"]) == self.override_pair]
                 if len(options) != 1:
                     raise ValueError("Preregistered pair unavailable")
                 flat = options[0]["flat"]
-            elif self.policy in ("relay", "nearest_relay"):
+            elif self.policy in ("relay", "nearest_relay", "opportunity_relay", "learned"):
                 options = [r for r in record["rows"] if r["role"] == 2]
-                if not options or not any(r["role"] == 1 for r in record["rows"]):
+                if (not options or not any(r["role"] == 1 for r in record["rows"])
+                        or not any(r["flat"] == choice.flat_action and r["role"] == 1 for r in record["rows"])):
                     raise ValueError("Expected a real mixed graph at the intervention")
-                key = (lambda r: (r["total"], r["flat"])) if self.policy == "nearest_relay" else (
-                    lambda r: (-r["logit"], r["flat"]))
-                flat = min(options, key=key)["flat"]
+                if self.policy == "opportunity_relay":
+                    from integrations.gppo.public_pair_preference import search_donor_regret
+
+                    flat = min(options, key=lambda r: (r["total"]+2.*search_donor_regret(record["rows"], r["uav"]),
+                                                        r["flat"]))["flat"]
+                else:
+                    key = (lambda r: (r["total"], r["flat"])) if self.policy != "relay" else (
+                        lambda r: (-r["logit"], r["flat"]))
+                    flat = min(options, key=key)["flat"]
             else:
                 raise ValueError("Unknown intervention")
+            if flat == choice.flat_action:
+                raise ValueError("The intervention must change the reference action")
             choice = action_at(graph, flat, normal.value)
-            self.intervened = True
-            record["mode"] = "single_intervention"
-        if self.ranker is not None:
-            flat, evidence = self.ranker.choose(record)
-            choice = action_at(graph, flat, normal.value)
-            record["ranker"] = evidence
-            self.intervened |= choice.flat_action != normal.flat_action
+            self.forced = True
+            record["mode"] = "conditioned_intervention" if self.ranker else "single_intervention"
+        self.intervened |= choice.flat_action != normal.flat_action
+        record["executed_action_probability"] = 1.
         record["selected"] = [choice.subtask_id, choice.uav_id]
         return choice
 
@@ -89,7 +101,7 @@ class ExperimentRecorder(Recorder):
 def run(args):
     if not 0 < args.ticks <= HORIZON or args.ticks % 10:
         raise ValueError("Tick budget must align with the controller")
-    if args.policy in ("pair", "relay", "nearest_relay") and args.step is None:
+    if args.policy in ("pair", "relay", "nearest_relay", "opportunity_relay") and args.step is None:
         raise ValueError("Single-action interventions require an explicit control step")
     if args.policy == "pair" and args.pair is None:
         raise ValueError("Pair intervention requires slot and UAV")
@@ -97,6 +109,7 @@ def run(args):
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
     start = time.monotonic()
+    driver_sha = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
     runtime, adapter, obs = setup(args.case, "joint_gppo")
     scheduler = adapter.scheduler
     initial, config = baseline_metadata(runtime, scheduler)
@@ -108,6 +121,8 @@ def run(args):
         if args.checkpoint is None or args.sha256 is None:
             raise ValueError("A frozen learned checkpoint and its hash are required")
         ranker = PublicPairPreference.load(args.checkpoint, args.sha256)
+        if ranker.parameters["base_sha256"] != FROZEN_SHA:
+            raise ValueError("Ranking checkpoint was fit for a different behavior actor")
         checkpoint_sha = args.sha256
     if scheduler.allocator.adapter.candidate_sha256 != FROZEN_SHA:
         raise ValueError("Incorrect J0 behavior weights")
@@ -134,14 +149,14 @@ def run(args):
                     if runtime.current_step % 100 == 0:
                         print(json.dumps(dict(case=args.case, policy=args.policy, ticks=runtime.current_step,
                                               seconds=round(time.monotonic()-start, 2))), flush=True)
-            if args.step is not None and not recorder.intervened:
+            if args.step is not None and not recorder.forced:
                 raise ValueError("Intervention was never applied")
         except Exception as exc:
             failure = f"{type(exc).__name__}: {exc}"
     score = joint_completion_metric(trace,300.) if len(trace)==HORIZON and failure is None else None
     write(args.out/"summary.json", dict(case=args.case, policy=args.policy, initial_sha256=initial,
           config_sha256=config, scenario_sha256=hashlib.sha256(SCENARIO.read_bytes()).hexdigest(),
-          driver_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+          driver_sha256=driver_sha,
           base_sha256=FROZEN_SHA, checkpoint_sha256=checkpoint_sha, intervention_step=args.step,
           requested_pair=args.pair, score=score, status="complete" if score else ("truncated" if failure else "prefix"),
           intervened=recorder.intervened, error=failure, clock_ticks=len(trace), trace=trace, commitments=commitments,
@@ -153,8 +168,10 @@ def run(args):
 def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--case", required=True)
-    cli.add_argument("--policy", choices=["J0", "pair", "relay", "nearest_relay", "learned"], required=True)
-    cli.add_argument("--step", type=int)
+    cli.add_argument("--policy", choices=["J0", "pair", "relay", "nearest_relay", "opportunity_relay", "learned"],
+                     required=True)
+    cli.add_argument("--step", type=int,
+                     help="Select the single intervention step, with nearest legal Relay for learned policies")
     cli.add_argument("--pair", nargs=2, type=int)
     cli.add_argument("--ticks", type=int, default=HORIZON)
     cli.add_argument("--wall", type=float, default=3000.)

@@ -8,7 +8,9 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from fit_joint_public_preference import validated_score
-from integrations.gppo.public_pair_preference import PublicPairPreference, event_features, make_checkpoint
+from integrations.gppo.public_pair_preference import (
+    PublicPairPreference, event_features, make_checkpoint, search_donor_regret,
+)
 from integrations.gppo.task_graph import Subtask, TaskGraph, TaskType, UAVState
 from run_joint_autoresearch import action_at
 
@@ -80,3 +82,13 @@ def test_checkpoint_rejects_bad_digest(tmp_path):
     path.write_text("{}")
     with pytest.raises(ValueError,match="hash"):
         PublicPairPreference.load(path,"0"*64)
+
+
+def test_donor_regret_exposes_shared_search_resource_using_only_legal_rows():
+    raw = event()
+    raw["rows"][2]["uav"] = 0
+    assert search_donor_regret(raw["rows"],0) == pytest.approx(2.)
+    assert search_donor_regret(raw["rows"],1) == 0.
+    _, features = event_features(raw,opportunity=True)
+    assert features.shape == (3,15)
+    assert features[:, -1].tolist() == [0.,0.,.5]

@@ -14,6 +14,7 @@ from integrations.gppo.public_pair_preference import event_features, make_checkp
 VARIANTS = {
     "same_role": dict(mode="within_role", context_scale=1., action_scale=.85, support=.42),
     "all_roles": dict(mode="joint", context_scale=1., action_scale=.85, support=.42),
+    "donor_aware": dict(mode="joint", context_scale=1., action_scale=.85, support=.42, opportunity=True),
 }
 
 
@@ -43,7 +44,7 @@ def validated_score(row):
     return float(row["score"]["secondary_joint_completion_seconds"])
 
 
-def contrast(control_dir, treatment_dir, *, control=None, control_events=None):
+def contrast(control_dir, treatment_dir, *, control=None, control_events=None, opportunity=False):
     control = read_summary(control_dir) if control is None else control
     control_events = read_events(control_dir) if control_events is None else control_events
     treated = read_summary(treatment_dir)
@@ -51,7 +52,7 @@ def contrast(control_dir, treatment_dir, *, control=None, control_events=None):
     if any(control[k] != treated[k] for k in ("case", "initial_sha256", "config_sha256", "scenario_sha256")):
         raise ValueError("Counterfactual arms are not a physical pair")
     step = treated["intervention_step"]
-    if treated["policy"] not in ("pair", "relay", "nearest_relay") or step is None or not treated["intervened"]:
+    if treated["policy"] not in ("pair", "relay", "nearest_relay", "opportunity_relay") or step is None or not treated["intervened"]:
         raise ValueError("No applied, single-action counterfactual")
     # Before this selection, the two physics prefixes and every real commitment agree.
     if (control["trace"][:step] != treated["trace"][:step]
@@ -68,7 +69,7 @@ def contrast(control_dir, treatment_dir, *, control=None, control_events=None):
     by_pair = {(r["slot"],r["uav"]):i for i,r in enumerate(rows)}
     oi = by_pair[tuple(ref["selected"])]
     ni = by_pair[tuple(observed["selected"])]
-    context, features = event_features(observed)
+    context, features = event_features(observed, opportunity=opportunity)
     return dict(case=treated["case"], step=step, intervention=treatment_dir.name,
                 control_seconds=c0, treatment_seconds=c1, treatment_safe=treated["score"]["whole_window_safe"],
                 treatment_success=treated["score"]["joint_success"],
@@ -83,14 +84,20 @@ def main():
     cli = argparse.ArgumentParser(description=__doc__)
     cli.add_argument("--control", type=Path, required=True)
     cli.add_argument("--treatment", type=Path, nargs="+", required=True)
+    cli.add_argument("--extra-pair", type=Path, nargs=2, action="append", default=[],
+                     metavar=("CONTROL", "TREATMENT"))
     cli.add_argument("--variant", choices=VARIANTS, required=True)
     cli.add_argument("--out", type=Path, required=True)
     args = cli.parse_args()
+    variant = VARIANTS[args.variant]
+    opportunity = variant.get("opportunity", False)
     base, events = read_summary(args.control), read_events(args.control)
-    rows = [contrast(args.control, source, control=base, control_events=events) for source in args.treatment]
+    rows = [contrast(args.control, source, control=base, control_events=events, opportunity=opportunity)
+            for source in args.treatment]
+    rows.extend(contrast(control, treatment, opportunity=opportunity) for control, treatment in args.extra_pair)
     if args.variant=="same_role" and any(r["old_role"]!=r["new_role"] for r in rows):
         raise ValueError("The within-role model only accepts matched same-role evidence")
-    data = make_checkpoint(rows, base_sha=FROZEN_SHA, **VARIANTS[args.variant])
+    data = make_checkpoint(rows, base_sha=FROZEN_SHA, **variant)
     blob = (json.dumps(data,sort_keys=True,indent=2,allow_nan=False)+"\n").encode()
     args.out.parent.mkdir(parents=True,exist_ok=True)
     with args.out.open("xb") as handle:
