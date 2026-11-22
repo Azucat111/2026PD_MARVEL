@@ -22,7 +22,7 @@ checkpoint 为 `artifacts/joint_autoresearch_20261122/runs/models/p2-o-calibrate
 | P2-S | 39.0 | 41.2 | 80.2 |
 | P2-O | 39.0 | 32.6 | 71.6 |
 
-两个 P2-O 开发窗口均通过全窗口安全。静态实际改配一次 Search；动态实际改选 Relay UAV 13，取代冻结 J0 的 Search UAV 24。来源是实际回执，不是候选打分推断。90 秒旧反事实只用于确定假设；本轮用完整 H300 重新采集训练标签。
+两个 P2-O 开发窗口均通过全窗口安全。实际原子回执确认静态改配一次 Search，动态改选 Relay UAV 13，取代冻结 J0 的 Search UAV 24。90 秒旧反事实用于确定假设，本轮用完整 H300 重新采集训练标签。
 
 ## 加载并复算
 

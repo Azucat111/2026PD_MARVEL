@@ -1,0 +1,296 @@
+[
+  {
+    "trajectory": "j0-holdout",
+    "step": 10,
+    "j0": [
+      100000,
+      13
+    ],
+    "ranked": [
+      100000,
+      13
+    ],
+    "behavior": [
+      100000,
+      13
+    ],
+    "raw_role": 1,
+    "rerank_score": -0.6290345191955566,
+    "j0_action_support": 0.36771928622659605,
+    "maximum_legal_support": 0.3797010119394375,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-holdout",
+    "step": 20,
+    "j0": [
+      100003,
+      18
+    ],
+    "ranked": [
+      100003,
+      18
+    ],
+    "behavior": [
+      100003,
+      18
+    ],
+    "raw_role": 1,
+    "rerank_score": -1.847683525085449,
+    "j0_action_support": 0.10193639455948374,
+    "maximum_legal_support": 0.13062295424866735,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-holdout",
+    "step": 40,
+    "j0": [
+      100001,
+      2
+    ],
+    "ranked": [
+      100001,
+      2
+    ],
+    "behavior": [
+      100001,
+      2
+    ],
+    "raw_role": 1,
+    "rerank_score": 1.4790390014648438,
+    "j0_action_support": 0.00608560179813763,
+    "maximum_legal_support": 0.00608560179813763,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-holdout",
+    "step": 50,
+    "j0": [
+      100002,
+      24
+    ],
+    "ranked": [
+      100002,
+      24
+    ],
+    "behavior": [
+      100002,
+      24
+    ],
+    "raw_role": 1,
+    "rerank_score": -1.1788740634918213,
+    "j0_action_support": 0.0004449473029874836,
+    "maximum_legal_support": 0.003072923728395146,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-holdout",
+    "step": 80,
+    "j0": [
+      200018,
+      13
+    ],
+    "ranked": [
+      200018,
+      13
+    ],
+    "behavior": [
+      200018,
+      13
+    ],
+    "raw_role": 2,
+    "rerank_score": -4.336923122406006,
+    "j0_action_support": 0.0004820141741693192,
+    "maximum_legal_support": 0.0072227587094649244,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-holdout",
+    "step": 350,
+    "j0": [
+      200024,
+      15
+    ],
+    "ranked": [
+      200024,
+      15
+    ],
+    "behavior": [
+      200024,
+      15
+    ],
+    "raw_role": 2,
+    "rerank_score": -4.075802993774414,
+    "j0_action_support": 1.605858811506406e-85,
+    "maximum_legal_support": 6.140509812135922e-85,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-static",
+    "step": 10,
+    "j0": [
+      100000,
+      51
+    ],
+    "ranked": [
+      100000,
+      51
+    ],
+    "behavior": [
+      100000,
+      51
+    ],
+    "raw_role": 1,
+    "rerank_score": 0.5858348250389099,
+    "j0_action_support": 0.0714303838351824,
+    "maximum_legal_support": 0.5329521165665612,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-static",
+    "step": 20,
+    "j0": [
+      100002,
+      42
+    ],
+    "ranked": [
+      100002,
+      42
+    ],
+    "behavior": [
+      100002,
+      42
+    ],
+    "raw_role": 1,
+    "rerank_score": 1.6544866561889648,
+    "j0_action_support": 0.08074086604100524,
+    "maximum_legal_support": 0.09536993031878899,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-static",
+    "step": 30,
+    "j0": [
+      200051,
+      35
+    ],
+    "ranked": [
+      200051,
+      35
+    ],
+    "behavior": [
+      200051,
+      35
+    ],
+    "raw_role": 2,
+    "rerank_score": 0.16082870364189147,
+    "j0_action_support": 0.008467930870759864,
+    "maximum_legal_support": 0.012290595543585251,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-static",
+    "step": 40,
+    "j0": [
+      100001,
+      6
+    ],
+    "ranked": [
+      100001,
+      6
+    ],
+    "behavior": [
+      100001,
+      6
+    ],
+    "raw_role": 1,
+    "rerank_score": 1.2809257507324219,
+    "j0_action_support": 0.0014998791359496185,
+    "maximum_legal_support": 0.00218934408875491,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-dynamic",
+    "step": 10,
+    "j0": [
+      100002,
+      44
+    ],
+    "ranked": [
+      100002,
+      44
+    ],
+    "behavior": [
+      100002,
+      44
+    ],
+    "raw_role": 1,
+    "rerank_score": 3.274801826477051,
+    "j0_action_support": 0.0016757188586881016,
+    "maximum_legal_support": 0.03939185874037279,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-dynamic",
+    "step": 20,
+    "j0": [
+      100000,
+      32
+    ],
+    "ranked": [
+      100000,
+      32
+    ],
+    "behavior": [
+      100000,
+      32
+    ],
+    "raw_role": 1,
+    "rerank_score": 2.451684093475342,
+    "j0_action_support": 0.031731582337725224,
+    "maximum_legal_support": 0.20156506593115273,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-dynamic",
+    "step": 30,
+    "j0": [
+      100003,
+      54
+    ],
+    "ranked": [
+      100003,
+      54
+    ],
+    "behavior": [
+      100003,
+      54
+    ],
+    "raw_role": 1,
+    "rerank_score": 3.044490909576416,
+    "j0_action_support": 0.021386495030346484,
+    "maximum_legal_support": 0.06960555415883542,
+    "minimum_pair_support": 0.42
+  },
+  {
+    "trajectory": "j0-60-dynamic",
+    "step": 40,
+    "j0": [
+      100001,
+      48
+    ],
+    "ranked": [
+      100001,
+      48
+    ],
+    "behavior": [
+      100001,
+      48
+    ],
+    "raw_role": 1,
+    "rerank_score": 2.9425878524780273,
+    "j0_action_support": 0.01222834915254392,
+    "maximum_legal_support": 0.02459786356488014,
+    "minimum_pair_support": 0.42
+  }
+]
