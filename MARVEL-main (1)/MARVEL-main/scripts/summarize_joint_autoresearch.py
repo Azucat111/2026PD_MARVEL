@@ -38,6 +38,7 @@ def physical_metrics(row):
     trace = row["trace"]
     times = window_times(trace)
     return dict(h300_seconds=full_score(row), radio_first=times["radio_first_09"],
+                radio_stable_start=times["first_3s_radio_start"],
                 stable_start=times["final_joint_window_start"], tasks_done=times["nonrelay_done"],
                 safe=None if row.get("score") is None else row["score"]["whole_window_safe"],
                 success=None if row.get("score") is None else row["score"]["joint_success"],
@@ -83,15 +84,18 @@ def action_metrics(events):
         raw = e["actors"]["J0"]
         raw_probs = dict(zip(raw["flat_indices"],raw["prob_t1"],strict=True))
         score = e.get("ranker")
-        probs = None if score is None else {r["flat"]: v for r,v in zip(e["rows"],score["probs"],strict=True)}
+        probs = {} if score is None else dict(zip(score["legal_indices"],score["probs"],strict=True))
+        supports = {} if score is None else dict(zip(score["legal_indices"],score["supports"],strict=True))
         result.append(dict(step=e["step"], pair=e["selected"], same_state_j0=e["normal_choice"],
                            role=selected["role"], j0_role=prior["role"],
                            j0_raw_logit_for_selected=selected["logit"], j0_raw_logit_for_j0=prior["logit"],
                            j0_probability_for_selected=raw_probs[selected["flat"]],
                            j0_probability_for_j0=raw_probs[prior["flat"]],
                            mixed=any(r["role"]==1 for r in e["rows"]) and any(r["role"]==2 for r in e["rows"]),
-                           selected_combined_probability=None if probs is None else probs[selected["flat"]],
-                           j0_choice_combined_probability=None if probs is None else probs[prior["flat"]],
+                           selected_combined_probability=probs.get(selected["flat"]),
+                           j0_choice_combined_probability=probs.get(prior["flat"]),
+                           j0_choice_support=supports.get(prior["flat"]),
+                           max_legal_support=max(supports.values(),default=None),
                            snapshot_version=e["snapshot_version"], command_sha256=e["command_sha256"]))
     return result
 
@@ -123,6 +127,10 @@ def summarize(root, out_csv, out_json):
     dirs = {p.name:p for p in sorted(root.iterdir()) if p.is_dir() and
             any((p/name).is_file() for name in ("summary.json","summary.json.gz"))}
     rows = {key:read_summary(path) for key,path in dirs.items()}
+    models = {}
+    for path in (root/"models").glob("*.json"):
+        payload = path.read_bytes()
+        models[hashlib.sha256(payload).hexdigest()] = len(json.loads(payload)["physical_training_pairs"])
     events_by_run = {key:read_events(path) for key,path in dirs.items()}
     control_events = {row["case"]:events_by_run[key] for key,row in rows.items() if row["policy"]=="J0"}
     control_events[BASE_CASE] = read_events(OLD_J0)
@@ -158,6 +166,11 @@ def summarize(root, out_csv, out_json):
                     first_pose = dict(step=step, public_pose_displacements=moved)
                     break
         seconds = metrics["h300_seconds"]
+        p1 = refs[row["case"]].get("P1")
+        full_p1_trace_match = None if seconds is None or p1 is None else row["trace"] == p1["trace"]
+        full_p1_commitment_match = None if full_p1_trace_match is None else (
+            list(map(applied,row["commitments"])) == list(map(applied,p1["commitments"])))
+        supports = [a["max_legal_support"] for a in actions if a["max_legal_support"] is not None]
         gain = {k: None if seconds is None or v is None else 100*(1-seconds/v) for k,v in reference.items()}
         j0_gain = gain.get("J0")
         verdict = ("control" if row["policy"]=="J0" else "failure" if metrics["success"] is False else
@@ -167,12 +180,16 @@ def summarize(root, out_csv, out_json):
                    "regressed_vs_J0" if j0_gain<-1e-8 else "no_h300_gain_vs_J0")
         records.append(dict(run=label, case=row["case"], policy=row["policy"], status=row["status"],
                             ticks=len(row["trace"]), wall_seconds=row["seconds"], checkpoint_sha256=row["checkpoint_sha256"],
+                            base_sha256=row["base_sha256"],
                             intervention_step=row["intervention_step"], requested_pair=row["requested_pair"],
                             driver_sha256=row["driver_sha256"],
+                            training_pairs=models.get(row["checkpoint_sha256"],0),
                             **metrics, choices=len(actions), mixed_events=sum(a["mixed"] for a in actions),
                             changed_choices=choices_changed, changed_roles=roles_changed,
                             first_committed_difference_tick=actual_first_diff, first_radio_difference_tick=first_radio_trace_diff,
                             first_public_pose_difference=first_pose,
+                            full_p1_trace_match=full_p1_trace_match, full_p1_commitment_match=full_p1_commitment_match,
+                            max_legal_support=max(supports,default=None),
                             comparisons=reference, gain_percent=gain, verdict=verdict, events=actions,
                             initial_sha256=row["initial_sha256"],config_sha256=row["config_sha256"], error=row["error"]))
     for label, row in fresh:
@@ -191,13 +208,15 @@ def summarize(root, out_csv, out_json):
         blob = (root/"models"/f"{name}.json").read_bytes()
         records.append(dict(run=name, case=BASE_CASE, policy="all_roles", status="offline",
                             checkpoint_sha256=hashlib.sha256(blob).hexdigest(), comparisons={}, gain_percent={},
+                            training_pairs=len(json.loads(blob)["physical_training_pairs"]),
                             verdict=decision, events=json.loads(prototype.read_text())))
     fields = ["run","case","policy","intervention_step","requested_pair","status","ticks","wall_seconds",
-              "h300_seconds","radio_first","stable_start","tasks_done",
+              "h300_seconds","radio_first","radio_stable_start","stable_start","tasks_done",
               "safe","success","collisions","no_fly_violations","choices","mixed_events","changed_choices",
               "changed_roles","first_committed_difference_tick","first_radio_difference_tick",
+              "full_p1_trace_match","full_p1_commitment_match","max_legal_support",
               "J0_seconds","P1_seconds","R1_seconds","R0_seconds","P0_seconds","gain_vs_J0_pct","gain_vs_P1_pct",
-              "gain_vs_R1_pct","gain_vs_R0_pct","checkpoint_sha256","driver_sha256","verdict","error"]
+              "gain_vs_R1_pct","gain_vs_R0_pct","checkpoint_sha256","base_sha256","training_pairs","driver_sha256","verdict","error"]
     with out_csv.open("w",newline="") as handle:
         writer = csv.DictWriter(handle,fieldnames=fields,lineterminator="\n")
         writer.writeheader()

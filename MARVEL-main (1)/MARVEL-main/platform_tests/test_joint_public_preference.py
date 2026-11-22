@@ -7,7 +7,7 @@ import numpy as np
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
-from fit_joint_public_preference import validated_score
+from fit_joint_public_preference import require_applied_choice, validated_score
 from integrations.gppo.public_pair_preference import (
     PublicPairPreference, event_features, make_checkpoint, search_donor_regret,
 )
@@ -76,6 +76,16 @@ def test_selector_cannot_override_hard_mask():
 def test_fit_rejects_partial_physical_returns():
     with pytest.raises(ValueError,match="H300"):
         validated_score(dict(trace=[{}],commitments=[[]],score=None))
+
+
+def test_fit_requires_a_matching_atomic_receipt_and_physically_recorded_commitment():
+    receipt = dict(slot_id=100, uav_id=2, task_type=1)
+    event = dict(step=10, selected=[100,2], receipt=receipt)
+    require_applied_choice(event, {"commitments": [[], [receipt]]})
+    with pytest.raises(ValueError,match="commitment"):
+        require_applied_choice(event, {"commitments": [[], []]})
+    with pytest.raises(ValueError,match="commitment"):
+        require_applied_choice({**event,"selected":[100,3]}, {"commitments": [[], [receipt]]})
 
 
 def test_checkpoint_rejects_bad_digest(tmp_path):

@@ -45,6 +45,8 @@ min_f sum_i (f(s_i,a_alt) - f(s_i,a_J0) - y_i)^2 + 0.20 ||f||_K^2
 
 第一次部署的两个 H300 均成功且安全。P2-S 在静态例得到 39.0 秒，和实际单动作干预的全窗口评分及稳定提交相符。它在 6 次真实提交中有 1 次相对同图 J0 改选，且角色仍为 Search。第 3 秒冻结模型给予改选配对的温度 1 概率约为 0.21%，组合分布给予 64.28%，原首选配对降至 1.50%。贪心执行的实际原子回执为 slot 100000／UAV 14。第 4 秒采到的延迟公开位置中，UAV 4 与 14 相对 J0 分别相差 0.999 和 1.808 米。第 13.0 秒计分连通率首次分开。最后首次通信达标从 79.1 秒变为 36.0 秒。39.0 秒持平 R1，仍比 R0 的 31.0 秒慢 8 秒。
 
+原异常的逐 tick 对齐显示，J0/P1 的 UAV 22 被改派到远锚点，第 24 秒仍距锚点 46.008 米，增援条件因此未满足；R1 的同一 UAV 距锚点 0.047 米，低于 0.5 米门槛。更正第 3 秒 Search 后，第 24 秒按原条件提交同一增援 Relay 200017／UAV 3。控制与更正路径都使用完整计分，Search 完成差 2.0 秒，Search 完成后等待稳定通信的差为 41.1 秒，确认稳定期均为 3 秒。静态反事实支持由 Search 分配经拓扑、锚点与增援条件传导的机制。[逐 tick 旧诊断](JOINT_POLICY_CAUSAL_AUDIT.md)
+
 P2-S 在动态例的 7 次提交均与 J0 相同，完整计时维持 41.2 秒，最大动作支持度在采样事件上不超过约 0.104，低于部署门槛 0.42。这是一次未迁移的真实结果。动态最近成本早期 Relay 干预改变了 t=1 的提交并得到 38.0 秒，仍慢于 R0 的 30.7 秒。两轮数据表明，应把研究从单一场景的相似性泛化转向显式区分候选所在的资源机会成本。
 
 ## 第二轮物理分叉和供体特征
@@ -55,11 +57,11 @@ P2-S 在动态例的 7 次提交均与 J0 相同，完整计时维持 41.2 秒�
 
 ## 复现首轮与第二轮
 
-在项目目录设置下列环境。独立物理运行可在四个终端中执行，每条命令的输出目录需要为空。已有归档可以直接用于训练与汇总，完整复跑保留原时钟。
+在项目目录按 `handoff/cloud/CLOUD_REPRODUCTION.md` 安装 CPU 依赖并激活环境。独立物理运行可在四个终端中执行，每条命令的输出目录需要为空。已有归档可以直接用于训练与汇总，完整复跑保留原时钟。
 
 ```bash
 export XDG_CACHE_HOME=/tmp/marvel-cache MPLCONFIGDIR=/tmp/marvel-mpl
-py=/workspace/marvel-audit-venv/bin/python
+py=${MARVEL_AUDIT_PYTHON:-python}
 out=/tmp/marvel-autoresearch
 mkdir -p "$out/models"
 run() { "$py" -B scripts/run_joint_autoresearch.py --out "$out/$1" "${@:2}"; }
@@ -93,7 +95,7 @@ done
 
 ## 第二轮结果与部署校准
 
-供体机会成本分叉真实改选 UAV 13，于 29.6 秒达标并以 32.6 秒完成，较最近成本 UAV 24 分叉的 38.0 秒缩短 5.4 秒，较 J0 的 41.2 秒缩短 8.6 秒，三者均通过全窗口安全。两个分叉的非 Relay 完成均为 11.1 秒。本次较慢的名义 Relay 供体反而产生更快的完整通信结果，与公共资源机会成本假设一致。它仍比原 R0 的 30.7 秒慢 1.9 秒。
+供体机会成本分叉真实改选 UAV 13，于 29.6 秒达标并以 32.6 秒完成，较最近成本 UAV 24 分叉的 38.0 秒缩短 5.4 秒，较 J0 的 41.2 秒缩短 8.6 秒，三者均通过全窗口安全。两个分叉的非 Relay 完成均为 11.1 秒。第 4 秒，最近成本分叉的 Search 100003 由 UAV 26 执行，供体感知分叉仍可使用 UAV 24，并在第 19 秒提交了 Relay 200004／UAV 1。这些回执证实一次供体选择改变了后续资源和桥接承诺。它仍比原 R0 的 30.7 秒慢 1.9 秒。
 
 静态条件分叉保留 P2-S 第 3 秒纠正的 Search，再提前一秒派 UAV 22 执行 Relay。完整耗时由 39.0 秒增至 80.1 秒，通信首次达标由 36.0 秒推迟至 77.1 秒，非 Relay 完成时间均为 10.1 秒。该臂安全完成。这个负结果排除了把提前 Relay 当作统一规则的做法，并作为一个真实负回报配对保留。此配对的两端在分叉前、分叉状态、遮罩、输入摘要和其余时刻的继续策略上使用相同冻结 P2-S；其来源 checkpoint SHA 与五组 J0 继续策略配对分别存入训练数据。混合这些配对是离策略拟合，部署仍须同环境完整计分。
 
@@ -126,4 +128,12 @@ run p2-60-dynamic --case 60_dynamic_1981204 --policy learned --checkpoint "$out/
 run p2-holdout --case 30_static_240327 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
 ```
 
-P2-O 的两个开发窗口分别与所对应的静态 Search 分叉、动态供体分叉在全部 3,000 条评分记录和稳定 ID 提交上逐条相同。供体模型从原始配对重拟合得到逐字节相同的 checkpoint。第 21:58 后的模型选择文件与运行日志保存于证据目录。相关测试 67 项通过；继承 Phase 2 回归 157 项通过、2 项历史样例缺失而跳过，8 个冻结 checkpoint 通过 SHA-256 和严格 CPU 加载。
+P2-O 的两个开发窗口分别与所对应的静态 Search 分叉、动态供体分叉在全部 3,000 条评分记录和稳定 ID 提交上逐条相同。供体模型从原始配对重拟合得到逐字节相同的 checkpoint。模型选择文件与运行日志保存于证据目录。联合回归首轮 67 项通过，增加训练配对原子回执检查后，针对性回归 48 项通过。继承 Phase 2 回归 157 项通过，2 项历史样例缺失而跳过，8 个冻结 checkpoint 通过 SHA-256 和严格 CPU 加载。
+
+```bash
+"$py" -B -m pytest -p no:cacheprovider -q \
+  platform_tests/test_joint_public_preference.py platform_tests/test_joint_policy_causal.py \
+  platform_tests/test_joint_event_ppo.py platform_tests/test_joint_atomic.py \
+  platform_tests/test_joint_completion_metric.py
+"$py" -B scripts/verify_joint_shadow.py --phase2 --out /tmp/marvel-phase2-regression.json
+```

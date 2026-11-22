@@ -37,6 +37,14 @@ def applied(batch):
     return [(r["slot_id"], r["uav_id"], r["task_type"]) for r in batch]
 
 
+def require_applied_choice(event, summary):
+    receipt = event.get("receipt")
+    step = event["step"]
+    if (receipt is None or event["selected"] != [receipt["slot_id"], receipt["uav_id"]]
+            or applied([receipt]) != applied(summary["commitments"][step//10])):
+        raise ValueError("Counterfactual action does not match the real atomic commitment")
+
+
 def validated_score(row):
     if (len(row["trace"]) != 3000 or len(row["commitments"]) != 300
             or joint_completion_metric(row["trace"],300) != row["score"]):
@@ -74,6 +82,8 @@ def contrast(control_dir, treatment_dir, *, control=None, control_events=None, o
             or ref["selected"] != observed[reference_key] or ref["selected"] == observed["selected"]
             or [e["step"] for e in events.values() if e.get("mode")==mode] != [step]):
         raise ValueError("Counterfactual lacks an identical input or a changed committed choice")
+    require_applied_choice(ref, control)
+    require_applied_choice(observed, treated)
     rows = observed["rows"]
     by_pair = {(r["slot"],r["uav"]):i for i,r in enumerate(rows)}
     oi = by_pair[tuple(ref["selected"])]

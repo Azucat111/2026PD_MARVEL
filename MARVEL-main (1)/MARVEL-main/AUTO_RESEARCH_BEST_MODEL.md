@@ -28,7 +28,7 @@ checkpoint 为 `artifacts/joint_autoresearch_20261122/runs/models/p2-o-calibrate
 
 ```bash
 export XDG_CACHE_HOME=/tmp/marvel-cache MPLCONFIGDIR=/tmp/marvel-mpl
-py=/workspace/marvel-audit-venv/bin/python
+py=${MARVEL_AUDIT_PYTHON:-python}
 a=artifacts/joint_autoresearch_20261122
 model="$a/runs/models/p2-o-calibrated.json"
 sha=$(sha256sum "$model" | cut -d' ' -f1)
