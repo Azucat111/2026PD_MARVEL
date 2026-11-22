@@ -98,3 +98,32 @@ done
 静态条件分叉保留 P2-S 第 3 秒纠正的 Search，再提前一秒派 UAV 22 执行 Relay。完整耗时由 39.0 秒增至 80.1 秒，通信首次达标由 36.0 秒推迟至 77.1 秒，非 Relay 完成时间均为 10.1 秒。该臂安全完成。这个负结果排除了把提前 Relay 当作统一规则的做法，并作为一个真实负回报配对保留。此配对的两端在分叉前、分叉状态、遮罩、输入摘要和其余时刻的继续策略上使用相同冻结 P2-S；其来源 checkpoint SHA 与五组 J0 继续策略配对分别存入训练数据。混合这些配对是离策略拟合，部署仍须同环境完整计分。
 
 六组物理对照拟合供体特征模型后，原系数 0.25 在动态图仍偏向 UAV 24。该图中 J0 对 Relay 13 和 Relay 24 的 logit 分别为 −22.84、−8.19。用真实图比较了五个先验/正则组合，相同正则 0.20 下把先验系数调到 0.15 已将这两个候选的组合分数顺序翻到 UAV 13（−1.477 对 −1.536），并保留在已记录 P2-S 静态路径上的 Search 动作。继续降低正则的变体有额外施加第 1 秒静态 Relay 的情形，未追加物理运行。校准只使用两个开发案例。由此冻结要跑完整部署的 P2-O（`p2-o-calibrated.json`），SHA-256 `52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276`。
+
+P2-O 真实部署在这两个开发图上分别提交了 Search 100000／UAV 14 和 Relay 200003／UAV 13。候选图的合法边数分别是 37 和 86，掩码未改。一次改选的组合同图概率如下，均为诊断用归一化分布，实际策略是确定性贪心。
+
+| 场景与时刻 | 原选择 → 新提交 | 冻结 J0 对新动作概率 | P2-O 对新动作概率 |
+|---|---|---:|---:|
+| 30 静态第 3 秒 | Search 100001／4 → Search 100000／14 | 0.2098% | 73.6938% |
+| 30 动态第 1 秒 | Search 100003／24 → Relay 200003／13 | 2.7980e−9 | 8.3347% |
+
+两个 P2-O 开发窗口完成，均安全成功。静态 39.0 秒复现角色内修正，动态 32.6 秒复现供体感知干预。两场合计 71.6 秒，相对角色内 P2-S 的 80.2 秒再减少 8.6 秒。2026-11-22 21:58:22（UTC+8）按预先冻结规则选择校准后的 P2-O，后续仅测迁移不再训练。先验校准、拟合和角色先验回放中的其它变体分别保留。
+
+### 供体模型与冻结后物理运行的复现
+
+```bash
+fit --control "$control" --treatment "$out/ct-search" "$out/ct-relay1" "$out/ct-relay3" \
+  --extra-pair "$out/j0-dynamic" "$out/ct-dynamic" \
+  --extra-pair "$out/j0-dynamic" "$out/ct-donor-aware" \
+  --extra-pair "$out/p2-s-static" "$out/ct-after-search" \
+  --variant donor_aware_calibrated --out "$out/models/p2-o-calibrated.json"
+o=$(sha256sum "$out/models/p2-o-calibrated.json" | cut -d' ' -f1)
+run p2-o-static --case 30_static_1280021 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+run p2-o-dynamic --case 30_dynamic_1280022 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+run j0-60-static --case 60_static_9164 --policy J0
+run j0-60-dynamic --case 60_dynamic_1981204 --policy J0
+run p2-60-static --case 60_static_9164 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+run p2-60-dynamic --case 60_dynamic_1981204 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+run p2-holdout --case 30_static_240327 --policy learned --checkpoint "$out/models/p2-o-calibrated.json" --sha256 "$o"
+```
+
+P2-O 的两个开发窗口分别与所对应的静态 Search 分叉、动态供体分叉在全部 3,000 条评分记录和稳定 ID 提交上逐条相同。供体模型从原始配对重拟合得到逐字节相同的 checkpoint。第 21:58 后的模型选择文件与运行日志保存于证据目录。相关测试 67 项通过；继承 Phase 2 回归 157 项通过、2 项历史样例缺失而跳过，8 个冻结 checkpoint 通过 SHA-256 和严格 CPU 加载。

@@ -1,0 +1,49 @@
+{
+  "candidates": [
+    {
+      "cases": [
+        "30_static_1280021",
+        "30_dynamic_1280022"
+      ],
+      "checkpoint_sha256": "2195937d27252785fc1049a511aff893e9f0a692d73cdddeeb33f371162df509",
+      "eligible": true,
+      "label": "p2-s",
+      "safe_complete": true,
+      "scores": [
+        39.0,
+        41.2
+      ],
+      "sum_seconds": 80.2
+    },
+    {
+      "cases": [
+        "30_static_1280021",
+        "30_dynamic_1280022"
+      ],
+      "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+      "eligible": true,
+      "label": "p2-o",
+      "safe_complete": true,
+      "scores": [
+        39.0,
+        32.6
+      ],
+      "sum_seconds": 71.6
+    }
+  ],
+  "selected": {
+    "cases": [
+      "30_static_1280021",
+      "30_dynamic_1280022"
+    ],
+    "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+    "eligible": true,
+    "label": "p2-o",
+    "safe_complete": true,
+    "scores": [
+      39.0,
+      32.6
+    ],
+    "sum_seconds": 71.6
+  }
+}

@@ -1,0 +1,33 @@
+SMOKE_OK models=8 finite_legal_logit=True
+........................................................................ [ 45%]
+....................................................................ss.. [ 90%]
+...............                                                          [100%]
+=============================== warnings summary ===============================
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64
+  /workspace/marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'
+    prop = Group((name + Suppress("=") + comma_separated(value)) | oneOf(_CONSTANTS))
+
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85
+  /workspace/marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'
+    parse = parser.parseString(pattern)
+
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89
+  /workspace/marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'
+    parser.resetCache()
+
+../../../marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_mathtext.py:45
+  /workspace/marvel-audit-venv/lib/python3.12/site-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'
+    ParserElement.enablePackrat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+157 passed, 2 skipped, 14 warnings in 60.20s (0:01:00)
