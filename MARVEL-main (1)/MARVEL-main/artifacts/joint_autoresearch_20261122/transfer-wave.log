@@ -2,3 +2,6 @@ frozen {'cases': ['30_static_1280021', '30_dynamic_1280022'], 'checkpoint_sha256
 started p2-60-dynamic 60_dynamic_1981204 3247 wall_limit 2259
 started p2-60-static 60_static_9164 3248 wall_limit 2259
 started p2-holdout 30_static_240327 4257 wall_limit 1639
+finished p2-60-dynamic 0
+finished p2-60-static 0
+finished p2-holdout 0

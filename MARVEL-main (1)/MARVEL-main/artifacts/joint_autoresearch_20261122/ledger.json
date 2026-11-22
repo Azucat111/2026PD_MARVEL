@@ -1858,6 +1858,308 @@
   },
   {
     "base_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+    "case": "60_dynamic_1981204",
+    "changed_choices": 0,
+    "changed_roles": 0,
+    "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+    "choices": 4,
+    "collisions": 0,
+    "comparisons": {
+      "J0": 18.0,
+      "P0": 28.0,
+      "P1": 18.0,
+      "R0": 28.0,
+      "R1": 16.0
+    },
+    "config_sha256": "eface576d91d94edc23f466ca111643848a21542d73b8004b7bb92f97ea0e1d6",
+    "driver_sha256": "3a13fad4a877bf0f916408c62b0fa7e85ebdf1d2327cafdc2770dfb2ea0b860d",
+    "error": null,
+    "events": [
+      {
+        "command_sha256": "189b6171e3ccee547ec28d064e4edd6ab331187de7985eeca36d383288107eb9",
+        "j0_choice_combined_probability": 0.1607233615061291,
+        "j0_choice_support": 0.0016757188586881016,
+        "j0_probability_for_j0": 0.8856227397918701,
+        "j0_probability_for_selected": 0.8856227397918701,
+        "j0_raw_logit_for_j0": 21.832012176513672,
+        "j0_raw_logit_for_selected": 21.832012176513672,
+        "j0_role": 1,
+        "max_legal_support": 0.03939185874037279,
+        "mixed": false,
+        "pair": [
+          100002,
+          44
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100002,
+          44
+        ],
+        "selected_combined_probability": 0.1607233615061291,
+        "snapshot_version": "extended-joint-single-action-v1:1:b55c1d972aefc535f62e3ef7109111066e25beab6311a9b7c9c36e9f4f1e5d52",
+        "step": 10
+      },
+      {
+        "command_sha256": "e79fc9f1c3d43d8ff46aa9381d8005254a9fcef5071dd5e950fec049ce71d94e",
+        "j0_choice_combined_probability": 0.06847565307005583,
+        "j0_choice_support": 0.031731582337725224,
+        "j0_probability_for_j0": 0.5789593458175659,
+        "j0_probability_for_selected": 0.5789593458175659,
+        "j0_raw_logit_for_j0": 16.344560623168945,
+        "j0_raw_logit_for_selected": 16.344560623168945,
+        "j0_role": 1,
+        "max_legal_support": 0.20156506593115273,
+        "mixed": true,
+        "pair": [
+          100000,
+          32
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100000,
+          32
+        ],
+        "selected_combined_probability": 0.06847565307005583,
+        "snapshot_version": "extended-joint-single-action-v1:2:5e01dc1eeb4ee86ec813cebf46039ff85f1a80b90650726758eac7ddb87f33b1",
+        "step": 20
+      },
+      {
+        "command_sha256": "6241f39ff44dc83766d0024b2d23face1e4dd62f6306d3fbc401da5152bde6f0",
+        "j0_choice_combined_probability": 0.17646077928503193,
+        "j0_choice_support": 0.021386495030346484,
+        "j0_probability_for_j0": 0.990767776966095,
+        "j0_probability_for_selected": 0.990767776966095,
+        "j0_raw_logit_for_j0": 20.296606063842773,
+        "j0_raw_logit_for_selected": 20.296606063842773,
+        "j0_role": 1,
+        "max_legal_support": 0.06960555415883542,
+        "mixed": true,
+        "pair": [
+          100003,
+          54
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100003,
+          54
+        ],
+        "selected_combined_probability": 0.17646077928503193,
+        "snapshot_version": "extended-joint-single-action-v1:3:9a205f5d6a2a4e936cfce7b65629bb809ac67fa29eeb030c9f965a7ff0e45a42",
+        "step": 30
+      },
+      {
+        "command_sha256": "669fd1a137a2f9c69b2d7dce673bec89771300c88cdc2f5502613167e7263f57",
+        "j0_choice_combined_probability": 0.1632078416124007,
+        "j0_choice_support": 0.01222834915254392,
+        "j0_probability_for_j0": 0.9141127467155457,
+        "j0_probability_for_selected": 0.9141127467155457,
+        "j0_raw_logit_for_j0": 19.617252349853516,
+        "j0_raw_logit_for_selected": 19.617252349853516,
+        "j0_role": 1,
+        "max_legal_support": 0.02459786356488014,
+        "mixed": true,
+        "pair": [
+          100001,
+          48
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100001,
+          48
+        ],
+        "selected_combined_probability": 0.1632078416124007,
+        "snapshot_version": "extended-joint-single-action-v1:4:8eda6ffa007282ca64ba3969e8f01fe947344d803b4ddc3eea68f709da39e99a",
+        "step": 40
+      }
+    ],
+    "first_committed_difference_tick": null,
+    "first_public_pose_difference": null,
+    "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
+    "full_p1_commitment_match": true,
+    "full_p1_trace_match": true,
+    "gain_percent": {
+      "J0": 0.0,
+      "P0": 35.71428571428571,
+      "P1": 0.0,
+      "R0": 35.71428571428571,
+      "R1": -12.5
+    },
+    "h300_seconds": 18.0,
+    "initial_sha256": "70241cf994a33315669307f5f048f0f88035c33ffa063a356f290ec8140e55de",
+    "intervention_step": null,
+    "max_legal_support": 0.20156506593115273,
+    "mixed_events": 3,
+    "no_fly_violations": 0,
+    "policy": "learned",
+    "radio_first": 0.8,
+    "radio_stable_start": 4.2,
+    "requested_pair": null,
+    "run": "p2-60-dynamic",
+    "safe": true,
+    "stable_start": 15.0,
+    "status": "complete",
+    "success": true,
+    "tasks_done": 6.2,
+    "ticks": 3000,
+    "training_pairs": 6,
+    "verdict": "no_h300_gain_vs_J0",
+    "wall_seconds": 2106.259155875
+  },
+  {
+    "base_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+    "case": "60_static_9164",
+    "changed_choices": 0,
+    "changed_roles": 0,
+    "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+    "choices": 4,
+    "collisions": 0,
+    "comparisons": {
+      "J0": 14.9,
+      "P0": 7.6000000000000005,
+      "P1": 14.9,
+      "R0": 18.2,
+      "R1": 17.0
+    },
+    "config_sha256": "b42ca1f0b2181cd2064d1f61723a4dace28fd9e3e598dab5f3b0d37b4a12b762",
+    "driver_sha256": "3a13fad4a877bf0f916408c62b0fa7e85ebdf1d2327cafdc2770dfb2ea0b860d",
+    "error": null,
+    "events": [
+      {
+        "command_sha256": "9dedd87f4d601c0614e81b430dc9b2a9f0243af57737ebe67e32604f152f52a4",
+        "j0_choice_combined_probability": 0.14480250381414836,
+        "j0_choice_support": 0.0714303838351824,
+        "j0_probability_for_j0": 0.5231908559799194,
+        "j0_probability_for_selected": 0.5231908559799194,
+        "j0_raw_logit_for_j0": 3.9055655002593994,
+        "j0_raw_logit_for_selected": 3.9055655002593994,
+        "j0_role": 1,
+        "max_legal_support": 0.5329521165665612,
+        "mixed": true,
+        "pair": [
+          100000,
+          51
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100000,
+          51
+        ],
+        "selected_combined_probability": 0.14480250381414836,
+        "snapshot_version": "extended-joint-single-action-v1:1:fc101af824b2f6aa3ddae227b6680a618dbe7ee3da32b7d29b840126ef6ec466",
+        "step": 10
+      },
+      {
+        "command_sha256": "446dc257117c598be613f054b76ce6fa7fc7e3348537d20d0d777897f0a98c1e",
+        "j0_choice_combined_probability": 0.1901068864964154,
+        "j0_choice_support": 0.08074086604100524,
+        "j0_probability_for_j0": 0.9048682451248169,
+        "j0_probability_for_selected": 0.9048682451248169,
+        "j0_raw_logit_for_j0": 11.029911041259766,
+        "j0_raw_logit_for_selected": 11.029911041259766,
+        "j0_role": 1,
+        "max_legal_support": 0.09536993031878899,
+        "mixed": true,
+        "pair": [
+          100002,
+          42
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100002,
+          42
+        ],
+        "selected_combined_probability": 0.1901068864964154,
+        "snapshot_version": "extended-joint-single-action-v1:2:c50b6c5cabbb5a3a24568e7360873f7ec55368dc0c1629add2b10b2bed99cf1b",
+        "step": 20
+      },
+      {
+        "command_sha256": "41f459154eef31da9166714b5e353d8070455e7cd6eff8d1411e287d9b2799ab",
+        "j0_choice_combined_probability": 0.6068819142217883,
+        "j0_choice_support": 0.008467930870759864,
+        "j0_probability_for_j0": 0.9999901056289673,
+        "j0_probability_for_selected": 0.9999901056289673,
+        "j0_raw_logit_for_j0": 1.0721913576126099,
+        "j0_raw_logit_for_selected": 1.0721913576126099,
+        "j0_role": 2,
+        "max_legal_support": 0.012290595543585251,
+        "mixed": false,
+        "pair": [
+          200051,
+          35
+        ],
+        "role": 2,
+        "same_state_j0": [
+          200051,
+          35
+        ],
+        "selected_combined_probability": 0.6068819142217883,
+        "snapshot_version": "extended-joint-single-action-v1:3:950e819f47ef2cbbdfc8b1fee2a7671034333e744f8b93f371ba8ad5e8d66bcb",
+        "step": 30
+      },
+      {
+        "command_sha256": "87f6c0038650efd76bb0412ceb1c361dbbd7b39a49f189ee4ccdcfe159d2d469",
+        "j0_choice_combined_probability": 0.3221225834850192,
+        "j0_choice_support": 0.0014998791359496185,
+        "j0_probability_for_j0": 0.9969691634178162,
+        "j0_probability_for_selected": 0.9969691634178162,
+        "j0_raw_logit_for_j0": 8.539505004882812,
+        "j0_raw_logit_for_selected": 8.539505004882812,
+        "j0_role": 1,
+        "max_legal_support": 0.00218934408875491,
+        "mixed": false,
+        "pair": [
+          100001,
+          6
+        ],
+        "role": 1,
+        "same_state_j0": [
+          100001,
+          6
+        ],
+        "selected_combined_probability": 0.3221225834850192,
+        "snapshot_version": "extended-joint-single-action-v1:4:e5fb8c3a50ccda623c32eb8666bee267dbf86539817ed432b39c64d10f856480",
+        "step": 40
+      }
+    ],
+    "first_committed_difference_tick": null,
+    "first_public_pose_difference": null,
+    "first_radio_difference_tick": null,
+    "full_j0_commitment_match": true,
+    "full_j0_trace_match": true,
+    "full_p1_commitment_match": true,
+    "full_p1_trace_match": true,
+    "gain_percent": {
+      "J0": 0.0,
+      "P0": -96.05263157894737,
+      "P1": 0.0,
+      "R0": 18.131868131868124,
+      "R1": 12.352941176470589
+    },
+    "h300_seconds": 14.9,
+    "initial_sha256": "7a6495214922571ca571a3d412ba45a9a837be87aa60cd663ffc9d7573b75793",
+    "intervention_step": null,
+    "max_legal_support": 0.5329521165665612,
+    "mixed_events": 2,
+    "no_fly_violations": 0,
+    "policy": "learned",
+    "radio_first": 11.9,
+    "radio_stable_start": 11.9,
+    "requested_pair": null,
+    "run": "p2-60-static",
+    "safe": true,
+    "stable_start": 11.9,
+    "status": "complete",
+    "success": true,
+    "tasks_done": 4.6000000000000005,
+    "ticks": 3000,
+    "training_pairs": 6,
+    "verdict": "no_h300_gain_vs_J0",
+    "wall_seconds": 2159.3324278669998
+  },
+  {
+    "base_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
     "case": "30_static_240327",
     "changed_choices": 0,
     "changed_roles": 0,
