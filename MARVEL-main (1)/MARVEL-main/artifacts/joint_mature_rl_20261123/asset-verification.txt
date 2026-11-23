@@ -1,0 +1,3 @@
+artifacts/joint_autoresearch_20261122 verified
+artifacts/joint_ppo_20261122 verified
+artifacts/joint_causal_20261122 verified
