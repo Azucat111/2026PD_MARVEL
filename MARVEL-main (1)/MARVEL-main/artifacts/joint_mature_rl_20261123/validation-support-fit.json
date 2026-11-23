@@ -1,8 +1,8 @@
 {
   "counts": {
-    "actual": 7,
-    "decisions": 14,
-    "same_state_j0": 2
+    "actual": 9,
+    "decisions": 19,
+    "same_state_j0": 3
   },
   "label": "post_freeze_diagnostic",
   "metric": "RMS normalized same-role nearest executed feature",
@@ -314,6 +314,116 @@
         "role": 2
       },
       "step": 590
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.325425817396474,
+        "pair": [
+          100001,
+          49
+        ],
+        "role": 1
+      },
+      "case": "60_static_24110803",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.608611948195853,
+        "pair": [
+          100003,
+          57
+        ],
+        "role": 1
+      },
+      "step": 10
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.7798505852130072,
+        "pair": [
+          100000,
+          31
+        ],
+        "role": 1
+      },
+      "case": "60_static_24110803",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.4249955747938533,
+        "pair": [
+          100003,
+          57
+        ],
+        "role": 1
+      },
+      "step": 20
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6089228608192179,
+        "pair": [
+          200031,
+          29
+        ],
+        "role": 2
+      },
+      "case": "60_static_24110803",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6089228608192179,
+        "pair": [
+          200031,
+          29
+        ],
+        "role": 2
+      },
+      "step": 30
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.2842658775561449,
+        "pair": [
+          100002,
+          21
+        ],
+        "role": 1
+      },
+      "case": "60_static_24110803",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6430635885957705,
+        "pair": [
+          100002,
+          13
+        ],
+        "role": 1
+      },
+      "step": 60
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.8520774622302681,
+        "pair": [
+          200021,
+          35
+        ],
+        "role": 2
+      },
+      "case": "60_static_24110803",
+      "same_state_j0": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.8443646729228973,
+        "pair": [
+          200021,
+          20
+        ],
+        "role": 2
+      },
+      "step": 240
     }
   ],
   "thresholds": {
