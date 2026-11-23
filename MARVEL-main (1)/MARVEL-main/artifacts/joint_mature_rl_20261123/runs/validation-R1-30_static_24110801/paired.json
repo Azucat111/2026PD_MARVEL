@@ -1,0 +1,27 @@
+{
+  "acceptance_claim": false,
+  "all_windows_complete": true,
+  "arms": {
+    "R1": {
+      "arm": "R1",
+      "case": "30_static_24110801",
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "compatibility_policy": false,
+      "config_sha256": "0d9c9d5888628cad2b80b0ec0a8bc8a47c277cb92cdfdc92e1182a2387423d91",
+      "initial_sha256": "e2d3dafdd80e0a36655175c94694911e1c68b68033828a72fdcaf3def9115688",
+      "score": {
+        "acceptance_claim": false,
+        "joint_success": true,
+        "physics_dt": 0.1,
+        "primary_search_metric_unchanged": true,
+        "secondary_joint_completion_seconds": 10.100000000000001,
+        "stable_seconds": 3.0,
+        "whole_window_safe": true
+      },
+      "seconds": 939.9678228679986,
+      "status": "complete"
+    }
+  },
+  "case": "30_static_24110801",
+  "initial_pairing": false
+}

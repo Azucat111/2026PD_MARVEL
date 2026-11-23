@@ -1,0 +1,191 @@
+{
+  "counts": {
+    "actual": 5,
+    "decisions": 8,
+    "same_state_j0": 1
+  },
+  "label": "post_freeze_diagnostic",
+  "metric": "RMS normalized same-role nearest executed feature",
+  "rows": [
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.5494604596351582,
+        "pair": [
+          100000,
+          16
+        ],
+        "role": 1
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9962880240628054,
+        "pair": [
+          100000,
+          15
+        ],
+        "role": 1
+      },
+      "step": 10
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.421352435554821,
+        "pair": [
+          100003,
+          29
+        ],
+        "role": 1
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9717254386528239,
+        "pair": [
+          100003,
+          15
+        ],
+        "role": 1
+      },
+      "step": 20
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.4475767542012414,
+        "pair": [
+          200001,
+          19
+        ],
+        "role": 2
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.7821812548284492,
+        "pair": [
+          200001,
+          14
+        ],
+        "role": 2
+      },
+      "step": 30
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.272267035901989,
+        "pair": [
+          200001,
+          7
+        ],
+        "role": 2
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.3900839734349246,
+        "pair": [
+          200001,
+          14
+        ],
+        "role": 2
+      },
+      "step": 120
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.289524472908113,
+        "pair": [
+          100001,
+          23
+        ],
+        "role": 1
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6660856448575594,
+        "pair": [
+          100002,
+          0
+        ],
+        "role": 1
+      },
+      "step": 190
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9826845565414324,
+        "pair": [
+          200023,
+          29
+        ],
+        "role": 2
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.754831069857382,
+        "pair": [
+          200023,
+          21
+        ],
+        "role": 2
+      },
+      "step": 260
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6626399881067659,
+        "pair": [
+          100002,
+          6
+        ],
+        "role": 1
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6626399881067659,
+        "pair": [
+          100002,
+          6
+        ],
+        "role": 1
+      },
+      "step": 270
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.8925535583907671,
+        "pair": [
+          200008,
+          18
+        ],
+        "role": 2
+      },
+      "case": "30_static_24110801",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6663742832151826,
+        "pair": [
+          200008,
+          6
+        ],
+        "role": 2
+      },
+      "step": 350
+    }
+  ],
+  "thresholds": {
+    "1": 1.074608115244881,
+    "2": 1.127424012894952
+  }
+}
