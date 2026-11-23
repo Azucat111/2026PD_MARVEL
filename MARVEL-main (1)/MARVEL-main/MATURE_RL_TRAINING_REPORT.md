@@ -73,3 +73,17 @@ DDQN 的正 Q 仍违背无折扣纯负成本的上界，表明合法图覆盖和
 |---|---|
 | `expanded-ddqn.pth` | `712ffda5bbcf29223af24b61fee2d7f33f1ce67b6c6fca948fb1460389ee0717` |
 | `expanded-sac.pth` | `19b414bb25a21dc695f1db8fecc8de3d6a803842ef59240a4770a16eb61570fb` |
+
+## 核对长期价值排序
+
+将最终两个 critic 的同图分数与八组已验证的完整共享前缀物理分叉对照。六组来自 P2-O 归档，两组来自本轮。DDQN 只排对 2/8，SAC 最小软 Q 排对 3/8。四个已知能缩短完整任务的旧 Search→Relay 分叉，两种 critic 都给出相反方向。新的 30 架动态 Search 配对真实差 64.1 秒，最终 DDQN 的 Q 差按奖励单位换算为 −1.70 秒，最终 SAC 为 +3.82 秒。两组符号和幅度属于已入回放的诊断。分叉使用固定但各自不同的后续策略，最优 Q 与 SAC 的软目标也各有不同，结果用来检验估值是否保留已观测的长期效应。
+
+完整对照保存在 `credit-contrasts-fit.json`。复算方法为
+
+```bash
+a=artifacts/joint_mature_rl_20261123
+"$py" -B scripts/audit_mature_rl_credit.py --replay "$a/expanded-replay.json.gz" \
+  --benchmark "$a/benchmark.json" \
+  --paired-labels artifacts/joint_autoresearch_20261122/runs/models/p2-o-calibrated.json \
+  --fits "$a/expanded-ddqn-fit.json" "$a/expanded-sac-fit.json" --out /tmp/credit-contrasts-fit.json
+```

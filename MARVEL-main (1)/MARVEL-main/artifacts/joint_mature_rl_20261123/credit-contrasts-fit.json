@@ -1,0 +1,274 @@
+[
+  {
+    "algorithm": "ddqn",
+    "case": "30_static_1280021",
+    "step": 30,
+    "intervention": "ct-search",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      100000,
+      14
+    ],
+    "measured_seconds_difference": 43.10000000000001,
+    "paired_critic_difference_seconds_equivalent": 1.8489038944244385,
+    "sign_matches": true
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_static_1280021",
+    "step": 10,
+    "intervention": "ct-relay1",
+    "old_pair": [
+      100002,
+      27
+    ],
+    "new_pair": [
+      200015,
+      29
+    ],
+    "measured_seconds_difference": 3.9000000000000057,
+    "paired_critic_difference_seconds_equivalent": -1.260988712310791,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_static_1280021",
+    "step": 30,
+    "intervention": "ct-relay3",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      200015,
+      29
+    ],
+    "measured_seconds_difference": 1.0,
+    "paired_critic_difference_seconds_equivalent": -5.923504829406738,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_dynamic_1280022",
+    "step": 10,
+    "intervention": "ct-dynamic",
+    "old_pair": [
+      100003,
+      24
+    ],
+    "new_pair": [
+      200003,
+      24
+    ],
+    "measured_seconds_difference": 3.200000000000003,
+    "paired_critic_difference_seconds_equivalent": -7.169106602668762,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_dynamic_1280022",
+    "step": 10,
+    "intervention": "ct-donor-aware",
+    "old_pair": [
+      100003,
+      24
+    ],
+    "new_pair": [
+      200003,
+      13
+    ],
+    "measured_seconds_difference": 8.600000000000001,
+    "paired_critic_difference_seconds_equivalent": -7.207059860229492,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_static_1280021",
+    "step": 40,
+    "intervention": "ct-after-search",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      200015,
+      22
+    ],
+    "measured_seconds_difference": -41.10000000000001,
+    "paired_critic_difference_seconds_equivalent": 5.0353288650512695,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "30_dynamic_24110602",
+    "step": 10,
+    "intervention": "collection-30_dynamic_24110602",
+    "old_pair": [
+      100002,
+      18
+    ],
+    "new_pair": [
+      100001,
+      0
+    ],
+    "measured_seconds_difference": 64.10000000000001,
+    "paired_critic_difference_seconds_equivalent": -1.6979777812957764,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "ddqn",
+    "case": "60_dynamic_24110604",
+    "step": 10,
+    "intervention": "collection-60_dynamic_24110604",
+    "old_pair": [
+      100003,
+      19
+    ],
+    "new_pair": [
+      200005,
+      20
+    ],
+    "measured_seconds_difference": -4.0,
+    "paired_critic_difference_seconds_equivalent": -1.4795583486557007,
+    "sign_matches": true
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_static_1280021",
+    "step": 30,
+    "intervention": "ct-search",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      100000,
+      14
+    ],
+    "measured_seconds_difference": 43.10000000000001,
+    "paired_critic_difference_seconds_equivalent": 0.9556424617767334,
+    "sign_matches": true
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_static_1280021",
+    "step": 10,
+    "intervention": "ct-relay1",
+    "old_pair": [
+      100002,
+      27
+    ],
+    "new_pair": [
+      200015,
+      29
+    ],
+    "measured_seconds_difference": 3.9000000000000057,
+    "paired_critic_difference_seconds_equivalent": -2.3271846771240234,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_static_1280021",
+    "step": 30,
+    "intervention": "ct-relay3",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      200015,
+      29
+    ],
+    "measured_seconds_difference": 1.0,
+    "paired_critic_difference_seconds_equivalent": -6.9512200355529785,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_dynamic_1280022",
+    "step": 10,
+    "intervention": "ct-dynamic",
+    "old_pair": [
+      100003,
+      24
+    ],
+    "new_pair": [
+      200003,
+      24
+    ],
+    "measured_seconds_difference": 3.200000000000003,
+    "paired_critic_difference_seconds_equivalent": -5.116192102432251,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_dynamic_1280022",
+    "step": 10,
+    "intervention": "ct-donor-aware",
+    "old_pair": [
+      100003,
+      24
+    ],
+    "new_pair": [
+      200003,
+      13
+    ],
+    "measured_seconds_difference": 8.600000000000001,
+    "paired_critic_difference_seconds_equivalent": -5.0168269872665405,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_static_1280021",
+    "step": 40,
+    "intervention": "ct-after-search",
+    "old_pair": [
+      100001,
+      4
+    ],
+    "new_pair": [
+      200015,
+      22
+    ],
+    "measured_seconds_difference": -41.10000000000001,
+    "paired_critic_difference_seconds_equivalent": 4.401429891586304,
+    "sign_matches": false
+  },
+  {
+    "algorithm": "sac",
+    "case": "30_dynamic_24110602",
+    "step": 10,
+    "intervention": "collection-30_dynamic_24110602",
+    "old_pair": [
+      100002,
+      18
+    ],
+    "new_pair": [
+      100001,
+      0
+    ],
+    "measured_seconds_difference": 64.10000000000001,
+    "paired_critic_difference_seconds_equivalent": 3.8225412368774414,
+    "sign_matches": true
+  },
+  {
+    "algorithm": "sac",
+    "case": "60_dynamic_24110604",
+    "step": 10,
+    "intervention": "collection-60_dynamic_24110604",
+    "old_pair": [
+      100003,
+      19
+    ],
+    "new_pair": [
+      200005,
+      20
+    ],
+    "measured_seconds_difference": -4.0,
+    "paired_critic_difference_seconds_equivalent": -1.1830329895019531,
+    "sign_matches": true
+  }
+]
