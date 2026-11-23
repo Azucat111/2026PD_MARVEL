@@ -1,7 +1,7 @@
 {
   "first_mixed_forks": [],
   "live_counts": {
-    "complete": 1,
+    "complete": 3,
     "prefix": 2
   },
   "pairs": [
@@ -148,6 +148,43 @@
   ],
   "rows": [
     {
+      "C": 106.60000000000001,
+      "arm": "J0",
+      "case": "30_dynamic_24110602",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "collisions": 0,
+      "config": "bd78d68355078bbe3156ac080c2645f51f17755387dfde540619ecdc0ecf9dd8",
+      "cross_role_count": 0,
+      "decisions": 7,
+      "direction_counts": {
+        "decisions": 7,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 3,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "19f16f45ada4d0e1fc35813a5c82e310dbb422ea52874ec3ba3e262835bb192a",
+      "mean_inference_ms": null,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 103.60000000000001,
+      "relay": 3,
+      "run": "j0-30_dynamic_24110602",
+      "safe": true,
+      "search": 4,
+      "search_done": 20.5,
+      "stable_start": 103.60000000000001,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1440.0394997450003
+    },
+    {
       "C": 40.5,
       "arm": "J0",
       "case": "30_static_24110601",
@@ -183,6 +220,42 @@
       "success": true,
       "ticks": 3000,
       "wall_seconds": 1141.1393820989997
+    },
+    {
+      "C": 6.800000000000001,
+      "arm": "J0",
+      "case": "60_static_24110603",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "collisions": 0,
+      "config": "4470e6dd515fbf5d886ab2cd39a15e5bfa3ac527ed3e69db6c4e4da9de57693b",
+      "cross_role_count": 0,
+      "decisions": 3,
+      "direction_counts": {
+        "decisions": 3,
+        "mixed": 0,
+        "mixed_relay": 0,
+        "search": 3
+      },
+      "error": null,
+      "inherited": false,
+      "init": "4a4defd05ec3a1a116b3a59f82ed734d901e644181f430e92bc62d5a5a2988d3",
+      "mean_inference_ms": null,
+      "mixed": 0,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 0.1,
+      "relay": 0,
+      "run": "j0-60_static_24110603",
+      "safe": true,
+      "search": 3,
+      "search_done": 3.8000000000000003,
+      "stable_start": 3.8000000000000003,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 2038.233037694
     },
     {
       "C": null,
