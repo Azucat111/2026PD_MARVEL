@@ -187,6 +187,11 @@ def main():
     archive_refs = ["archive-R0","archive-R1","archive-P1","archive-P2-O"]
     pairs = [pair_gain(rows_by,list(P2_OFFICIAL),a,b) for a in dev_arms for b in archive_refs]
     pairs.extend(pair_gain(rows_by,validation_cases,a,b) for a in ("ddqn","sac") for b in ("R0","R1","P2-O"))
+    selection_cases = ["30_static_24110701","60_dynamic_24110704"]
+    learning_curves = [pair_gain(rows_by,selection_cases,f"expanded-{a}",f"archive-{a}")
+                       for a in ("ddqn","sac")]
+    equal_budget = [pair_gain(rows_by,selection_cases,f"{stage}-ddqn",f"{stage}-sac")
+                    for stage in ("archive","expanded")]
     samples = [row for row in rows if not row["inherited"]]
     fields = ["run","case","arm","status","ticks","C","safe","success","search_done","radio_first","stable_start",
               "checkpoint_sha256","wall_seconds","decisions","mixed","search","relay","mixed_relay","changed_count",
@@ -197,7 +202,17 @@ def main():
         writer.writerows(rows)
     forks = [short_fork(f"{domain}_{24110601+i}",args.runs)
              for i,domain in enumerate(("30_static","30_dynamic","60_static","60_dynamic"))]
-    result = dict(rows=rows, pairs=pairs, first_mixed_forks=[f for f in forks if f is not None],
+    freeze_path = args.runs/"freeze.json"
+    if not freeze_path.is_file():
+        freeze_path = args.runs.parent/"freeze.json"
+    freeze = json.loads(freeze_path.read_text()) if freeze_path.is_file() else None
+    if freeze is not None:
+        for row in samples:
+            if row["run"].startswith("validation-") and row["arm"]==freeze["chosen"]:
+                if row["case"] not in freeze["validation_cases"] or row["checkpoint_sha256"]!=freeze["checkpoint_sha256"]:
+                    raise ValueError("Independent validation did not use the preregistered frozen checkpoint")
+    result = dict(rows=rows, pairs=pairs, learning_curves=learning_curves, equal_budget=equal_budget,
+                  freeze=freeze, first_mixed_forks=[f for f in forks if f is not None],
                   live_counts=dict(Counter(r["status"] for r in samples)))
     write(args.out,result)
     print(json.dumps(result["live_counts"], sort_keys=True))

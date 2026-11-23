@@ -1,0 +1,14 @@
+{
+  "behavior_seed": 24115422,
+  "checkpoint_sha256": null,
+  "driver_sha256": "1999343d308d0878a86ef7915756f8cb618d7cefacff08b68bbb0be1be3a919d",
+  "exploration": {
+    "epsilon": 0.18,
+    "first_mixed_only": true,
+    "mixed_epsilon": 0.85,
+    "top": 6
+  },
+  "policy_id": "explore",
+  "ticks": 3000,
+  "wall_limit_seconds": 4500.0
+}

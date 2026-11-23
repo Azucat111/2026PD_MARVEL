@@ -1,7 +1,57 @@
 {
-  "first_mixed_forks": [],
+  "equal_budget": [
+    {
+      "arm": "archive-ddqn",
+      "arm_seconds": 0,
+      "gain_percent": null,
+      "paired": 0,
+      "planned": 2,
+      "reference": "archive-sac",
+      "reference_seconds": 0,
+      "rows": []
+    },
+    {
+      "arm": "expanded-ddqn",
+      "arm_seconds": 0,
+      "gain_percent": null,
+      "paired": 0,
+      "planned": 2,
+      "reference": "expanded-sac",
+      "reference_seconds": 0,
+      "rows": []
+    }
+  ],
+  "first_mixed_forks": [
+    {
+      "case": "30_static_24110601",
+      "changed": false
+    }
+  ],
+  "freeze": null,
+  "learning_curves": [
+    {
+      "arm": "expanded-ddqn",
+      "arm_seconds": 0,
+      "gain_percent": null,
+      "paired": 0,
+      "planned": 2,
+      "reference": "archive-ddqn",
+      "reference_seconds": 0,
+      "rows": []
+    },
+    {
+      "arm": "expanded-sac",
+      "arm_seconds": 0,
+      "gain_percent": null,
+      "paired": 0,
+      "planned": 2,
+      "reference": "archive-sac",
+      "reference_seconds": 0,
+      "rows": []
+    }
+  ],
   "live_counts": {
-    "complete": 3,
+    "complete": 5,
     "prefix": 2
   },
   "pairs": [
@@ -148,6 +198,43 @@
   ],
   "rows": [
     {
+      "C": 40.5,
+      "arm": "explore",
+      "case": "30_static_24110601",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "b688f47117cfb0e3525828fbdcf2af5af1403a5c73782b5d038821484323f833",
+      "cross_role_count": 0,
+      "decisions": 6,
+      "direction_counts": {
+        "decisions": 6,
+        "mixed": 0,
+        "mixed_relay": 0,
+        "relay": 2,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "7215e1cfa7a7dbe200cda5d1bc5079e40c10186c87212e625f6f69e3099acfb6",
+      "mean_inference_ms": null,
+      "mixed": 0,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 37.5,
+      "relay": 2,
+      "run": "explore-30_static_24110601",
+      "safe": true,
+      "search": 4,
+      "search_done": 15.5,
+      "stable_start": 37.5,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1051.6942582009997
+    },
+    {
       "C": 106.60000000000001,
       "arm": "J0",
       "case": "30_dynamic_24110602",
@@ -220,6 +307,43 @@
       "success": true,
       "ticks": 3000,
       "wall_seconds": 1141.1393820989997
+    },
+    {
+      "C": 23.0,
+      "arm": "J0",
+      "case": "60_dynamic_24110604",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "collisions": 0,
+      "config": "15a047b416a201c058bee79647aaf95c29e38e5046e16438e82fb4b3c2a99703",
+      "cross_role_count": 0,
+      "decisions": 5,
+      "direction_counts": {
+        "decisions": 5,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 1,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "ed86a2a323bffa4e02782634b681bf7ae6c15468baa0a3b48fe8fecade379685",
+      "mean_inference_ms": null,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 20.0,
+      "relay": 1,
+      "run": "j0-60_dynamic_24110604",
+      "safe": true,
+      "search": 4,
+      "search_done": 9.700000000000001,
+      "stable_start": 20.0,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 2353.104704612
     },
     {
       "C": 6.800000000000001,

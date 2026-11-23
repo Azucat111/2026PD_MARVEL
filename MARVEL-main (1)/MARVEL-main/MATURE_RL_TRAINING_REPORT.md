@@ -36,3 +36,5 @@
 "$py" -B scripts/train_mature_rl.py --replay "$out/historical-replay.json.gz" --algo ddqn \
   --seed 6177 --updates 600 --n-step 3 --cql-weight .25 --out "$out/archive-ddqn-n3-cql.pth"
 ```
+
+历史回放的 63 个有后继决策的间隔中位数为 1.0 秒，范围 1–33 秒；15 个末端决策的物理间隔为 262–296 秒。全体训练事件成本的 69.3% 挂在各回合最后一次决策之后。这是对长时延回报的实际量化，也是检验多步回传的依据。
