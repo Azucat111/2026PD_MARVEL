@@ -98,7 +98,7 @@ class ExperimentRecorder(Recorder):
         return choice
 
 
-def run(args):
+def run(args, *, recorder_factory=ExperimentRecorder):
     if not 0 < args.ticks <= HORIZON or args.ticks % 10:
         raise ValueError("Tick budget must align with the controller")
     if args.policy in ("pair", "relay", "nearest_relay", "opportunity_relay") and args.step is None:
@@ -130,7 +130,7 @@ def run(args):
     failure = None
     with (gzip.open(args.out/"events.jsonl.gz", "wt") as events,
           ZipFile(args.out/"public.zip", "w", compression=ZIP_DEFLATED, compresslevel=1) as snapshots):
-        recorder = ExperimentRecorder(scheduler, events, snapshots, policy=args.policy,
+        recorder = recorder_factory(scheduler, events, snapshots, policy=args.policy,
                                       step=args.step, pair=tuple(args.pair) if args.pair else None, ranker=ranker)
         def monitor(builder, positions, **kwargs):
             return recorder.observe_demands(builder, positions, **kwargs)
