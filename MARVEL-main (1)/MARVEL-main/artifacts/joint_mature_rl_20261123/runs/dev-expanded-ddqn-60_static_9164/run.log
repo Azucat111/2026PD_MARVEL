@@ -1,0 +1,32 @@
+/workspace/2026PD_MARVEL/MARVEL-main (1)/MARVEL-main/utils/policy_adapter.py:460: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  ckpt = torch.load(str(checkpoint_path), map_location=self.device)
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 100, "seconds": 195.64}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 200, "seconds": 296.33}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 300, "seconds": 391.03}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 400, "seconds": 484.63}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 500, "seconds": 627.11}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 600, "seconds": 742.28}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 700, "seconds": 834.91}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 800, "seconds": 946.02}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 900, "seconds": 1041.99}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1000, "seconds": 1132.84}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1100, "seconds": 1222.38}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1200, "seconds": 1314.08}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1300, "seconds": 1405.06}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1400, "seconds": 1467.73}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1500, "seconds": 1528.72}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1600, "seconds": 1590.66}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1700, "seconds": 1651.35}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1800, "seconds": 1712.37}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 1900, "seconds": 1774.15}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2000, "seconds": 1836.41}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2100, "seconds": 1898.66}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2200, "seconds": 1960.66}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2300, "seconds": 2022.36}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2400, "seconds": 2084.77}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2500, "seconds": 2145.79}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2600, "seconds": 2207.47}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2700, "seconds": 2268.57}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2800, "seconds": 2330.6}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 2900, "seconds": 2392.12}
+{"case": "60_static_9164", "policy": "ddqn", "ticks": 3000, "seconds": 2453.4}
