@@ -2,7 +2,7 @@
   "first_mixed_forks": [],
   "live_counts": {
     "complete": 1,
-    "prefix": 1
+    "prefix": 2
   },
   "pairs": [
     {
@@ -265,6 +265,88 @@
       "success": null,
       "ticks": 100,
       "wall_seconds": 72.9092769179997
+    },
+    {
+      "C": null,
+      "arm": "archive-sac",
+      "case": "30_static_1280021",
+      "changed": [
+        {
+          "candidate_count": 46,
+          "chosen": [
+            100001,
+            4
+          ],
+          "j0": [
+            100002,
+            27
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:1:56507077a4be34da58fc6a5a8b7236a607f0df4272985ed9309c9b6cc786aeba",
+          "step": 10
+        },
+        {
+          "candidate_count": 50,
+          "chosen": [
+            100002,
+            12
+          ],
+          "j0": [
+            100002,
+            27
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:2:f94cf664a7e5b90725a783e40244bb85abe475ca2f63fcff1f30a2461655ca2c",
+          "step": 20
+        },
+        {
+          "candidate_count": 25,
+          "chosen": [
+            200015,
+            24
+          ],
+          "j0": [
+            200015,
+            29
+          ],
+          "role_change": "2_to_2",
+          "snapshot_version": "extended-joint-single-action-v1:3:8fae12c41c25764f4bfd6ceb4592e12515e3083dde0d95700fa424b545061853",
+          "step": 30
+        }
+      ],
+      "changed_count": 3,
+      "checkpoint_sha256": "4aa14655806f551414814fd2ca621109a4d67c46183fa7c3555e0ca1fc437666",
+      "collisions": 0,
+      "config": "668ba2edefca489703f8ad407e8ae4f3f8e06d953ba9fcdd2fa77a626cd8e56f",
+      "cross_role_count": 0,
+      "decisions": 5,
+      "direction_counts": {
+        "1_to_1": 2,
+        "2_to_2": 1,
+        "decisions": 5,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 1,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "f5cf6921a1a1497a9128ed912cd7ace8bf9c5b8af4850dbe5305e2e4ae6ae633",
+      "mean_inference_ms": 16.71756160012592,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": null,
+      "relay": 1,
+      "run": "smoke-archive-sac",
+      "safe": null,
+      "search": 4,
+      "search_done": null,
+      "stable_start": null,
+      "status": "prefix",
+      "success": null,
+      "ticks": 100,
+      "wall_seconds": 73.37745396300033
     },
     {
       "C": 31.0,
