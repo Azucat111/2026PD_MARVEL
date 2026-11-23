@@ -2,3 +2,4 @@ Both 600-update archive reconstructions used the same hashed historical replay, 
 cmp verified byte-identical against the checkpoints saved before the CQL diagnostic implementation.
 1716181d971779f8c54e9801d45862f71367925fae9289b7d5be9ab991ac5d4e  archive-ddqn.pth
 4aa14655806f551414814fd2ca621109a4d67c46183fa7c3555e0ca1fc437666  archive-sac.pth
+712ffda5bbcf29223af24b61fee2d7f33f1ce67b6c6fca948fb1460389ee0717  expanded-ddqn.pth

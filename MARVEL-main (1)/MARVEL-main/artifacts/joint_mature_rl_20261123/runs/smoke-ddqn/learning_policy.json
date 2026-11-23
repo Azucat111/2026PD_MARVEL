@@ -1,0 +1,9 @@
+{
+  "behavior_seed": null,
+  "checkpoint_sha256": "712ffda5bbcf29223af24b61fee2d7f33f1ce67b6c6fca948fb1460389ee0717",
+  "driver_sha256": "1999343d308d0878a86ef7915756f8cb618d7cefacff08b68bbb0be1be3a919d",
+  "exploration": null,
+  "policy_id": "ddqn",
+  "ticks": 100,
+  "wall_limit_seconds": 4500.0
+}
