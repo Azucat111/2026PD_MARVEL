@@ -42,6 +42,27 @@
       "intervention_cost": 42.5,
       "matched_public_prefix": true,
       "step": 10
+    },
+    {
+      "case": "60_static_24110603",
+      "changed": false
+    },
+    {
+      "behavior_probability": 0.07083333333333333,
+      "case": "60_dynamic_24110604",
+      "changed": true,
+      "control_cost": 23.0,
+      "explored": [
+        200005,
+        20
+      ],
+      "frozen": [
+        100003,
+        19
+      ],
+      "intervention_cost": 27.0,
+      "matched_public_prefix": true,
+      "step": 10
     }
   ],
   "freeze": null,
@@ -68,7 +89,7 @@
     }
   ],
   "live_counts": {
-    "complete": 6,
+    "complete": 10,
     "prefix": 2
   },
   "pairs": [
@@ -268,6 +289,59 @@
       "wall_seconds": 1303.9052008279996
     },
     {
+      "C": 18.1,
+      "arm": "explore",
+      "case": "30_dynamic_24110612",
+      "changed": [
+        {
+          "candidate_count": 58,
+          "chosen": [
+            100000,
+            16
+          ],
+          "j0": [
+            100001,
+            24
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:1:2fb325ebd8c2e2754e9142a0a95a77110dcb36cc50054af30e1159f63c78ea3a",
+          "step": 10
+        }
+      ],
+      "changed_count": 1,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "5b725a304fac038c2cd63dc0f18ea258f8721bc574a4b7d313e339b09092d889",
+      "cross_role_count": 0,
+      "decisions": 5,
+      "direction_counts": {
+        "1_to_1": 1,
+        "decisions": 5,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 1,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "9e2f51e7b64134316d78a2d51ef32ba3b17bad578ae6330f91f39d39dc5c682d",
+      "mean_inference_ms": null,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 7.300000000000001,
+      "relay": 1,
+      "run": "explore-30_dynamic_24110612",
+      "safe": true,
+      "search": 4,
+      "search_done": 8.5,
+      "stable_start": 15.100000000000001,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1103.9328616359999
+    },
+    {
       "C": 40.5,
       "arm": "explore",
       "case": "30_static_24110601",
@@ -303,6 +377,148 @@
       "success": true,
       "ticks": 3000,
       "wall_seconds": 1051.6942582009997
+    },
+    {
+      "C": 13.200000000000001,
+      "arm": "explore",
+      "case": "30_static_24110611",
+      "changed": [
+        {
+          "candidate_count": 83,
+          "chosen": [
+            200021,
+            9
+          ],
+          "j0": [
+            100003,
+            4
+          ],
+          "role_change": "1_to_2",
+          "snapshot_version": "extended-joint-single-action-v1:2:ba49d4f5241758f197149a980778fa7f4d5f6dd76ae36dbe60e3ace3df05c5d5",
+          "step": 20
+        }
+      ],
+      "changed_count": 1,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "d26e0a90f08bb25095ebf67c69f7d44a22d1530792779ba88bca72c5fcdc0a0e",
+      "cross_role_count": 1,
+      "decisions": 3,
+      "direction_counts": {
+        "1_to_2": 1,
+        "decisions": 3,
+        "mixed": 1,
+        "mixed_relay": 1,
+        "relay": 1,
+        "search": 2
+      },
+      "error": null,
+      "inherited": false,
+      "init": "cf0b4dd3100d0ee11c1f0adbe0b60717e10e76e126ff7cc6afd500d8b24f2823",
+      "mean_inference_ms": null,
+      "mixed": 1,
+      "mixed_relay": 1,
+      "no_fly": 0,
+      "radio_first": 0.1,
+      "relay": 1,
+      "run": "explore-30_static_24110611",
+      "safe": true,
+      "search": 2,
+      "search_done": 3.9000000000000004,
+      "stable_start": 10.200000000000001,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1156.2898513540003
+    },
+    {
+      "C": 27.0,
+      "arm": "explore",
+      "case": "60_dynamic_24110604",
+      "changed": [
+        {
+          "candidate_count": 174,
+          "chosen": [
+            200005,
+            20
+          ],
+          "j0": [
+            100003,
+            19
+          ],
+          "role_change": "1_to_2",
+          "snapshot_version": "extended-joint-single-action-v1:1:f5060d17dec94f7742fba1d5ea59ad7d366d580b57833999ab1ef9a9d78e8858",
+          "step": 10
+        }
+      ],
+      "changed_count": 1,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "15a047b416a201c058bee79647aaf95c29e38e5046e16438e82fb4b3c2a99703",
+      "cross_role_count": 1,
+      "decisions": 4,
+      "direction_counts": {
+        "1_to_2": 1,
+        "decisions": 4,
+        "mixed": 1,
+        "mixed_relay": 1,
+        "relay": 1,
+        "search": 3
+      },
+      "error": null,
+      "inherited": false,
+      "init": "ed86a2a323bffa4e02782634b681bf7ae6c15468baa0a3b48fe8fecade379685",
+      "mean_inference_ms": null,
+      "mixed": 1,
+      "mixed_relay": 1,
+      "no_fly": 0,
+      "radio_first": 19.0,
+      "relay": 1,
+      "run": "explore-60_dynamic_24110604",
+      "safe": true,
+      "search": 3,
+      "search_done": 8.200000000000001,
+      "stable_start": 24.0,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 2224.2404149550002
+    },
+    {
+      "C": 6.800000000000001,
+      "arm": "explore",
+      "case": "60_static_24110603",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "4470e6dd515fbf5d886ab2cd39a15e5bfa3ac527ed3e69db6c4e4da9de57693b",
+      "cross_role_count": 0,
+      "decisions": 3,
+      "direction_counts": {
+        "decisions": 3,
+        "mixed": 0,
+        "mixed_relay": 0,
+        "search": 3
+      },
+      "error": null,
+      "inherited": false,
+      "init": "4a4defd05ec3a1a116b3a59f82ed734d901e644181f430e92bc62d5a5a2988d3",
+      "mean_inference_ms": null,
+      "mixed": 0,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 0.1,
+      "relay": 0,
+      "run": "explore-60_static_24110603",
+      "safe": true,
+      "search": 3,
+      "search_done": 3.8000000000000003,
+      "stable_start": 3.8000000000000003,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1938.8899782010012
     },
     {
       "C": 106.60000000000001,

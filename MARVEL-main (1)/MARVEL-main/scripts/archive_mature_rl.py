@@ -12,7 +12,7 @@ import shutil
 def archive(live, target):
     runs = target / "runs"
     runs.mkdir(parents=True, exist_ok=True)
-    files = ("start.txt", "historical-build.log", "expanded-build.log", "study.jsonl", "freeze.json",
+    files = ("start.txt", "historical-build.log", "expanded-build.log", "study.jsonl", "early-dev.jsonl", "freeze.json",
              "benchmark.json", "experiments.csv", "asset-verification.txt", "regression-tests.log",
              "inherited-regression.json", "inherited-regression.log", "checkpoint-parity.log")
     suffixes = (".train.jsonl", ".pth", "-replay.json.gz", "-audit.json", "-fit.json")
