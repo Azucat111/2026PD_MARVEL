@@ -1,0 +1,27 @@
+{
+  "checkpoint_sha256": "19b414bb25a21dc695f1db8fecc8de3d6a803842ef59240a4770a16eb61570fb",
+  "chosen": "sac",
+  "chosen_development_sum_seconds": 65.2,
+  "frozen_utc": "2026-11-23T09:54:38.937331+00:00",
+  "model": "expanded-sac.pth",
+  "new_development_cases": [
+    "30_static_24110701",
+    "60_dynamic_24110704"
+  ],
+  "selection_scores": [
+    [
+      65.2,
+      "sac"
+    ],
+    [
+      78.6,
+      "ddqn"
+    ]
+  ],
+  "validation_cases": [
+    "30_static_24110801",
+    "30_dynamic_24110802",
+    "60_static_24110803",
+    "60_dynamic_24110804"
+  ]
+}
