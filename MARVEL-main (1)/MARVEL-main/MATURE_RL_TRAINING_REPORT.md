@@ -23,3 +23,16 @@
 | `archive-sac.pth` | `4aa14655806f551414814fd2ca621109a4d67c46183fa7c3555e0ca1fc437666` |
 
 参见 [回放审计](EVENT_LEVEL_REPLAY_AUDIT.md) 和 [运行复现](MATURE_RL_REPRODUCTION.md)。
+
+## 长时延与值分布诊断
+
+同一 78 事件回放、seed 和更新数下，三步 DDQN 把已执行行为继续回报的预测 MAE 从 0.408 降至 0.328，但 78/78 的贪心动作在同一公开状态无实执行支持。11 次贪心 Q 为正，而原无折扣时间成本回报始终非正。它只作为离线负证据，保留模型 `f0ac76c73cb9f5c3c422d6a3afde67cd94e813112d29c59287a8a4bbd10eabb2`。
+
+在相同三步目标上附加 0.25 权重的 CQL 项后，同状态无支持贪心降为 15/78，正 Q 降为 1 次，混合图上 0/33 贪心执行 Relay。该权重下保守项压低了候选外推，并损失需要研究的跨角色行为。模型 `c84722f46c7f601913c813591ba894ef61585f9d41a8ce844f8a83300399caec` 保留为离线诊断。两者均未进入主竞赛和冻结选型。结果支持采集更多有真实 Relay 回报的分支。
+
+```bash
+"$py" -B scripts/train_mature_rl.py --replay "$out/historical-replay.json.gz" --algo ddqn \
+  --seed 6177 --updates 600 --n-step 3 --out "$out/archive-ddqn-n3.pth"
+"$py" -B scripts/train_mature_rl.py --replay "$out/historical-replay.json.gz" --algo ddqn \
+  --seed 6177 --updates 600 --n-step 3 --cql-weight .25 --out "$out/archive-ddqn-n3-cql.pth"
+```

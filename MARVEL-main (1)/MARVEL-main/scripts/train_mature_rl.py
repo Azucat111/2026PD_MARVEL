@@ -25,6 +25,7 @@ def main():
     cli.add_argument("--lr", type=float, default=.0007)
     cli.add_argument("--sync-every", type=int, default=50)
     cli.add_argument("--initial-alpha", type=float, default=.035)
+    cli.add_argument("--cql-weight", type=float, default=0.)
     args = cli.parse_args()
     torch.set_num_threads(1)
     torch.use_deterministic_algorithms(True)
@@ -33,7 +34,7 @@ def main():
         cli.error("Replay does not contain an eligible episode")
     size = len(episodes[0][1][0].state.features[0])
     settings = Settings(args.algo, size, args.seed, lr=args.lr, n_step=args.n_step,
-                        sync_every=args.sync_every, initial_alpha=args.initial_alpha)
+                        sync_every=args.sync_every, initial_alpha=args.initial_alpha, cql_weight=args.cql_weight)
     source = hashlib.sha256(args.replay.read_bytes()).hexdigest()
     print(json.dumps(dict(algo=args.algo, seed=args.seed, coverage=audit["coverage"],
                           replay_sha256=source, planned_updates=args.updates), sort_keys=True), flush=True)

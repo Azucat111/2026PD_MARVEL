@@ -1,0 +1,1734 @@
+{
+  "algorithm": "ddqn",
+  "checkpoint_sha256": "f0ac76c73cb9f5c3c422d6a3afde67cd94e813112d29c59287a8a4bbd10eabb2",
+  "train_replay_sha256": "1f3372488e97d143d554eca66029dc086c4b382f2de93b1be6e00e573d5b241a",
+  "counts": {
+    "total": 78,
+    "greedy_matches_logged": 0,
+    "greedy_without_same_state_execution": 78,
+    "logged_positive_q": 0,
+    "greedy_positive_q": 11,
+    "mixed": 33,
+    "mixed_greedy_relay": 8
+  },
+  "mean_greedy_minus_logged_q": 0.3361110384456622,
+  "logged_behavior_return_mae": 0.32824465658929614,
+  "rows": [
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.6366666666666663,
+      "logged_q": -1.8830465078353882,
+      "greedy_q": -1.723554015159607,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.603333333333333,
+      "logged_q": -2.0464956760406494,
+      "greedy_q": -1.6820746660232544,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.57,
+      "logged_q": -2.1246161460876465,
+      "greedy_q": -1.8479851484298706,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.5366666666666666,
+      "logged_q": -1.9209483861923218,
+      "greedy_q": -1.768218994140625,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.5033333333333334,
+      "logged_q": -2.1092171669006348,
+      "greedy_q": -2.019718647003174,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        9,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.0533333333333335,
+      "logged_q": -0.9502778649330139,
+      "greedy_q": -0.5976259708404541,
+      "logged": [
+        200003,
+        13,
+        2
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.02,
+      "logged_q": -1.2957557439804077,
+      "greedy_q": -0.6694275140762329,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100003,
+        20,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -0.9866666666666667,
+      "logged_q": -1.1930288076400757,
+      "greedy_q": -0.6026961803436279,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100003,
+        2,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -0.9533333333333334,
+      "logged_q": -0.9498668909072876,
+      "greedy_q": -0.5856376886367798,
+      "logged": [
+        100003,
+        24,
+        1
+      ],
+      "greedy": [
+        100003,
+        2,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 60,
+      "observed_behavior_return": -0.8866666666666667,
+      "logged_q": -1.1909571886062622,
+      "greedy_q": -1.0444151163101196,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        16,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 190,
+      "observed_behavior_return": -0.45333333333333337,
+      "logged_q": -0.8694957494735718,
+      "greedy_q": -0.784448504447937,
+      "logged": [
+        200004,
+        1,
+        2
+      ],
+      "greedy": [
+        200004,
+        7,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.2333333333333338,
+      "logged_q": -0.6410256028175354,
+      "greedy_q": -0.5976259708404541,
+      "logged": [
+        200003,
+        24,
+        2
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.2000000000000004,
+      "logged_q": -1.295814871788025,
+      "greedy_q": -0.6433530449867249,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100003,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -1.166666666666667,
+      "logged_q": -1.1929904222488403,
+      "greedy_q": -0.5522318482398987,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100003,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -1.1333333333333335,
+      "logged_q": -0.9074698686599731,
+      "greedy_q": -0.5213316082954407,
+      "logged": [
+        100003,
+        26,
+        1
+      ],
+      "greedy": [
+        100003,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 50,
+      "observed_behavior_return": -1.1,
+      "logged_q": -1.1839467287063599,
+      "greedy_q": -1.0199514627456665,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        5,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.5733333333333333,
+      "logged_q": -2.0043387413024902,
+      "greedy_q": -1.723554015159607,
+      "logged": [
+        200015,
+        29,
+        2
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.54,
+      "logged_q": -1.8559702634811401,
+      "greedy_q": -1.6974643468856812,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100003,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.506666666666667,
+      "logged_q": -2.080000877380371,
+      "greedy_q": -1.6853898763656616,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100003,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.4733333333333336,
+      "logged_q": -2.1879265308380127,
+      "greedy_q": -1.7186037302017212,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100003,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 100,
+      "observed_behavior_return": -2.2733333333333334,
+      "logged_q": -1.1966089010238647,
+      "greedy_q": -0.9264805912971497,
+      "logged": [
+        100003,
+        18,
+        1
+      ],
+      "greedy": [
+        100003,
+        20,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.67,
+      "logged_q": -1.8830465078353882,
+      "greedy_q": -1.723554015159607,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.6366666666666667,
+      "logged_q": -2.0464956760406494,
+      "greedy_q": -1.6820746660232544,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.6033333333333335,
+      "logged_q": -2.030729055404663,
+      "greedy_q": -1.8479851484298706,
+      "logged": [
+        200015,
+        29,
+        2
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.5700000000000003,
+      "logged_q": -2.0864322185516357,
+      "greedy_q": -1.8113220930099487,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100000,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.536666666666667,
+      "logged_q": -2.096513509750366,
+      "greedy_q": -1.9100054502487183,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        28,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -1.266666666666667,
+      "logged_q": -1.8830465078353882,
+      "greedy_q": -1.723554015159607,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -1.2333333333333336,
+      "logged_q": -2.0464956760406494,
+      "greedy_q": -1.6820746660232544,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -1.2000000000000002,
+      "logged_q": -2.1246161460876465,
+      "greedy_q": -1.8479851484298706,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -1.1666666666666667,
+      "logged_q": -2.110363483428955,
+      "greedy_q": -1.768218994140625,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -1.1333333333333333,
+      "logged_q": -2.0454952716827393,
+      "greedy_q": -1.8699620962142944,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        200015,
+        26,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 240,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.7543012499809265,
+      "greedy_q": -0.6317654848098755,
+      "logged": [
+        200017,
+        3,
+        2
+      ],
+      "greedy": [
+        200017,
+        1,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 10,
+      "observed_behavior_return": -0.5666666666666667,
+      "logged_q": -0.2672010362148285,
+      "greedy_q": 0.15941546857357025,
+      "logged": [
+        100002,
+        44,
+        1
+      ],
+      "greedy": [
+        100000,
+        34,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 20,
+      "observed_behavior_return": -0.5333333333333333,
+      "logged_q": -0.47537899017333984,
+      "greedy_q": 0.008557572960853577,
+      "logged": [
+        100000,
+        32,
+        1
+      ],
+      "greedy": [
+        100000,
+        28,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 30,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.4919615387916565,
+      "greedy_q": 0.17571468651294708,
+      "logged": [
+        100003,
+        54,
+        1
+      ],
+      "greedy": [
+        100003,
+        20,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 40,
+      "observed_behavior_return": -0.4666666666666667,
+      "logged_q": -0.44419217109680176,
+      "greedy_q": -0.05821967124938965,
+      "logged": [
+        100001,
+        48,
+        1
+      ],
+      "greedy": [
+        100001,
+        10,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 10,
+      "observed_behavior_return": -0.4633333333333333,
+      "logged_q": -0.19190922379493713,
+      "greedy_q": 0.36171597242355347,
+      "logged": [
+        100000,
+        51,
+        1
+      ],
+      "greedy": [
+        100000,
+        49,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 20,
+      "observed_behavior_return": -0.43,
+      "logged_q": -0.4652724862098694,
+      "greedy_q": 0.3513357639312744,
+      "logged": [
+        100002,
+        42,
+        1
+      ],
+      "greedy": [
+        100002,
+        20,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 30,
+      "observed_behavior_return": -0.39666666666666667,
+      "logged_q": -0.3799988627433777,
+      "greedy_q": -0.0189601331949234,
+      "logged": [
+        200051,
+        35,
+        2
+      ],
+      "greedy": [
+        200051,
+        36,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 40,
+      "observed_behavior_return": -0.36333333333333334,
+      "logged_q": -0.5207566022872925,
+      "greedy_q": -0.18594852089881897,
+      "logged": [
+        100001,
+        6,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.3400000000000003,
+      "logged_q": -0.9887880086898804,
+      "greedy_q": -0.5976259708404541,
+      "logged": [
+        100003,
+        24,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.3066666666666669,
+      "logged_q": -1.120099663734436,
+      "greedy_q": -0.5467844605445862,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -1.2733333333333334,
+      "logged_q": -0.8677983283996582,
+      "greedy_q": -0.5527860522270203,
+      "logged": [
+        200003,
+        26,
+        2
+      ],
+      "greedy": [
+        200003,
+        13,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -1.24,
+      "logged_q": -1.2397706508636475,
+      "greedy_q": -0.9228179454803467,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 80,
+      "observed_behavior_return": -1.1066666666666667,
+      "logged_q": -1.1675750017166138,
+      "greedy_q": -0.9991551041603088,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        29,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 100,
+      "observed_behavior_return": -1.04,
+      "logged_q": -1.2103132009506226,
+      "greedy_q": -1.0064550638198853,
+      "logged": [
+        200003,
+        27,
+        2
+      ],
+      "greedy": [
+        200003,
+        13,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 300,
+      "observed_behavior_return": -0.3733333333333334,
+      "logged_q": -0.3670443296432495,
+      "greedy_q": -0.276576966047287,
+      "logged": [
+        200004,
+        1,
+        2
+      ],
+      "greedy": [
+        200004,
+        6,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 10,
+      "observed_behavior_return": -2.1333333333333333,
+      "logged_q": -1.642755389213562,
+      "greedy_q": -0.933949887752533,
+      "logged": [
+        100000,
+        13,
+        1
+      ],
+      "greedy": [
+        100001,
+        12,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 20,
+      "observed_behavior_return": -2.1,
+      "logged_q": -1.6057618856430054,
+      "greedy_q": -0.5957284569740295,
+      "logged": [
+        100003,
+        18,
+        1
+      ],
+      "greedy": [
+        100002,
+        15,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 40,
+      "observed_behavior_return": -2.033333333333333,
+      "logged_q": -1.6667178869247437,
+      "greedy_q": -0.9733902215957642,
+      "logged": [
+        100001,
+        2,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 50,
+      "observed_behavior_return": -2.0,
+      "logged_q": -1.618902564048767,
+      "greedy_q": -1.4193999767303467,
+      "logged": [
+        100002,
+        24,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 80,
+      "observed_behavior_return": -1.9,
+      "logged_q": -1.809892177581787,
+      "greedy_q": -1.7366477251052856,
+      "logged": [
+        200018,
+        13,
+        2
+      ],
+      "greedy": [
+        200018,
+        19,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 350,
+      "observed_behavior_return": -1.0,
+      "logged_q": -0.8587338924407959,
+      "greedy_q": -0.6420555114746094,
+      "logged": [
+        200024,
+        15,
+        2
+      ],
+      "greedy": [
+        200024,
+        3,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.703333333333333,
+      "logged_q": -1.8830465078353882,
+      "greedy_q": -1.723554015159607,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.67,
+      "logged_q": -2.0464956760406494,
+      "greedy_q": -1.6820746660232544,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.6366666666666667,
+      "logged_q": -2.0704574584960938,
+      "greedy_q": -1.8479851484298706,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.6033333333333335,
+      "logged_q": -2.3580431938171387,
+      "greedy_q": -1.878184199333191,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        200015,
+        21,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.5700000000000003,
+      "logged_q": -2.045356512069702,
+      "greedy_q": -1.869667887687683,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        200015,
+        26,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 10,
+      "observed_behavior_return": -1.8400000000000005,
+      "logged_q": -1.625085473060608,
+      "greedy_q": -1.3827308416366577,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 20,
+      "observed_behavior_return": -1.806666666666667,
+      "logged_q": -1.9469693899154663,
+      "greedy_q": -1.5870321989059448,
+      "logged": [
+        100003,
+        17,
+        1
+      ],
+      "greedy": [
+        100000,
+        25,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 30,
+      "observed_behavior_return": -1.7733333333333337,
+      "logged_q": -1.8665679693222046,
+      "greedy_q": -1.6094233989715576,
+      "logged": [
+        100002,
+        10,
+        1
+      ],
+      "greedy": [
+        100000,
+        25,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 50,
+      "observed_behavior_return": -1.706666666666667,
+      "logged_q": -1.7261213064193726,
+      "greedy_q": -1.613010287284851,
+      "logged": [
+        200005,
+        13,
+        2
+      ],
+      "greedy": [
+        200005,
+        6,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 380,
+      "observed_behavior_return": -0.6066666666666668,
+      "logged_q": -0.7234075665473938,
+      "greedy_q": -0.4120415449142456,
+      "logged": [
+        200010,
+        17,
+        2
+      ],
+      "greedy": [
+        200010,
+        18,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 10,
+      "observed_behavior_return": -1.3000000000000003,
+      "logged_q": -1.502530574798584,
+      "greedy_q": -1.2661319971084595,
+      "logged": [
+        100000,
+        3,
+        1
+      ],
+      "greedy": [
+        100003,
+        22,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 20,
+      "observed_behavior_return": -1.2666666666666668,
+      "logged_q": -1.5483250617980957,
+      "greedy_q": -1.1779369115829468,
+      "logged": [
+        100002,
+        29,
+        1
+      ],
+      "greedy": [
+        100003,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 30,
+      "observed_behavior_return": -1.2333333333333334,
+      "logged_q": -1.6215707063674927,
+      "greedy_q": -1.527318000793457,
+      "logged": [
+        200014,
+        1,
+        2
+      ],
+      "greedy": [
+        200014,
+        25,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 70,
+      "observed_behavior_return": -1.1,
+      "logged_q": -1.4517887830734253,
+      "greedy_q": -1.1282362937927246,
+      "logged": [
+        100001,
+        14,
+        1
+      ],
+      "greedy": [
+        100003,
+        3,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 80,
+      "observed_behavior_return": -1.0666666666666667,
+      "logged_q": -1.5229512453079224,
+      "greedy_q": -1.4721758365631104,
+      "logged": [
+        100003,
+        3,
+        1
+      ],
+      "greedy": [
+        100003,
+        9,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 310,
+      "observed_behavior_return": -0.3,
+      "logged_q": -0.3305140733718872,
+      "greedy_q": -0.3246726989746094,
+      "logged": [
+        200022,
+        12,
+        2
+      ],
+      "greedy": [
+        200022,
+        24,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 10,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.2578768730163574,
+      "greedy_q": 0.2537921071052551,
+      "logged": [
+        100001,
+        18,
+        1
+      ],
+      "greedy": [
+        100003,
+        35,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 20,
+      "observed_behavior_return": -0.4666666666666667,
+      "logged_q": -0.4996757507324219,
+      "greedy_q": 0.16997916996479034,
+      "logged": [
+        100002,
+        39,
+        1
+      ],
+      "greedy": [
+        100003,
+        35,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 30,
+      "observed_behavior_return": -0.43333333333333335,
+      "logged_q": -0.39084720611572266,
+      "greedy_q": 0.20880009233951569,
+      "logged": [
+        100000,
+        1,
+        1
+      ],
+      "greedy": [
+        100000,
+        19,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 40,
+      "observed_behavior_return": -0.4,
+      "logged_q": -0.3763960599899292,
+      "greedy_q": 0.08411946892738342,
+      "logged": [
+        100003,
+        11,
+        1
+      ],
+      "greedy": [
+        100003,
+        5,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 10,
+      "observed_behavior_return": -0.4366666666666667,
+      "logged_q": -0.30097848176956177,
+      "greedy_q": 0.12389223277568817,
+      "logged": [
+        100002,
+        25,
+        1
+      ],
+      "greedy": [
+        100003,
+        34,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 20,
+      "observed_behavior_return": -0.4033333333333334,
+      "logged_q": -0.26268476247787476,
+      "greedy_q": 0.149931862950325,
+      "logged": [
+        100001,
+        42,
+        1
+      ],
+      "greedy": [
+        100003,
+        36,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 30,
+      "observed_behavior_return": -0.37000000000000005,
+      "logged_q": -0.5749989151954651,
+      "greedy_q": -0.07073330134153366,
+      "logged": [
+        100003,
+        58,
+        1
+      ],
+      "greedy": [
+        200008,
+        24,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 40,
+      "observed_behavior_return": -0.3366666666666667,
+      "logged_q": -0.5056287050247192,
+      "greedy_q": -0.07875043153762817,
+      "logged": [
+        100000,
+        21,
+        1
+      ],
+      "greedy": [
+        100000,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 50,
+      "observed_behavior_return": -0.3033333333333334,
+      "logged_q": -0.25965744256973267,
+      "greedy_q": -0.08827517926692963,
+      "logged": [
+        200008,
+        21,
+        2
+      ],
+      "greedy": [
+        200008,
+        52,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    }
+  ]
+}

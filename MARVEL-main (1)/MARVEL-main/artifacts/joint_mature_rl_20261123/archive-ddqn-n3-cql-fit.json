@@ -1,0 +1,1734 @@
+{
+  "algorithm": "ddqn",
+  "checkpoint_sha256": "c84722f46c7f601913c813591ba894ef61585f9d41a8ce844f8a83300399caec",
+  "train_replay_sha256": "1f3372488e97d143d554eca66029dc086c4b382f2de93b1be6e00e573d5b241a",
+  "counts": {
+    "total": 78,
+    "greedy_matches_logged": 56,
+    "greedy_without_same_state_execution": 15,
+    "logged_positive_q": 0,
+    "greedy_positive_q": 1,
+    "mixed": 33,
+    "mixed_greedy_relay": 0
+  },
+  "mean_greedy_minus_logged_q": 0.22298238292718545,
+  "logged_behavior_return_mae": 0.5014865023980284,
+  "rows": [
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.6366666666666663,
+      "logged_q": -1.3773341178894043,
+      "greedy_q": -1.3773341178894043,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.603333333333333,
+      "logged_q": -1.526883840560913,
+      "greedy_q": -1.4710456132888794,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.57,
+      "logged_q": -2.5983619689941406,
+      "greedy_q": -1.4571620225906372,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.5366666666666666,
+      "logged_q": -4.281021595001221,
+      "greedy_q": -1.892770528793335,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-after-search",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.5033333333333334,
+      "logged_q": -2.2250707149505615,
+      "greedy_q": -2.2250707149505615,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.0533333333333335,
+      "logged_q": -4.035027027130127,
+      "greedy_q": -0.6900738477706909,
+      "logged": [
+        200003,
+        13,
+        2
+      ],
+      "greedy": [
+        100003,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.02,
+      "logged_q": -1.2908707857131958,
+      "greedy_q": -1.2908707857131958,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100002,
+        21,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -0.9866666666666667,
+      "logged_q": -0.898802638053894,
+      "greedy_q": -0.898802638053894,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100001,
+        17,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -0.9533333333333334,
+      "logged_q": -0.8593737483024597,
+      "greedy_q": -0.8593737483024597,
+      "logged": [
+        100003,
+        24,
+        1
+      ],
+      "greedy": [
+        100003,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 60,
+      "observed_behavior_return": -0.8866666666666667,
+      "logged_q": -1.3049960136413574,
+      "greedy_q": -1.3049960136413574,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-donor-aware",
+      "case": "30_dynamic_1280022",
+      "step": 190,
+      "observed_behavior_return": -0.45333333333333337,
+      "logged_q": -0.4855063557624817,
+      "greedy_q": -0.4855063557624817,
+      "logged": [
+        200004,
+        1,
+        2
+      ],
+      "greedy": [
+        200004,
+        1,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.2333333333333338,
+      "logged_q": -1.042301058769226,
+      "greedy_q": -0.6900738477706909,
+      "logged": [
+        200003,
+        24,
+        2
+      ],
+      "greedy": [
+        100003,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.2000000000000004,
+      "logged_q": -1.2907068729400635,
+      "greedy_q": -1.2907068729400635,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100002,
+        21,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -1.166666666666667,
+      "logged_q": -0.8984555006027222,
+      "greedy_q": -0.8984555006027222,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100001,
+        17,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -1.1333333333333335,
+      "logged_q": -0.864145040512085,
+      "greedy_q": -0.864145040512085,
+      "logged": [
+        100003,
+        26,
+        1
+      ],
+      "greedy": [
+        100003,
+        26,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 50,
+      "observed_behavior_return": -1.1,
+      "logged_q": -1.2880228757858276,
+      "greedy_q": -1.2880228757858276,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.5733333333333333,
+      "logged_q": -2.914226531982422,
+      "greedy_q": -1.3773341178894043,
+      "logged": [
+        200015,
+        29,
+        2
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.54,
+      "logged_q": -1.5630829334259033,
+      "greedy_q": -1.5630829334259033,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.506666666666667,
+      "logged_q": -1.5450679063796997,
+      "greedy_q": -1.5450679063796997,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.4733333333333336,
+      "logged_q": -2.5929551124572754,
+      "greedy_q": -2.5929551124572754,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay1",
+      "case": "30_static_1280021",
+      "step": 100,
+      "observed_behavior_return": -2.2733333333333334,
+      "logged_q": -0.505855917930603,
+      "greedy_q": -0.505855917930603,
+      "logged": [
+        100003,
+        18,
+        1
+      ],
+      "greedy": [
+        100003,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.67,
+      "logged_q": -1.3773341178894043,
+      "greedy_q": -1.3773341178894043,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.6366666666666667,
+      "logged_q": -1.526883840560913,
+      "greedy_q": -1.4710456132888794,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.6033333333333335,
+      "logged_q": -2.3213541507720947,
+      "greedy_q": -1.4571620225906372,
+      "logged": [
+        200015,
+        29,
+        2
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.5700000000000003,
+      "logged_q": -2.2181622982025146,
+      "greedy_q": -2.2181622982025146,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-relay3",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.536666666666667,
+      "logged_q": -1.7910164594650269,
+      "greedy_q": -1.7910164594650269,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -1.266666666666667,
+      "logged_q": -1.3773341178894043,
+      "greedy_q": -1.3773341178894043,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -1.2333333333333336,
+      "logged_q": -1.526883840560913,
+      "greedy_q": -1.4710456132888794,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -1.2000000000000002,
+      "logged_q": -2.5983619689941406,
+      "greedy_q": -1.4571620225906372,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -1.1666666666666667,
+      "logged_q": -1.892770528793335,
+      "greedy_q": -1.892770528793335,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -1.1333333333333333,
+      "logged_q": -1.5564930438995361,
+      "greedy_q": -1.5564930438995361,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        200015,
+        22,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "ct-search",
+      "case": "30_static_1280021",
+      "step": 240,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.3109014630317688,
+      "greedy_q": -0.3109014630317688,
+      "logged": [
+        200017,
+        3,
+        2
+      ],
+      "greedy": [
+        200017,
+        3,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 10,
+      "observed_behavior_return": -0.5666666666666667,
+      "logged_q": -0.3267788887023926,
+      "greedy_q": -0.3267788887023926,
+      "logged": [
+        100002,
+        44,
+        1
+      ],
+      "greedy": [
+        100002,
+        44,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 20,
+      "observed_behavior_return": -0.5333333333333333,
+      "logged_q": -0.2812597453594208,
+      "greedy_q": -0.2812597453594208,
+      "logged": [
+        100000,
+        32,
+        1
+      ],
+      "greedy": [
+        100000,
+        32,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 30,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.32192495465278625,
+      "greedy_q": -0.32192495465278625,
+      "logged": [
+        100003,
+        54,
+        1
+      ],
+      "greedy": [
+        100003,
+        54,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-dynamic",
+      "case": "60_dynamic_1981204",
+      "step": 40,
+      "observed_behavior_return": -0.4666666666666667,
+      "logged_q": -0.3339391350746155,
+      "greedy_q": -0.3339391350746155,
+      "logged": [
+        100001,
+        48,
+        1
+      ],
+      "greedy": [
+        100001,
+        48,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 10,
+      "observed_behavior_return": -0.4633333333333333,
+      "logged_q": -0.1581660807132721,
+      "greedy_q": -0.1581660807132721,
+      "logged": [
+        100000,
+        51,
+        1
+      ],
+      "greedy": [
+        100000,
+        51,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 20,
+      "observed_behavior_return": -0.43,
+      "logged_q": -0.41234391927719116,
+      "greedy_q": -0.41234391927719116,
+      "logged": [
+        100002,
+        42,
+        1
+      ],
+      "greedy": [
+        100002,
+        42,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 30,
+      "observed_behavior_return": -0.39666666666666667,
+      "logged_q": -0.16238100826740265,
+      "greedy_q": -0.16238100826740265,
+      "logged": [
+        200051,
+        35,
+        2
+      ],
+      "greedy": [
+        200051,
+        35,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-60-static",
+      "case": "60_static_9164",
+      "step": 40,
+      "observed_behavior_return": -0.36333333333333334,
+      "logged_q": -0.270773321390152,
+      "greedy_q": -0.270773321390152,
+      "logged": [
+        100001,
+        6,
+        1
+      ],
+      "greedy": [
+        100001,
+        6,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 10,
+      "observed_behavior_return": -1.3400000000000003,
+      "logged_q": -0.6900738477706909,
+      "greedy_q": -0.6900738477706909,
+      "logged": [
+        100003,
+        24,
+        1
+      ],
+      "greedy": [
+        100003,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 20,
+      "observed_behavior_return": -1.3066666666666669,
+      "logged_q": -1.1518886089324951,
+      "greedy_q": -1.1518886089324951,
+      "logged": [
+        100002,
+        21,
+        1
+      ],
+      "greedy": [
+        100002,
+        21,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 30,
+      "observed_behavior_return": -1.2733333333333334,
+      "logged_q": -0.445965051651001,
+      "greedy_q": -0.445965051651001,
+      "logged": [
+        200003,
+        26,
+        2
+      ],
+      "greedy": [
+        200003,
+        26,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 40,
+      "observed_behavior_return": -1.24,
+      "logged_q": -1.2285195589065552,
+      "greedy_q": -1.2285195589065552,
+      "logged": [
+        100001,
+        17,
+        1
+      ],
+      "greedy": [
+        100001,
+        17,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 80,
+      "observed_behavior_return": -1.1066666666666667,
+      "logged_q": -1.1563358306884766,
+      "greedy_q": -1.1563358306884766,
+      "logged": [
+        100000,
+        7,
+        1
+      ],
+      "greedy": [
+        100000,
+        7,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 100,
+      "observed_behavior_return": -1.04,
+      "logged_q": -0.6976032853126526,
+      "greedy_q": -0.6976032853126526,
+      "logged": [
+        200003,
+        27,
+        2
+      ],
+      "greedy": [
+        200003,
+        27,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-dynamic",
+      "case": "30_dynamic_1280022",
+      "step": 300,
+      "observed_behavior_return": -0.3733333333333334,
+      "logged_q": -0.08646976202726364,
+      "greedy_q": -0.08646976202726364,
+      "logged": [
+        200004,
+        1,
+        2
+      ],
+      "greedy": [
+        200004,
+        1,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 10,
+      "observed_behavior_return": -2.1333333333333333,
+      "logged_q": -1.280076265335083,
+      "greedy_q": -1.280076265335083,
+      "logged": [
+        100000,
+        13,
+        1
+      ],
+      "greedy": [
+        100000,
+        13,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 20,
+      "observed_behavior_return": -2.1,
+      "logged_q": -1.2436931133270264,
+      "greedy_q": -1.2436931133270264,
+      "logged": [
+        100003,
+        18,
+        1
+      ],
+      "greedy": [
+        100003,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 40,
+      "observed_behavior_return": -2.033333333333333,
+      "logged_q": -1.6167645454406738,
+      "greedy_q": -1.6167645454406738,
+      "logged": [
+        100001,
+        2,
+        1
+      ],
+      "greedy": [
+        100001,
+        2,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 50,
+      "observed_behavior_return": -2.0,
+      "logged_q": -1.306950569152832,
+      "greedy_q": -1.306950569152832,
+      "logged": [
+        100002,
+        24,
+        1
+      ],
+      "greedy": [
+        100002,
+        24,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 80,
+      "observed_behavior_return": -1.9,
+      "logged_q": -1.6074694395065308,
+      "greedy_q": -1.6074694395065308,
+      "logged": [
+        200018,
+        13,
+        2
+      ],
+      "greedy": [
+        200018,
+        13,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "j0-holdout",
+      "case": "30_static_240327",
+      "step": 350,
+      "observed_behavior_return": -1.0,
+      "logged_q": -0.8386145234107971,
+      "greedy_q": -0.8386145234107971,
+      "logged": [
+        200024,
+        15,
+        2
+      ],
+      "greedy": [
+        200024,
+        15,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 10,
+      "observed_behavior_return": -2.703333333333333,
+      "logged_q": -1.3773341178894043,
+      "greedy_q": -1.3773341178894043,
+      "logged": [
+        100002,
+        27,
+        1
+      ],
+      "greedy": [
+        100002,
+        27,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 2,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 20,
+      "observed_behavior_return": -2.67,
+      "logged_q": -1.526883840560913,
+      "greedy_q": -1.4710456132888794,
+      "logged": [
+        100003,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 30,
+      "observed_behavior_return": -2.6366666666666667,
+      "logged_q": -1.4571620225906372,
+      "greedy_q": -1.4571620225906372,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 3,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 40,
+      "observed_behavior_return": -2.6033333333333335,
+      "logged_q": -1.6144437789916992,
+      "greedy_q": -1.6144437789916992,
+      "logged": [
+        100000,
+        14,
+        1
+      ],
+      "greedy": [
+        100000,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "J0",
+      "case": "30_static_1280021",
+      "step": 50,
+      "observed_behavior_return": -2.5700000000000003,
+      "logged_q": -1.5562394857406616,
+      "greedy_q": -1.5562394857406616,
+      "logged": [
+        200015,
+        22,
+        2
+      ],
+      "greedy": [
+        200015,
+        22,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 10,
+      "observed_behavior_return": -1.8400000000000005,
+      "logged_q": -1.4528803825378418,
+      "greedy_q": -1.4528803825378418,
+      "logged": [
+        100001,
+        4,
+        1
+      ],
+      "greedy": [
+        100001,
+        4,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 20,
+      "observed_behavior_return": -1.806666666666667,
+      "logged_q": -2.132077932357788,
+      "greedy_q": -1.0720975399017334,
+      "logged": [
+        100003,
+        17,
+        1
+      ],
+      "greedy": [
+        100000,
+        17,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 30,
+      "observed_behavior_return": -1.7733333333333337,
+      "logged_q": -1.8407375812530518,
+      "greedy_q": -1.8407375812530518,
+      "logged": [
+        100002,
+        10,
+        1
+      ],
+      "greedy": [
+        100002,
+        10,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 50,
+      "observed_behavior_return": -1.706666666666667,
+      "logged_q": -1.6447677612304688,
+      "greedy_q": -1.6447677612304688,
+      "logged": [
+        200005,
+        13,
+        2
+      ],
+      "greedy": [
+        200005,
+        13,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_dynamic_240312",
+      "case": "30_dynamic_240312",
+      "step": 380,
+      "observed_behavior_return": -0.6066666666666668,
+      "logged_q": -0.5289004445075989,
+      "greedy_q": -0.3076997399330139,
+      "logged": [
+        200010,
+        17,
+        2
+      ],
+      "greedy": [
+        200010,
+        26,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 10,
+      "observed_behavior_return": -1.3000000000000003,
+      "logged_q": -1.7723479270935059,
+      "greedy_q": -0.9159241318702698,
+      "logged": [
+        100000,
+        3,
+        1
+      ],
+      "greedy": [
+        100003,
+        29,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 20,
+      "observed_behavior_return": -1.2666666666666668,
+      "logged_q": -3.1267778873443604,
+      "greedy_q": -1.54148268699646,
+      "logged": [
+        100002,
+        29,
+        1
+      ],
+      "greedy": [
+        100001,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 30,
+      "observed_behavior_return": -1.2333333333333334,
+      "logged_q": -1.2930445671081543,
+      "greedy_q": -1.2930445671081543,
+      "logged": [
+        200014,
+        1,
+        2
+      ],
+      "greedy": [
+        200014,
+        1,
+        2
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 70,
+      "observed_behavior_return": -1.1,
+      "logged_q": -1.2630070447921753,
+      "greedy_q": -1.2630070447921753,
+      "logged": [
+        100001,
+        14,
+        1
+      ],
+      "greedy": [
+        100001,
+        14,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 80,
+      "observed_behavior_return": -1.0666666666666667,
+      "logged_q": -1.6054022312164307,
+      "greedy_q": -1.6054022312164307,
+      "logged": [
+        100003,
+        3,
+        1
+      ],
+      "greedy": [
+        100003,
+        3,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "30_static_240311",
+      "case": "30_static_240311",
+      "step": 310,
+      "observed_behavior_return": -0.3,
+      "logged_q": -0.6139771342277527,
+      "greedy_q": 0.13402824103832245,
+      "logged": [
+        200022,
+        12,
+        2
+      ],
+      "greedy": [
+        200022,
+        15,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 10,
+      "observed_behavior_return": -0.5,
+      "logged_q": -0.474517285823822,
+      "greedy_q": -0.474517285823822,
+      "logged": [
+        100001,
+        18,
+        1
+      ],
+      "greedy": [
+        100001,
+        18,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 20,
+      "observed_behavior_return": -0.4666666666666667,
+      "logged_q": -0.5466060638427734,
+      "greedy_q": -0.3818758726119995,
+      "logged": [
+        100002,
+        39,
+        1
+      ],
+      "greedy": [
+        100000,
+        1,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 30,
+      "observed_behavior_return": -0.43333333333333335,
+      "logged_q": -0.39868658781051636,
+      "greedy_q": -0.23296676576137543,
+      "logged": [
+        100000,
+        1,
+        1
+      ],
+      "greedy": [
+        100003,
+        11,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_dynamic_240314",
+      "case": "60_dynamic_240314",
+      "step": 40,
+      "observed_behavior_return": -0.4,
+      "logged_q": -0.23080402612686157,
+      "greedy_q": -0.23080402612686157,
+      "logged": [
+        100003,
+        11,
+        1
+      ],
+      "greedy": [
+        100003,
+        11,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 10,
+      "observed_behavior_return": -0.4366666666666667,
+      "logged_q": -0.3299442529678345,
+      "greedy_q": -0.21104279160499573,
+      "logged": [
+        100002,
+        25,
+        1
+      ],
+      "greedy": [
+        100003,
+        25,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 20,
+      "observed_behavior_return": -0.4033333333333334,
+      "logged_q": -0.1584703028202057,
+      "greedy_q": -0.0547470897436142,
+      "logged": [
+        100001,
+        42,
+        1
+      ],
+      "greedy": [
+        100003,
+        25,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 30,
+      "observed_behavior_return": -0.37000000000000005,
+      "logged_q": -0.3788754940032959,
+      "greedy_q": -0.3788754940032959,
+      "logged": [
+        100003,
+        58,
+        1
+      ],
+      "greedy": [
+        100003,
+        58,
+        1
+      ],
+      "supported_in_exact_replay_state": true,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 40,
+      "observed_behavior_return": -0.3366666666666667,
+      "logged_q": -0.5254637002944946,
+      "greedy_q": -0.3082996606826782,
+      "logged": [
+        100000,
+        21,
+        1
+      ],
+      "greedy": [
+        100000,
+        58,
+        1
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": true,
+      "relay_probability": null
+    },
+    {
+      "episode": "60_static_240313",
+      "case": "60_static_240313",
+      "step": 50,
+      "observed_behavior_return": -0.3033333333333334,
+      "logged_q": -1.165804147720337,
+      "greedy_q": -0.006591275334358215,
+      "logged": [
+        200008,
+        21,
+        2
+      ],
+      "greedy": [
+        200008,
+        24,
+        2
+      ],
+      "supported_in_exact_replay_state": false,
+      "observed_distinct_actions": 1,
+      "mixed": false,
+      "relay_probability": null
+    }
+  ]
+}

@@ -9,7 +9,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from integrations.gppo.event_rl import (
-    Learner, Settings, bellman, dqn_continuation, masked_argmax, masked_probabilities,
+    Learner, Settings, bellman, conservative_penalty, dqn_continuation, masked_argmax, masked_probabilities,
     n_step_episode, padded,
 )
 from integrations.gppo.event_rl_replay import (
@@ -153,3 +153,12 @@ def test_role_balanced_behavior_is_normalized_and_includes_actual_relay():
     distribution = behavior_distribution(entries, 3, epsilon=.1, mixed_epsilon=.8, top=2)
     np.testing.assert_allclose(distribution, [.4,.2,.4])
     assert distribution.sum() == pytest.approx(1.)
+
+
+def test_conservative_value_regularizer_uses_only_real_legal_candidates():
+    q = torch.tensor([[1., 0., 1000.]], requires_grad=True)
+    legal = torch.tensor([[True, True, False]])
+    loss = conservative_penalty(q, legal, torch.tensor([1]))
+    loss.backward()
+    assert 0. < loss.item() < 1.
+    assert q.grad[0,0] > 0 and q.grad[0,1] < 0 and q.grad[0,2] == 0

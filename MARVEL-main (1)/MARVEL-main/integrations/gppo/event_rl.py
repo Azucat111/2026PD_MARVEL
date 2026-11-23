@@ -47,6 +47,14 @@ def masked_probabilities(scores, legal):
     return logp.exp(), logp.masked_fill(~legal, 0.)
 
 
+def conservative_penalty(q, legal, selected):
+    """Discrete CQL term over real legal candidates only."""
+    legal_scores = q.masked_fill(~legal, -torch.inf)
+    log_count = legal.sum(-1).float().log()
+    logged = q.gather(1, selected[:, None]).squeeze(1)
+    return (legal_scores.logsumexp(-1) - log_count - logged).mean()
+
+
 def dqn_continuation(online, target, legal):
     a_next = masked_argmax(online, legal)
     return target.gather(1, a_next[:, None]).squeeze(1)
@@ -95,6 +103,7 @@ class Settings:
     initial_alpha: float = .035
     entropy_fraction: float = .65
     n_step: int = 1
+    cql_weight: float = 0.
 
     def validate(self):
         if self.algo not in ("ddqn", "sac") or min(self.features, self.hidden, self.batch_size, self.sync_every,
@@ -104,6 +113,8 @@ class Settings:
             raise ValueError("Invalid optimizer or temperature")
         if not 0. <= self.entropy_fraction <= 1. or (self.algo == "sac" and self.n_step != 1):
             raise ValueError("Invalid entropy target or multistep configuration")
+        if not math.isfinite(self.cql_weight) or self.cql_weight < 0. or (self.algo != "ddqn" and self.cql_weight):
+            raise ValueError("CQL penalty is available for Double DQN only")
 
 
 class Learner:
@@ -153,16 +164,24 @@ class Learner:
                 following_value[observed_next] = self.continuation(following, next_legal)
             expected = bellman(reward, durations, following_value, dones, truncated,
                                gamma_per_second=self.settings.gamma_per_second)
-        prediction = self.critic(current)[indices, chosen]
+        q = self.critic(current)
+        prediction = q[indices, chosen]
         critic_loss = F.smooth_l1_loss(prediction, expected[:, None].expand_as(prediction))
+        objective = critic_loss
+        penalty = None
+        if self.settings.cql_weight:
+            penalty = conservative_penalty(q.squeeze(-1), legal, chosen)
+            objective = critic_loss + self.settings.cql_weight * penalty
         self.optimizer.zero_grad()
-        critic_loss.backward()
+        objective.backward()
         grad = nn.utils.clip_grad_norm_(self.critic.parameters(), 5., error_if_nonfinite=True)
         self.optimizer.step()
 
         metrics = dict(critic_loss=float(critic_loss), gradient_norm=float(grad),
                        target_min=float(expected.min()), target_max=float(expected.max()),
                        prediction_mean=float(prediction.detach().mean()), bootstrap_rows=len(observed_next))
+        if penalty is not None:
+            metrics.update(cql_penalty=float(penalty), total_objective=float(objective))
         if self.settings.algo == "sac":
             metrics.update(self.update_actor(current, legal))
         self.updates += 1
@@ -191,7 +210,10 @@ class Learner:
                     entropy=float(entropy.mean()), entropy_target=float(target_entropy.mean()))
 
     def checkpoint(self, replay_sha, audit):
-        payload = dict(format=FORMAT, features=FEATURES, settings=asdict(self.settings),
+        settings = asdict(self.settings)
+        if not settings["cql_weight"]:
+            settings.pop("cql_weight")
+        payload = dict(format=FORMAT, features=FEATURES, settings=settings,
                        updates=self.updates, replay_sha256=replay_sha, coverage=audit["coverage"],
                        critic=self.critic.state_dict(), target=self.target.state_dict(),
                        optimizer=self.optimizer.state_dict())

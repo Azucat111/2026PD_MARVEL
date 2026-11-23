@@ -16,3 +16,5 @@ Double Q 的目标分离依据原论文，与 Garage 的 DDQN 目标计算交叉
 Rainbow 的组件定义与作者论文及 Dopamine 核对。Discrete SAC 使用原论文的可枚举动作概率、熵项和目标价值形式。[Rainbow](https://arxiv.org/abs/1710.02298) · [Dopamine](https://github.com/google/dopamine) · [Discrete SAC](https://arxiv.org/abs/1910.07207)
 
 离线方法分别采用批量 Q 迭代、隐式 Q 学习和优势加权在线微调目标。[FQI](https://www.jmlr.org/papers/v6/ernst05a.html) · [IQL](https://arxiv.org/abs/2110.06169) · [AWAC](https://arxiv.org/abs/2006.09359)
+
+针对归档中观察到的分布外贪心，另对多步 DDQN 进行保守价值学习的离线敏感性试验。增加的项为每张真实图上合法 Q 的 log-mean-exp 减已执行动作 Q。它只参与诊断变体训练。[CQL 原论文](https://arxiv.org/abs/2006.04779)
