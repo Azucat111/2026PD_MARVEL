@@ -46,3 +46,23 @@ done
 扩展预算 DDQN 和 SAC 已各从同一归档回放重训一次，与首次训练 checkpoint 逐字节一致。四个复算哈希记录在证据目录的 `checkpoint-parity.log`。
 
 历史归档沿用上轮的配置摘要，摘要包含旧原始 checkpoint 的路径。交付归档可在任意目录复算整套已完成物理评分。若把新跑模型与旧归档混合成对，保留原 checkout 路径以匹配原摘要，或在同一新路径重跑需要比较的控制臂。四域新验证均在同一路径成对产生。
+
+## 直接复核交付数据
+
+```bash
+a=artifacts/joint_mature_rl_20261123
+(cd "$a" && sha256sum -c --quiet SHA256SUMS)
+"$py" -B scripts/summarize_mature_rl.py --runs "$a/runs" \
+  --csv /tmp/mature-experiments.csv --out /tmp/mature-benchmark.json
+cmp "$a/experiments.csv" /tmp/mature-experiments.csv
+cmp "$a/benchmark.json" /tmp/mature-benchmark.json
+"$py" -B scripts/audit_mature_rl_support.py --replay "$a/expanded-replay.json.gz" \
+  --runs "$a"/runs/validation-sac-*/ --out /tmp/mature-validation-support.json
+```
+
+独立开发静态的辅助 Rule 对照可单独复跑。
+
+```bash
+"$py" -B scripts/joint_four_arm_eval.py --uavs 30 --domain static --seed 24110701 --arms R1 \
+  --wall-seconds 1200 --out "$out/dev-R1-30_static_24110701"
+```

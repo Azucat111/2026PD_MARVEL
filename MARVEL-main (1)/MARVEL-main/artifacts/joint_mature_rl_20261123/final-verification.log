@@ -1,0 +1,10 @@
+started 2026-11-23T14:22:11+08:00
+freeze 2026-11-23T09:54:38.937331+00:00
+last_independent_window 2026-11-23T19:42:09.415138+08:00
+elapsed_minutes 319.97
+frozen_checkpoint_sha256 19b414bb25a21dc695f1db8fecc8de3d6a803842ef59240a4770a16eb61570fb
+live_counts {'complete': 45, 'prefix': 4}
+complete_safe_and_successful 45 45
+complete_collisions 0
+complete_no_fly 0
+validation_digests_all_matched_and_temporal_separation 16

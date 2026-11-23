@@ -1,12 +1,144 @@
 {
   "counts": {
-    "actual": 9,
-    "decisions": 19,
+    "actual": 11,
+    "decisions": 24,
     "same_state_j0": 3
   },
   "label": "post_freeze_diagnostic",
   "metric": "RMS normalized same-role nearest executed feature",
   "rows": [
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9433564052393404,
+        "pair": [
+          100002,
+          18
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.104827562530327,
+        "pair": [
+          100002,
+          2
+        ],
+        "role": 1
+      },
+      "step": 10
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9254340511653854,
+        "pair": [
+          200027,
+          19
+        ],
+        "role": 2
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.62954713069029,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 20
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 2.0225353180281953,
+        "pair": [
+          100001,
+          11
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.4764723079207019,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 30
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.7892486866565017,
+        "pair": [
+          100000,
+          13
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.4882578238157015,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 40
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6792557874804211,
+        "pair": [
+          100003,
+          22
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6429280944775486,
+        "pair": [
+          100003,
+          17
+        ],
+        "role": 1
+      },
+      "step": 200
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.4122054464845948,
+        "pair": [
+          200024,
+          0
+        ],
+        "role": 2
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9171170314741719,
+        "pair": [
+          200024,
+          7
+        ],
+        "role": 2
+      },
+      "step": 590
+    },
     {
       "actual": {
         "above_training_leave_group_p95": true,
@@ -185,21 +317,21 @@
     },
     {
       "actual": {
-        "above_training_leave_group_p95": false,
-        "distance": 0.9433564052393404,
+        "above_training_leave_group_p95": true,
+        "distance": 1.0870708434109349,
         "pair": [
-          100002,
-          18
+          100001,
+          50
         ],
         "role": 1
       },
-      "case": "30_dynamic_24110802",
+      "case": "60_dynamic_24110804",
       "same_state_j0": {
-        "above_training_leave_group_p95": true,
-        "distance": 1.104827562530327,
+        "above_training_leave_group_p95": false,
+        "distance": 0.3796846270656347,
         "pair": [
-          100002,
-          2
+          100003,
+          53
         ],
         "role": 1
       },
@@ -207,21 +339,21 @@
     },
     {
       "actual": {
-        "above_training_leave_group_p95": false,
-        "distance": 0.9254340511653854,
+        "above_training_leave_group_p95": true,
+        "distance": 2.0835897331608684,
         "pair": [
-          200027,
-          19
+          100002,
+          18
         ],
-        "role": 2
+        "role": 1
       },
-      "case": "30_dynamic_24110802",
+      "case": "60_dynamic_24110804",
       "same_state_j0": {
         "above_training_leave_group_p95": false,
-        "distance": 0.62954713069029,
+        "distance": 0.5189444967357117,
         "pair": [
-          100000,
-          25
+          100003,
+          53
         ],
         "role": 1
       },
@@ -229,43 +361,21 @@
     },
     {
       "actual": {
-        "above_training_leave_group_p95": true,
-        "distance": 2.0225353180281953,
+        "above_training_leave_group_p95": false,
+        "distance": 1.0119387757282745,
         "pair": [
-          100001,
-          11
+          100000,
+          32
         ],
         "role": 1
       },
-      "case": "30_dynamic_24110802",
+      "case": "60_dynamic_24110804",
       "same_state_j0": {
         "above_training_leave_group_p95": false,
-        "distance": 0.4764723079207019,
+        "distance": 0.6447426799250641,
         "pair": [
-          100000,
-          25
-        ],
-        "role": 1
-      },
-      "step": 30
-    },
-    {
-      "actual": {
-        "above_training_leave_group_p95": false,
-        "distance": 0.7892486866565017,
-        "pair": [
-          100000,
-          13
-        ],
-        "role": 1
-      },
-      "case": "30_dynamic_24110802",
-      "same_state_j0": {
-        "above_training_leave_group_p95": false,
-        "distance": 0.4882578238157015,
-        "pair": [
-          100000,
-          25
+          100003,
+          53
         ],
         "role": 1
       },
@@ -274,46 +384,46 @@
     {
       "actual": {
         "above_training_leave_group_p95": false,
-        "distance": 0.6792557874804211,
+        "distance": 0.9382898957968206,
         "pair": [
-          100003,
-          22
+          200044,
+          56
         ],
-        "role": 1
+        "role": 2
       },
-      "case": "30_dynamic_24110802",
+      "case": "60_dynamic_24110804",
       "same_state_j0": {
         "above_training_leave_group_p95": false,
-        "distance": 0.6429280944775486,
+        "distance": 0.6317179100352558,
         "pair": [
-          100003,
-          17
+          200044,
+          27
         ],
-        "role": 1
+        "role": 2
       },
-      "step": 200
+      "step": 50
     },
     {
       "actual": {
-        "above_training_leave_group_p95": true,
-        "distance": 1.4122054464845948,
+        "above_training_leave_group_p95": false,
+        "distance": 0.5631607935566675,
         "pair": [
-          200024,
-          0
+          100003,
+          53
         ],
-        "role": 2
+        "role": 1
       },
-      "case": "30_dynamic_24110802",
+      "case": "60_dynamic_24110804",
       "same_state_j0": {
         "above_training_leave_group_p95": false,
-        "distance": 0.9171170314741719,
+        "distance": 0.5631607935566675,
         "pair": [
-          200024,
-          7
+          100003,
+          53
         ],
-        "role": 2
+        "role": 1
       },
-      "step": 590
+      "step": 60
     },
     {
       "actual": {

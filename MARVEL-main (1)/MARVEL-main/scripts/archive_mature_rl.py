@@ -14,7 +14,8 @@ def archive(live, target):
     runs.mkdir(parents=True, exist_ok=True)
     files = ("start.txt", "historical-build.log", "expanded-build.log", "study.jsonl", "early-dev.jsonl", "freeze.json",
              "benchmark.json", "experiments.csv", "asset-verification.txt", "regression-tests.log",
-             "inherited-regression.json", "inherited-regression.log", "checkpoint-parity.log")
+             "inherited-regression.json", "inherited-regression.log", "checkpoint-parity.log",
+             "final-verification.log")
     suffixes = (".train.jsonl", ".pth", "-replay.json.gz", "-audit.json", "-fit.json")
     for source in sorted(live.iterdir()):
         if source.is_file() and (source.name in files or source.name.endswith(suffixes)):
