@@ -1,4 +1,5 @@
 run,case,arm,status,ticks,C,safe,success,search_done,radio_first,stable_start,checkpoint_sha256,wall_seconds,decisions,mixed,search,relay,mixed_relay,changed_count,cross_role_count,mean_inference_ms,inherited,collisions,no_fly,error
+explore-30_dynamic_24110602,30_dynamic_24110602,explore,complete,3000,42.5,True,True,38.300000000000004,39.5,39.5,,1303.9052008279996,6,2,4,2,0,1,0,,False,0,0,
 explore-30_static_24110601,30_static_24110601,explore,complete,3000,40.5,True,True,15.5,37.5,37.5,,1051.6942582009997,6,0,4,2,0,0,0,,False,0,0,
 j0-30_dynamic_24110602,30_dynamic_24110602,J0,complete,3000,106.60000000000001,True,True,20.5,103.60000000000001,103.60000000000001,c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d,1440.0394997450003,7,2,4,3,0,0,0,,False,0,0,
 j0-30_static_24110601,30_static_24110601,J0,complete,3000,40.5,True,True,15.5,37.5,37.5,c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d,1141.1393820989997,6,0,4,2,0,0,0,,False,0,0,

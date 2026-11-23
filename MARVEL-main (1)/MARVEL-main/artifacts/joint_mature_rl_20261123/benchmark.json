@@ -25,6 +25,23 @@
     {
       "case": "30_static_24110601",
       "changed": false
+    },
+    {
+      "behavior_probability": 0.07083333333333333,
+      "case": "30_dynamic_24110602",
+      "changed": true,
+      "control_cost": 106.60000000000001,
+      "explored": [
+        100001,
+        0
+      ],
+      "frozen": [
+        100002,
+        18
+      ],
+      "intervention_cost": 42.5,
+      "matched_public_prefix": true,
+      "step": 10
     }
   ],
   "freeze": null,
@@ -51,7 +68,7 @@
     }
   ],
   "live_counts": {
-    "complete": 5,
+    "complete": 6,
     "prefix": 2
   },
   "pairs": [
@@ -197,6 +214,59 @@
     }
   ],
   "rows": [
+    {
+      "C": 42.5,
+      "arm": "explore",
+      "case": "30_dynamic_24110602",
+      "changed": [
+        {
+          "candidate_count": 79,
+          "chosen": [
+            100001,
+            0
+          ],
+          "j0": [
+            100002,
+            18
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:1:675b326d08ccca277d97002fc4efde5fa4d0005f79edae6d79ba587f9774cee7",
+          "step": 10
+        }
+      ],
+      "changed_count": 1,
+      "checkpoint_sha256": null,
+      "collisions": 0,
+      "config": "bd78d68355078bbe3156ac080c2645f51f17755387dfde540619ecdc0ecf9dd8",
+      "cross_role_count": 0,
+      "decisions": 6,
+      "direction_counts": {
+        "1_to_1": 1,
+        "decisions": 6,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 2,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "19f16f45ada4d0e1fc35813a5c82e310dbb422ea52874ec3ba3e262835bb192a",
+      "mean_inference_ms": null,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 39.5,
+      "relay": 2,
+      "run": "explore-30_dynamic_24110602",
+      "safe": true,
+      "search": 4,
+      "search_done": 38.300000000000004,
+      "stable_start": 39.5,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1303.9052008279996
+    },
     {
       "C": 40.5,
       "arm": "explore",
