@@ -1,8 +1,8 @@
 {
   "counts": {
-    "actual": 5,
-    "decisions": 8,
-    "same_state_j0": 1
+    "actual": 7,
+    "decisions": 14,
+    "same_state_j0": 2
   },
   "label": "post_freeze_diagnostic",
   "metric": "RMS normalized same-role nearest executed feature",
@@ -182,6 +182,138 @@
         "role": 2
       },
       "step": 350
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9433564052393404,
+        "pair": [
+          100002,
+          18
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.104827562530327,
+        "pair": [
+          100002,
+          2
+        ],
+        "role": 1
+      },
+      "step": 10
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9254340511653854,
+        "pair": [
+          200027,
+          19
+        ],
+        "role": 2
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.62954713069029,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 20
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 2.0225353180281953,
+        "pair": [
+          100001,
+          11
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.4764723079207019,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 30
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.7892486866565017,
+        "pair": [
+          100000,
+          13
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.4882578238157015,
+        "pair": [
+          100000,
+          25
+        ],
+        "role": 1
+      },
+      "step": 40
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6792557874804211,
+        "pair": [
+          100003,
+          22
+        ],
+        "role": 1
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.6429280944775486,
+        "pair": [
+          100003,
+          17
+        ],
+        "role": 1
+      },
+      "step": 200
+    },
+    {
+      "actual": {
+        "above_training_leave_group_p95": true,
+        "distance": 1.4122054464845948,
+        "pair": [
+          200024,
+          0
+        ],
+        "role": 2
+      },
+      "case": "30_dynamic_24110802",
+      "same_state_j0": {
+        "above_training_leave_group_p95": false,
+        "distance": 0.9171170314741719,
+        "pair": [
+          200024,
+          7
+        ],
+        "role": 2
+      },
+      "step": 590
     }
   ],
   "thresholds": {

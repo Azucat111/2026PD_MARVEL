@@ -159,7 +159,7 @@
     }
   ],
   "live_counts": {
-    "complete": 33,
+    "complete": 37,
     "prefix": 4
   },
   "pairs": [
@@ -443,49 +443,64 @@
     },
     {
       "arm": "sac",
-      "arm_seconds": 53.7,
-      "gain_percent": -343.801652892562,
-      "paired": 1,
+      "arm_seconds": 131.0,
+      "gain_percent": -262.8808864265928,
+      "paired": 2,
       "planned": 4,
       "reference": "R0",
-      "reference_seconds": 12.100000000000001,
+      "reference_seconds": 36.1,
       "rows": [
         [
           "30_static_24110801",
           53.7,
           12.100000000000001
+        ],
+        [
+          "30_dynamic_24110802",
+          77.30000000000001,
+          24.0
         ]
       ]
     },
     {
       "arm": "sac",
-      "arm_seconds": 53.7,
-      "gain_percent": -431.6831683168316,
-      "paired": 1,
+      "arm_seconds": 131.0,
+      "gain_percent": -260.88154269972443,
+      "paired": 2,
       "planned": 4,
       "reference": "R1",
-      "reference_seconds": 10.100000000000001,
+      "reference_seconds": 36.300000000000004,
       "rows": [
         [
           "30_static_24110801",
           53.7,
           10.100000000000001
+        ],
+        [
+          "30_dynamic_24110802",
+          77.30000000000001,
+          26.200000000000003
         ]
       ]
     },
     {
       "arm": "sac",
-      "arm_seconds": 53.7,
-      "gain_percent": -431.6831683168316,
-      "paired": 1,
+      "arm_seconds": 131.0,
+      "gain_percent": -271.1048158640226,
+      "paired": 2,
       "planned": 4,
       "reference": "P2-O",
-      "reference_seconds": 10.100000000000001,
+      "reference_seconds": 35.300000000000004,
       "rows": [
         [
           "30_static_24110801",
           53.7,
           10.100000000000001
+        ],
+        [
+          "30_dynamic_24110802",
+          77.30000000000001,
+          25.200000000000003
         ]
       ]
     }
@@ -2892,6 +2907,43 @@
       "wall_seconds": 67.29536973900031
     },
     {
+      "C": 25.200000000000003,
+      "arm": "P2-O",
+      "case": "30_dynamic_24110802",
+      "changed": [],
+      "changed_count": 0,
+      "checkpoint_sha256": "52b3424b64f0736641e1110eabbfeb83e43427cc549bdf191ea25d128a682276",
+      "collisions": 0,
+      "config": "6c8ec201981fde6a5363e0357dd173a92b76b56a4fb6ae12bc68d3cb7e7adf61",
+      "cross_role_count": 0,
+      "decisions": 6,
+      "direction_counts": {
+        "decisions": 6,
+        "mixed": 2,
+        "mixed_relay": 0,
+        "relay": 2,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "a198e290bf119c675f55fe7246c24c0a3fa788a67041a94d514c1a496c0e9686",
+      "mean_inference_ms": null,
+      "mixed": 2,
+      "mixed_relay": 0,
+      "no_fly": 0,
+      "radio_first": 11.100000000000001,
+      "relay": 2,
+      "run": "validation-P2-O-30_dynamic_24110802",
+      "safe": true,
+      "search": 4,
+      "search_done": 15.9,
+      "stable_start": 22.200000000000003,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1145.5187108249993
+    },
+    {
       "C": 10.100000000000001,
       "arm": "P2-O",
       "case": "30_static_24110801",
@@ -2929,6 +2981,27 @@
       "wall_seconds": 932.8787336919995
     },
     {
+      "C": 24.0,
+      "arm": "R0",
+      "case": "30_dynamic_24110802",
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "collisions": 0,
+      "config": "6c8ec201981fde6a5363e0357dd173a92b76b56a4fb6ae12bc68d3cb7e7adf61",
+      "error": null,
+      "inherited": false,
+      "init": "a198e290bf119c675f55fe7246c24c0a3fa788a67041a94d514c1a496c0e9686",
+      "no_fly": 0,
+      "radio_first": 11.100000000000001,
+      "run": "validation-R0-30_dynamic_24110802",
+      "safe": true,
+      "search_done": 14.9,
+      "stable_start": 21.0,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1062.2287641230032
+    },
+    {
       "C": 12.100000000000001,
       "arm": "R0",
       "case": "30_static_24110801",
@@ -2950,6 +3023,27 @@
       "wall_seconds": 830.4754046630005
     },
     {
+      "C": 26.200000000000003,
+      "arm": "R1",
+      "case": "30_dynamic_24110802",
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "collisions": 0,
+      "config": "6c8ec201981fde6a5363e0357dd173a92b76b56a4fb6ae12bc68d3cb7e7adf61",
+      "error": null,
+      "inherited": false,
+      "init": "a198e290bf119c675f55fe7246c24c0a3fa788a67041a94d514c1a496c0e9686",
+      "no_fly": 0,
+      "radio_first": 11.100000000000001,
+      "run": "validation-R1-30_dynamic_24110802",
+      "safe": true,
+      "search_done": 14.9,
+      "stable_start": 23.200000000000003,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1167.7980322490002
+    },
+    {
       "C": 10.100000000000001,
       "arm": "R1",
       "case": "30_static_24110801",
@@ -2969,6 +3063,131 @@
       "success": true,
       "ticks": 3000,
       "wall_seconds": 939.9678228679986
+    },
+    {
+      "C": 77.30000000000001,
+      "arm": "sac",
+      "case": "30_dynamic_24110802",
+      "changed": [
+        {
+          "candidate_count": 79,
+          "chosen": [
+            100002,
+            18
+          ],
+          "j0": [
+            100002,
+            2
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:1:ec54a05293e44be016fa714b43b18e654e3116dc6d288cc5c1afc24c2afad146",
+          "step": 10
+        },
+        {
+          "candidate_count": 76,
+          "chosen": [
+            200027,
+            19
+          ],
+          "j0": [
+            100000,
+            25
+          ],
+          "role_change": "1_to_2",
+          "snapshot_version": "extended-joint-single-action-v1:2:95f82ad0f58c74ef6281945c511604dc90ea6e1d8e742903df0115a472a780d0",
+          "step": 20
+        },
+        {
+          "candidate_count": 33,
+          "chosen": [
+            100001,
+            11
+          ],
+          "j0": [
+            100000,
+            25
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:3:0e4300ef5bdb0d373fe3c17ec13ec37407ca9ebf3f95f2f94b3e011949b45357",
+          "step": 30
+        },
+        {
+          "candidate_count": 6,
+          "chosen": [
+            100000,
+            13
+          ],
+          "j0": [
+            100000,
+            25
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:4:e3aca0d1433924acc48dab41aca228fef2b65a25bc4b1bb0e5545c710938cdbc",
+          "step": 40
+        },
+        {
+          "candidate_count": 26,
+          "chosen": [
+            100003,
+            22
+          ],
+          "j0": [
+            100003,
+            17
+          ],
+          "role_change": "1_to_1",
+          "snapshot_version": "extended-joint-single-action-v1:20:769736afbafdeed95acc625626224346820faca18e00de82cbcbfde56ae35e45",
+          "step": 200
+        },
+        {
+          "candidate_count": 25,
+          "chosen": [
+            200024,
+            0
+          ],
+          "j0": [
+            200024,
+            7
+          ],
+          "role_change": "2_to_2",
+          "snapshot_version": "extended-joint-single-action-v1:59:70ec45b596875af353ba13afa50d80fa7ba7f7f708de95f4b563d5b43593cf50",
+          "step": 590
+        }
+      ],
+      "changed_count": 6,
+      "checkpoint_sha256": "19b414bb25a21dc695f1db8fecc8de3d6a803842ef59240a4770a16eb61570fb",
+      "collisions": 0,
+      "config": "6c8ec201981fde6a5363e0357dd173a92b76b56a4fb6ae12bc68d3cb7e7adf61",
+      "cross_role_count": 1,
+      "decisions": 6,
+      "direction_counts": {
+        "1_to_1": 4,
+        "1_to_2": 1,
+        "2_to_2": 1,
+        "decisions": 6,
+        "mixed": 2,
+        "mixed_relay": 1,
+        "relay": 2,
+        "search": 4
+      },
+      "error": null,
+      "inherited": false,
+      "init": "a198e290bf119c675f55fe7246c24c0a3fa788a67041a94d514c1a496c0e9686",
+      "mean_inference_ms": 20.25050050057568,
+      "mixed": 2,
+      "mixed_relay": 1,
+      "no_fly": 0,
+      "radio_first": 14.4,
+      "relay": 2,
+      "run": "validation-sac-30_dynamic_24110802",
+      "safe": true,
+      "search": 4,
+      "search_done": 46.5,
+      "stable_start": 74.3,
+      "status": "complete",
+      "success": true,
+      "ticks": 3000,
+      "wall_seconds": 1158.0877050439994
     },
     {
       "C": 53.7,

@@ -1,0 +1,27 @@
+{
+  "acceptance_claim": false,
+  "all_windows_complete": true,
+  "arms": {
+    "R0": {
+      "arm": "R0",
+      "case": "30_dynamic_24110802",
+      "checkpoint_sha256": "c419c175619fe1ea27bbf4da25ad43a7e4a8d6e74ec6bd6f7ec09d5cbc97c69d",
+      "compatibility_policy": false,
+      "config_sha256": "6c8ec201981fde6a5363e0357dd173a92b76b56a4fb6ae12bc68d3cb7e7adf61",
+      "initial_sha256": "a198e290bf119c675f55fe7246c24c0a3fa788a67041a94d514c1a496c0e9686",
+      "score": {
+        "acceptance_claim": false,
+        "joint_success": true,
+        "physics_dt": 0.1,
+        "primary_search_metric_unchanged": true,
+        "secondary_joint_completion_seconds": 24.0,
+        "stable_seconds": 3.0,
+        "whole_window_safe": true
+      },
+      "seconds": 1062.2287641230032,
+      "status": "complete"
+    }
+  },
+  "case": "30_dynamic_24110802",
+  "initial_pairing": false
+}
